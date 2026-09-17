@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# post-glossary-reply — post a reply to a language's pinned forum glossary topic,
+# post-glossary-reply: post a reply to a language's pinned forum glossary topic,
 # announcing an agreed glossary change.
 #
 # Usage:
@@ -68,7 +68,7 @@ LANG_NAME="$(jq -r --arg l "$LANG_CODE" '.[$l] // empty' "$NAMES")"
 
 TOPIC_ID="$(jq -r '.glossary.topic_id // empty' "$TRACKING")"
 [ -n "$TOPIC_ID" ] && [ "$TOPIC_ID" != "null" ] ||
-  die "no .glossary.topic_id for '$LANG_CODE' in $TRACKING — create the pinned topic first with ./scripts/create-forum-glossary-post $LANG_CODE"
+  die "no .glossary.topic_id for '$LANG_CODE' in $TRACKING: create the pinned topic first with ./scripts/create-forum-glossary-post $LANG_CODE"
 
 [ -f "$ROOT/.env" ] || die "no .env at $ROOT/.env (need DISCOURSE_API_KEY; see .env.example)"
 set -a

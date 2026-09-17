@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# heart-post — like a forum post (POST /post_actions.json, post_action_type_id 2).
+# heart-post: like a forum post (POST /post_actions.json, post_action_type_id 2).
 #
 # Usage:
 #   ./scripts/heart-post <post_id>

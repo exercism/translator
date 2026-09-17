@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# reply-to-thread — post a reply to any forum topic by topic_id.
+# reply-to-thread: post a reply to any forum topic by topic_id.
 #
 # Usage:
 #   ./scripts/reply-to-thread <topic_id> <body-file>

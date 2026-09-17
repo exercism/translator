@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# create-forum-language-category — create an i18n language subcategory on the
+# create-forum-language-category: create an i18n language subcategory on the
 # Exercism Discourse forum, matching the house style, and seed it with a pinned
 # "Want to Help - Start here?" topic.
 #
@@ -18,8 +18,8 @@
 # Example:
 #   ./scripts/create-forum-language-category pt-BR brazil
 #
-#   lang   — locale code (e.g. pt-BR, hu, de). Must exist in languages/names.json.
-#   emoji  — a Discourse emoji shortname for the badge (e.g. brazil, hungary,
+#   lang  : locale code (e.g. pt-BR, hu, de). Must exist in languages/names.json.
+#   emoji : a Discourse emoji shortname for the badge (e.g. brazil, hungary,
 #             globe_showing_americas). MUST be a real Discourse emoji shortname
 #             (verified below against the live /emojis.json), never guessed from
 #             the country/language name. Discourse's categories API accepts and
@@ -30,7 +30,7 @@
 #             checking: Turkey's flag is "türkiye" in Discourse's set, not
 #             "turkey" (the latter is the turkey-the-bird emoji); Catalan has no
 #             country flag at all (Catalonia isn't a Unicode-recognized flag),
-#             so "catalonia" was silently accepted as a non-existent emoji —
+#             so "catalonia" was silently accepted as a non-existent emoji , 
 #             Andorra (the one country where Catalan is a sole official
 #             language) is the correct fallback in cases like this where no
 #             country flag matches the language directly. This script now
@@ -64,7 +64,7 @@ EMOJI="${2:-}"
   die "usage: $(basename "$0") <lang> <emoji>"
 
 # Guard against a spelled-out language name slipping in as $lang (e.g. "ukrainian"
-# instead of "uk") — this becomes the live Discourse category slug (i18n-<lang>), so a
+# instead of "uk"): this becomes the live Discourse category slug (i18n-<lang>), so a
 # wrong value here creates a real, hard-to-rename external category.
 echo "$LANG" | grep -qE '^[a-z]{2,3}(-[A-Za-z0-9]{2,8})?$' ||
   die "'$LANG' doesn't look like a locale code (expected e.g. 'de', 'pt-BR', 'zh-CN'); use the ISO code, not the spelled-out language name"
@@ -77,7 +77,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 NAMES="$ROOT/languages/names.json"
 [ -f "$NAMES" ] || die "names file not found: $NAMES"
 LANGUAGE="$(jq -r --arg l "$LANG" '.[$l] // empty' "$NAMES")"
-[ -n "$LANGUAGE" ] || die "locale '$LANG' not found in $NAMES — add it before running this script"
+[ -n "$LANGUAGE" ] || die "locale '$LANG' not found in $NAMES: add it before running this script"
 SLUG="i18n-$(echo "$LANG" | tr '[:upper:]' '[:lower:]' | tr '_' '-')"
 NAME="${LANGUAGE} (${LANG})"
 
@@ -100,7 +100,7 @@ WELCOME_TITLE="Want to Help - Start here?"
 EMOJI_EXISTS="$(curl -sSL -m 15 "$FORUM_BASE/emojis.json" \
   | jq -e --arg e "$EMOJI" 'to_entries[] | .value[] | select(.name == $e)' >/dev/null 2>&1 && echo yes || echo no)"
 [ "$EMOJI_EXISTS" = "yes" ] ||
-  die "'$EMOJI' is not a real Discourse emoji shortname (checked $FORUM_BASE/emojis.json) — do not guess from the country/language name, look it up first"
+  die "'$EMOJI' is not a real Discourse emoji shortname (checked $FORUM_BASE/emojis.json): do not guess from the country/language name, look it up first"
 
 # Resolve the parent category id dynamically (don't hardcode). Its slug is
 # config.json `forum.parent_category_slug`.

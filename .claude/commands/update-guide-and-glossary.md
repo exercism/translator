@@ -49,9 +49,9 @@ Determine the language from the topic's category slug (`i18n-<lang>`) unless `$l
 4. `languages/<lang>/guide.md` and `languages/<lang>/glossary.md`
 5. If `<lang>` belongs to a language family (its code has a "-" and
    `languages/<family>/` exists, e.g. `es-419` -> `es`), also read
-   `languages/<family>/guide.md` and `languages/<family>/glossary.md` — see
+   `languages/<family>/guide.md` and `languages/<family>/glossary.md`: see
    `CLAUDE.md` § Language families for the shared-base/locale-delta split.
-6. `languages/<lang>/tracking.json` — to find the `glossary.post_id` for this language.
+6. `languages/<lang>/tracking.json`: to find the `glossary.post_id` for this language.
 
 ## Step 3: Classify the feedback
 
@@ -80,7 +80,7 @@ Present, clearly separated:
    These are proposals. Do **not** edit `glossary.md` until the operator agrees. For a
    family locale, say which file (`languages/<family>/glossary.md` or
    `languages/<lang>/glossary.md`) each row would land in.
-2. **Proposed guide edits** — show exact edits; apply once confirmed. For a family locale,
+2. **Proposed guide edits**: show exact edits; apply once confirmed. For a family locale,
    say whether an edit belongs in the family guide or the locale guide.
 
 Wait for the operator's agreement before writing anything.

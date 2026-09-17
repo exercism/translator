@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# github-issue-monitor — one poll of exercism/i18n for open translation issues,
+# github-issue-monitor: one poll of exercism/i18n for open translation issues,
 # appended to a TODO file for the orchestrator to work through.
 #
 # This is the second of the two queues in orchestrator.md's "Where translation

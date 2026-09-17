@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# glossary-post-body — the canonical body of a language's pinned forum glossary
+# glossary-post-body: the canonical body of a language's pinned forum glossary
 # post. With no flag it prints the body to stdout and touches nothing.
 #
 # Usage:
@@ -57,7 +57,7 @@ NAMES="$ROOT/languages/names.json"
 [ -f "$NAMES" ] || die "names file not found: $NAMES"
 
 LANG_NAME="$(jq -r --arg l "$LANG_CODE" '.[$l] // empty' "$NAMES")"
-[ -n "$LANG_NAME" ] || die "locale '$LANG_CODE' not found in $NAMES — add it before running this script"
+[ -n "$LANG_NAME" ] || die "locale '$LANG_CODE' not found in $NAMES: add it before running this script"
 
 REPO="$(jq -r .github.translator_repo "$ROOT/config.json")"
 BLOB="https://github.com/${REPO}/blob/main/languages"

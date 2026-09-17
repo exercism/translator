@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# forum-monitor — one poll of the Exercism Discourse forum for new posts in the
+# forum-monitor: one poll of the Exercism Discourse forum for new posts in the
 # translation categories, appended to a TODO file for the orchestrator to work
 # through with iHiD.
 #

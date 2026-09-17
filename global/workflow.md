@@ -30,8 +30,10 @@ not the editor: every glossary change is pre-agreed, and nothing is written to a
 inline during a translation pass. This keeps the glossary from drifting and keeps a
 decision-maker in the loop on every new term.
 
-A glossary may also hold a clearly separated **"Proposed, not yet agreed"** block, used when a
-language is adapted or bootstrapped and nobody who speaks it has looked yet. Rows there are
+A glossary may also hold a clearly separated **"Proposed, not yet agreed"** block. It exists
+for one case: a glossary adapted from Jiki's, which needs Exercism's product vocabulary before
+anybody who speaks the language has looked. (A freshly bootstrapped language has no such
+block: `/bootstrap-language` writes in only what the owner agreed.) Rows there are
 an agent's proposals. They are in the glossary file, so a pass does use them (a consistent
 draft beats an inconsistent one), but they are unconfirmed drafts in the sense of rule 1
 below, and the block's heading says so to every native speaker who opens the file. A row

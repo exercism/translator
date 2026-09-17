@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# fetch-forum-topics — dump every topic and post in a Discourse forum category
+# fetch-forum-topics: dump every topic and post in a Discourse forum category
 # to a single Markdown file, for /bootstrap-language and for reading a language's
 # whole discussion at once. forum-dumps/ is gitignored: a dump is a snapshot of
 # other people's posts, never a source of truth and never committed.
@@ -134,7 +134,7 @@ while IFS=$'\t' read -r tid pcount tslug ttitle; do
       uname="$(echo "$meta" | cut -f1)"
       date="$(echo "$meta" | cut -f2)"
       {
-        echo "### ${uname} — ${date}"
+        echo "### ${uname}: ${date}"
         echo
         echo "$body"
         echo

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# oldest-unhearted — print the earliest entry in state/forum-todo.jsonl that
+# oldest-unhearted: print the earliest entry in state/forum-todo.jsonl that
 # has not yet been hearted (hearted != true). The file is append-only in
 # arrival order, so "first match by line number" is "oldest".
 #

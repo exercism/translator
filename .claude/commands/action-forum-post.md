@@ -66,7 +66,7 @@ than guessing.
 5. `languages/<lang>/guide.md` and `languages/<lang>/glossary.md`
 6. If `<lang>` belongs to a language family (its code has a "-" and
    `languages/<family>/` exists, e.g. `es-419` -> `es`), also read
-   `languages/<family>/guide.md` and `languages/<family>/glossary.md` — see
+   `languages/<family>/guide.md` and `languages/<family>/glossary.md`: see
    `CLAUDE.md` § Language families for the shared-base/locale-delta split.
 7. The English source and current `<lang>` translation of each discussed page, both found by
    `scripts/locate.mjs`

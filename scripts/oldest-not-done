@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# oldest-not-done — print the earliest entry in state/forum-todo.jsonl that
+# oldest-not-done: print the earliest entry in state/forum-todo.jsonl that
 # still needs actioning: `status` is missing or anything other than "done"
 # (so a fresh, untriaged post and one explicitly reopened as "not done" both
 # match). The file is append-only in arrival order, so "first match by line
