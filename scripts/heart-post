@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+#
+# heart-post — like a forum post (POST /post_actions.json, post_action_type_id 2).
+#
+# Usage:
+#   ./scripts/heart-post <post_id>
+#
+# Example:
+#   ./scripts/heart-post 4324
+#
+# This is the standing "heart the post" step in the Checking-posts triage flow
+# (orchestrator.md), pulled out into a script so credentials never need to be
+# sourced or handled inline in a session or subagent. Liking is idempotent on
+# Discourse's side (re-liking an already-liked post is a no-op, not an error),
+# but still space out requests when hearting in bulk.
+#
+# Reads credentials from the repo .env:
+#   FORUM_BASE, DISCOURSE_API_KEY, DISCOURSE_API_USERNAME
+#
+# Reads:   nothing in this repo.
+# Writes:  nothing in this repo (it likes a forum post). The caller is still
+#          responsible for setting hearted: true on the matching entry in
+#          state/forum-todo.jsonl.
+#
+# Requires: curl, jq.
+
+set -euo pipefail
+
+die() { echo "error: $*" >&2; exit 1; }
+
+command -v curl >/dev/null || die "curl is required"
+command -v jq   >/dev/null || die "jq is required"
+
+POST_ID="${1:-}"
+[ -n "$POST_ID" ] || die "usage: $(basename "$0") <post_id>"
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+
+# Shared forum response handling (forum_ok); see the header of that file.
+. "$ROOT/scripts/lib/forum-api.sh"
+
+if [ -f "$ROOT/.env" ]; then
+  set -a
+  # shellcheck disable=SC1091
+  . "$ROOT/.env"
+  set +a
+fi
+
+FORUM_BASE="${FORUM_BASE:-https://forum.jiki.io}"
+[ -n "${DISCOURSE_API_KEY:-}" ] || die "DISCOURSE_API_KEY is not set (check .env)"
+
+AUTH=(-H "Api-Key: ${DISCOURSE_API_KEY}" -H "Api-Username: ${DISCOURSE_API_USERNAME:-system}")
+
+resp="$(curl -sS -m 30 -X POST "$FORUM_BASE/post_actions.json" "${AUTH[@]}" \
+  -H "Content-Type: application/json" \
+  -w $'\n%{http_code}' \
+  -d "{\"id\": ${POST_ID}, \"post_action_type_id\": 2}")"
+
+forum_ok "hearting post $POST_ID" "$resp" >/dev/null
+echo "hearted post $POST_ID"

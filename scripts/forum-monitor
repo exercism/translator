@@ -1,0 +1,288 @@
+#!/usr/bin/env bash
+#
+# forum-monitor — one poll of the Jiki Discourse forum for new posts, appended
+# to a TODO file for iHiD and Claude to triage together in a later session.
+#
+# By default this is a SINGLE-SHOT script: one poll, one diff, one append,
+# then exit. That is what launchd calls (see the plist alongside this script),
+# so that a stuck run can never wedge the poller and so the script stays
+# trivially testable by hand. Pass --loop to instead run in the foreground,
+# polling every 30s until interrupted (Ctrl+C) — a console alternative to
+# installing the launchd job.
+#
+# One poll is one or more HTTP calls, not necessarily one. Discourse caps
+# /posts.json at 50 posts per response, so a single call only ever sees the most
+# recent 50 posts site-wide. If the poller has been off (laptop asleep, launchd
+# unloaded, a crash) for long enough that more than 50 posts have landed, one
+# call cannot see the older ones, and advancing the watermark to the newest id in
+# that one response would step straight over them: silently and permanently, with
+# no error and no gap the script itself could notice. So a poll walks backwards
+# through /posts.json?before=<id> until it reaches the previous watermark, and
+# only then advances it. A caught-up poller still makes exactly one call, which
+# is the normal case; a poller that has been off for a week makes as many as it
+# needs.
+#
+# Usage:
+#   ./scripts/forum-monitor            # one poll-and-append cycle
+#   ./scripts/forum-monitor --loop     # poll every 30s in the foreground
+#
+# Files it touches (all gitignored, all under state/):
+#   state/forum-todo.jsonl   append-only, one JSON object per newly-seen post
+#   state/forum-seen.json    watermark: the highest post id we have recorded
+#   state/forum-monitor.lock lock directory, held for the duration of a run
+#   state/forum-monitor.pages.<pid>  scratch for one poll's pages, removed on exit
+#   state/forum-monitor.log  launchd's stdout+stderr (written by launchd, not here)
+#
+# The TODO file is only ever appended to, so there is no read-modify-write to
+# lose. The watermark is rewritten every run, so it is written to a temp file
+# and mv'd into place: a half-written watermark would either re-report old posts
+# or, worse, skip new ones. For the same reason a poll that cannot finish its
+# backwards walk (rate limit, timeout) leaves the watermark alone and exits
+# non-zero: re-reporting a post next run is recoverable, skipping one is not.
+#
+# The first ever run has no watermark. It records the current newest post id and
+# appends nothing, because dumping the forum's entire recent history into the
+# TODO file is noise, not a to-do list. Real work starts from the next poll.
+#
+# Credentials come from the repo .env, as with the other forum scripts:
+#   FORUM_BASE             (default https://forum.jiki.io)
+#   DISCOURSE_API_KEY      only needed to see private categories
+#   DISCOURSE_API_USERNAME defaults to system
+# Public categories need no auth at all, so a missing .env is not fatal here.
+#
+# launchd:
+#   cp scripts/support/com.jiki.forum-monitor.plist ~/Library/LaunchAgents/
+#   launchctl load  ~/Library/LaunchAgents/com.jiki.forum-monitor.plist   # start
+#   launchctl unload ~/Library/LaunchAgents/com.jiki.forum-monitor.plist  # stop
+#
+# Requires: curl, jq.
+
+set -euo pipefail
+
+die() {
+  echo "error: $*" >&2
+  exit 1
+}
+
+command -v curl >/dev/null || die "curl is required"
+command -v jq   >/dev/null || die "jq is required"
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+
+# This script deliberately does not use scripts/lib/forum-api.sh's forum_ok:
+# that helper dies on anything unexpected, which is right for a one-shot write
+# but wrong for a poll that must tell a retryable rate limit apart from a real
+# end-of-pages. See fetch_page below.
+
+# .env is optional: public reads need no key. Anything already in the
+# environment wins, so a one-off run can point at a test forum with FORUM_BASE=.
+if [ -f "$ROOT/.env" ]; then
+  set -a
+  # shellcheck disable=SC1091
+  . "$ROOT/.env"
+  set +a
+fi
+FORUM_BASE="${FORUM_BASE:-https://forum.jiki.io}"
+
+STATE_DIR="$ROOT/state"
+TODO="$STATE_DIR/forum-todo.jsonl"
+SEEN="$STATE_DIR/forum-seen.json"
+LOCK="$STATE_DIR/forum-monitor.lock"
+
+mkdir -p "$STATE_DIR"
+
+poll_once() {
+
+# Overlap guard. launchd fires every 30s regardless of whether the last run
+# finished, and two runs sharing one watermark would double-append. mkdir is the
+# lock: it is atomic on every filesystem we care about, unlike test-then-touch.
+if ! mkdir "$LOCK" 2>/dev/null; then
+  # A crashed run leaves the directory behind, so a lock older than fifteen
+  # minutes is stale rather than busy. Fifteen and not five because a poll that
+  # is catching up after an outage walks back a page at a time and can honestly
+  # run for minutes; stealing its lock mid-walk would let a second poll append
+  # the same posts again.
+  if [ -n "$(find "$LOCK" -maxdepth 0 -mmin +15 2>/dev/null)" ]; then
+    echo "note: clearing a stale lock at $LOCK" >&2
+    rm -rf "$LOCK"
+    mkdir "$LOCK" 2>/dev/null || return 0
+  else
+    # Another poll is in flight. Returning quietly is correct: the next tick is
+    # 30 seconds (or one launchd interval) away and nothing is lost by skipping.
+    return 0
+  fi
+fi
+# RETURN, so that in --loop mode (where poll_once is called repeatedly in one
+# process) the lock is released at the end of each cycle rather than only when
+# the whole script finally exits; and EXIT too, because `die` exits outright and
+# would otherwise leave the lock behind for the stale-lock path to clean up.
+# PAGES is the scratch file the backwards walk below accumulates into.
+PAGES="$STATE_DIR/forum-monitor.pages.$$"
+trap 'rm -rf "$LOCK"; rm -f "$PAGES"' RETURN EXIT
+
+AUTH=()
+if [ -n "${DISCOURSE_API_KEY:-}" ]; then
+  AUTH=(-H "Api-Key: ${DISCOURSE_API_KEY}" -H "Api-Username: ${DISCOURSE_API_USERNAME:-system}")
+fi
+
+# /posts.json is the site-wide firehose: the latest posts across every category,
+# newest first. One call covers the whole forum, so there is no per-category
+# fan-out to keep in step and no category list to keep up to date. It returns
+# only public, regular posts: private messages, whispers and small actions are
+# excluded by Discourse, so the ids in the TODO file are legitimately sparse.
+#
+# fetch_page <url>
+#
+# Echoes one page's JSON body. Retries the responses that mean "ask again in a
+# moment" (429 from the rate limiter, 5xx, a curl-level failure) with a backoff
+# that honours Discourse's own extras.wait_seconds when it offers one, and dies
+# if they persist. Distinguishing those from a real answer matters here: a
+# rate-limited 429 is also valid JSON, and handing it to jq yields an empty post
+# list, which is indistinguishable from "no more posts" and would end the walk
+# early with the watermark none the wiser.
+fetch_page() {
+  local url="$1" attempt=0 resp code body wait
+  while :; do
+    resp="$(curl -sS -m 25 "${AUTH[@]}" -w $'\n%{http_code}' "$url" || printf '\n000')"
+    code="${resp##*$'\n'}"
+    body="${resp%$'\n'*}"
+
+    if [ "$code" = "200" ]; then
+      printf '%s' "$body" | jq -e '.latest_posts' >/dev/null 2>&1 \
+        || die "polling $url: HTTP 200 with no latest_posts array"
+      printf '%s' "$body"
+      return 0
+    fi
+
+    attempt=$((attempt + 1))
+    if [ "$attempt" -gt 5 ]; then
+      die "polling $url: gave up after $((attempt - 1)) retries, last status HTTP ${code:-(none)}. First 300 bytes:
+$(printf '%s' "$body" | head -c 300)"
+    fi
+
+    wait="$(printf '%s' "$body" | jq -r '.extras.wait_seconds // empty' 2>/dev/null || true)"
+    case "$wait" in ''|*[!0-9]*) wait=$((attempt * attempt * 5)) ;; esac
+    echo "note: HTTP ${code:-(none)} from the forum, retrying in ${wait}s (attempt $attempt/5)" >&2
+    sleep "$wait"
+  done
+}
+
+# Read the previous watermark. A missing or unreadable file means "first run".
+LAST=""
+if [ -f "$SEEN" ]; then
+  LAST="$(jq -r '.last_post_id // empty' "$SEEN" 2>/dev/null || true)"
+fi
+
+body="$(fetch_page "$FORUM_BASE/posts.json")" || return 1
+
+NEWEST="$(printf '%s' "$body" | jq -r '[.latest_posts[]?.id] | max // empty')"
+if [ -z "$NEWEST" ]; then
+  echo "note: no posts in the response; nothing to do" >&2
+  return 0
+fi
+
+if [ -z "$LAST" ]; then
+  # First run: adopt the current high-water mark without appending. See header.
+  jq -n --argjson id "$NEWEST" --arg at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+    '{last_post_id:$id, updated_at:$at}' >"$SEEN.tmp.$$"
+  mv "$SEEN.tmp.$$" "$SEEN"
+  echo "initialised watermark at post $NEWEST (no backfill)" >&2
+  return 0
+fi
+
+# Walk backwards until the page we are holding reaches down past the watermark.
+# `before=<id>` asks for the page of posts immediately older than <id>, so the
+# oldest id on the page we just read is the cursor for the next one. Pages
+# accumulate as one JSON array per line, slurped back together below.
+: >"$PAGES"
+
+# A poll that needs more than this has almost certainly hit something other than
+# a long outage (a reset watermark, a corrupted state file), and hammering the
+# forum for thousands of posts is the wrong response to that. Stop and say so
+# rather than grinding on; the watermark is untouched, so nothing is lost.
+MAX_PAGES=200
+pages=0
+
+while :; do
+  printf '%s' "$body" | jq -c '[.latest_posts[]?]' >>"$PAGES"
+  pages=$((pages + 1))
+
+  OLDEST="$(printf '%s' "$body" | jq -r '[.latest_posts[]?.id] | min // empty')"
+  # An empty page means we have reached the start of the forum, and an oldest id
+  # at or below the watermark means we have covered everything new.
+  if [ -z "$OLDEST" ] || [ "$OLDEST" -le "$LAST" ]; then
+    break
+  fi
+
+  if [ "$pages" -ge "$MAX_PAGES" ]; then
+    die "polling $FORUM_BASE: still $((OLDEST - LAST)) or so posts short of the watermark ($LAST) after $pages pages. Watermark left at $LAST; check state/forum-seen.json is sane before re-running."
+  fi
+
+  # Be a good citizen: this only ever loops when catching up, and a burst of
+  # back-to-back pages is exactly what trips the rate limiter.
+  sleep 1
+  body="$(fetch_page "$FORUM_BASE/posts.json?before=$OLDEST")" || return 1
+done
+
+if [ "$pages" -gt 1 ]; then
+  echo "note: caught up over $pages pages (watermark was $LAST)" >&2
+fi
+
+# Everything above the watermark, oldest first so the TODO file reads in the
+# order things were said. Discourse post ids are monotonic, which is what makes
+# a single integer a sufficient watermark. Pages overlap at their boundaries
+# only in principle, but unique_by makes that harmless either way.
+NEW_LINES="$(jq -s -c \
+  --argjson last "$LAST" \
+  --arg base "$FORUM_BASE" \
+  --arg at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" '
+  [ .[][]? | select(.id > $last) ]
+  | unique_by(.id)
+  | sort_by(.id)
+  | .[]
+  | {
+      post_id:      .id,
+      topic_id:     .topic_id,
+      post_number:  .post_number,
+      topic_title:  (.topic_title // .topic_slug // ""),
+      category_id:  .category_id,
+      username:     .username,
+      created_at:   .created_at,
+      url:          ($base + "/t/" + ((.topic_id // 0)|tostring) + "/" + ((.post_number // 1)|tostring)),
+      excerpt:      ((.excerpt // .cooked // "") | gsub("<[^>]*>"; "") | gsub("\\s+"; " ") | .[0:400]),
+      seen_at:      $at
+    }' "$PAGES")"
+
+COUNT=0
+if [ -n "$NEW_LINES" ]; then
+  # Append-only, one open of the file, so a concurrent reader sees whole lines.
+  printf '%s\n' "$NEW_LINES" >>"$TODO"
+  COUNT="$(printf '%s\n' "$NEW_LINES" | wc -l | tr -d ' ')"
+fi
+
+# Advance the watermark last: if the append above failed, we would rather
+# re-report a post next run than lose it.
+jq -n --argjson id "$NEWEST" --arg at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+  '{last_post_id:$id, updated_at:$at}' >"$SEEN.tmp.$$"
+mv "$SEEN.tmp.$$" "$SEEN"
+
+if [ "$COUNT" -gt 0 ]; then
+  echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) appended $COUNT new post(s) to $TODO (watermark now $NEWEST)" >&2
+fi
+
+}
+
+if [ "${1:-}" = "--loop" ]; then
+  # Console alternative to launchd: poll every 30s in the foreground until
+  # interrupted. Each cycle is still the same single poll_once used by
+  # launchd, so behaviour (locking, watermark, append-only TODO) is identical.
+  echo "polling every 30s (Ctrl+C to stop)" >&2
+  stop() { echo "stopping" >&2; exit 0; }
+  trap stop INT TERM
+  while true; do
+    poll_once
+    sleep 30
+  done
+else
+  poll_once
+fi

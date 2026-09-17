@@ -1,0 +1,153 @@
+#!/usr/bin/env bash
+#
+# fetch-forum-topics — dump every topic and post in a Discourse forum category
+# to a single Markdown file, ready to feed into a Claude translation pass.
+#
+# Usage:
+#   ./scripts/fetch-forum-topics <category-slug> [output-file]
+#
+# Examples:
+#   ./scripts/fetch-forum-topics hu
+#   ./scripts/fetch-forum-topics hu forum-dumps/hu.md
+#
+# The Jiki forum API is public, so no auth is needed for public categories.
+# For private categories, set both:
+#   DISCOURSE_API_KEY=...  DISCOURSE_API_USERNAME=system
+#
+# Override the host with FORUM_BASE (default: https://forum.jiki.io).
+#
+# Requires: curl, jq.
+
+set -euo pipefail
+
+FORUM_BASE="${FORUM_BASE:-https://forum.jiki.io}"
+SLEEP="${FORUM_SLEEP:-0.3}" # polite pause between requests (seconds)
+
+die() {
+  echo "error: $*" >&2
+  exit 1
+}
+
+command -v curl >/dev/null || die "curl is required"
+command -v jq >/dev/null || die "jq is required"
+
+SLUG="${1:-}"
+[ -n "$SLUG" ] || die "usage: $(basename "$0") <category-slug> [output-file]"
+OUT="${2:-forum-dumps/${SLUG}.md}"
+
+# Build curl auth args if an API key is provided.
+AUTH=()
+if [ -n "${DISCOURSE_API_KEY:-}" ]; then
+  AUTH=(-H "Api-Key: ${DISCOURSE_API_KEY}" -H "Api-Username: ${DISCOURSE_API_USERNAME:-system}")
+fi
+
+api() {
+  # api <path-with-leading-slash> -> raw JSON on stdout
+  curl -sSL --fail-with-body -m 20 "${AUTH[@]}" "${FORUM_BASE}$1"
+  sleep "$SLEEP"
+}
+
+# Strip HTML from a Discourse "cooked" body into readable plain text.
+html_to_text() {
+  sed -E \
+    -e 's/<br[^>]*>/\n/gI' \
+    -e 's/<\/p>/\n\n/gI' \
+    -e 's/<\/li>/\n/gI' \
+    -e 's/<[^>]+>//g' \
+    -e 's/&amp;/\&/g' \
+    -e 's/&lt;/</g' \
+    -e 's/&gt;/>/g' \
+    -e 's/&quot;/"/g' \
+    -e "s/&#39;/'/g" \
+    -e 's/&nbsp;/ /g' |
+    sed -E 's/[[:space:]]+$//' |
+    cat -s
+}
+
+echo "Resolving category '${SLUG}'..." >&2
+CAT_ID="$(api "/site.json" | jq -r --arg s "$SLUG" '.categories[] | select(.slug == $s) | .id' | head -1)"
+[ -n "$CAT_ID" ] || die "no category with slug '${SLUG}' found on ${FORUM_BASE}"
+echo "  -> category id ${CAT_ID}" >&2
+
+mkdir -p "$(dirname "$OUT")"
+
+# Collect every topic id + title across all pages of the category.
+TOPICS_TSV="$(mktemp)"
+trap 'rm -f "$TOPICS_TSV"' EXIT
+page=0
+while :; do
+  chunk="$(api "/c/${CAT_ID}.json?page=${page}")"
+  n="$(echo "$chunk" | jq -r '.topic_list.topics | length')"
+  [ "$n" -gt 0 ] || break
+  echo "$chunk" | jq -r '.topic_list.topics[] | [.id, .posts_count, .slug, .title] | @tsv' >>"$TOPICS_TSV"
+  echo "  page ${page}: ${n} topics" >&2
+  page=$((page + 1))
+done
+
+TOPIC_COUNT="$(wc -l <"$TOPICS_TSV" | tr -d ' ')"
+echo "Found ${TOPIC_COUNT} topics. Fetching posts..." >&2
+
+# Write the dump.
+{
+  echo "# Forum dump: ${SLUG}"
+  echo
+  echo "Source: ${FORUM_BASE}/c/${SLUG}/${CAT_ID}"
+  echo "Topics: ${TOPIC_COUNT}"
+  echo
+} >"$OUT"
+
+while IFS=$'\t' read -r tid pcount tslug ttitle; do
+  echo "  topic ${tid}: ${ttitle}" >&2
+
+  # First topic fetch gives the ordered stream of all post ids + the first batch.
+  topic="$(api "/t/${tid}.json")"
+  stream="$(echo "$topic" | jq -r '.post_stream.stream[]')"
+
+  {
+    echo "## ${ttitle}"
+    echo
+    echo "Topic #${tid} · ${pcount} posts · ${FORUM_BASE}/t/${tslug}/${tid}"
+    echo
+  } >>"$OUT"
+
+  # Walk the stream in batches of 20, pulling full post bodies.
+  # (The topic's own post_stream.posts only holds the first ~20, so we refetch
+  # uniformly via /posts.json to keep one code path.)
+  batch=()
+  flush_batch() {
+    [ "${#batch[@]}" -gt 0 ] || return 0
+    local qs=""
+    for pid in "${batch[@]}"; do qs+="post_ids[]=${pid}&"; done
+    local posts
+    posts="$(api "/t/${tid}/posts.json?${qs%&}")"
+    # Emit each post in stream order.
+    for pid in "${batch[@]}"; do
+      local meta body
+      meta="$(echo "$posts" | jq -r --argjson id "$pid" \
+        '.post_stream.posts[] | select(.id == $id) | "\(.username)\t\(.created_at)"')"
+      body="$(echo "$posts" | jq -r --argjson id "$pid" \
+        '.post_stream.posts[] | select(.id == $id) | .cooked' | html_to_text)"
+      local uname date
+      uname="$(echo "$meta" | cut -f1)"
+      date="$(echo "$meta" | cut -f2)"
+      {
+        echo "### ${uname} — ${date}"
+        echo
+        echo "$body"
+        echo
+      } >>"$OUT"
+    done
+    batch=()
+  }
+
+  while IFS= read -r pid; do
+    batch+=("$pid")
+    if [ "${#batch[@]}" -ge 20 ]; then flush_batch; fi
+  done <<<"$stream"
+  flush_batch
+
+  echo "---" >>"$OUT"
+  echo >>"$OUT"
+done <"$TOPICS_TSV"
+
+echo "Wrote ${OUT}" >&2

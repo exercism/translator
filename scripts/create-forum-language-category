@@ -1,0 +1,155 @@
+#!/usr/bin/env bash
+#
+# create-forum-language-category — create an i18n language subcategory on the
+# Jiki Discourse forum, matching the house style, and seed it with a pinned
+# "Want to Help - Start here?" topic.
+#
+# Usage:
+#   ./scripts/create-forum-language-category <lang> <emoji>
+#
+# Example:
+#   ./scripts/create-forum-language-category pt-BR brazil
+#
+#   lang   — locale code (e.g. pt-BR, hu, de). Must exist in languages/names.json.
+#   emoji  — a Discourse emoji shortname for the badge (e.g. brazil, hungary,
+#             globe_showing_americas). MUST be a real Discourse emoji shortname
+#             (verified below against the live /emojis.json), never guessed from
+#             the country/language name. Discourse's categories API accepts and
+#             silently stores ANY string in the emoji field, valid or not, so a
+#             guessed name that isn't a real emoji creates a category with a
+#             broken badge that renders as literal text, with no error at
+#             creation time. Two real past mistakes from guessing instead of
+#             checking: Turkey's flag is "türkiye" in Discourse's set, not
+#             "turkey" (the latter is the turkey-the-bird emoji); Catalan has no
+#             country flag at all (Catalonia isn't a Unicode-recognized flag),
+#             so "catalonia" was silently accepted as a non-existent emoji —
+#             Andorra (the one country where Catalan is a sole official
+#             language) is the correct fallback in cases like this where no
+#             country flag matches the language directly. This script now
+#             verifies the emoji against /emojis.json itself and refuses to
+#             proceed if it isn't found; do not bypass that check.
+#
+# The category slug is derived as i18n-<lowercased lang> (e.g. i18n-pt-br).
+# The display name is derived as "<Name> (<lang>)" from languages/names.json.
+#
+# Reads credentials from the translator repo .env:
+#   FORUM_BASE, DISCOURSE_API_KEY, DISCOURSE_API_USERNAME
+#
+# Idempotent: skips the category if the slug already exists, and skips the
+# welcome topic if one with the same title already exists in the category.
+#
+# Requires: curl, jq.
+
+set -euo pipefail
+
+die() {
+  echo "error: $*" >&2
+  exit 1
+}
+
+command -v curl >/dev/null || die "curl is required"
+command -v jq >/dev/null || die "jq is required"
+
+LANG="${1:-}"
+EMOJI="${2:-}"
+[ -n "$LANG" ] && [ -n "$EMOJI" ] ||
+  die "usage: $(basename "$0") <lang> <emoji>"
+
+# Guard against a spelled-out language name slipping in as $lang (e.g. "ukrainian"
+# instead of "uk") — this becomes the live Discourse category slug (i18n-<lang>), so a
+# wrong value here creates a real, hard-to-rename external category.
+echo "$LANG" | grep -qE '^[a-z]{2,3}(-[A-Za-z0-9]{2,8})?$' ||
+  die "'$LANG' doesn't look like a locale code (expected e.g. 'de', 'pt-BR', 'zh-CN'); use the ISO code, not the spelled-out language name"
+
+# Load names and derive slug/display-name from languages/names.json.
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+
+# Shared forum response handling (forum_ok); see the header of that file.
+. "$ROOT/scripts/lib/forum-api.sh"
+NAMES="$ROOT/languages/names.json"
+[ -f "$NAMES" ] || die "names file not found: $NAMES"
+LANGUAGE="$(jq -r --arg l "$LANG" '.[$l] // empty' "$NAMES")"
+[ -n "$LANGUAGE" ] || die "locale '$LANG' not found in $NAMES — add it before running this script"
+SLUG="i18n-$(echo "$LANG" | tr '[:upper:]' '[:lower:]' | tr '_' '-')"
+NAME="${LANGUAGE} (${LANG})"
+
+[ -f "$ROOT/.env" ] || die "no .env at $ROOT/.env (need FORUM_BASE + DISCOURSE_API_KEY)"
+set -a
+# shellcheck disable=SC1091
+. "$ROOT/.env"
+set +a
+: "${FORUM_BASE:?FORUM_BASE not set in .env}"
+: "${DISCOURSE_API_KEY:?DISCOURSE_API_KEY not set in .env}"
+DISCOURSE_API_USERNAME="${DISCOURSE_API_USERNAME:-system}"
+
+AUTH=(-H "Api-Key: ${DISCOURSE_API_KEY}" -H "Api-Username: ${DISCOURSE_API_USERNAME}")
+WELCOME_TITLE="Want to Help - Start here?"
+
+# Verify the emoji shortname is real before creating anything. Discourse's
+# categories API accepts any string here and silently stores it even if it
+# doesn't match a real emoji, producing a badge that renders as broken literal
+# text with no error at creation time (see the comment at the top of this file).
+EMOJI_EXISTS="$(curl -sSL -m 15 "$FORUM_BASE/emojis.json" \
+  | jq -e --arg e "$EMOJI" 'to_entries[] | .value[] | select(.name == $e)' >/dev/null 2>&1 && echo yes || echo no)"
+[ "$EMOJI_EXISTS" = "yes" ] ||
+  die "'$EMOJI' is not a real Discourse emoji shortname (checked $FORUM_BASE/emojis.json) — do not guess from the country/language name, look it up first"
+
+# Resolve the parent "i18n" category id dynamically (don't hardcode).
+site="$(curl -sSL -m 15 "$FORUM_BASE/site.json")"
+PARENT_ID="$(echo "$site" | jq -r '.categories[] | select(.slug=="i18n") | .id' | head -1)"
+[ -n "$PARENT_ID" ] || die "could not find parent 'i18n' category on $FORUM_BASE"
+
+# Create the category unless the slug already exists.
+CAT_ID="$(echo "$site" | jq -r --arg s "$SLUG" '.categories[] | select(.slug==$s) | .id' | head -1)"
+if [ -n "$CAT_ID" ]; then
+  echo "category '$SLUG' already exists (id $CAT_ID); ensuring welcome topic" >&2
+else
+  resp="$(curl -sS -m 20 -X POST "$FORUM_BASE/categories.json" "${AUTH[@]}" \
+    -H "Content-Type: application/json" \
+    -w $'\n%{http_code}' \
+    -d "$(jq -n --arg n "$NAME" --arg s "$SLUG" --argjson p "$PARENT_ID" --arg e "$EMOJI" \
+      '{name:$n, slug:$s, color:"0088CC", text_color:"FFFFFF", parent_category_id:$p, style_type:"emoji", emoji:$e}')")"
+  RESP_BODY="$(forum_ok "creating the category" "$resp")" || exit 1
+  CAT_ID="$(printf '%s' "$RESP_BODY" | jq -r '.category.id // empty')"
+  [ -n "$CAT_ID" ] || die "failed to create category: $(printf '%s' "$RESP_BODY" | jq -c '.errors // .')"
+  echo "created category '$SLUG' -> id $CAT_ID (badge :$EMOJI:)" >&2
+
+  # Set the description on the auto-created About topic's first post.
+  about="$(printf '%s' "$RESP_BODY" | jq -r '.category.topic_url' | grep -oE '[0-9]+$')"
+  first="$(curl -sSL -m 10 "$FORUM_BASE/t/${about}.json" | jq -r '.post_stream.posts[0].id')"
+  curl -sS -m 20 -X PUT "$FORUM_BASE/posts/${first}.json" "${AUTH[@]}" \
+    -H "Content-Type: application/json" \
+    -d "$(jq -n --arg l "$LANGUAGE" '{post:{raw:("This is a section of the forum to discuss translating Jiki into " + $l + ".")}}')" \
+    -o /dev/null -w ""
+fi
+
+# Seed the pinned "Want to Help - Start here?" topic unless it already exists.
+existing="$(curl -sSL -m 10 "$FORUM_BASE/c/${CAT_ID}.json" \
+  | jq -r --arg t "$WELCOME_TITLE" '.topic_list.topics[]? | select(.title==$t) | .id' | head -1)"
+if [ -n "$existing" ]; then
+  echo "welcome topic already exists (id $existing)" >&2
+  TID="$existing"
+else
+  body="$(printf '%s\n' \
+    "If you'd like to help translate Jiki to ${LANGUAGE} please add a comment here containing the following:" \
+    "- Introducing yourself (your name, where you live, your coding experience, any other personal information you want to share, etc)" \
+    "- Your level of fluency in ${LANGUAGE}" \
+    "- Your level of fluency in English" \
+    "" \
+    "Once three people have committed, we'll bootstrap this language for you.")"
+  resp="$(curl -sS -m 20 -X POST "$FORUM_BASE/posts.json" "${AUTH[@]}" \
+    -H "Content-Type: application/json" \
+    -w $'\n%{http_code}' \
+    -d "$(jq -n --arg t "$WELCOME_TITLE" --arg r "$body" --argjson c "$CAT_ID" '{title:$t, raw:$r, category:$c}')")"
+  RESP_BODY="$(forum_ok "creating the welcome topic" "$resp")" || exit 1
+  TID="$(printf '%s' "$RESP_BODY" | jq -r '.topic_id // empty')"
+  [ -n "$TID" ] || die "failed to create welcome topic: $(printf '%s' "$RESP_BODY" | jq -c '.errors // .')"
+  echo "created welcome topic -> id $TID" >&2
+fi
+
+# Pin the welcome topic to the category.
+curl -sS -m 15 -X PUT "$FORUM_BASE/t/${TID}/status.json" "${AUTH[@]}" \
+  -d "status=pinned&enabled=true" -o /dev/null -w ""
+echo "pinned welcome topic $TID in category $CAT_ID" >&2
+
+echo "done: $FORUM_BASE/c/${SLUG}/${CAT_ID}"

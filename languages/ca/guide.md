@@ -1,0 +1,112 @@
+# Catalan (ca) language guide
+
+The Catalan-specific realization of `global/voice.md`: formality, grammar, and worked
+examples. Term choices are in `glossary.md` and are binding.
+
+Readers are spread across Catalonia, the Balearic Islands, Andorra and the Catalan-speaking
+parts of the Valencian Community, so write the shared standard rather than a regional
+variant.
+
+## Formality (critical)
+
+- **Use the informal "tu" form throughout**, and keep verb conjugations in **second person
+  informal singular** consistently, start to finish.
+- **Never use "vostè" or "vós"**, whatever the usual software-localization convention does.
+- Encouraging imperatives:
+  - "Mirem el codi següent" (Let's look at the following code)
+  - "Prova-ho" (Try it out)
+  - "Comencem" (Let's begin)
+
+## Grammar
+
+Catalan-specific rules English speakers get wrong:
+
+- **Gender agreement:** every noun has grammatical gender, and adjectives, articles, and
+  past participles agree with it. "the function is defined" → "la funció està definida"
+  (funció is feminine); "the value returned" → "el valor retornat" (valor is masculine).
+  Check gender when introducing a new glossary term, since English gives no clue, and keep
+  agreeing with it for the rest of the page once it is established.
+- **Acronyms and terms kept in English take the gender of their Catalan expansion**, and
+  take the normal article and elision with it: API expands to _interfície_, so "una API",
+  "l'API", "de l'API".
+- **Contractions:** "a + el → al", "de + el → del" (the feminine article "la" never
+  contracts). "the shelf's machines" → "les màquines del prestatge"; "the value of the
+  variable" → "el valor de la variable" (no contraction, "la" doesn't elide this way).
+- **Elision before vowels:** "el/la" and weak object pronouns elide to "l'" before a vowel
+  or mute h. "the object" → "l'objecte" (not "la objecte"); "the interpreter" →
+  "l'intèrpret"; "the list" → "la llista" stays as-is (consonant start).
+- **Personal article before names:** Catalan puts an article before a person's given name in
+  ordinary prose, so Jiki is **"el Jiki"**, not bare "Jiki": "el teu intèrpret és el Jiki",
+  "el prestatge del Jiki", "li diu al Jiki què ha de fer". Contract it as normal (del, al).
+  Use the standard "el/la" form, not the colloquial "en/na". Bare _Jiki_ is correct only
+  where the name is a label rather than a person: a page title, the product name, or a
+  heading.
+- **Weak pronouns "hi" and "en":** used constantly in natural Catalan and easy to drop as
+  an English speaker. "There are three ways to do this" → "Hi ha tres maneres de fer-ho"
+  (not "Són tres maneres de fer-ho"); "En tens?" (Do you have any of it?). A sentence that
+  is grammatical without them reads like a literal English translation.
+- **"Cal" for "you need to":** "cal instal·lar el Node.js" (you need to install Node.js)
+  reads more natural and less bossy in explanatory prose than a bare imperative. Reserve
+  direct imperatives ("Instal·la...") for actual step-by-step instructions.
+- **Word order is SVO but topic-fronting is common** for emphasis. Don't force every
+  sentence into strict English subject-first order if fronting the point being made reads
+  more natural in Catalan: "Això és el que fa la funció" fronts the point.
+- **Attach a describing clause with "que", close to its antecedent.** Don't carry an
+  English colon-juxtaposed or relativizer-dropped construction across: "una funció que
+  retorna un valor".
+- **Punctuation:** use «guillemets» for quotation («com aquesta»), never curly or English
+  double quotes. This includes quoted speech inside prose: when Jiki or the narrator says
+  something, it goes in guillemets, «Si passa això, aleshores he de fer allò». Lowercase
+  after a colon unless what follows is a full quoted sentence.
+
+## Term clarification
+
+When a gloss is kept and the term is introduced under Catalan-primary (see
+`global/voice.md`), append _en anglès_ after the italic English term inside the parentheses,
+e.g. la funció (_function_ en anglès).
+
+**Drop a prose `<define>` gloss when the Catalan is a cognate of the English**, e.g.
+_intèrpret_, _error_, _funcions_, _expressió_, _variable_, _operador_. A Catalan concept page
+that carries **no** prose English glosses at all is the expected outcome, not an oversight.
+
+Keep a gloss only where it genuinely carries information:
+
+- **Code identifiers.** Always gloss these, because the identifier is English and its
+  meaning is not visible to a Catalan reader: `move` (mou), `turnLeft` (gira a l'esquerra).
+  Meaning only, in brackets, with no _en anglès_ marker.
+- **A "Keep in English" term** whose Catalan gloss is a real expansion rather than a
+  cognate, e.g. CLI (_interfície de línia d'ordres_).
+- **A Catalan term that is not recognisably the English word**, e.g. _bucle_ for "loop",
+  _sentència_ for "statement". The bracketed English tells the reader which word to search
+  for, so keep it.
+
+The test is whether a Catalan reader learns anything from the brackets. If the two words
+differ only by an accent or an ending, they do not.
+
+## Style notes
+
+- **Em dashes:** replace a mid-sentence aside with a comma, parentheses, or two separate
+  sentences.
+- **Rhetorical asides** ("So what does this look like in code?") → keep them as natural
+  Catalan rhetorical questions: "I com es veu, això, en codi?"
+- **Gendered nouns for people** (developer, mentor, learner): default to the standard
+  masculine generic form in flowing tutorial prose ("el programador", "el mentor"). Treat
+  this as a first-pass default, not a hard rule; flag a specific page where an inclusive
+  alternative reads better.
+
+## Worked examples
+
+**Titles and headlines** (natural word order, no drama, no redundancy):
+- Avoid: "Ha nascut el Jiki!" (too dramatic) → Prefer: "Ja tenim el Jiki" / "Et presentem
+  el Jiki"
+- Avoid: "Una nova manera d'aprendre a programar" (flat, literal) → Prefer: "Aprèn a
+  programar d'una manera nova" / "Un nou camí per aprendre a programar"
+
+**Calls to action** (specific, action-oriented):
+- Signup: "Comença ara!" / "Registra't ara!" (not the vague "Uneix-te a nosaltres!")
+- Trying: "Prova-ho!" / "Fes la prova gratis ara!"
+
+**Natural phrasing** (good vs stiff/literal):
+- "Let's learn React" → "Aprenem React" (not the stiff "Anem a aprendre React")
+- "Try running this code" → "Prova d'executar aquest codi" (not the stiff "Intenteu
+  executar aquest codi")

@@ -1,0 +1,24 @@
+# Local secrets. Holds the DeepSeek key and the forum credentials; never committed.
+.env
+.env.*
+!.env.example
+.claude/worktrees
+.claude/settings.local.json
+
+# Source checkouts English is read from, made by scripts/source-checkout.mjs.
+# Ephemeral and rebuildable; English is never stored in this repo.
+.source/
+
+# Per-run logs and summaries of scripts/translate.mjs. The summary a command
+# reads is here; nothing in it is a record anybody needs in history.
+state/runs/
+
+# Monitor locks and the rolling log stay local; the queues themselves are committed.
+state/*.lock
+state/*.log
+state/forum-monitor.pages.*
+
+# Scratch working files.
+scratch/
+node_modules/
+.DS_Store

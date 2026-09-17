@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#
+# oldest-unhearted — print the earliest entry in state/forum-todo.jsonl that
+# has not yet been hearted (hearted != true). The file is append-only in
+# arrival order, so "first match by line number" is "oldest".
+#
+# Usage:
+#   ./scripts/oldest-unhearted        # print the oldest unhearted entry
+#   ./scripts/oldest-unhearted -n 5   # print the oldest 5 unhearted entries
+#
+# Output: one compact JSON object per line, `{"line": <1-based line number
+# in the file>, "entry": <the parsed JSONL object>}`, so a match can be
+# found and edited in place.
+
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+TODO="$ROOT/state/forum-todo.jsonl"
+
+N=1
+if [ "${1:-}" = "-n" ]; then
+  N="${2:?-n requires a count}"
+fi
+
+command -v jq >/dev/null || { echo "error: jq is required" >&2; exit 1; }
+
+jq -R -c '
+  select(length > 0)
+  | {line: input_line_number, entry: (try fromjson catch null)}
+' "$TODO" \
+  | jq -c 'select(.entry != null and (.entry.hearted // false) != true)' \
+  | head -n "$N" || true

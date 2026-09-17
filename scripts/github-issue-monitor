@@ -1,0 +1,122 @@
+#!/usr/bin/env bash
+#
+# github-issue-monitor — one poll of jiki-education/i18n for open `translation`
+# issues, appended to a TODO file for the orchestrator to work through.
+#
+# This is the second of the two queues described in orchestrator.md's "Where
+# translation work comes from": path 1 is the forum queue, polled by Jeremy's
+# own scripts/forum-monitor. Path 2 is this one. Unlike the forum, GitHub gives
+# no webhook and no push here ("no dispatch, no webhook and no CI translator" —
+# orchestrator.md), so nothing else will ever surface a new or updated issue.
+# The orchestrator is the one who is expected to run this itself, on a loop,
+# for the length of every session.
+#
+# By default this is a SINGLE-SHOT script: one poll, one diff, one append, then
+# exit. Pass --loop to instead run in the foreground, polling every 10s until
+# interrupted (Ctrl+C).
+#
+# Unlike the forum firehose, `gh issue list` always returns the full current
+# set of open, labelled issues in one call: there is no backwards-paging walk
+# to lose track of. So the diff is a snapshot compare against the previous
+# poll, keyed on issue number, using each issue's own updatedAt:
+#   - a number not seen before is newly opened
+#   - a number seen before with a newer updatedAt was rewritten in place (a
+#     push to the PR that opened it — see orchestrator.md, "One issue per
+#     front-end PR, rewritten in place")
+#   - a previously-seen number no longer in the open list was closed, and is
+#     just dropped from the watermark; closing is the done signal, not
+#     something to log here
+# The very first run has no watermark, and unlike the forum firehose this
+# queue is small and finite, so the first run logs every currently-open issue
+# rather than skipping them as noise: they are exactly the outstanding work
+# this script exists to surface.
+#
+# Usage:
+#   ./scripts/github-issue-monitor            # one poll-and-append cycle
+#   ./scripts/github-issue-monitor --loop      # poll every 10s in the foreground
+#
+# Files it touches (committed, like the forum monitor's state):
+#   state/github-issues-todo.jsonl   append-only, one JSON object per new/updated issue
+#   state/github-issues-seen.json    watermark: {number: updatedAt} for every open issue
+#   state/github-issue-monitor.lock  lock directory, held for the duration of a run
+#
+# Requires: gh (authenticated), jq.
+
+set -euo pipefail
+
+die() {
+  echo "error: $*" >&2
+  exit 1
+}
+
+command -v gh >/dev/null || die "gh is required"
+command -v jq >/dev/null || die "jq is required"
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+REPO="jiki-education/i18n"
+LABEL="translation"
+
+STATE_DIR="$ROOT/state"
+TODO="$STATE_DIR/github-issues-todo.jsonl"
+SEEN="$STATE_DIR/github-issues-seen.json"
+LOCK="$STATE_DIR/github-issue-monitor.lock"
+
+mkdir -p "$STATE_DIR"
+
+poll_once() {
+
+# Overlap guard, same shape as forum-monitor's. A stale lock is anything older
+# than 5 minutes: a single `gh issue list` call is fast, so a run still holding
+# the lock past that is dead, not slow.
+if ! mkdir "$LOCK" 2>/dev/null; then
+  if [ -n "$(find "$LOCK" -maxdepth 0 -mmin +5 2>/dev/null)" ]; then
+    echo "note: clearing a stale lock at $LOCK" >&2
+    rm -rf "$LOCK"
+    mkdir "$LOCK" 2>/dev/null || return 0
+  else
+    return 0
+  fi
+fi
+trap 'rm -rf "$LOCK"' RETURN EXIT
+
+CURRENT="$(gh issue list --repo "$REPO" --label "$LABEL" --state open \
+  --json number,title,url,updatedAt,body \
+  --limit 200)" || { echo "note: gh issue list failed this poll (transient?), will retry next tick" >&2; return 1; }
+
+PREV="{}"
+if [ -f "$SEEN" ]; then
+  PREV="$(cat "$SEEN")"
+fi
+
+# Emit one TODO line per new-or-updated issue, then the full new watermark.
+NEW_LINES="$(jq -n --argjson current "$CURRENT" --argjson prev "$PREV" '
+  ($prev) as $prev
+  | $current[]
+  | select(($prev[.number | tostring] // null) != .updatedAt)
+  | {number, title, url, updatedAt, seen_at: (now | todateiso8601)}
+')"
+
+if [ -n "$NEW_LINES" ]; then
+  printf '%s\n' "$NEW_LINES" | jq -c '.' >> "$TODO"
+fi
+
+jq -n --argjson current "$CURRENT" '
+  reduce $current[] as $i ({}; .[$i.number | tostring] = $i.updatedAt)
+' > "$SEEN.tmp"
+mv "$SEEN.tmp" "$SEEN"
+
+}
+
+if [ "${1:-}" = "--loop" ]; then
+  echo "polling $REPO for open '$LABEL' issues every 10s (ctrl-c to stop)" >&2
+  while :; do
+    # A single poll failing (transient network blip, GitHub outage) must never
+    # kill the whole standing loop — that would silently stop surfacing new
+    # issues for the rest of the session with nothing to notice. `|| true`
+    # absorbs it under `set -e`; the note above already explains why.
+    poll_once || true
+    sleep 10
+  done
+else
+  poll_once
+fi

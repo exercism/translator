@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+#
+# reply-to-thread — post a reply to any forum topic by topic_id.
+#
+# Usage:
+#   ./scripts/reply-to-thread <topic_id> <body-file>
+#   ./scripts/reply-to-thread <topic_id> -            # body on stdin
+#
+# Example:
+#   ./scripts/reply-to-thread 1109 /tmp/reply.md
+#
+# This is the general-purpose reply used by the "Checking posts" queue flow in
+# orchestrator.md, for the common case of replying on a review/content thread
+# that isn't the glossary's own pinned topic (that flow has its own script,
+# post-glossary-reply, because it also resolves the topic id from tracking.json).
+# This script takes the topic_id directly instead, since a review-thread reply
+# needs no repo-side lookup.
+#
+# IMPORTANT: posting to the forum is irreversible and notifies real people.
+# Never call this in a retry loop (see "Forum conduct" in orchestrator.md) --
+# on failure/timeout, GET the topic to check whether the post actually landed
+# before considering one deliberate retry. The body must already be the final,
+# confirmed text; this script does not gate that, it just posts.
+#
+# Reads credentials from the repo .env:
+#   FORUM_BASE, DISCOURSE_API_KEY, DISCOURSE_API_USERNAME
+#
+# Reads:   nothing in this repo.
+# Writes:  nothing in this repo (it posts to the forum). The caller is still
+#          responsible for setting replied_after: true on the relevant entries
+#          in state/forum-todo.jsonl.
+#
+# Requires: curl, jq.
+
+set -euo pipefail
+
+die() { echo "error: $*" >&2; exit 1; }
+
+command -v curl >/dev/null || die "curl is required"
+command -v jq   >/dev/null || die "jq is required"
+
+TOPIC_ID="${1:-}"
+BODY_FILE="${2:-}"
+[ -n "$TOPIC_ID" ] && [ -n "$BODY_FILE" ] ||
+  die "usage: $(basename "$0") <topic_id> <body-file|->"
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+
+# Shared forum response handling (forum_ok); see the header of that file.
+. "$ROOT/scripts/lib/forum-api.sh"
+
+if [ "$BODY_FILE" = "-" ]; then
+  BODY="$(cat)"
+else
+  [ -f "$BODY_FILE" ] || die "body file not found: $BODY_FILE"
+  BODY="$(cat "$BODY_FILE")"
+fi
+[ -n "${BODY//[[:space:]]/}" ] || die "the reply body is empty"
+
+[ -f "$ROOT/.env" ] || die "no .env at $ROOT/.env (need FORUM_BASE + DISCOURSE_API_KEY)"
+set -a
+# shellcheck disable=SC1091
+. "$ROOT/.env"
+set +a
+: "${FORUM_BASE:?FORUM_BASE not set in .env}"
+: "${DISCOURSE_API_KEY:?DISCOURSE_API_KEY not set in .env}"
+DISCOURSE_API_USERNAME="${DISCOURSE_API_USERNAME:-system}"
+
+echo "Replying on topic: $FORUM_BASE/t/${TOPIC_ID}" >&2
+
+resp="$(curl -sS -m 30 -X POST "$FORUM_BASE/posts.json" \
+  -H "Api-Key: ${DISCOURSE_API_KEY}" \
+  -H "Api-Username: ${DISCOURSE_API_USERNAME}" \
+  -H "Content-Type: application/json" \
+  -w $'\n%{http_code}' \
+  -d "$(jq -n --arg raw "$BODY" --argjson t "$TOPIC_ID" '{topic_id:$t, raw:$raw}')")"
+RESP_BODY="$(forum_ok "posting the reply" "$resp")" || exit 1
+
+POST_ID="$(printf '%s' "$RESP_BODY" | jq -r '.id // empty')"
+POST_NUM="$(printf '%s' "$RESP_BODY" | jq -r '.post_number // empty')"
+[ -n "$POST_ID" ] || die "failed to post reply: $(printf '%s' "$RESP_BODY" | jq -c '.errors // .')"
+
+echo "done: $FORUM_BASE/t/${TOPIC_ID}/${POST_NUM:-} (post $POST_ID)"

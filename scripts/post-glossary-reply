@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+#
+# post-glossary-reply — post a reply to a language's pinned forum glossary topic,
+# announcing an agreed glossary change.
+#
+# Usage:
+#   ./scripts/post-glossary-reply <lang> <body-file>
+#   ./scripts/post-glossary-reply <lang> -            # body on stdin
+#
+# Example:
+#   ./scripts/post-glossary-reply hu /tmp/hu-glossary-change.md
+#
+# Republishing the glossary page is not enough on its own: the pinned post body
+# is a fixed pointer, so it does not change when terms do, and nobody re-reads a
+# 100-row table looking for a diff. The reply is what makes a decision visible as
+# activity in the thread. See "A glossary change (publish, deploy, reply)" in
+# global/workflow.md, which is the one home for when this runs and what the body
+# should cover. This script is only the plumbing.
+#
+# The topic is resolved from languages/<lang>/tracking.json (.glossary.topic_id), never passed
+# in, so a change can't be announced on the wrong language's thread.
+#
+# IMPORTANT: posting to the forum is irreversible and notifies real people. The
+# body must already have been confirmed by the operator before this is run; this
+# script does not gate that, it just posts. Publish and deploy the glossary page
+# first, or the links in the body point at stale or missing rows.
+#
+# Reads credentials from the repo .env:
+#   FORUM_BASE, DISCOURSE_API_KEY, DISCOURSE_API_USERNAME
+#
+# Reads:   languages/<lang>/tracking.json, languages/names.json
+# Writes:  nothing in this repo (it posts to the forum).
+#
+# Requires: curl, jq.
+
+set -euo pipefail
+
+die() { echo "error: $*" >&2; exit 1; }
+
+command -v curl >/dev/null || die "curl is required"
+command -v jq   >/dev/null || die "jq is required"
+
+LANG_CODE="${1:-}"
+BODY_FILE="${2:-}"
+[ -n "$LANG_CODE" ] && [ -n "$BODY_FILE" ] ||
+  die "usage: $(basename "$0") <lang> <body-file|->"
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+
+# Shared forum response handling (forum_ok); see the header of that file.
+. "$ROOT/scripts/lib/forum-api.sh"
+TRACKING="$ROOT/languages/$LANG_CODE/tracking.json"
+NAMES="$ROOT/languages/names.json"
+
+[ -f "$TRACKING" ] || die "tracking file not found: $TRACKING"
+[ -f "$NAMES"    ] || die "names file not found: $NAMES"
+
+if [ "$BODY_FILE" = "-" ]; then
+  BODY="$(cat)"
+else
+  [ -f "$BODY_FILE" ] || die "body file not found: $BODY_FILE"
+  BODY="$(cat "$BODY_FILE")"
+fi
+[ -n "${BODY//[[:space:]]/}" ] || die "the reply body is empty"
+
+LANG_NAME="$(jq -r --arg l "$LANG_CODE" '.[$l] // empty' "$NAMES")"
+[ -n "$LANG_NAME" ] || die "locale '$LANG_CODE' not found in $NAMES"
+
+TOPIC_ID="$(jq -r '.glossary.topic_id // empty' "$TRACKING")"
+[ -n "$TOPIC_ID" ] && [ "$TOPIC_ID" != "null" ] ||
+  die "no .glossary.topic_id for '$LANG_CODE' in $TRACKING — create the pinned topic first with ./scripts/create-forum-glossary-post $LANG_CODE"
+
+[ -f "$ROOT/.env" ] || die "no .env at $ROOT/.env (need FORUM_BASE + DISCOURSE_API_KEY)"
+set -a
+# shellcheck disable=SC1091
+. "$ROOT/.env"
+set +a
+: "${FORUM_BASE:?FORUM_BASE not set in .env}"
+: "${DISCOURSE_API_KEY:?DISCOURSE_API_KEY not set in .env}"
+DISCOURSE_API_USERNAME="${DISCOURSE_API_USERNAME:-system}"
+
+echo "Replying on the ${LANG_NAME} glossary topic: $FORUM_BASE/t/${TOPIC_ID}" >&2
+
+resp="$(curl -sS -m 30 -X POST "$FORUM_BASE/posts.json" \
+  -H "Api-Key: ${DISCOURSE_API_KEY}" \
+  -H "Api-Username: ${DISCOURSE_API_USERNAME}" \
+  -H "Content-Type: application/json" \
+  -w $'\n%{http_code}' \
+  -d "$(jq -n --arg raw "$BODY" --argjson t "$TOPIC_ID" '{topic_id:$t, raw:$raw}')")"
+RESP_BODY="$(forum_ok "posting the glossary reply" "$resp")" || exit 1
+
+POST_ID="$(printf '%s' "$RESP_BODY" | jq -r '.id // empty')"
+POST_NUM="$(printf '%s' "$RESP_BODY" | jq -r '.post_number // empty')"
+[ -n "$POST_ID" ] || die "failed to post reply: $(printf '%s' "$RESP_BODY" | jq -c '.errors // .')"
+
+echo "done: $FORUM_BASE/t/${TOPIC_ID}/${POST_NUM:-} (post $POST_ID)"

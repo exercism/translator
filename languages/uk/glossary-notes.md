@@ -1,0 +1,956 @@
+# Ukrainian (uk) glossary notes
+
+## 2026-09-13: the omitted-copula dash is a Ukrainian exception to the no-em-dash rule
+
+**Decided by:** decard (native-speaker reviewer), applied per the standing rule that a
+native speaker's grammar call outranks a house-style rule written for English. **Source:**
+forum topic 1495, posts 5594, 5658, 5736 and 6833.
+
+decard raised the same point three times across a month: where Ukrainian omits the
+present-tense copula, the dash between subject and predicate is not intonational decoration,
+it marks the predicative relationship, and dropping it leaves the sentence incomplete.
+Substituting a colon is not a softer option but a syntax error, because a colon announces an
+enumeration or a clarification of what precedes it, and a subject-predicate pair is neither.
+
+The 2026-08-02 note in this file held the no-em-dash rule in place on the grounds that a
+clean dashless rephrase existed in both cases then, and said an unavoidable case would be
+the trigger to revisit. Three arrived, all short aphoristic lines where a rephrase would
+destroy the shape that is the point of the sentence:
+
+- Townsfolk badge fun fact: _Найкращий спосіб навчатися: навчати інших._ ->
+  _Найкращий спосіб навчитися - навчати інших._
+- `onboarding_mailer.building` subject: _Найкращий спосіб навчитися: створювати!_ ->
+  _Найкращий спосіб навчитися - створювати!_
+- "Building things up" level-milestone email: _...і повернути його: це прийом..._ ->
+  _...і повернути його - це прийом..._
+
+The precedent was in fact already set and unremarked: the `word-count` exercise has shipped
+_а значеннями - їхні частоти_ since the reviewer rejected a dashless rephrase there, so
+Ukrainian content was already using this dash while the guide still forbade it.
+
+The form is a **spaced ASCII hyphen (` - `), not an em dash (—)**, matching what is already
+live and what decard writes in her own examples. `guide.md`'s "Grammar and structure"
+section now carries the rule and the two sentence shapes that need it; the preference for a
+verb-carrying rephrase where one exists naturally is unchanged, and the global no-em-dash
+rule is untouched for every other language and every other use.
+
+**Status:** confirmed, applied.
+
+## 2026-08-16: capitalized formal "Ви"/"Вас" in transactional mailer copy
+
+**Decided by:** iternewo (native-speaker reviewer). **Source:** forum topic 1495, post_id
+5248 (api-email review batch).
+
+Reviewing `account_mailer.welcome`, iternewo corrected lowercase "вас"/"ви" to capitalized
+"Ви"/"Вас" throughout (e.g. "Ми дуже раді, що Ви приєднались до нас", "провести Вас шляхом",
+"Якщо раптом Ви застрягнете або у Вас виникнуть запитання"). Applied directly to that email.
+
+This was not swept into every other item in the same review batch: the onboarding-series
+narrative emails she also corrected in the same post (`overview`, `coding`, `building`,
+`community`, `premium`) keep lowercase "ви"/"вас" throughout, including inside sentences she
+herself rewrote (e.g. "але якщо ви тільки віддаєте вказівки", "чи варте програмування ваших
+зусиль", "якщо ви приєднаєтеся до групи"). The existing `devise_mailer.uk.yml` (vendored,
+hand-tuned) was already capitalized before this review and she left it as-is.
+
+Reading the pattern: capitalized "Ви"/"Вас" looks like it belongs to the formal,
+transactional register (account/security mailers: welcome, deletion confirmation, password
+reset), while Jeremy's first-person narrative onboarding/premium emails keep the plainer
+lowercase "ви". That reads as a register distinction by email *type*, not a blanket
+"always capitalize" rule, so no guide rule was written from this alone. The fix was applied
+only to `account_mailer.welcome`, the item she actually flagged. If she confirms on the
+thread that capitalized Ви/Вас should extend to the transactional family more broadly (or to
+everything), promote this to a `guide.md` rule then rather than assuming it now.
+
+**Decided by:** iternewo (native-speaker reviewer). **Source:** https://forum.jiki.io/t/880/113.
+**Status:** confirmed.
+
+iternewo corrected "Заведіть змінну"/"Заведіть лічильник" to "Створіть змінну"/"Створіть
+лічильник" in two exercises (Stripey Fabric, Tile Rack) and flagged it explicitly for the
+glossary: _завести_ reads as informal/colloquial for setting up a variable or counter,
+_створити_ is the neutral, correct verb. Added under Core decisions.
+
+## 2026-08-12: _ваговий коефіцієнт_ for "weight", and you-imperatives in exercise hints
+
+**Decided by:** decard (native-speaker reviewer). **Source:** https://forum.jiki.io/t/880/101.
+**Status:** confirmed.
+
+Two general points came out of decard's review of five exercises (hamming, hello,
+isbn-verifier, look-around, lower-pangram):
+
+- "Weight", as in the per-position multiplier of a checksum, is _ваговий коефіцієнт_ in
+  Ukrainian technical usage, not bare _вага_. He asked for it in every occurrence in the
+  ISBN text, so it is a term, not a one-off rephrasing, and it now has a glossary row under
+  Tooling & engineering. The concept recurs in other checksum exercises (Luhn), so the row
+  is worth having.
+- An exercise's hint and scenario-description messages address the learner directly, so
+  they take the plain you-imperative (_Спробуйте_, _Винесіть_, _викликайте_), not the
+  inclusive we-imperative (_Спробуймо_, _Винесімо_, _викликаймо_). The guide already had
+  this as the "discrete task handed off to the learner" exception under Formality; what was
+  new is that the exception covers the exercise message catalog's hints and not only the
+  instructions prose, so the exception's wording was widened to say so.
+
+He also replaced two "Have fun!" sign-offs (_Насолоджуйтесь!_, _Нехай буде весело!_) with
+_Успіхів!_, on the grounds that the task in question demands serious thought. That reads as
+task-dependent rather than a blanket rule, so no rule was written and no other exercise's
+sign-off was swept; he has been asked on the thread whether he wants it applied to every
+"Have fun!" in the curriculum. He answered no: see the 2026-08-11 entry below.
+
+## 2026-08-11: "Have fun!" and other sign-offs have no default translation
+
+**Decided by:** decard (native-speaker reviewer). **Source:** https://forum.jiki.io/t/880/103.
+**Status:** confirmed, standing process rule.
+
+Asked whether _Успіхів!_ should be swept across every "Have fun!" in the curriculum, decard
+said no, and asked that it not be treated as a default translation at all. A task-ending
+sign-off has no fixed rendering: it depends on the tone of the specific exercise, serious
+versus playful, and _Насолоджуйтесь!_ and _Розважайтесь!_ are equally legitimate where the
+exercise is light. Each case is decided separately, and decard will say explicitly, per
+exercise, when a sign-off needs changing, rather than us guessing at it or propagating one
+choice.
+
+So: no sign-off row belongs in the glossary, and no further exercise's "Have fun!" is
+changed to _Успіхів!_ (or to anything else) without his explicit say-so on the thread. This
+does **not** reverse the two exercises already changed on 2026-08-12 (`isbn-verifier`,
+`lower-pangram`): those were his own per-exercise calls and stand as made.
+
+The one absolute in his answer is a negative: _Гарної розваги!_ is not said in Ukrainian and
+sounds unnatural, so it is never a rendering of "Have fun!".
+
+## 2026-08-08: decard sets his own re-review condition for approval (standing, per-reviewer)
+
+**Decided by:** decard (native-speaker reviewer). **Source:** https://forum.jiki.io/t/880.
+**Status:** confirmed, standing process preference.
+
+decard has asked that items he reviews are not marked `"approved"` in
+`languages/uk/tracking.json` on the strength of us having applied his corrections. Applying
+the fixes is not the sign-off; his own explicit confirmation on the forum thread, after he
+has re-read the republished page, is. So the sequence for anything he reviews is: apply,
+publish, deploy, ask him to recheck, and leave `status` absent until he says on the thread
+that it now reads correctly.
+
+This is a standing preference for every uk item decard reviews, not a one-off for a single
+thread. It was applied first to `exercise/bouncer`, `exercise/bouncer-wristbands` and
+`exercise/build-wall`, whose wording fixes from t/880 were applied on 2026-08-08 with their
+`status` deliberately left unset.
+
+## 2026-08-08: Two style rules from decard's exercise review (виглядати, зʼявлятися)
+
+**Decided by:** decard (native-speaker reviewer). **Source:** https://forum.jiki.io/t/880.
+**Status:** confirmed, applies across all uk content.
+
+Two rules were added to the Style notes section of `languages/uk/guide.md`, both flagged by
+decard as general rather than item-specific:
+
+- _виглядати_ is not the Ukrainian idiom for "to look like"; the natural construction is
+  _мати вигляд_.
+- _зʼявитися/зʼявлятися_ carries a sense of something appearing spontaneously, so it reads
+  wrong for a line of code the learner writes into their own solution. _Використати_ /
+  _застосувати_ carry the agency the sentence actually means.
+
+Neither is a term mapping, so no glossary rows were added. Other already-published uk
+exercises are likely to carry the same two misuses; that sweep is logged in
+`state/content-updates-needed.md` rather than done here.
+
+## 2026-08-05: Judgment calls from the video-lessons and badges catalog pass (unconfirmed draft, dated 2026-08-05)
+
+**Decided by:** agent, per the standing rule that translation-pass proposals are recorded
+rather than held back. **Source:** the first uk pass over the two curriculum copy catalogs
+(`curriculum/src/video-lessons` and `curriculum/src/badges`). Not a forum thread; not
+native-speaker-sourced. **Status:** unconfirmed drafts. No glossary rows were added; these
+are catalog-wide phrasing decisions a future pass (or a native reviewer) should know about.
+
+- **Badge descriptions use impersonal forms, never ти/ви.** "Completed your first lesson"
+  style achievement lines are rendered with the impersonal -но form (_Завершено перший
+  урок_, _Надіслано перше повідомлення Jiki_) and "Joined ..." lines with a noun phrase
+  (_Приєднання до Jiki_). This keeps the whole catalog free of second-person address per
+  the guide, without forcing the collective "ми" onto lines that describe one learner's
+  own achievement.
+- **Video-lesson descriptions open with inclusive future-plural _Навчимося_ /
+  _Дізнаємося_** for the recurring English "Learn how to ..." opener, matching the guide's
+  inclusive register.
+- **`Logic Gates` (lesson title) → Логічні оператори.** The literal _логічні вентилі_ /
+  _логічні елементи_ belong to electronics and would read as a hardware lesson; the lesson
+  is about combining conditions with `&&`/`||`, and _логічні оператори_ names that.
+  Flagged for a native speaker in case the gate metaphor is wanted back.
+- **`Coding Fundamentals` → «Основи програмування».** Matched against the existing uk app
+  copy in `app/messages/uk.json`, which already uses this name; not a new coinage.
+- **The `maze_navigator` badge references the maze lesson descriptively** (_урок із
+  проходження лабіринту_) rather than inventing a quoted lesson title, because no
+  canonical uk title for "Solve a Maze" exists yet. If that lesson title gets a fixed uk
+  rendering later, the badge description should be updated to quote it.
+- **Idiom badges keep Ukrainian idioms, not calques:** `Early Bird` → _Рання пташка_ with
+  the funFact proverb rendered as _Хто рано встає, той більше встигає_ (the common
+  secular variant, avoiding the religious _тому Бог дає_ ending); `Night Owl` → _Нічна
+  сова_; "Two heads are better than one" → _Одна голова добре, а дві краще_.
+- **`Advanced Loops` → Просунуті цикли.** Colloquial-modern register, consistent with the
+  guide's web-native tone; _розширені_ read as a feature list and _складніші_ as a
+  difficulty warning.
+
+## 2026-08-05: Two unconfirmed drafts from the third Stage 3 exercise batch
+
+**Decided by:** agent, per the standing rule that translation-pass proposals are recorded
+as unconfirmed drafts rather than held back. **Source:** the fable translation passes over
+`exercise/owners-bouquets` and `exercise/cityscape-skyscraper` (part of the ten-item batch
+covering `penguin`, `sunset`, `sprouting-flower`, `random-salad`, `rainbow-splodges`,
+`stock-market`, `owners-bouquets`, `cityscape-skyscraper`, `cityscape-skyline`,
+`space-invaders-nested-repeat`; the other six items were already translated and up to date,
+so they proposed no new terms). Not a forum thread; not native-speaker-sourced.
+**Status:** unconfirmed drafts. Not written to `languages/uk/glossary.md`. None of them
+outranks a later native-speaker call.
+
+- **`gap` (spacing between planted flowers) → інтервал**, from the `owners-bouquets` pass.
+  Matches the existing `plant-the-flowers` uk translation ("з інтервалом 10"). Flagged
+  because the glossary already binds a *different* sense of "gap" (the distance a shape is
+  inset from an edge) to `відступ` (row added 2026-08-03); the two senses must stay split
+  rather than collapsing onto one Ukrainian word.
+- **`garden` → сад**, from the `owners-bouquets` pass, but only a flag, not a strong
+  proposal: the existing `plant-the-flowers` uk translation rendered "garden" once as
+  _галявина_, while `owners-bouquets` uses _сад_ throughout because it recurs and reads as
+  the ordinary word there. If the flower-planting family should use one term consistently, a
+  native speaker needs to pick between the two and `plant-the-flowers` may need a one-word
+  fix.
+- **`ground floor` (lowest floor of a building) → перший поверх**, from the
+  `cityscape-skyscraper` pass. Recurs across the cityscape family. Ukrainian has no
+  ground/first split the way English does, so "перший" vs "нульовий" is a real choice; the
+  pass used _перший поверх_ in the message catalog and adapted the source's
+  "depending on your country" joke into prose ("залежно від країни його називають першим
+  або нульовим"). Needs settling so every cityscape exercise (including `cityscape-skyline`,
+  translated in the same batch and matched to this choice) stays consistent.
+- **`literal value` (a bare number passed instead of a variable) → paraphrased as "не
+  вписуйте значення напряму"**, from the `cityscape-skyscraper` pass, for the
+  `checks.codeQuality.allArgumentsAreVariables` catalog string, which recurs across
+  code-quality checks in other exercises. _Літерал_ is jargon a beginner does not know, so
+  the pass paraphrased the intent instead of coining a term; _буквальне значення_ is a
+  defensible alternative. Also possibly missing from `global/terms.md` (not opened to
+  check, per pass rules).
+
+## 2026-08-04: "build a snowman" is three verbs, split by register, not one term
+
+**Decided by:** decard (native speaker), on
+[t/880 post 3284](https://forum.jiki.io/t/880/3284). **Status:** settled by a native
+speaker; outranks any agent's later opinion. **Terms affected:** the verb used for
+"build/assemble" a snowman across `exercise/snowman`, `exercise/snowman-basic` and
+`exercise/relational-snowman`. No glossary row has been written, because there is no single
+mapping to write: the choice is contextual, and the outcome is recorded per exercise in
+`languages/uk/exercise/*.md`.
+
+The question was raised because the three exercises did not use one verb, and it was not
+clear whether that was drift or intent. decard's answer is that it is intent, and that all
+three verbs are correct in their own place:
+
+- **_зберіть_** focuses on the **result**, so it fits a simple task. It stays as the task
+  and scenario name on `exercise/snowman`.
+- **_побудуйте_** focuses on the **process**, so it fits a task that turns on meticulous
+  calculation. It stays as the task and scenario name on `exercise/relational-snowman`.
+- **_ліпити_** is what Ukrainian actually says about making a snowman, but it is too casual
+  for a task instruction, so it belongs only to playful introductory prose. This is why the
+  `relational-snowman` intro was changed from _ми знову **будуємо** сніговика_ to _ми знову
+  **ліпимо** сніговика_: the intro is narration, not an instruction.
+
+The general shape of the rule (a natural, everyday verb in the intro; a result-focused or
+process-focused verb in the task name depending on how much work the task involves) is
+decard's reasoning rather than a rule he stated for all exercises, so do not generalise it
+to other build-type exercises without asking. Within the snowman family it is settled, and
+the three verbs must not be swept onto one form.
+
+## 2026-08-03: Twelve unconfirmed drafts from the second Stage 3 exercise batch
+
+**Decided by:** agent, per the standing rule from the owner (iHiD) that translation-pass
+proposals are written into the glossary as unconfirmed drafts rather than held back for
+review. **Source:** the eight fable translation passes over
+`exercise/space-invaders-repeat`, `exercise/snowman`, `exercise/traffic-lights`,
+`exercise/relational-sun`, `exercise/relational-snowman`,
+`exercise/relational-traffic-lights`, `exercise/structured-house` and
+`exercise/plant-the-flowers`, plus the flower-planting family message catalog. Not a forum
+thread; not native-speaker-sourced.
+**Status:** unconfirmed drafts. None of them outranks a later native-speaker call, and two
+of them (`amber`, `frame`) carry an open question that is not settled by the row being
+written.
+**Terms affected:** `light (traffic-light lamp)`, `relational (title sense)`,
+`frame (house body)`, `anchor (variable/value)`, `housing / casing (traffic light body)`,
+`pattern (repeating pattern)`, `gap (inset from an edge)`, `snowball`, `typo`,
+`casing (letter case)`, `amber`, `"I'm totally stuck"`. A thirteenth proposal,
+`to hard-code`, was **not** written as a row: see "Contested, no row written" below.
+
+- **`light` → вогник.** Proposed independently by the Traffic Lights and Relational
+  Traffic Lights passes, which agreed, so it carries more weight than a single proposal.
+  _Світло_ is light as illumination and _лампа_ / _ліхтар_ are the physical fittings;
+  _вогник_ is what Ukrainian actually calls one lamp of a traffic light. The word recurs in
+  prose, in every describer and in the scenario names on both exercises, so it needed
+  pinning rather than being re-decided per file. _Світлофор_ (the whole traffic light) was
+  never in question.
+- **`relational` → пропорційний.** Also agreed by two passes (Relational Snowman and
+  Relational Traffic Lights). This is the exercise-title sense: the family where every
+  dimension is derived from one starting value instead of being written out as literals.
+  _Реляційний_ exists in Ukrainian but belongs to relational databases and would read as a
+  category error in a beginner drawing exercise. _Пропорційний_ names what the learner is
+  actually being taught, which is that the shapes scale together.
+- **`anchor` → опорна змінна / опорне значення.** From the Structured House pass. The
+  exercise turns on there being one value (the frame's position and size) that every other
+  shape is measured from, and the English leans on "anchor" to say so. _Якір_ is the ship's
+  anchor or an HTML anchor and carries none of that sense. The split between the variable
+  and the number in it mirrors the existing `variable` / `value` rows.
+- **`housing` / `casing` (the traffic light's body) → корпус.** From the Relational Traffic
+  Lights pass. _Корпус_ is the ordinary word for a device's outer body. _Кожух_ is a cover
+  or jacket, and _коробка_ is already spoken for by the value-container metaphor, so using
+  it here would collide two unrelated pictures in a learner's head.
+- **`pattern` → закономірність.** From the Space Invaders (Repeat) pass. The exercise is
+  about noticing that something repeats and turning that into a loop, which is exactly what
+  _закономірність_ means. _Патерн_ is a bare borrowing, and _шаблон_ is already carrying
+  weight in this glossary (_шаблонний рядок_, _лінії шаблону_).
+- **`gap` → відступ.** From the Relational Sun pass, and already the word the Jumbled House
+  reviewer notes use for the same idea (_з відступом `10` від його боків_), so the row
+  records existing practice rather than introducing anything. _Проміжок_ and _зазор_ both
+  read as a gap *between* two things rather than an inset from an edge.
+- **`snowball` → снігова куля.** From the Relational Snowman pass. Kept as the full two-word
+  form because bare _куля_ is the plain circle/sphere word used throughout the draw family,
+  and the snowman exercises talk about both in the same sentence.
+- **`typo` → одруківка.** From the Snowman pass. _Опечатка_ is a Russianism and
+  _друкарська помилка_ reads as a printing-press error rather than something the learner
+  just did on a keyboard.
+- **`casing` (letter case) → регістр.** Also from the Snowman pass. Ukrainian reuses
+  _регістр_ for this, which is why the glossary already has _горбатий регістр_ for camel
+  case; the row makes the plain sense explicit so nobody reaches for _відмінок_
+  (grammatical case) or _написання_.
+- **`"I'm totally stuck"` → Я зовсім не знаю, що робити.** From the Plant the Flowers pass.
+  This hint title recurs across many exercises and only works if it is recognisably the
+  same string every time, so it is worth a row despite being a sentence rather than a term.
+
+### Open, awaiting a decision
+
+- **`amber` → бурштиновий, or should it be жовтий?** The Traffic Lights pass rendered the
+  middle light literally, as _бурштиновий_. That is a correct translation of the English
+  word, but Ukrainian road usage, driving-test material and everyday speech all call that
+  light _жовтий_. So the literal rendering may read as a translation artifact to a learner
+  who has only ever heard _жовтий_, while _жовтий_ loses the distinction the English source
+  draws between amber and yellow. This needs a native speaker to pick one. The row is
+  written as _бурштиновий_ so the files are at least self-consistent while the question is
+  open, not because the question has been answered.
+- **`to hard-code` / `hardcoded`: contested, no row written.** Three passes in this batch
+  reached three different renderings for the same idea: _жорстко задати_ (Relational Sun),
+  _вписати готове число_ / _вписати напряму_ (Structured House), and _числа напряму_
+  (Relational Traffic Lights). _Жорстко задати_ is the established Ukrainian IT calque and
+  is precise, but it is register-heavy for a beginner drawing exercise; the _вписати_
+  variants read far more naturally but are descriptions rather than a term, and they do not
+  give a noun or an adjective for "hardcoded". Because this is a genuine disagreement
+  between passes rather than one proposal, no row has been written and no winner has been
+  picked: a native speaker should settle it. Existing occurrences stay as each pass wrote
+  them until then; do not sweep them to one form on an agent's judgement.
+- **`frame` (the house's body) remains unresolved, and now affects two exercises.** The
+  Structured House pass used _каркас будинку_, which is the exact word decard flagged on
+  [t/880 post 42](https://forum.jiki.io/t/880/42) as reading like scaffolding rather than a
+  finished building (see the entry below). A row has now been written, marked contested, so
+  that the term is visible on the published glossary page and a reviewer can settle it in
+  one place. It is **not** a decision: the open question below stands, and the rendering
+  does not move until a native speaker names a replacement. When it is settled, both
+  `exercise/jumbled-house` and `exercise/structured-house` need the same sweep, in
+  instructions and message catalog alike; both files' reviewer notes say so.
+- **UI button labels are rendered three different ways across Ukrainian exercises.** The
+  Snowman pass surfaced this. `maze-solve-basic` uses a translated, bolded **Запустити
+  код**; `penguin` uses the English in italics and guillemets, _«Run Code»_; `snowman` uses
+  «Run Code»; and one file has «Run code» with different capitalisation. These are labels on
+  buttons the learner is looking at, so which language they are in is a real decision (does
+  the Ukrainian app show a translated button or not?) and the answer has to be the same in
+  every exercise. This is a rule about how to write, not a term, so once it is settled it
+  belongs in `guide.md` § Style notes rather than here. It needs a native speaker who has
+  seen the Ukrainian app UI, because the right answer is whatever that button actually says.
+
+## 2026-08-03: Drawing vocabulary from the Stage 3 exercise review, and the `&&`/`||` house rule
+
+**Decided by:** decard (native speaker) on [t/880 posts
+36-45](https://forum.jiki.io/t/880/36), with iternewo (native speaker) on post 38.
+**Terms affected:** `icon`, `scene`, `guide lines`, `target image`, `corner point /
+vertex`, `lock icon`, `to expect / to take (input)`.
+
+- **`icon` → картинка.** The Cloud, Rain & Sun instructions called the drawing an
+  _іконка_. decard flagged that _іконка_ in Ukrainian means a UI icon (and, outside
+  computing, a religious icon), not a picture, so the learner reads it as the wrong kind of
+  object. The whole draw family draws pictures, so the row is worth having rather than
+  being a one-file fix.
+- **`scene` → зображення / картинка.** _Сцена_ is a stage or a scene in a play and does not
+  carry English "scene"'s "picture" sense. decard gave both renderings and which verb each
+  goes with: _створіть зображення погоди_ but _намалювати картинку погоди_. The same fix
+  applies to the `drawScene.description` scenario string, which he called out explicitly.
+- **`guide lines` → напрямні лінії**, and shapes sit inside them rather than on them
+  (_а не перетинати їх_). _Напрямні_ is the standard term; the previous rendering just
+  described the position without naming the thing.
+- **`target image` → лінії шаблону.** decard called _цільове зображення_ "something very
+  uncommon", and pointed out that what the learner actually matches is the template
+  outline, not an image. Same word choice family as the _цільова клітинка_ correction
+  below.
+- **`corner point / vertex` → вершина.** Both the rectangle's top-left corner and the
+  triangle's three corner points are _вершини_; _кутові точки_ was a calque.
+- **`lock icon` → символ замочка.** The diminutive avoids the _замок_ ("castle")
+  ambiguity and is what UI copy uses.
+- **`to expect (input)` → приймати, never очікує.** decard raised this twice, on Fix Wall
+  and on Take a Walk, and gave the reason in general terms: a function does not wait for
+  input, it accepts it. Stated once as a row rather than per exercise.
+- **Not a glossary row: `цільова клітинка`.** decard noted that _цільова_ reads like
+  "target audience", and gave the recast (_дістатися нашої цілі, зеленої клітинки_) rather
+  than a replacement adjective, so it stays as a reviewer note on the Take a Walk
+  exercise.
+- **The `&&` / `||` rule went to the guide, not here.** decard asked for the operator to be
+  spelled out in full at its first occurrence per page and abbreviated afterwards. That is
+  a typography rule, so it lives in `guide.md` § Style notes.
+
+### Open, awaiting a decision
+
+Two questions from this batch are genuinely unresolved. Neither has been guessed at in the
+files, and both need a native speaker to settle them.
+
+- **A better Ukrainian word for `frame` (the house's frame/scaffolding).** decard, [t/880
+  post 42](https://forum.jiki.io/t/880/42): "Also, about the word 'каркас' (frame).
+  'Каркас' is closer to scaffolding then to a finished building. So far we're not sure how
+  to properly translate it, maybe we'll adress this later, but if you have any suggestions
+  - please share. The word needs to be changed all across the exercise, not only in this
+  sentence." iternewo separately suggested _конструкція_ in post 38. No row has been added,
+  and the Jumbled House sentences he gave replacements for now avoid the word entirely
+  (_верхнього краю будинку_, _на верху будинку_) rather than picking a new one.
+- **Whose left is "the penguin's left"?** iternewo, [t/880 post
+  38](https://forum.jiki.io/t/880/38): "the penguin's left side is missing from the
+  perspective of the penguin, however, the exercise takes the user's perspective. Should we
+  change it? I feel like Ukrainians take the perspective of the object of drawing when
+  drawing it." This is a question about the **English** source's convention across the
+  whole draw family, not about the Ukrainian wording, so it is not ours to settle in a
+  translation.
+
+## 2026-08-03: `Jeremy` transliterated as Джеремі, `workhorse` becomes ключовий інструмент
+
+**Decided by:** iternewo (native speaker) on [t/880 post
+28](https://forum.jiki.io/t/880/28), agreed by decard (native speaker) in the same
+thread. **Terms affected:** `Jeremy`, `workhorse`.
+
+- **`Jeremy` → Джеремі, in prose, everywhere.** iternewo asked for the name to be
+  transliterated rather than left in Latin script, and noted it does not conjugate or
+  decline, so it behaves in Ukrainian exactly like `Jiki` already does: no case endings,
+  case carried by the surrounding words. Two files already used _Джеремі_ before this
+  decision (`app/messages/uk.json`, in `loggedOutDescription` and `deepDiveDescription`),
+  so the decision also settles an existing inconsistency rather than introducing a new
+  form.
+
+  The **code-string exception** is the reason this needed a Notes column rather than a
+  bare row. In several places `Jeremy` is not the man's name in prose but the literal
+  contents of a string the learner's code produces or is compared against: the Two Fer
+  worked example (`twoFer("Jeremy")` → `"One for Jeremy, one for me."`), the Variables and
+  Dictionaries pages (`let name = "Jeremy"`, `person["name"]`), and the Variables page's
+  `alt` text, which describes the piece of paper with that string written on it. Those are
+  sentinel values under `global/rules.md`, so they stay in Latin letters; transliterating
+  them would make the exercise unpassable with no visible cause. Every other locale
+  (hu, pl, fr, it, ru) already keeps the `alt`-text occurrence in Latin for the same
+  reason, so the exception is consistent with how the rest of the course reads it.
+
+  decard was explicitly waiting on this propagation for the Dress Code exercise, whose
+  message catalog was the one place a bare Latin `Jeremy` sat in running Ukrainian prose.
+
+- **`workhorse` → ключовий інструмент.** The existing translation of the For Loops page
+  rendered the idiom literally as _робочою конячкою_ ("little workhorse"), which is a
+  diminutive animal word and reads as a joke in explanatory prose. iternewo gave the
+  worked replacement for the whole sentence ("Саме ця гнучкість робить цикли `for`
+  ключовим інструментом у JavaScript"), which also fixes the government: the Ukrainian
+  takes _у_ + the language name where English takes "of". The chosen noun deliberately
+  reuses _інструмент_, already agreed for `tool`, so the row sits next to it.
+
+## 2026-08-02: Unconfirmed drafts from the first Stage 3 batch (not yet in the glossary)
+
+**Decided by:** nobody yet. These are **proposals**, surfaced by the fable workers that
+translated the first 10 Stage 3 exercises (space-invaders-solve-basic, maze-solve-walk,
+fix-wall, snowman-basic, foxy-face, penguin, cloud-rain-sun, jumbled-house,
+golf-rolling-ball-loop, maze-solve-repeat). **None of them has been written into
+`glossary.md`.**
+
+- **alien** (space-invaders family) → **прибулець**. Surfaced independently by more than
+  one worker on this batch, so it has more weight than a single proposal. Medium/high
+  confidence.
+- **laser cannon** → **лазерна гармата**. Medium confidence.
+- **ammo** ("wasting ammo") → **заряди**. Medium confidence.
+- **target image** (draw-family reference picture) → **цільове зображення**. Medium
+  confidence.
+- **corner point** (triangle corner) → **вершина**. Medium confidence.
+- **charcoal** (prose colour word) → **вугільний (колір)**. Low confidence.
+- **face** (animal character's face) → **мордочка**. Medium confidence.
+- **iris** (eye part in drawing checks) → **райдужка**. Medium confidence.
+- **Drawing Shapes** (function category label) → **Малювання фігур**. Already used
+  consistently elsewhere, medium confidence.
+- **cloud puff** → **клубочок (хмари)**. Low confidence.
+- **instructions** (learner-facing directions, distinct from the existing
+  "statement"/"instruction to Jiki" rows) → **вказівки**. Medium confidence.
+- **tee** (golf tee) → **кілочок**. Medium confidence.
+- **refactor** → **переписати (код)**. Medium confidence.
+
+## 2026-08-02: Two more em-dash workaround patterns confirmed, not a rule exception
+
+**Decided by:** agent, on native speaker decard's Word Count feedback, [t/880 post
+2614](https://forum.jiki.io/t/880). **Terms affected:** none (a Style/Grammar guide
+pattern, not a glossary row).
+
+decard asked for a literal em dash in two sentences (a repeated predicate, and a
+cause-pointing aside). Neither turned out to be grammatically unavoidable: a different verb
+for the second clause fixes the first ("а значеннями **слугують** їхні частоти" instead of
+repeating "є"), and the correlative **то** fixes the second ("апостроф, **то** символ
+належить..."). Since a clean dashless rephrase existed for both, the global no-em-dash rule
+stands; no Ukrainian exception was carved out. Both patterns are recorded in the guide next
+to the existing copula-sentence workaround, so a future pass doesn't have to re-derive them.
+If a genuinely dash-unavoidable case ever surfaces, that would be the trigger to revisit this.
+
+## 2026-08-02: `radial width / radial height` RESOLVED, `camel case` glossed once, `Boolean` localized
+
+**Decided by:** decard (native speaker) on the pinned Ukrainian glossary thread,
+[t/308 post 12](https://forum.jiki.io/t/308/12), for the first two; iternewo (native
+speaker) on [t/308 post 13](https://forum.jiki.io/t/308/13) for the third.
+**Terms affected:** `radial width / radial height`, `camel case`, `Boolean`.
+
+- **`radial width / radial height` → горизонтальний радіус / вертикальний радіус.** This
+  **resolves** the low-confidence draft flagged in the 2026-08-01 batch-1 entry below and
+  the question raised for this thread; the row is no longer provisional and is now a human
+  native speaker's decision. decard traced the English source itself: the describers say
+  "a radial width of X, a radial height of Y", while the instructions and the function
+  description for the same call say "horizontal radius"/"vertical radius" (`radiusX`,
+  `radiusY`), so the two English wordings name the same two values and take one Ukrainian
+  pair. The formally correct Ukrainian terms are _велика піввісь_ / _мала піввісь_
+  (semi-major / semi-minor axis), but they are unintuitive, uncommon, largely confined to
+  mathematical literature, and they contradict the parameter names the learner actually
+  types. So the literal, recognizable rendering wins over the technically exact one. Because
+  it is not a real geometric term, decard asked for a single explanatory aside where
+  ellipses are first introduced (the Penguin exercise), and nowhere else. Her suggested
+  wording: _В геометрії вони називаються велика та мала піввісь, але в цьому курсі ми
+  будемо використовувати слова «горизонтальний радіус» та «вертикальний радіус» на
+  позначення цих відстаней задля наочності._ That aside is prose in a translated file, not
+  a term, so it is queued in `state/content-updates-needed.md` for the next Penguin pass
+  rather than written into the glossary.
+- **`camel case` becomes gloss-once, then English.** The previous row (an unconfirmed agent
+  draft, 2026-08-01) kept it in English outright with no gloss. decard's revision: translate
+  it once, at its introduction in the "Creating and Using Variables" article, as _горбатий
+  регістр_ (also known as _верблюдячий регістр_, named after the animal, in the same way
+  snake case is _зміїний регістр_), then keep the English term for every other occurrence.
+  This gives the beginner the camel image once without introducing a Ukrainian coinage the
+  rest of the course would have to carry.
+- **`Boolean` is now translated, not kept in English.** iternewo petitioned for **булеві
+  значення**, on the same reasoning that settled `string`: an isolated English word inside
+  Ukrainian sentences reads as a mistake rather than a deliberate choice. He notes the
+  Ukrainian form is heard in public-school education, so it will not raise eyebrows,
+  provided the definition and the English equivalent are given on first encounter. The row
+  now follows the `string` pattern exactly (_булеві значення (англ. Boolean)_ at each first
+  mention per page, _булеві значення_ afterwards, never bare English). It stays physically
+  in the "Keep in English" table next to `string`, which carries the same exception. The
+  previous row was an unconfirmed draft (nothing in this log recorded a human deciding it);
+  the accepted synonym _логічне значення_ is retained from it.
+
+## 2026-08-01: Stage 2c
+
+**Decided by:** agent proposals from the Stage-2 batch-3 (Stage 2c) translation passes
+(concepts else, else-if, for-loops, while-loops, dictionaries; exercises maze-turn-around,
+bouncer-dress-code, luhn, digital-root, word-count). Not a forum thread; not
+native-speaker-sourced.
+**Status:** unconfirmed drafts, logged here only. **Not written to `glossary.md`.** None of
+these outrank a later native-speaker call.
+**Terms affected:** `else clause`, `initializer`, `infinite loop`, `data structure`,
+`spiral notebook sheet (dictionary metaphor)`, `Sensing (maze function category)`,
+`valid / invalid`, `checksum`, `formal (dress code)`, `smart (dress code)`,
+`to turn away (bouncer action)`, `dress code`, plus two open questions on `bug` and
+`true`/`false`.
+
+Proposed rows (all unconfirmed drafts):
+
+- `else clause / else branch` → **гілка else** (medium). Keeps _блок_ free for "code block"
+  (блок коду); matches Ukrainian dev writing on if/else branching. Keyword `else` stays
+  English. (else pass)
+- `initializer (for-loop part)` → **ініціалізатор** (medium). The ordinary developer
+  borrowing, chosen over the descriptive _початкове значення_; sets the direction for the
+  other loop-part names. (for-loops pass)
+- `infinite loop` → **нескінченний цикл** (medium). Alternative _безкінечний_ exists, so
+  one form is worth pinning; recurs across loop content. (while-loops pass)
+- `data structure` → **структура даних** (high). `<define>`d umbrella term sitting next to
+  the agreed _тип даних_ rows; pinned so passes do not conflate the two. (dictionaries pass)
+- `spiral notebook sheet (dictionary metaphor)` → **аркуш зі спірального блокнота**
+  (medium). The dictionary-metaphor object set, parallel to коробка/ланцюжок.
+  (dictionaries pass)
+- `Sensing (maze function category)` → **Сприйняття** (medium). Category label shared by
+  every maze exercise's function panel; must stay identical family-wide. Movement → Рух is
+  obvious and not proposed. (maze-turn-around pass)
+- `valid / invalid (number, input)` → **дійсний / недійсний** (medium). Recurs across the
+  validation exercises (Luhn, ISBN), which cross-reference each other. (luhn pass)
+- `checksum` → **контрольна сума** (low). Likely the one canonical rendering; listed to
+  block calques like _чек-сума_. (luhn pass)
+- `formal (dress-code category)` → **урочисте вбрання** (medium) and `smart (dress-code
+  category)` → **елегантне вбрання** (medium). Shared across all three bouncer exercises;
+  the pair must stay stable together. (bouncer-dress-code pass)
+- `to turn away (bouncer action)` → **відмовити у вході** (medium). Pairs with _впустити_;
+  used across checks, describers, scenarios and instructions of every bouncer exercise.
+  (bouncer-dress-code pass)
+- `dress code` → **дрес-код** (low). Spelling-variant question only (_дрескод_ vs
+  _дрес-код_); appears in an exercise title. (bouncer-dress-code pass)
+
+Open questions (no row proposed):
+
+- `bug` in running prose: the Keep-in-English row ("Bug, no gloss") breaks in inflected
+  prose; the while-loops pass used _помилки_. Needs a decision between Latin _bug_,
+  Cyrillic _баг_, or folding into _помилка_.
+- `true`/`false` in "returns true or false" catalog phrasing: the glossary maps prose
+  true/false to _правда/неправда_, but the word-count pass kept the literal returned values
+  Latin (`повертає true або false`). The existing row's Notes could record which side wins
+  in "returns X" phrasing.
+
+## 2026-08-01: Seven terms added as unconfirmed drafts from the Stage-2 batch-2 passes
+
+**Decided by:** agent, per the standing rule from the owner (iHiD) that translation-pass
+proposals are added to the glossary as unconfirmed drafts rather than held back for review.
+**Source:** the five Stage-2 batch-2 translation passes (exercise/two-fer, concept/strings,
+exercise/digital-clock, concept/arrays, exercise/weather-symbols). Not a forum thread; not
+native-speaker-sourced.
+**Status:** unconfirmed drafts. None of these outrank a later native-speaker call.
+**Terms affected:** `data type`, `compound data type`, `default (value)`,
+`to iterate (through an array/string)`, `box (drawing/forecast grid cell)`, `meridiem`,
+`piece of paper (string metaphor)`.
+
+- **From the concept/arrays pass:** `data type` → **тип даних** (canonical, pinned because
+  it anchors the next row). `compound data type` → **складений тип даних**: _складний_
+  means "difficult" (wrong sense) and _композитний_ is a rarer borrowing; sets a precedent
+  for the arrays and dictionaries pages. `to iterate` → **перебирати (елементи)**: the
+  glossary only had the noun _ітерація_; the everyday verb was chosen over the calque
+  _ітерувати_ for beginner prose, and different passes could reasonably diverge without a
+  row.
+- **From the exercise/two-fer pass:** `default (value)` → **типове значення / типовий**,
+  chosen over _за замовчуванням_ and _усталений_; recurs across hints and exercises.
+- **From the concept/strings pass:** `piece of paper` (the string metaphor object) →
+  **аркуш паперу**, part of the Jiki metaphor set alongside коробка/ланцюжок; _папірець_
+  and _листок_ are equally plausible, which is exactly why it needs pinning. The pass
+  itself used _аркуш паперу_ in prose but _папірець_ once in an image alt; the row settles
+  on _аркуш паперу_.
+- **From the exercise/weather-symbols pass:** `box (drawing/forecast grid cell)` →
+  **комірка**. This is a distinct sense from the value-container metaphor _коробка_; a
+  translator following the metaphor row would collide the two, so the split is recorded
+  explicitly.
+- **From the exercise/digital-clock pass:** `meridiem` kept in English as **позначка
+  «meridiem»**, added under "Keep in English". The exercise teaches the word itself, and a
+  Ukrainian coinage would diverge from the sentinel values `am`/`pm` the learner must
+  produce.
+
+**Open question for the pinned thread ([t/308](https://forum.jiki.io/t/308)):** the
+`string` row mandates _рядок тексту_ in prose, but the uk draw-family base catalog (a
+prior decision) uses bare `типу string` in error messages. The weather-symbols pass
+followed the family catalog for its sibling error message so the two catalogs read
+consistently on one screen. Whether catalog error messages are exempt from the _рядок
+тексту_ rule needs a native-speaker call.
+
+## 2026-08-01: Jiki takes masculine verb agreement, especially in `describers`
+
+**Decided by:** decard (native speaker), on forum topic
+[t/880](https://forum.jiki.io/t/880), reviewing the rainbow and rock-paper-scissors
+exercises. **Terms affected:** none; this is a grammar rule, recorded in `guide.md`.
+
+decard flagged that the uk exercise message catalogs described Jiki's actions with
+feminine past-tense verbs (_намалювала_, _очистила_, _перетворила_, _оголосила_,
+_повернула_). Jiki is male, so all such verbs take the masculine form. The `describers`
+strings are the recurring failure point because the verb starts the string with no visible
+subject, so the agreement has nothing nearby to cue it. The rule is not exercise-specific,
+which is why it lives in `guide.md` rather than in a per-item reviewer-notes file.
+
+The fix was applied to the shared category catalogs
+(`exercise-categories/draw` and `exercise-categories/rock-paper-scissors`), which is where
+the describers actually live; a sweep of every uk exercise and category catalog found no
+other feminine or neuter forms remaining.
+
+## 2026-08-01: House-style fix in the `string` row
+
+**Decided by:** agent, applying the no-em-dash rule in `CLAUDE.md` and `global/rules.md`.
+**Terms affected:** `string` (punctuation of the Notes column only).
+
+The Notes cell used an em dash, which house style bans in these docs; it now reads "…
+afterwards, because a bare English word reads too jarring…". The decision itself, iternewo
+and decard's call that `string` is always rendered _рядок тексту (англ. string)_ at first
+mention per page and _рядок тексту_ afterwards, is untouched and was not re-examined: it is a
+native-speaker decision and outranks any agent's opinion, including the general no-auto-gloss
+rule in `global/voice.md`.
+
+## 2026-08-01: `guide.md` trimmed to rules only; its rationale recorded here
+
+**Decided by:** iHiD (owner), as a structural clean-up of `languages/uk/guide.md`. No
+linguistic decision was changed, reversed or reworded: this entry only records where the
+existing material went and the reasoning that was removed from the guide.
+**Terms affected:** `journey` (new row), `feature (platform capability)` (Notes column
+only).
+
+`guide.md` is loaded in full into the prompt for every Ukrainian item in every pass, so it
+now states only rules. Everything below was removed from it.
+
+**Moved to the glossary**
+
+- **`journey`** (as in "our journey into the world of programming") → **подорож**, added to
+  "Core decisions" with the decision verbatim: prefer _подорож_ over _мандрівка_. The
+  reasoning, from iternewo (native speaker) on [t/784](https://forum.jiki.io/t/784):
+  _подорож_ is a journey with a defined plan and goal and has wider register, matching how
+  Jiki frames the course; _мандрівка_ emphasizes the emotion and process of wandering and
+  reads as tourism-flavored, which is the wrong connotation here.
+- **`feature` vs `function`.** The guide carried a Style note saying these must not collide:
+  `function` (the programming concept) is _функція_, `feature` (a platform capability) is
+  _можливість_, and _функція_ is never used for a product feature. The glossary row for
+  `feature` already carried the same decision and pointed back at the guide, a circular
+  cross-reference. The instruction now lives only in the `feature` row's Notes column; the
+  pointer to the guide is gone.
+
+**Removed as duplication**
+
+- A Style note saying that exercise prose sometimes says "list" where concept pages say
+  "array", that both are the same concept, and that both render as _масив_ with no second
+  word introduced. This is word for word what the `array / list` glossary row's Notes
+  column already says.
+- A Style note giving the Ukrainian replacement for an em dash. `global/rules.md` already
+  bans em dashes globally; the Ukrainian-specific part of it (a comma for a mid-sentence
+  aside, or two sentences) was kept, moved into § Grammar and structure next to the copula
+  rule it interacts with.
+- An "Audience specifics" section noting that readers are in Ukraine and Ukrainian-speaking
+  communities abroad, and that Ukrainian online technical education leans slightly more
+  formal than some other markets so readers do not expect overfamiliar address from an
+  unknown platform. The second point is the rationale for the Formality section stated ten
+  lines below it; the first changes nothing a translator writes.
+
+**Rationale and provenance removed from the guide, kept here**
+
+- **Formality research.** The register choice was made because no strong precedent was found
+  for sustained direct informal "ти" addressed to an adult stranger in serious Ukrainian
+  programming education. The closest comparable resource, uk.javascript.info (a large,
+  actively human-maintained Ukrainian JS tutorial), sidesteps the choice entirely by using
+  the collective "ми" plus inclusive imperatives, which is the pattern the guide adopts: it
+  keeps the encouraging, inclusive Jiki tone without the ти-to-a-stranger presumptuousness
+  or the ви-to-a-beginner coldness. Direct "ти" reads as unusually casual for this genre and
+  is unattested in the sources reviewed. Pure formal "ви" is correct and is used by some
+  platforms (e.g. Prometheus.org.ua) but reads more distant than the Jiki voice wants. The
+  guide also carried a note that this is the first thing to revisit if native-speaker
+  feedback surfaces a strong preference either way; that remains true and is recorded here
+  rather than in the guide.
+- **The handoff-imperative exception** (a standalone instruction to the learner takes the
+  plain imperative, додайте, while narrative prose stays inclusive) came from iternewo
+  (native speaker) in [t/817 posts 2 and 4](https://forum.jiki.io/t/817), and was confirmed
+  there as a one-line-category fix, not a request to drop "ми" generally.
+- **Quotation marks.** The « » primary convention is the 2019 official orthography
+  (Український правопис). The guide's warning not to carry over a „ "-primary convention was
+  originally phrased against Hungarian specifically.
+- **Dative -ові/-еві vs -у/-ю**, **conjunction euphony і vs й** and **the analytic future
+  tense** all come from iternewo (native speaker) on
+  [t/784](https://forum.jiki.io/t/784). He confirmed the dative rule applies generally
+  rather than only to "interpreter", gave _створювати і власні машини_ as the euphony
+  example, and said the analytic "будемо + infinitive" future reads easier than the
+  synthetic form in this kind of prose.
+- **_поєднувати_ vs _склеювати_** was confirmed against the English source on
+  [t/784](https://forum.jiki.io/t/784): "He can stick things together" sits in a list of
+  abstract interpreter capabilities (repeat, conditionals, memory, errors), not in the
+  crank/machine scene, so the neutral rendering is correct there. **This rule was left in
+  the guide, not moved to the glossary**, because it is conditional on context rather than a
+  flat term mapping, and because moving it would put it next to the existing
+  `concatenation / to concatenate` → _конкатенація / зʼєднати (рядки)_ row, which it appears
+  to overlap with (the guide's rule names string concatenation as a case for _поєднувати_).
+  That apparent disagreement is recorded, deliberately not resolved, and needs a
+  native-speaker call.
+
+## 2026-08-01: `string` always glossed as _рядок тексту (англ. string)_, never bare English
+
+**Decided by:** native speakers (iternewo and decard, agreed together) on the pinned
+Ukrainian glossary thread, forum topic 308, post #11 (https://forum.jiki.io/t/308/11), and
+on the new-content thread, topic 880, post #3 (https://forum.jiki.io/t/880/3).
+**Terms affected:** `string`.
+
+The row previously followed the usual "Keep in English" pattern: gloss once as _рядок_ on
+first mention, then use bare English _string_ afterwards. iternewo and decard say this is
+too cognitively jarring for learners across every article that uses it, an isolated English
+word standing out of Ukrainian prose reads as a mistake, not a deliberate choice. Changed to
+always render _рядок тексту (англ. string)_ at first mention per page and _рядок тексту_
+(not bare English) afterwards. Also fixes the target word itself: _рядок тексту_ (line of
+text) rather than bare _рядок_ (line), which is ambiguous on its own.
+
+## 2026-08-01: Nine terms added as unconfirmed drafts from the Stage-2 batch-1 passes
+
+**Decided by:** agent, per the standing rule from the owner (iHiD) that translation-pass
+proposals are added to the glossary as unconfirmed drafts rather than held back for review:
+the only way a native speaker gives feedback is by seeing the term on the published site.
+**Source:** the five Stage-2 batch-1 translation passes (concept/variables, concept/if,
+concept/repeat, exercise/rock-paper-scissors, exercise/rainbow). Not a forum thread; not
+native-speaker-sourced.
+**Status:** unconfirmed drafts. None of these outrank a later native-speaker call.
+**Terms affected:** `bouncer`, `camel case`, `label`, `hue`, `lightness`, `canvas`,
+`hex color / hex string`, `radial width / radial height`, `Yuki / Ando`.
+
+Nine rows added, each filed under the best-fit existing section, with two new subsections
+under "Localize" for the groups that had no home:
+
+- **From the exercise/rock-paper-scissors pass:** `bouncer` (the recurring robot-bouncer
+  character) → **охоронець**, chosen for neutral register over the crude colloquial
+  _викидайло_, which is the word Ukrainian actually uses for a nightclub bouncer but is far
+  too coarse for a children's-course character. `Yuki / Ando` → **Юкі / Андо**, transliterated
+  in prose only: the sentinel strings the learner has to type (`"Yuki"`, `"Ando"`, `"tie"`)
+  stay Latin, because they are compared against literally and translating them would break
+  the exercise. Both went into a new "Characters & story vocabulary (exercise family)"
+  subsection.
+- **From the concept/variables pass:** `camel case` kept in English, added under "Keep in
+  English". Real Ukrainian alternatives exist, but the English form is what Ukrainian
+  developers actually say, and the camel image the concept page leans on is carried by the
+  surrounding explanation rather than by the term itself. `label` (the name stuck on the
+  outside of a variable box) → **етикетка**, added to "Jiki physical metaphors" because it
+  belongs to the recurring box-metaphor set alongside _коробка_. _Підпис_, _наліпка_ and
+  _ярлик_ are all defensible; the point of glossarying it is that this word recurs every
+  time variables come up, so it must not drift between pages.
+- **From the exercise/rainbow pass, plus the draw-family message catalogs:** `hue` →
+  **відтінок** and `lightness` → **світлість**, the two HSL terms. Both were already used
+  consistently by the workers across both catalogs. `lightness` is the one with a real
+  collision risk: _яскравість_ is "brightness", a different channel, so _світлість_ has to
+  stay stable family-wide. `canvas` → **полотно**, likewise already consistent across both
+  catalogs, with _канва_ and _канвас_ as the live alternatives. `hex color / hex string` →
+  **шістнадцятковий колір / шістнадцятковий код кольору**; _hex-код_ is common in Ukrainian
+  dev writing but leaves a bare Latin token inside a Ukrainian word, which this glossary
+  avoids elsewhere (see the `tech / tech industry` entry below). All filed under a new
+  "Drawing & colour (exercise family)" subsection.
+- **`radial width / radial height` → радіальна ширина / радіальна висота is low
+  confidence and explicitly needs a native-speaker check.** These render an ellipse's
+  `rx`/`ry`. The English is itself a coinage, and the Ukrainian is a literal calque of it,
+  so it may read as ambiguous or simply odd to a Ukrainian speaker (the alternative framings
+  are a semi-axis reading, or just "width/height of the ellipse"). Flag this one on the
+  pinned Ukrainian glossary thread, [t/308](https://forum.jiki.io/t/308), and treat the row
+  as provisional until it comes back.
+
+These are agent proposals from live translation work, added immediately per the standing
+rule above so that publishing the glossary to i18n is what surfaces them for review.
+
+## 2026-07-31: `dashboard` added as панель керування
+
+**Decided by:** iternewo (native speaker), in
+[t/817 posts 2 and 4](https://forum.jiki.io/t/817).
+**Terms affected:** `dashboard`.
+
+- iternewo flagged in post 2 that `dashboard` appears in the Solve the Maze exercise but was
+  missing from the glossary, and initially suggested _адмін-панель_. Asked to clarify in
+  post 3, since Jiki's dashboard is the learner's own landing screen (progress, streak, next
+  steps) and not an admin area. In post 4 he confirmed **панель керування** works, and
+  separately noted that bare _панель_ (as used in the exercise text, "поверніться на
+  панель") reads badly in this context.
+- New row: `dashboard` → **панель керування**.
+
+## 2026-07-31: `Test` confirmed staying in English
+
+**Decided by:** iternewo (native speaker), in
+[t/308 post 6](https://forum.jiki.io/t/ukrainian-review-glossary/308/6), answering the
+clarifying question asked in post 5 of the same thread.
+
+- In [post 4](https://forum.jiki.io/t/ukrainian-review-glossary/308/4) iternewo proposed
+  `Test` → _Тест_ alongside the `tech / tech industry` change above. Post 5 asked him to
+  clarify whether he meant the word in prose (a straightforward glossary row) or the literal
+  label on the editor's Test button (a UI-string decision affecting every language, not just
+  a glossary row).
+- In post 6 he clarified he was looking at the existing glossary row itself: `Debug, Test`
+  under "Keep in English", listed as keywords/technical tokens. He noted he wasn't sure why
+  `Test` is kept in English beyond familiarity with English IDEs, but said he is "happy to
+  let it stay Test if it makes sense."
+- No change to the row: `Test` stays in the "Keep in English" section exactly as it reads
+  today. This is now a **settled, native-speaker-confirmed** row, not just a bootstrap
+  guess: do not change it to _Тест_ without going back to him on the thread.
+
+## 2026-07-31: `tech / tech industry` becomes IT-індустрія
+
+**Decided by:** iHiD (owner), on iternewo's (native speaker) proposal in
+[t/308 post 4](https://forum.jiki.io/t/ukrainian-review-glossary/308/4).
+**Terms affected:** `tech / tech industry`.
+
+- **`tech / tech industry`** now renders as **IT-індустрія**, replacing the bootstrap guess
+  _tech-індустрія_. The old form left a bare Latin token inside a Ukrainian word, which is
+  exactly the thing the rest of this glossary avoids; _IT_ is the initialism Ukrainian
+  actually uses for the sector. It also matches the pattern the pl, ro, sr, ko and ja
+  glossaries already landed on independently.
+- This is a human native speaker's decision and is **settled**: do not revert it to a
+  hybrid form without going back to him on the thread.
+
+Also proposed in the same post: `Test` → _Тест_. Not actioned. `Test` is currently listed
+under "Keep in English" as a technical token, and it is unclear whether he means the word
+in prose or the literal text of a UI button, which would be a UI-string decision rather
+than a glossary row. Asked for clarification on the thread; still open.
+
+## 2026-07-12: Native-speaker corrections from forum topic t/308
+
+**Decided by:** iternewo (native speaker), forum topic t/308 (post of 2026-07-12).
+**Terms affected:** `for loop`, `while loop`, `for-of loop`, `mentor`.
+
+- **`for loop` / `while loop` / `for-of loop`** all take the pattern _цикл_ + the real
+  keyword, in that order: `цикл for`, `цикл while`, `цикл for-of`. The keyword itself stays
+  in English, since it is the real JavaScript keyword, not a translated label.
+- **`mentor`** renders as **наставник**. The row iternewo submitted is internally
+  inconsistent: he put _наставник_ in the target-term column, but his own note calls
+  _наставник_ itself "an accepted alternative", which reads as though _ментор_ should be
+  primary and _наставник_ the alternative. This entry follows the column he filled in, not
+  the prose gloss, so **наставник is recorded as the primary rendering and ментор as the
+  accepted alternative**; do not mix both in one document. The ambiguity is recorded here
+  rather than resolved, since it was never put back to him for clarification.
+
+## Term rationale
+
+Why individual rows read the way they do, for the reasoning that is not a dated decision
+above. Ordered by the glossary's own sections, not by date, because most of it dates from
+the language bootstrap rather than from any one decision. A term whose reasoning is already
+covered by a dated entry above (`for loop`, `while loop`, `for-of loop`, `mentor`) is not
+repeated here.
+
+### Core decisions
+
+| Term | Why |
+|------|-----|
+| programming / coding | Standard, unambiguous. |
+| developer | Standard Ukrainian equivalent. |
+| tech / tech industry | Hybrid, mirroring the Hungarian/Portuguese pattern. |
+
+### Values & data types
+
+| Term | Why |
+|------|-----|
+| value, number | Ordinary words. |
+| character | Correction from an earlier community proposal ("знак"); _символ_ is the term used throughout php.org.ua's string-function docs. |
+| index | Direct cognate. |
+
+### Functions & control flow
+
+| Term | Why |
+|------|-----|
+| if statement | Correction from an earlier community proposal ("умовне твердження"). |
+| condition, comparison | Ordinary words. |
+
+### Loops, state & program flow
+
+| Term | Why |
+|------|-----|
+| interpreter | The word carries the person sense natively; СУМ defines _інтерпретатор_ as "той, хто інтерпретує, пояснює що-небудь; тлумач", so the ordinary CS term is also an agent noun for a person and no separate person-word is needed. |
+| mental model | Well established in Ukrainian educational and popular-science writing. |
+| (programming) language | The ordinary native word. |
+| assignment | Correction from an earlier community proposal ("надавання"); _присвоєння_ is the term used on php.org.ua. |
+| code block | Correction from an earlier community proposal ("блок програми"), which collided with the term for "scope." |
+| modulo / remainder operator | Standard mathematical term. |
+| scope | Correction from an earlier community proposal ("блок програми"), which collided with "code block." Confirmed against Ukrainian Wikipedia's dedicated article and php.org.ua's manual, which both use this exact term. |
+| method | Corrects a typo in an earlier community proposal ("метд"). |
+
+### Tooling & engineering
+
+| Term | Why |
+|------|-----|
+| deploy | Correction from an earlier community proposal ("розмістити"); _розгортання/розгорнути_ is the term used in Ukrainian Wikipedia's "Розгортання програмного забезпечення" article. |
+| auth | Both _автентифікація_ and _авторизація_ are standard, direct cognates. |
+| backwards compatibility | Standard, well-established term. |
+| pitfall | Ordinary word. |
+| weight (a multiplier in a weighted calculation) | decard's call: Ukrainian technical terminology for a weighting multiplier is the two-word _ваговий коефіцієнт_, and bare _вага_ reads as physical weight. |
+
+### Platform & curriculum vocabulary
+
+| Term | Why |
+|------|-----|
+| bootcamp | Loanword, common in Ukrainian tech-education discourse. |
+| syllabus | Loanword used in Ukrainian higher education. |
+
+### Keep in English
+
+| Term | Why |
+|------|-----|
+| framework | Kept as a loanword; well-attested in Ukrainian dev writing. |
+
+### Jiki physical metaphors
+
+| Term | Why |
+|------|-----|
+| chain | Not _ланцюг_: the plain word carries real cultural weight (кайдани/shackles, a Shevchenko-era literary association with captivity). _Ланцюжок_ (diminutive) avoids that and already has precedent as a Ukrainian pedagogical device for sequential/ordered things ("логічний ланцюжок," "математичні ланцюжки" in early-grades teaching materials). |
+| input slot | The narrow opening you feed something into. СУМ (the standard Ukrainian dictionary) attests an explicit coin/token-slot sense for this word. |
+| return chute | The tray/chute image, as in a vending machine's coin return or a delivery chute. Pairs with _щілина_ into one coherent "vending machine" mental model; keeps the input/output asymmetry that English gets from "slot" vs. "chute." |
+| machine | _Машинка_ is warmer but reads as a toy car or a sewing machine. |
+| crank | _Ручка_ also means "pen", but the collocation and physical context leave no ambiguity. _Корба_ is the precise word for a crank handle but is uncommon and regionally marked. |
+| board / whiteboard | Ordinary word for a writing board in a room. |
