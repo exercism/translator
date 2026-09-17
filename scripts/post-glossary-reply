@@ -26,7 +26,7 @@
 # first, or the links in the body point at stale or missing rows.
 #
 # Reads credentials from the repo .env:
-#   FORUM_BASE, DISCOURSE_API_KEY, DISCOURSE_API_USERNAME
+#   DISCOURSE_API_KEY, DISCOURSE_API_USERNAME   (the forum's address is config.json `forum.base`)
 #
 # Reads:   languages/<lang>/tracking.json, languages/names.json
 # Writes:  nothing in this repo (it posts to the forum).
@@ -70,12 +70,12 @@ TOPIC_ID="$(jq -r '.glossary.topic_id // empty' "$TRACKING")"
 [ -n "$TOPIC_ID" ] && [ "$TOPIC_ID" != "null" ] ||
   die "no .glossary.topic_id for '$LANG_CODE' in $TRACKING — create the pinned topic first with ./scripts/create-forum-glossary-post $LANG_CODE"
 
-[ -f "$ROOT/.env" ] || die "no .env at $ROOT/.env (need FORUM_BASE + DISCOURSE_API_KEY)"
+[ -f "$ROOT/.env" ] || die "no .env at $ROOT/.env (need DISCOURSE_API_KEY; see .env.example)"
 set -a
 # shellcheck disable=SC1091
 . "$ROOT/.env"
 set +a
-: "${FORUM_BASE:?FORUM_BASE not set in .env}"
+FORUM_BASE="${FORUM_BASE:-$(jq -r .forum.base "$ROOT/config.json")}"
 : "${DISCOURSE_API_KEY:?DISCOURSE_API_KEY not set in .env}"
 DISCOURSE_API_USERNAME="${DISCOURSE_API_USERNAME:-system}"
 

@@ -46,7 +46,7 @@ if [ -f "$ROOT/.env" ]; then
   set +a
 fi
 
-FORUM_BASE="${FORUM_BASE:-https://forum.jiki.io}"
+FORUM_BASE="${FORUM_BASE:-$(jq -r .forum.base "$ROOT/config.json")}"
 [ -n "${DISCOURSE_API_KEY:-}" ] || die "DISCOURSE_API_KEY is not set (check .env)"
 
 AUTH=(-H "Api-Key: ${DISCOURSE_API_KEY}" -H "Api-Username: ${DISCOURSE_API_USERNAME:-system}")

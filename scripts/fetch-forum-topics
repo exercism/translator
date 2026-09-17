@@ -1,26 +1,29 @@
 #!/usr/bin/env bash
 #
 # fetch-forum-topics — dump every topic and post in a Discourse forum category
-# to a single Markdown file, ready to feed into a Claude translation pass.
+# to a single Markdown file, for /bootstrap-language and for reading a language's
+# whole discussion at once. forum-dumps/ is gitignored: a dump is a snapshot of
+# other people's posts, never a source of truth and never committed.
 #
 # Usage:
 #   ./scripts/fetch-forum-topics <category-slug> [output-file]
 #
 # Examples:
-#   ./scripts/fetch-forum-topics hu
-#   ./scripts/fetch-forum-topics hu forum-dumps/hu.md
+#   ./scripts/fetch-forum-topics i18n-hu
+#   ./scripts/fetch-forum-topics i18n-hu forum-dumps/hu.md
 #
-# The Jiki forum API is public, so no auth is needed for public categories.
+# The Exercism forum API is public, so no auth is needed for public categories.
 # For private categories, set both:
 #   DISCOURSE_API_KEY=...  DISCOURSE_API_USERNAME=system
 #
-# Override the host with FORUM_BASE (default: https://forum.jiki.io).
+# Override the host with FORUM_BASE (default: config.json `forum.base`).
 #
 # Requires: curl, jq.
 
 set -euo pipefail
 
-FORUM_BASE="${FORUM_BASE:-https://forum.jiki.io}"
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+FORUM_BASE="${FORUM_BASE:-$(jq -r .forum.base "$ROOT/config.json")}"
 SLEEP="${FORUM_SLEEP:-0.3}" # polite pause between requests (seconds)
 
 die() {

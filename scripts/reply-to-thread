@@ -23,7 +23,7 @@
 # confirmed text; this script does not gate that, it just posts.
 #
 # Reads credentials from the repo .env:
-#   FORUM_BASE, DISCOURSE_API_KEY, DISCOURSE_API_USERNAME
+#   DISCOURSE_API_KEY, DISCOURSE_API_USERNAME   (the forum's address is config.json `forum.base`)
 #
 # Reads:   nothing in this repo.
 # Writes:  nothing in this repo (it posts to the forum). The caller is still
@@ -57,12 +57,12 @@ else
 fi
 [ -n "${BODY//[[:space:]]/}" ] || die "the reply body is empty"
 
-[ -f "$ROOT/.env" ] || die "no .env at $ROOT/.env (need FORUM_BASE + DISCOURSE_API_KEY)"
+[ -f "$ROOT/.env" ] || die "no .env at $ROOT/.env (need DISCOURSE_API_KEY; see .env.example)"
 set -a
 # shellcheck disable=SC1091
 . "$ROOT/.env"
 set +a
-: "${FORUM_BASE:?FORUM_BASE not set in .env}"
+FORUM_BASE="${FORUM_BASE:-$(jq -r .forum.base "$ROOT/config.json")}"
 : "${DISCOURSE_API_KEY:?DISCOURSE_API_KEY not set in .env}"
 DISCOURSE_API_USERNAME="${DISCOURSE_API_USERNAME:-system}"
 

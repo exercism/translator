@@ -1,19 +1,34 @@
 #!/usr/bin/env bash
 #
-# forum-monitor — one poll of the Jiki Discourse forum for new posts, appended
-# to a TODO file for iHiD and Claude to triage together in a later session.
+# forum-monitor — one poll of the Exercism Discourse forum for new posts in the
+# translation categories, appended to a TODO file for the orchestrator to work
+# through with iHiD.
 #
-# By default this is a SINGLE-SHOT script: one poll, one diff, one append,
-# then exit. That is what launchd calls (see the plist alongside this script),
-# so that a stuck run can never wedge the poller and so the script stays
-# trivially testable by hand. Pass --loop to instead run in the foreground,
-# polling every 30s until interrupted (Ctrl+C) — a console alternative to
-# installing the launchd job.
+# By default this is a SINGLE-SHOT script: one poll, one diff, one append, then
+# exit, so it stays trivially testable by hand. Pass --loop to poll every 30s
+# until interrupted.
+#
+# WHO RUNS IT: the normal Claude session iHiD is talking to, as a background shell
+# command (`./scripts/forum-monitor --loop` with run_in_background), after
+# checking that one is not already running (`pgrep -f "forum-monitor --loop"`):
+# two pollers race on the watermark and append duplicates. Never a subagent (a
+# worker's backgrounded loop dies when the worker exits), and never launchd: there
+# is no plist in this repo, on purpose. See "Checking posts" in orchestrator.md.
+#
+# ONLY THE TRANSLATION CATEGORIES. forum.exercism.org is Exercism's whole
+# community forum, and /posts.json is its site-wide firehose, so unlike Jiki's
+# forum almost everything in it is somebody else's conversation. A post is kept
+# only when its category is the parent i18n category (config.json
+# `forum.parent_category_slug`) or one of its subcategories, looked up from
+# /site.json on every poll so a language category created mid-session is picked
+# up. Everything else is dropped, and the watermark still advances past it.
+# TODO(iHiD): that parent category did not exist when this was written. Until it
+# does, a poll keeps nothing and says so.
 #
 # One poll is one or more HTTP calls, not necessarily one. Discourse caps
 # /posts.json at 50 posts per response, so a single call only ever sees the most
-# recent 50 posts site-wide. If the poller has been off (laptop asleep, launchd
-# unloaded, a crash) for long enough that more than 50 posts have landed, one
+# recent 50 posts site-wide. If the poller has been off (laptop asleep, no
+# session running, a crash) for long enough that more than 50 posts have landed, one
 # call cannot see the older ones, and advancing the watermark to the newest id in
 # that one response would step straight over them: silently and permanently, with
 # no error and no gap the script itself could notice. So a poll walks backwards
@@ -31,7 +46,6 @@
 #   state/forum-seen.json    watermark: the highest post id we have recorded
 #   state/forum-monitor.lock lock directory, held for the duration of a run
 #   state/forum-monitor.pages.<pid>  scratch for one poll's pages, removed on exit
-#   state/forum-monitor.log  launchd's stdout+stderr (written by launchd, not here)
 #
 # The TODO file is only ever appended to, so there is no read-modify-write to
 # lose. The watermark is rewritten every run, so it is written to a temp file
@@ -45,15 +59,10 @@
 # TODO file is noise, not a to-do list. Real work starts from the next poll.
 #
 # Credentials come from the repo .env, as with the other forum scripts:
-#   FORUM_BASE             (default https://forum.jiki.io)
+#   FORUM_BASE             (default: config.json `forum.base`)
 #   DISCOURSE_API_KEY      only needed to see private categories
 #   DISCOURSE_API_USERNAME defaults to system
 # Public categories need no auth at all, so a missing .env is not fatal here.
-#
-# launchd:
-#   cp scripts/support/com.jiki.forum-monitor.plist ~/Library/LaunchAgents/
-#   launchctl load  ~/Library/LaunchAgents/com.jiki.forum-monitor.plist   # start
-#   launchctl unload ~/Library/LaunchAgents/com.jiki.forum-monitor.plist  # stop
 #
 # Requires: curl, jq.
 
@@ -82,7 +91,7 @@ if [ -f "$ROOT/.env" ]; then
   . "$ROOT/.env"
   set +a
 fi
-FORUM_BASE="${FORUM_BASE:-https://forum.jiki.io}"
+FORUM_BASE="${FORUM_BASE:-$(jq -r .forum.base "$ROOT/config.json")}"
 
 STATE_DIR="$ROOT/state"
 TODO="$STATE_DIR/forum-todo.jsonl"
@@ -93,8 +102,9 @@ mkdir -p "$STATE_DIR"
 
 poll_once() {
 
-# Overlap guard. launchd fires every 30s regardless of whether the last run
-# finished, and two runs sharing one watermark would double-append. mkdir is the
+# Overlap guard. The `pgrep` check in orchestrator.md is what stops a second
+# poller being started; this is what makes one harmless if it happens anyway,
+# because two runs sharing one watermark would double-append. mkdir is the
 # lock: it is atomic on every filesystem we care about, unlike test-then-touch.
 if ! mkdir "$LOCK" 2>/dev/null; then
   # A crashed run leaves the directory behind, so a lock older than fifteen
@@ -108,7 +118,7 @@ if ! mkdir "$LOCK" 2>/dev/null; then
     mkdir "$LOCK" 2>/dev/null || return 0
   else
     # Another poll is in flight. Returning quietly is correct: the next tick is
-    # 30 seconds (or one launchd interval) away and nothing is lost by skipping.
+    # 30 seconds away and nothing is lost by skipping.
     return 0
   fi
 fi
@@ -166,6 +176,18 @@ $(printf '%s' "$body" | head -c 300)"
     sleep "$wait"
   done
 }
+
+# The categories worth keeping: the parent and its subcategories, as a JSON array
+# of ids. An empty array (the parent does not exist yet) keeps nothing.
+PARENT_SLUG="$(jq -r .forum.parent_category_slug "$ROOT/config.json")"
+site="$(curl -sS -m 25 "${AUTH[@]}" "$FORUM_BASE/site.json" || true)"
+CATEGORIES="$(printf '%s' "$site" | jq -c --arg s "$PARENT_SLUG" '
+  (.categories // []) as $all
+  | ([$all[] | select(.slug == $s and (.parent_category_id == null)) | .id] | first) as $parent
+  | if $parent == null then [] else [$parent] + [$all[] | select(.parent_category_id == $parent) | .id] end' 2>/dev/null || echo '[]')"
+if [ "$CATEGORIES" = "[]" ]; then
+  echo "note: no '$PARENT_SLUG' category on $FORUM_BASE (or site.json unreadable): nothing is kept this poll" >&2
+fi
 
 # Read the previous watermark. A missing or unreadable file means "first run".
 LAST=""
@@ -234,9 +256,10 @@ fi
 # only in principle, but unique_by makes that harmless either way.
 NEW_LINES="$(jq -s -c \
   --argjson last "$LAST" \
+  --argjson categories "$CATEGORIES" \
   --arg base "$FORUM_BASE" \
   --arg at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" '
-  [ .[][]? | select(.id > $last) ]
+  [ .[][]? | select(.id > $last) | select(.category_id as $c | $categories | index($c)) ]
   | unique_by(.id)
   | sort_by(.id)
   | .[]
@@ -273,14 +296,16 @@ fi
 }
 
 if [ "${1:-}" = "--loop" ]; then
-  # Console alternative to launchd: poll every 30s in the foreground until
-  # interrupted. Each cycle is still the same single poll_once used by
-  # launchd, so behaviour (locking, watermark, append-only TODO) is identical.
+  # Poll every 30s until interrupted. Each cycle is the same single poll_once, so
+  # behaviour (locking, watermark, append-only TODO) is identical. A failed poll
+  # must never end the loop: that would silently stop surfacing posts for the rest
+  # of the session.
   echo "polling every 30s (Ctrl+C to stop)" >&2
   stop() { echo "stopping" >&2; exit 0; }
   trap stop INT TERM
   while true; do
-    poll_once
+    # In a subshell, because `die` exits: without it one bad poll ends the loop.
+    ( poll_once ) || true
     sleep 30
   done
 else

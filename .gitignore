@@ -22,3 +22,4 @@ state/forum-monitor.pages.*
 scratch/
 node_modules/
 .DS_Store
+forum-dumps/

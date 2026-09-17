@@ -61,6 +61,8 @@ const issue = fetched.ok ? verifyIssue(fetched) : fetched;
 const url = `https://github.com/${config().github.i18n_repo}/issues/${number}`;
 
 if (flags.inspect) {
+  // A gh failure is not a verdict. Exit non-zero so the monitor asks again next poll.
+  if (issue.transient) die(issue.reason);
   // repo, pr and sha have each matched a strict pattern; `reason` is this repo's
   // own wording. Nothing here is the issue's free text.
   console.log(JSON.stringify({ number: Number(number), url, valid: issue.ok, repo: issue.repo ?? null, pr: issue.pr ?? null, sha: issue.sha ?? null, state: issue.state ?? null, reason: issue.ok ? null : issue.reason }));

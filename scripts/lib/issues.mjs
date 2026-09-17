@@ -66,7 +66,7 @@ function gh(args) {
 export function fetchIssue(number) {
   const { i18n_repo: repo } = config().github;
   const result = gh(["issue", "view", String(number), "--repo", repo, "--json", "number,author,labels,title,body,state"]);
-  if (!result.ok) return { ok: false, number, reason: `gh could not read issue ${number}: ${result.error}` };
+  if (!result.ok) return { ok: false, transient: true, number, reason: `gh could not read issue ${number}: ${result.error}` };
   const issue = JSON.parse(result.out);
   const parsed = parseIssue(issue);
   return parsed.ok ? { ...parsed, state: issue.state } : parsed;
@@ -81,13 +81,13 @@ export function verifyIssue(parsed) {
   let kind = singletons.includes(name) ? name : null;
   if (kind === null) {
     const topics = gh(["api", `repos/${parsed.repo}`, "--jq", ".topics | join(\",\")"]);
-    if (!topics.ok) return refuse(`could not read ${parsed.repo}: ${topics.error}`);
+    if (!topics.ok) return { ...refuse(`could not read ${parsed.repo}: ${topics.error}`), transient: true };
     if (!topics.out.trim().split(",").includes(topic)) return refuse(`${parsed.repo} is not on the allowlist (not a named source repo, and no "${topic}" topic)`);
     kind = "track";
   }
 
   const commits = gh(["api", "--paginate", `repos/${parsed.repo}/pulls/${parsed.pr}/commits`, "--jq", ".[].sha"]);
-  if (!commits.ok) return refuse(`could not list the commits of ${parsed.repo}#${parsed.pr}: ${commits.error}`);
+  if (!commits.ok) return { ...refuse(`could not list the commits of ${parsed.repo}#${parsed.pr}: ${commits.error}`), transient: true };
   if (!commits.out.split("\n").includes(parsed.sha)) return refuse(`${parsed.sha.slice(0, 10)} is not a commit of ${parsed.repo}#${parsed.pr}`);
 
   return { ...parsed, name, source: kind === "track" ? "track" : kind };

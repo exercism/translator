@@ -1,8 +1,16 @@
 #!/usr/bin/env bash
 #
 # create-forum-language-category — create an i18n language subcategory on the
-# Jiki Discourse forum, matching the house style, and seed it with a pinned
+# Exercism Discourse forum, matching the house style, and seed it with a pinned
 # "Want to Help - Start here?" topic.
+#
+# TODO(iHiD): UNVERIFIED RIGHTS. Creating a category, editing its About post and
+# pinning a topic all need an ADMIN-scoped API key on forum.exercism.org. Whether
+# the key in .env has that is not known, and nothing here assumes it: every call
+# goes through forum_ok, which reports the status and body of a refusal instead
+# of carrying on. The parent category (config.json `forum.parent_category_slug`)
+# must already exist; this script does not create it, and it did not exist when
+# this repo was written. orchestrator.md lists every right the forum user needs.
 #
 # Usage:
 #   ./scripts/create-forum-language-category <lang> <emoji>
@@ -33,7 +41,7 @@
 # The display name is derived as "<Name> (<lang>)" from languages/names.json.
 #
 # Reads credentials from the translator repo .env:
-#   FORUM_BASE, DISCOURSE_API_KEY, DISCOURSE_API_USERNAME
+#   DISCOURSE_API_KEY, DISCOURSE_API_USERNAME   (the forum's address is config.json `forum.base`)
 #
 # Idempotent: skips the category if the slug already exists, and skips the
 # welcome topic if one with the same title already exists in the category.
@@ -73,12 +81,12 @@ LANGUAGE="$(jq -r --arg l "$LANG" '.[$l] // empty' "$NAMES")"
 SLUG="i18n-$(echo "$LANG" | tr '[:upper:]' '[:lower:]' | tr '_' '-')"
 NAME="${LANGUAGE} (${LANG})"
 
-[ -f "$ROOT/.env" ] || die "no .env at $ROOT/.env (need FORUM_BASE + DISCOURSE_API_KEY)"
+[ -f "$ROOT/.env" ] || die "no .env at $ROOT/.env (need DISCOURSE_API_KEY; see .env.example)"
 set -a
 # shellcheck disable=SC1091
 . "$ROOT/.env"
 set +a
-: "${FORUM_BASE:?FORUM_BASE not set in .env}"
+FORUM_BASE="${FORUM_BASE:-$(jq -r .forum.base "$ROOT/config.json")}"
 : "${DISCOURSE_API_KEY:?DISCOURSE_API_KEY not set in .env}"
 DISCOURSE_API_USERNAME="${DISCOURSE_API_USERNAME:-system}"
 
@@ -94,10 +102,12 @@ EMOJI_EXISTS="$(curl -sSL -m 15 "$FORUM_BASE/emojis.json" \
 [ "$EMOJI_EXISTS" = "yes" ] ||
   die "'$EMOJI' is not a real Discourse emoji shortname (checked $FORUM_BASE/emojis.json) — do not guess from the country/language name, look it up first"
 
-# Resolve the parent "i18n" category id dynamically (don't hardcode).
+# Resolve the parent category id dynamically (don't hardcode). Its slug is
+# config.json `forum.parent_category_slug`.
 site="$(curl -sSL -m 15 "$FORUM_BASE/site.json")"
-PARENT_ID="$(echo "$site" | jq -r '.categories[] | select(.slug=="i18n") | .id' | head -1)"
-[ -n "$PARENT_ID" ] || die "could not find parent 'i18n' category on $FORUM_BASE"
+PARENT_SLUG="$(jq -r .forum.parent_category_slug "$ROOT/config.json")"
+PARENT_ID="$(echo "$site" | jq -r --arg s "$PARENT_SLUG" '.categories[] | select(.slug==$s and (.parent_category_id == null)) | .id' | head -1)"
+[ -n "$PARENT_ID" ] || die "could not find the parent '$PARENT_SLUG' category on $FORUM_BASE. It has to be created by a forum admin first (TODO(iHiD))"
 
 # Create the category unless the slug already exists.
 CAT_ID="$(echo "$site" | jq -r --arg s "$SLUG" '.categories[] | select(.slug==$s) | .id' | head -1)"
@@ -119,7 +129,7 @@ else
   first="$(curl -sSL -m 10 "$FORUM_BASE/t/${about}.json" | jq -r '.post_stream.posts[0].id')"
   curl -sS -m 20 -X PUT "$FORUM_BASE/posts/${first}.json" "${AUTH[@]}" \
     -H "Content-Type: application/json" \
-    -d "$(jq -n --arg l "$LANGUAGE" '{post:{raw:("This is a section of the forum to discuss translating Jiki into " + $l + ".")}}')" \
+    -d "$(jq -n --arg l "$LANGUAGE" '{post:{raw:("This is a section of the forum to discuss translating Exercism into " + $l + ".")}}')" \
     -o /dev/null -w ""
 fi
 
@@ -131,7 +141,7 @@ if [ -n "$existing" ]; then
   TID="$existing"
 else
   body="$(printf '%s\n' \
-    "If you'd like to help translate Jiki to ${LANGUAGE} please add a comment here containing the following:" \
+    "If you'd like to help translate Exercism to ${LANGUAGE} please add a comment here containing the following:" \
     "- Introducing yourself (your name, where you live, your coding experience, any other personal information you want to share, etc)" \
     "- Your level of fluency in ${LANGUAGE}" \
     "- Your level of fluency in English" \

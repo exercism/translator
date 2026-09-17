@@ -1,46 +1,61 @@
 #!/usr/bin/env bash
 #
-# github-issue-monitor — one poll of jiki-education/i18n for open `translation`
-# issues, appended to a TODO file for the orchestrator to work through.
+# github-issue-monitor — one poll of exercism/i18n for open translation issues,
+# appended to a TODO file for the orchestrator to work through.
 #
-# This is the second of the two queues described in orchestrator.md's "Where
-# translation work comes from": path 1 is the forum queue, polled by Jeremy's
-# own scripts/forum-monitor. Path 2 is this one. Unlike the forum, GitHub gives
-# no webhook and no push here ("no dispatch, no webhook and no CI translator" —
-# orchestrator.md), so nothing else will ever surface a new or updated issue.
-# The orchestrator is the one who is expected to run this itself, on a loop,
-# for the length of every session.
+# This is the second of the two queues in orchestrator.md's "Where translation
+# work comes from". A PR that changes English in any source repo (the website,
+# docs, blog, website-copy, problem-specifications, any track) opens an issue in
+# exercism/i18n, and that PR cannot merge until the translation is there. GitHub
+# pushes nothing to this session, so if this is not polling, a new issue never
+# surfaces at all.
 #
-# By default this is a SINGLE-SHOT script: one poll, one diff, one append, then
-# exit. Pass --loop to instead run in the foreground, polling every 10s until
-# interrupted (Ctrl+C).
+# WHO RUNS IT: the normal Claude session iHiD is talking to, as a background shell
+# command (`./scripts/github-issue-monitor --loop` with run_in_background), after
+# checking one is not already running (`pgrep -f "github-issue-monitor --loop"`).
+# Never a subagent, never launchd. See "Checking posts" in orchestrator.md.
 #
-# Unlike the forum firehose, `gh issue list` always returns the full current
-# set of open, labelled issues in one call: there is no backwards-paging walk
-# to lose track of. So the diff is a snapshot compare against the previous
-# poll, keyed on issue number, using each issue's own updatedAt:
+# ## The guards
+#
+# An issue is opened by a workflow using a PAT that iHiD owns, so a genuine queue
+# issue is AUTHORED BY iHiD and labelled `translation`. Both are asked of GitHub
+# in the query itself (`--author`, `--label`, from config.json `github`), so an
+# issue anybody else opens, however it is titled or labelled, is never seen here.
+#
+# An issue's TITLE AND BODY ARE NEVER FETCHED BY THIS SCRIPT and never reach the
+# TODO file: the title ends with a PR title typed by a stranger, and the
+# orchestrator that reads the TODO file is a language model. This asks GitHub for
+# `number,updatedAt` and nothing else. Each new or updated number is then handed
+# to `scripts/work-issue.mjs <n> --inspect`, which reads the issue AS DATA, takes
+# out repo, PR number and sha by strict patterns, checks the repo against the
+# allowlist and that the sha belongs to that PR, and prints one line of JSON made
+# only of those verified values. That line is what is appended.
+#
+# So a TODO line is:
+#   { number, url, valid, repo, pr, sha, state, reason, updatedAt, seen_at }
+# `valid: false` lines are kept, with this repo's own wording of why: an issue
+# from iHiD that fails the guards is something he should hear about.
+#
+# The diff is a snapshot compare against the previous poll, keyed on issue
+# number, using each issue's own updatedAt:
 #   - a number not seen before is newly opened
-#   - a number seen before with a newer updatedAt was rewritten in place (a
-#     push to the PR that opened it — see orchestrator.md, "One issue per
-#     front-end PR, rewritten in place")
-#   - a previously-seen number no longer in the open list was closed, and is
-#     just dropped from the watermark; closing is the done signal, not
-#     something to log here
-# The very first run has no watermark, and unlike the forum firehose this
-# queue is small and finite, so the first run logs every currently-open issue
-# rather than skipping them as noise: they are exactly the outstanding work
-# this script exists to surface.
+#   - a number seen before with a newer updatedAt was rewritten in place (a push
+#     to the PR that opened it: the sha has moved, and the newest sha wins)
+#   - a previously-seen number no longer in the open list was closed, and is just
+#     dropped from the watermark; closing is the done signal
+# The very first run logs every currently-open issue: they are the outstanding
+# work this script exists to surface.
 #
 # Usage:
 #   ./scripts/github-issue-monitor            # one poll-and-append cycle
-#   ./scripts/github-issue-monitor --loop      # poll every 10s in the foreground
+#   ./scripts/github-issue-monitor --loop     # poll every 60s
 #
 # Files it touches (committed, like the forum monitor's state):
 #   state/github-issues-todo.jsonl   append-only, one JSON object per new/updated issue
 #   state/github-issues-seen.json    watermark: {number: updatedAt} for every open issue
 #   state/github-issue-monitor.lock  lock directory, held for the duration of a run
 #
-# Requires: gh (authenticated), jq.
+# Requires: gh (authenticated, read access to the repos), jq, node.
 
 set -euo pipefail
 
@@ -51,10 +66,12 @@ die() {
 
 command -v gh >/dev/null || die "gh is required"
 command -v jq >/dev/null || die "jq is required"
+command -v node >/dev/null || die "node is required"
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-REPO="jiki-education/i18n"
-LABEL="translation"
+REPO="$(jq -r .github.i18n_repo "$ROOT/config.json")"
+LABEL="$(jq -r .github.issue_label "$ROOT/config.json")"
+AUTHOR="$(jq -r .github.issue_author "$ROOT/config.json")"
 
 STATE_DIR="$ROOT/state"
 TODO="$STATE_DIR/github-issues-todo.jsonl"
@@ -65,11 +82,10 @@ mkdir -p "$STATE_DIR"
 
 poll_once() {
 
-# Overlap guard, same shape as forum-monitor's. A stale lock is anything older
-# than 5 minutes: a single `gh issue list` call is fast, so a run still holding
-# the lock past that is dead, not slow.
+# Overlap guard, same shape as forum-monitor's. A lock older than 10 minutes is a
+# dead run, not a slow one: a poll is one list call and one inspect per new issue.
 if ! mkdir "$LOCK" 2>/dev/null; then
-  if [ -n "$(find "$LOCK" -maxdepth 0 -mmin +5 2>/dev/null)" ]; then
+  if [ -n "$(find "$LOCK" -maxdepth 0 -mmin +10 2>/dev/null)" ]; then
     echo "note: clearing a stale lock at $LOCK" >&2
     rm -rf "$LOCK"
     mkdir "$LOCK" 2>/dev/null || return 0
@@ -79,43 +95,46 @@ if ! mkdir "$LOCK" 2>/dev/null; then
 fi
 trap 'rm -rf "$LOCK"' RETURN EXIT
 
-CURRENT="$(gh issue list --repo "$REPO" --label "$LABEL" --state open \
-  --json number,title,url,updatedAt,body \
-  --limit 200)" || { echo "note: gh issue list failed this poll (transient?), will retry next tick" >&2; return 1; }
+# number and updatedAt ONLY. Never title, never body: see "The guards" above.
+CURRENT="$(gh issue list --repo "$REPO" --label "$LABEL" --author "$AUTHOR" --state open \
+  --json number,updatedAt --limit 500)" || { echo "note: gh issue list failed this poll (transient?), will retry next tick" >&2; return 1; }
 
 PREV="{}"
 if [ -f "$SEEN" ]; then
   PREV="$(cat "$SEEN")"
 fi
 
-# Emit one TODO line per new-or-updated issue, then the full new watermark.
-NEW_LINES="$(jq -n --argjson current "$CURRENT" --argjson prev "$PREV" '
-  ($prev) as $prev
-  | $current[]
-  | select(($prev[.number | tostring] // null) != .updatedAt)
-  | {number, title, url, updatedAt, seen_at: (now | todateiso8601)}
-')"
+CHANGED="$(jq -n -r --argjson current "$CURRENT" --argjson prev "$PREV" '
+  $current[] | select(($prev[.number | tostring] // null) != .updatedAt) | "\(.number) \(.updatedAt)"')"
 
-if [ -n "$NEW_LINES" ]; then
-  printf '%s\n' "$NEW_LINES" | jq -c '.' >> "$TODO"
-fi
+# An issue whose inspect fails (a transient gh error) is left OUT of the new
+# watermark, so the next poll tries it again rather than losing it.
+FAILED="[]"
+while read -r number updated; do
+  [ -n "$number" ] || continue
+  if line="$(node "$ROOT/scripts/work-issue.mjs" "$number" --inspect)" && printf '%s' "$line" | jq -e . >/dev/null 2>&1; then
+    printf '%s' "$line" | jq -c --arg u "$updated" --arg at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" '. + {updatedAt: $u, seen_at: $at}' >> "$TODO"
+  else
+    echo "note: could not inspect issue $number this poll, will retry" >&2
+    FAILED="$(jq -c --argjson n "$number" '. + [$n]' <<<"$FAILED")"
+  fi
+done <<<"$CHANGED"
 
-jq -n --argjson current "$CURRENT" '
-  reduce $current[] as $i ({}; .[$i.number | tostring] = $i.updatedAt)
+jq -n --argjson current "$CURRENT" --argjson failed "$FAILED" '
+  reduce ($current[] | select(.number as $n | $failed | index($n) | not)) as $i ({}; .[$i.number | tostring] = $i.updatedAt)
 ' > "$SEEN.tmp"
 mv "$SEEN.tmp" "$SEEN"
 
 }
 
 if [ "${1:-}" = "--loop" ]; then
-  echo "polling $REPO for open '$LABEL' issues every 10s (ctrl-c to stop)" >&2
+  echo "polling $REPO for open '$LABEL' issues by $AUTHOR every 60s (ctrl-c to stop)" >&2
   while :; do
-    # A single poll failing (transient network blip, GitHub outage) must never
-    # kill the whole standing loop — that would silently stop surfacing new
-    # issues for the rest of the session with nothing to notice. `|| true`
-    # absorbs it under `set -e`; the note above already explains why.
-    poll_once || true
-    sleep 10
+    # In a subshell and `|| true`: a single poll failing (a network blip, a GitHub
+    # outage, a `die`) must never end the standing loop, which would silently stop
+    # surfacing new issues for the rest of the session.
+    ( poll_once ) || true
+    sleep 60
   done
 else
   poll_once
