@@ -111,22 +111,6 @@ These stay in Latin script inside Urdu prose: acronyms pronounced as letters, an
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | Always English/Latin script, including inside prose. Translate only the surrounding explanation. |
 | Jiki (character/brand name) | Kept in Latin script; see guide § "Jiki-name handling" for attaching Urdu postpositions. |
 
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Urdu rendering | Notes |
-|-------------------|-----------------|-------|
-| box (value container) | ڈبہ | |
-| chain (array metaphor) | زنجیر | |
-| machine (function metaphor) | مشین | |
-| input slot | ان پٹ سلاٹ | |
-| return chute | واپسی کی نالی | |
-| shelves (storage) | الماری | |
-| warehouse (Jiki's warehouse) | گودام | |
-| crank (machine crank) | ہینڈل | The handle Jiki turns to power a machine up. To crank it is "ہینڈل گھمانا" (to turn the handle). |
-| board / whiteboard | وائٹ بورڈ | **One object, one word.** The board the learner puts instructions on for Jiki to follow, and the board a function keeps its own notes on, are the same metaphor and take the same word everywhere. No collision with "زنجیر" (array). |
-
 ## Platform & curriculum vocabulary
 
 | English | Urdu | Use (ur/en) | Notes |

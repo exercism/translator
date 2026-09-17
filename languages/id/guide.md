@@ -76,15 +76,3 @@ Indonesian-specific rules that English speakers get wrong:
   Pertamamu".
 - **Rhetorical asides** ("So what do these conditions look like?") stay natural rhetorical
   questions in Indonesian: "Nah, seperti apa sih kondisi-kondisi ini?"
-
-## Term clarification
-
-Realizes the `<define>` format principle in `global/voice.md`. Which direction applies is
-set by the term's `Use (id/en)` column in `glossary.md`, never chosen ad hoc.
-
-- **Indonesian-primary** (`id`): prefix the italic English term inside the parentheses with
-  _bahasa Inggris:_, e.g. fungsi (bahasa Inggris: _function_).
-- **English-primary** (`en`): the italic English term comes first and the Indonesian gloss
-  follows in plain parentheses with **no** marker word, since the surrounding prose is
-  already Indonesian, e.g. _interpreter_ (penerjemah), _error_ (kesalahan). Never write
-  "bahasa Indonesia:" inside those brackets.

@@ -88,19 +88,3 @@ format in `global/voice.md`); with no `<define>`, use the English bare, no gloss
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Catalan rendering | Notes |
-|-------------------|--------------------|-------|
-| box (value container) | capsa | Not _caixa_: too many competing technical senses (crate, cash register, gearbox casing). |
-| chain (array metaphor) | filera | Never _cadena_: it is the everyday word for a physical chain, but the programming term for a **string** is _corda_, so _cadena_ reads as a false friend. Never _reguitzell_: literary and dated. |
-| input slot | ranura d'entrada | |
-| return chute | conducte de sortida | |
-| machine (function metaphor) | màquina | |
-| crank (machine crank) | maneta | Verb phrase: _girar la maneta_ ("girar la maneta i posar-la en marxa"). |
-| shelves (storage) | prestatges | Singular _prestatge_ for one shelf. |
-| warehouse (Jiki's warehouse) | magatzem | The place Jiki hangs out and keeps his machine shelf. |
-| board / whiteboard | pissarra | **One object, one word.** The same _pissarra_ everywhere: the board the learner writes instructions on for Jiki to come and follow, and the board where a function keeps its own instructions and notes. Never two different words. No collision with _llista_ (array). |

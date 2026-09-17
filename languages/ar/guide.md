@@ -119,26 +119,6 @@ gives for the sense you mean (array metaphor, string), and never shorten one bac
 to bare سلسلة for brevity, however often it repeats on a page. If a compound feels too
 long in a sentence, flag it rather than shortening it.
 
-## Term clarification
-
-When introducing an English term under Arabic-primary (see `global/voice.md`), mark it as
-English by appending بالإنجليزية after the italic English term inside the parentheses,
-using bidirectional isolation around the Latin script, e.g. الدالة (‏_function_
-بالإنجليزية).
-
-A `<define>` gloss is the one place in Arabic Jiki content that needs a manual directional
-mark (ordinary inline code tokens do not). Without it, an italic Latin term sitting
-immediately after an opening `(` is laid out with its neighbouring punctuation on the
-wrong side and the closing bracket appears to migrate. The fix:
-
-- Insert a single **RLM (U+200F, RIGHT-TO-LEFT MARK)** immediately after the opening
-  parenthesis, before the `_`: `(‏_function_ بالإنجليزية)`. Nothing else, and nothing
-  before the closing parenthesis.
-- Do not use `<bdi>`, `<span dir>`, or the deprecated embedding/override characters
-  (U+202A-U+202E); the RLM plus the renderer's native bidi algorithm is enough.
-- The RLM is invisible, so it survives copy-paste silently. When editing an existing gloss,
-  check the character is still there rather than assuming it, and never add a second one.
-
 ## Style notes
 
 - **Em dashes:** in Arabic prose the natural replacements are a comma (، ), a full stop

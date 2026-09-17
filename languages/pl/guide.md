@@ -87,23 +87,6 @@ Polish-specific rules that English speakers get wrong:
   gender that any modifying adjective must agree with. Check the glossary's gender note
   before attaching an adjective to a metaphor term.
 
-## Term clarification
-
-When introducing an English term under Polish-primary (see `global/voice.md`), prefix the
-italic English term inside the parentheses with the abbreviation `ang.`, e.g. funkcja
-(ang. _function_).
-
-**Skip the bracket entirely when the Polish rendering is the same word as the English**,
-so a `<define>` on such a term is rendered with no bracket at all:
-
-- `<define>interpreters</define>` → „interpreterów”, not „interpreterów (ang. _interpreter_)”
-- `<define>error</define>` → „błąd (ang. _error_)” (the Polish differs, so the gloss earns
-  its place)
-
-Near-identical Polish-spelled forms (_operator_, _komponent_, _moduł_, _indeks_) count as
-the same word for this purpose; a shared Latin root with a genuinely different Polish shape
-(_ciąg znaków_ for _string_) does not, and keeps its gloss.
-
 ## Style notes
 
 - **Em dashes:** in Polish prose the natural replacements are a **comma** for a

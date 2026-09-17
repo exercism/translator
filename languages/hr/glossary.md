@@ -150,28 +150,6 @@ These are terms where the Croatian is used in prose, so the "Use (hr/en)" column
 | circle | krug / kružnica | hr | `krug` is the filled disc, `kružnica` the outline. A drawing exercise must honour the difference. |
 | horizontal / vertical | vodoravno / okomito | hr | Better for beginners than `horizontalno`/`vertikalno`. |
 
-### Exercise scenario vocabulary
-
-Terms that belong to an exercise's story rather than to programming itself.
-
-| English | Croatian | Use (hr/en) | Notes |
-|---------|----------|-------------|-------|
-| maze | labirint | hr | Masculine. Never `lavirint`. |
-| dead end (maze) | slijepa ulica | hr | `slijepi hodnik` inside a corridor maze. Never `ćorsokak`. |
-| alien (creature) | izvanzemaljac | hr | Never `vanzemaljac`: Croatian takes the `izvan-` prefix. Does not read as "foreigner", which is `stranac`. |
-| traffic light (the whole device) | semafor | hr | |
-| light (one coloured lamp) | svjetlo | hr | `crveno / žuto / zeleno svjetlo`. Croatian says `žuto`, never `narančasto`, for the middle light. |
-| bouncer | izbacivač | hr | Including in exercise titles. `zaštitar` is what Croatians more often say in real life; keep it for running prose where the security-guard sense fits better. |
-| skyscraper | neboder | hr | |
-| skyline / cityscape | silueta grada | hr | Croatian has no one-word equivalent; do not coin one. |
-| dress code | pravila odijevanja | hr | |
-| ballgown | balska haljina | hr | The English value stays as-is in code; use the Croatian in prose. |
-| tuxedo | smoking | hr | Masculine. Never `tuksedo`. |
-| suit | odijelo | hr | |
-| dress | haljina | hr | |
-| denim | traper | hr | `traperice` for jeans. Never `džins`. |
-| pangram | pangram | hr | Gloss where the source introduces it as `rečenica koja sadrži sva slova abecede`. Croatian uses *abeceda*, never *azbuka*. |
-
 ## Keep in English
 
 These stay in English in Croatian prose, with the Croatian gloss to use for each.
@@ -197,29 +175,6 @@ These stay in English in Croatian prose, with the Croatian gloss to use for each
 | Variable and function names | (no gloss) | The identifiers themselves are never translated. Where the phrase itself appears in prose, it is `varijable i nazivi funkcija`. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | Never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Croatian rendering | Notes |
-|-------------------|--------------------|-------|
-| box (value container) | kutija | Feminine. `kutijica` where a warmer diminutive helps. |
-| chain (array metaphor) | lanac | Masculine (genitive `lanca`, plural `lanci`). One link is a **`karika`**, never `alka`. Used as the teaching image alongside the technical `polje`. |
-| machine (function metaphor) | stroj | Masculine. **Never `mašina`**, which is marked regional and Serbian. `strojić` is the natural diminutive for one of Jikijevih malih strojeva. |
-| input slot | prorez | Masculine. The everyday word for the slot you drop a coin into. Never `utor`, which is the hardware expansion-slot term. |
-| return chute | izlazni otvor | Masculine. Pairs with `prorez`. Never `klizište`, which means a landslide. |
-| crank (machine crank) | ručica | Feminine. Jiki `okreće ručicu` to power a machine up. Not `kurbla` (dated) and not `poluga` (a lever). |
-| shelves (storage) | polica | Feminine, plural `police`. Jikijevi strojevi stoje na polici. |
-| warehouse (Jiki's warehouse) | skladište | Neuter. `Jikijevo skladište`. |
-| workshop (Jiki's workshop) | radionica | Feminine. `Jikijeva radionica`. |
-| board / whiteboard | ploča | Feminine. **One object, one word:** the board the learner writes instructions on for Jiki to follow, and the board a function keeps its own notes on, are the same `ploča`. Keep it strictly for the writing surface, since `matična ploča` is a motherboard. |
-| piece of paper (string metaphor) | papirić | Masculine. `list papira` in more explanatory register. |
-| coin (number metaphor) | novčić | Masculine. Not `kovanica`, which is numismatic. |
-| label (on a box/machine) | naljepnica | Feminine. `natpis` where Jiki writes directly on the box. **Avoid `oznaka`**, the standard word for a code label or identifier. |
-| spiral notebook page (dictionary metaphor) | bilježnica na spiralu | Feminine. One page is `stranica bilježnice`. |
-| mini-Jiki | mali Jiki | Plural `mali Jikiji`. **Never `Jikić`**, which reads as a surname. |
-| character (game/maze figure) | lik | Masculine. Free of collision, because a text character is `znak`, not `karakter`. |
 
 ## Brackets
 

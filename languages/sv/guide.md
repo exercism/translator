@@ -83,32 +83,6 @@ Re-read for: a fronted phrase with no inversion; ”Låt oss...”; ”man” wh
 addressing the reader; särskrivning; the anglicisms and false friends the glossary rules
 out, plus _kontrollera_ used for "control".
 
-## Term clarification (Swedish realisation)
-
-The principle lives in `global/voice.md`. The Swedish specifics for expanding a
-`<define>`:
-
-- **Swedish-primary term** (`Use = sv`): Swedish first, English in italics followed by the
-  marker phrase **`på engelska`** in brackets. `villkor (_condition_ på engelska)`, `tolk
-  (_interpreter_ på engelska)`.
-- **English-primary term** (`Use = en`): English first in italics, Swedish gloss in
-  brackets, no marker phrase. `_scope_ (räckvidd)`.
-- **Code identifier**: code span, Swedish meaning in brackets, no marker phrase.
-  `` `turnLeft` `` (sväng vänster).
-- **Skip a gloss that teaches nothing.** Where the Swedish rendering is the English word
-  in the same script (`index`, `parameter`, `syntax`, `array`), drop the parenthetical and
-  leave the term as it is.
-
-## Product and strand names
-
-Everything here translates like ordinary UI copy; nothing stays English (see
-`content-types/website-keys.md`).
-
-- Translate descriptive strand names: "Learn to Code" becomes ”Lär dig koda”, "Learn to
-  Build" becomes ”Lär dig bygga”.
-- Translate coined and branded names too: Ask Jiki, Deep Dive, Jiki Premium, Bootcamp, and
-  the game names all get Swedish renderings, the same as any other UI copy.
-
 ## Style notes
 
 - **Em dashes:** the Swedish tankstreck is an **en dash with a space on each side** and is

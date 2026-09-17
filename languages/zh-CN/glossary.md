@@ -142,17 +142,3 @@ These stay in English in prose. Where the source `<define>`s one of these terms,
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language. See `../zh/glossary.md` for the metaphors shared with `zh-TW` (box, board/whiteboard, input slot, return chute); the rows below are this locale's own glyphs for the metaphors that diverge by script or by word choice (rationale in `../zh/guide.md`).
-
-**board / whiteboard is one term, one word: 白板**, and it lives in `../zh/glossary.md` because it is character-identical in both scripts. The same 白板 covers both uses: the board the learner puts instructions on for Jiki to follow, and the board a function keeps its own instructions and notes on. Never use a second word for either.
-
-| English metaphor | Chinese rendering | Notes |
-|------------------|--------------------|-------|
-| chain (array metaphor) | 链 / 链条 | Link = 链环/链节. |
-| machine (function metaphor) | 机器 | The machine a function is modelled as, with its input slot (投入口, shared) and return chute (出料口, shared). |
-| shelves (where things are stored) | 货架 | The shelves where variables and functions live. |
-| warehouse (Jiki's warehouse) | 仓库 | Where Jiki hangs out and keeps his machine shelf. The collision is with git "repository", which is why that sense is always written in full as 代码仓库 (see § Tooling & engineering). |
-| crank (machine crank) | 摇柄 | The crank Jiki turns to power a machine up: 转动摇柄. |

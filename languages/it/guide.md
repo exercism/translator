@@ -108,23 +108,6 @@ the English sentence boundaries.
   without a connector, Italian needs an explicit relative pronoun: "un'altra istruzione
   **che** controlla se due valori sono uguali", not a colon-joined fragment.
 
-## Term clarification
-
-When introducing an English term under Italian-primary (see `global/voice.md`), append
-_in inglese_ after the italic English term inside the parentheses, e.g. la funzione
-(_function_ in inglese).
-
-**Drop the gloss for transparent cognates.** Where the Italian is a look-alike of the
-English (_interprete_ / interpreter, _errore_ / error, _funzione_ / function, _espressione_
-/ expression, _variabile_ / variable), the parenthetical teaches nothing: leave the term
-bare and expand the `<define>` to nothing extra. This is a standing Italian rule, not a
-per-page judgement.
-
-Keep the gloss where the Italian genuinely differs from the English and so carries
-information: an acronym expanded in Italian, a descriptive phrase for an opaque loanword,
-a code identifier's meaning (`turnLeft` (gira a sinistra)), or a term whose Italian is not
-a look-alike of the English. The wording to use for each such term is in `glossary.md`.
-
 ## Naming a function's inputs in prose
 
 When running prose names the inputs of a function the exercise has just introduced, **keep

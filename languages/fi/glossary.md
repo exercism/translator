@@ -144,32 +144,6 @@ These stay in English in Finnish prose, with the Finnish gloss to use for each.
 | Code, Frontend, Backend | (no gloss) | As capitalised tokens and UI labels only. In running prose the ordinary Finnish word is _koodi_, and that is what to write. See _bugi_ and _debuggaus_ under "Tooling & engineering" for the same split. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation, and hang a Finnish head noun off the token rather than inflecting it; see `guide.md`. |
 
-## Jiki physical metaphors
-
-Load-bearing teaching terms.
-
-| English metaphor | Finnish rendering | Notes |
-|------------------|-------------------|-------|
-| box (value container) | laatikko | The ordinary, child-level word. |
-| chain (array metaphor) | ketju | Link = _lenkki_ (_ketjun lenkki_). **Never _silmukka_ for a link**, which is the word for a loop. |
-| machine (function metaphor) | kone | A function is one of Jiki's _pieniä koneita_. Not _laite_, which is a device. |
-| input slot | syöttöaukko | The opening you drop something into. Reinforces _syöte_ (input). |
-| return chute | palautusluukku | Where the value comes back out. Where the slide image matters, write it out: _palautusluiska, kuin pieni liukumäki_. Never _ulostuloaukko_. |
-| crank (machine crank) | kampi | Jiki _kääntää kampea_ to power a machine up. Not _kahva_, which is a grip you do not turn. |
-| shelves (storage) | hylly | Jiki's machines sit on a _hylly_. |
-| warehouse (Jiki's warehouse) | varasto | Where Jiki hangs out and keeps his machine shelf (_Jikin varasto_). |
-| workshop (Jiki's workshop) | verstas | The room Jiki works in; the shelves stand in it. Never _työpaja_, which in modern Finnish means a workshop event. |
-| board / whiteboard | tussitaulu | **One object, one word.** The board the learner writes instructions on for Jiki to come along and follow, and the board a function keeps its own instructions and notes on, are the same _tussitaulu_. **Never bare _taulu_**, which sits one derivational step from _taulukko_ (array) and will read as its stem. |
-| label (on a box/machine) | tarra | The stuck-on sticker. Not _lappu_, which is reserved for the paper metaphor, and not _otsikko_ or _selite_, which are UI vocabulary. |
-| coin (number metaphor) | kolikko | |
-| piece of paper (string metaphor) | paperilappu | Introduce as _paperilappu_ and shorten to _lappu_ after that. |
-| spiral notebook page (dictionary metaphor) | kierrevihkon sivu | The notebook itself is a _kierrevihko_. |
-| mini-Jiki | pikku-Jiki | _pikku-_ is the native, warm diminutive. The hyphen is required before a capitalised name, and only the second part inflects: _pikku-Jikin_. |
-| character (game/maze figure) | hahmo | _pelihahmo_ where it needs to be explicit. **Never _merkki_**, which is a text character (see "Values & data types"). |
-| little man (in the computer) | pieni mies | The figure the concept pages say lives inside the computer and does the work. Distinct from _pikku-Jiki_ (Jiki's own name) and from _hahmo_ (the on-screen game figure). Real alternatives exist (_pikku-ukko_, _pikkumies_) and the figure recurs across concept pages, so this row fixes one rendering. |
-| maze | sokkelo | A branching maze with dead ends. Not _labyrintti_, which is a single winding path. |
-| cell (grid square) | ruutu | One square of a maze or board grid. Shares _ruutu_ with the agreed `frame (animation)` row under "Colours & graphics"; different domains (grid square vs animation frame) and the collision looks harmless, but it is worth a human eye, because this is the first exercise-family term the precedent applies to (maze now, other grid-based families later). |
-
 ## Brackets
 
 | Glyph | Finnish | Notes |

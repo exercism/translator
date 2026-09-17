@@ -28,12 +28,6 @@ Rules that hold across every Portuguese locale:
 - **Avoid comma-chained subordinate clauses** that mirror English subordination. Break
   them into two sentences where the target reads more naturally that way.
 
-## Term clarification
-
-When introducing an English term under Portuguese-primary (see `global/voice.md`), append
-_em inglês_ after the italic English term inside the parentheses, e.g. a função (_function_
-em inglês).
-
 ## Style notes
 
 - **Em dashes.** The global no-em-dash rule (`global/rules.md`) applies. In Portuguese the

@@ -174,16 +174,6 @@ per `guide.md` § "Geometry terms carry an English gloss".
 | hex (colour) | हेक्स | - | hi | Devanagari, per `guide.md` § "Script convention": "हेक्स रंग", "हेक्स स्ट्रिंग". The `#` and the hex digits themselves are code and stay as they are. |
 | horizontal / vertical | आड़ी रेखा / खड़ी रेखा | f | hi | Name the noun, so it is clear the adjective describes the line. Not क्षैतिज / ऊर्ध्वाधर, which are the textbook-formal pair. **Where the thing is not a line, keep the adjective and use that thing's own noun**: "खड़ी पट्टियाँ" (vertical stripes), "आड़ी त्रिज्या / खड़ी त्रिज्या" (horizontal / vertical radius), "आड़ी स्थिति" (horizontal position). Never a bare आड़ी / खड़ी with no noun after it. |
 
-### Exercise scenario vocabulary
-
-Real-world nouns that an exercise's story is built on, where the obvious rendering is wrong
-or reads clunky in Hindi. Ordinary words an exercise happens to use do not belong here.
-
-| English | Hindi | Gender | Use (hi/en) | Notes |
-|---------|-------|--------|-------------|-------|
-| canapé / canapés | कैनेपे | m | hi | **Same form singular and plural.** Never कैनापेज़ or any other English-style `-s`/`-ज़` plural; plurality is carried by the verb, the adjective or a quantifier, not by the noun. |
-| guest list (the list of invited people) | गेस्ट लिस्ट | f | hi | Not मेहमानों की सूची. The real-world guest list of an event only. **Not the data structure**: an array or a code-level list is ऐरे (see "Values & data types"), whatever the English calls it. |
-
 ## Keep in English (Latin script)
 
 These, and only these, stay in Latin script inside Hindi prose. Anything not listed here is
@@ -201,21 +191,3 @@ written in Devanagari, per `guide.md` § "Script convention".
 | CLI commands (`npm install`, `git commit`) | The commands themselves are never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | Always English, including inside prose. Translate only the surrounding explanation. |
 | Jiki (character/brand name) | Kept in Latin script; see `guide.md` § "Style notes" for attaching Hindi postpositions. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry
-technical language.
-
-| English metaphor | Hindi rendering | Gender | Notes |
-|-------------------|------------------|--------|-------|
-| box (value container) | डिब्बा | m | |
-| chain (array metaphor) | ज़ंजीर | f | Chain link / array element (in this metaphor) = कड़ी (f). |
-| input slot | इनपुट स्लॉट | m | |
-| return chute | आउटपुट की फिसलपट्टी | f | |
-| machine (function metaphor) | मशीन | f | |
-| shelves (storage) | अलमारी | f | |
-| warehouse (Jiki's warehouse) | गोदाम | m | |
-| crank (machine crank) | हैंडल | m | To crank it is "हैंडल घुमाना". |
-| board / whiteboard | बोर्ड | m | **One object, one word.** Both the board the learner puts निर्देश on for Jiki to follow and a function's own board of notes are बोर्ड. Never use व्हाइटबोर्ड alongside it. |
-

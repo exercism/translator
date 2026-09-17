@@ -47,34 +47,6 @@ Croatian word order is free enough that English order is usually *possible*, whi
 - **Split long English chains.** English strings clauses together with "which means... so that...". Croatian reads better as two or three shorter sentences, and splitting is what lets the clitics sit naturally.
 - **Do not front the subject just because English did.** Croatian often starts with the adverbial or the object: `U ovim situacijama koristimo `if``, not `Mi koristimo `if` u ovim situacijama`.
 
-## Term clarification (Croatian realisation)
-
-The principle (the `<define>`/`<literal>` markup, the no-auto-gloss rule, and direction from the glossary's `Use (hr/en)` column) lives in `global/voice.md`. The Croatian marker phrase for "in English" is **`na engleskom`**, placed after the English term inside the brackets.
-
-- **Croatian-primary term** (`Use = hr`): Croatian first, English in italics with `na engleskom` in brackets. `petlja (_loop_ na engleskom)`, `funkcija (_function_ na engleskom)`.
-- **English-primary term** (`Use = en`): English first in italics, Croatian gloss in brackets, no marker phrase. `_string_ (niz znakova)`.
-- **Code identifier**: code span, Croatian meaning in brackets, no marker phrase. `` `turnLeft` `` (skreni lijevo).
-- **Skip the gloss where it would only restate the English**, per `global/voice.md`. Croatian reads the same Latin script, so glossing `_chat_` as `chat` teaches nothing.
-
-## The name "Jiki"
-
-- **Decline it, with an intervocalic `-j-`.** Leaving it invariant reads as careless.
-
-| Case | Form |
-|---|---|
-| nominativ | Jiki |
-| genitiv | Jikija |
-| dativ | Jikiju |
-| akuzativ | Jikija |
-| vokativ | Jiki |
-| lokativ | Jikiju |
-| instrumental | Jikijem |
-
-  Plural, for the little Jikis inside the machines: `Jikiji`, `Jikija`, `Jikijima`.
-
-- **Use the possessive adjective, not the genitive.** `Jikijevo skladište`, `Jikijeva radionica`, `Jikijev stroj`. Never `skladište Jikija`.
-- **`mali Jiki`** is the small Jiki who works inside a function machine. Never `Jikić`: `-ić` is the Croatian surname suffix and reads as a family name.
-
 ## Style notes
 
 - **Quotation marks:** Croatian pairs, **„** (U+201E) to open and **"** (U+201D) to close: `„Pokušaj"`. Never straight ASCII `"`. For a quote inside a quote use single `'…'`.

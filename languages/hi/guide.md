@@ -342,43 +342,6 @@ was bolted onto it. No replacement wording is given here on purpose. Write what 
 tells the learner to do, in whatever shape that sentence wants, and do not carry this
 opening, or the one from the maze example above, onto the next sentence you translate.
 
-## Term clarification
-
-The format principle is in `global/voice.md`; the direction comes from each term's
-`Use (hi/en)` column in `glossary.md`. In Hindi, **no marker word**: the brackets carry the
-other language on their own.
-
-- **Hindi-primary term** (`Use = hi`, almost every term): the Hindi term reads in the
-  sentence, with the italic English in bare parentheses at the `<define>`, e.g. "वह आपको
-  एक एरर (_error_) दे सकता है।" Keep that bracket even when the Hindi is itself a
-  transliteration of the English (फंक्शन (_function_)): the Devanagari is what makes the
-  term readable, and the English is what the reader will meet in documentation elsewhere.
-- **English-primary term** (`Use = en`, the short "Keep in English" table): the English
-  term reads in the sentence, with a Hindi explanation from the glossary in bare
-  parentheses, e.g. "API (दो प्रोग्राम के आपस में बात करने का तरीका)". For an acronym,
-  explain the concept, never merely re-spell the letters.
-- **Code identifiers**: code span, never italics, and the gloss is the identifier's meaning
-  in Hindi with no English marker, e.g. "`turnLeft` (बाएँ मुड़ना)".
-
-Never gloss a term the source has not `<define>`d. **Geometry terms are the one exception**,
-and it is a closed list, not a licence to gloss anything else.
-
-### Geometry terms carry an English gloss (exception)
-
-The names of shapes and the other school-geometry words the drawing exercises use (आयत,
-वृत्त, त्रिभुज, दीर्घवृत्त, त्रिज्या) take the English in bare brackets on **first use in a
-given piece of text**, whether or not the English source `<define>`d them: "एक आयत
-(rectangle) बनाया". These words are taught in Hindi-medium maths, so a reader outside the
-Hindi-medium states may know the shape perfectly well and not recognise its Hindi name.
-
-- Applies to the geometry vocabulary only. It does not extend to technical nouns, platform
-  vocabulary, or anything else the source left untagged; those still follow the rule above.
-- Plain brackets, with no italics and no marker word.
-- Where the shape name already sits next to its English code identifier, as in
-  "`rectangle` (आयत)", that pairing does the same job and no second gloss is added.
-- In a standalone string (a describer log line, a check message) every occurrence is a first
-  use, so each such string carries the gloss on its own.
-
 ## Style notes
 
 - **Em dashes:** in Hindi prose the natural replacements are a **comma** for a

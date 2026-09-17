@@ -124,16 +124,6 @@ consistently:
   review (resu-xunil, t/1621, t/1622, 2026-08-15); apply this rule going forward and fix
   drift as it's found rather than doing a dedicated sweep.
 
-## Term clarification
-
-When introducing an English term under French-primary (see `global/voice.md`), append
-_en anglais_ after the italic English term inside the parentheses, e.g. la fonction
-(_function_ en anglais).
-
-When a relative clause continues right after that parenthetical gloss, resume it directly
-with **qui** rather than restarting with a demonstrative like **ceux qui**: "des
-interprètes (_interpreters_ en anglais) qui prennent...", not "..., ceux qui prennent...".
-
 ## Style notes
 
 - **Never use a hyphen as a substitute for an em dash** in running prose (em dashes

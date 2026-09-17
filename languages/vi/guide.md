@@ -90,9 +90,3 @@ tuyệt vời!" (calqued "you did great, this is wonderful") reads over-sweet an
   `« »`, which read as formal/print rather than the online-tutorial default.
 - **Diacritics:** never strip tone or vowel diacritics; ensure proper Unicode (NFC) so
   tone marks render on the correct vowel.
-
-## Term clarification
-
-When introducing an English term under Vietnamese-primary (see `global/voice.md`), prefix
-the italic English term inside the parentheses with `tiếng Anh:`, e.g. hàm (tiếng Anh:
-_function_).

@@ -137,19 +137,3 @@ Swahili word was found for any of them (rather than a policy choice), so where t
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Swahili rendering | Notes |
-|-------------------|----------------------|-------|
-| box (value container) | sanduku | |
-| chain (array metaphor) | mnyororo | |
-| machine (function metaphor) | mashine | |
-| input slot | tundu la ingizo | |
-| return chute | mteremko wa matokeo | |
-| shelves (storage) | rafu | |
-| warehouse (Jiki's warehouse) | ghala | |
-| board / whiteboard | ubao | **One word for both uses**: the board the learner puts instructions on for Jiki to follow, and the board a function keeps its own notes on. Do not write `ubao mweupe` for one use and `ubao` for the other. |
-| crank (machine crank) | mpini | "to crank the handle" is `kuzungusha mpini` (to turn the handle). |

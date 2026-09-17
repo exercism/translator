@@ -68,28 +68,3 @@ Persian gloss below.
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry
-technical language. These are original Jiki coinages with no prior Persian precedent to
-verify against (the same position Hungarian's bootstrap was in); confirm each on first
-real use in a translated file and flag anything that reads awkwardly for native-speaker
-review.
-
-| English metaphor | Persian rendering | Notes |
-|-------------------|--------------------|-------|
-| chain (array metaphor) | زنجیر | **Never use حلقه (loop) for an individual link of the chain**, that word is reserved for the loop concept above. If a page ever needs to name one link, use **دانه** (bead) or **قطعه** (segment) instead. |
-| box (value container) | جعبه | |
-| input slot | دهانه ورودی | |
-| return chute | سرسره خروجی | |
-| machine (function metaphor) | دستگاه | |
-| crank (machine crank) | دسته | The handle Jiki pulls to turn a machine on: «دسته‌اش را بچرخاند» (crank the handle). |
-| coin (number metaphor) | سکه | Numbers are coins dropped into a machine's input slot. |
-| shelves (storage) | قفسه | Where variables and functions are stored. |
-| warehouse (Jiki's warehouse) | انبار | Where Jiki hangs out and keeps his machine shelf. |
-| workshop (Jiki's workshop) | کارگاه | The room where Jiki works; the shelves live in it. |
-| board / whiteboard | تخته | **One object, one word.** The board the learner puts instructions on for Jiki to follow, and the board a function keeps its own instructions and notes on, are the same تخته. Needs no qualifier. Never split this into two words, and never use تابلو or تخته سفید. |
-| spiral notebook page (dictionary metaphor) | دفترچه فنری | Keys down the left, values on the right. |
-| piece of paper (string metaphor) | برگه | Strings are pieces of paper Jiki writes text on. |
-| mini-Jiki | جیکی کوچولو | «Little Jiki». |

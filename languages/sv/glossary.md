@@ -123,29 +123,6 @@ These stay in English in Swedish prose, with the Swedish gloss to use for each.
 | Code, Bug, Frontend, Backend | (no gloss) | As capitalised tokens and UI labels only. In running prose the ordinary Swedish words are _kod_ and _bugg_, and those are what to write. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
 
-## Jiki physical metaphors
-
-Load-bearing teaching terms.
-
-| English metaphor | Swedish rendering | Notes |
-|------------------|-------------------|-------|
-| box (value container) | låda | |
-| chain (array metaphor) | kedja | Link = _länk_. |
-| machine (function metaphor) | maskin | A function is one of Jiki's _små maskiner_. |
-| input slot | inkast | The opening you drop something into, as on a coin-operated machine (_myntinkast_). |
-| return chute | rutschkana | The value slides back out down the _rutschkana_. Never _utkast_, which means "draft". |
-| crank (machine crank) | vev | Jiki _vevar igång_ a machine. The verb is _veva_. |
-| shelves (storage) | hylla | Jiki's machines stand on a _hylla_. |
-| warehouse (Jiki's warehouse) | lager | Where Jiki hangs out and keeps his machine shelf (_Jikis lager_). |
-| workshop (Jiki's workshop) | verkstad | The room Jiki works in; the shelves stand in it. |
-| board / whiteboard | tavla | **One object, one word.** The board the learner writes instructions on for Jiki to come along and follow, and the board a function keeps its own instructions and notes on, are the same _tavla_. No collision with _array_. |
-| coin (number metaphor) | mynt | |
-| label (on a box/machine) | etikett | |
-| piece of paper (string metaphor) | lapp | The everyday word for a small piece of paper Jiki writes on. |
-| spiral notebook page (dictionary metaphor) | blad ur ett spiralblock | |
-| mini-Jiki | mini-Jiki | Hyphenated, because the second part is a name. |
-| character (game/maze figure) | figur | Keep _tecken_ for a text character (see "Values & data types"); _figur_ is the on-screen game figure. |
-
 ## Brackets
 
 | Glyph | Swedish | Notes |

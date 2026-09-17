@@ -59,30 +59,6 @@ Catalan-specific rules English speakers get wrong:
   something, it goes in guillemets, «Si passa això, aleshores he de fer allò». Lowercase
   after a colon unless what follows is a full quoted sentence.
 
-## Term clarification
-
-When a gloss is kept and the term is introduced under Catalan-primary (see
-`global/voice.md`), append _en anglès_ after the italic English term inside the parentheses,
-e.g. la funció (_function_ en anglès).
-
-**Drop a prose `<define>` gloss when the Catalan is a cognate of the English**, e.g.
-_intèrpret_, _error_, _funcions_, _expressió_, _variable_, _operador_. A Catalan concept page
-that carries **no** prose English glosses at all is the expected outcome, not an oversight.
-
-Keep a gloss only where it genuinely carries information:
-
-- **Code identifiers.** Always gloss these, because the identifier is English and its
-  meaning is not visible to a Catalan reader: `move` (mou), `turnLeft` (gira a l'esquerra).
-  Meaning only, in brackets, with no _en anglès_ marker.
-- **A "Keep in English" term** whose Catalan gloss is a real expansion rather than a
-  cognate, e.g. CLI (_interfície de línia d'ordres_).
-- **A Catalan term that is not recognisably the English word**, e.g. _bucle_ for "loop",
-  _sentència_ for "statement". The bracketed English tells the reader which word to search
-  for, so keep it.
-
-The test is whether a Catalan reader learns anything from the brackets. If the two words
-differ only by an accent or an ending, they do not.
-
 ## Style notes
 
 - **Em dashes:** replace a mid-sentence aside with a comma, parentheses, or two separate

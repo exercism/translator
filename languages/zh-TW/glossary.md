@@ -115,17 +115,3 @@ These stay in English in prose. See `../zh/guide.md` § Loanword policy for why 
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language. See `../zh/glossary.md` for the metaphors shared with `zh-CN` (box, the board, input slot, return chute); the rows below are this locale's own glyphs for the metaphors that diverge by script or by word choice (rationale in `../zh/guide.md`).
-
-**The board is one object, one word: 白板**, and it lives in `../zh/glossary.md` because it is character-identical in both scripts. The same 白板 covers both uses: the board the learner writes instructions on for Jiki to come along and follow, and the board a function keeps its own instructions and notes on. Never coin a second word for the "instruction board" sense, and never use 板子 or a word that already means "array".
-
-| English metaphor | Chinese rendering | Notes |
-|------------------|--------------------|-------|
-| chain (array metaphor) | 鏈子 | A physical chain; explicitly not 鎖鏈, which carries a shackle/prison-chain connotation, the wrong tone for a teaching metaphor. |
-| machine (function metaphor) | 機器 | The machine a function is modelled as, with its input slot (投入口, shared) and return chute (出料口, shared). |
-| shelves (where things are stored) | 架子 / 置物架 | 架子 for the general shelving image, 置物架 when the whole storage unit is meant. |
-| warehouse (Jiki's warehouse) | 倉庫 | Where Jiki hangs out and keeps his machine shelf. |
-| crank (machine crank) | 手把 (the handle) / 轉動手把 (to crank it) | Jiki turns the handle to power a machine up: 轉動手把、讓它通電. Not 曲柄, which is engineering vocabulary rather than the everyday word. |

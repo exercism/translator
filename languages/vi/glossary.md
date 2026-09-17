@@ -133,19 +133,3 @@ These stay in English in Vietnamese prose, with the Vietnamese gloss to use for 
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Vietnamese rendering | Notes |
-|-------------------|----------------------|-------|
-| box (value container) | hộp | |
-| chain (array metaphor) | dây xích | A single link is "mắt xích". |
-| input slot | khe | |
-| return chute | máng trượt | **Low confidence, flagged for native-speaker review**: "cầu trượt" (playground slide) is a warmer, more childlike alternative if native-speaker feedback finds "máng trượt" too technical-sounding. |
-| machine (function metaphor) | máy | |
-| crank (machine crank) | tay quay | Phrase the action "vặn tay quay" rather than "quay tay quay". |
-| shelves (storage) | kệ | The shelves where variables and functions are stored. |
-| warehouse (Jiki's warehouse) | nhà kho | Where Jiki hangs out and keeps his machine shelf. |
-| board / whiteboard | bảng | **One object, one word.** The board the learner writes instructions on for Jiki to follow, and the board a function keeps its own instructions and notes on, are the same object and take the same word. Never a second word such as "bảng trắng" for the function's board. |

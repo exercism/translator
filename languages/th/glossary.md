@@ -122,29 +122,6 @@ These stay in English in Thai prose, with the Thai gloss to use for each.
 | Code, Bug, Frontend, Backend | (no gloss) | As UI labels and code tokens. The ordinary noun in running prose follows the glossary rows above. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
 
-## Jiki physical metaphors
-
-Load-bearing teaching terms.
-
-| English metaphor | Thai rendering | Notes |
-|-------------------|----------------|-------|
-| box (value container) | กล่อง | |
-| chain (array metaphor) | โซ่ | Link = `ข้อโซ่`. |
-| machine (function metaphor) | เครื่อง | A function is one of Jiki's `เครื่องเล็กๆ`. |
-| input slot | ช่องใส่ | |
-| return chute | รางคืนค่า | |
-| crank (machine crank) | มือหมุน | Jiki turns the `มือหมุน` to power a machine up. |
-| shelves (storage) | ชั้นวาง | Jiki's machines sit on a `ชั้นวาง`. |
-| warehouse (Jiki's warehouse) | โกดัง | Warmer and more everyday than `คลังสินค้า`. |
-| workshop (Jiki's workshop) | โรงงาน | Never `เวิร์กช็อป`, which in modern Thai means a training seminar. |
-| board / whiteboard | กระดาน | **One object, one word.** The board the learner writes instructions on, and the board a function keeps its own instructions on, are the same `กระดาน`. |
-| coin (number metaphor) | เหรียญ | |
-| piece of paper (string metaphor) | แผ่นกระดาษ | |
-| label (on a box/machine) | ป้าย | |
-| mini-Jiki | Jiki จิ๋ว | `จิ๋ว` = tiny, in an affectionate register. |
-| spiral notebook page (dictionary metaphor) | หน้าสมุดสันห่วง | |
-| character (game/maze figure) | ตัวละคร | Keep `อักขระ` for a text character (see "Values & data types"). |
-
 ## Brackets
 
 | Glyph | Thai | Notes |

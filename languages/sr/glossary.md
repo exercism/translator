@@ -133,22 +133,6 @@ These are terms where the Serbian is used in prose, so the "Use (sr/en)" column 
 | maze | lavirint | sr | Masculine; declines normally ("u lavirintu", "kroz lavirint", pl. "lavirinti"). Spelled with **v**, not "labirint": both are valid, but "lavirint" is what Serbian speakers actually say. |
 | foot-gun | opasna prečica | sr | Flagged for native-speaker review; Serbian has the idiom "pucati sebi u nogu" (to shoot yourself in the foot), which may be worth workshopping into a punchier term. |
 
-### Exercise scenario vocabulary
-
-Terms that belong to an exercise's story rather than to programming itself.
-
-| English | Serbian | Use (sr/en) | Notes |
-|---------|---------|-------------|-------|
-| dress code | pravila oblačenja | sr | Confirmed over the alternative "dres kod" per native-speaker feedback (see glossary-notes.md). Plural noun phrase; declines normally ("prema pravilima oblačenja"). |
-| dead end (maze) | ćorsokak | sr | Masculine; declines normally ("iz ćorsokaka", pl. "ćorsokaci", "sa dva ćorsokaka"). |
-| formal (attire) | svečano | sr | The top dress-code tier. Confirmed by a native speaker (see glossary-notes.md) over the alternative "formalno", which narrows toward business/serious dress; "svečano" covers the gala wear the exercise's `"ballgown"`/`"tuxedo"` values name. Neuter adjective; declines normally ("u svečanoj odeći", "svečana odeća"). Read as a pair with "poslovno" below. |
-| smart (attire) | poslovno | sr | The middle dress-code tier, i.e. the business register the exercise's `"suit"`/`"dress"` values name. Decided by a native speaker (see glossary-notes.md), replacing the earlier draft "elegantno", which reaches too far toward the formal end. Neuter adjective; declines normally ("u poslovnoj odeći", "poslovna odeća", "poslovno obučen gost"). Read as a pair with "svečano" above. |
-| ballgown | balska haljina | sr | Feminine. The English value stays as-is in code; use the Serbian in prose, or in brackets as an explanation where the code value is shown. |
-| tuxedo | smoking | sr | Masculine ("u smokingu"). The English value stays as-is in code; use the Serbian in prose, or in brackets as an explanation where the code value is shown. |
-| suit | odelo | sr | Neuter ("u odelu"). The English value stays as-is in code; use the Serbian in prose, or in brackets as an explanation where the code value is shown. |
-| dress | haljina | sr | Feminine. The English value stays as-is in code; use the Serbian in prose, or in brackets as an explanation where the code value is shown. |
-| denim | teksas | sr | Masculine; adjective "teksas" is invariable before the noun ("teksas jakna"). The English value stays as-is in code; use the Serbian in prose, or in brackets as an explanation where the code value is shown. |
-
 ## Keep in English
 
 These stay in English in Serbian prose, with the Serbian gloss to use for each.
@@ -167,19 +151,3 @@ These stay in English in Serbian prose, with the Serbian gloss to use for each.
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Serbian rendering | Notes |
-|-------------------|----------------------|-------|
-| box (value container) | kutija | |
-| chain (array metaphor) | lanac | Used as the explanatory teaching image alongside the technical term "niz" for array. |
-| input slot | ulazni otvor | No existing Serbian precedent found; flagged for a native-speaker check on first real use. |
-| return chute | izlazni otvor | Corrected from "izlazni žleb" per native-speaker feedback (see glossary-notes.md): "žleb" is archaic and rarely used. Mirrors "ulazni otvor" (input slot) above as the input/output pair. |
-| machine (function metaphor) | mašina | In real use on the published using-functions concept page; flagged as an open question for native-speaker review. |
-| shelves (storage) | police (sing. polica) | In real use on the published using-functions concept page; flagged as an open question for native-speaker review. |
-| warehouse (Jiki's warehouse) | skladište | The place Jiki hangs out and keeps his machine shelf. In real use on the using-functions concept page ("Jikijevo skladište"). |
-| crank (machine crank) | ručica | The handle Jiki turns to power a machine up ("okrene ručicu"). Not "kurbla" (more mechanical/technical). |
-| board / whiteboard | tabla | **One word for both uses**: the board the learner writes instructions on for Jiki to follow, and the board a function keeps its own instructions and notes on. No collision with "niz" (array). |

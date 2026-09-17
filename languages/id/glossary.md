@@ -111,36 +111,6 @@ These stay in English in Indonesian prose, with the Indonesian gloss to use for 
 | tutorial | tutorial | en | Kept English for an interactive, step-by-step lesson; use `panduan` only for a static written guide, not an interactive tutorial. |
 | solution (learner's submission) | solusi / penyelesaian / jawaban | id | Context-dependent: `solusi` in general, `penyelesaian` for a worked solution, `jawaban` for a quiz answer. Pick the right one per context; do not force a single word everywhere. |
 
-## Exercise vocabulary
-
-Terms that belong to a specific exercise or exercise family rather than to programming in general.
-
-| English | Indonesian | Use (id/en) | Notes |
-|---------|-----------|----------|-------|
-| Rock, Paper, Scissors (game and exercise title) | Batu, Kertas, Gunting | id | Unconfirmed draft (agent, 2026-08-04). Comma-separated, each word capitalized, in that order. Lower-case the individual words when they refer to the moves in running prose (_batu menumpulkan gunting_). |
-| tie (a drawn game) | seri | id | Unconfirmed draft (agent, 2026-08-04). Not _imbang_ (more football-commentary flavoured) and not _seri_ in the "series" sense, which does not arise in these pages. |
-| playing hall | aula pertandingan | id | Unconfirmed draft (agent, 2026-08-04). From the rock-paper-scissors setting. |
-| canvas | kanvas | id | Unconfirmed draft (agent, 2026-08-04). The drawing surface in the `draw` exercise family. |
-| radius | jari-jari | id | Unconfirmed draft (agent, 2026-08-04). Always hyphenated. Horizontal/vertical forms: _jari-jari horizontal_, _jari-jari vertikal_. |
-| saturation | saturasi | id | Unconfirmed draft (agent, 2026-08-04). In prose only. Where the word is the *name of a function input* being quoted back to the learner, it currently stays English; that split is an open question (see `glossary-notes.md`). |
-| lightness | kecerahan | id | Unconfirmed draft (agent, 2026-08-04). In prose only, with the same function-input caveat as `saturation`. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Indonesian rendering | Notes |
-|-------------------|----------------------|-------|
-| box (value container) | kotak | |
-| chain (array metaphor) | rantai | |
-| input slot | lubang | |
-| return chute | saluran keluaran | The opening a finished value slides out of. Full form on introduction; plain `saluran` afterwards. Not _perosotan_ (a playground slide), which reads strange for this part of a machine. |
-| machine (function metaphor) | mesin | A function modelled as a machine, with an input slot (`lubang`) and a return chute (`saluran keluaran`). |
-| crank (machine crank) | tuas | The handle Jiki turns to power a machine up: _memutar tuasnya_. |
-| shelves (storage) | rak | Where variables and functions are stored (e.g. `rak buku` = bookshelf). |
-| warehouse (Jiki's warehouse) | gudang | Where Jiki hangs out and keeps his machine shelf. |
-| board / whiteboard | papan tulis | **One object, one word.** The same board the learner writes instructions on for Jiki to follow, and the one a function keeps its own instructions and notes on. Bare `papan` on its own reads as a plank or a signboard, so it is not an accepted short form even on second mention. |
-
 ## Brackets
 
 | Glyph | Indonesian | Notes |

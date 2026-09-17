@@ -76,19 +76,3 @@ Russian in the gloss column below (per the format in `global/voice.md`); with no
 | Debug, Test | (no gloss) | As keywords/technical tokens. |
 | Code, Bug, Frontend, Backend | (no gloss) | |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Russian rendering | Notes |
-|-------------------|----------------------|-------|
-| machine (function metaphor) | автомат | |
-| box (value container) | коробка | |
-| chain (array metaphor) | цепочка | Not _цепь_, which reads as a heavy industrial chain. |
-| input slot | приёмное отверстие | Pairs with the `автомат` metaphor. |
-| return chute | лоток | Pairs with `автомат` and `приёмное отверстие`. |
-| shelves (storage) | полки | Singular _полка_ for one shelf. |
-| warehouse (Jiki's warehouse) | склад | |
-| crank (machine crank) | рукоятка | The handle you turn: _покрутить рукоятку_. Not _кривошип_ (an engineering part) or _ручка_ (ambiguous with "pen" and "door handle"). |
-| board / whiteboard | доска | **One word for both uses**: the board the learner writes instructions on for Jiki to follow, and a function's own board of instructions and notes. Never introduce a second word for it. |

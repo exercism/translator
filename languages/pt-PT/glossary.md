@@ -67,21 +67,6 @@ Terms below diverge from `../pt/glossary.md` or exist only for European Portugue
 |---------|------------|-----------------|-------|
 | deploy (verb: to deploy) | publicar | pt-PT | "Publica o código" for go-live, beginner-facing (tu-imperative, matches `tu` formality). Avoid "fazer deploy" here, though it appears in professional dev prose. |
 
-### Exercise vocabulary
-
-Domain words the exercises are built on. Use the same rendering in the instructions and in
-the exercise's message catalog (`locales/pt-PT/translation.json`), never one in each.
-
-| English | Portuguese | Use (pt-PT/en) | Notes |
-|---------|------------|-----------------|-------|
-| bouncer | porteiro | pt-PT | The door supervisor of the `bouncer*` exercises. Feminine _porteira_ where the person is a woman. Not _segurança_, which names the security role rather than the person on the door. |
-| venue (the bouncer's club) | espaço | pt-PT | The place the bouncer lets people into ("deixa a pessoa entrar no espaço"). Unrelated to the family's `input slot` (_fenda_): pick by the English word in front of you. |
-| to turn away (a person) | mandar embora | pt-PT | "Manda a pessoa embora." The pronoun splits the phrase, so keep the verb and _embora_ agreeing with the object. |
-| smart (attire) | elegante | pt-PT | _roupa elegante_ in the dress-code exercise. Keep distinct from **formal** (_formal_), which is a separate dress-code value in the same list. |
-| dead end | beco sem saída | pt-PT | The maze's no-exit corridor. Plural _becos sem saída_. |
-| checksum | soma de verificação | pt-PT | "a soma de verificação de Luhn". |
-| Sensing (scenario category) | Deteção | pt-PT | The scenario-category label in exercise catalogs. Post-1990 European spelling, with no `c` (Brazilian keeps _Detecção_). |
-
 ### Platform & curriculum vocabulary
 
 | English | Portuguese | Use (pt-PT/en) | Notes |
@@ -97,21 +82,6 @@ stay in English in prose.
 |------|----------------------------------|-------|
 | framework | _estrutura de trabalho_ | Explain where the source `<define>`s it, then use `framework` freely. |
 | CLI (the concept) | interface de linha de comandos | Explain CLI as _interface de linha de comandos_ (plural "comandos") where the source `<define>`s it. Diverges from pt-BR's singular "comando". |
-
-## Jiki physical metaphors
-
-Terms below diverge from `../pt/glossary.md` or exist only for European Portuguese.
-
-| English metaphor | Portuguese rendering | Notes |
-|-----------------|---------------------|-------|
-| chain (array metaphor) | corrente | Physical chain of links; links = _elos_. Keep the context physical to avoid collision with "cadeia" (used for _cadeia de caracteres_, the string gloss). |
-| machine (function metaphor) | máquina | |
-| spiral notebook (dictionary metaphor) | bloco de notas de espiral | The notebook a dictionary is pictured as. One entry is a page: _uma página do bloco de notas_. Keep _de espiral_ on first mention, then _bloco de notas_ is enough. |
-| shelves (storage) | prateleiras | The shelves where variables and functions are stored. Singular _prateleira_ for Jiki's one shelf of machines. |
-| board / whiteboard | quadro | **One object, one word.** Always _quadro_. Never _quadro branco_ or _painel_. |
-| warehouse (Jiki's warehouse) | armazém | Where Jiki hangs out and keeps his shelf of machines. |
-| crank (machine crank) | manivela | The handle Jiki turns to power a machine up. Verb phrase: _rodar a manivela_. |
-| return chute | calha de saída | A chute a value slides out of. Confirmed by rlsmota (t/341/6): pt-BR's _boca da máquina_ is a Brazilian colloquialism that doesn't read as clearly in European Portuguese. |
 
 ## Brackets
 

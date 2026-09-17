@@ -92,31 +92,6 @@ These are terms where the French is used in prose, so the "Use (fr/en)" column i
 | challenge (platform content type) | défi | fr | Confirmed by a native speaker (2026-08-11, topic 314) and by the app's own French copy, which already says it: the sidebar item _Défis_, the heading _Défis associés_, _Défis récents_, and _Relève des **défis** plus difficiles_. Gender: _un défi_, plural _des défis_. The Jiki content type, capitalised _Défis_ where the English capitalises Challenges. Distinct from `puzzle`, which uses _casse-tête_/_énigme_/_défi_ depending on context: see that row, and avoid _défi_ for the puzzle sense wherever the platform sense could be read on the same screen. |
 | Not started (progress status) | Non commencé / Non commencés | fr | Never _Pas commencé_. Agree in number with what the label describes: singular _Non commencé_ on a status badge for one item (e.g. one challenge), plural _Non commencés_ on a filter tab covering a list of items. |
 
-### Exercise world vocabulary
-
-The recurring nouns and verbs of the exercise families (space invaders, golf, the drawing
-exercises). They matter because a family shares one message catalog across many exercises,
-so a term that drifts between two exercises drifts inside one screen.
-
-| English | French | Use (fr/en) | Notes |
-|---------|--------|-------------|-------|
-| alien | alien | fr | Confirmed by native speakers (2026-08-04). Gender: _un alien_, plural _des aliens_. Never _extraterrestre_, which is heavier than the arcade register the exercise is written in. |
-| row (of aliens) | rangée | fr | Unconfirmed draft (agent, 2026-08-03). Gender: _une rangée_. Never _ligne_ here, which in these pages already means a line of code. |
-| to shoot down (an alien) | abattre | fr | Confirmed by a native speaker (2026-08-04), over _vaincre_, which is now settled and not to be reopened. The act of firing itself stays _tirer_ (_tire sur chaque alien_); _abattre_ is the outcome (_tu n'as pas abattu tous les aliens_). |
-| shot (golf) | coup | fr | Unconfirmed draft (agent, 2026-08-03). Gender: _un coup_, as in _un coup de golf_, _la longueur du coup_. |
-| unit (distance moved) | unité | fr | Confirmed by a native speaker (2026-08-05). Gender: _une unité_. The distance a thing moves in one call, as used by the `golf` family catalog: _faire rouler la balle d'une unité vers la droite_. |
-| step (generic) | (no fixed term) | fr | Confirmed by a native speaker (2026-08-05): unlike `unit` above, "step" has no single fixed rendering. Pick by context: _étape_ (a stage in a sequence, "étape après étape"), _pas_ (a footstep or a discrete move, "pas à pas"), _marche_ (a stair step), or others. Do not render it as _unité_. |
-| inset (drawing exercises) | en retrait / le retrait | fr | Confirmed by a native speaker (2026-08-05). Adjectival/adverbial use _en retrait_ (_un rectangle en retrait_), noun use _le retrait_. Recurs across the drawing exercises, so do not alternate with _décalage_ or _marge_. |
-| nose / snout (of a snouted animal) | le museau | fr | Confirmed by native speakers (2026-08-04). Gender: _un museau_. The fox and similar snouted animals in the drawing exercises. Never _truffe_, which everyday French attaches to pigs and boars and reads oddly for a fox. Never _la pointe du museau_, which is too heavy for instructions. Applies only to snouted mammals: for birds (the `penguin` exercise) use _le bec_, never _museau_ and never _nez_. |
-| beak (of a bird) | le bec | fr | Confirmed by native speakers (2026-08-05). Gender: _un bec_. The beak-shaped triangle in the `penguin` exercise. Never _le nez_: unlike snouted mammals, where everyday French tolerates _nez_ alongside _museau_, French never says _nez_ of a bird at any register. |
-| penguin | pingouin | fr | Confirmed by native speakers (2026-08-04). Gender: _le pingouin_. The everyday French word, matching the cartoon drawing the exercise uses, not the zoologically stricter _manchot_. |
-| to fill/plug (a hole) | combler | fr | Confirmed by a native speaker (2026-08-06), replacing the earlier unconfirmed _boucher_. Past participle _comblé_ agrees with its noun ("le trou... comblé"). |
-| to cover (a hole with a shape) | recouvrir | fr | Confirmed by a native speaker (2026-08-06), replacing the earlier unconfirmed _couvrir_ in this context. |
-| puzzle (the thing the learner has to solve) | casse-tête / énigme / défi (context decides) | fr | Confirmed by a native speaker (2026-08-11, topic 314). **Never _puzzle_**, whose ordinary French sense is a jigsaw, which misreads badly where the exercise also has a board or pieces. Pick by context: _casse-tête_ where the point is a brain-teaser to work out (_un petit casse-tête de logique_, _un célèbre casse-tête mathématique_); _énigme_ where the framing is a mystery or an investigation (_utiliser des fonctions pour résoudre des énigmes_); _défi_ where it simply means the task the learner is being set (_relève ce défi en 5 lignes de code_). Where the sense is just "this exercise", _exercice_ is also fine. One document picks one of them and stays with it. _défi_ is also the app's word for a platform Challenge (see the `challenge (platform content type)` row under Platform & curriculum vocabulary), so avoid it where both senses could be read on the same screen. |
-| guess (Wordle: the word a player submits) | proposition / proposer | fr | Confirmed by a native speaker (resu-xunil, 2026-08-30, topic 2113). Gender: _une proposition_. Never _essai_, whose everyday French sense is "a try/attempt" (and, to a French reader, the rugby score); "guess" here is _proposer_ / _soumettre une proposition_, and the verb "to guess" itself is _deviner_. Recurs across the whole `wordle` exercise family, which shares one vocabulary across three exercises, so do not alternate with _essai_ or _tentative_. |
-| skyline (city) | la ligne d'horizon | fr | Provisional (orchestrator call, 2026-08-10), pending @fleurdelys44. Never the anglicism _skyline_. Recurs across the `cityscape` exercises and the Cityscape project, so do not alternate with _profil urbain_ or _panorama urbain_. Where the phrase is "a skyline of buildings" rather than the city's own skyline, _une silhouette de bâtiments_ reads better than repeating _ligne d'horizon_. |
-| gold panning / to pan (for gold) / a pan (the tool) | orpaillage / orpailler / la batée | fr | Settled by an orchestrator call (2026-09-04, topic 1306) after two native speakers took opposite views. _orpaillage_/_orpailler_ are the standard current French terms, not archaic: Larousse and Wiktionary carry them with a domain label only and no _vieilli_ marker, French news uses _orpaillage_ constantly (illegal gold mining in Guyane), Vikidia (the 8-13 encyclopedia) titles its article _Orpaillage_, and French tourist offices sell family _initiation à l'orpaillage_ sessions à la batée to children from age 6. Gender: _un orpaillage_, _une batée_. Gloss _orpailler_ on its first use in a page (_orpailler, c'est-à-dire chercher de l'or au fond d'une rivière_) rather than replacing it. **_batée_ is the tool only**, never a count of attempts: "across all 5 pans" is _sur l'ensemble des 5 passages à la batée_, never _les 5 batées_. Never _tamiser_/_tamis_/_passoire_ for the action or the tool (a batée is a smooth conical dish, not a sieve, and the sieving sense of _tamiser_ is itself marked _vieilli_), and never _ruée vers l'or_ for the activity, which names the historical event (the Gold Rush), not what the robot does. |
-
 ## Keep in English
 
 These stay in English in prose, because a beginner reader already knows the English form
@@ -161,23 +136,6 @@ stands. Settled 2026-08-13 by iHiD; see `glossary-notes.md`.
 | Two-Fer (exercise title) | Two-Fer | en | Title only. English wordplay ("two for one") that carries the exercise's `"One for you, one for me."` line; there is no French equivalent that keeps both. |
 | Hello, World! 👋 (blog post title) | Hello, World! 👋 | en | Title only. The canonical first-program phrase, used as-is by French developers. |
 | Lunchbox (exercise title) | La lunchbox | en | Title only. mirina (2026-08-29, topic 1671) confirmed a literal rendering ("La boîte à repas") doesn't sound appealing and isn't what the target audience actually says (kids say "goûter", teens "la bento"/"la boîte", adults "tup"), and preferred keeping "Lunchbox" in English, the same reasoning that kept `Space Invaders` English. resu-xunil then proposed prefixing the French article, "La lunchbox", and mirina agreed ("Just excellent!"). Body prose keeps translating "lunchbox" normally as _la boîte à repas_ (the physical-object metaphor); only the title stands. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | French rendering | Notes |
-|-------------------|-------------------|-------|
-| box (value container) | boîte | Gender: _la boîte_. |
-| chain (array metaphor) | chaîne | Link = _maillon_. Works cleanly because _string_ stays English above (its literal sense, _chaîne de caractères_, doesn't collide in prose). |
-| input slot | entonnoir | Replaces _fente_ (unwanted slang/anatomical connotation) and _Champ de saisie_/_Zone de saisie_ (too office-form-specific for the illustrated funnel). Gender: _l'entonnoir_. **Only where the machine metaphor is already running** (curriculum prose, subtitles, and the illustrations they describe). Where the English itself is non-metaphorical and talks about a _function_ (notably the interpreter error catalog), use _paramètre_: _entonnoir_ next to _fonction_ mixes two registers in one sentence. |
-| return chute | tapis roulant | Replaces _toboggan_ (read as unintelligible) and _canal de retour_/_rampe de retour_. Gender: _le tapis roulant_. |
-| machine (function metaphor) | machine | A function modelled as a machine, with an input slot and a return chute. Gender: _la machine_. |
-| crank (machine crank) | manivelle | The handle Jiki turns to start a machine: _tourner la manivelle_. Gender: _la manivelle_. |
-| shelves (storage) | étagères | The shelves where variables and functions are stored. Gender: _les étagères_ (plural), _une étagère_ (singular). |
-| warehouse (Jiki's warehouse) | entrepôt | The place where Jiki hangs out and keeps his machine shelf. Gender: _l'entrepôt_ (masculine). |
-| piece of paper (string metaphor) | bout de papier | Never _morceau de papier_ (correct, but stilted in casual French) or _feuille de papier_. Plural _des bouts de papier_. Gender: _le bout de papier_ (masculine). |
-| board / whiteboard | tableau blanc | **One object, one word**, per `global/terms.md`: the same board the learner writes instructions on for Jiki to follow, and the one a function keeps its own notes on. Always written in full, never shortened to _tableau_, so it never collides with _tableau_ (array). Gender: _le tableau blanc_. |
 
 ## Brackets
 

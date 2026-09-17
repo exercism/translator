@@ -84,25 +84,6 @@ Turkish-specific rules that English speakers, and literal machine translation, g
   imperatives above), not by attaching "lütfen" to every instruction. Use it sparingly,
   for genuine emphasis.
 
-## Term clarification
-
-When introducing an English term under Turkish-primary (see `global/voice.md`), prefix
-the italic English term inside the parentheses with `İngilizce:`, e.g. fonksiyon
-(İngilizce: _function_).
-
-**Explain a Turkish term a newcomer will not recognise, in one short sentence, at its
-first mention on a page.** The bracketed English gloss alone is not enough: it tells a
-reader which English word is meant, not what the thing is. The standing case is _açıklık_
-(the HSL lightness channel), which is an ordinary Turkish word a beginner will not connect
-to colour, so the first time it appears say what it controls (how light or dark the colour
-is). Every later mention on that page and elsewhere is the bare term.
-
-**Where an English keyword has no exact Turkish equivalent, introduce it by what it does
-rather than by a one-word gloss.** For `let`, use _olsun_ as the sense, but establish the
-logic at its first introduction with the two things the keyword actually does: _değişken
-tanımlama_ (variable declaration) and _değer atama_ (value assignment). Once that is set
-out, bare `let` reads naturally for the rest of the course.
-
 ## Style notes
 
 - **Em dashes:** in Turkish prose the natural replacements are a **comma** for a

@@ -141,24 +141,6 @@ Naturalised loanwords that are spelled and declined as Polish words (_interprete
 _komponent_, _moduł_, _operator_) are **not** in this table: they are Polish rows above, and
 they take no English gloss because the gloss would restate the same word (see `guide.md`).
 
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Polish rendering | Notes |
-|-------------------|-------------------|-------|
-| box (value container) | pudełko | Neuter. |
-| box (draw-family grid cell) | pole | Neuter. A cell of a grid the learner draws into (e.g. the six forecast boxes in `weather-symbols`), not the variable metaphor: never _pudełko_ here, and never _pudełko_'s inflections. „Numer pola", „w polu", „siatka pól". |
-| chain (array metaphor) | łańcuch | Where the source `<define>`s it, pair it with _tablica_ (the technical term for array), e.g. „tablica działa jak łańcuch (`tablica`)", so it doesn't get read as a synonym for _ciąg znaków_ (string), which some informal Polish programming material loosely calls "a chain of characters". Masculine. |
-| machine (function metaphor) | maszyna | Feminine. |
-| input slot | otwór wejściowy | Considered coinage, never validated by a native speaker. Flag for native-speaker review via `/action-forum-post`. |
-| return chute | kanał zwrotny | Masculine. Settled by a native speaker: never _zsyp_, which in ordinary Polish is a one-way disposal chute (rubbish, laundry) and so contradicts the idea of something coming back. |
-| shelves (storage) | półki | Feminine. |
-| crank (machine crank) | korba | Feminine. The action is _zakręcić korbą_ (perfective, one-off). |
-| warehouse (Jiki's warehouse) | magazyn | Masculine. |
-| bouncer (bar/club door scenario) | ochroniarz | Masculine. Never _bramkarz_, which in everyday Polish reads first as "goalkeeper". Recurs across the `if` concept and the bouncer/guest-list exercises, so keep it identical everywhere, including image `alt` text and the compound _robot-ochroniarz_. |
-| board / whiteboard | notatnik | **One object, one word**: the board the learner writes instructions on for Jiki, and the board a function keeps its own instructions and notes on, are the same word. Masculine. Do not reuse `notatnik` for the future dictionary spiral-notepad metaphor. See `glossary-notes.md` for why `tablica` was rejected. |
-
 ## Brackets
 
 Default to plain **nawias**. When a specific bracket type matters, name it and show the glyph in a code tag immediately after: _nawias kwadratowy (`[]`)_.

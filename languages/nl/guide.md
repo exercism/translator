@@ -80,12 +80,6 @@ Concrete techniques:
 - **Rhetorical asides** ("So what do these conditions look like?") stay as natural Dutch
   rhetorical questions: "Hoe zien die voorwaarden er dan uit?"
 
-## Term clarification
-
-When introducing an English term under Dutch-primary (see `global/voice.md`), append
-_in het Engels_ after the italic English term inside the parentheses, e.g. de functie
-(_function_ in het Engels).
-
 ## Style notes
 
 - **Em dashes:** in Dutch prose the natural replacements are a **comma** for a

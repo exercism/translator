@@ -35,14 +35,3 @@ These are terms whose Chinese rendering is confirmed identical, character for ch
 | English | Chinese gloss (on `<define>`) | Notes |
 |---------|-------------------------------|-------|
 | true / false | 真 / 假 | Real Chinese CS books use `true`/`false` untranslated in prose; keep it that way, only explaining it as 真/假 where the source `<define>`s it. Code literals stay English regardless. Identical in both scripts, so it lives here in the family file. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language. These four are confirmed character-identical across both locales; see `guide.md` § "Jiki physical metaphors" for why chain, machine, and shelves are locale-only instead.
-
-| English metaphor | Chinese rendering | Notes |
-|-------------------|--------------------|-------|
-| box (value container) | 盒子 | A box that holds a value; plain, concrete word. Identical in both scripts. |
-| whiteboard (a function's internal notes) | 白板 | Where a function keeps its instructions. Identical in both scripts. |
-| input slot | 投入口 | The vending-machine framing: the slot a coin/value goes into. Identical in both scripts; verified none of these three characters have a Simplified/Traditional variant. |
-| return chute | 出料口 | The vending-machine framing: the chute a value/item comes out of. Identical in both scripts; verified none of these three characters have a Simplified/Traditional variant. |

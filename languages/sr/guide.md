@@ -70,19 +70,6 @@ headings or short UI strings.
 - **Attach a case ending to a code identifier or a number with a hyphen**, leaving the
   identifier itself untouched inside its backticks: „`niz`-u“, „30-og“.
 
-## Term clarification
-
-When introducing an English term under Serbian-primary (see `global/voice.md`), prefix the
-italic English term inside the parentheses with the abbreviation `engl.`, in Latin script
-like the rest of the prose, e.g. funkcija (engl. _function_). Never write the Cyrillic
-`енгл.`: it would be the only Cyrillic on an otherwise Latin page.
-
-**Skip the gloss where the Serbian word is the identical Latin-script loanword.** A gloss
-like "interpreter (engl. _interpreter_)" repeats the word the reader has just read. Drop
-the parenthetical entirely and leave the term bare; the `<define>` is still expanded, just
-with no gloss. Gloss wherever the Serbian differs, even slightly in spelling or ending
-(greška / _error_, funkcija / _function_).
-
 ## Style notes
 
 - **Quotation marks:** „...“ (U+201E opening, U+201C closing), the pair the examples

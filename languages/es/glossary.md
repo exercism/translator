@@ -89,16 +89,6 @@ Spanish in the gloss column below; with no `<define>`, use the English bare, no 
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
 
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Spanish rendering | Notes |
-|------------------|-------------------|-------|
-| box (value container) | caja | A box that holds a value; plain, concrete Spanish word. |
-| chain (array metaphor) | cadena | Physical chain of links; link = _eslabón_. Relies on `string` staying English (see § Keep in English) so _cadena_ is unambiguous here. |
-| return chute | rampa de salida | The chute/ramp a value slides out of, as in a vending machine. _Bandeja de salida_ (an output tray) is an alternative if a passage wants the tray image. Low-medium confidence; flag for native-speaker confirmation. |
-
 ## Brackets
 
 Shared glyph words. Each locale's own glossary states its default bracket-naming

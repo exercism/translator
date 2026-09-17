@@ -70,18 +70,6 @@ Romanian-specific rules that English speakers (and machine translation) get wron
 - **Commas:** no comma before „și” in a simple enumeration, and never between subject and
   predicate. Do use a comma before „care” when the clause is non-restrictive.
 
-## Term clarification (Romanian realisation)
-
-The principle and the format are in `global/voice.md`. The Romanian marker for "in English"
-is the abbreviation **`engl.`**, placed before the italic English term inside the brackets.
-
-- Romanian-primary term (`Use = ro`): `funcție (engl. _function_)`, `buclă (engl. _loop_)`.
-- English-primary term (`Use = en`): `_string_ (șir de caractere)`.
-- Code identifier: `` `turnLeft` `` (întoarce-te la stânga).
-- **Skip the gloss where the Romanian is effectively the same Latin-script word** („interpretor”
-  / _interpreter_): drop the parenthetical and leave the term bare. Keep the gloss wherever
-  Romanian differs, even by an ending („funcție” / _function_, „eroare” / _error_).
-
 ## Anglicisms and calques to avoid
 
 - **„librărie” is a bookshop.** A software library is a **„bibliotecă”**.

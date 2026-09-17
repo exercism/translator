@@ -101,31 +101,6 @@ native terms cover most concepts (e.g. `string` → 文字列, `Boolean` → 真
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
 
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry
-technical language. The Jiki world is a physical place with shelves (棚) holding machines
-(機械) and boxes (箱), plus a chain, pieces of paper, an input slot, a return chute and a
-board.
-
-The source names the room itself two different ways: the using-functions page says
-**warehouse** (倉庫) and the scope page says **workshop** (作業場). Both rows are below; do
-not substitute one for the other on a given page.
-
-| English metaphor | Japanese rendering | Notes |
-|-------------------|---------------------|-------|
-| box (value container) | 箱 | |
-| machine (function) | 機械 | |
-| shelf / shelves | 棚 | |
-| warehouse (Jiki's warehouse) | 倉庫 | Keep distinct from 作業場 (workshop). |
-| workshop (Jiki's workshop) | 作業場 | Keep distinct from 倉庫 (warehouse). |
-| board / whiteboard | ホワイトボード | **One object, one word:** the board the learner writes instructions on for Jiki to follow, and the board a function keeps its own instructions and notes on, are the same thing and take the same word. Do not use 掲示板 (reads as an online forum), 黒板 (a classroom blackboard), or bare ボード. |
-| crank (machine crank) | クランク | Rendered as the verb phrase **「クランクを回す」** ("turn the crank") rather than a bare noun. Powering the machine up: 「クランクを回して電源を入れる」. **Never ハンドル**, which in Japanese means a car's steering wheel or a bike's handlebars, not a mechanical crank. |
-| paper (a string) | 紙 | Jiki writes each string on a piece of paper. |
-| chain (array metaphor) | 鎖 | A link is 鎖の輪 (or 輪). **Low confidence, flagged for native-speaker review.** |
-| input slot | 差し込み口 | 「入力スロット」is an alternative. **Low confidence, flagged for native-speaker review.** |
-| return chute | 返却シュート | 「出力シュート」/「滑り台」are alternatives. **Low confidence, flagged for native-speaker review.** |
-
 ## Brackets
 
 Default to plain **括弧**. Show the glyph in a code tag immediately after, in full-width

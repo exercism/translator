@@ -98,20 +98,3 @@ These stay in English in Turkish prose, with the Turkish gloss to use for each.
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
 | CLI (the concept) | _komut satırı arayüzü_ | Where defined, explain CLI as _komut satırı arayüzü_ (command-line interface). |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms.
-
-| English metaphor | Turkish rendering | Notes |
-|-------------------|----------------------|-------|
-| box (value container) | kutu | |
-| chain (array metaphor) | zincir | A single link = _halka_ (not _bakla_, which means "broad bean" in everyday Turkish and would confuse the image). |
-| input slot | para deliği | The narrow opening you post a coin into, as on a piggy bank. Generic fallback: _delik_ ("hole") if a context needs a less coin-specific word. Deliberately not _yuva_, which in Turkish (including in computing, e.g. "işlemci yuvası" = CPU socket) means a socket a matching part sits *in*, the wrong physical image for a narrow slot something is posted through. |
-| return chute | kaydırak | Preferred over _oluk_, whose dominant everyday image is a roof rain-gutter. |
-| machine (function metaphor) | makine | A function modelled as a machine, with an input slot and a return chute. |
-| crank (machine crank) | kol | The handle Jiki turns to power a machine up. The verb phrase is _kolunu çevirmek_ ("to turn its crank"): _makinenin kolunu çevirip çalıştırmak_. Deliberately not _krank_, which in Turkish means an engine crankshaft, nor _manivela_, which is a lever for prying. |
-| shelves (storage) | raf / raflar | The shelves where variables and functions are stored. |
-| warehouse (Jiki's warehouse) | depo | Where Jiki hangs out and keeps his machine shelf. Preferred over _ambar_ (grain store, ship's hold) and _antrepo_ (a customs term). |
-| move (the character) | götürmek | The verb for moving a character to a place, in the maze family and anywhere else a character is moved. Never _taşımak_, which is the "lift and carry" sense and pictures the learner picking the character up. Covers the `move()` describers and instruction bullets ("karakteri bir hücre ileri götürür"), not just hint prose. Unrelated senses of _taşımak_ are untouched: the "bear a name" idiom (_aynı adı taşımak_) and the noun _taş_ ("stone", as in rock-paper-scissors) are correct as they stand. |
-| board / whiteboard | beyaz tahta | **One object, one word**: the board the learner puts instructions on for Jiki to follow, and the board a function keeps its own instructions and notes on, take the same word, always written in full as _beyaz tahta_. Bare _tahta_ also means wood or a plank and reads as a classroom blackboard, so it is never used as a short form. Never _akıllı tahta_ (smartboard), a different object. |

@@ -120,29 +120,6 @@ These stay in English in Romanian prose, with the Romanian gloss to use for each
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
 
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Romanian rendering | Notes |
-|-------------------|---------------------|-------|
-| box (value container) | cutie | |
-| chain (array metaphor) | lanț | A single link is a `verigă`. Used as the teaching image alongside the technical term `matrice` for array. |
-| machine (function metaphor) | mașină | A function is one of Jiki's little machines, „una dintre mașinile lui Jiki". The bare word's commonest everyday sense is "car", so keep the machine context visible (slot, crank, shelf) on first use. Not `mașinărie`, which reads as a contraption. |
-| input slot | fantă de intrare | `fantă` is a narrow opening, the ordinary word for a coin slot. |
-| return chute | tobogan de ieșire | `tobogan` is the playground slide, and also the word for a chute used to move things between levels. Not `jgheab` (a gutter or trough, rustic). |
-| crank (machine crank) | manivelă | The lever Jiki turns to power a machine up. Exactly the right word: a `manivelă` is what you turn to operate a mechanism. |
-| shelves (storage) | raft (pl. rafturi) | Jiki's machines sit on a `raft`. |
-| warehouse (Jiki's warehouse) | depozit | Where Jiki hangs out and keeps his machine shelf („depozitul lui Jiki"). |
-| workshop (Jiki's workshop) | atelier | The room where Jiki works; the shelves live in it. |
-| board / whiteboard | tablă | **One object, one word.** The board the learner writes instructions on for Jiki to follow, and the board a function keeps its own instructions and notes on, are the same `tablă`. The ordinary word for a board in a room. |
-| coin (number metaphor) | monedă | |
-| label (on a box/machine) | etichetă | |
-| piece of paper (string metaphor) | foaie de hârtie | |
-| character (game/maze figure) | personaj | The on-screen figure the learner controls. Keep `caracter` for a text character; see "Values & data types". |
-| little person (maze figure) | omuleț | The maze exercises call the same figure both "the little person" and "the character". `omuleț` keeps the affectionate register of the former; `personaj` above covers the latter. |
-| mini-Jiki | mini-Jiki | Romanian takes the `mini-` prefix with a hyphen naturally. |
-
 ## Brackets
 
 | Glyph | Romanian | Notes |

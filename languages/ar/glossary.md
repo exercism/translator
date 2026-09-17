@@ -89,22 +89,6 @@ rather than keeping it in English.
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
 
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Arabic rendering | Notes |
-|-------------------|-------------------|-------|
-| box (value container) | صندوق | Masculine; plural صناديق. |
-| chain (array metaphor) | سلسلة الحلقات | Always the full qualified compound ("chain of links/rings"); never shortened to bare `سلسلة`. See guide § "The سلسلة collision" for why this qualifier is mandatory. |
-| input slot | فتحة الإدخال | Feminine; plural فتحات إدخال. |
-| return chute | مجرى الإخراج | |
-| machine (function metaphor) | آلة | Feminine; plural آلات. |
-| shelves (storage) | رفوف | Masculine; singular رف. |
-| board / whiteboard | سبورة | **One object, one word**: the board the learner writes instructions on for Jiki to follow, and the board a function keeps its own instructions and notes on, are the same object and take the same word. Do not write `السبورة البيضاء`, and do not use `لوح`. Feminine; plural سبورات. |
-| warehouse (Jiki's warehouse) | مستودع | Where Jiki hangs out and keeps his machine shelf. Masculine; plural مستودعات. |
-| crank (machine crank) | مقبض | The handle on a machine; the action of cranking it is `يدير المقبض` (turns the handle). Not the transliteration `كرنك`. Masculine; plural مقابض. |
-
 ## Brackets
 
 Set by mirina (t/470/32), replacing the earlier humam-hamdan scheme (t/470/16). Every bracket

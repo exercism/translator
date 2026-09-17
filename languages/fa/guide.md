@@ -139,39 +139,6 @@ Handling Latin-script code tokens inside RTL Persian prose:
   bare or merely transliterated; explain what it means in Persian, per the acronym rule in
   `global/voice.md`. Any bracketed gloss beyond that comes only from a `<define>`.
 
-## Term clarification (Persian realisation)
-
-The `<define>` model lives in `global/voice.md`. **Persian overrides its bracketed-English
-format: never append an English term in brackets after a Persian term, and never write the
-marker `به انگلیسی` at all.** Write `توابع`, never `توابع (_functions_ به انگلیسی)`; write
-`متغیر`, never `متغیر (_variable_ به انگلیسی)`. This holds in every content type, on every
-term, however technical, and whether or not the source `<define>`s it. There is no exception
-and no "just this once".
-
-What a `<define>` expands to in Persian:
-
-- **Persian-primary term** (`Use = fa`): the Persian term alone. Strip the tag and add
-  nothing: no brackets, no English, no marker. `توابع`.
-- **English-primary term** (`Use = en`): English first in italics, Persian gloss in
-  brackets, no marker word. `_API_ (رابط برنامه‌نویسی کاربردی)`. This direction is kept: the
-  brackets carry Persian, which is what a Persian reader needs.
-- **Code identifier**: code span, Persian meaning in brackets, no marker word.
-  `` `turnLeft` `` (به چپ بچرخ). Kept for the same reason.
-
-A tidy pass removes any Persian-term-plus-English bracket it finds, in the same way it
-removes an unprompted parenthetical.
-
-## Product and strand names
-
-Everything here translates like ordinary UI copy; nothing stays English (see
-`content-types/website-keys.md`).
-
-- Translate descriptive strand names, keeping the object marker را that Persian requires:
-  "Learn to Code" becomes «برنامه‌نویسی را یاد بگیرید», "Learn to Build" becomes «ساختن را
-  یاد بگیرید». Dropping را (e.g. «برنامه‌نویسی یاد بگیرید») reads unnatural.
-- Translate coined and branded names too: Ask Jiki, Deep Dive, Jiki Premium, Bootcamp, and
-  the game names all get Persian renderings, the same as any other UI copy.
-
 ## Describers (the timeline of what the learner's code did)
 
 - **Write a past-tense describer in the passive, never in the third-person active.** These

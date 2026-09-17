@@ -89,41 +89,6 @@ These stay in English in Hebrew prose. Where the source `<define>`s one of them,
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
 
-## Product and strand names
-
-Everything here translates like ordinary UI copy; nothing stays English (see
-`content-types/website-keys.md`).
-
-| English | Hebrew | Use (he/en) | Notes |
-|---------|--------|-------------|-------|
-| Learn to Code (strand) | ללמוד לתכנת | he | Descriptive strand name, so it is translated. |
-| Learn to Build (strand) | ללמוד לבנות | he | Descriptive strand name, so it is translated. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Hebrew rendering | Notes |
-|-------------------|-------------------|-------|
-| box (value container) | קופסה | |
-| chain (array metaphor) | שרשרת חוליות | **Always the full qualified compound**; never shortened to bare `שרשרת`. See guide § "The שרשרת / מחרוזת collision". |
-| link (of the chain) | חוליה | The everyday word for one link of a chain. |
-| machine (function metaphor) | מכונה | |
-| input slot | חריץ | The coin-slot word, so the coin metaphor below lands with it. |
-| return chute | מגלשה | The ordinary word for a playground slide. |
-| crank (machine crank) | ידית | The handle Jiki turns to power a machine up. Not `ארכובה` (engineering register) and not `מנואלה`. |
-| shelves (storage) | מדפים | |
-| warehouse (Jiki's warehouse) | מחסן | Where Jiki hangs out and keeps his machine shelf. |
-| workshop (Jiki's workshop) | סדנה | The room Jiki works in; the shelves live in it. |
-| board / whiteboard | לוח | **One object, one word.** The board the learner writes instructions on for Jiki to follow, and the board a function keeps its own notes on, are the same `לוח`. No collision with `מערך` (array). Do not use `טבלה`, which is a data table. |
-| coin (number metaphor) | מטבע | |
-| label (on a box/machine) | תווית | Not `מדבקה`, which is specifically an adhesive sticker. |
-| piece of paper (string metaphor) | פיסת נייר | |
-| spiral notebook page (dictionary metaphor) | דף בפנקס ספירלה | |
-| mini-Jiki | ג'יקי הקטן | The one place the name is written in Hebrew script in *running prose*, because it takes a Hebrew adjective. The guide's one-time first-mention pronunciation gloss (see guide § "The name Jiki") is the only other place Hebrew script is used for the name, and it is a gloss, not a running-prose use. Not `מיני־ג'יקי`, which reads as product naming. |
-| character (game/maze figure) | דמות | Keep `תו` for a text character; `דמות` is the on-screen figure. |
-| cell (of a maze grid) | משבצת | A square on a grid. Not `תא`, which reads as a spreadsheet cell. |
-
 ## Brackets
 
 Default to plain **סוגריים**. When a specific bracket type matters, name it and show the glyph in a code span immediately after.

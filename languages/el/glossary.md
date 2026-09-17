@@ -113,22 +113,6 @@ it is the ordinary word here.
 | `let` (the JavaScript keyword) | _έστω_ | Confirmed by a native speaker (astyanax, 2026-07-31). The one exception to the row above: gloss it **once**, where the keyword is first introduced, as `` `let` (έστω) ``, borrowing the standard Greek mathematical "let" ("έστω x = 10"). Every later mention is bare `let`. |
 | backtick / backticks | _βαρεία_ / plural _βαρείες_ | Confirmed by a native speaker (astyanax, 2026-08-13). The English word stays in prose (`backticks`), with the Greek term in brackets at its first mention on a page: `backticks (βαρείες)`, matching the `if`/`for` pattern of keeping the real token beside its Greek word. **Never `ανάποδα τικ`**, which is not Greek: `βαρεία` is the proper name of the mark, a `τόνος` / `διακριτικό σημείο`. Feminine noun (`η βαρεία`, `οι βαρείες`). |
 
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Greek rendering | Notes |
-|-------------------|------------------|-------|
-| box (value container) | κουτί | |
-| chain (array metaphor) | αλυσίδα | |
-| machine (function metaphor) | μηχανή | |
-| input slot | θυρίδα | Not the more generic/technical `υποδοχή`. |
-| return chute | τσουλήθρα | |
-| shelves (storage) | ράφια | |
-| warehouse (Jiki's warehouse) | αποθήκη | Where Jiki hangs out and keeps his machine shelf. |
-| crank (machine crank) | μανιβέλα | Not the technical `στρόφαλο`. Jiki `γυρίζει τη μανιβέλα`. |
-| board / whiteboard | ασπροπίνακας | **One word for one object**: both the board the learner puts instructions on for Jiki to follow, and the board a function keeps its own notes on. **Never bare `πίνακας`**, which is the agreed term for `array` and would collide with it, so the qualified `ασπροπίνακας` is compulsory here. Do not alternate with `λευκός πίνακας`. |
-
 ## Brackets
 
 | Glyph | Greek | Notes |

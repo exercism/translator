@@ -57,22 +57,6 @@ whatever their home dialect.
   Check the plural prefix for each technical noun rather than assuming a single pattern
   works for all of them.
 
-## Term clarification
-
-The Swahili realization of the `<define>` format in `global/voice.md`. The marker word is
-**_kwa Kiingereza_** ("in English"), and it goes after the italic English term, inside the
-brackets. Three cases, one for each direction:
-
-- **Swahili is primary** (the glossary row says `sw`): Swahili word first, English in
-  brackets with the marker. "kitendakazi (_function_ kwa Kiingereza)", "hitilafu (_error_
-  kwa Kiingereza)".
-- **English is kept primary** (the glossary row says `en`): the italic English term first,
-  then the Swahili gloss from the glossary's "Keep in English" table in brackets, with
-  **no** marker word. "_variable_ (kigezo, mahali panapohifadhi thamani)".
-- **Code identifiers** (`move`, `turnLeft`): the identifier in backticks, then its Swahili
-  *meaning* in brackets, with no marker word. "`move` (sogea)", "`turnLeft` (geuka
-  kushoto)".
-
 ## Style notes
 
 - **Em dashes:** use a comma for a mid-sentence aside, or split into two sentences.

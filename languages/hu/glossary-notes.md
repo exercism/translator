@@ -1,5 +1,72 @@
 # Hungarian (hu) glossary notes
 
+## 2026-09-17: Adapted from Jiki's glossary for Exercism (agent; nothing here is a native speaker's decision)
+
+This glossary was forked from Jiki's Hungarian glossary when Exercism's translator repo was
+created. Exercism and Jiki are separate products with separate glossaries from here on.
+Everything below this entry is Jiki's history, kept as it was because the programming
+vocabulary it settled carries over unchanged. It mentions Jiki pages, Jiki reviewers' threads
+and rows that no longer exist here; that is history, not an instruction.
+
+**Removed, on the owner's instruction (iHiD), because Exercism has no such thing.** A
+native-speaker decision among them is not overruled, it is out of scope: the entries that
+record it stay below, and the rows remain in Jiki's glossary.
+
+- The whole `Product and strand names` section (_Learn to Code_, _Learn to Build_, _Ask Jiki_).
+- The whole `Exercise world` section (alien, pangram, traffic light, light, bouncer, skyline,
+  skyscraper): Jiki's exercise stories. Exercism's practice exercises have their own, and none
+  has been discussed yet.
+- The whole `Jiki physical metaphors` section (box, chain, machine, input slot, return chute,
+  crank, shelves, warehouse, board, and _figura_ for an on-screen character).
+- `course / track` → _kurzus_: it described Jiki's course. _kurzus_ is proposed again for
+  Exercism's "track", below, where it has to be agreed afresh because the thing is different.
+- `level stdlib`, `instruction (given to Jiki)`, `scenario (exercise test case)`: Jiki's
+  structures.
+
+**Notes reworded, renderings unchanged.** Exercism's English carries no `<define>` markup, so
+no gloss is ever added (`global/voice.md`), and every note that said what to show "on
+`<define>`" described something that can no longer happen. Those clauses were dropped from:
+dictionary, key, to return, and / or, ampersand, bar, pure, nested, backtick, and the
+"Keep in English" table, whose middle column is now "the Hungarian word, where the English
+explains the term". Two notes changed meaning and are worth a native speaker's eye:
+
+- `interpreter` → _értelmező_, unchanged, but the note no longer says "a person doing a job,
+  not a program". That was about Jiki, the character who interprets the learner's code. On
+  Exercism an interpreter is the program that runs Ruby or Python. _tolmács_ stays ruled out;
+  the ban on _értelmezőprogram_ was dropped with the framing that motivated it.
+- `concept (learning unit)` → _fogalom_ and `task (within an exercise)` → _részfeladat_ are kept
+  as agreed, since Exercism's concepts and its concept exercises' numbered tasks are the same
+  things. _Fogalomtár_ (Jiki's Concept Library) was dropped from the note.
+
+**Added: `Exercism product vocabulary: PROPOSED, NOT YET AGREED`.** Fifty-odd rows for the
+product's own nouns, mined from the website's English UI catalogs (`global/terms.md`). Every
+one is an unconfirmed draft by an agent. The basis for the ones that were a real choice:
+
+- `track` → _kurzus_: the website's own earlier Hungarian copy
+  (`config/locales/pages/track.yml`, `hu:` root, not migrated) says „a(z) %{track_title}
+  kurzust”, and Jiki's reviewers accepted _kurzus_ for a course. Rejected: _sáv_, _pálya_
+  (literal "track", meaningless here), _útvonal_.
+- `locked / available / in progress / completed` → _zárolva / elérhető / folyamatban /
+  elkészült_, and `trophy` → _trófea_: the same earlier copy uses exactly these.
+- `concept exercise` / `practice exercise` → _tanulófeladat_ / _gyakorlófeladat_: chosen as a
+  pair. _fogalmi feladat_ was rejected as opaque. The site's UI already says "learning
+  exercise" for the first.
+- `student` → _tanuló_: _diák_ and _hallgató_ place the reader in a school or a university,
+  and Exercism's students are often working developers.
+- `to submit` → _beküld_: the ordinary verb for sending something through a website. _bead_ is
+  handing homework to a teacher.
+- `to publish` → _közzétesz_ over _publikál_, which leans towards academic publishing.
+- `reputation` → _reputáció_: the word Hungarian developers know from Stack Overflow. _hírnév_
+  reads as fame.
+- `testimonial` → _ajánlás_: what LinkedIn's Hungarian UI calls the same thing.
+- `flair` → _kitűző_, only because _jelvény_ is taken by `badge` and the two appear together.
+- `representer`, `Insiders`: kept in English. The first is a coined word with no everyday
+  equivalent in any language; the second is a proper name.
+- `code review` → _kódáttekintés_: Hungarian developers also say "code review" as it stands,
+  and a native speaker may well prefer that.
+- `Dig Deeper` → _Áss mélyebbre_, `journey` → _az utad_, `deep dive` → _mélyelemzés_: the
+  least certain rows here. All three are metaphors in English.
+
 ## 2026-08-11: exercise-world terms settled before the hu launch (pangram, traffic light, bouncer, cityscape)
 
 **Decided by:** an agent pass, from what the existing Hungarian corpus already favoured.

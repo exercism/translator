@@ -69,23 +69,6 @@ Dutch in the gloss column below; with no `<define>`, use the English bare, no gl
 | statement (executable) | _uitvoerbare instructie_ | Dutch technical writing keeps _statement_ (e.g. _if-statement_, _break-statement_). Glossed with the qualifier so it stays distinct from _instruction_ (an instruction given to Jiki), which is plain _instructie_. |
 | if statement | (no separate gloss) | Written _if-statement_ (hyphenated, `if` kept). Follows the _statement_ decision above. |
 
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Dutch rendering | Notes |
-|-------------------|-----------------|-------|
-| box (value container) | doos | _de doos_. |
-| chain (array metaphor) | ketting | Not the abstract _keten_. A single link = _schakel_. |
-| input slot | invoergleuf | |
-| return chute | resultaatglijbaan | Not _retourglijbaan_. |
-| machine (function metaphor) | machine | _de machine_ with an _invoergleuf_ and a _resultaatglijbaan_. |
-| crank (machine crank) | slinger | The action is "aan de slinger draaien" (turn the crank), and "hem aanzetten" for powering it up. |
-| shelves (storage) | planken | The shelves where variables and functions are stored. Singular _plank_. |
-| board / whiteboard | whiteboard | **One object, one word**, used for both jobs: what the learner puts instructions on for Jiki to follow, and where a function keeps its own instructions and notes. _het whiteboard_. See `glossary-notes.md`. |
-| warehouse (Jiki's warehouse) | loods | _de loods_. Distinct from _werkplaats_ (workshop, below); the two rooms must stay separate. |
-| workshop (Jiki's workshop) | werkplaats | _de werkplaats_. Kept distinct from _loods_ (warehouse) above. |
-
 ## Brackets
 
 Default to plain **haakjes**. When a specific bracket type matters, name it and show the glyph in a code tag immediately after: _vierkante haakjes (`[]`)_.

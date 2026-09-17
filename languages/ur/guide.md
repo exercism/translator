@@ -65,15 +65,6 @@ Urdu-specific rules that English speakers get wrong:
   verb-final position. Literal English clause order is usually still grammatical but reads
   translated; reorder for natural emphasis rather than mapping English clause-by-clause.
 
-## Term clarification
-
-When introducing an English term under Urdu-primary (see `global/voice.md`), use bare
-parentheses with no marker word around the italic English term, since Urdu typically
-transliterates the term itself into Nastaliq, e.g. فنکشن (_function_).
-
-A term being a settled transliteration the reader may well recognize (فنکشن,
-لوپ, سٹرنگ) is **not** a reason to drop the gloss.
-
 ## Brackets
 
 (For how brackets *render* inside RTL prose, see the Script section above.)

@@ -55,12 +55,6 @@ Russian-specific rules that are easy to get wrong when translating from English:
   (two elements, genitive singular), "пять элементов" (five elements, genitive plural).
   Don't treat the noun after a number as invariant.
 
-## Term clarification
-
-When introducing an English term under Russian-primary (see `global/voice.md`), prefix
-the italic English term inside the parentheses with the abbreviation `англ.`, e.g. функция
-(англ. _function_).
-
 ## Style notes
 
 - **The "X — is Y" trap (read this before translating any definition sentence).** Standard

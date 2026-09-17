@@ -121,20 +121,3 @@ source `<define>`s the term).
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry
-technical language.
-
-| English metaphor | Bangla rendering | Notes |
-|-------------------|-------------------|-------|
-| box (value container) | বাক্স | |
-| chain (array metaphor) | চেইন | An element sitting on the chain: চেইনের একটি অংশ ("a part/link of the chain"). Not independently source-confirmed; flagged for native-speaker review (a plausible native alternative is শিকল). |
-| input slot | ইনপুট স্লট | Not independently source-confirmed; flagged for native-speaker review. |
-| return chute | রিটার্ন স্লাইড | Flagged for native-speaker review, since "chute" and "playground slide" are close but not identical images. |
-| machine (function metaphor) | মেশিন | A function modelled as a machine with an input slot and a return chute. |
-| crank (machine crank) | হাতল | Cranking it to start the machine: হাতল ঘুরিয়ে চালু করা. |
-| shelves (storage) | তাক | Jiki's machines sit on a তাক. |
-| warehouse (Jiki's warehouse) | গুদাম | The place Jiki hangs out and keeps his machine shelf (জিকির গুদাম). |
-| board / whiteboard | বোর্ড | **One object, one word.** The same বোর্ড is what the learner writes instructions on for Jiki to follow, and what a function keeps its own instructions and notes on. Never use হোয়াইটবোর্ড alongside it; never invent a second word for the other use. |

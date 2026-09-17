@@ -84,20 +84,6 @@ These are terms where the Italian is used in prose, so the "Use (it/en)" column 
 | drawing shapes (function category) | disegno di forme geometriche | it | The graphics-exercise function category. Use _forme geometriche_ for "shapes" in drawing contexts; bare _forme_ is acceptable only where the geometric sense is already unambiguous from the sentence. |
 | basic / simple (exercise-title modifier) | semplice | it | Where two exercises share a subject and one is the basic version (`-basic` and its fuller counterpart), mark the basic one's Italian title with _semplice_ **before** the noun phrase: _Semplice pupazzo di neve_. The fuller exercise keeps the undecorated title (_Pupazzo di neve_), so only the basic one carries a modifier. Applies to the title only, not to the noun inside the prose or the message catalog. Agrees with the noun in gender and number (_Semplice X_, _Semplici X_). |
 
-### Exercise domain vocabulary
-
-Everyday words from an exercise's subject matter where the obvious rendering is not the right one.
-
-| English | Italian | Use (it/en) | Notes |
-|---------|---------|-------------|-------|
-| weather | meteo | it | Confirmed by a native speaker: more precise than _tempo_, which also means "time" and so reads ambiguously in an exercise. Masculine and invariant: _il meteo_, _previsioni meteo_, _simboli meteo_. Never use _tempo_ for the weather sense. |
-| tee (golf) | tee | en | Keep the English word: it is the standard term in Italian golf usage. Never _chiodino_. Masculine and invariant: _il tee_, _sul tee_. |
-| radial width / radial height (ellipse) | raggio orizzontale / raggio verticale | it | Confirmed by a native speaker: the wording Italian graphics usage actually employs for an ellipse's two radii. Masculine, so the article and preposition agree with _raggio_: _un raggio orizzontale di 40_, _ed un raggio verticale di 20_. Never _larghezza radiale_ / _altezza radiale_, which are literally correct but not what is said. |
-| jumbled (parts swapped/rearranged) | stravolto / stravolta | it | Confirmed by native speakers. The sense is a thing whose own parts have been shuffled and swapped around, not a thing that is untidy inside. Agree gender with the noun: _casa stravolta_. Never _disordinato_ / _in disordine_ (that is interior mess), and not _scombinato_. |
-| entrance (building) | ingresso | it | Confirmed by a native speaker: the construction/building term. Masculine: _un ingresso_, never the feminine _un'entrata_. Distinct from `input (to a function)` below, which is a different English word and stays _input_. |
-| builder(s) (construction) | muratore / muratori | it | Confirmed by a native speaker: the construction-site term for the workers building a wall/structure. Never _costruttore/i_, which reads as "constructor" (a builder/developer entity), not the tradesperson. |
-| tile rack (Scrabble) | leggìo | it | Confirmed by a native speaker, matching the term already used consistently in the sibling exercise `tile-search`. Masculine, same as the superseded term: _il leggìo_, _un leggìo_, _nel leggìo_. Never _portatessere_, which is superseded on `tile-rack`. |
-
 ## Keep in English
 
 These stay in English in Italian prose, with the Italian gloss to use for each.
@@ -110,23 +96,6 @@ These stay in English in Italian prose, with the Italian gloss to use for each.
 | canvas (graphics exercises) | _area di disegno_ | The drawing surface in creative-coding exercises. Where the source `<define>`s it, explain it as the _area di disegno_ (the `canvas` element), then use _canvas_. Where the source does not `<define>` it (exercise tasks, describers, hints), never leave a bare _canvas_: use _area di disegno_. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
 | `move()` (exercise function) | _muovi_ | Gloss the command with the imperative _muovi_, matching the command's behaviour. Never the reflexive infinitive _muoversi_, which describes the character moving itself rather than instructing it. The same imperative pattern applies to any other exercise function glossed this way. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Italian rendering | Notes |
-|-------------------|--------------------|-------|
-| box (value container) | scatola | Feminine: _la scatola_. |
-| chain (array metaphor) | catena | A link = _anello_/_maglia_. Confirmed to not collide with _stringa_ (string). Feminine: _la catena_. |
-| input slot | fessura | Feminine: _la fessura_. Not _feritoia_, which is more technical/less concrete. |
-| return chute | scivolo | Masculine: _lo scivolo_. |
-| machine (function metaphor) | macchina | A function modelled as a machine, with an input slot and a return chute. Feminine: _la macchina_. Note: colloquially "macchina" can mean "car"; keep enough surrounding context that the machine sense is unambiguous, do not switch words over this. |
-| crank (machine crank) | manovella | The handle Jiki turns to power a machine up: _girare la manovella_. Feminine: _la manovella_. The verb for powering the machine up this way is _caricare_ (wind up), never _accendere_ (switch on), which belongs to an electrical machine. |
-| shelves (storage) | scaffali | The shelves where variables and functions are stored. Masculine plural: _gli scaffali_ (plural), _uno scaffale_ (singular). |
-| warehouse (Jiki's warehouse) | magazzino | The place where Jiki hangs out and keeps his machine shelf. Masculine: _il magazzino_. Distinct from _officina_ (workshop). |
-| board / whiteboard | lavagna | **One object, one word.** The board the learner writes instructions on for Jiki to follow, and the board a function keeps its own notes on, are the same thing. Feminine: _la lavagna_. Use _lavagna bianca_ only if the whiteness of the surface specifically matters to the sentence; otherwise plain _lavagna_ is the natural everyday word for a board in a room. No collision with _array_. |
-| layer (of bricks, a wall) | fila | Never _strato_, which doesn't sound natural for masonry in Italian. Italian describes a horizontal row of bricks as _fila_ (or the technical term _corso_). Confirmed by native-speaker review (see notes). |
 
 ## Brackets
 

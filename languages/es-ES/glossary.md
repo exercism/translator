@@ -68,19 +68,6 @@ These stay in English in prose, with the Spanish gloss to use for each.
 | scope | _ámbito_ | Exception: in the scope concept, where the source defines it, use _ámbito_, then _scope_ throughout. This is the locale's single decision on `scope`: unlike es-419, the English word stays primary in prose. |
 | framework | _marco de trabajo_ | Kept as a loanword. Where the source defines it, explain it means a reusable _marco de trabajo_. |
 
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | es-ES rendering | Notes |
-|-------------------|------------------|-------|
-| input slot | ranura de entrada | |
-| machine (function metaphor) | máquina | Gender: _la máquina_. Plural _máquinas_; diminutive _pequeñas máquinas_ for "little machines". |
-| warehouse (Jiki's warehouse) | almacén | Gender: _el almacén_. The place Jiki hangs out and keeps his machines. Not _bodega_ (a cellar or wine store in Spain). |
-| shelves (storage) | estantería | The shelving unit as a whole is _la estantería_; one individual shelf is _un estante_. "on the shelf" = _en la estantería_. |
-| crank (machine crank) | manivela | The handle Jiki turns to power a machine up: _girar la manivela_. Not _palanca_ (a lever). |
-| board / whiteboard | pizarra | **One word for both uses**: the board the learner writes instructions on for Jiki to follow, and the board a function keeps its own instructions and notes on. Not _tablero_ (a game board or a dashboard) and not _tablón_ (a noticeboard). No collision with `array`, which stays English in this locale. |
-
 ## Brackets
 
 Default to naming the bracket type. When a specific bracket type matters, name it and show

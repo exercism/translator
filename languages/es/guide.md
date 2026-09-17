@@ -37,26 +37,6 @@ A locale's binding term list is this file's `glossary.md` plus that locale's own
   states and conditions take `estar` ("está vacío", "la variable está vacía"). English
   "is" maps to both; pick by meaning, never collapse them into one.
 
-## Term clarification
-
-When introducing an English term under Spanish-primary (see `global/voice.md`), append
-_en inglés_ after the italic English term inside the parentheses, e.g. la función (_function_
-en inglés).
-
-**Drop the bracketed gloss when the Spanish word is spelled exactly like the English one**
-and write the word bare. Spanish and English share the Latin script, so "error (_error_ en
-inglés)" repeats itself and reads as a mistake rather than as help. This is a standing rule,
-not a per-page judgement call: it applies wherever it happens, including
-`<define>error</define>`, and to loanwords the glossary keeps in English anyway
-(_framework_, _tutorial_, _bootcamp_). When such a term still needs explaining, explain in
-Spanish what it is instead of bracketing the English.
-
-**Keep the gloss when the two forms differ at all**, even by an accent or an ending:
-función (_function_ en inglés), intérprete (_interpreter_ en inglés), las funciones
-(_functions_ en inglés). This is a decision about the gloss only: the term is still
-translated and still used consistently per the glossary, and is never left in English
-because of it.
-
 ## Style notes
 
 - **Em dashes.** The global no-em-dash rule (`global/rules.md`) applies. In Spanish the

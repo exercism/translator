@@ -85,19 +85,3 @@ Only a small set of terms stay in raw Latin script in Korean prose; everything e
 | Variable and function names | Never translated. |
 | CLI commands (`npm install`, `git commit`) | The commands themselves are never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | Always English, including inside prose. Translate only the surrounding explanation. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Korean rendering | Notes |
-|-------------------|-------------------|-------|
-| box (value container) | 상자 | |
-| machine (function metaphor) | 기계 | |
-| input slot | 투입구 | Built from 입력/입 (input, agreed term above is 입력; 투입 = "to put in, feed in") + 구 (opening). |
-| return chute | 배출구 | Pairs with 투입구 the same way a vending machine has a coin slot (투입구) and a product-dispensing slot (배출구). |
-| chain (array metaphor) | 사슬 | Lower confidence than 상자/기계; flagged for a native-speaker gut-check on first real use. |
-| shelves (storage) | 선반 | Untested in this specific teaching context; flagged for a native-speaker gut-check on first real use. |
-| board / whiteboard | 칠판 | **One object, one word.** The board the learner puts instructions on for Jiki to come along and follow, and the board a function keeps its own instructions and notes on, are the same 칠판; never use two words for it. Flagged for a native-speaker gut-check. |
-| warehouse (Jiki's warehouse) | 작업실 | The room where Jiki's machine shelf lives, not a storage space. Not 창고, which reads as a plain storage/logistics warehouse in Korean, not a place someone works with tools. If `workshop` (used separately on the scope concept page) is ever needed too, use a different word (e.g. 작업장) so the two don't collide. |
-| crank (machine crank) | 손잡이 (+ 돌리다) | Use the concrete handle-plus-turn phrasing: "손잡이를 돌려 전원을 켜요" (crank the handle and power it up). Keep the physical image; do not flatten it to 실행하다. |

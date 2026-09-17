@@ -55,23 +55,6 @@ What separates stiff Thai from warm Thai is vocabulary, not grammar. Reach for t
 - **Split long English sentences.** English chains subordinate clauses; Thai reads better as shorter units separated by the clause space.
 - **Numbers follow the source's form.** If the English writes `10`, write `10`; if it writes "ten", write `สิบ`.
 
-## Term clarification (Thai realisation)
-
-The principle (the `<define>`/`<literal>` markup, the no-auto-gloss rule, and direction from the glossary's `Use (th/en)` column) lives in `global/voice.md`. This section gives only the Thai specifics.
-
-- **There is no marker word.** Thai teaching writing introduces a term as Thai first with the English in parentheses and nothing else, because the Latin script is its own marker. Do not invent a `ในภาษาอังกฤษ` tag.
-- **Thai-primary term** (`Use = th`): Thai first, English in italics in brackets. `ฟังก์ชัน (_function_)`, `ตัวแปร (_variable_)`.
-- **English-primary term** (`Use = en`): English first in italics, Thai gloss in brackets. `_API_ (ส่วนต่อประสานโปรแกรมประยุกต์)`.
-- **Code identifier**: code span, Thai meaning in brackets, no italics. `` `turnLeft` `` (เลี้ยวซ้าย).
-- **Italicise only the Latin-script English term.** Never italicise Thai.
-- **Some terms carry an English hint even where the source has no markup.** Where a `glossary.md` row says "English hint on first use", write that term Thai-first with the English in italics in brackets on its **first** appearance in each page or file, then bare Thai everywhere after. These are terms Thai speakers usually say in English even though a Thai word exists, so the Thai alone can land as unfamiliar. Where the source already marks the term, the existing markup covers it; do not write the hint twice on one page.
-
-## The name "Jiki"
-
-- **Keep `Jiki` in Latin script throughout Thai prose**, as the running form everywhere.
-- **Introduce the pronunciation once**, at the very first mention in a piece, as `Jiki (จิ๊กิ)`. After that, always bare `Jiki`. Never switch to `จิ๊กิ` as the running form.
-- **Use the name where English uses a pronoun.** `Jiki จะอ่านคำสั่งทีละบรรทัด`, rather than reaching for `เขา`.
-
 ## Style notes
 
 - **Rhetorical asides** ("So what does this look like in code?") stay as natural Thai rhetorical questions: `แล้วในโค้ดมันหน้าตาเป็นยังไง`.

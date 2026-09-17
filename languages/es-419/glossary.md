@@ -80,19 +80,6 @@ These stay in English in es-419 prose, with the Spanish gloss to use for each on
 | Boolean | _booleano_ | Exception: in the Boolean concept, explain _booleano_ where the source `<define>`s it, then use _Boolean_. |
 | framework | (explain the concept in Spanish) | It is spelled the same in both languages, so there is no gloss to give: where the source `<define>`s it, say briefly what it is (a reusable structure you build on top of) instead of bracketing the English. See `../es/guide.md` § Term clarification. |
 
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Spanish rendering | Notes |
-|------------------|-------------------|-------|
-| input slot | ranura | The narrow slot you insert a coin into, like on a piggy bank. |
-| machine (function metaphor) | máquina | The "machine" a function is modelled as, with its input slot and return chute. |
-| shelves (where things are stored) | estantes | The shelves where variables and functions live; _estantería_ for the whole unit. |
-| board / whiteboard | pizarrón | **One object, one word.** Both the board the learner puts instructions on for Jiki to follow and the board a function keeps its own instructions and notes on: same metaphor, so always the same word. Not the Spain _pizarra_. Never _tablero_, which is a panel or a game board rather than something you write instructions on. |
-| warehouse (Jiki's warehouse) | almacén | Where Jiki hangs out and keeps his machine shelf. Not _bodega_, which is regionally marked: a corner shop in much of the Caribbean and Central America, a wine cellar elsewhere. |
-| crank (machine crank) | manivela | The handle Jiki turns to power a machine up: _girar la manivela_. Not _palanca_ (a lever, the wrong motion). |
-
 ## Brackets
 
 Default to plain **paréntesis**. When a specific bracket type matters, name it and show the

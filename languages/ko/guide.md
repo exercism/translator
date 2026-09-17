@@ -141,19 +141,6 @@ New takes 가/이; known or contrastive takes 는/은.
 - Literal "-하십시오" on every imperative, instead of "-아/어 봐요" or a soft question
   ("...할까요?").
 
-## Term clarification
-
-When introducing an English term under Korean-primary (see `global/voice.md`), prefix the
-English term with 영어: inside the parentheses: 함수(영어: _functions_).
-
-The exact form, used everywhere with no variation:
-
-- **No space** before the opening parenthesis: 인터프리터(영어: _interpreters_), not
-  인터프리터 (영어: interpreters).
-- The English term is **italicized** and kept in whatever number the source used.
-- This is the only gloss form. Never write a bare parenthetical like 변수 (variable)
-  without the 영어: prefix, and never gloss a term the source did not `<define>`.
-
 ## Style notes
 
 - **Em dashes:** in Korean prose the natural replacements are a **comma (,)** for a

@@ -66,26 +66,6 @@ German-specific rules that English speakers get wrong:
   personally ("dein Interpreter", "seine Aufgabe ist es, ... zu interpretieren") and use the
   verb `interpretieren` nearby, rather than describing the Interpreter as a tool.
 
-## The `<define>` gloss format
-
-The marker word is **`auf Englisch`**, placed as a suffix inside the brackets, after the
-italic English term:
-
-- German primary, English glossed: `einen Fehler (_error_ auf Englisch)`,
-  `den Funktionen (_functions_ auf Englisch)`.
-- The English term is always italic, never in quotes and never in code font (unless it is a
-  code identifier, see below). The brackets are ordinary round brackets, and the marker is
-  plain text: do not wrap it in German quotes.
-- **Match the English form to the German word it glosses** (singular next to a singular,
-  plural next to a plural), and leave the English uninflected. The German word carries the
-  case; the bracket never does: "mit den Funktionen (_functions_ auf Englisch)".
-- **Code identifiers** get their *meaning* in German, in brackets, with **no** marker and
-  no italics: ``move`` (bewegen), ``turnLeft`` (nach links drehen).
-- **Skip a gloss that teaches nothing.** Where the German rendering is the same word in the
-  same script as the English (`Interpreter`, `Array`, `Code`), drop the parenthetical
-  entirely and let the surrounding German prose carry the meaning. Gloss only where the
-  German genuinely differs (`Fehler`, `Zeichenkette`, `Randfall`).
-
 ## Worked examples
 
 **Titles and headlines** (natural word order, no drama, no redundancy):

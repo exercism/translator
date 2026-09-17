@@ -96,20 +96,6 @@ Portuguese in the gloss column below (per the format in `global/voice.md`); with
 | framework | _framework_ | Where the source `<define>`s it, explain it means a reusable structure. Diverges from pt-PT's "estrutura de trabalho" gloss. |
 | CLI (the concept) | interface de linha de comando | Where the source `<define>`s it, explain CLI as _interface de linha de comando_ (singular "comando"). Diverges from pt-PT's plural "comandos". |
 
-## Jiki physical metaphors
-
-Terms below diverge from `../pt/glossary.md` or exist only for Brazilian Portuguese.
-
-| English metaphor | Portuguese rendering | Notes |
-|-----------------|---------------------|-------|
-| chain (array metaphor) | corrente | Physical chain of links; links = _elos_. Context must be physical to avoid collision with `corrente` = electric current / "current/present". (pt-PT's equivalent entry warns of a different collision risk, with "cadeia"; both are valid for their own locale.) |
-| machine (function metaphor) | máquina | Diminutive _maquininha_ for the affectionate "little machines". |
-| shelves (storage) | prateleira | _a prateleira do Jiki_; plural _prateleiras_ when there is more than one. |
-| warehouse (Jiki's warehouse) | galpão | The big shed where Jiki hangs out and keeps his machine shelf. |
-| crank (machine crank) | manivela | The handle Jiki turns to power a machine up: _girar a manivela_. |
-| board / whiteboard | quadro | **One word for one object.** Both the board the learner writes instructions on for Jiki to follow, and the board a function keeps its own instructions and notes on. Never a second word such as `quadro branco` or `lousa` for the same object. Confirmed by a native speaker (oxe-b) on the pt-BR glossary thread; do not revisit. |
-| return chute | boca da máquina | The opening a value comes out of, as on a vending machine or an ATM. Replaces the earlier draft, _calha de saída_, which must not be used. Contracts normally: _na boca da máquina_, _da boca da máquina_. Where the machine is already named in the same sentence, _a boca_ alone is fine. |
-
 ## Provisional terms (🟡)
 
 These terms have been decided but not yet used in a real translated file. Confirm the choice on

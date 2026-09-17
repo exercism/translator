@@ -50,12 +50,6 @@ core term list) with the Chinese term, in both locales. The only exceptions:
 - **Quotation marks** are locale-specific glyphs, not a shared convention; each locale guide
   gives its own.
 
-## Term clarification
-
-When introducing an English term under Chinese-primary (see `global/voice.md`), prefix
-the English term with 英文： inside full-width parentheses (英文： in zh-TW too), e.g.
-函数（英文：function）.
-
 ## Style notes
 
 - **Em dashes.** Replace an em dash with a full-width comma (，) for a mid-sentence aside,

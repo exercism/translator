@@ -108,12 +108,6 @@ the language.
   _намалював_, _очистив_, _перетворив_, _оголосив_, _повернув_ (never _намалювала_,
   _очистила_, and so on).
 
-## Term clarification
-
-When introducing an English term under Ukrainian-primary (see `global/voice.md`), prefix
-the italic English term inside the parentheses with the abbreviation `англ.`, e.g. функція
-(англ. _function_).
-
 ## Style notes
 
 - **Logical operators `&&` and `||`.** Spell the operator out in full at its first

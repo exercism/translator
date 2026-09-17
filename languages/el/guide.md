@@ -66,26 +66,6 @@ Greek-specific rules English speakers get wrong:
 - **Language names are not capitalized** in Greek prose (unlike English): ελληνικά,
   αγγλικά.
 
-## Term clarification
-
-When introducing an English term under Greek-primary (see `global/voice.md`), append
-_στα αγγλικά_ after the italic English term inside the parentheses, e.g. η συνάρτηση
-(_function_ στα αγγλικά).
-
-**When a gloss is kept, and when it is skipped**, realizing "Skip a gloss that would teach
-nothing" in `global/voice.md`:
-
-- **Keep the gloss** whenever the Greek form is a real Greek word (συνάρτηση, σφάλμα,
-  διερμηνευτής). This is the normal case, so a prose `<define>` on a localized term is
-  normally expanded.
-- **Skip the gloss** when the only Greek form available is a phonetic transliteration of
-  the English (ντιμπάγκινγκ, φρόντεντ). Use the English form bare instead. A term in the
-  glossary's "Keep in English" table with a Greek gloss listed (e.g. `framework` →
-  _πλαίσιο εργασίας_) has a real Greek form, so it is glossed as usual; only rows marked
-  "(no gloss)" are left bare.
-- For a code identifier, the gloss is its **meaning** in Greek with no _στα αγγλικά_
-  marker, e.g. `move` (κίνηση).
-
 ## Style notes
 
 - **Em dashes:** in Greek prose the natural replacements are a **comma** for a

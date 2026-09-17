@@ -115,34 +115,6 @@ start where a Finnish writer would have started it?" If not, reorder.
 - **A code token inflected with a colon** where a Finnish head noun would have carried the
   ending (`` `print`:iä `` instead of `` `print`-komentoa ``).
 
-## Term clarification (Finnish realisation)
-
-The principle lives in `global/voice.md`. The Finnish specifics for expanding a
-`<define>`:
-
-- The Finnish marker for "in English" is **`engl.`**, and it goes **in front of** the
-  English word inside the brackets: ”_Lause_ (engl. _statement_)”.
-- **Finnish-primary term** (`Use = fi`): Finnish first, English in italics after `engl.` in
-  brackets. `merkkijono (engl. _string_)`, `tulkki (engl. _interpreter_)`.
-- **English-primary term** (`Use = en`): English first in italics, Finnish gloss in
-  brackets, no marker. `_widget_ (pienoisohjelma)`.
-- **Code identifier**: code span, Finnish meaning in brackets, no marker, e.g.
-  `` `turnLeft` `` (käänny vasemmalle). The wording of each such gloss is a glossary row.
-- **Skip a gloss that teaches nothing.** A large share of Finnish renderings are the same
-  Latin word the reader already reads (`indeksi`, `parametri`, `funktio`, `operaattori`,
-  `syntaksi`). Per `global/voice.md`, drop the parenthetical there and leave the term as it
-  is.
-
-## Product and strand names
-
-Everything here translates like ordinary UI copy; nothing stays English (see
-`content-types/website-keys.md`).
-
-- Translate descriptive strand names: "Learn to Code" becomes ”Opi koodaamaan”, "Learn to
-  Build" becomes ”Opi rakentamaan”.
-- Translate coined and branded names too: Ask Jiki, Deep Dive, Jiki Premium, Bootcamp, and
-  the game names all get Finnish renderings, the same as any other UI copy.
-
 ## Style notes
 
 - **Em dashes:** Finnish does not use them. The Finnish ajatusviiva is an **en dash (–)

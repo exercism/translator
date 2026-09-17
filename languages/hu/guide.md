@@ -6,7 +6,8 @@ structure, and style.
 ## Formality (critical)
 
 - **Use the informal „te” (tegező) form throughout.** It is the standard for Hungarian
-  online tutorials and learning platforms.
+  online tutorials and learning platforms. That covers everything: exercise text, docs, UI
+  strings, emails, mentoring copy and analyzer comments alike.
 - **Never use „ön” or „maga”** (formal). They are wrong for this context.
 - Keep verb conjugations in **second person informal** consistently, start to finish.
 - Encouraging imperatives:
@@ -37,9 +38,18 @@ structure, and style.
   A Latin loanword's harmony class follows how it is pronounced in Hungarian, not how it
   is spelled: _Boolean_ is **back**-harmony, so „Boolean-ok”, „Boolean-okat”, never
   „Boolean-ök” or „Boolean-öket”.
-- **Catalog copy and interpolated suffixes:** a case suffix that depends on vowel harmony
-  (e.g. `{year}-ban` vs `-ben`) cannot be varied per interpolated value inside an ICU
-  catalog string, so phrase such catalog copy to avoid a bare suffix on an interpolation.
+- **Interpolated values take no suffix and no fixed article.** A UI string or an analyzer
+  comment is given a value you cannot see (`%{track_title}`, `{{handle}}`, `%{name}`), and
+  both the article and the suffix vowel depend on that word.
+  - Article: write **„a(z)”** before an interpolated value, because „a” or „az” depends on
+    its first sound: „a(z) %{track_title} kurzus”.
+  - Suffix: never attach a case suffix to the placeholder (`%{year}-ban` is wrong for half
+    the values). Rephrase so that a Hungarian noun carries the suffix: not
+    „a(z) %{track_title}-ban”, but „a(z) %{track_title} kurzusban”; not „{{handle}}-nak”, but
+    „{{handle}} felhasználónak”.
+  - Counts: after a numeral the noun stays singular („{{count}} iteráció”, never
+    „{{count}} iterációk”), so a plural group's forms usually differ only where English
+    spelled the number out.
 
 ## Information structure and emphasis
 
@@ -122,19 +132,6 @@ sentence is mis-paced; move the real focus in front of the verb.
 - **Given-before-new.** Old/known info goes leftward, new/important info goes rightward
   toward the verb. A sentence that opens with brand-new information usually feels abrupt.
 
-## Term clarification (Hungarian realisation)
-
-The principle lives in `global/voice.md`. The Hungarian marker word for "in English" is
-**`angolul`**, appended after the English term inside the brackets.
-
-- **Hungarian-primary term** (`Use = hu`): Hungarian first, English in italics with
-  `angolul` in brackets. `elágazások (_if statements_ angolul)`, `függvények (_functions_
-  angolul)`.
-- **English-primary term** (`Use = en`): English first in italics, Hungarian gloss in
-  brackets, no marker word. `_string_ (karakterlánc)`.
-- **Code identifier**: code span, Hungarian meaning in brackets, no marker word.
-  `` `turnLeft` `` (fordulj balra).
-
 ## Style notes
 
 - **Quotation marks:** use Hungarian pairs, **„** (U+201E) to open and **”** (U+201D) to
@@ -151,12 +148,13 @@ The principle lives in `global/voice.md`. The Hungarian marker word for "in Engl
     egy csukó zárójelet (`()`).”
 - **Rhetorical asides** ("So what do these conditions look like?") → keep them as natural
   Hungarian rhetorical questions: „Na de hogy néznek ki ezek a feltételek?”
-- **Jiki-name inflection:** „Jiki” and „Jikinek” are the standard forms. Flag if an
-  inflected form reads awkwardly.
+- **The name „Exercism”:** it takes „az” („az Exercism”), and suffixes attach directly with
+  front-vowel harmony: „az Exercismen”, „az Exercismnek”, „az Exercismmel”. Product names that
+  stay English (Insiders, representer) follow the suffix rules under Grammar.
 - **Calques to avoid:** "worked hard" is not „Keményen dolgoztunk”; use „Sokat dolgoztunk”
   or „Rengeteg munkát fektettünk bele”.
-- **Headlines:** „Elindult a Jiki” or „Bemutatkozik a Jiki”, not the melodramatic
-  „Megszületett a Jiki”; „A programozás tanulásának új módja”, not the calqued „Egy új
-  módja a kódolás tanulásának”.
+- **Headlines:** „Elindult az új szerkesztő” or „Bemutatkozik az új szerkesztő”, not the
+  melodramatic „Megszületett az új szerkesztő”; „A programozás tanulásának új módja”, not the
+  calqued „Egy új módja a kódolás tanulásának”.
 - **Watch same-root repetition.** „gyakorlati gyakorlatokon” is redundant; use „gyakorlati
   feladatokon” or „interaktív gyakorlatokon”.

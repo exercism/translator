@@ -164,13 +164,6 @@ These are terms where the Ukrainian is used in prose, so the "Use (uk/en)" colum
 | frame (the main body of a house) | каркас будинку | uk | Unconfirmed draft (agent, 2026-08-03). **Contested**: a native speaker has flagged _каркас_ as reading like scaffolding rather than a finished building, and the replacement is still open (see the decision log). Do not guess at a substitute; leave existing occurrences alone until it is settled. |
 | gap (the distance a shape is inset from an edge) | відступ | uk | Unconfirmed draft (agent, 2026-08-03). The spacing between a shape and the edge it sits in from (_з відступом `10` від його боків_). Not _проміжок_ or _зазор_. |
 
-### Characters & story vocabulary (exercise family)
-
-| English | Ukrainian | Use (uk/en) | Notes |
-|---------|-----------|-------------|-------|
-| bouncer (the robot bouncer character) | охоронець | uk | Unconfirmed draft (agent, 2026-08-01). Neutral register; not the crude colloquial _викидайло_. |
-| Yuki / Ando (rock-paper-scissors characters) | Юкі / Андо | uk | Unconfirmed draft (agent, 2026-08-01). **Prose only.** The sentinel strings the learner has to type stay Latin: `"Yuki"`, `"Ando"`, `"tie"`. |
-
 ## Keep in English
 
 These stay in English in Ukrainian prose. Where the source `<define>`s one of these terms,
@@ -192,24 +185,6 @@ use the Ukrainian gloss shown below; with no `<define>`, use the English bare, w
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
 | camel case | _горбатий регістр_ | Gloss **once**, at the very first mention across the course (the "Creating and Using Variables" article), as _горбатий регістр_ (_верблюдячий регістр_ is the known alternative; both are named after the animal, as _зміїний регістр_ is for snake case). Every later occurrence, on that page and on every other, uses the English _camel case_ bare. |
 | meridiem | _позначка «meridiem»_ | Unconfirmed draft (agent, 2026-08-01). The am/pm indicator; carry it with the noun _позначка_. The sentinel values `am`/`pm` and expected time strings stay verbatim. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | Ukrainian rendering | Notes |
-|-------------------|----------------------|-------|
-| box (value container) | коробка | Neutral default. _Скринька_ (a warmer, chest/mailbox-adjacent word) is an accepted alternative if a passage wants a softer tone; do not mix both in one document. |
-| label (on a variable box) | етикетка | Unconfirmed draft (agent, 2026-08-01). The name stuck on the outside of a _коробка_; part of the box metaphor set, so keep it stable rather than alternating with _підпис_ / _наліпка_ / _ярлик_. |
-| chain (array metaphor) | ланцюжок | Not _ланцюг_. |
-| piece of paper (string metaphor) | аркуш паперу | Unconfirmed draft (agent, 2026-08-01). Use _аркуш паперу_ consistently; do not alternate with _папірець_ / _листок_ in prose. |
-| input slot | щілина | |
-| return chute | лоток | |
-| machine (function metaphor) | машина | "Little machines" is _маленькі машини_. Not the diminutive _машинка_. |
-| crank (machine crank) | ручка | The handle Jiki turns to power a machine up: _покрутити ручку_. Not _корба_. |
-| warehouse (Jiki's warehouse) | склад | Where Jiki hangs out and keeps his machine shelf: _склад Jiki_ (Jiki does not decline; see guide § Grammar and structure). |
-| shelves (storage) | полиця / полиці | _полиця Jiki_, _машина з полиці_. |
-| board / whiteboard | дошка | **One object, one word.** The board the learner puts instructions on for Jiki to come along and follow, and the board a function keeps its own instructions and notes on, are the same object and take the same word everywhere: _записувати вказівки на дошці_. No collision with _масив_ (array). |
 
 ## Brackets
 

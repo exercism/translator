@@ -140,11 +140,6 @@ mechanical:
   HSL-এর পুরো অর্থ: Hue, Saturation, Lightness (অর্থাৎ হিউ, স্যাচুরেশন আর লাইটনেস)।
   Never the per-word (ইংরেজিতে _X_) form here, and never repeat the letter in brackets.
 
-## The Jiki physical metaphors
-
-Use the exact renderings agreed in `glossary.md`; do not improvise alternatives
-mid-document.
-
 ## Style notes
 
 - **Em dashes:** in Bangla prose, use a comma for a mid-sentence aside, or split into two

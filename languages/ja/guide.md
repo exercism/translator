@@ -141,19 +141,6 @@ New takes が; known/contrastive takes は.
   not 「箱たち」.
 - **Redundant 「これは〜です」** for every English "This is" → often just state the thing.
 
-## Term clarification
-
-When introducing an English term under Japanese-primary (see `global/voice.md`), prefix
-the English term with 英: inside full-width parentheses, and set the English term itself in
-italics as `global/voice.md` requires, e.g. 関数（英: _function_）. The italics fall on the
-Latin-script word only; Japanese characters are never italicized.
-
-Gloss only genuine technical jargon. Where the Japanese rendering is an everyday word a
-reader already knows (条件、比較、文字), drop the gloss and write the Japanese bare, even
-though the source marks the term up: naming the English adds nothing and interrupts the
-sentence. Terms that read as specialist vocabulary in Japanese (命題（英: _statement_）、
-真偽値（英: _Boolean_）) keep theirs.
-
 ## Style notes
 
 - **Rhetorical asides** ("So what do these conditions look like?") → keep them as natural

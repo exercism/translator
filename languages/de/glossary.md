@@ -96,19 +96,3 @@ German in the gloss column below (per the format in `global/voice.md`); with no
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
 | Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
-
-## Jiki physical metaphors
-
-Load-bearing teaching terms. Use exactly the agreed rendering; never substitute dry technical language.
-
-| English metaphor | German rendering | Notes |
-|-------------------|-------------------|-------|
-| box (value container) | Box | |
-| chain (array metaphor) | Kette | Link = "Kettenglied". |
-| input slot | Trichter | Masculine: "der Trichter", plural "die Trichter". Use it bare, not "Eingabetrichter": it is the thing Jiki throws values into ("Jiki wirft es in den Trichter"). Never "Eingabeschlitz" or "Eingabeschacht". |
-| return chute | Ausgaberutsche | Feminine: "die Ausgaberutsche", plural "die Ausgaberutschen". The out half of the pair with "Trichter": things go in the Trichter and come out the Ausgaberutsche. |
-| machine (function metaphor) | Maschine | |
-| shelves (storage) | Regale | The shelves where variables and functions are stored; singular "Regal". |
-| board / whiteboard | Tafel | **One object, one word.** The board the learner writes Befehle on for Jiki to follow, and the board a function keeps its own notes on, are the same object and take the same word everywhere. Never "Whiteboard" as a second word for the same object. |
-| warehouse (Jiki's warehouse) | Lagerhalle | The place where Jiki hangs out and keeps his machine shelf. Never "Warenhaus" (that means a department store). |
-| crank (machine crank) | Kurbel | The handle Jiki turns to start a machine: "die Kurbel drehen". |
