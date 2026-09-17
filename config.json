@@ -1,0 +1,60 @@
+{
+  "$comment": [
+    "The ONE config file. Anything a script needs to agree on with another script,",
+    "and anything iHiD might want to change without reading code, lives here and",
+    "nowhere else. No secret ever goes in this file: keys live in .env, which is",
+    "gitignored (see .env.example).",
+    "",
+    "engine: DeepSeek translates EVERY language. There is no per-language engine",
+    "record and no second adapter, so there is nothing to route.",
+    "  TODO(iHiD): `model` is pinned HERE and only here. It was copied from what",
+    "  Jiki's DeepSeek languages ran on when this repo was forked. Confirm it, and",
+    "  confirm the prices in scripts/lib/deepseek.mjs, before the Hungarian pass.",
+    "  `concurrency` is how many calls are in flight at once within one",
+    "  (locale, type) group, after the first call of the group has gone out ALONE",
+    "  to warm the provider's prefix cache.",
+    "  `attempts` is calls per item: a failed call or a rejected answer is retried,",
+    "  then the item is left absent and reported.",
+    "  `catalog_batch_units` is how many catalog units go into one JSON batch.",
+    "",
+    "i18n_repo: where translated output is written and whose checker is run.",
+    "EXERCISM_I18N_REPO overrides it.",
+    "",
+    "github: the issue queue. `issue_author` is the owner of the PAT the source",
+    "repos' workflows open issues with, so it is the ONLY author a queue issue may",
+    "have. `singletons` plus every repo in `org` carrying `track_topic` is the",
+    "allowlist of repos an issue may name.",
+    "",
+    "issue_word_cap: an issue whose untranslated English is above this many words",
+    "(per locale) waits for iHiD instead of running on its own.",
+    "  TODO(iHiD): 3000 is a placeholder. Pick the number.",
+    "",
+    "forum: TODO(iHiD): the parent category does not exist on forum.exercism.org",
+    "yet, and the API user's rights there are unverified. See orchestrator.md,",
+    "'What the forum API user needs'."
+  ],
+  "engine": {
+    "name": "deepseek",
+    "model": "deepseek-v4-pro",
+    "endpoint": "https://api.deepseek.com/chat/completions",
+    "reasoning_effort": "high",
+    "concurrency": 6,
+    "attempts": 2,
+    "catalog_batch_units": 60
+  },
+  "i18n_repo": "../i18n",
+  "github": {
+    "org": "exercism",
+    "i18n_repo": "exercism/i18n",
+    "translator_repo": "exercism/translator",
+    "issue_author": "iHiD",
+    "issue_label": "translation",
+    "track_topic": "exercism-track",
+    "singletons": ["website", "docs", "blog", "website-copy", "problem-specifications"]
+  },
+  "issue_word_cap": 3000,
+  "forum": {
+    "base": "https://forum.exercism.org",
+    "parent_category_slug": "i18n"
+  }
+}
