@@ -51,6 +51,7 @@ import { ROOT, config, die, parseArgs } from "./lib/config.mjs";
 import { i18n } from "./lib/i18n.mjs";
 import { fetchIssue, verifyIssue } from "./lib/issues.mjs";
 import { SOURCES } from "./lib/routes.mjs";
+import { scopeOf } from "./lib/issue-scope.mjs";
 
 const { flags, positional } = parseArgs(process.argv.slice(2));
 const number = positional[0];
@@ -88,30 +89,7 @@ try {
 } catch {
   die(`${issue.sha} is not in the fetched PR (force-pushed since? the issue is rewritten on every push, so poll again)`);
 }
-const base = git(["merge-base", lib.sourceRepos.defaultRef(repo), issue.sha]);
-
-// paths: by blob id, so a rename or a mode change requires nothing.
-const kindId = SOURCES[issue.source].kind;
-const sparse = lib.sourceRepos.REPO_KINDS[kindId].sparse ?? [];
-const idsAt = (ref) => new Map(lib.git.lsTree(repo, ref, sparse).map((entry) => [entry.path, entry.id]));
-const [before, after] = [idsAt(base), idsAt(issue.sha)];
-const paths = [...after].filter(([file, id]) => before.get(file) !== id).map(([file]) => file);
-
-// units: the English of each catalog at both commits.
-const englishAt = async (ref) => {
-  if (issue.source === "website") {
-    const built = await lib.websiteEnglish.buildWebsiteEnglish(lib.git.refReader(repo, ref));
-    return { ...built.backend.catalog, ...built.frontend.catalog };
-  }
-  if (!lib.metadata.METADATA_REPO_KINDS.includes(kindId)) return {};
-  return lib.metadata.buildMetadataEnglish(kindId, lib.git.lsTree(repo, ref), lib.git.refReader(repo, ref).readMany).catalog;
-};
-const [englishBefore, englishAfter] = [await englishAt(base), await englishAt(issue.sha)];
-const changedKeys = new Set(Object.keys(englishAfter).filter((key) => englishAfter[key] !== englishBefore[key]));
-const units = [];
-for (const kind of issue.source === "website" ? ["backend", "frontend"] : ["metadata"]) {
-  for (const unit of lib.catalogs.englishUnits(kind, englishAfter).values()) if (unit.keys.some((key) => changedKeys.has(key))) units.push(unit.id);
-}
+const { paths, units } = await scopeOf(lib, { source: issue.source, repo, sha: issue.sha });
 
 const runDir = path.join(ROOT, "state", "runs");
 fs.mkdirSync(runDir, { recursive: true });
