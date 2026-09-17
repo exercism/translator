@@ -16,6 +16,12 @@
     "  `attempts` is calls per item: a failed call or a rejected answer is retried,",
     "  then the item is left absent and reported.",
     "  `catalog_batch_units` is how many catalog units go into one JSON batch.",
+    "  `max_text_tokens` is the largest English text (estimated, four characters a",
+    "  token) sent as ONE call. A whole file has to come back in one answer, and an",
+    "  answer that hits the provider's output limit is truncated and paid for. A file",
+    "  above this is reported as a failure WITHOUT being sent. Chunking is not built.",
+    "  TODO(iHiD): 20000 is a guess at what fits with thinking on. A handful of files",
+    "  are above it (the longest community stories, building/tracks/stories/README.md).",
     "",
     "i18n_repo: where translated output is written and whose checker is run.",
     "EXERCISM_I18N_REPO overrides it.",
@@ -40,7 +46,8 @@
     "reasoning_effort": "high",
     "concurrency": 6,
     "attempts": 2,
-    "catalog_batch_units": 60
+    "catalog_batch_units": 60,
+    "max_text_tokens": 20000
   },
   "i18n_repo": "../i18n",
   "github": {

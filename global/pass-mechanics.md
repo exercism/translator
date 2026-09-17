@@ -120,6 +120,11 @@ Absent is the honest state and needs no bookkeeping: the next run of the same co
 missing and tries again. Nothing is ever written half-checked, and a failed item is never
 handed to an agent to "finish".
 
+**A whole file above `engine.max_text_tokens` is not sent at all**, and is reported as a
+failure saying so. The answer has to come back in one piece, a truncated answer is paid for
+and then rejected, and chunking is not built. A handful of files are that long (the longest
+community stories, one 200KB contributor doc). TODO(iHiD): they need a decision, not a retry.
+
 At the end of a run the script runs the `i18n` checker itself (`validate.mjs`) over what it
 wrote, and reports its exit code.
 

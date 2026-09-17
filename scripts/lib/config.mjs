@@ -36,7 +36,7 @@ export function config() {
   for (const key of ["engine", "i18n_repo", "github", "issue_word_cap", "forum"]) {
     if (!(key in CONFIG)) die(`config.json has no "${key}"`);
   }
-  for (const key of ["name", "model", "endpoint", "concurrency", "attempts", "catalog_batch_units"]) {
+  for (const key of ["name", "model", "endpoint", "concurrency", "attempts", "catalog_batch_units", "max_text_tokens"]) {
     if (!(key in CONFIG.engine)) die(`config.json "engine" has no "${key}"`);
   }
   return CONFIG;

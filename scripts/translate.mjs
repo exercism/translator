@@ -209,6 +209,12 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, locale, f
         return;
       }
 
+      // A whole file comes back in one answer. One that cannot fit is not sent:
+      // a truncated answer is paid for and then rejected. See config.json.
+      if (approxTokens(english) > config().engine.max_text_tokens) {
+        return fail(`too large for one call (~${approxTokens(english)} tokens of English, the limit is ${config().engine.max_text_tokens}); chunking is not built, so this file needs iHiD`);
+      }
+
       const previous = hasStore ? previousVersion(lib, { repo, ref, file, locale }) : null;
       if (previous) counts.revised += 1;
       const prompt = prefix + fileTail({ sourcePath: file.path, english, previous });
@@ -591,7 +597,9 @@ async function main() {
   else summary.usage = run.usage;
   fs.writeFileSync(path.join(run.dir, "summary.json"), `${JSON.stringify({ ...summary, writtenPaths: run.written }, null, 2)}\n`);
   report(summary, path.relative(ROOT, path.join(run.dir, "summary.json")));
-  process.exit(run.failures.length > 0 || run.checker.some((one) => one.exit !== 0) ? 1 : 0);
+  // A dry run that resolved is a success, whatever it found: a file too large to
+  // send is something to report, not a reason for a command to stop.
+  process.exit(!dryRun && (run.failures.length > 0 || run.checker.some((one) => one.exit !== 0)) ? 1 : 0);
 }
 
 /**
