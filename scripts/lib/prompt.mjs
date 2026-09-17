@@ -84,8 +84,8 @@ const FILE_INSTRUCTION = (name, locale) =>
   `around the whole answer, no frontmatter the English does not have.`;
 
 const CATALOG_INSTRUCTION = (name, locale, { cardinal, ordinal }) =>
-  `The JSON object at the end of this message is a batch of website strings, keyed by unit ` +
-  `id. Translate every value into ${name} (${locale}), following every governance file ` +
+  `The JSON object at the end of this message is a batch of strings from one catalog, keyed ` +
+  `by unit id. Translate every value into ${name} (${locale}), following every governance file ` +
   `above.\n\n` +
   `- A value that is a STRING is one ordinary string. Return a string.\n` +
   `- A value that is an OBJECT is a plural group: its keys are the plural categories English ` +
@@ -127,10 +127,10 @@ export function fileTail({ sourcePath, english, previous = null }) {
 }
 
 /** Steps 7 and 8 for one catalog batch. */
-export function catalogTail({ kind, batch, previous = null }) {
+export function catalogTail({ catalog, batch, previous = null }) {
   const parts = [];
   if (previous && Object.keys(previous).length > 0) parts.push(`<previous-version>\n${JSON.stringify(previous, null, 2)}\n</previous-version>`);
-  parts.push(`<strings-to-translate catalog="website-${kind}">\n${JSON.stringify(batch, null, 2)}\n</strings-to-translate>`);
+  parts.push(`<strings-to-translate catalog="${catalog}">\n${JSON.stringify(batch, null, 2)}\n</strings-to-translate>`);
   return `${parts.join("\n\n")}\n`;
 }
 

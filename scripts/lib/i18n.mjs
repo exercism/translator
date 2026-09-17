@@ -3,7 +3,8 @@
 // This repo holds NO copy of anything the i18n repo decides: which paths are
 // translatable and what type each is (content-types.mjs), where a translation is
 // filed (contentPath), what a catalog unit is and how it is stamped
-// (catalogs.mjs), which plural categories a locale needs (plurals.mjs), how the
+// (catalogs.mjs), which names, titles and blurbs a source repo shows a user and
+// what each one's key is (metadata.mjs), which plural categories a locale needs (plurals.mjs), how the
 // website's English flattens (website-english.mjs), and every mechanical check
 // (checks.mjs). A second copy of any of them is a second answer to the same
 // question, and the two drift. So they are imported, from the checkout config.json
@@ -23,9 +24,9 @@ export async function i18n() {
   if (LOADED) return LOADED;
   const dir = i18nRepo();
   const load = (name) => import(pathToFileURL(path.join(dir, "scripts", "lib", name)).href);
-  const [constants, contentTypes, git, sourceRepos, catalogs, checks, plurals, websiteEnglish, completeness, contentStore] = await Promise.all(
-    ["constants.mjs", "content-types.mjs", "git.mjs", "source-repos.mjs", "catalogs.mjs", "checks.mjs", "plurals.mjs", "website-english.mjs", "completeness.mjs", "content-store.mjs"].map(load)
+  const [constants, contentTypes, git, sourceRepos, catalogs, checks, plurals, websiteEnglish, completeness, contentStore, metadata] = await Promise.all(
+    ["constants.mjs", "content-types.mjs", "git.mjs", "source-repos.mjs", "catalogs.mjs", "checks.mjs", "plurals.mjs", "website-english.mjs", "completeness.mjs", "content-store.mjs", "metadata.mjs"].map(load)
   );
-  LOADED = { dir, constants, contentTypes, git, sourceRepos, catalogs, checks, plurals, websiteEnglish, completeness, contentStore };
+  LOADED = { dir, constants, contentTypes, git, sourceRepos, catalogs, checks, plurals, websiteEnglish, completeness, contentStore, metadata };
   return LOADED;
 }

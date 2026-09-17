@@ -1,0 +1,43 @@
+// fake-engine.mjs: a stand-in for DeepSeek, for scripts/test.mjs ONLY.
+//
+// It "translates" by marking text, which is enough to exercise everything around
+// the model for real: the prompt's shape, the i18n checker, the write, the stamp.
+// scripts/translate.mjs refuses to load it unless the tree being written to is a
+// test fixture, so it can never put a word into the real locales/.
+//
+// FAKE_ENGINE_BREAK=code makes it alter a code block, which the checker must
+// reject; FAKE_ENGINE_BREAK=english makes it hand the English back unchanged.
+
+const between = (text, open, close) => {
+  const start = text.lastIndexOf(open);
+  const from = text.indexOf("\n", start) + 1;
+  return text.slice(from, text.lastIndexOf(close) - 1);
+};
+
+const mark = (value) => value.replace(/^(\s*)([\s\S]*?)(\s*)$/, (_, lead, body, trail) => `${lead}HU ${body}${trail}`);
+
+export default async function call({ prompt, json }) {
+  const usage = { input: 100, cacheHit: 60, cacheMiss: 40, thinking: 0, output: 50, cost: 0 };
+  if (json) {
+    const batch = JSON.parse(between(prompt, "<strings-to-translate", "</strings-to-translate>"));
+    const answer = {};
+    for (const [id, value] of Object.entries(batch)) {
+      answer[id] = typeof value === "string" ? mark(value) : Object.fromEntries(Object.entries(value).map(([category, text]) => [category, mark(text)]));
+    }
+    return { text: JSON.stringify(answer), usage };
+  }
+
+  const english = between(prompt, "<english-text", "</english-text>");
+  if (process.env.FAKE_ENGINE_BREAK === "english") return { text: english, usage };
+  let fenced = false;
+  const lines = english.split("\n").map((line) => {
+    if (/^\s*(```|~~~)/.test(line)) {
+      fenced = !fenced;
+      return line;
+    }
+    if (fenced) return process.env.FAKE_ENGINE_BREAK === "code" ? `${line} # lefordítva` : line;
+    if (!/\p{L}/u.test(line) || /^\s*\[[^\]]+\]:\s/.test(line)) return line;
+    return `${line} HU`;
+  });
+  return { text: lines.join("\n"), usage };
+}

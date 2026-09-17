@@ -57,26 +57,30 @@ export const ROUTES = {
   "community-story": { howto: "blog", source: "blog" },
 
   // ----------------------------------------------------------- website-copy --
-  "analyzer-comments": { howto: "analyzer-comments", source: "website-copy" }
+  "analyzer-comments": { howto: "analyzer-comments", source: "website-copy" },
+
+  // --------------------------------------------------------------- metadata --
+  //
+  // Names, titles and blurbs: the text that is NOT a whole file, which sits in
+  // config.json and metadata.toml among data. The registry declares these with
+  // `unit: "metadata"`, and they are not translated file by file: the i18n repo's
+  // scripts/lib/metadata.mjs extracts ONE keyed catalog per source repo
+  // (`locales/<locale>/metadata/<repo>.json`), and that catalog is the unit of
+  // work. So all of one source's metadata types share a route, and
+  // `--type=metadata` (or any one of these ids) runs that source's catalog.
+  "exercise-metadata": { howto: "metadata", source: "track", metadata: true },
+  "concept-metadata": { howto: "metadata", source: "track", metadata: true },
+  "track-metadata": { howto: "metadata", source: "track", metadata: true },
+  "track-docs-metadata": { howto: "metadata", source: "track", metadata: true },
+  "problem-specification-metadata": { howto: "metadata", source: "problem-specifications", metadata: true },
+  "docs-metadata": { howto: "metadata", source: "docs", metadata: true },
+  "blog-metadata": { howto: "metadata", source: "blog", metadata: true }
 };
 
-// TODO(iHiD): OPEN. How text that is not a whole file is keyed (config.json
-// blurbs and titles, metadata.toml fields) is undecided, so the i18n registry
-// declares these types with `unit: "fragment"` and every script there skips
-// them. They are DELIBERATE gaps here for the same reason, declared so that the
-// route check can tell one from an oversight. When the question is settled,
-// each moves up into ROUTES with a how-to, and scripts/translate.mjs grows the
-// extractor. Nothing here guesses at the answer.
-const FRAGMENT_REASON = "fragment text: how it is keyed is an open decision in the i18n repo (TODO(iHiD))";
-export const GAPS = {
-  "exercise-metadata": FRAGMENT_REASON,
-  "concept-metadata": FRAGMENT_REASON,
-  "track-metadata": FRAGMENT_REASON,
-  "track-docs-metadata": FRAGMENT_REASON,
-  "problem-specification-metadata": FRAGMENT_REASON,
-  "docs-metadata": FRAGMENT_REASON,
-  "blog-metadata": FRAGMENT_REASON
-};
+// Nothing is a deliberate gap today. The shape stays, because the route check
+// must be able to tell a declared gap (a type id and the reason nothing reaches
+// it) from an oversight, and the next type that lands half-built will need it.
+export const GAPS = {};
 
 // TODO(iHiD): OPEN. Whether contributor-facing `building/` docs (155 of the 212
 // served pages) and mentor-facing `mentoring/` docs are translated is undecided

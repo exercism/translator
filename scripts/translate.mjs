@@ -11,12 +11,14 @@
 // Options:
 //   --dry-run            resolve the work, build every prompt, report counts and token
 //                        estimates. Calls nothing, writes nothing, needs no API key.
-//   --type=<id>          only this i18n content-type id (scripts/check-routes.mjs lists them)
+//   --type=<id>          only this i18n content-type id (scripts/check-routes.mjs lists
+//                        them), or `metadata` for the source's names, titles and blurbs
 //   --limit=<n>          at most n items (files, or catalog units) per locale per type
 //   --repo=<path>        the source checkout to read, instead of the one resolved
 //   --ref=<ref>          the ref to read English at (default: origin/main, else HEAD)
-//   --only-paths=<file>  a JSON array of repo-relative paths; nothing else is in scope.
-//                        Written by scripts/work-issue.mjs, never by hand.
+//   --scope=<file>       JSON `{ "paths": [...], "units": [...] }`: only those repo-relative
+//                        paths and those catalog unit ids are in scope. Written by
+//                        scripts/work-issue.mjs from a PR's own diff, never by hand.
 //   --list-types         print the type ids this script can run, one per line, and exit
 //
 // Examples:
@@ -41,10 +43,14 @@
 //              (config.json `engine.attempts`), then LEFT ABSENT and reported.
 //              Absent is the honest state: the next run picks it up.
 //
-// The two website catalogs are the one place that is key-based, and the i18n
-// repo keeps a per-unit stamp for them. There, "absent" is a unit the locale does
-// not hold, and a unit whose stamp no longer matches English (`stale`) is
-// retranslated with the live translation given as the previous version. The
+// Two things are key-based and not blob-keyed, and the i18n repo keeps a per-unit
+// stamp for both: the two website catalogs, and each source repo's METADATA
+// catalog (names, titles and blurbs out of config.json and metadata.toml, at
+// locales/<locale>/metadata/<repo>.json). There, "absent" is a unit the locale
+// does not hold, and a unit whose stamp no longer matches English (`stale`) is
+// retranslated with the live translation given as the previous version.
+// Identical English the locale has already translated in another repo's metadata
+// catalog is COPIED, never bought twice (see reuseIndex). The
 // stamps are written by the i18n repo's `validate.mjs --stamp`, which this runs
 // at the end of a catalog pass, pinned to the commit the English was read at and
 // naming exactly the units this run rewrote. Nothing here writes a stamp.
@@ -155,7 +161,7 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, locale, f
   let files = lib.completeness.translatableFiles(kindId, entries);
 
   if (typeof flags.type === "string") files = files.filter((file) => file.type === flags.type);
-  if (run.onlyPaths) files = files.filter((file) => run.onlyPaths.has(file.path));
+  if (run.scope) files = files.filter((file) => run.scope.paths.includes(file.path));
 
   // One blob id is one file to translate, however many paths share it.
   const byId = new Map();
@@ -212,7 +218,7 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, locale, f
       let reason = "";
       for (let attempt = 1; attempt <= config().engine.attempts; attempt++) {
         try {
-          const { text, usage } = await call({ apiKey: run.apiKey, system: SYSTEM, prompt });
+          const { text, usage } = await run.call({ apiKey: run.apiKey, system: SYSTEM, prompt });
           addUsage(run.usage, usage);
           let answer = unfence(text);
           if (!english.endsWith("\n")) answer = answer.replace(/\n$/, "");
@@ -243,13 +249,50 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, locale, f
 
 // --------------------------------------------------------------- catalogs ---
 
-async function translateCatalog({ lib, run, repo, ref, sha, locale, kind, flags }) {
-  const type = `website-${kind}`;
+/**
+ * Translations this locale already holds of identical English, by the hash of
+ * that English.
+ *
+ * A blurb synced from problem-specifications into eighty tracks appears, byte for
+ * byte, in eighty metadata catalogs, and paying to translate it eighty times
+ * would also produce eighty different wordings of one sentence. The i18n repo
+ * leaves deduplicating that to this script, and makes it cheap: a unit's stamp is
+ * the git blob id of its English string, so identical English has an identical
+ * stamp in every `*.meta.json`. Only STAMPED units are indexed, because the stamp
+ * is the only record of which English a translation is a translation of.
+ *
+ * This is why problem-specifications is translated before any track.
+ */
+function reuseIndex(lib, locale, exceptFile) {
+  const index = new Map();
+  for (const name of lib.metadata.heldMetadataRepos(locale)) {
+    const file = lib.metadata.metadataPath(locale, name);
+    if (file === exceptFile) continue;
+    const tree = JSON.parse(fs.readFileSync(file, "utf8"));
+    for (const [key, hash] of Object.entries(lib.catalogs.readStamps(file))) {
+      if (typeof tree[key] === "string" && !index.has(hash)) index.set(hash, tree[key]);
+    }
+  }
+  return index;
+}
+
+/**
+ * One key-based catalog: a website catalog, or one source repo's metadata.
+ *
+ * @param {object} spec
+ * @param {string} spec.type     the row this is counted under
+ * @param {"backend"|"frontend"|"metadata"} spec.kind  the CHECKER's kind
+ * @param {string} spec.file     the catalog on disk, in the i18n repo
+ * @param {{catalog, arrays}} spec.english
+ * @param {string} spec.howto
+ * @param {string[]} spec.validate  the arguments that make validate.mjs read the same English
+ * @param {Map|null} spec.reuse  see reuseIndex
+ */
+async function translateCatalog({ lib, run, locale, flags, spec }) {
+  const { type, kind, file, english, howto } = spec;
   const { catalogs, plurals, checks } = lib;
-  const english = (await lib.websiteEnglish.buildWebsiteEnglish(lib.git.refReader(repo, ref), { kinds: [kind] }))[kind];
   const units = catalogs.englishUnits(kind, english.catalog);
 
-  const file = catalogs.catalogPath(locale, kind);
   const flatTarget = fs.existsSync(file) ? catalogs.flattenCatalog(kind, JSON.parse(fs.readFileSync(file, "utf8"))) : {};
   const stamps = catalogs.readStamps(file);
   const cardinal = plurals.requiredCategories(locale);
@@ -257,8 +300,10 @@ async function translateCatalog({ lib, run, repo, ref, sha, locale, kind, flags 
   if (cardinal === null) die(`this runtime has no CLDR plural data for "${locale}", so plural groups cannot be translated`);
 
   const counts = run.count(locale, type);
-  const work = [];
+  const rewritten = [];
+  let work = [];
   for (const unit of units.values()) {
+    if (run.scope && !run.scope.units.includes(unit.id)) continue;
     counts.total += 1;
     const entries = catalogs.targetEntries(kind, unit, flatTarget);
     const state = catalogs.unitState(unit, entries, stamps);
@@ -268,22 +313,52 @@ async function translateCatalog({ lib, run, repo, ref, sha, locale, kind, flags 
     else counts.held += 1;
   }
 
-  const limited = work.slice(0, Number(flags.limit) || Infinity);
-  const size = config().engine.catalog_batch_units;
-  const batches = [];
-  for (let i = 0; i < limited.length; i += size) batches.push(limited.slice(i, i + size));
-  log(`${locale} ${type}: ${limited.length} unit(s) to translate in ${batches.length} batch(es) (${counts.held} already held)`);
-
-  const prefix = fixedPrefix({ locale, howto: ROUTES[type].howto, shape: "catalog", plural: { cardinal, ordinal: kind === "frontend" ? ordinal : null } });
-  const rewritten = [];
-  const spelling = plurals.PLURAL_SPELLING[kind];
-
   const write = () => {
     fs.mkdirSync(path.dirname(file), { recursive: true });
     // Merged INTO what is there: every key the file already held is still in
     // `flatTarget`. Nothing under locales/ is ever removed by a pass.
-    fs.writeFileSync(file, `${JSON.stringify(catalogs.unflattenCatalog(kind, flatTarget, new Set(english.arrays)), null, 2)}\n`);
+    fs.writeFileSync(file, `${JSON.stringify(catalogs.unflattenCatalog(kind, flatTarget, new Set(english.arrays ?? [])), null, 2)}\n`);
   };
+
+  // Identical English this locale has already translated is copied, not bought
+  // again. Counted apart from `written`, so the summary shows what was paid for.
+  // `twins` are units whose English is identical to an EARLIER unit of this same
+  // catalog: the first is translated, the rest are filled from it afterwards.
+  const learned = new Map();
+  const twins = [];
+  if (spec.reuse) {
+    const remaining = [];
+    const first = new Set();
+    for (const item of work) {
+      const hash = item.unit.plural ? null : catalogs.unitHash(item.unit);
+      const copy = hash === null ? undefined : spec.reuse.get(hash);
+      if (copy === undefined) {
+        if (hash !== null && first.has(hash)) {
+          twins.push({ item, hash });
+          if (run.dryRun) counts.copied += 1;
+        } else {
+          if (hash !== null) first.add(hash);
+          remaining.push(item);
+        }
+        continue;
+      }
+      counts.copied += 1;
+      if (run.dryRun) continue;
+      flatTarget[item.unit.id] = copy;
+      rewritten.push(item.unit.id);
+    }
+    work = remaining;
+    if (!run.dryRun && rewritten.length > 0) write();
+  }
+
+  const limited = work.slice(0, Number(flags.limit) || Infinity);
+  const size = config().engine.catalog_batch_units;
+  const batches = [];
+  for (let i = 0; i < limited.length; i += size) batches.push(limited.slice(i, i + size));
+  log(`${locale} ${type}: ${limited.length} unit(s) to translate in ${batches.length} batch(es) (${counts.held} already held${counts.copied ? `, ${counts.copied} copied from identical English` : ""})`);
+
+  const prefix = fixedPrefix({ locale, howto, shape: "catalog", plural: { cardinal, ordinal: kind === "frontend" ? ordinal : null } });
+  const spelling = plurals.PLURAL_SPELLING[kind];
 
   const runBatch = async (batch) => {
     const payload = {};
@@ -292,13 +367,13 @@ async function translateCatalog({ lib, run, repo, ref, sha, locale, kind, flags 
       payload[unit.id] = unit.plural ? unit.entries : unit.entries[""];
       if (before) previous[unit.id] = unit.plural ? before : before[""];
     }
-    const tail = catalogTail({ kind, batch: payload, previous });
+    const tail = catalogTail({ catalog: type, batch: payload, previous });
     run.estimate(locale, type, { prefix, tail, english: Object.values(payload).map((value) => (typeof value === "string" ? value : Object.values(value).join(" "))).join(" "), units: batch.length, echoed: Object.keys(payload).join('"": "",') });
     if (run.dryRun) return [];
 
     let answer;
     try {
-      const { text, usage } = await call({ apiKey: run.apiKey, system: SYSTEM, prompt: prefix + tail, json: true });
+      const { text, usage } = await run.call({ apiKey: run.apiKey, system: SYSTEM, prompt: prefix + tail, json: true });
       addUsage(run.usage, usage);
       answer = JSON.parse(unfence(text));
     } catch (error) {
@@ -332,6 +407,8 @@ async function translateCatalog({ lib, run, repo, ref, sha, locale, kind, flags 
       rewritten.push(unit.id);
       counts.written += 1;
       if (item.previous) counts.revised += 1;
+      // The same sentence later in THIS catalog (two exercises sharing a source line).
+      if (spec.reuse && !unit.plural) learned.set(catalogs.unitHash(unit), candidate[unit.id]);
     }
     write();
     return rejected;
@@ -346,26 +423,80 @@ async function translateCatalog({ lib, run, repo, ref, sha, locale, kind, flags 
     pending = [];
     for (let i = 0; i < failed.length; i += size) pending.push(failed.slice(i, i + size).map((entry) => entry.item));
   }
+  for (const { item, hash } of twins) {
+    if (learned.has(hash)) {
+      flatTarget[item.unit.id] = learned.get(hash);
+      rewritten.push(item.unit.id);
+      counts.copied += 1;
+    } else {
+      failed.push({ item, reason: "its English is identical to a unit that failed in this run" });
+    }
+  }
+  if (twins.length > 0) write();
   for (const { item, reason } of failed) {
     counts.failed += 1;
-    run.failures.push({ locale, type, source: `website:${item.unit.id}`, target: path.relative(lib.dir, file), reason });
+    run.failures.push({ locale, type, source: `${spec.label}:${item.unit.id}`, target: path.relative(lib.dir, file), reason });
   }
 
   if (rewritten.length === 0) return;
   run.written.push(path.relative(lib.dir, file), path.relative(lib.dir, catalogs.metaPath(file)));
 
-  // The stamp belongs to the checker. `--source-ref=<sha>` makes it hash exactly
-  // the English this run translated, and `--stamp-units` names what was
-  // rewritten, which is the only way a STALE unit may be re-stamped.
-  const unitsFile = path.join(run.dir, `${locale}.${kind}.stamp-units.json`);
+  // The stamp belongs to the checker. It is pointed at exactly the commit this
+  // run translated, and `--stamp-units` names what was rewritten, which is the
+  // only way a STALE unit may be re-stamped.
+  const slug = type.replace(/[^A-Za-z0-9.-]/g, "_");
+  const unitsFile = path.join(run.dir, `${locale}.${slug}.stamp-units.json`);
   fs.writeFileSync(unitsFile, JSON.stringify(rewritten));
-  const result = spawnSync("node", [path.join(lib.dir, "scripts", "validate.mjs"), locale, `--type=${type}`, "--stamp", `--stamp-units=@${unitsFile}`, `--source-repo=${repo}`, `--source-ref=${sha}`], { encoding: "utf8", env: process.env });
-  fs.writeFileSync(path.join(run.dir, `${locale}.${kind}.validate.log`), `${result.stdout}\n${result.stderr}`);
-  const stamped = /stamped (\d+)/.exec(result.stdout)?.[1] ?? "0";
-  run.checker.push({ locale, type, exit: result.status, stamped: Number(stamped), log: path.relative(ROOT, path.join(run.dir, `${locale}.${kind}.validate.log`)) });
+  const result = spawnSync("node", [path.join(lib.dir, "scripts", "validate.mjs"), locale, "--stamp", `--stamp-units=@${unitsFile}`, ...spec.validate], { encoding: "utf8", env: process.env });
+  const logFile = path.join(run.dir, `${locale}.${slug}.validate.log`);
+  fs.writeFileSync(logFile, `${result.stdout}\n${result.stderr}`);
+  const stamped = [...result.stdout.matchAll(/stamped (\d+)/g)].reduce((sum, match) => sum + Number(match[1]), 0);
+  run.checker.push({ locale, type, exit: result.status, stamped, log: path.relative(ROOT, logFile) });
+}
+
+/** The catalogs one source has: the website's two, or one source repo's metadata. */
+async function catalogSpecs({ lib, sourceId, name, repo, ref, sha, locale, flags }) {
+  const wanted = (type) => typeof flags.type !== "string" || flags.type === type;
+  const specs = [];
+  if (SOURCES[sourceId].catalogs) {
+    for (const kind of lib.catalogs.CATALOG_KINDS) {
+      const type = `website-${kind}`;
+      if (!wanted(type)) continue;
+      const english = (await lib.websiteEnglish.buildWebsiteEnglish(lib.git.refReader(repo, ref), { kinds: [kind] }))[kind];
+      specs.push({ type, kind, label: "website", file: lib.catalogs.catalogPath(locale, kind), english, howto: ROUTES[type].howto, reuse: null, validate: [`--type=${type}`, `--source-repo=${repo}`, `--source-ref=${sha}`] });
+    }
+    return specs;
+  }
+  const kindId = SOURCES[sourceId].kind;
+  const metadataTypes = Object.keys(ROUTES).filter((id) => ROUTES[id].source === sourceId && ROUTES[id].metadata);
+  if (!lib.metadata.METADATA_REPO_KINDS.includes(kindId) || !(typeof flags.type !== "string" || flags.type === "metadata" || metadataTypes.includes(flags.type))) return specs;
+  if (path.basename(repo) !== name) die(`the i18n checker finds a metadata catalog's English by the checkout's directory name, so ${repo} must be a directory called "${name}"`);
+  const english = lib.metadata.buildMetadataEnglish(kindId, lib.git.lsTree(repo, ref), lib.git.refReader(repo, ref).readMany);
+  const file = lib.metadata.metadataPath(locale, name);
+  specs.push({ type: `metadata/${name}`, kind: lib.metadata.METADATA_KIND, label: name, file, english: { catalog: english.catalog, arrays: [] }, howto: "metadata", reuse: reuseIndex(lib, locale, file), validate: [`--type=${lib.metadata.METADATA_TYPE_ID}`, `--content-repos=${repo}:${kindId}@${sha}`] });
+  return specs;
 }
 
 // ------------------------------------------------------------------- main ---
+
+/**
+ * The engine: DeepSeek. scripts/test.mjs may substitute a fake one, so that the
+ * write, check and stamp path is exercised for real without a paid call.
+ *
+ * That substitution is refused unless the i18n tree being written to is a test
+ * fixture: EXERCISM_I18N_ROOT must be set, must not be the i18n checkout itself,
+ * and must hold the marker file the test creates. A fake engine can therefore
+ * never write a word into the real locales/.
+ */
+async function engine(lib) {
+  const fake = process.env.TRANSLATOR_TEST_ENGINE;
+  if (!fake) return call;
+  const root = process.env.EXERCISM_I18N_ROOT ? path.resolve(process.env.EXERCISM_I18N_ROOT) : null;
+  if (!root || root === path.resolve(lib.dir) || !fs.existsSync(path.join(root, ".translator-test-root"))) {
+    die("TRANSLATOR_TEST_ENGINE is only honoured against a test fixture (EXERCISM_I18N_ROOT holding .translator-test-root)");
+  }
+  return (await import(path.resolve(fake))).default;
+}
 
 async function main() {
   const { flags, positional } = parseArgs(process.argv.slice(2));
@@ -385,8 +516,10 @@ async function main() {
   const lib = await i18n();
   if (typeof flags.type === "string") {
     if (GAPS[flags.type]) die(`"${flags.type}" cannot be translated yet: ${GAPS[flags.type]}`);
-    if (!ROUTES[flags.type]) die(`unknown --type "${flags.type}". Known: ${Object.keys(ROUTES).join(", ")}`);
-    if (ROUTES[flags.type].source !== sourceId) die(`type "${flags.type}" comes from the "${ROUTES[flags.type].source}" source, not "${sourceId}"`);
+    if (flags.type === "metadata") {
+      if (SOURCES[sourceId].catalogs) die(`the website has no metadata catalog: its copy is its two catalogs`);
+    } else if (!ROUTES[flags.type]) die(`unknown --type "${flags.type}". Known: ${Object.keys(ROUTES).join(", ")}`);
+    if (flags.type !== "metadata" && ROUTES[flags.type].source !== sourceId) die(`type "${flags.type}" comes from the "${ROUTES[flags.type].source}" source, not "${sourceId}"`);
   }
 
   const dryRun = Boolean(flags["dry-run"]);
@@ -407,9 +540,10 @@ async function main() {
   const stamp = new Date().toISOString().replace(/[:.]/g, "-");
   const run = {
     dryRun,
-    apiKey: dryRun ? null : envKey("DEEPSEEK_API_KEY"),
+    call: await engine(lib),
+    apiKey: dryRun || process.env.TRANSLATOR_TEST_ENGINE ? null : envKey("DEEPSEEK_API_KEY"),
     dir: path.join(ROOT, "state", "runs", `${stamp}-${name}`),
-    onlyPaths: typeof flags["only-paths"] === "string" ? new Set(JSON.parse(fs.readFileSync(path.resolve(flags["only-paths"]), "utf8"))) : null,
+    scope: typeof flags.scope === "string" ? JSON.parse(fs.readFileSync(path.resolve(flags.scope), "utf8")) : null,
     counts: {},
     estimates: {},
     failures: [],
@@ -417,7 +551,7 @@ async function main() {
     checker: [],
     usage: {},
     count(locale, type) {
-      return ((this.counts[locale] ??= {})[type] ??= { total: 0, held: 0, written: 0, revised: 0, skipped: 0, failed: 0 });
+      return ((this.counts[locale] ??= {})[type] ??= { total: 0, held: 0, copied: 0, written: 0, revised: 0, skipped: 0, failed: 0 });
     },
     estimate(locale, type, { prefix, tail, english, units = 1, echoed = "" }) {
       const row = ((this.estimates[locale] ??= {})[type] ??= { calls: 0, items: 0, words: 0, prefixTokens: approxTokens(SYSTEM + prefix), tailTokens: 0, textTokens: 0 });
@@ -435,19 +569,20 @@ async function main() {
 
   // Sorted by locale, then by type: consecutive calls share the longest prefix.
   for (const locale of locales) {
-    if (SOURCES[sourceId].catalogs) {
-      for (const kind of lib.catalogs.CATALOG_KINDS) {
-        if (typeof flags.type === "string" && flags.type !== `website-${kind}`) continue;
-        await translateCatalog({ lib, run, repo, ref, sha, locale, kind, flags });
-      }
-    } else {
-      await translateContent({ lib, run, sourceId, name, repo, ref, locale, flags });
-      if (!dryRun && run.written.length > 0) {
-        const result = spawnSync("node", [path.join(lib.dir, "scripts", "validate.mjs"), locale, "--type=content", `--content-repos=${repo}:${SOURCES[sourceId].kind}@${sha}`], { encoding: "utf8", env: process.env });
-        const logFile = path.join(run.dir, `${locale}.content.validate.log`);
-        fs.writeFileSync(logFile, `${result.stdout}\n${result.stderr}`);
-        run.checker.push({ locale, type: "content", exit: result.status, fails: (result.stdout.match(/^\s+ERROR /gm) ?? []).length, log: path.relative(ROOT, logFile) });
-      }
+    // Catalogs first. For a content source that is its metadata (names, titles,
+    // blurbs), which is what a student sees before they open anything.
+    for (const spec of await catalogSpecs({ lib, sourceId, name, repo, ref, sha, locale, flags })) {
+      await translateCatalog({ lib, run, locale, flags, spec });
+    }
+    if (SOURCES[sourceId].catalogs || flags.type === "metadata" || ROUTES[flags.type]?.metadata) continue;
+
+    const before = run.written.length;
+    await translateContent({ lib, run, sourceId, name, repo, ref, locale, flags });
+    if (!dryRun && run.written.length > before) {
+      const result = spawnSync("node", [path.join(lib.dir, "scripts", "validate.mjs"), locale, "--type=content", `--content-repos=${repo}:${SOURCES[sourceId].kind}@${sha}`], { encoding: "utf8", env: process.env });
+      const logFile = path.join(run.dir, `${locale}.content.validate.log`);
+      fs.writeFileSync(logFile, `${result.stdout}\n${result.stderr}`);
+      run.checker.push({ locale, type: "content", exit: result.status, fails: (result.stdout.match(/^\s+ERROR /gm) ?? []).length, log: path.relative(ROOT, logFile) });
     }
   }
 
@@ -484,11 +619,13 @@ function report(summary, file) {
   const lines = ["", `SUMMARY ${summary.dryRun ? "(dry run) " : ""}${summary.source} @ ${summary.sha.slice(0, 10)}  model ${summary.model}`];
   for (const [locale, types] of Object.entries(summary.counts)) {
     const order = Object.keys(ROUTES);
-    for (const [type, c] of Object.entries(types).sort(([a], [b]) => order.indexOf(a) - order.indexOf(b))) {
+    const rank = (type) => (order.indexOf(type) === -1 ? -1 : order.indexOf(type));
+    for (const [type, c] of Object.entries(types).sort(([a], [b]) => rank(a) - rank(b))) {
       const estimate = summary.estimates?.[locale]?.[type];
-      const todo = c.total - c.held - c.written - c.skipped - c.failed;
+      const todo = c.total - c.held - c.copied - c.written - c.skipped - c.failed;
       lines.push(
         `  ${locale.padEnd(6)} ${type.padEnd(30)} total ${String(c.total).padStart(5)}  held ${String(c.held).padStart(5)}  ` +
+          (c.copied ? `copied ${String(c.copied).padStart(5)}  ` : "") +
           (summary.dryRun ? `to translate ${String(estimate?.items ?? 0).padStart(5)}` : `written ${String(c.written).padStart(5)}  failed ${String(c.failed).padStart(4)}`) +
           (c.skipped ? `  empty in English ${c.skipped}` : "") +
           (c.revised ? `  (${c.revised} with a previous version)` : "") +
