@@ -124,12 +124,14 @@ Only fall back to fresh source-mining if you have a specific reason to think
 `global/terms.md` is stale or incomplete for this pass (e.g. it hasn't been refreshed in a
 long time, or this language's content type has unusual vocabulary needs). If you do mine
 the source, fan out one subagent (haiku is enough) per content group in parallel, each
-grepping/reading its own group's English source files:
+reading its own group's English, **as git objects at `origin/main` and never from a working
+tree** (`git -C <checkout> show origin/main:<path>`; the sibling checkouts are shared with live
+sessions and are usually on a feature branch):
 
-- `../front-end/curriculum/src/concepts/*/source.md`
-- `../front-end/curriculum/src/exercises/*/instructions.md`
-- `../front-end/content/src/posts/blog/*/source.md`
-- `../front-end/content/src/posts/articles/*/source.md`
+- the website's two catalogs: `node ../i18n/scripts/build-english.mjs --out=<a scratch dir>`
+- `../problem-specifications`: `exercises/*/{introduction,instructions}.md`
+- one large track (`../ruby`, `../python`): `concepts/*/about.md`, `exercises/concept/*/.docs/*.md`
+- `../docs`: `using/**/*.md`
 
 Ask each subagent to (1) verify a sample of the core terms actually appear in that group's
 prose, and (2) surface recurring technical/platform terms not yet in the proposed term
