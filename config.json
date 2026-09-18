@@ -45,7 +45,7 @@
     "reasoning_effort": "low",
     "concurrency": 6,
     "attempts": 2,
-    "catalog_batch_units": 60,
+    "catalog_batch_units": 40,
     "max_text_tokens": 150000
   },
   "i18n_repo": "../i18n",
