@@ -38,14 +38,13 @@ const USER_AGENT =
 // every cost line uses the split and never a flat input rate: a cache hit is
 // 120x cheaper than a miss. That ratio is the whole reason the prompt is
 // assembled in a fixed order (see scripts/lib/prompt.mjs). DeepSeek has also
-// applied a 2x surcharge during Beijing peak hours (09:00-12:00, 14:00-18:00).
+// charges double during peak hours (01:00-04:00 and 06:00-10:00 UTC, weekdays).
 //
-// TODO(iHiD): these were copied from Jiki's adapter when this repo was forked.
-// Check them against DeepSeek's current price list before trusting a dry run's
-// dollar figure; the token counts do not depend on them.
-export const USD_PER_CACHE_HIT = 0.003625 / 1_000_000;
-export const USD_PER_CACHE_MISS = 0.435 / 1_000_000;
-export const USD_PER_OUTPUT = 0.87 / 1_000_000;
+// deepseek-flash, off-peak, from api-docs.deepseek.com/quick_start/pricing on
+// 2026-09-18.
+export const USD_PER_CACHE_HIT = 0.003 / 1_000_000;
+export const USD_PER_CACHE_MISS = 0.15 / 1_000_000;
+export const USD_PER_OUTPUT = 0.6 / 1_000_000;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
