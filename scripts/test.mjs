@@ -52,6 +52,14 @@ await test("altered code, a renumbered task heading, a translated link label and
   assert.match(checkMarkdown(HINTS, HINTS.replace("Use `x = 1`.", "Használd.")).join("|"), /inline code/);
 });
 
+await test("numbered task headings are compared only when English has them", () => {
+  const rules = "# Rules\n\n## Rule 1\n\nDo the thing.\n\n## Rule 2\n\nDo the other thing.\n";
+  assert.deepEqual(checkMarkdown(rules, "# Szabályok\n\n## 1. szabály\n\nCsináld meg.\n\n## 2. szabály\n\nCsináld a másikat.\n"), []);
+
+  const tasks = "# Instructions\n\n## 1. Define `x`\n\nDo it.\n\n## 2. Use `x`\n\nUse it.\n";
+  assert.match(checkMarkdown(tasks, "# Utasítások\n\n## 1. Definiáld az `x`-et\n\nCsináld.\n\n## Használd az `x`-et\n\nHasználd.\n").join("|"), /numbered "## N\." headings differ/);
+});
+
 await test("an exercism/ admonition is prose and is translated; any other fence is code", () => {
   const english = "Text here.\n\n~~~~exercism/note\nA note to read.\n~~~~\n";
   assert.deepEqual(checkMarkdown(english, "Szöveg.\n\n~~~~exercism/note\nEgy megjegyzés.\n~~~~\n"), []);

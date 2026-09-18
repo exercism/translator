@@ -9,9 +9,11 @@
 //   - a fenced code block is reproduced byte for byte (global/rules.md). The one
 //     exception is an `exercism/note`, `exercism/caution` or `exercism/advanced`
 //     fence, which is an admonition holding prose and IS translated.
-//   - the numbers leading `## 1. ...` headings are the same, in the same order.
-//     The website joins a concept exercise's hints to its tasks by that number
-//     (content-types/hints.md).
+//   - where ENGLISH leads `## 1. ...` headings with numbers, the translation
+//     carries the same numbers in the same order. The website joins a concept
+//     exercise's hints to its tasks by that number (content-types/hints.md).
+//     English without them is not compared: Hungarian and its like put the
+//     ordinal first, so `## Rule 1` becomes `## 1. szabály`.
 //   - every reference-style link still resolves: `[text][label]` needs a
 //     `[label]: url` definition, and no definition's URL may change.
 //   - no inline code span English has is lost.
@@ -90,7 +92,7 @@ export function checkMarkdown(english, translated) {
   }
 
   const [enTasks, targetTasks] = [taskNumbers(english), taskNumbers(translated)];
-  if (enTasks.join(",") !== targetTasks.join(",")) problems.push(`numbered "## N." headings differ: English ${enTasks.join(",") || "none"}, translation ${targetTasks.join(",") || "none"}`);
+  if (enTasks.length > 0 && enTasks.join(",") !== targetTasks.join(",")) problems.push(`numbered "## N." headings differ: English ${enTasks.join(",")}, translation ${targetTasks.join(",") || "none"}`);
 
   const [enCode, targetCode] = [inlineCode(english), inlineCode(translated)];
   const lostCode = enCode.filter((span) => !targetCode.includes(span));
