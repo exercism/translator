@@ -178,8 +178,6 @@ Every piece of guidance has exactly **one** home and is never duplicated between
   why, who decided it, and where. Reasoning only, never term mappings. Append-only.
 - `languages/<lang>/tracking.json`: one language's forum bookkeeping (category id, the pinned
   glossary thread's ids, how far its changes have been announced). No stage, no engine.
-- `languages/<lang>/TODO.md`: present only where a folder copied from Jiki has not yet been
-  adapted by hand. Never sent to the model. Hungarian has none.
 - `languages/<family>/guide.md` and `glossary.md`: for a language family (see below), the
   content shared by every locale in that family.
 - `config.json`: the ONE config file: the DeepSeek model, the `i18n` checkout, the issue
@@ -227,8 +225,10 @@ The rules for *writing* a family file are in `global/workflow.md`.
 
 **Hungarian first, across everything, as one full pass.** That pass doubles as the tuning
 loop Jiki's staged rollout was for, so there is no language-stage machinery. Every language
-folder was copied from Jiki, but only Hungarian has been adapted by hand; each other folder
-carries a `TODO.md` saying what is left.
+folder was copied from Jiki and then stripped of everything Jiki-specific, keeping every
+decision about the language itself. Hungarian's Exercism product terms are proposed and
+awaiting a native speaker; every other language's `PROPOSED, NOT YET AGREED` block is empty
+until one is bootstrapped for Exercism.
 
 ## Open, and not to be decided by accident
 

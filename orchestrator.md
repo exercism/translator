@@ -90,7 +90,7 @@ Keep working through each unhearted post. You do not need to ask whether to move
 
 When someone offers to help with a language, thank them, and if they have not said which language, ask.
 
-**If the language is not bootstrapped** (no `languages/<lang>/` folder) or still carries a `languages/<lang>/TODO.md` (copied from Jiki and not yet adapted for Exercism): tell them we will set it up and get back to them, and bring it to Jeremy. Do not run `/bootstrap-language` off the back of a forum post.
+**If the language is not bootstrapped** (no `languages/<lang>/` folder, or its glossary's `PROPOSED, NOT YET AGREED` block is still empty): tell them we will set it up and get back to them, and bring it to Jeremy. Do not run `/bootstrap-language` off the back of a forum post.
 
 Otherwise point them at the next useful thing, in this order:
 

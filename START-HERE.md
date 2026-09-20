@@ -122,9 +122,10 @@ out from context that it is test-compared and leaves it alone ("Test-compared st
 ## Languages
 
 Every language folder was copied from Jiki's translator repo: the guides, the glossaries, the
-decision logs, the family folders, `names.json`. **Hungarian is the first target and the only
-folder adapted by hand.** Every other folder has had only its Jiki-only sections removed by
-script, and carries a `TODO.md` listing what is left. The launch plan is Hungarian across
+decision logs, the family folders, `names.json`. **Hungarian is the first target.** Every folder has
+been stripped of Jiki-specific content while keeping its language decisions; a language other
+than Hungarian still needs its Exercism product terms agreed by a native speaker (the empty
+`PROPOSED, NOT YET AGREED` block in its glossary) before a pass runs. The launch plan is Hungarian across
 everything as one full pass, which doubles as the tuning loop, so there are no language
 stages.
 
