@@ -182,7 +182,7 @@ them moved, and each is already logged in the dated entry below that settled it.
 The `interpreter` row said दुभाषिया was the native word for a human interpreter and asked for
 it to be flagged for review. Dropping the flag would have left the word mentioned with no
 instruction attached, so the row now says not to use it. That follows from the row's own
-target (इंटरप्रेटर) and from the "person doing a job, not a program" framing already in it,
+target (इंटरप्रेटर) and from the framing then in it,
 but it is our inference and not a reviewer's ruling: **दुभाषिया is unconfirmed either way**,
 and if a native speaker prefers it for the human-interpreter framing the row should change.
 

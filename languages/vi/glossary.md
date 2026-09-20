@@ -64,7 +64,7 @@ These are terms where the Vietnamese is used in prose, so the "Use (vi/en)" colu
 | English | Vietnamese | Use (vi/en) | Notes |
 |---------|-----------|-------------|-------|
 | keyword | từ khóa | vi | |
-| interpreter | thông dịch viên | vi | **A person doing a job, not software.** Never "trình thông dịch" here; keep distinct from the compiler term "trình biên dịch". The verb is "thông dịch". |
+| interpreter | thông dịch viên | vi | Keep distinct from the compiler term "trình biên dịch". The verb is "thông dịch". "trình thông dịch" is the word for the software. Needs a native speaker's eye: this rendering was chosen to name a character whose job was to interpret the reader's code, which is not how Exercism uses the word. On Exercism an interpreter is the program that runs the code. Left as it stands rather than changed by an agent. |
 | mental model | mô hình tư duy | vi | |
 | (programming) language | ngôn ngữ lập trình | vi | Short form "ngôn ngữ" once established, including in the "a language a computer understands" framing. Never the English borrowing. |
 | variable | biến | vi | |

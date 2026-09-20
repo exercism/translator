@@ -269,10 +269,9 @@ languages. Commit `1d91ad4`, following `946293c`.
 
 Two decisions came out of that pass that bind Japanese:
 
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages the interpreter was a character ("It's his job to interpret the code that you
-  write"), so the word has to be able to name a character, not just software. **This
-  reverses Japanese's own earlier choice.** The row previously sat at `インタープリター`,
+- **`interpreter` moved to a word that names a person.** The framing it was chosen for made
+  the interpreter a character, so the word had to be able to name one, not just software.
+  **This reversed Japanese's own earlier choice.** The row previously sat at `インタープリター`,
   chosen deliberately *because* `通訳` was rejected, on the reasoning that `通訳` "reads as
   human interpreting," which was judged wrong for a word meant to name a program. That
   reasoning inverted with that framing: the interpreter was a character whose job was
