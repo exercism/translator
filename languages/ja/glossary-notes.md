@@ -80,7 +80,7 @@ and, on the using-functions page itself:
 > of a handle and shaft used to power/operate a machine, such as the crank of an old film
 > camera).
 
-The source image is Jiki turning a crank on the side of a machine to power it up, so the
+The source image is someone turning a crank on the side of a machine to power it up, so the
 steering-wheel reading is not a near miss, it is a different object. The verb-phrase framing
 the row already carried is kept: 「クランクを回して電源を入れる」.
 
@@ -107,8 +107,8 @@ alexfalcon528 on < (post 3).
 
 **This supersedes the `interpreter` decision in the 2026-07-30 owner-decisions entry
 below.** That entry stands as history and is not to be re-applied. It moved the row from
-`インタープリター` to `通訳` on the reasoning that Jiki is a character whose job is
-interpreting, so a word naming a human interpreter was right. The premise was sound; the
+`インタープリター` to `通訳` on the reasoning that the interpreter was then a character whose
+job was interpreting, so a word naming a human interpreter was right. The premise was sound; the
 word was not, and a native speaker's read outranks it. iHiD's direction was to trust the
 reviewer here.
 
@@ -120,21 +120,18 @@ alexfalcon528, having read the published using-functions page:
 > in the type of program, and 「通訳者」would more accurately describe 'interpreter,' as in the
 > human profession.
 
-On the specific sentence 「このコースでの通訳は Jiki です」:
+On a sentence naming the interpreter with bare `通訳`, he wrote:
 
-> This sentence in particular feels unnatural to me, as it reads as if "Jiki" is a *type of
-> interpretation* instead of the interpreter.
+> This sentence in particular feels unnatural to me, as it reads as if [the name] is a *type
+> of interpretation* instead of the interpreter.
 
 So the one row becomes two: **`インタプリタ`** for the software, **`通訳者`** for the one
-doing the interpreting, Jiki included. What the previous entry got right and this one keeps
-is that Jiki is a someone, not a program; `通訳者` names that someone, which bare `通訳`
-cannot.
+doing the interpreting. `通訳者` names someone, which bare `通訳` cannot.
 
 Bare `通訳` is not banned, it is just not a noun that names an interpreter. It is the
 activity, and it is the more natural rendering wherever the sentence can be turned into a
 verb or a role: alexfalcon528's own rewrite of the opening paragraph uses it that way twice
-and never needs `通訳者`, replacing 「このコースでの通訳は Jiki です」with 「このコースでは、
-Jiki が通訳をしてくれます」and glossing the program as 「インタプリタ、つまり通訳の役割を担う
+and never needs `通訳者`, glossing the program as 「インタプリタ、つまり通訳の役割を担う
 プログラム」. His rewrite was applied verbatim to the page.
 
 `インタプリタ` without the final ー is a deliberate exception to `guide.md`'s "keep the
@@ -162,7 +159,7 @@ written to `glossary.md`.
 | Learn to Build | 開発を学ぶ | Paired with Learn to Code → コードを学ぶ. | medium |
 | streak (verbal contexts) | 連続学習 | Glossary's 連続学習日数 kept as the noun form. | medium |
 | library (Concept Library) | ライブラリ | No final ー (ordinary form); flagged as an exception to the guide's long-vowel rule. | medium |
-| Instructions (exercise panel) | 説明 | Deliberately not 指示 (that's what the learner gives Jiki). **Wants a native-speaker check.** | low |
+| Instructions (exercise panel) | 説明 | Deliberately not 指示 (that is an instruction someone is given). **Wants a native-speaker check.** | low |
 
 Worth raising with reviewers, not glossary rows: standard politeness formulas (お試しください
 / お待ちください / お問い合わせください) used in error copy — the guide bans honorific keigo,
@@ -255,11 +252,11 @@ Two decisions came out of that pass that bind Japanese:
   reverses Japanese's own earlier choice.** The row previously sat at `インタープリター`,
   chosen deliberately *because* `通訳` was rejected, on the reasoning that `通訳` "reads as
   human interpreting," which was judged wrong for a word meant to name a program. That
-  reasoning has now inverted: Jiki is a character whose job is interpreting, so a word that
-  names a human interpreter is exactly right, not a liability. `通訳` is the ordinary
-  Japanese word for a person who interprets one language into another, which is precisely
-  Jiki's job (code into 1 と 0), and `インタープリター`/`インタプリタ` are kept only to name
-  the software Jiki is not. The row moved to **`通訳`**.
+  reasoning inverted with that framing: the interpreter was a character whose job was
+  interpreting, so a word that names a human interpreter read as exactly right. `通訳` is
+  the ordinary Japanese word for a person who interprets one language into another, and
+  `インタープリター`/`インタプリタ` were kept only to name the software. The row moved to
+  **`通訳`**. It has since moved again; see the entry above.
 - **Default to the ordinary, common word**, whatever its etymology (now in
   `global/voice.md`). Where a language's own developer writing uses the English word, the
   English word is the ordinary word and the right choice; where it does not, the native
@@ -279,18 +276,12 @@ Rows were added or filled out to cover what the using-functions concept pages ne
 of these change an existing decision beyond what the entry above already covers; they fill
 gaps the pass hit.
 
-**The warehouse/workshop contradiction.** The English source itself uses two different
-words for what reads like the same kind of room: the using-functions page calls it a
-**warehouse** ("if we look inside Jiki's warehouse, that's where he hangs out"), and the
-scope page calls it a **workshop** ("Jiki creating a new small set of shelves in his
-workshop"). Rather than force one Japanese word onto two different English words, the two
-are kept as two distinct rows: `warehouse` (倉庫, using-functions page) and `workshop`
-(作業場, scope page), each tied to the page that actually uses it.
-
-**Left open:** whether Jiki's warehouse and Jiki's workshop are meant to be the same room.
-This is a question about the English source, not something Japanese can resolve alone: the
-source itself is inconsistent. If they are meant to be one room, English and every target
-language's glossary should settle on a single word together.
+**The warehouse/workshop contradiction.** The English source used two different words for
+what read like the same kind of room, **warehouse** on one page and **workshop** on another.
+Rather than force one Japanese word onto two different English words, the two were kept as
+two distinct rows, `warehouse` (倉庫) and `workshop` (作業場), each tied to the page that
+used it. Both rows are retired with the fork; the principle (do not merge two English words
+into one Japanese one just because the picture looks the same) is what is worth keeping.
 
 ## Term rationale
 

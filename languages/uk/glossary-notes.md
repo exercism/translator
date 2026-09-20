@@ -161,8 +161,7 @@ are catalog-wide phrasing decisions a future pass (or a native reviewer) should 
 
 - **Badge descriptions use impersonal forms, never ти/ви.** "Completed your first lesson"
   style achievement lines are rendered with the impersonal -но form (_Завершено перший
-  урок_, _Надіслано перше повідомлення Jiki_) and "Joined ..." lines with a noun phrase
-  (_Приєднання до Jiki_). This keeps the whole catalog free of second-person address per
+  урок_) and "Joined ..." lines with a noun phrase (_Приєднання_). This keeps the whole catalog free of second-person address per
   the guide, without forcing the collective "ми" onto lines that describe one learner's
   own achievement.
 - **Video-lesson descriptions open with inclusive future-plural _Навчимося_ /
@@ -419,8 +418,8 @@ thread. **Terms affected:** `Jeremy`, `workhorse`.
 
 - **`Jeremy` → Джеремі, in prose, everywhere.** iternewo asked for the name to be
   transliterated rather than left in Latin script, and noted it does not conjugate or
-  decline, so it behaves in Ukrainian exactly like `Jiki` already does: no case endings,
-  case carried by the surrounding words. Two files already used _Джеремі_ before this
+  decline, so it takes no case endings in Ukrainian, with case carried by the surrounding
+  words. Two files already used _Джеремі_ before this
   decision (`app/messages/uk.json`, in `loggedOutDescription` and `deepDiveDescription`),
   so the decision also settles an existing inconsistency rather than introducing a new
   form.
@@ -470,7 +469,7 @@ golf-rolling-ball-loop, maze-solve-repeat). **None of them has been written into
   consistently elsewhere, medium confidence.
 - **cloud puff** → **клубочок (хмари)**. Low confidence.
 - **instructions** (learner-facing directions, distinct from the existing
-  "statement"/"instruction to Jiki" rows) → **вказівки**. Medium confidence.
+  "statement" row) → **вказівки**. Medium confidence.
 - **tee** (golf tee) → **кілочок**. Medium confidence.
 - **refactor** → **переписати (код)**. Medium confidence.
 
@@ -628,16 +627,16 @@ followed the family catalog for its sibling error message so the two catalogs re
 consistently on one screen. Whether catalog error messages are exempt from the _рядок
 тексту_ rule needs a native-speaker call.
 
-## 2026-08-01: Jiki takes masculine verb agreement, especially in `describers`
+## 2026-08-01: A narrated male actor takes masculine verb agreement
 
 **Decided by:** decard (native speaker), on the forum, reviewing two exercises. **Terms affected:** none; this is a grammar rule, recorded in `guide.md`.
 
-decard flagged that the uk exercise message catalogs described Jiki's actions with
+decard flagged that the uk exercise message catalogs described a male actor's actions with
 feminine past-tense verbs (_намалювала_, _очистила_, _перетворила_, _оголосила_,
-_повернула_). Jiki is male, so all such verbs take the masculine form. The `describers`
-strings are the recurring failure point because the verb starts the string with no visible
-subject, so the agreement has nothing nearby to cue it. The rule is not exercise-specific,
-which is why it lives in `guide.md` rather than in a per-item reviewer-notes file.
+_повернула_). Where the actor is male, all such verbs take the masculine form. Strings whose
+verb comes first, with no visible subject, are the recurring failure point, because the
+agreement has nothing nearby to cue it. The rule is not exercise-specific, which is why it
+lives in `guide.md`.
 
 The fix was applied to the shared category catalogs
 (`exercise-categories/draw` and `exercise-categories/rock-paper-scissors`), which is where
@@ -673,7 +672,7 @@ now states only rules. Everything below was removed from it.
   "Core decisions" with the decision verbatim: prefer _подорож_ over _мандрівка_. The
   reasoning, from iternewo (native speaker) on the forum:
   _подорож_ is a journey with a defined plan and goal and has wider register, matching how
-  Jiki frames the course; _мандрівка_ emphasizes the emotion and process of wandering and
+  the course is framed; _мандрівка_ emphasizes the emotion and process of wandering and
   reads as tourism-flavored, which is the wrong connotation here.
 - **`feature` vs `function`.** The guide carried a Style note saying these must not collide:
   `function` (the programming concept) is _функція_, `feature` (a platform capability) is
@@ -705,10 +704,10 @@ now states only rules. Everything below was removed from it.
   programming education. The closest comparable resource, uk.javascript.info (a large,
   actively human-maintained Ukrainian JS tutorial), sidesteps the choice entirely by using
   the collective "ми" plus inclusive imperatives, which is the pattern the guide adopts: it
-  keeps the encouraging, inclusive Jiki tone without the ти-to-a-stranger presumptuousness
+  keeps the encouraging, inclusive tone without the ти-to-a-stranger presumptuousness
   or the ви-to-a-beginner coldness. Direct "ти" reads as unusually casual for this genre and
   is unattested in the sources reviewed. Pure formal "ви" is correct and is used by some
-  platforms (e.g. Prometheus.org.ua) but reads more distant than the Jiki voice wants. The
+  platforms (e.g. Prometheus.org.ua) but reads more distant than this voice wants. The
   guide also carried a note that this is the first thing to revisit if native-speaker
   feedback surfaces a strong preference either way; that remains true and is recorded here
   rather than in the guide.
@@ -809,10 +808,9 @@ rule above so that publishing the glossary to i18n is what surfaces them for rev
 post 2 and 4.
 **Terms affected:** `dashboard`.
 
-- iternewo flagged in post 2 that `dashboard` appears in the Solve the Maze exercise but was
-  missing from the glossary, and initially suggested _адмін-панель_. Asked to clarify in
-  post 3, since Jiki's dashboard is the learner's own landing screen (progress, streak, next
-  steps) and not an admin area. In post 4 he confirmed **панель керування** works, and
+- iternewo flagged in post 2 that `dashboard` was missing from the glossary, and initially
+  suggested _адмін-панель_. Asked to clarify in post 3, since the dashboard is the reader's
+  own landing screen (progress, streak, next steps) and not an admin area. In post 4 he confirmed **панель керування** works, and
   separately noted that bare _панель_ (as used in the exercise text, "поверніться на
   панель") reads badly in this context.
 - New row: `dashboard` → **панель керування**.

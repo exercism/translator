@@ -14,10 +14,9 @@ openings (Version A / Version B) of the "Using Functions" concept page as an A/B
 contributor called Version A more fluent overall, then gave four concrete critiques of
 English-tracking phrasing, all folded into `guide.md`:
 
-- **Name repetition.** `Jiki` was repeated in every short sentence (`זה Jiki. Jiki הולך
-  להיות...`) instead of switching to `הוא` after the first mention, and the paragraph was
-  cut into fragments with no dialogue/pause reason to do so. Added as a new bullet under
-  "The name Jiki".
+- **Name repetition.** A Latin-script name was repeated in every short sentence instead of
+  switching to `הוא` after the first mention, and the paragraph was cut into fragments with
+  no dialogue or pause reason to do so. Added as a new bullet on handling names.
 - **`מסע התכנות הזה` ("this programming journey") is an English-wording calque.** Natural
   Hebrew possessive/directional framing (`מסע התכנות שלנו` / `מסע התכנות שלפנינו`) reads
   better than the literal demonstrative. Added as a new row in the Translationese
@@ -26,17 +25,17 @@ English-tracking phrasing, all folded into `guide.md`:
 - **`תכלית` is too formal**, reading as "the main reason" rather than this casual voice.
   The contributor's two suggested informal framings ("actually…", "the whole thing with
   X…") were added to Register levers.
-- **Latin-script `Jiki` breaks reading flow, and dev-workflow verbs should be
+- **A repeated Latin-script name breaks reading flow, and dev-workflow verbs should be
   transliterated into Hebrew, not left in English or translated literally.** The contributor
   gave `merge` → `למרג'ג'`, "do a commit" → `תעשה קומיט`, "compile it" → `תקמפל את זה` as the
   real-usage pattern. This is the same shape as the already-settled `דיבוג` glossary row
   (Hebrew-lettered, Hebrew-conjugated, not the literal `ניפוי שגיאות` and not bare English
   `debug`), so it was written up as a general Loanword-policy rule rather than three
   one-off glossary rows, with `דיבוג` cited as the existing precedent. Note this does **not**
-  change the settled "Jiki stays in Latin script" decision: the contributor's complaint was
-  about the sentence being chopped up around the repeated name, not about the script Jiki's
-  name is written in, and the existing rationale for keeping product names in Latin script
-  (every Israeli tech source does this) still holds. Worth flagging back to a future native
+  change the settled "a product name stays in Latin script" decision: the contributor's
+  complaint was about the sentence being chopped up around the repeated name, not about the
+  script it is written in, and the existing rationale for keeping product names in Latin
+  script (every Israeli tech source does this) still holds. Worth flagging back to a future native
   reviewer if this reading is ever contested.
 - A fifth point (conditional clauses: `אם זה קורה, אז אני צריך לעשות את זה` reading as "if it
   happens, then I should do it" rather than the intended "if this happens, then I do that",
@@ -91,15 +90,8 @@ a defect.
 
 ## 2026-08-01: Two internal contradictions resolved
 
-**Decided by:** agent. **Terms affected:** `mini-Jiki` (Notes column only; the rendering
-`ג'יקי הקטן` and the rejection of `מיני־ג'יקי` are untouched).
+**Decided by:** agent. **Terms affected:** none (a Notes column and two worked examples).
 
-- **`mini-Jiki` vs the first-mention pronunciation.** The glossary row said `ג'יקי הקטן` is
-  "the one place the name is written in Hebrew script", while the guide requires the first
-  mention in every piece to be `Jiki (ג'יקי)`. Both cannot be true. The guide's rule is an
-  imperative instruction and the glossary text was a description of scope, so the pointer was
-  corrected rather than either decision: the row now says it is the one place in **running
-  prose**, and names the guide's one-time pronunciation gloss as the other, non-prose, use.
 - **`בואו` in the worked examples.** The Formality section makes bare first person plural
   (`נסתכל`, `נתחיל`) the workhorse form and says explicitly not to render every English
   "Let's" as `בואו נ…`, yet both "Let's" entries in Worked examples did exactly that. The
@@ -107,12 +99,10 @@ a defect.
   default form (`נסתכל על הקוד הבא:`, `נתחיל`). `בואו נתחיל` is still shown, in the
   Hortative bullet, as the sparing warm variant, so nothing was lost.
 
-**Left alone:** the guide's rule that the first mention of the name in a piece is
-`Jiki (ג'יקי)`. It reads like an auto-gloss against `global/voice.md`, but it is a
-pronunciation aid for a product name rather than a term gloss, it is a confirmed bootstrap
-decision recorded above, and removing it would drop behaviour with nothing to replace it
-(English sources do not `<define>` "Jiki"). Worth an explicit call if the no-auto-gloss rule
-is ever read as covering names.
+**Left alone:** the guide's rule that a Latin-script product name is introduced once with a
+Hebrew pronunciation in brackets. It reads like an auto-gloss against `global/voice.md`, but
+it is a pronunciation aid for a name rather than a term gloss. Worth an explicit call if the
+no-auto-gloss rule is ever read as covering names.
 
 ## 2026-08-01: Language bootstrapped
 
@@ -126,7 +116,7 @@ Eight decisions were put to the owner and confirmed:
 - **Address the reader in the plural** (`אתם`, `לחצו`, `תוכלו`), with first person plural for anything framed as "let's". Hebrew has no gender-neutral second person, so this is forced. Plural address is what Israeli instructional prose has converged on, it is prescribed by Microsoft's Hebrew guide and by the Gezer open-source rules, and the Academy's grammar committee recommended it. Masculine singular was rejected as excluding half the audience and reading as legacy software chrome; slash and dot forms (`משתמש/ת`) were rejected because the Academy, the Open University and every localization guide reject them and they produce unreadable word forms.
 - **`function` is `פונקציה`, not `פעולה`.** This is the sharpest fork in Hebrew CS vocabulary: the Ministry of Education's school textbooks use `פעולה` exclusively (0 occurrences of `פונקציה` across two volumes, against 1,056 of `פעולה`), while adult tutorials, real developer speech and the Academy all use `פונקציה`. the course teaches a general adult audience rather than replicating school C#/Java pedagogy, so it targets adult industry Hebrew. This is the single row most worth putting to a native speaker.
 - **Native Hebrew is primary for core CS vocabulary, but real usage wins term by term.** Hebrew's native words (`משתנה`, `לולאה`, `מערך`, `מחרוזת`, `תו`) are genuinely ordinary, unlike some Academy consumer-tech coinages, so Hebrew sits closer to Persian than to Arabic here. Where real usage is decisively a loanword it takes the loanword: `באג` over the Academy's `תקל`, `דיבוג` over `ניפוי שגיאות`, `בוליאני` over `טיפוס לוגי`, `איטרציה` over `חִזְרוּר`.
-- **"Jiki" stays in Latin script** in Hebrew prose, with maqaf-attached prefixes and `של` for possession, introduced once as `Jiki (ג'יקי)` to fix the pronunciation. Transliterating throughout would be out of step with how every Israeli tech source writes product names. `ג'יקי הקטן` is the one place the name is written in Hebrew script, because it takes a Hebrew adjective.
+- **A product name stays in Latin script** in Hebrew prose, with maqaf-attached prefixes and `של` for possession, introduced once with the Hebrew pronunciation in brackets. Transliterating throughout would be out of step with how every Israeli tech source writes product names.
 - **The `<define>` gloss marker is `באנגלית:`**, the Hebrew Wikipedia convention (present in thousands of articles), rather than the literary `בלעז`.
 - **Punctuation follows the Academy**: Western digits, Latin punctuation, double quotation marks in place of English italics and title case, and the maqaf `־` before a Latin run or a digit.
 - **The chain metaphor is always the qualified `שרשרת חוליות`.** Hebrew's word for string (`מחרוזת`) means a beaded necklace and its word for chain (`שרשרת`) means a chain or necklace, which alone would be survivable. What makes it a genuine collision is that Hebrew's term for string concatenation is `שרשור`, the same root as `שרשרת`. The qualifier follows the precedent already set for Arabic, for the same reason.
@@ -152,9 +142,9 @@ Three terms were deliberately **left out** of the glossary rather than guessed a
 
 **The שרשרת / מחרוזת collision, in full.** Hebrew's word for "string" (`מחרוזת`) literally means a beaded necklace, and its word for a physical chain (`שרשרת`) means a chain or necklace too. On its own that adjacency would be survivable, because they are two distinct words. What makes it a real problem is the verb: Hebrew's established term for string concatenation is `שרשור`, built on the same root as `שרשרת`, and Hebrew Wikipedia titles that article `שרשור (מחרוזות)`. A course that teaches the chain-as-array metaphor *and* string concatenation is therefore using one root for two unrelated ideas. The qualified compound follows the precedent already set for Arabic, for the same reason.
 
-**Term clarification and the name Jiki.** `באנגלית:` is the standard Hebrew Wikipedia convention, present in thousands of articles, and far more current than the literary `בלעז`. Keeping `Jiki` in Latin script is what every Israeli tech source does with product names, and Microsoft's Hebrew guide is explicit that an untransliterated product name takes no definite article. The pronunciation is introduced once as `Jiki (ג'יקי)` because the /dʒ/ sound is not guessable from Latin script for a Hebrew reader.
+**Term clarification and product names.** `באנגלית:` is the standard Hebrew Wikipedia convention, present in thousands of articles, and far more current than the literary `בלעז`. Keeping a product name in Latin script is what every Israeli tech source does, and Microsoft's Hebrew guide is explicit that an untransliterated product name takes no definite article. A pronunciation is introduced once in brackets where a sound is not guessable from Latin script for a Hebrew reader.
 
-**Moved out of the guide into `glossary.md`.** Product and strand names (an owner decision, following the Hungarian pattern): descriptive strand names are translated (`ללמוד לתכנת`, `ללמוד לבנות`), coined and branded names stay English (Ask Jiki, Deep Dive, Jiki Premium, Bootcamp, the game names). Renderings were carried across verbatim. Also deleted from the guide as pure duplicates of existing glossary rows: the `קידוד` false-friend warning (already on the "programming / coding" row), the brackets default (already the "Brackets" section preamble), and the CLI acronym example (already a "Keep in English" row).
+**Moved out of the guide into `glossary.md`.** The product and strand name rows, all of them since retired with the fork. Also deleted from the guide as pure duplicates of existing glossary rows: the `קידוד` false-friend warning (already on the "programming / coding" row), the brackets default (already the "Brackets" section preamble), and the CLI acronym example (already a "Keep in English" row).
 
 ## Term rationale
 
@@ -188,7 +178,7 @@ Why individual rows read the way they do, for the reasoning not already carried 
 
 | Term | Why |
 |------|-----|
-| interpreter | Hebrew is unusually lucky here. `מפרש` is simultaneously the Academy's term, Hebrew Wikipedia's article title, and a live agent noun meaning "one who explains", so unlike several other languages it can name a character rather than only a piece of software. The cost is that unvocalised `מפרש` is also "sail" and "commentator", which is why the row tells a translator to make Jiki the subject rather than repeat the bare noun. If a native reviewer rejects it, `פרשן` is the fallback: unambiguously a person, and the gloss the standard Israeli Python textbook uses, but it under-signals that this is technology. |
+| interpreter | Hebrew is unusually lucky here. `מפרש` is simultaneously the Academy's term, Hebrew Wikipedia's article title, and a live agent noun meaning "one who explains", so unlike several other languages it can name a character rather than only a piece of software. The cost is that unvocalised `מפרש` is also "sail" and "commentator", which is why the row tells a translator to give a clearer subject rather than repeat the bare noun. If a native reviewer rejects it, `פרשן` is the fallback: unambiguously a person, and the gloss the standard Israeli Python textbook uses, but it under-signals that this is technology. |
 | exception | Kept distinct from `שגיאה` because the course teaches errors generally before it teaches catchable exceptions. |
 | debugging | The reference Israeli Python textbook has zero occurrences of `ניפוי שגיאות` and uses `דיבוג` throughout. |
 

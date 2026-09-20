@@ -312,25 +312,9 @@ stands and the note has been rewritten.
 
 The overlap the old note called deliberate is now a distinction worth keeping: **statement**
 stays دستور (دستور شرطی for an if statement, «دستور `repeat`»), because it names a piece of
-code syntax, while an **instruction** the learner hands Jiki is دستورالعمل. Nothing that
+code syntax, while an **instruction** someone is handed is دستورالعمل. Nothing that
 translates "statement" was changed, in the curriculum or in the JavaScript interpreter's
 error catalog (which uses دستور throughout for `statement`, correctly).
-
-## 2026-08-02: "scenario" (سناریو) queried, left open
-
-**Raised by:** native speaker mominchezgi, who disliked the
-transliteration سناریو in the app's exercise UI and asked for "a more common and better
-word" without naming one. **Status: open, no glossary row written.**
-
-Recorded here so a future pass does not quietly invent a replacement. A Jiki scenario is one
-named situation an exercise runs the learner's code against (its own maze, its own inputs),
-and the word has to carry every one of «تمام سناریوها با موفقیت انجام شدند» (All Scenarios
-Passed), «گزارش سناریو» (Scenario Log) and «یک سناریوی امتیازی» (a bonus scenario). The
-obvious candidates each fail on at least one of those: حالت reads as "mode" in «یک حالت
-امتیازی» and as "state" in «گزارش حالت»; مورد is too vague to head a panel; آزمون/تست reads
-naturally everywhere but renames the product concept into "test", which is a teaching
-decision (Jiki deliberately does not call these tests to beginners) and not a translator's
-to make. mominchezgi has been asked on the thread to pick.
 
 ## 2026-08-01: Guide and glossary contradiction resolved (first-use auto-gloss)
 
@@ -374,7 +358,7 @@ Wikipedia's programming articles and its own house style manual.
 
 **Why formal شما, not informal تو.** This looks like a departure from other languages'
 "use the informal register", and is not. Quera and Faradars, both checked directly,
-consistently address the reader with شما, never تو. From an unfamiliar voice like Jiki's,
+consistently address the reader with شما, never تو. From an unfamiliar voice,
 تو reads as presumptuous rather than warm; شما is the actual modern, everyday-appropriate
 register for this kind of instructional writing, not a formality downgrade. Same correction
 Urdu documents for Urdu.
@@ -387,9 +371,8 @@ not an inconsistency for anyone to "fix" later.
 
 **Video-player numerals are an app problem, not a translation one.** UI chrome numerals a
 translator never touches, such as the video player's time/duration readout, still
-conventionally read as Farsi digits for a Persian audience. That readout is rendered by the
-third-party Mux player component (`app/components/ui/JikiMuxPlayer.tsx` in front-end), not
-by any translated content, so it is app-level locale-aware number formatting work.
+conventionally read as Farsi digits for a Persian audience. That readout is rendered by a
+third-party video-player component, not by any translated content, so it is app-level locale-aware number formatting work.
 
 **Why no manual bidi markup.** Real Persian technical sources embed English code and
 keywords directly in running RTL prose with no inserted directional-override characters and
@@ -427,34 +410,6 @@ instruction word for word. The two strand-name renderings in the guide («برن
 بگیرید», «ساختن یاد بگیرید») are still unconfirmed drafts and worth checking with a native
 speaker on their first real use; the guide's inline "confirm on first use" aside was dropped
 because the engine that reads the guide has no channel to report on.
-
-**Jiki's name.** The guide's account of the جیکی decision (the forum thread, the reviewer,
-the date) duplicated the entry immediately below, which remains the record.
-
-## 2026-08-01: "Jiki" is written in Persian script (جیکی)
-
-**Decided by:** native speaker mominchezgi, actioned by the owner (iHiD).
-**Terms affected:** the new `Jiki` row, and the guide's Jiki-name handling section.
-**Protected: this is a native speaker's decision and is not to be reversed by an agent.**
-
-"Jiki" was previously kept as a Latin product name in Persian prose, on the general
-never-translate-product-names rule. mominchezgi asked for جیکی instead, plainly ("I prefer
-جیکی", and then confirmed they would back it as the standard
-for every page.
-
-The reason is specific and not the general bidi question the guide already answers: a
-single LTR Latin token dropped into RTL Persian running text breaks the reading flow, and
-"Jiki" is not an occasional token but a word that recurs several times per paragraph on
-almost every page. Code tokens are a different case, because inline-code styling marks them
-as foreign on purpose; a character's name carries no such signal and simply reads as an
-interruption. جیکی was also already in use in «جیکی کوچولو» (mini-Jiki), so keeping the
-bare name Latin was internally inconsistent as well.
-
-The guide had recorded this as an open question pending discussion on the pinned fa
-glossary thread. That discussion never happened, so iHiD made the call directly
-on 2026-08-01 from the reviewer feedback already on record. The two files already using the
-Latin name (the using-functions concept page and the maze-solve-basic instructions
-description) were updated in the same pass.
 
 ## 2026-07-31: Pruned ordinary vocabulary
 

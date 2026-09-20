@@ -63,26 +63,6 @@ reads as acted on. One unrelated hit was deliberately left alone:
 `space-invaders-repeat/instructions.md` uses "elegantniji način" in the ordinary sense of a
 neater solution, which has nothing to do with attire.
 
-## 2026-08-24: `Jiki`/`Jeremy` transliterate to „Džiki“/„Džeremi“, but only as characters (settled)
-
-**Decided by:** Jeremy, directly, in response to little_mouse's forum post. **Terms affected:** `Jiki`, `Jeremy`.
-**Status: settled. Files affected:** `guide.md`, `glossary.md`, and every existing sr
-translated file that mentions "Jiki" or "Jeremy" in narrative prose (a corpus sweep, tracked
-separately, not part of this note).
-
-little_mouse pointed out that keeping the Latin spelling "Jiki" reads as "Yikee" to a Serbian
-speaker, not "Jiki", and that the platform was inconsistent about it (still using Latin "J"
-while everything else transliterates). She proposed „Džiki“ and, by the same logic, „Džeremi“
-for Jeremy.
-
-Jeremy's ruling draws a split the note above doesn't make on its own: „Džiki“/„Džeremi“ apply
-**only when the word names the character or the person** (the friendly guide Jiki talks to
-the learner, or Jeremy narrating in first person), never when "Jiki" is being used as the
-**product or brand name** (the course name, the site name, marketing copy, a subject line
-naming the platform). Those stay Latin "Jiki". This is a judgment call per occurrence, not a
-mechanical find-and-replace: "This is Jiki, and he's going to help you" is a character use;
-"Welcome to Jiki!" as a course/product title is not.
-
 ## 2026-08-06: `milestone` is "etapa", not "prekretnica" and not "dostignuće" (settled)
 
 **Decided by:** an owner-authorised ruling (Jeremy explicitly asked for a final call on this
@@ -109,10 +89,8 @@ item below, which is kept for the record). **Files affected:** `glossary.md`,
 
 ### The two things that settled it
 
-**1. "dostignuće" is already taken, in shipped Serbian copy.** Jiki has a separate
-**Achievements** feature (its own sidebar entry, badges and certificates page,
-`achievements.*` in `app/messages.json`), and the Serbian sidebar already renders it as
-**"Dostignuća"**. So miroslav-inc's and little_mouse's instinct that a milestone is
+**1. "dostignuće" is already taken, in shipped Serbian copy.** There was a separate
+**Achievements** feature, whose Serbian sidebar entry already read **"Dostignuća"**. So miroslav-inc's and little_mouse's instinct that a milestone is
 "something achieved" is right about the feeling, but the word that carries it is spoken for:
 adopting it for `milestone` would put one Serbian word on two different product concepts,
 which is exactly the collision the `streak`/`niz` and `feature`/`funkcija` rows already
@@ -122,7 +100,7 @@ what makes the choice decidable rather than a matter of taste.
 **2. The English string is a numbered path marker, not a turning point.** The concept is
 `dashboard.exercisePath.milestone.label` = "Milestone {index}", rendered on a path whose
 first node is literally "The Start of your Journey", and the roadmap speaks of "Milestones
-6-10 ... extending the journey". So a milestone in Jiki is a numbered leg of a journey that
+6-10 ... extending the journey". So a milestone there was a numbered leg of a journey that
 a learner works through and completes. "Prekretnica" cannot carry that: it means a turning
 point, a moment where direction changes, which is not what "Milestone 3" is. (miroslav-inc
 glossed it as "crossroad"; the precise Serbian for crossroad is "raskrsnica", but his
@@ -362,11 +340,11 @@ future".
 
 **Status: open, deliberately unresolved.** Three earlier passes have now landed on the same
 spot: miroslav-inc proposed "dostignuće" (2026-07-31 entry below, not actioned because
-*achievement* is a different concept Jiki may want for its own feature), little_mouse
+*achievement* is a different concept and may be wanted for its own feature), little_mouse
 proposed "tačka"/"cilj"/"dostignuće", and aleksaelezovic now proposes "cilj"/"dostignuće"/
 "faza" while preferring the status quo. What none of the three had is the thing that would
-settle it: the actual dashboard string in context, and a decision about whether Jiki wants
-`milestone` and `achievement` as two separate product concepts. Revisit when the dashboard
+settle it: the actual dashboard string in context, and a decision about whether `milestone`
+and `achievement` are two separate product concepts. Revisit when the dashboard
 copy is real; do not re-litigate the row from the glossary alone.
 
 ## 2026-08-02: `dictionary` is "rečnik", not "mapa"
@@ -377,7 +355,7 @@ pinned Serbian glossary thread ([post 8], post id 2371).
 
 The row read **"mapa"**. little_mouse's point is that the two words are split by language in
 Serbian developer usage: "mapa" (and the verb sense "mapiranje") is what Java's `Map` type is
-called, while Python calls its dictionaries "rečnik". Jiki's `dictionary` concept teaches the
+called, while Python calls its dictionaries "rečnik". The `dictionary` concept teaches the
 Python-style key/value dictionary, not a Java `Map`, so "mapa" points a Serbian reader at the
 wrong language's data structure. "rečnik" is also the literal translation of "dictionary". The
 row now reads "rečnik", and the note records the Java-vs-Python split so a future pass does not
@@ -446,7 +424,7 @@ and is recorded here instead:
 - **The whole "Audience specifics" section.** It said that readers are in Serbia and other
   Serbian-speaking communities, and that real Serbian CS-education material already leans on
   concrete physical metaphors for abstract concepts (a variable as a "little box", array
-  elements as "boxes on a shelf", encapsulation as "cocooned data"), so Jiki's metaphor
+  elements as "boxes on a shelf", encapsulation as "cocooned data"), so a metaphor-driven
   family is a natural fit rather than an import. That is research provenance, not an
   instruction: `global/voice.md` carries the audience profile and `global/rules.md` carries
   the "metaphors are load-bearing" rule. The individual attestations are already in the Term
@@ -455,15 +433,15 @@ and is recorded here instead:
   institutional Serbian CS material (official course manuals, university textbooks) actually
   defaults to formal "vi", but that register belongs to academic/institutional writing rather
   than to this warm, informal, mentor-like brand voice; "ti" is what real Serbian marketing
-  and youth-oriented tutorial content uses, and matches the rest of Jiki's languages. The
+  and youth-oriented tutorial content uses, and matches the other languages. The
   rule ("use ti, never vi") is unchanged in the guide.
 - **Cross-language commentary on word order.** A parenthetical compared Serbian's
   topic/focus word order with the more rigid focus-position system documented in Hungarian's
   guide. Serbian's word order is freer than English but not rule-governed the way Hungarian's
   is, which is why the guide states it as "reorder for naturalness", not as a positional rule.
 - **The "Worked examples" tail.** Its titles, calls-to-action and natural-phrasing bullets
-  restated `global/voice.md` with Serbian illustrations: "Stiže Jiki" / "Upoznaj Jiki" rather
-  than the melodramatic "Rođen je Jiki"; "Nov način da naučiš programiranje" rather than the
+  restated `global/voice.md` with Serbian illustrations: "Stiže Exercism" / "Upoznaj
+  Exercism" rather than a melodramatic "Rođen je Exercism"; "Nov način da naučiš programiranje" rather than the
   redundant "Jedan novi način učenja programiranja"; "Počni odmah!" / "Prijavi se odmah!"
   rather than the vague "Pridruži nam se!"; "Probaj besplatno!" / "Isprobaj ovo!"; "Hajde da
   naučimo React" rather than the flatter "Naučimo React". The two examples that taught the
@@ -478,10 +456,10 @@ and is recorded here instead:
   "comes up constantly in walkthrough prose"; that the identical-loanword gloss "bites often,
   because so many Serbian technical terms are Latin-spelled loanwords". All true, none of it
   changes what a translator does.
-- **A "flag it for a native-speaker check" instruction on Jiki-name inflection**, with the
-  observation that no inflected form had yet appeared in a real translated file. `global/rules.md`
-  ("When unsure") already covers flagging anything ambiguous, so this was a duplicate. The
-  inflection rule itself ("Jikija", "Jikiju") is unchanged.
+- **A "flag it for a native-speaker check" instruction on product-name inflection**, with
+  the observation that no inflected form had yet appeared in a real translated file.
+  `global/rules.md` ("When unsure") already covers flagging anything ambiguous, so this was
+  a duplicate.
 
 ### Two conflicts resolved
 
@@ -507,7 +485,8 @@ already triggers glossing only from a `<define>` tag, never on first occurrence,
 
 **Decided by:** native speaker **aleksaelezovic** on the pinned Serbian glossary thread
 ([post 6]), actioned directly.
-**Terms affected:** `deploy`, `return chute` (Jiki physical metaphor). **Status: settled.**
+**Terms affected:** `deploy`, `return chute` (a physical metaphor, since retired).
+**Status: settled.**
 
 Both terms were raised in the same post as the `scope`/`method` correction above but were
 left unactioned there pending a follow-up call between multiple plausible options. This
@@ -545,7 +524,7 @@ The row read **"metod"** (masculine) for `method`, with a note explicitly pickin
 masculine form over the feminine "metoda". aleksaelezovic's correction reverses that call for
 the OOP sense specifically: in programming, "metoda" (feminine, -a ending) is what a function
 belonging to a class is called, and "metod" is reserved for the general, non-programming
-sense of the word "method". Jiki's curriculum uses `method` in the class sense, so the row
+sense of the word "method". The curriculum uses `method` in the class sense, so the row
 now reads "metoda" and the note records the "metod" vs "metoda" split so a future translator
 does not re-collapse it.
 
@@ -579,8 +558,8 @@ is. The concern is kept in the row in the narrow form that still bites: never sh
 
 **`milestone` is deliberately not actioned.** The same post proposed "dostignuće" in place of
 the current "prekretnica". That one is not a clean correction: "dostignuće" means
-*achievement*, which is a different concept from a milestone, and Jiki may well want that word
-for an achievements feature later. It stays as it is pending a follow-up question to native
+*achievement*, which is a different concept from a milestone, and may well be wanted for an
+achievements feature later. It stays as it is pending a follow-up question to native
 speakers on the same thread.
 
 ## 2026-07-31: `maze` is "lavirint", not "labirint"
@@ -612,7 +591,7 @@ Two decisions came out of that pass that bind Serbian:
   for their term for interpreter *software*, which cannot. **Serbian kept the loanword
   "interpreter"**: it is what Serbian dev writing actually uses, and it already names a
   person in general Serbian, as of a performer interpreting a song, so it carries no
-  machine or program morpheme and can name Jiki. "prevodilac" was rejected as the
+  machine or program morpheme and can name a person. "prevodilac" was rejected as the
   compiler-style translator, and "tumač" as bound to the court/spoken-language sense.
 - **Default to the ordinary, common word**, whatever its etymology (now in
   `global/voice.md`). Where a language's own developer writing uses the English word, the
