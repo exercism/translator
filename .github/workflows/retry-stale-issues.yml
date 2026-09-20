@@ -1,0 +1,73 @@
+# Pick up any translation issue the automated queue has left sitting.
+#
+# translate-issue.yml runs once per dispatch, and a dispatch can be lost: a
+# GitHub outage, a DeepSeek outage, a run cancelled mid-flight, a failure that
+# left the issue open on purpose. Nothing else would ever come back to it,
+# because the only trigger over there is the issue being opened or rewritten.
+# So this sweeps the queue every six hours and dispatches the same event again.
+#
+# Two hours is the delay, on the issue's own updatedAt: a run posts a comment on
+# every ending it does not close the issue for, which moves updatedAt, so a
+# failing issue is retried at most every two hours rather than every six minutes.
+# An issue that genuinely cannot be worked (above the word cap, an item that
+# fails every time) stays open and says why in its comments, which is what the
+# orchestrator session watches for.
+#
+# A dispatch is idempotent by construction: run-issue.mjs translates only what
+# the locale does not already hold, so a repeat of a finished issue finds
+# nothing to do and closes it.
+#
+# ## The tokens
+#
+#   EXERCISM_I18N_PUSH_PAT           lists the open issues in exercism/i18n
+#   EXERCISM_TRANSLATOR_DISPATCH_PAT Contents read/write on this repo, to
+#                                    dispatch. The default GITHUB_TOKEN cannot be
+#                                    used: an event it raises deliberately starts
+#                                    no further workflow run.
+
+name: Retry stale issues
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List and re-dispatch
+        env:
+          REPO: ${{ github.repository }}
+          I18N_TOKEN: ${{ secrets.EXERCISM_I18N_PUSH_PAT }}
+          DISPATCH_TOKEN: ${{ secrets.EXERCISM_TRANSLATOR_DISPATCH_PAT }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${I18N_TOKEN:-}" ] || [ -z "${DISPATCH_TOKEN:-}" ]; then
+            echo "The queue's tokens are not configured; nothing was swept. See this workflow's header."
+            exit 0
+          fi
+
+          CUTOFF=$(date -u -d '2 hours ago' +%Y-%m-%dT%H:%M:%SZ)
+
+          # number and updatedAt only: an issue's title and body are text typed
+          # by whoever opened a source PR, and nothing here reads them.
+          NUMBERS=$(GH_TOKEN="$I18N_TOKEN" gh issue list --repo exercism/i18n \
+            --state open --label translation --author iHiD --limit 100 \
+            --json number,updatedAt \
+            --jq ".[] | select(.updatedAt < \"$CUTOFF\") | .number")
+
+          if [ -z "$NUMBERS" ]; then
+            echo "No translation issue in exercism/i18n has been waiting since $CUTOFF."
+            exit 0
+          fi
+
+          for number in $NUMBERS; do
+            [[ "$number" =~ ^[1-9][0-9]{0,8}$ ]] || continue
+            jq -n --argjson issue "$number" '{event_type: "translate-issue", client_payload: {issue: $issue}}' \
+              | GH_TOKEN="$DISPATCH_TOKEN" gh api -X POST "repos/$REPO/dispatches" --input -
+            echo "Re-dispatched #${number}."
+          done

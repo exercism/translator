@@ -416,10 +416,21 @@ certain it is doing the right thing:
 The orchestrator commits once, after everything has reported, with the whole change in
 view. That is also the only point at which a sensible commit message can be written.
 
-The one script here that runs a git command which changes anything is
-`scripts/source-checkout.mjs`, and it only ever touches this repo's own gitignored `.source/`.
-No script runs git in a sibling checkout: those are shared with live sessions, and English is
-read from them as objects at a ref, never by checking anything out.
+Two scripts here run a git command that changes anything, and a session, a command and a
+skill are none of them:
+
+- `scripts/source-checkout.mjs`, which only ever touches this repo's own gitignored
+  `.source/`.
+- `scripts/run-issue.mjs`, the queue's unattended path, run by
+  `.github/workflows/translate-issue.yml` and never by a session. It commits in `../i18n`,
+  pushes to `main` there and closes the issue, and it runs git in `../i18n` and `.source/`
+  and nowhere else. The rule above is a rule about what an AGENT does, and this is a
+  runner with no agent in it: there is no orchestrator on a GitHub runner to hand the
+  commit to, and an uncommitted translation on an ephemeral runner is a translation paid
+  for and thrown away.
+
+No script runs git in a sibling SOURCE checkout: those are shared with live sessions, and
+English is read from them as objects at a ref, never by checking anything out.
 
 ### Translated output lands in `i18n` as a direct commit to `main`
 

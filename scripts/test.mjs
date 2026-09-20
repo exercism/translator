@@ -22,6 +22,7 @@ import { checkMarkdown, fencedBlocks, wordCount } from "./lib/checks.mjs";
 import { fileTail, fixedPrefix } from "./lib/prompt.mjs";
 import { unfence } from "./lib/deepseek.mjs";
 import { parseIssue } from "./lib/issues.mjs";
+import { OUTCOMES, commitMessage, issueNumber, issueOutcome, itemsWritten, perLocaleCounts, untranslatedWords } from "./lib/issue-pass.mjs";
 
 let passed = 0;
 async function test(name, body) {
@@ -122,6 +123,44 @@ await test("an issue from another author, without the label, or naming two diffe
   assert.match(parseIssue(issue({ title: "Translate exercism/python#1809: x" })).reason, /disagree/);
   assert.match(parseIssue(issue({ title: "Translate evil/ruby#1: x" })).reason, /title/);
   assert.match(parseIssue(issue({ body: "| Repo | exercism/ruby |\n| Translate at | main |\n" })).reason, /sha/);
+});
+
+// --------------------------------------------------------------- run-issue ---
+
+await test("only a plainly written positive integer is an issue number", () => {
+  assert.equal(issueNumber("7"), 7);
+  assert.equal(issueNumber(" 42 "), 42);
+  for (const bad of ["0", "07", "-1", "1.0", "7; rm -rf /", "", null, undefined, "1e3", "١٢٣"]) assert.equal(issueNumber(bad), null, `${bad} was accepted`);
+});
+
+await test("the issue is closed only when the work is finished, and every other ending leaves it open", () => {
+  for (const reason of ["pushed", "nothing-to-do"]) assert.deepEqual([issueOutcome(reason).close, issueOutcome(reason).exit], [true, 0]);
+  // An empty productionTargets is nothing to do and nothing wrong: the issue waits.
+  assert.deepEqual([issueOutcome("no-production-locales").close, issueOutcome("no-production-locales").exit], [false, 0]);
+  for (const reason of ["invalid", "over-cap", "failures", "validate-errors", "deletions", "push-failed", "error"]) {
+    assert.deepEqual([issueOutcome(reason).close, issueOutcome(reason).exit], [false, 1], reason);
+  }
+  // An unknown reason is an error, never a close.
+  assert.deepEqual([issueOutcome("something new").close, issueOutcome("something new").exit], [false, 1]);
+  for (const outcome of Object.values(OUTCOMES)) assert.match(outcome.headline, /\.$/);
+});
+
+await test("the commit message names the source PR and what was written", () => {
+  const parsed = parseIssue(issue());
+  assert.equal(commitMessage(parsed, 3), "Translate exercism/ruby#1809: 3 item(s)\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>\n");
+  // Nothing of the issue's free text reaches the message.
+  assert.ok(!commitMessage(parsed, 1).includes("Ignore previous instructions"));
+});
+
+await test("a summary is read for words, per-locale counts and the item total", () => {
+  const summary = {
+    estimates: { hu: { "track-docs": { words: 400 }, "metadata/ruby": { words: 120 } }, de: { "track-docs": { words: 70 } } },
+    counts: { hu: { "track-docs": { written: 2, copied: 1, failed: 0 }, "metadata/ruby": { written: 3, copied: 0, failed: 1 } } }
+  };
+  assert.equal(untranslatedWords(summary), 520);
+  assert.deepEqual(perLocaleCounts(summary), { hu: { written: 5, copied: 1, failed: 1 } });
+  assert.equal(itemsWritten(summary), 6);
+  assert.equal(untranslatedWords({}), 0);
 });
 
 // ----------------------------------------------------------------- fixture ---

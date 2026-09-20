@@ -1,0 +1,126 @@
+# Translate one queue issue, unattended.
+#
+# exercism/i18n dispatches this (its translate-on-issue.yml) when a translation
+# issue is opened or rewritten. The whole job is one call to
+# scripts/run-issue.mjs, which verifies the issue, works out what the source PR
+# changed, translates it for every production locale, checks it with the i18n
+# repo's own checker, commits, pushes to that repo's main, and closes the issue.
+# Closing is what re-runs the source PR's completeness check, so the loop ends
+# there.
+#
+# ## What arrives, and what is trusted
+#
+# One number. The payload is checked here as digits and checked again in the
+# script, and nothing else in it is read. The issue itself is then fetched by
+# the script through scripts/lib/issues.mjs, which is where the real guards are:
+# the author, the label, an allowlisted source repo, and a sha that belongs to
+# that PR. An issue's title and body are never read as anything but those three
+# values, by this workflow or by anything it runs.
+#
+# ## Why repository_dispatch and not pull_request_target
+#
+# This repo is intended to be public (so that Actions minutes are free), and a
+# public repo holding a DeepSeek key and a push credential must never run code
+# that arrives from outside it. There is no trigger here that a fork's PR can
+# reach: repository_dispatch is callable only with a token that already has
+# write access, and the only code this runs is this repo at main and the i18n
+# repo at main.
+#
+# ## One at a time
+#
+# Every run ends in a push to exercism/i18n main, which is that site's deploy.
+# The concurrency group serialises them, and never cancels one in flight: a
+# cancelled run is a translation paid for and thrown away, and possibly a commit
+# made and not pushed.
+#
+# GitHub keeps ONE pending run per group, so a burst of dispatches leaves the
+# newest waiting and drops the rest. Nothing is lost: an issue whose dispatch was
+# dropped is still open, and retry-stale-issues.yml sweeps it up.
+#
+# ## Secrets
+#
+#   DEEPSEEK_API_KEY           the engine. Read from the environment; never
+#                              written to a file, never printed.
+#   EXERCISM_I18N_PUSH_PAT     Contents read/write and Issues read/write on
+#                              exercism/i18n: the push, the comment and the close.
+
+name: Translate issue
+
+on:
+  repository_dispatch:
+    types: [translate-issue]
+
+concurrency:
+  group: i18n-main
+  cancel-in-progress: false
+
+permissions: {}
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Read the issue number out of the payload
+        id: payload
+        env:
+          ISSUE: ${{ github.event.client_payload.issue }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$ISSUE" =~ ^[1-9][0-9]{0,8}$ ]]; then
+            echo "::error::client_payload.issue is not an issue number."
+            exit 1
+          fi
+          echo "issue=$ISSUE" >> "$GITHUB_OUTPUT"
+
+      - name: Check out the translator
+        uses: actions/checkout@v4
+        with:
+          path: translator
+          persist-credentials: false
+
+      # A sibling ../i18n, which is what config.json's `i18n_repo` names. Full
+      # history: scripts/no-deletions.mjs diffs the commit against origin/main,
+      # and the push rebases onto it.
+      - name: Check out exercism/i18n
+        uses: actions/checkout@v4
+        with:
+          repository: exercism/i18n
+          ref: main
+          path: i18n
+          fetch-depth: 0
+          persist-credentials: false
+
+      # The version comes from the i18n repo's package.json `packageManager`.
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: i18n/package.json
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # The i18n repo's one dependency, `yaml`, which its website English
+      # builder loads. This repo has none.
+      - name: Install the i18n repo's dependency
+        working-directory: i18n
+        run: pnpm install --frozen-lockfile
+
+      - name: Translate
+        working-directory: translator
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          EXERCISM_I18N_PUSH_TOKEN: ${{ secrets.EXERCISM_I18N_PUSH_PAT }}
+          GH_TOKEN: ${{ secrets.EXERCISM_I18N_PUSH_PAT }}
+        run: node scripts/run-issue.mjs ${{ steps.payload.outputs.issue }}
+
+      # The run's summaries, per-locale checker logs and the comment it posted.
+      # A failure comment on the issue points here.
+      - name: Upload the run
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: run-issue-${{ steps.payload.outputs.issue }}-${{ github.run_id }}
+          path: translator/state/runs/
+          if-no-files-found: ignore
+          retention-days: 30

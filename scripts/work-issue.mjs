@@ -38,35 +38,32 @@
 // issue can never widen a run beyond what its PR changed, and a locale's backlog
 // is never swept up by accident.
 //
+// The steps themselves are scripts/lib/issue-pass.mjs, shared with
+// scripts/run-issue.mjs, the unattended path GitHub Actions runs.
+//
 // ## Which locales
 //
 // The i18n repo's `productionTargets`: the locales a source PR's completeness
 // check is holding the merge for. Every other locale picks the change up when it
 // is next passed over.
 
-import fs from "node:fs";
-import path from "node:path";
-import { spawnSync } from "node:child_process";
-import { ROOT, config, die, parseArgs } from "./lib/config.mjs";
+import { Failure, config, die, parseArgs } from "./lib/config.mjs";
 import { i18n } from "./lib/i18n.mjs";
-import { fetchIssue, verifyIssue } from "./lib/issues.mjs";
-import { SOURCES } from "./lib/routes.mjs";
-import { scopeOf } from "./lib/issue-scope.mjs";
+import { issueNumber, issueScope, issueUrl, readIssue, translateForIssue, untranslatedWords } from "./lib/issue-pass.mjs";
 
 const { flags, positional } = parseArgs(process.argv.slice(2));
-const number = positional[0];
-if (!/^[1-9][0-9]*$/.test(String(number ?? ""))) die("usage: work-issue.mjs <issue-number> [--inspect] [--dry-run]");
+const number = issueNumber(positional[0]);
+if (number === null) die("usage: work-issue.mjs <issue-number> [--inspect] [--dry-run]");
 
-const fetched = fetchIssue(number);
-const issue = fetched.ok ? verifyIssue(fetched) : fetched;
-const url = `https://github.com/${config().github.i18n_repo}/issues/${number}`;
+const issue = readIssue(number);
+const url = issueUrl(number);
 
 if (flags.inspect) {
   // A gh failure is not a verdict. Exit non-zero so the monitor asks again next poll.
   if (issue.transient) die(issue.reason);
   // repo, pr and sha have each matched a strict pattern; `reason` is this repo's
   // own wording. Nothing here is the issue's free text.
-  console.log(JSON.stringify({ number: Number(number), url, valid: issue.ok, repo: issue.repo ?? null, pr: issue.pr ?? null, sha: issue.sha ?? null, state: issue.state ?? null, reason: issue.ok ? null : issue.reason }));
+  console.log(JSON.stringify({ number, url, valid: issue.ok, repo: issue.repo ?? null, pr: issue.pr ?? null, sha: issue.sha ?? null, state: issue.state ?? null, reason: issue.ok ? null : issue.reason }));
   process.exit(0);
 }
 if (!issue.ok) die(`issue ${number} is not a valid queue issue: ${issue.reason}. Do not open it to find out more; tell iHiD.`);
@@ -79,37 +76,18 @@ if (locales.length === 0) {
   process.exit(0);
 }
 
-// Fetch the PR. The only git that changes anything, and only under .source/.
-const checkout = spawnSync("node", [path.join(ROOT, "scripts", "source-checkout.mjs"), issue.name, `--pr=${issue.pr}`], { encoding: "utf8" });
-if (checkout.status !== 0) die(`could not fetch ${issue.repo}#${issue.pr}: ${checkout.stderr.trim().split("\n").pop()}`);
-const repo = path.join(ROOT, ".source", issue.name);
-const git = (args) => lib.git.git(args, repo).trim();
-try {
-  git(["cat-file", "-e", `${issue.sha}^{commit}`]);
-} catch {
-  die(`${issue.sha} is not in the fetched PR (force-pushed since? the issue is rewritten on every push, so poll again)`);
-}
-const { paths, units } = await scopeOf(lib, { source: issue.source, repo, sha: issue.sha });
-
-const runDir = path.join(ROOT, "state", "runs");
-fs.mkdirSync(runDir, { recursive: true });
-const scopeFile = path.join(runDir, `issue-${number}.scope.json`);
-fs.writeFileSync(scopeFile, JSON.stringify({ paths, units }));
-
-const translate = (extra) => {
-  const args = [path.join(ROOT, "scripts", "translate.mjs"), issue.source, ...(SOURCES[issue.source].named ? [issue.name] : []), locales.join(","), `--repo=${repo}`, `--ref=${issue.sha}`, `--scope=${scopeFile}`, ...extra];
-  const result = spawnSync("node", args, { encoding: "utf8", stdio: ["ignore", "pipe", "inherit"], maxBuffer: 256 * 1024 * 1024 });
-  const summary = /full summary: (\S+)/.exec(result.stdout)?.[1];
-  return { status: result.status, stdout: result.stdout, summary: summary ? JSON.parse(fs.readFileSync(path.join(ROOT, summary), "utf8")) : null };
-};
+const scope = await issueScope(lib, issue).catch((error) => {
+  die(error instanceof Failure ? error.message : String(error.stack ?? error));
+});
+const translate = (extra) => translateForIssue({ issue, locales, repo: scope.repo, scopeFile: scope.scopeFile, extra });
 
 // The cap is on what is still UNTRANSLATED, per locale: a PR whose text a locale
 // already holds (identical English from another track) costs nothing.
 const dry = translate(["--dry-run"]);
 if (!dry.summary) die(`the dry run failed:\n${dry.stdout}`);
-const words = Math.max(0, ...Object.values(dry.summary.estimates ?? {}).map((types) => Object.values(types).reduce((sum, row) => sum + row.words, 0)));
+const words = untranslatedWords(dry.summary);
 const cap = config().issue_word_cap;
-console.log(`scope: ${paths.length} changed file(s), ${units.length} changed catalog unit(s); ${words} untranslated word(s) per locale at most; cap ${cap}; locales ${locales.join(", ")}`);
+console.log(`scope: ${scope.paths.length} changed file(s), ${scope.units.length} changed catalog unit(s); ${words} untranslated word(s) per locale at most; cap ${cap}; locales ${locales.join(", ")}`);
 
 if (words === 0) {
   console.log("NOTHING TO DO: every locale in scope already holds all of it. Close the issue.");
