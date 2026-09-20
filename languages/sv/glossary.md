@@ -39,17 +39,16 @@ These are terms where the Swedish is used in prose, so the "Use (sv/en)" column 
 | condition is true / false | villkoret är sant / falskt | sv | Not the otherwise idiomatic _villkoret är uppfyllt_, which breaks the link to the _sant / falskt_ the course teaches. |
 | statement (executable) | sats | sv | The imperative sense: a line of code that does something and gets executed. |
 | statement (logical claim) | påstående | sv | The proposition sense: a claim that is true or false; also a test assertion. Pick by meaning, not by the English word. |
-| instruction (given to Jiki) | instruktion | sv | What the learner puts on the board for Jiki to follow. Everyday Swedish, not _anvisning_ (bureaucratic register). |
 | to call (a function) | anropa | sv | Never _kalla_ or _kalla på_, which is calling out to a person. |
-| to return (a value) | returnera | sv | Not _återlämna_ or _ge tillbaka_. The noun is _returvärde_. The bracketed `<define>` gloss word must be _return_, never _returning_. |
+| to return (a value) | returnera | sv | Not _återlämna_ or _ge tillbaka_. The noun is _returvärde_. The bracketed an explanation in the English gloss word must be _return_, never _returning_. |
 | input (to a function) / output | indata / utdata | sv | Not _inmatning / utmatning_, which are the acts of typing in and printing out. |
-| interpreter | tolk | sv | **A person doing a job, not a program.** On concept pages Jiki *is* the tolk (_din tolk är Jiki_, _det är hans jobb att tolka koden du skriver_). Never _programtolk_ or _interpretator_, which can only name software. |
+| interpreter | tolk | sv | Never _programtolk_ or _interpretator_. Needs a native speaker's eye: this rendering was chosen to name a character whose job was to interpret the reader's code, which is not how Exercism uses the word. On Exercism an interpreter is the program that runs the code. Left as it stands rather than changed by an agent. |
 | pure (function) | ren | sv | _en ren funktion_. When glossed, gloss the full term _pure function_, not the bare adjective. |
 | brackets (the two after a function name) | parenteser | sv | _de två parenteserna_ for the `()` pair written after a function name. Which bracket type to name, and when, is in the Brackets section below. |
 | NOT operator / logical negation | negation | sv | _negation_ for the concept, _inte_ when reading the operator aloud. The `!` keyword stays English. |
 | bang (the `!` character) | utropstecken | sv | Swedish has no equivalent of the English slang "bang". Render the source's aside as a remark about what the sign is called, never as a loan. |
-| ampersand (`&`) | och-tecken | sv | On `<define>`, show the glyph itself (`&`) in the bracket, not the English word "ampersand". Not `et-tecken`, which a native speaker (developer) said they'd never seen or used. |
-| bar / vertical bar (`\|`) | lodstreck | sv | Not _vertikalstreck_ (dated). The `\|\|` keyword stays English. On `<define>`, show the glyph (`\|`) in the bracket, not the English word "bar". |
+| ampersand (`&`) | och-tecken | sv | Where the English itself explains the term, show the glyph itself (`&`) in the bracket, not the English word "ampersand". Not `et-tecken`, which a native speaker (developer) said they'd never seen or used. |
+| bar / vertical bar (`\|`) | lodstreck | sv | Not _vertikalstreck_ (dated). The `\|\|` keyword stays English. Where the English itself explains the term, show the glyph (`\|`) in the bracket, not the English word "bar". |
 | string template | strängmall | sv | The prose concept. The JS construct's own name (_template literal_ / _template string_) stays English; see "Keep in English". |
 | placeholder | platshållare | sv | |
 | (programming) language | programmeringsspråk | sv | One word, always. Use it including in the "a language a computer understands" framing. |
@@ -108,7 +107,7 @@ These are terms where the Swedish is used in prose, so the "Use (sv/en)" column 
 
 These stay in English in Swedish prose, with the Swedish gloss to use for each.
 
-| Term | Swedish gloss (on `<define>`) | Notes |
+| Term | Swedish word, where the English explains the term | Notes |
 |------|-------------------------------|-------|
 | scope | _räckvidd_ | Swedish course material writes "(eng. in scope)" rather than settling a term. Use the Swedish where the source defines it, then _scope_ throughout. |
 | API | explain what it is in Swedish | Where defined, explain the concept in Swedish, not just gloss the acronym. |
@@ -121,7 +120,7 @@ These stay in English in Swedish prose, with the Swedish gloss to use for each.
 | widget | _widget_ | |
 | Debug, Test | (no gloss) | As keywords, UI labels and technical tokens. |
 | Code, Bug, Frontend, Backend | (no gloss) | As capitalised tokens and UI labels only. In running prose the ordinary Swedish words are _kod_ and _bugg_, and those are what to write. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |
 
 ## Brackets
 
@@ -133,3 +132,70 @@ These stay in English in Swedish prose, with the Swedish gloss to use for each.
 | `<>` | vinkelparentes | |
 
 How to phrase a bracket in running prose is in `guide.md`.
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Swedish has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Swedish | Use (sv/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| syllabus |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| solution |  |  |  |
+| iteration (a submitted version of a solution) |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| mentor / mentoring |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| badge |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| challenge (community event) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

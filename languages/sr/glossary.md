@@ -13,7 +13,6 @@ decision log (`glossary-notes.md`).
 | developer | **programer** | sr | |
 | pitfall | **zamka** | sr | Stands alone; no gloss needed. |
 | pattern (a recurring shape you reuse) | **šablon** | sr | Deliberately not "obrazac", which reads first as a form to fill in and is the more formal register. |
-| Jiki (the character) | **Džiki** | sr | Decided by Jeremy, 2026-08-24. Only when "Jiki" is the friendly guide character in narrative prose. Decline normally: „Džikija“ (genitive), „Džikiju“ (dative). Never for the product/brand name, which stays "Jiki" (Latin). See the guide's "Jiki: character vs product name" note. |
 | Jeremy (as narrator/person) | **Džeremi** | sr | Same decision as above, same split (person vs any use as a bare label/brand mention). Decline normally. |
 
 ## Localize (use the Serbian term)
@@ -30,8 +29,8 @@ These are terms where the Serbian is used in prose, so the "Use (sr/en)" column 
 | character | karakter | sr | |
 | integer | ceo broj | sr | Also "celobrojni tip" for the type name specifically. |
 | float / decimal | broj sa pokretnim zarezom | sr | Or "realni tip" when the type name (not the value) is meant. |
-| array / list | niz | sr | See also "chain" under Jiki physical metaphors for the teaching metaphor used alongside it. |
-| dictionary | rečnik | sr | Corrected from "mapa" per native-speaker feedback (see glossary-notes.md). "mapa" / "mapiranje" belongs to Java's `Map`; the Python-style dictionary Jiki teaches is "rečnik". Masculine; declines normally ("u rečniku", pl. "rečnici", instr. pl. "rečnicima"). |
+| array / list | niz | sr | |
+| dictionary | rečnik | sr | Corrected from "mapa" per native-speaker feedback (see glossary-notes.md). "mapa" / "mapiranje" belongs to Java's `Map`; the Python-style dictionary is "rečnik". Masculine; declines normally ("u rečniku", pl. "rečnici", instr. pl. "rečnicima"). |
 | element | element | sr | "element niza" = array element. |
 | index | indeks | sr | Stands alone. |
 | data type | tip podataka | sr | |
@@ -64,8 +63,7 @@ These are terms where the Serbian is used in prose, so the "Use (sr/en)" column 
 | English | Serbian | Use (sr/en) | Notes |
 |---------|---------|-------------|-------|
 | keyword | ključna reč | sr | Still worth clarifying once. |
-| interpreter (the one who interprets) | interpreter | sr | **A person doing the job of interpreting, not a piece of software:** on concept pages Jiki *is* the interpreter ("tvoj interpreter je Jiki", "njegov posao je da interpretira kod koji pišeš"). Declines normally: "interpretera", "interpreteru". The verb is "interpretirati". Not "interpretator" (names the program, not the person), not "prevodilac" (the standard word for a compiler-style translator), and not "tumač" (bound to the court/spoken-language sense). |
-| instruction (given to Jiki) | instrukcija | sr | A single thing the learner tells Jiki to do ("daš mu prave instrukcije"). Keep distinct from "naredba" (an executable statement of code). Note that "instrukcije" on its own can also mean private tutoring lessons in Serbian; the Jiki context removes the ambiguity, but do not use it bare where it could. |
+| interpreter | interpreter | sr | Declines normally: "interpretera", "interpreteru". The verb is "interpretirati". Not "prevodilac" (the standard word for a compiler-style translator) and not "tumač" (bound to the court and spoken-language sense). Needs a native speaker's eye: this rendering was chosen to name a character whose job was to interpret the reader's code, which is not how Exercism uses the word. On Exercism an interpreter is the program that runs the code. Left as it stands rather than changed by an agent. |
 | mental model | mentalni model | sr | The picture-in-your-head framing ("to je snažan mentalni model"). |
 | (programming) language | programski jezik / jezik | sr | Use "programski jezik" where the programming sense needs stating, and bare "jezik" once it is established or where the framing is "a language a computer understands" ("na jeziku koji računar razume"). Never the English borrowing. |
 | variable | promenljiva | sr | Feminine gender; "nova promenljiva", "promenljiva je definisana". |
@@ -118,15 +116,13 @@ These are terms where the Serbian is used in prose, so the "Use (sr/en)" column 
 | lesson | lekcija | sr | |
 | exercise | vežba | sr | |
 | scenario | scenario | sr | |
-| course | kurs | sr | The whole Jiki course the learner is taking ("na ovom kursu tvoj interpreter je Jiki"). Keep distinct from "lekcija" (lesson) and "kurikulum" (curriculum). |
+| course | kurs | sr | The whole course the reader is taking ("na ovom kursu"). Keep distinct from "lekcija" (lesson) and "kurikulum" (curriculum). |
 | curriculum | kurikulum | sr | Distinct from "radni tok" (workflow) above; this is the curriculum-structure sense. |
 | level | nivo | sr | |
 | milestone | etapa | sr | The numbered marker on the learning path ("Etapa 3"). Feminine; declines normally ("u etapi", "završi etapu", pl. "etape"). Deliberately not "prekretnica" (a turning point, which a numbered path marker is not) and deliberately not "dostignuće"/"postignuće", which is spoken for by the separate Achievements feature ("Dostignuća" in the sidebar). Keep distinct from "nivo" (level). Where English uses "milestone" in the loose, everyday sense rather than as the platform feature, translate for sense (e.g. "cilj") instead of forcing this row. |
-| pathway | putanja | sr | Keep distinct from "staza" (track) below; both mean "path" but are assigned to different concepts. |
 | bootcamp | butkamp | sr | Corrected from the hybrid spelling "bootkamp" per native-speaker feedback (see glossary-notes.md): a loanword adopted into Serbian prose is respelled phonetically throughout, not half-kept in its English spelling. Declines normally ("butkampa", "u butkampu"). Deliberately not "kurs", which is spoken for by `course` above. |
 | syllabus | silabus | sr | |
 | mentor / mentoring | mentor / mentorstvo | sr | |
-| track (curriculum path) | staza | sr | Keep distinct from "putanja" (pathway) above. |
 | tutorial | tutorijal | sr | |
 | solution (learner's submission) | rešenje | sr | |
 | canvas (graphics exercises) | platno | sr | The drawing-surface sense specifically. |
@@ -137,7 +133,7 @@ These are terms where the Serbian is used in prose, so the "Use (sr/en)" column 
 
 These stay in English in Serbian prose, with the Serbian gloss to use for each.
 
-| Term | Serbian gloss (on `<define>`) | Notes |
+| Term | Serbian word, where the English explains the term | Notes |
 |------|----------------------------------|-------|
 | string | "niska" | Used only as the gloss where the source defines it. |
 | Boolean | "logička vrednost" | Where the source defines it, explain it means "logička vrednost", then use "Boolean". |
@@ -150,4 +146,67 @@ These stay in English in Serbian prose, with the Serbian gloss to use for each.
 | Code, Bug, Frontend, Backend | (no gloss) | |
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Serbian has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Serbian | Use (sr/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| badge |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| challenge (community event) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

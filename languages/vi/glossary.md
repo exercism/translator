@@ -9,7 +9,7 @@ decision log (`glossary-notes.md`).
 |---------|-----------|-------------|-------|
 | programming / coding | lập trình | vi | Use lập trình as the consistent prose term; do not mix with "viết code". |
 | developer | lập trình viên | vi | Not "dev", even in casual prose. |
-| streak | streak | en | Where the source `<define>`s it, gloss as "chuỗi ngày học liên tục." |
+| streak | streak | en | Where the English itself explains the term, gloss as "chuỗi ngày học liên tục." |
 | tech / tech industry | ngành công nghệ | vi | Do not mix with "ngành IT" in one document. |
 | pitfall | lỗi thường gặp | vi | Stands alone; no gloss needed. |
 
@@ -65,7 +65,6 @@ These are terms where the Vietnamese is used in prose, so the "Use (vi/en)" colu
 |---------|-----------|-------------|-------|
 | keyword | từ khóa | vi | |
 | interpreter | thông dịch viên | vi | **A person doing a job, not software.** Never "trình thông dịch" here; keep distinct from the compiler term "trình biên dịch". The verb is "thông dịch". |
-| instruction (given to Jiki) | chỉ dẫn | vi | Not "chỉ thị" (directive/formal register) and not "lệnh", which belongs to "câu lệnh" (statement). |
 | mental model | mô hình tư duy | vi | |
 | (programming) language | ngôn ngữ lập trình | vi | Short form "ngôn ngữ" once established, including in the "a language a computer understands" framing. Never the English borrowing. |
 | variable | biến | vi | |
@@ -85,7 +84,7 @@ These are terms where the Vietnamese is used in prose, so the "Use (vi/en)" colu
 | modulo / remainder operator | phép chia lấy dư | vi | The `%` operator. |
 | concatenation / to concatenate | nối chuỗi | vi | |
 | state / stateful | trạng thái | vi | **Flagged for native-speaker review**: React/JS-facing Vietnamese prose often keeps English "state" instead. |
-| scope | scope | en | Where the source `<define>`s it, gloss as "phạm vi (biến)". |
+| scope | scope | en | Where the English itself explains the term, gloss as "phạm vi (biến)". |
 | class | lớp | vi | |
 | method | phương thức | vi | |
 | property | thuộc tính | vi | |
@@ -95,7 +94,7 @@ These are terms where the Vietnamese is used in prose, so the "Use (vi/en)" colu
 
 | English | Vietnamese | Use (vi/en) | Notes |
 |---------|-----------|-------------|-------|
-| course | khóa học | vi | The whole Jiki course ("Trong khóa học này..."). Keep distinct from "bài học" (lesson) and "chương trình học" (curriculum). |
+| course | khóa học | vi | The whole course the reader is taking ("Trong khóa học này..."). Keep distinct from "bài học" (lesson) and "chương trình học" (curriculum). |
 | exercise | bài tập | vi | |
 
 ### Tooling & engineering
@@ -118,7 +117,7 @@ These are terms where the Vietnamese is used in prose, so the "Use (vi/en)" colu
 
 These stay in English in Vietnamese prose, with the Vietnamese gloss to use for each.
 
-| Term | Vietnamese gloss (on `<define>`) | Notes |
+| Term | Vietnamese word, where the English explains the term | Notes |
 |------|-----------------------------------|-------|
 | API | giao diện lập trình ứng dụng | Not a word a beginner knows; where defined, explain the concept in Vietnamese, not just gloss the acronym. |
 | framework | bộ khung / khung làm việc | Where defined, explain it means a reusable structure, then use "framework". |
@@ -132,4 +131,69 @@ These stay in English in Vietnamese prose, with the Vietnamese gloss to use for 
 | Code, Frontend, Backend | (no gloss) | |
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Vietnamese has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Vietnamese | Use (vi/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| syllabus |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| solution |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| badge |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| challenge (community event) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

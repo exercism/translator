@@ -30,7 +30,7 @@ These are terms where the Russian is used in prose, so the "Use (ru/en)" column 
 |---------|---------|-------------|-------|
 | if statement | условная конструкция | ru | Avoid "оператор" here, it's reserved for the operator sense below. |
 | operator | оператор | ru | Reserve exclusively for the symbol sense (`+`, `===`); never use for "statement." |
-| statement (executable) | инструкция | ru | The imperative sense: a line of code that does something. Deliberately distinct from `оператор`; never use `оператор` for this sense. Shares the word with "instruction (given to Jiki)" below, which is the same idea in the metaphor. |
+| statement (executable) | инструкция | ru | The imperative sense: a line of code that does something. Deliberately distinct from `оператор`; never use `оператор` for this sense. It is the ordinary word for a single thing someone is told to do as well. |
 | statement (logical claim) | утверждение | ru | The proposition sense: a claim that is true or false; also a test assertion. |
 | input (to a function) | вход / входные данные | ru | Pairs with the `машина`/`автомат` metaphor family below. |
 | output | выход / выходные данные | ru | |
@@ -40,8 +40,7 @@ These are terms where the Russian is used in prose, so the "Use (ru/en)" column 
 
 | English | Russian | Use (ru/en) | Notes |
 |---------|---------|-------------|-------|
-| interpreter | интерпретатор | ru | Jiki himself, a person doing a job, not a program. Masculine animate: _вашим интерпретатором будет Jiki_, _дружелюбный интерпретатор_. Do not substitute _переводчик_ (that is "translator") or the bookish _толкователь_. |
-| instruction (given to Jiki) | инструкция | ru | Plural _инструкции_. Same word as "statement (executable)" above, deliberately: on concept pages the instructions the learner writes on the board *are* the statements. Not _указание_ or _предписание_ (formal/administrative register). |
+| interpreter | интерпретатор | ru | The program that runs the code. Do not substitute _переводчик_ (that is "translator") or the bookish _толкователь_. |
 | mental model | мысленная модель | ru | Not _ментальная модель_, which is management-training jargon in Russian. |
 | exception | исключение | ru | Distinct from the general term "error" above; the catchable-error-object sense. |
 | scope | область видимости | ru | Unlike Hungarian/Serbian, Russian does not keep "scope" in English. |
@@ -50,7 +49,7 @@ These are terms where the Russian is used in prose, so the "Use (ru/en)" column 
 
 | English | Russian | Use (ru/en) | Notes |
 |---------|---------|-------------|-------|
-| deploy (verb: to deploy) | развернуть | ru | "Деплой"/"задеплоить" is common dev slang; prefer _развернуть_ for beginner-facing Jiki content. |
+| deploy (verb: to deploy) | развернуть | ru | "Деплой"/"задеплоить" is common dev slang; prefer _развернуть_ for beginner-facing content. |
 | framework | фреймворк | ru | Write in Cyrillic, not quoted in Latin script. |
 | component | компонент | ru | Cyrillic, as with framework above. |
 
@@ -58,21 +57,88 @@ These are terms where the Russian is used in prose, so the "Use (ru/en)" column 
 
 | English | Russian | Use (ru/en) | Notes |
 |---------|---------|-------------|-------|
-| course | курс | ru | The whole Jiki course ("в этом курсе"). Keep distinct from _урок_ (lesson) and _программа обучения_ (curriculum). |
+| course | курс | ru | The whole course the reader is taking ("в этом курсе"). Keep distinct from _урок_ (lesson) and _программа обучения_ (curriculum). |
 | exercise | упражнение | ru | The platform unit. Where English says "solve the exercises", write _выполнять упражнения_, never _решать задачи_: _задача_ is reserved for the sub-step sense below. |
 | task (within an exercise) | задача | ru | A sub-step inside an exercise. Never used for the exercise itself. |
 
 ## Keep in English
 
 These stay in English (or as an established English loanword) in Russian prose, with the
-Russian gloss to use for each. Where the source `<define>`s one of these terms, use the
+Russian gloss to use for each. Where the English itself explains one of these terms, use the
 Russian in the gloss column below (per the format in `global/voice.md`); with no
-`<define>`, use the English bare, with no gloss.
+an explanation in the English, use the English bare, with no gloss.
 
-| Term | Russian gloss (on `<define>`) | Notes |
+| Term | Russian word, where the English explains the term | Notes |
 |------|--------------------------------|-------|
 | API | explain the concept in Russian | Explain what an API is (e.g. "набор правил, по которым две программы могут обмениваться данными"), not just expand the acronym. |
 | CLI | _командная строка_ | Explain CLI as the text-based way of controlling a computer, i.e. _командная строка_ (command line), where the source defines it. |
 | Debug, Test | (no gloss) | As keywords/technical tokens. |
 | Code, Bug, Frontend, Backend | (no gloss) | |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Russian has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Russian | Use (ru/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| syllabus |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| solution |  |  |  |
+| iteration (a submitted version of a solution) |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| mentor / mentoring |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| badge |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| challenge (community event) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

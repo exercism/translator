@@ -10,7 +10,7 @@ raise on the forum. Why each term was chosen, and who chose it, is in the decisi
 | English | Indonesian | Use (id/en) | Notes |
 |---------|-----------|----------|-------|
 | programming / coding | **pemrograman** | id | `koding`/`ngoding` is acceptable only when the source specifically stresses the casual act of writing code; never mix both in one document. |
-| developer | **developer** | id | Where the source `<define>`s it, gloss the native _pengembang_. |
+| developer | **developer** | id | Where the English itself explains the term, gloss the native _pengembang_. |
 
 ## Localize (use the Indonesian term)
 
@@ -39,10 +39,10 @@ These are terms where the Indonesian is used in prose by default; the "Use (id/e
 | statement (logical claim) | pernyataan | id | The proposition sense: a claim that is true or false. Same Indonesian word as the executable sense above; pick by context. |
 | if statement | percabangan `if` | id | Keep the `if` keyword in code font; translate only "percabangan". |
 | to define (a function) | mendefinisikan / membuat (fungsi) | id | Either is natural; stay consistent within a document. |
-| parameter | parameter | id | Only worth glossing where the source `<define>`s it alongside `argumen`; otherwise self-explanatory. |
+| parameter | parameter | id | Only worth glossing where the English itself explains the term alongside `argumen`; otherwise self-explanatory. |
 | argument | argumen | id | Distinguish from `parameter` where the two are introduced together. |
-| input (to a function) | input | en | Where the source `<define>`s it, gloss _masukan_, then use `input`. |
-| output | output | en | Where the source `<define>`s it, gloss _keluaran_, then use `output`. |
+| input (to a function) | input | en | Where the English itself explains the term, gloss _masukan_, then use `input`. |
+| output | output | en | Where the English itself explains the term, gloss _keluaran_, then use `output`. |
 | condition | kondisi | id | Unconfirmed draft (agent, 2026-08-04). The test an `if` checks. Not _syarat_, which reads as a requirement/prerequisite. |
 | keyword | kata kunci | id | Unconfirmed draft (agent, 2026-08-04). The keyword itself stays in code font and in English (`if`, `for`, `repeat`); only the word "keyword" is translated. |
 | code block | blok kode | id | Unconfirmed draft (agent, 2026-08-04). The indented body between the braces. |
@@ -52,15 +52,14 @@ These are terms where the Indonesian is used in prose by default; the "Use (id/e
 
 | English | Indonesian | Use (id/en) | Notes |
 |---------|-----------|----------|-------|
-| interpreter | interpreter | en | Where the source `<define>`s it, gloss _penerjemah_, then use `interpreter`. Not _juru bahasa_ (specifically spoken-language interpreting between people). |
-| instruction (given to Jiki) | instruksi | id | Not _perintah_ (reads as "command/order", a harder register than the board metaphor wants) and not _petunjuk_ ("directions/hints"). |
+| interpreter | interpreter | en | Where the English itself explains the term, gloss _penerjemah_, then use `interpreter`. Not _juru bahasa_ (specifically spoken-language interpreting between people). |
 | (programming) language | bahasa pemrograman | id | Full form on introduction; plain `bahasa` afterwards, including for "a language a computer understands" (_bahasa yang dimengerti komputer_). Never the English `language` in prose. |
 | variable | variabel | id | Use `variabel`, not the official/academic coinage `peubah`. |
-| assignment | assignment | en | `memberikan nilai` as a paraphrase is also fine for the verb (see below). Where the source `<define>`s the noun, gloss _pengisian nilai_. |
+| assignment | assignment | en | `memberikan nilai` as a paraphrase is also fine for the verb (see below). Where the source an explanation in the Englishs the noun, gloss _pengisian nilai_. |
 | to assign | memberikan nilai / menginisialisasi | id | Verb form; prefer this over a bare loanword. |
 | error | error | en | Kept in code/debugging contexts; use _kesalahan_ when explaining the general concept in plain prose. Do not use _galat_. |
 | loop | perulangan | id | Use `perulangan`, not the official coinage `gelung`. |
-| scope | scope | en | Where the source `<define>`s it, gloss _cakupan_, then use `scope`. |
+| scope | scope | en | Where the English itself explains the term, gloss _cakupan_, then use `scope`. |
 | class | kelas | id | The `class` keyword in code stays English. |
 | method | method | en | Kept English in dev prose. |
 | object | objek | id | Use the `objek` spelling (the Indonesian-orthography default); `object` is also seen. |
@@ -71,28 +70,28 @@ These are terms where the Indonesian is used in prose by default; the "Use (id/e
 | English | Indonesian | Use (id/en) | Notes |
 |---------|-----------|----------|-------|
 | auth (authentication / authorization) | autentikasi | id | Covers the login/identity sense; use _otorisasi_ only when the permissions sense specifically is meant. |
-| deploy | deploy | en | Where the source `<define>`s it, gloss _menerapkan_. |
+| deploy | deploy | en | Where the English itself explains the term, gloss _menerapkan_. |
 
 ## Keep in English
 
 These stay in English in Indonesian prose, with the Indonesian gloss to use for each.
 
-| Term | Indonesian gloss (on `<define>`) | Notes |
+| Term | Indonesian word, where the English explains the term | Notes |
 |------|-----------------------------------|-------|
-| string | _rangkaian_ | Where the source `<define>`s it, gloss _rangkaian_ (a sequence of characters), then use `string`. Not _untai_: technically correct in the dictionary, but it reads as the thread of a necklace or a strand of beads. |
+| string | _rangkaian_ | Where the English itself explains the term, gloss _rangkaian_ (a sequence of characters), then use `string`. Not _untai_: technically correct in the dictionary, but it reads as the thread of a necklace or a strand of beads. |
 | Boolean | (no gloss needed) | Lower-case in prose (`boolean`), capitalized only as the type name if the source capitalizes it. |
 | scope | _cakupan_ | See "Loops, state & program flow" above. |
 | interpreter | _penerjemah_ | See "Loops, state & program flow" above. |
 | method | (see notes) | See "Loops, state & program flow" above; kept English with no separate gloss needed. |
-| component | _komponen_ | Include the gloss where the source `<define>`s the term; optional otherwise. |
-| API | _suatu mekanisme yang berfungsi sebagai jembatan penghubung antara dua perangkat lunak agar dapat berkomunikasi dan bertukar data_ | Where the source `<define>`s it, explain the concept with this wording (adapt to fit the sentence), not just expand the acronym as _Antarmuka Pemrograman Aplikasi_. |
-| framework | _kerangka kerja_ | Where the source `<define>`s it, gloss _kerangka kerja_ (the structure or guideline used to tackle a task in an organised way), then use `framework`. Always the full _kerangka kerja_, never bare _kerangka_, which reads as a skeleton. |
-| CLI | _antarmuka baris perintah_ | Explain CLI as _antarmuka baris perintah_ (command-line interface) where the source `<define>`s it. |
-| library | _pustaka_ | Where the source `<define>`s it, gloss _pustaka_, then use `library`. |
+| component | _komponen_ | Include the gloss where the source an explanation in the Englishs the term; optional otherwise. |
+| API | _suatu mekanisme yang berfungsi sebagai jembatan penghubung antara dua perangkat lunak agar dapat berkomunikasi dan bertukar data_ | Where the English itself explains the term, explain the concept with this wording (adapt to fit the sentence), not just expand the acronym as _Antarmuka Pemrograman Aplikasi_. |
+| framework | _kerangka kerja_ | Where the English itself explains the term, gloss _kerangka kerja_ (the structure or guideline used to tackle a task in an organised way), then use `framework`. Always the full _kerangka kerja_, never bare _kerangka_, which reads as a skeleton. |
+| CLI | _antarmuka baris perintah_ | Explain CLI as _antarmuka baris perintah_ (command-line interface) where the English itself explains the term. |
+| library | _pustaka_ | Where the English itself explains the term, gloss _pustaka_, then use `library`. |
 | Debug, Test | (no gloss) | As keywords/technical tokens. |
-| Code | _kode_ | Where the source `<define>`s it, gloss _kode_, then use `code`. |
+| Code | _kode_ | Where the English itself explains the term, gloss _kode_, then use `code`. |
 | Bug, Frontend, Backend | (no gloss) | |
-| array | _larik_ | Unconfirmed draft (agent, 2026-08-04). Where the source `<define>`s it, gloss _larik_, then use `array` in prose. **Always _larik_**, never a descriptive paraphrase such as _deretan nilai_. The chain metaphor (`rantai`) is separate and stays as it is. |
+| array | _larik_ | Unconfirmed draft (agent, 2026-08-04). Where the English itself explains the term, gloss _larik_, then use `array` in prose. **Always _larik_**, never a descriptive paraphrase such as _deretan nilai_. The chain metaphor (`rantai`) is separate and stays as it is. |
 | camel case | (no gloss) | Unconfirmed draft (agent, 2026-08-04). Naming-convention term, kept English; do not invent an Indonesian rendering. |
 | template string | (no gloss) | Unconfirmed draft (agent, 2026-08-04). Kept English as the feature name. |
 | hue | (no gloss) | Unconfirmed draft (agent, 2026-08-04). Colour-model term, kept English even though its two companions `saturation` and `lightness` are localized (see "Exercise vocabulary"), because `hue` has no single-word Indonesian equivalent that a beginner would recognise. |
@@ -121,3 +120,67 @@ These stay in English in Indonesian prose, with the Indonesian gloss to use for 
 | `<>` | tanda kurung sudut | |
 
 How to phrase a bracket in running prose is in `guide.md`.
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Indonesian has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Indonesian | Use (id/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| iteration (a submitted version of a solution) |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| badge |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| challenge (community event) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

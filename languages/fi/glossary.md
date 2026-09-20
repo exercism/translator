@@ -42,23 +42,22 @@ These are terms where the Finnish is used in prose, so the "Use (fi/en)" column 
 | condition is true / false | ehto on tosi / epätosi | fi | A Finnish condition needs an explicit predicate; see `guide.md`. |
 | statement (executable) | lause | fi | The imperative sense: a line of code that does something and gets executed. |
 | statement (logical claim) | väite | fi | The proposition sense: a claim that is true or false; also a test assertion. Finnish separates the two senses cleanly where English does not, so pick by meaning and there is no ambiguity. |
-| instruction (given to Jiki) | ohje | fi | What the learner puts on the board for Jiki to follow (_annat Jikille oikeat ohjeet_). Everyday Finnish. Not _käsky_ (an order) and not _komento_, which is the word for a command in code. |
 | to call (a function) | kutsua | fi | Takes the partitive: _kutsua funktiota_, never _kutsua funktioon_. The noun is _funktiokutsu_. |
 | to define (a function) | määritellä | fi | Noun: _määrittely_. Keep distinct from _esitellä_ (to declare). |
 | argument | argumentti | fi | The call-site value, against _parametri_ at the declaration site. Finnish course material often says _todellinen parametri_ / _muodollinen parametri_ instead; that pairing is heavier than this course wants, so use _parametri_ and _argumentti_. |
 | input (to a function) / output | syöte / tuloste | fi | The standard Finnish pair. Use _tulos_ where the source means the computed result rather than what comes out of the machine. |
-| to return (a value) | palauttaa | fi | The noun is _paluuarvo_. ”palauttaa 30:n”. The bracketed `<define>` gloss word must be _return_, never _returning_. |
+| to return (a value) | palauttaa | fi | The noun is _paluuarvo_. ”palauttaa 30:n”. The bracketed an explanation in the English gloss word must be _return_, never _returning_. |
 | to declare / declaration | esitellä / esittely | fi | Careful: _esitellä_ also means "to introduce" in everyday Finnish, so keep the sentence around it unambiguous. |
 | initializer | alkuarvo | fi | The starting value given at declaration. The verb is _alustaa_. |
 | built-in | valmis | fi | _valmis funktio_ reads naturally to a beginner. _sisäänrakennettu_ is the literal rendering and reads heavy. |
 | function body | funktion runko | fi | Two words (genitive plus noun), not a compound. |
-| interpreter | tulkki | fi | **A person doing a job, not a program.** Finnish _tulkki_ is first and foremost a human interpreter, and it was borrowed into computing unchanged, so Jiki *is* the _tulkki_ (_sinun tulkkisi on Jiki_, _hänen tehtävänsä on tulkita kirjoittamaasi koodia_). Never _ohjelmatulkki_ (software only). |
+| interpreter | tulkki | fi | Finnish _tulkki_ is first and foremost a human interpreter and was borrowed into computing unchanged, so it covers the program that runs the code. Never _ohjelmatulkki_. |
 | pure (function) | puhdas | fi | _puhdas funktio_. When glossed, gloss the full term _pure function_, not the bare adjective. |
 | placeholder | paikkamerkki | fi | A slot in a string template that gets filled with a value. |
 | brackets (the two after a function name) | sulkeet | fi | _sulkeet_ for the `()` pair written after a function name. Which bracket type to name, and when, is in the Brackets section below. |
 | equal sign | yhtäläisyysmerkki | fi | |
-| ampersand (`&`) | et-merkki | fi | On `<define>`, show the glyph itself (`&`) in the bracket, not the English word "ampersand". |
-| bar / vertical bar (`\|`) | pystyviiva | fi | The `\|\|` keyword stays English. On `<define>`, show the glyph (`\|`) in the bracket, not the English word "bar". |
+| ampersand (`&`) | et-merkki | fi | Where the English itself explains the term, show the glyph itself (`&`) in the bracket, not the English word "ampersand". |
+| bar / vertical bar (`\|`) | pystyviiva | fi | The `\|\|` keyword stays English. Where the English itself explains the term, show the glyph (`\|`) in the bracket, not the English word "bar". |
 | bang (the `!` character) | huutomerkki | fi | Finnish has no equivalent of the English slang "bang". Render the source's aside as a remark about what the sign is called, never as a loan. |
 | NOT operator / logical negation | negaatio | fi | _negaatio_ for the concept, _ei_ when reading the operator aloud. The `!` keyword stays English. |
 | `turnLeft` (machine/identifier gloss) | käänny vasemmalle | fi | The one-time explanatory gloss when the machine is introduced by name in prose. The code token `turnLeft()` itself stays English. Moved here from `guide.md` on 2026-08-01, unchanged. |
@@ -107,7 +106,6 @@ These are terms where the Finnish is used in prose, so the "Use (fi/en)" column 
 | exercise | harjoitus | fi | The exercise as a whole. |
 | task (within an exercise) | tehtävä | fi | A sub-step of a _harjoitus_; keep the two words distinct, because _tehtävä_ alone is also the everyday word for an exercise. |
 | feature (platform capability) | ominaisuus | fi | Deliberately the same word as an object's property. Where a passage discusses both, rephrase rather than coining a second word. |
-| track (curriculum path) | oppimispolku | fi | Not the bare _opintopolku_, which is the name of Finland's national education-application service and reads as branding. |
 | milestone | välitavoite | fi | Not _virstanpylväs_, which is literary. |
 | streak | putki | fi | The Finnish sports and gaming word for an unbroken run; _päiväputki_ for a daily streak. |
 | badge | osaamismerkki | fi | The established Finnish term for a digital learning badge. |
@@ -132,7 +130,7 @@ These are terms where the Finnish is used in prose, so the "Use (fi/en)" column 
 
 These stay in English in Finnish prose, with the Finnish gloss to use for each.
 
-| Term | Finnish gloss (on `<define>`) | Notes |
+| Term | Finnish word, where the English explains the term | Notes |
 |------|-------------------------------|-------|
 | API | explain what it is in Finnish | Where defined, explain the concept, not just the acronym. _ohjelmointirajapinta_ where a one-word gloss is needed. Inflects with a colon: _API:n_, _API:ssa_. |
 | widget | _pienoisohjelma_ | Finnish has no natural native word; _vekotin_ and _vempain_ read as jokes. |
@@ -142,7 +140,7 @@ These stay in English in Finnish prose, with the Finnish gloss to use for each.
 | template literal / template string | (no gloss) | The JS construct's own name. |
 | Debug, Test | (no gloss) | As keywords, UI labels and technical tokens. |
 | Code, Frontend, Backend | (no gloss) | As capitalised tokens and UI labels only. In running prose the ordinary Finnish word is _koodi_, and that is what to write. See _bugi_ and _debuggaus_ under "Tooling & engineering" for the same split. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation, and hang a Finnish head noun off the token rather than inflecting it; see `guide.md`. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation, and hang a Finnish head noun off the token rather than inflecting it; see `guide.md`. |
 
 ## Brackets
 
@@ -154,3 +152,68 @@ These stay in English in Finnish prose, with the Finnish gloss to use for each.
 | `<>` | kulmasulkeet | |
 
 How to phrase a bracket in running prose is in `guide.md`.
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Finnish has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Finnish | Use (fi/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| syllabus |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| solution |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| mentor / mentoring |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| challenge (community event) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

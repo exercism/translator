@@ -35,18 +35,17 @@ These are terms where Korean uses a Hangul term (native Sino-Korean coinage or a
 | statement (logical claim) | 명제 | ko | The proposition sense: a claim that is true or false. Keep distinct from "문" above; pick by meaning, not by the English word. |
 | parameter | 매개변수 | ko | The declaration-site name. |
 | argument | 인자 | ko | The call-site value; kept distinct from "매개변수" above. |
-| to return (a value) | 반환하다 | ko | "30을 반환해요." Written/educational default; colloquial "리턴하다" exists but is not used in Jiki prose, to keep one consistent term. |
+| to return (a value) | 반환하다 | ko | "30을 반환해요." Written/educational default; colloquial "리턴하다" exists but is not used here, to keep one consistent term. |
 | brackets (the two after a function name) | 괄호 | ko | The `()` pair written after a function name to call it: "이름을 쓰고 뒤에 괄호 두 개를 붙여요". 괄호 is the everyday generic word and needs no qualifier while the code is on screen; use 소괄호 (round) against 대괄호 (square) only where the two genuinely have to be contrasted. Count with the 개 counter ("괄호 두 개"). |
 
 ### Loops, state & program flow
 
 | English | Korean | Use (ko/en) | Notes |
 |---------|--------|-------------|-------|
-| interpreter | 인터프리터 | ko | **The one who interprets: a person doing a job, not a program.** On concept pages Jiki *is* the interpreter ("이 강의에서 인터프리터 역할은 Jiki가 맡아요"; "이 강의를 안내해 줄 친절한 인터프리터, Jiki"). Never 해석기. Never 통역사. Where a bare apposition reads oddly, 인터프리터 역할 ("the interpreter role") carries it. **On first appearance**, explain it via the translator analogy before using the bare term, e.g. "우리가 작성한 코드를 컴퓨터가 알아듣도록 옮겨 주는 번역기 같은 프로그램을 인터프리터라고 해요."; a complete beginner will not otherwise know what 인터프리터 means, and 번역기 alone (without naming 인터프리터) risks being mistaken for the actual technical term. |
-| instruction (given to Jiki) | 지시 | ko | Everyday word: "알맞은 지시를 내려요". Use 지시 사항 for the instructions taken as a set ("지시 사항을 칠판에 적어요"). Not 명령, which is a command from a superior and is also the CS "command" term. |
+| interpreter | 인터프리터 | ko | The program that runs the code. Never 해석기. Never 통역사. **Where the English itself explains the term**, explain it via the translator analogy before using the bare term, e.g. "우리가 작성한 코드를 컴퓨터가 알아듣도록 옮겨 주는 번역기 같은 프로그램을 인터프리터라고 해요."; a complete beginner will not otherwise know what 인터프리터 means, and 번역기 alone (without naming 인터프리터) risks being mistaken for the actual technical term. |
 | mental model | 머릿속 모형 | ko | Ordinary Korean for "the model you picture in your head", and it reads as one on first sight. Not 멘탈 모델: a Korean reader reported having to stop and decode it. Note 모형 (a physical model of a thing), not 모델. Prose may still describe the thing plainly where that reads better ("제 머릿속에는..."), but the named term is 머릿속 모형. |
 | (programming) language | (프로그래밍) 언어 | ko | Covers both senses: "프로그래밍 언어" and "컴퓨터가 알아듣는 언어". Never 랭귀지. |
-| error | 오류 | ko | Docs and formal writing favor "오류"; colloquial speech often says "에러", not used in Jiki prose to keep one consistent term. |
+| error | 오류 | ko | Docs and formal writing favor "오류"; colloquial speech often says "에러", not used here, to keep one consistent term. |
 | exception | 예외 | ko | The catchable-error-object sense, distinct from "오류" (error) as a general term. |
 | loop | 루프 | ko | The general concept of repeated execution ("무한 루프" = infinite loop). Kept distinct from "반복문" below, which names the concrete statement. |
 | for loop | `for`문 | ko | Keep `for` in backticks (the real keyword) directly followed by "문"; this compound is the universal Korean form, no space. |
@@ -60,15 +59,15 @@ These are terms where Korean uses a Hangul term (native Sino-Korean coinage or a
 | English | Korean | Use (ko/en) | Notes |
 |---------|--------|-------------|-------|
 | auth (authentication / authorization) | 인증 | ko | Use "인가" only where authorization specifically (not authentication) is the point. |
-| API | API | en | Never transliterated ("아피" does not exist as a form). Where the source `<define>`s it, explain the concept in Korean for a beginner, not just gloss the acronym. |
+| API | API | en | Never transliterated ("아피" does not exist as a form). Where the English itself explains the term, explain the concept in Korean for a beginner, not just gloss the acronym. |
 | framework | 프레임워크 | ko | A literal "뼈대" gloss appears only as an explanatory aside in some sources, never as the working term. |
-| CLI | CLI | en | Kept in raw Latin script like API. Where the source `<define>`s it, gloss the concept in Korean: "CLI (명령줄 인터페이스)". |
+| CLI | CLI | en | Kept in raw Latin script like API. Where the English itself explains the term, gloss the concept in Korean: "CLI (명령줄 인터페이스)". |
 
 ### Platform & curriculum vocabulary
 
 | English | Korean | Use (ko/en) | Notes |
 |---------|--------|-------------|-------|
-| course | 강의 | ko | The whole Jiki course the learner is taking ("이 강의에서 인터프리터 역할은 Jiki가 맡아요"). Keep distinct from 커리큘럼 (curriculum). Not 코스; not 과정 (collides with 교육 과정). |
+| course | 강의 | ko | The whole course the reader is taking ("이 강의에서"). Keep distinct from 커리큘럼 (curriculum). Not 코스; not 과정 (collides with 교육 과정). |
 | exercise | 연습 문제 | ko | The full term where the exercise is being named or introduced; the plain short form 문제 is what Korean naturally uses on repeat inside the same passage (see the guide's Style notes). |
 
 ## Keep in English
@@ -77,11 +76,78 @@ Only a small set of terms stay in raw Latin script in Korean prose; everything e
 
 | Term | Notes |
 |------|-------|
-| API | See Tooling table above; where the source `<define>`s it, explain the concept in Korean. |
-| CLI | See Tooling table above; where the source `<define>`s it, explain the concept in Korean. |
+| API | See Tooling table above; where the English itself explains the term, explain the concept in Korean. |
+| CLI | See Tooling table above; where the English itself explains the term, explain the concept in Korean. |
 | JavaScript, Python, React | Product/language names. |
 | Debug, Test | As keywords/technical tokens. |
 | Code, Bug, Frontend, Backend | |
 | Variable and function names | Never translated. |
 | CLI commands (`npm install`, `git commit`) | The commands themselves are never translated. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Programming keywords (`function`, `if`, `for`, ...) | Always English, including inside prose. Translate only the surrounding explanation. |
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Korean has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Korean | Use (ko/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| syllabus |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| solution |  |  |  |
+| iteration (a submitted version of a solution) |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| mentor / mentoring |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| badge |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| challenge (community event) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

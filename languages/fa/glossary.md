@@ -30,8 +30,7 @@ throughout. Split by theme for readability; every table below follows the same c
 |---------|---------|-------------|-------|
 | loop | حلقه | fa | **Never use this word for an individual link of the "chain" array metaphor** (see the metaphors table below); the two would collide. |
 | repeat loop / for loop (named in prose) | حلقه‌ی Repeat / حلقه‌ی For | fa | Keep the loop-type keyword in English, capitalized, unbackticked, when it qualifies حلقه in running prose. Never حلقه‌ی تکرار. |
-| interpreter | مفسر | fa | **A person doing a job, not a program**: in the course Jiki *is* the interpreter (کار او این است که کد را تفسیر کند). Never use مفسر with a program word attached (برنامه‌ی مفسر) or a machine-suffixed coinage. The verb is تفسیر کردن. |
-| instruction (given to Jiki) | دستورالعمل | fa | Plural دستورالعمل‌ها. **Native speaker's decision; do not revert to دستور.** Keep it distinct from **statement** («دستور», as in دستور شرطی for an if statement and «دستور `repeat`»): a statement is a piece of code syntax and stays دستور, an instruction the learner gives Jiki is دستورالعمل. |
+| interpreter | مفسر | fa | The program that runs the code. Never مفسر with a program word attached (برنامه‌ی مفسر). The verb is تفسیر کردن. |
 
 ### Drawing & colour
 
@@ -39,32 +38,99 @@ throughout. Split by theme for readability; every table below follows the same c
 |---------|---------|-------------|-------|
 | hue (the H of HSL) | فام | fa | **One term everywhere; never رنگ‌مایه.** Applies in prose, hints, check messages and function descriptions alike. Saturation stays اشباع and lightness روشنایی. |
 | draw (a shape) | رسم کردن | fa | **Never کشیدن**, which also reads as "pull". Use رسم کنید for an instruction to the learner, رسم می‌کند for a function description, and رسم شد for a timeline describer. کشیدن is still fine in its non-drawing senses. |
-| canvas (the drawing surface) | بوم | fa | The surface the drawing exercises paint on. Keep distinct from تخته (board/whiteboard) below, which is Jiki's instruction board: they are two different objects and must not share a word. |
+| canvas (the drawing surface) | بوم | fa | The surface drawing code paints on. Keep distinct from تخته (a board or whiteboard): they are two different objects and must not share a word. |
 
 ### Platform & curriculum vocabulary
 
 | English | Persian | Use (fa/en) | Notes |
 |---------|---------|-------------|-------|
 | name (of a person, variable, key) | اسم | fa | **Never نام**, in any construction: «به اسم» (called), «با اسم» (with the name), and possessives («اسمم», my name). |
-| course | دوره | fa | The whole Jiki course ("در این دوره"). Keep distinct from درس (lesson) and برنامه‌ی درسی (curriculum). |
+| course | دوره | fa | The whole course the reader is taking ("در این دوره"). Keep distinct from درس (lesson) and برنامه‌ی درسی (curriculum). |
 | choice (the thing chosen) | گزینه / انتخاب | fa | گزینه is an **option offered from a fixed set** («یکی از سه گزینه‌ی معتبر»). A **person's** choice, the thing they actually picked, is انتخاب: «انتخاب یوکی و آندو», «اگر انتخاب‌ها یکسان باشند». Never «گزینه‌ی یوکی». The verb "to choose" stays انتخاب کردن. |
 | syntax | نحوه‌ی نگارش | fa | **Never نحو.** Native speaker's decision; do not revert. The exact wording may vary with context: «نحوه‌ی نگارش», «روش نوشتن» or «شکل نوشتن» are all acceptable, and a sentence often reads better recast around the verb («نحوه‌ی نوشتنش فرق می‌کند») than with a noun. Pick whichever is most natural in the sentence, but نحو is never one of the options. |
-| Jiki | جیکی | fa | The interpreter character and the course's name. Written in Persian script in all prose, unlike the product/language names in the "Keep in English" table (JavaScript, Python, React), which stay Latin. Ezāfe and possessives attach as to any Persian noun («انبار جیکی»). Consistent with «جیکی کوچولو» (mini-Jiki) below. Branded sub-product names (Ask Jiki, Jiki Premium) translate like ordinary UI copy now, per the guide; "Ask Jiki" renders as «از جیکی بپرسید». |
 | bonus (an exercise's optional extra task) | امتیاز | fa | Standing term across every exercise's bonus task label, e.g. «امتیاز: کوتاه نگه دارید» (Bonus: keep it short). Never امتیازی or جایزه or نمره‌ی اضافه. |
 | milestone (a numbered marker on the learning path) | مرحله | fa | **Never «نقطه‌ی عطف»**, which is too academic for this. «مرحله ۱» for "Milestone 1", «به این مرحله برسید» for "reach this milestone". Keep distinct from دستاورد (achievement) and درس (lesson). |
 
 ## Keep in English
 
-These stay in English in prose. Where the source `<define>`s one of these terms, use the
+These stay in English in prose. Where the English itself explains one of these terms, use the
 Persian gloss below.
 
-| Term | Persian gloss (on `<define>`) | Notes |
+| Term | Persian word, where the English explains the term | Notes |
 |------|-------------------------------|-------|
 | API | رابط برنامه‌نویسی کاربردی | Not a word a beginner knows; where defined, explain the concept in Persian, not just gloss the acronym. |
 | CLI (the concept) | رابط خط فرمان | Explain as "command-line interface" where the source defines it. |
-| AI | هوش مصنوعی | Use "AI" (English) in prose/marketing, not هوش مصنوعی throughout. Gloss it in Persian only where the source `<define>`s it, never on first use of your own initiative. Flag for confirmation once real content surfaces whether this matches how Iranian users actually talk about AI features. |
+| AI | هوش مصنوعی | Use "AI" (English) in prose/marketing, not هوش مصنوعی throughout. Gloss it in Persian only where the English itself explains the term, never on first use of your own initiative. Flag for confirmation once real content surfaces whether this matches how Iranian users actually talk about AI features. |
 | JavaScript, Python, React | (no gloss) | Product/language names. |
 | Debug, Test, Code, Bug, Frontend, Backend | (no gloss) | |
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Persian has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Persian | Use (fa/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| exercise |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| syllabus |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| solution |  |  |  |
+| iteration (a submitted version of a solution) |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| mentor / mentoring |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| badge |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| challenge (community event) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

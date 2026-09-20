@@ -24,7 +24,7 @@ person referred to, `-` = not a noun.
 
 These are used in Hindi prose, either as the agreed Devanagari spelling of a borrowed term
 or as an ordinary Hindi word. They are Hindi-primary: used bare in prose, with the italic
-English in brackets only where the source `<define>`s the term (see `guide.md` § "Term
+English in brackets only where the source an explanation in the Englishs the term (see `guide.md` § "Term
 clarification"). Split by theme for readability; every table below follows the same columns.
 
 ### Values & data types
@@ -40,8 +40,8 @@ clarification"). Split by theme for readability; every table below follows the s
 | Boolean | बूलियन | m | hi | The सही/गलत data type. |
 | data type | डेटा टाइप | m | hi | |
 | string | स्ट्रिंग | f | hi | |
-| array / list | ऐरे | m | hi | The Devanagari spelling of "array"; सरणी is never used in real Hindi programming prose. Exercise prose sometimes says "list" informally for the same concept; treat as one term. Not to be confused with the ज़ंजीर metaphor (see Jiki metaphors). |
-| element | एलिमेंट | m | hi | An item inside an ऐरे. कड़ी (link) is used only inside the chain metaphor, see Jiki metaphors. |
+| array / list | ऐरे | m | hi | The Devanagari spelling of "array"; सरणी is never used in real Hindi programming prose. Exercise prose sometimes says "list" informally for the same concept; treat as one term. |
+| element | एलिमेंट | m | hi | An item inside an ऐरे. |
 | index | इंडेक्स | m | hi | The position number of an element. |
 | dictionary | डिक्शनरी | f | hi | The key-value data type. शब्दकोश is the everyday word behind the metaphor and can carry the explanation where the source gives one. |
 | key-value pair | की-वैल्यू जोड़ा | m | hi | |
@@ -56,7 +56,7 @@ clarification"). Split by theme for readability; every table below follows the s
 | to call (a function) | कॉल करना | - | hi | "फंक्शन को कॉल करना". |
 | parameter | पैरामीटर | m | hi | The declaration-site name: "फंक्शन बनाते समय दिया गया नाम". Kept distinct from आर्गुमेंट. |
 | argument | आर्गुमेंट | m | hi | The call-site value: "फंक्शन को कॉल करते समय दी गई वास्तविक वैल्यू". Kept distinct from पैरामीटर. |
-| input (to a function) | इनपुट | m | hi | The noun, for where a noun is needed (a `<define>`, a heading, the इनपुट स्लॉट metaphor). In ordinary prose say what the फंक्शन does instead: "फंक्शन दो संख्याएँ लेता है", not "फंक्शन का इनपुट दो संख्याएँ हैं" (see `guide.md` § "Sentence structure"). |
+| input (to a function) | इनपुट | m | hi | The noun, for where a noun is needed (an explanation in the English, a heading, the इनपुट स्लॉट metaphor). In ordinary prose say what the फंक्शन does instead: "फंक्शन दो संख्याएँ लेता है", not "फंक्शन का इनपुट दो संख्याएँ हैं" (see `guide.md` § "Sentence structure"). |
 | output | आउटपुट | m | hi | As इनपुट above; in prose, "फंक्शन जोड़ देता है" rather than "फंक्शन का आउटपुट जोड़ है". |
 | to return (a value) | लौटाना | - | hi | "यह फंक्शन एक वैल्यू लौटाता है।" Transitive (लौटाना), never the intransitive लौटना or the redundant वापस लौटना. वापस देना is fine where the prose is leaning on the machine metaphor. **Never रिटर्न करना.** |
 | return value | रिटर्न वैल्यू | f | hi | Noun form, for where a noun is needed. In prose prefer the verb: "जो वैल्यू यह फंक्शन लौटाता है". |
@@ -91,14 +91,13 @@ clarification"). Split by theme for readability; every table below follows the s
 | to display | प्रदर्शित करना | - | hi | Not "डिस्प्ले करना". दिखाना is fine in warmer, less formal prose. |
 | to declare | घोषित करना | - | hi | Not "डिक्लेयर करना". |
 | to store | संग्रहीत करना | - | hi | रखना is fine, and warmer, in ordinary prose. |
-| increment | बढ़ाना | - | hi | इंक्रीमेंट is the technical alternative, glossed only where the source `<define>`s it. |
+| increment | बढ़ाना | - | hi | इंक्रीमेंट is the technical alternative, glossed only where the English itself explains the term. |
 | error | एरर | f | hi | **Feminine**, confirmed by real usage: "एक एरर मिलती है, जो कहती है...". Never "एरर मिलता है". |
 | exception | एक्सेप्शन | m | hi | A special kind of एरर that code can catch. |
 | state | स्थिति | f | hi | The information present in the code at a given moment. |
 | toggle | टॉगल | m | hi | An on/off style change. |
 | scope | स्कोप | m | hi | Where a वेरिएबल can be used. Kept distinct from कोड ब्लॉक. |
-| interpreter | इंटरप्रेटर | m | hi | A **person** doing a job, not a program: Jiki is the interpreter. Never gloss it as a प्रोग्राम or सॉफ्टवेयर; it sits with the other person-role loanwords (डेवलपर, मेंटर). Not दुभाषिया, which is a human language interpreter, a different job. |
-| instruction (given to Jiki) | निर्देश | m | hi | Plural is also निर्देश ("Jiki को निर्देश देना"). This is the ordinary written Hindi word; इंस्ट्रक्शन is a needless borrowing where Hindi has its own word. |
+| interpreter | इंटरप्रेटर | m | hi | The program that runs the code. Not दुभाषिया, which is a human language interpreter, a different job. |
 | mental model | सोचने का तरीका | m | hi | Not मेंटल मॉडल, which is jargon a beginner has not met. |
 | (programming) language | भाषा | f | hi | Used both for a programming language and for "a language the computer understands". Use it throughout a page; do not mix in लैंग्वेज. |
 | algorithm | एल्गोरिदम | m | hi | |
@@ -134,18 +133,15 @@ clarification"). Split by theme for readability; every table below follows the s
 | exercise | अभ्यास | m | hi | Masculine: "आपके पहले अभ्यास में आपका स्वागत है!". Use it in both instructions and message catalogs; never mix with a bare Latin "exercise" on the same page or across an exercise's files. |
 | lesson | पाठ | m | hi | |
 | level | लेवल | m | hi | |
-| course | कोर्स | m | hi | The whole Jiki course, e.g. "इस कोर्स में आपका इंटरप्रेटर Jiki है". Kept distinct from पाठ (lesson) and पाठ्यक्रम (curriculum). |
+| course | कोर्स | m | hi | The whole course the reader is taking, e.g. "इस कोर्स में". Kept distinct from पाठ (lesson) and पाठ्यक्रम (curriculum). |
 | curriculum | पाठ्यक्रम | m | hi | |
 | syllabus | सिलेबस | m | hi | Kept distinct from पाठ्यक्रम (curriculum) per `global/terms.md`. |
 | milestone | पड़ाव | m | hi | "A stop/stage on a journey." |
-| track / pathway | रास्ता | m | hi | |
 | mentor / mentoring | मेंटर | m/f | hi | Agrees with the person. |
 | tutorial | ट्यूटोरियल | m | hi | Kept distinct from पाठ (lesson). |
 | solution (learner's submission) | हल | m | hi | |
-| scenario | सिनेरियो | m | hi | Jiki-specific: a structured variant within an exercise. |
 | challenge (an optional harder exercise) | चैलेंज | m | hi | Never चुनौती for this sense. **Masculine**, so the agreement changes with the word: "चैलेंज पूरा हुआ", never "चुनौती पूरी हुई". Same form in the plural (चैलेंज), oblique plural चैलेंजों. The verb "to challenge yourself" is a different thing and is not this row; write खुद को परखना rather than mixing चुनौती back into a sentence about चैलेंज. |
 | page (of the site or app) | पेज | m | hi | Never पृष्ठ, which carries the "page of a book" meaning. |
-| bootcamp | बूटकैंप | m | hi | Treated close to a proper noun where it names Jiki's predecessor program. |
 | canvas (graphics exercises) | कैनवास | m | hi | The drawing surface in creative-coding exercises. |
 | feature (platform capability) | फीचर | m | hi | Kept distinct from फंक्शन; no collision risk in Hindi. सुविधा is a good alternative in warmer prose. |
 | character (the on-screen figure) | पात्र | m | hi | The little figure the learner moves in an exercise. Never किरदार (see `guide.md` § "Register"). Kept distinct from अक्षर (a text character). |
@@ -181,13 +177,75 @@ written in Devanagari, per `guide.md` § "Script convention".
 
 | Term | Notes |
 |------|-------|
-| API | Where the source `<define>`s it, explain the concept in Hindi ("दो प्रोग्राम के आपस में बात करने का तरीका"), not just the acronym. |
-| CLI (the concept) | Where the source `<define>`s it: "कमांड लिखकर कंप्यूटर से बात करने का तरीका". |
+| API | Where the English itself explains the term, explain the concept in Hindi ("दो प्रोग्राम के आपस में बात करने का तरीका"), not just the acronym. |
+| CLI (the concept) | Where the English itself explains the term: "कमांड लिखकर कंप्यूटर से बात करने का तरीका". |
 | CPU, RAM, USB, HTML, CSS, JSON | Acronyms pronounced as letters. |
 | JavaScript, Python, React | Product/language names, never translated or transliterated. |
 | Debug, Test, Code, Bug, Frontend, Backend | Only the literal UI label / technical token. The everyday noun "code" in prose is कोड, in Devanagari (see "Core decisions"). |
 | Run Code and other on-screen button labels | Whatever the interface actually shows, verbatim. |
 | Variable and function names | Never translated. |
 | CLI commands (`npm install`, `git commit`) | The commands themselves are never translated. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | Always English, including inside prose. Translate only the surrounding explanation. |
-| Jiki (character/brand name) | Kept in Latin script; see `guide.md` § "Style notes" for attaching Hindi postpositions. |
+| Programming keywords (`function`, `if`, `for`, ...) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Latin-script product names | Kept in Latin script; see `guide.md` § "Style notes" for attaching Hindi postpositions. |
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Hindi has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Hindi | Use (hi/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| badge |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

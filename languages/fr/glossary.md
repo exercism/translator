@@ -163,12 +163,10 @@ on Exercism.
 | exercise |  |  |  |
 | concept exercise / learning exercise |  |  |  |
 | practice exercise |  |  |  |
-| syllabus |  |  |  |
 | learning mode / practice mode |  |  |  |
 | locked / unlocked / available / in progress / completed |  |  |  |
 | to unlock |  |  |  |
 | solution |  |  |  |
-| iteration (a submitted version of a solution) |  |  |  |
 | to submit |  |  |  |
 | to publish (a solution) / published |  |  |  |
 | community solutions |  |  |  |

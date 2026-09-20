@@ -12,7 +12,7 @@ decision log (`glossary-notes.md`).
 | tech / tech industry | IT-індустрія | uk | Not _tech-індустрія_: keep the whole term in Ukrainian script. |
 | streak | серія (днів) | uk | |
 | journey (e.g. "our journey into the world of programming") | подорож | uk | Prefer _подорож_ over _мандрівка_. |
-| Jeremy (the course author) | Джеремі | uk | Transliterate in **prose**, everywhere it occurs, in every content type. Indeclinable: it takes no case endings, exactly like `Jiki` (see guide § Grammar and structure), so case is carried by the surrounding words (_разом із Джеремі_, _Джеремі показав_). **Exception: inside a literal code string value it stays as the English letters `Jeremy`**, untouched, because it is then the string the learner's code produces or compares against (e.g. `twoFer("Jeremy")`, `let name = "Jeremy"`, and the `alt` text describing the paper that string is written on). |
+| Jeremy (a name in the content) | Джеремі | uk | Transliterate in **prose**, everywhere it occurs, in every content type. Indeclinable: it takes no case endings, so case is carried by the surrounding words (_разом із Джеремі_, _Джеремі показав_). **Exception: inside a literal code string value it stays as the English letters `Jeremy`**, untouched, because it is then the string the learner's code produces or compares against (e.g. `twoFer("Jeremy")`, `let name = "Jeremy"`, and the `alt` text describing the paper that string is written on). |
 
 ## Localize (use the Ukrainian term)
 
@@ -49,7 +49,7 @@ These are terms where the Ukrainian is used in prose, so the "Use (uk/en)" colum
 | expression | вираз | uk | |
 | operator | оператор | uk | |
 | NOT operator / logical negation | заперечення (логічне) | uk | |
-| statement (executable) | інструкція | uk | The imperative sense: a line of code that does something and gets executed. Deliberately distinct from _оператор_ (operator) to avoid collision. **_Інструкція_ is reserved for this sense**, which is why `instruction (given to Jiki)` below is _вказівка_ and not _інструкція_. |
+| statement (executable) | інструкція | uk | The imperative sense: a line of code that does something and gets executed. Deliberately distinct from _оператор_ (operator) to avoid collision. **_Інструкція_ is reserved for this sense**, which is why the everyday word for a single thing someone is told to do is _вказівка_ and not _інструкція_. |
 | statement (logical claim) | твердження | uk | The proposition sense: a claim that is true or false; also a test assertion. Pick by meaning, not by the English word. |
 | function | функція | uk | The *keyword* `function` in code stays English; the concept in prose is _функція_. |
 | to call (a function) | викликати (функцію) | uk | |
@@ -69,8 +69,7 @@ These are terms where the Ukrainian is used in prose, so the "Use (uk/en)" colum
 | English | Ukrainian | Use (uk/en) | Notes |
 |---------|-----------|-------------|-------|
 | keyword | ключове слово | uk | |
-| interpreter | інтерпретатор | uk | **A person doing a job, not a program**: in the course Jiki *is* the interpreter. Not _тлумач_ (archaic, scriptural register). Copula sentences about it must be rephrased; see guide § Grammar and structure. |
-| instruction (given to Jiki) | вказівка | uk | One thing the learner tells Jiki to do. Everyday word, not formal register. Deliberately **not** _інструкція_, which this glossary binds to `statement (executable)` above; and not _команда_, which collides with "command". |
+| interpreter | інтерпретатор | uk | The program that runs the code. Not _тлумач_ (archaic, scriptural register). Copula sentences about it must be rephrased; see guide § Grammar and structure. |
 | mental model | ментальна модель | uk | |
 | (programming) language | мова (програмування) | uk | Never a borrowing: _мова програмування_, and _мова, яку розуміє компʼютер_ for the "language a computer understands" framing. |
 | variable | змінна | uk | |
@@ -126,15 +125,13 @@ These are terms where the Ukrainian is used in prose, so the "Use (uk/en)" colum
 | exercise | вправа | uk | |
 | scenario | сценарій | uk | |
 | curriculum | навчальна програма | uk | |
-| course | курс | uk | The whole Jiki course the learner is taking: _у цьому курсі_. Distinct from _урок_ (lesson) and _навчальна програма_ (curriculum). |
+| course | курс | uk | The whole course the reader is taking: _у цьому курсі_. Distinct from _урок_ (lesson) and _навчальна програма_ (curriculum). |
 | level | рівень | uk | |
 | dashboard | панель керування | uk | Not bare _панель_ (reads badly in context, e.g. _поверніться на панель_). The learner's own landing screen after login (progress, streak, next steps), not an admin area. |
 | milestone | віха / етап | uk | |
-| pathway | шлях навчання | uk | |
 | bootcamp | буткемп | uk | |
 | syllabus | силабус | uk | |
 | mentor | наставник | uk | _Ментор_ is an accepted alternative; do not mix наставник and ментор in one document. |
-| track (curriculum path) | трек (курсу) | uk | |
 | tutorial | туторіал / посібник | uk | |
 | solution (learner's submission) | рішення | uk | |
 | typo | одруківка | uk | Unconfirmed draft (agent, 2026-08-03). A mistyped character in the learner's own code. Not _опечатка_ (a Russianism) and not the long _друкарська помилка_, which reads as a printing-press error. |
@@ -166,10 +163,10 @@ These are terms where the Ukrainian is used in prose, so the "Use (uk/en)" colum
 
 ## Keep in English
 
-These stay in English in Ukrainian prose. Where the source `<define>`s one of these terms,
-use the Ukrainian gloss shown below; with no `<define>`, use the English bare, with no gloss.
+These stay in English in Ukrainian prose. Where the English itself explains one of these terms,
+use the Ukrainian gloss shown below; with no an explanation in the English, use the English bare, with no gloss.
 
-| Term | Ukrainian gloss (on `<define>`) | Notes |
+| Term | Ukrainian word, where the English explains the term | Notes |
 |------|-----------------------------------|-------|
 | string | _рядок тексту_ | Always gloss as _рядок тексту (англ. string)_ at each first mention per page, then _рядок тексту_ (not bare English _string_) afterwards, because a bare English word reads too jarring against Ukrainian sentences for learners. Do not switch to English-only after the first mention like other "Keep in English" terms. |
 | Boolean / Booleans | _булеві значення_ | Always gloss as _булеві значення (англ. Boolean)_ at each first mention per page, then _булеві значення_ (not bare English _Boolean_) afterwards, exactly as `string` above. Singular is _булеве значення_. Do not switch to English-only after the first mention like other "Keep in English" terms. _Логічне значення_ is an accepted synonym if it reads better in context; do not mix both in one document. |
@@ -182,7 +179,7 @@ use the Ukrainian gloss shown below; with no `<define>`, use the English bare, w
 | Code, Bug, Frontend, Backend | (no gloss) | |
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |
 | camel case | _горбатий регістр_ | Gloss **once**, at the very first mention across the course (the "Creating and Using Variables" article), as _горбатий регістр_ (_верблюдячий регістр_ is the known alternative; both are named after the animal, as _зміїний регістр_ is for snake case). Every later occurrence, on that page and on every other, uses the English _camel case_ bare. |
 | meridiem | _позначка «meridiem»_ | Unconfirmed draft (agent, 2026-08-01). The am/pm indicator; carry it with the noun _позначка_. The sentinel values `am`/`pm` and expected time strings stay verbatim. |
 
@@ -197,3 +194,66 @@ glyph in a code tag immediately after: _квадратні дужки (`[]`)_.
 | `[]` | квадратні дужки | |
 | `{}` | фігурні дужки | |
 | `<>` | кутові дужки | |
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Ukrainian has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Ukrainian | Use (uk/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| badge |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| challenge (community event) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

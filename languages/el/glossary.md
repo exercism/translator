@@ -32,7 +32,7 @@ These are terms where the Greek is used in prose, so the "Use (el/en)" column is
 | English | Greek | Use (el/en) | Notes |
 |---------|-------|-------------|-------|
 | if statement | εντολή `if` | el | Keep `if` in backticks (real keyword) + `εντολή`, matching `for` βρόχος below. Not the school-curriculum term `δομή επιλογής`. |
-| statement (executable) | εντολή | el | The imperative sense: a line of code that does something and gets executed. Shares the word with `instruction (given to Jiki)` below. |
+| statement (executable) | εντολή | el | The imperative sense: a line of code that does something and gets executed. It is the ordinary word for a single thing someone is told to do as well. |
 | statement (logical claim) | πρόταση | el | The proposition sense: a claim that is true or false. Pick by meaning, not by the English word. |
 | function | συνάρτηση | el | The *keyword* `function` in code stays English; the concept in prose is `συνάρτηση`. |
 | parameter | παράμετρος | el | The declaration-site name. |
@@ -45,8 +45,7 @@ These are terms where the Greek is used in prose, so the "Use (el/en)" column is
 | English | Greek | Use (el/en) | Notes |
 |---------|-------|-------------|-------|
 | keyword | λέξη-κλειδί | el | Not `δεσμευμένη λέξη`. |
-| interpreter | διερμηνευτής | el | A **person** who interprets, which is what the term means here (Jiki is the interpreter, and it is "his job to interpret"). Never `διερμηνευτικό πρόγραμμα` or any `-πρόγραμμα`/device compound: those name a tool, so they cannot name Jiki. |
-| instruction (given to Jiki) | εντολή | el | The everyday Greek word for something you tell someone to do; the same word as `statement (executable)` above. |
+| interpreter | διερμηνευτής | el | The program that runs the code. Never the heavier `διερμηνευτικό πρόγραμμα`. |
 | (programming) language | γλώσσα προγραμματισμού | el | Shorten to bare `γλώσσα` once context is established, including in the "a language a computer understands" framing. Never the English "language". |
 | code block | μπλοκ κώδικα | el | |
 | exception | εξαίρεση | el | Keep distinct from `σφάλμα` (error), the general term. |
@@ -63,14 +62,14 @@ These are terms where the Greek is used in prose, so the "Use (el/en)" column is
 
 | English | Greek | Use (el/en) | Notes |
 |---------|-------|-------------|-------|
-| course | μάθημα | el | The whole Jiki course (e.g. "σε αυτό το μάθημα"). Not `σειρά μαθημάτων`. See `lesson` below for the collision this avoids. |
+| course | μάθημα | el | The whole course (e.g. "σε αυτό το μάθημα"). Not `σειρά μαθημάτων`. See `lesson` below for the collision this avoids. |
 | lesson | ενότητα | el | One lesson inside the course. Not `μάθημα`, which is `course` above. |
 
 ### Tooling & engineering
 
 | English | Greek | Use (el/en) | Notes |
 |---------|-------|-------------|-------|
-| CLI (the concept) | γραμμή εντολών | el | Where the source `<define>`s it, explain the concept, not just gloss the term. `τερματικό` (terminal) is the common colloquial synonym once the concept is established. |
+| CLI (the concept) | γραμμή εντολών | el | Where the English itself explains the term, explain the concept, not just gloss the term. `τερματικό` (terminal) is the common colloquial synonym once the concept is established. |
 
 ### General vocabulary
 
@@ -97,7 +96,7 @@ These are terms where the Greek is used in prose, so the "Use (el/en)" column is
 These stay in English in prose: the English word is what Greek developers actually say, so
 it is the ordinary word here.
 
-| Term | Greek gloss (on `<define>`) | Notes |
+| Term | Greek word, where the English explains the term | Notes |
 |------|-----------------------------|-------|
 | Boolean | _λογική τιμή_ | Unconfirmed draft (agent, 2026-07-31). English "Boolean" stays primary in prose with the Greek gloss in brackets, mirroring how the Hungarian sibling page handles it. |
 | API | explain what it is in Greek (e.g. "Διεπαφή Προγραμματισμού Εφαρμογών") | Where defined, explain the concept, not just gloss the acronym. |
@@ -109,7 +108,7 @@ it is the ordinary word here.
 | Code, Bug, Frontend, Backend | (no gloss) | **Bug is the one exception:** at its first mention across the Greek curriculum (the `while` loops concept page) it is written `bugs (λογικά σφάλματα)`, so a beginner meets the meaning once. Every other mention, on that page and every other, is bare English. |
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |
 | `let` (the JavaScript keyword) | _έστω_ | Confirmed by a native speaker (astyanax, 2026-07-31). The one exception to the row above: gloss it **once**, where the keyword is first introduced, as `` `let` (έστω) ``, borrowing the standard Greek mathematical "let" ("έστω x = 10"). Every later mention is bare `let`. |
 | backtick / backticks | _βαρεία_ / plural _βαρείες_ | Confirmed by a native speaker (astyanax, 2026-08-13). The English word stays in prose (`backticks`), with the Greek term in brackets at its first mention on a page: `backticks (βαρείες)`, matching the `if`/`for` pattern of keeping the real token beside its Greek word. **Never `ανάποδα τικ`**, which is not Greek: `βαρεία` is the proper name of the mark, a `τόνος` / `διακριτικό σημείο`. Feminine noun (`η βαρεία`, `οι βαρείες`). |
 
@@ -123,3 +122,70 @@ it is the ordinary word here.
 | `<>` | γωνιακή αγκύλη | |
 
 How to phrase a bracket in running prose is in `guide.md`.
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Greek has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Greek | Use (el/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| exercise |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| syllabus |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| solution |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| mentor / mentoring |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| badge |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| challenge (community event) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

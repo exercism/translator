@@ -39,19 +39,18 @@ column structure as the family file.
 |---------|------------|-----------------|-------|
 | to return (a value) | retornar | pt-BR | "A função retorna um valor." Diverges from pt-PT's "devolver". |
 | return value | valor de retorno | pt-BR | Follows the verb `retornar` above. |
-| input (one a function declares) | entrada | pt-BR | Use only where the English word is **input** and it names one of the inputs a function declares or expects ("give it four inputs: `left`, `top`, `radius`, `color`"; "an extra input where you specified the color"). Feminine: _uma entrada extra_, _as quatro entradas_. Never _fenda_, which translates the English **slot** only (see `../pt/glossary.md` § Jiki physical metaphors): pick by the English word in front of you, not by what the sentence is about, and where one paragraph uses both English words, use both renderings. |
+| input (one a function declares) | entrada | pt-BR | Use only where the English word is **input** and it names one of the inputs a function declares or expects ("give it four inputs: `left`, `top`, `radius`, `color`"; "an extra input where you specified the color"). Feminine: _uma entrada extra_, _as quatro entradas_. Never _fenda_, which translates the English **slot** only: pick by the English word in front of you, not by what the sentence is about, and where one paragraph uses both English words, use both renderings. |
 | input (a value passed in at a call) | valor de entrada | pt-BR | Use only where the English word is **input** and it names the value written at one position of a call ("for the fifth input, we write `"blue"`"). Masculine, so agreement follows: _o quinto valor de entrada_. Bare _entrada_ is also natural here once context is set; _valor de entrada_ is the default where the sentence needs to name the value itself. Never _fenda_, on the same distinction as the row above. |
 | condition is true / false | a condição é verdadeira / falsa | pt-BR | Prose form. After _se_ or _quando_ the verb goes to the future subjunctive: _quando a condição for verdadeira_. The code literals `true`/`false` stay English (see `../pt/glossary.md`). |
 | else clause | cláusula `else` | pt-BR | _podemos colocar uma cláusula `else` depois da chave de fechamento_. Keep `else` in backticks (real keyword). **Unconfirmed draft.** |
-| branch (of a conditional) | bloco | pt-BR | The chunk of code one arm of a conditional runs: _o Jiki roda esse bloco quando a condição é verdadeira_. **Unconfirmed draft, low confidence**: _bloco_ describes the code, not the fork; where the source is about the fork itself, the road-fork metaphor (_bifurcação_) reads better. Native-speaker input wanted. |
+| branch (of a conditional) | bloco | pt-BR | The chunk of code one arm of a conditional runs: _esse bloco roda quando a condição é verdadeira_. **Unconfirmed draft, low confidence**: _bloco_ describes the code, not the fork; where the source is about the fork itself, the road-fork metaphor (_bifurcação_) reads better. Native-speaker input wanted. |
 | brackets (the two after a function name) | parênteses | pt-BR | The `()` pair written after a function name to call it: _escreva o nome dela e depois os parênteses_. Always `parênteses`, never `colchetes` (which is `[]`). See § Brackets below for the glyph names. |
 
 ### Loops, state & program flow
 
 | English | Portuguese | Use (pt-BR/en) | Notes |
 |---------|------------|-----------------|-------|
-| interpreter | intérprete | pt-BR | Use for the person doing the interpreting, including Jiki himself ("o trabalho dele é interpretar o código"). Never `interpretador`, which names interpreter *software*, not a person. Confirmed by a native speaker (oxe-b) on the pt-BR glossary thread; do not revisit. |
-| instruction (given to Jiki) | instrução | pt-BR | Everyday word: _dar as instruções certas ao intérprete_. Shares the word with `statement (executable)` in `../pt/glossary.md`; this is intended, not a collision, since a statement is an instruction. |
+| interpreter | intérprete | pt-BR | Confirmed by a native speaker (oxe-b) on the pt-BR glossary thread as the word for the person doing the interpreting, against `interpretador`, which names interpreter *software*. Needs a native speaker's eye: this rendering was chosen to name a character whose job was to interpret the reader's code, which is not how Exercism uses the word. On Exercism an interpreter is the program that runs the code. Left as it stands rather than changed by an agent. |
 | mental model | modelo mental | pt-BR | _é um modelo mental poderoso_. |
 | (programming) language | linguagem (de programação) | pt-BR | `linguagem` alone once context is set; `linguagem de programação` on introduction. Never `língua` (natural languages only). |
 | iteration | iteração | pt-BR | Verb: _iterar_, taking **sobre**: _iterar sobre um array_, _iteramos sobre strings_. Never _iterar por_. "passar por cada elemento" also natural. |
@@ -60,7 +59,7 @@ column structure as the family file.
 | for loop | laço `for` | pt-BR | Keep `for` in backticks (real keyword) + _laço_. |
 | while loop | laço `while` | pt-BR | As above. |
 | scope | escopo | pt-BR | Diverges from pt-PT's "âmbito". |
-| comment (code comment) | comentário | pt-BR | The `//` line a learner writes as a private note; Jiki ignores it and moves to the next line. **Unconfirmed:** added for the function-inputs concept page, not yet used in a real translated file; likely identical in pt-PT, so a candidate to move to `../pt/glossary.md` once confirmed. |
+| comment (code comment) | comentário | pt-BR | The `//` line a reader writes as a private note; the program ignores it and moves to the next line. **Unconfirmed:** added for the function-inputs concept page, not yet used in a real translated file; likely identical in pt-PT, so a candidate to move to `../pt/glossary.md` once confirmed. |
 
 ### Tooling & engineering
 
@@ -74,7 +73,7 @@ column structure as the family file.
 
 | English | Portuguese | Use (pt-BR/en) | Notes |
 |---------|------------|-----------------|-------|
-| course | curso | pt-BR | The whole Jiki course: _neste curso, o seu intérprete é o Jiki_. Keep distinct from `lição` (lesson). |
+| course | curso | pt-BR | The whole course the reader is taking: _neste curso_. Keep distinct from `lição` (lesson). |
 | cell (grid square, e.g. maze exercises) | casa | pt-BR | "Move the character forward one cell" → "avance uma casa" (like a square on a board game), not "uma célula", which reads as a biology/spreadsheet term and feels unnatural here. |
 | character / figure (the walker in maze exercises) | bonequinho | pt-BR | The little figure the learner moves around the grid. Confirmed as natural by a native speaker (sorrizo) on already in use across the maze exercises. |
 | bouncer (the door-staff character) | segurança | pt-BR | _o segurança da balada_. Masculine despite the `-a` ending. Not _porteiro_ (reads as a residential doorman rather than club door staff). |
@@ -86,15 +85,15 @@ column structure as the family file.
 
 ## Keep in English
 
-These stay in English in prose. Where the source `<define>`s one of these terms, use the
+These stay in English in prose. Where the English itself explains one of these terms, use the
 Portuguese in the gloss column below (per the format in `global/voice.md`); with no
-`<define>`, use the English bare, with no gloss. Terms below diverge from
+an explanation in the English, use the English bare, with no gloss. Terms below diverge from
 `../pt/glossary.md` or exist only for Brazilian Portuguese.
 
-| Term | Portuguese gloss (on `<define>`) | Notes |
+| Term | Portuguese word, where the English explains the term | Notes |
 |------|----------------------------------|-------|
-| framework | _framework_ | Where the source `<define>`s it, explain it means a reusable structure. Diverges from pt-PT's "estrutura de trabalho" gloss. |
-| CLI (the concept) | interface de linha de comando | Where the source `<define>`s it, explain CLI as _interface de linha de comando_ (singular "comando"). Diverges from pt-PT's plural "comandos". |
+| framework | _framework_ | Where the English itself explains the term, explain it means a reusable structure. Diverges from pt-PT's "estrutura de trabalho" gloss. |
+| CLI (the concept) | interface de linha de comando | Where the English itself explains the term, explain CLI as _interface de linha de comando_ (singular "comando"). Diverges from pt-PT's plural "comandos". |
 
 ## Provisional terms (🟡)
 

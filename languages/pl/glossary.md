@@ -28,7 +28,7 @@ These are terms where the Polish is used in prose, so the "Use (pl/en)" column i
 | float / decimal | liczba zmiennoprzecinkowa | pl | The keywords `float`/`double` in code stay English. |
 | character | znak | pl | The keyword `char` in code stays English. |
 | true / false | prawda / fałsz | pl | Not capitalised in prose. The keywords `true`/`false` in code stay English. |
-| array / list | tablica | pl | Do not use `łańcuch` for this. Because it owns _tablica_, no metaphor term may use that word (see the board row under "Jiki physical metaphors"). |
+| array / list | tablica | pl | Do not use `łańcuch` for this. Because it owns _tablica_, no other term may use that word. |
 | dictionary | słownik | pl | |
 | element | element | pl | |
 | index | indeks | pl | |
@@ -43,7 +43,7 @@ These are terms where the Polish is used in prose, so the "Use (pl/en)" column i
 | comparison | porównanie | pl | Stands alone; no gloss needed. |
 | expression | wyrażenie | pl | Distinct from _instrukcja_ (a statement); an expression always evaluates to a value. |
 | operator | operator | pl | |
-| statement (executable) | instrukcja | pl | The imperative sense: a line of code that does something and gets executed. Keep distinct from _wyrażenie_ (expression) and from the logical-claim sense below. Same word as the "instruction given to Jiki" row below. |
+| statement (executable) | instrukcja | pl | The imperative sense: a line of code that does something and gets executed. Keep distinct from _wyrażenie_ (expression) and from the logical-claim sense below. It is the ordinary word for a single thing someone is told to do as well. |
 | statement (logical claim) | zdanie / zdanie logiczne | pl | The proposition sense: a claim that is true or false. Pick by meaning, not by the English word; never conflate with _instrukcja_. |
 | function | funkcja | pl | The keyword `function` in code stays English; the concept in prose is _funkcja_. |
 | to call (a function) | wywoływać / wywołać | pl | |
@@ -62,8 +62,7 @@ These are terms where the Polish is used in prose, so the "Use (pl/en)" column i
 | English | Polish | Use (pl/en) | Notes |
 |---------|--------|----------|-------|
 | keyword | słowo kluczowe | pl | |
-| interpreter | interpreter | pl | "The one who interprets", a person doing a job: on concept pages Jiki *is* the interpreter. Never substitute a program-only paraphrase such as _program interpretujący_. Polish-spelled loanword, so it declines normally: _interpretera_, _interpreterem_, _interpreterowi_. Same-script loanword, so it takes no bracketed English gloss (see `guide.md`). |
-| instruction (given to Jiki) | instrukcja | pl | The everyday noun: an instruction the learner gives Jiki. Not a formal/legal-register word such as _polecenie służbowe_ or _zarządzenie_. Plural _instrukcje_. Same word as "statement (executable)" above. |
+| interpreter | interpreter | pl | The program that runs the code. Never the paraphrase _program interpretujący_. Polish-spelled loanword, so it declines normally: _interpretera_, _interpreterem_, _interpreterowi_. Same-script loanword, so it takes no bracketed English gloss (see `guide.md`). |
 | mental model | model mentalny | pl | Keep it; do not paraphrase as _wyobrażenie_. |
 | (programming) language | język (programowania) | pl | Never the English borrowing. Use full _język programowania_ where the source names the category, plain _język_ for the "a language a computer understands" framing. |
 | variable | zmienna | pl | |
@@ -111,31 +110,31 @@ These are terms where the Polish is used in prose, so the "Use (pl/en)" column i
 
 | English | Polish | Use (pl/en) | Notes |
 |---------|--------|----------|-------|
-| course | kurs | pl | The whole Jiki course the learner is taking. Keep distinct from _lekcja_ (lesson) and _program nauczania_ (curriculum). |
+| course | kurs | pl | The whole course the reader is taking. Keep distinct from _lekcja_ (lesson) and _program nauczania_ (curriculum). |
 | Great work! / Great job! (success or congratulation opener) | Dobra robota! | pl | Never _Świetna robota!_: nobody says it in Polish, it reads as a word-for-word calque of "great job". |
 | Great progress! (praise for how far the learner has got) | Robisz postępy! | pl | Always the verb phrase. Never the noun _postęp_ (_Świetny postęp!_): _postęp_ is progress of humanity or technology, not one person's achievement. _Dobrze Ci idzie!_ and _Tak trzymaj!_ are fine alternatives; pick a different one if the surrounding sentence already uses it. |
 | Amazing effort! / Fantastic effort! (praise for the work the learner put in) | Kawał dobrej roboty! | pl | Never _Niesamowita praca!_: _niesamowity_ + _praca_ reads as praise for a mesmerising work of art, not encouragement for someone's effort. Keep praise in the _robota_ family, informal and spoken. |
 | character (the little figure in the maze exercises) | ludzik | pl | **Masculine**, so every agreeing verb, adjective, participle and pronoun is masculine: _ludzik wszedł_, _ludzik nie dotarł_, _jest zwrócony_, _a on obraca się_. Declines _ludzika_ (gen./acc.), _ludzikowi_ (dat.). Never _postać_, which is feminine and too abstract for the little person the English describes. |
 | turn (the maze character's `turnLeft()`/`turnRight()` instruction) | obracać się (verb) / obrót (noun) | pl | The character rotates on the spot: _ludzik obraca się w lewo_, _obrót w prawo_, _polecenie obrotu w lewo_. The reflexive _się_ is required on the verb. Never _skręcać_ / _skręcić_ / _skręt_, which describe turning while travelling and imply the character moves forward through the turn. |
-| canvas (the drawing surface Jiki draws shapes on) | plansza | pl | Confirmed by mlistewnik: _płótno_ has a narrow meaning in Polish (painters' fabric, or a painting), which reads wrong for a graphical drawing surface. _Plansza_ fits a physical drawing-board framing, which matches Jiki standing next to the drawing. Declines normally: _planszy_ (gen.), _planszę_ (acc.). |
+| canvas (the drawing surface) | plansza | pl | Confirmed by mlistewnik: _płótno_ has a narrow meaning in Polish (painters' fabric, or a painting), which reads wrong for a graphical drawing surface. _Plansza_ fits a physical drawing-board framing. Declines normally: _planszy_ (gen.), _planszę_ (acc.). |
 
 ## Keep in English
 
 These stay in English in Polish prose, with the Polish gloss to use for each.
 
-| Term | Polish gloss (on `<define>`) | Notes |
+| Term | Polish word, where the English explains the term | Notes |
 |------|-------------------------------|-------|
-| string | _ciąg znaków_ | Where the source `<define>`s it, explain the concept as _ciąg znaków_, then use _string_ freely afterwards; that's what Polish developers actually say day to day. Deliberately not `łańcuch`, to keep it distinct from the "chain" array metaphor below. |
+| string | _ciąg znaków_ | Where the English itself explains the term, explain the concept as _ciąg znaków_, then use _string_ freely afterwards; that's what Polish developers actually say day to day. Deliberately not `łańcuch`, to keep it distinct from the "chain" array metaphor below. |
 | framework | _framework_ has no established Polish equivalent; used as-is | No gloss needed beyond noting it is a framework/library ecosystem if the context doesn't make it obvious. |
-| API | _interfejs programowania aplikacji_ | Where the source `<define>`s it, explain the concept in Polish, not just gloss the acronym. |
+| API | _interfejs programowania aplikacji_ | Where the English itself explains the term, explain the concept in Polish, not just gloss the acronym. |
 | workflow | _przebieg pracy_ (descriptive gloss only, not a fixed term) | Used as-is after a one-time descriptive gloss. |
-| CLI (naming a specific tool) | _interfejs wiersza poleceń_ | When explaining the general concept, translate fully as _interfejs wiersza poleceń_ / _wiersz poleceń_; when naming a specific tool (e.g. "the Jiki CLI"), keep _CLI_. |
+| CLI (naming a specific tool) | _interfejs wiersza poleceń_ | When explaining the general concept, translate fully as _interfejs wiersza poleceń_ / _wiersz poleceń_; when naming a specific tool (e.g. "the Exercism CLI"), keep _CLI_. |
 | JavaScript, Python, React | (no gloss) | Product/language names. |
 | Debug, Test | (no gloss) | As keywords/technical tokens. |
 | Code, Bug, Frontend, Backend | (no gloss) | |
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |
 
 Naturalised loanwords that are spelled and declined as Polish words (_interpreter_,
 _komponent_, _moduł_, _operator_) are **not** in this table: they are Polish rows above, and
@@ -151,3 +150,70 @@ Default to plain **nawias**. When a specific bracket type matters, name it and s
 | `[]` | nawias kwadratowy | |
 | `{}` | nawias klamrowy | |
 | `<>` | nawias ostrokątny (or _nawias trójkątny_) | |
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Polish has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Polish | Use (pl/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| exercise |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| syllabus |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| solution |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| mentor / mentoring |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| badge |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| challenge (community event) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

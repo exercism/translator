@@ -41,7 +41,7 @@ These are terms where the Hebrew is used in prose, so the "Use (he/en)" column i
 
 | English | Hebrew | Use (he/en) | Notes |
 |---------|--------|-------------|-------|
-| interpreter | מפרש | he | **A person doing a job, not a program.** On concept pages Jiki *is* the מפרש (`תפקידו לפרש את הקוד שאתם כותבים`). Because unvocalised `מפרש` is also "sail" and "commentator", make Jiki the subject in following sentences rather than repeating bare `המפרש`. Never `מתרגם`, `מתורגמן` or `מפענח`. |
+| interpreter | מפרש | he | The program that runs the code. Because unvocalised `מפרש` is also "sail" and "commentator", give following sentences a clearer subject rather than repeating bare `המפרש`. Never `מתרגם`, `מתורגמן` or `מפענח`. |
 | exception | חריגה | he | The catchable runtime event. Keep distinct from `שגיאה` (error). |
 | iteration | איטרציה | he | Not the Academy's `חִזְרוּר`, which is dead in practice. |
 | scope | תחום | he | Plain `תחום`, not the more formal `תחום הכרזה`. |
@@ -60,7 +60,6 @@ These are terms where the Hebrew is used in prose, so the "Use (he/en)" column i
 |---------|--------|-------------|-------|
 | feature (platform capability) | יכולת | he | Never `תכונה`, which is the Hebrew CS term for an object property and collides. `פיצ'ר` is too informal for lesson prose. |
 | level | רמה | he | Reserve `שלב` for a step within something. |
-| track / pathway | מסלול | he | Not `נתיב`, which reads as a file path. |
 | concept library | מאגר המושגים | he | Not `ספריית המושגים`: `ספרייה` is the word for a code library and collides. |
 | plan (subscription tier) | מסלול מנוי | he | Always qualified. Bare `תוכנית` means a computer program and bare `מסלול` is the curriculum track. |
 | streak | רצף | he | No relation to `שרשרת` or `מחרוזת`. |
@@ -75,9 +74,9 @@ These are terms where the Hebrew is used in prose, so the "Use (he/en)" column i
 
 ## Keep in English
 
-These stay in English in Hebrew prose. Where the source `<define>`s one of them, use the Hebrew in the gloss column; with no `<define>`, use the English bare, with no gloss.
+These stay in English in Hebrew prose. Where the source an explanation in the Englishs one of them, use the Hebrew in the gloss column; with no an explanation in the English, use the English bare, with no gloss.
 
-| Term | Hebrew gloss (on `<define>`) | Notes |
+| Term | Hebrew word, where the English explains the term | Notes |
 |------|-------------------------------|-------|
 | API | `ממשק תכנות יישומים` | Explain the concept where it is defined, not just the acronym. Keep the Latin acronym in running prose after that. |
 | CLI (the concept) | `ממשק שורת פקודה` | May shorten to `שורת הפקודה` after. |
@@ -87,7 +86,7 @@ These stay in English in Hebrew prose. Where the source `<define>`s one of them,
 | Debug, Test, Code, Bug, Frontend, Backend | (no gloss) | As UI labels and code tokens only. The ordinary noun "bug" in prose is `באג`; see "Core decisions". |
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |
 
 ## Brackets
 
@@ -99,3 +98,69 @@ Default to plain **סוגריים**. When a specific bracket type matters, name 
 | `[]` | סוגריים מרובעים | |
 | `{}` | סוגריים מסולסלים | |
 | `<>` | סוגריים משולשים | |
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Hebrew has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Hebrew | Use (he/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| exercise |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| syllabus |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| solution |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| mentor / mentoring |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| challenge (community event) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

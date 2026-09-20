@@ -19,7 +19,7 @@ These are terms where the Thai is used in prose, so the "Use (th/en)" column is 
 
 | English | Thai | Use (th/en) | Notes |
 |---------|------|-------------|-------|
-| string | สตริง | th | `สายอักขระ` only as the one-time `<define>` gloss where the source defines it, then `สตริง` throughout. |
+| string | สตริง | th | `สายอักขระ` only as the one-time an explanation in the English gloss where the source defines it, then `สตริง` throughout. |
 | character (text) | อักขระ | th | A single text character. Keep distinct from `ตัวอักษร` (letter) and `ตัวละคร` (the game figure). |
 | letter (of a string) | ตัวอักษร | th | Distinct from `อักขระ`, matching the English pair. |
 | number | ตัวเลข | th | Not `จำนวน`, which is the quantity/mathematical sense. |
@@ -45,12 +45,11 @@ These are terms where the Thai is used in prose, so the "Use (th/en)" column is 
 | to define (a function) | สร้าง / นิยาม | th | `สร้าง` for the warm teaching voice; `นิยาม` only where the source is formal. |
 | parameter | พารามิเตอร์ | th | The declaration-site name. |
 | argument | อาร์กิวเมนต์ | th | The call-site value. Keep the pair distinct. |
-| to return (a value) | คืนค่า | th | Not `ส่งค่ากลับ`. The bracketed `<define>` gloss word must be _return_, never _returning_. |
+| to return (a value) | คืนค่า | th | Not `ส่งค่ากลับ`. The bracketed an explanation in the English gloss word must be _return_, never _returning_. |
 | return value | ค่าที่คืนออกมา | th | The noun. Keep distinct from the verb above. |
 | if statement | คำสั่งเงื่อนไข | th | The `if` keyword stays English. English hint on first use: `คำสั่งเงื่อนไข (_if statement_)`. |
-| statement (executable) | คำสั่ง | th | The imperative sense: a line of code that does something and gets executed. Shares the word with "instruction (given to Jiki)" below. English hint on first use: `คำสั่ง (_statement_)`, which also keeps it apart from the CLI-command reading of the bare word. |
+| statement (executable) | คำสั่ง | th | The imperative sense: a line of code that does something and gets executed. It is the ordinary word for a single thing someone is told to do as well. English hint on first use: `คำสั่ง (_statement_)`, which also keeps it apart from the CLI-command reading of the bare word. |
 | statement (logical claim) | เงื่อนไข | th | The proposition sense: a claim that is true or false; also a test assertion. Never `ประพจน์` (maths register). Pick by meaning, not by the English word. Where a page has both this and `คำสั่งเงื่อนไข` (if statement), make the sentence show which is the whole statement and which is the claim being tested. |
-| instruction (given to Jiki) | คำสั่ง | th | What the learner puts on the board for Jiki to follow. Everyday Thai. Deliberately the same word as "statement (executable)". |
 | expression | นิพจน์ | th | Not `เอ็กซ์เพรสชัน`. English hint on first use: `นิพจน์ (_expression_)`. |
 | operator | ตัวดำเนินการ | th | Not `โอเปอเรเตอร์`. |
 | to declare / declaration | ประกาศ | th | |
@@ -59,15 +58,15 @@ These are terms where the Thai is used in prose, so the "Use (th/en)" column is 
 | pure (function) | บริสุทธิ์ | th | `ฟังก์ชันบริสุทธิ์` = pure function. When glossed, gloss the full term _pure function_, not the bare adjective. English hint on first use: `ฟังก์ชันบริสุทธิ์ (_pure function_)`. |
 | brackets (the two after a function name) | วงเล็บ | th | Plain `วงเล็บ` for the `()` pair written after a function name. Name the specific type only when disambiguating; see the Brackets table. |
 | and / or (logical, in prose) | และ / หรือ | th | The keywords and/or/`&&`/`\|\|` stay English. If the source glosses one, the bracket may show the bare English word. |
-| ampersand (`&`) | เครื่องหมายและ | th | Never `เครื่องหมายแอมเปอร์แซนด์`: the transliterated name means nothing to a Thai reader. On `<define>`, show the glyph itself (`&`), not the English word "ampersand". |
-| bar / vertical bar (`\|`) | `\|` (the glyph) | th | Never `ขีดตั้ง`. Show the character itself in code formatting and let it speak; only where a sentence genuinely needs a spoken name for it, use `ท่อ`. The `\|\|` keyword stays English. On `<define>`, show the glyph, not the English word "bar". |
+| ampersand (`&`) | เครื่องหมายและ | th | Never `เครื่องหมายแอมเปอร์แซนด์`: the transliterated name means nothing to a Thai reader. Where the English itself explains the term, show the glyph itself (`&`), not the English word "ampersand". |
+| bar / vertical bar (`\|`) | `\|` (the glyph) | th | Never `ขีดตั้ง`. Show the character itself in code formatting and let it speak; only where a sentence genuinely needs a spoken name for it, use `ท่อ`. The `\|\|` keyword stays English. Where the English itself explains the term, show the glyph, not the English word "bar". |
 | bang (the `!` character) | เครื่องหมายตกใจ | th | The conversational name used on the logical-not concept page. |
 
 ### Loops, state & program flow
 
 | English | Thai | Use (th/en) | Notes |
 |---------|------|-------------|-------|
-| interpreter | อินเทอร์พรีเตอร์ | th | Never `ล่าม`, which is a human interpreter of spoken language. Never `ตัวแปลภาษา`, never `โปรแกรมแปลคำสั่ง`. On concept pages Jiki *is* the `อินเทอร์พรีเตอร์`; keep the "does a job for you" framing in the surrounding prose rather than in the word itself. |
+| interpreter | อินเทอร์พรีเตอร์ | th | Never `ล่าม`, which is a human interpreter of spoken language. Never `ตัวแปลภาษา`, never `โปรแกรมแปลคำสั่ง`. |
 | loop | ลูป | th | Not `การวนซ้ำ` as the noun and not `วงวน`. `คำสั่งวนลูป` where the statement is meant. |
 | loop body | ในลูป | th | Never `ตัวลูป`. Phrase it positionally rather than as a bare noun: `โค้ดในลูป` = the code in the loop. `ด้านในลูป` where the sentence needs the extra weight. |
 | iteration | การวนรอบ | th | Verb: `วนซ้ำ`. |
@@ -98,8 +97,8 @@ These are terms where the Thai is used in prose, so the "Use (th/en)" column is 
 
 | English | Thai | Use (th/en) | Notes |
 |---------|------|-------------|-------|
-| course | คอร์ส | th | Covers both the whole Jiki course and a curriculum track. Not `หลักสูตร` (a formal syllabus) or `รายวิชา` (a school subject). |
-| concept (learning unit) | คอนเซปต์ | th | The Jiki page type. Keep distinct from `แนวคิด`, the everyday word "concept". |
+| course | คอร์ส | th | The whole course the reader is taking. Not `หลักสูตร` (a formal syllabus) or `รายวิชา` (a school subject). |
+| concept (learning unit) | คอนเซปต์ | th | One teachable idea in a track's syllabus. Keep distinct from `แนวคิด`, the everyday word "concept". |
 | exercise | แบบฝึกหัด | th | |
 | task (within an exercise) | งานย่อย | th | Distinct from `แบบฝึกหัด` (the exercise itself). |
 | scenario (exercise test case) | สถานการณ์ | th | Also the concept title. |
@@ -109,7 +108,7 @@ These are terms where the Thai is used in prose, so the "Use (th/en)" column is 
 
 These stay in English in Thai prose, with the Thai gloss to use for each.
 
-| Term | Thai gloss (on `<define>`) | Notes |
+| Term | Thai word, where the English explains the term | Notes |
 |------|-----------------------------|-------|
 | API | explain what it is in Thai | Where defined, explain the concept in Thai, not just gloss the acronym. |
 | CLI (the concept) | อินเทอร์เฟซบรรทัดคำสั่ง | Explain CLI as a command-line interface where the source defines it. |
@@ -120,7 +119,7 @@ These stay in English in Thai prose, with the Thai gloss to use for each.
 | chat | (no gloss) | |
 | Debug, Test | (no gloss) | As keywords/technical tokens. |
 | Code, Bug, Frontend, Backend | (no gloss) | As UI labels and code tokens. The ordinary noun in running prose follows the glossary rows above. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |
 
 ## Brackets
 
@@ -132,3 +131,69 @@ These stay in English in Thai prose, with the Thai gloss to use for each.
 | `<>` | วงเล็บแหลม | |
 
 How to phrase a bracket in running prose is in `guide.md`.
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Thai has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Thai | Use (th/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| syllabus |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| solution |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| mentor / mentoring |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| badge |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| challenge (community event) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

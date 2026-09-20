@@ -28,7 +28,7 @@ These are terms where the Spanish is used in prose, so the "Use (es-ES/en)" colu
 
 | English | es-ES | Use (es-ES/en) | Notes |
 |---------|-------|-----------------|-------|
-| statement (executable) | instrucción | es-ES | The imperative sense: a line of code that does something and gets executed. Deliberately distinct from _operador_. Shares the word with "instruction (given to Jiki)" below, which is the same idea in the metaphor. |
+| statement (executable) | instrucción | es-ES | The imperative sense: a line of code that does something and gets executed. Deliberately distinct from _operador_. It is the ordinary word for a single thing someone is told to do as well. |
 | statement (logical claim) | afirmación | es-ES | The proposition sense: a claim that is true or false; also a test assertion. Pick by meaning, not by the English word. _Enunciado_ is an accepted alternative in a more formal-logic register. |
 | return value | valor devuelto | es-ES | Noun form; _valor de retorno_ is an accepted alternative. Distinct from the verb "to return". |
 | brackets (the two after a function name) | paréntesis | es-ES | English "brackets" is unspecific; Spanish always names the type. The pair written after a function name is _(un par de) paréntesis_ (`()`), never _corchetes_. See § Brackets below. |
@@ -38,8 +38,7 @@ These are terms where the Spanish is used in prose, so the "Use (es-ES/en)" colu
 | English | es-ES | Use (es-ES/en) | Notes |
 |---------|-------|-----------------|-------|
 | break (loop control) | salir (del bucle) | es-ES | The keyword `break` in code stays English; this is the prose verb for the concept. _Romper el bucle_ also natural. |
-| interpreter | intérprete | es-ES | A **person noun**: someone who interprets, exactly as a human interpreter of languages, because Jiki *is* the interpreter ("tu intérprete es Jiki", "su trabajo es interpretar el código"). Never _interpretador_ or any program/device-flavoured coinage: those name a piece of software and cannot name Jiki. |
-| instruction (given to Jiki) | instrucción | es-ES | Everyday word, not a formal or legal register. Plural _instrucciones_. Verb: _darle instrucciones a Jiki_. |
+| interpreter | intérprete | es-ES | The program that runs the code. Never the coinage _interpretador_. |
 | (programming) language | lenguaje (de programación) | es-ES | _Lenguaje_, never _idioma_, for a programming language and for "a language a computer understands". Say _lenguaje de programación_ on the explicit mention and plain _lenguaje_ thereafter; do not mix in the English word. |
 
 ### Tooling & engineering
@@ -52,15 +51,13 @@ These are terms where the Spanish is used in prose, so the "Use (es-ES/en)" colu
 
 | English | es-ES | Use (es-ES/en) | Notes |
 |---------|-------|-----------------|-------|
-| pathway | itinerario | es-ES | _Itinerario formativo_ is the fuller form. Near-synonym of _track_. |
-| track (curriculum path) | ruta (de aprendizaje) | es-ES | |
-| course | curso | es-ES | The whole Jiki course ("en este curso, tu intérprete es Jiki"). Distinct from _lección_ (lesson) and _plan de estudios_ (curriculum). |
+| course | curso | es-ES | The whole course the reader is taking ("en este curso"). Distinct from _lección_ (lesson) and _plan de estudios_ (curriculum). |
 
 ## Keep in English
 
 These stay in English in prose, with the Spanish gloss to use for each.
 
-| Term | Spanish gloss (on `<define>`) | Notes |
+| Term | Spanish word, where the English explains the term | Notes |
 |------|--------------------------------|-------|
 | string | _cadena de caracteres_ | Exception: in the string concept, where the source defines it, use _cadena de caracteres_, then _string_ throughout. |
 | Boolean | _valor booleano_ | Exception: where the source defines it, explain it means _valor booleano_, then use _Boolean_. |

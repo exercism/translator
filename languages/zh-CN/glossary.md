@@ -16,7 +16,7 @@ The agreed term list for what is distinct about Mainland Simplified Chinese. Rea
 
 ## Localize (use the Chinese term)
 
-These are terms where the Chinese is used in prose, so the "Use (zh-CN/en)" column is `zh-CN` throughout; on `<define>` add the English per `../zh/guide.md` § "Term clarification", e.g. 函数（英文：function）. Split by theme for readability; every table below follows the same columns.
+These are terms where the Chinese is used in prose, so the "Use (zh-CN/en)" column is `zh-CN` throughout; where the English explains the term add the English per `../zh/guide.md` § "Term clarification", e.g. 函数（英文：function）. Split by theme for readability; every table below follows the same columns.
 
 ### Values & data types
 
@@ -61,8 +61,7 @@ These are terms where the Chinese is used in prose, so the "Use (zh-CN/en)" colu
 | English | Chinese | Use (zh-CN/en) | Notes |
 |---------|---------|----------|-------|
 | keyword | 关键字 | zh-CN | |
-| interpreter | 翻译 (the person; 翻译员 where a countable person noun reads better) | zh-CN | **A person doing a job, not a program.** Jiki *is* the interpreter ("你的翻译就是 Jiki", "他的工作就是翻译你写的代码"). If a page ever genuinely means the software, 解释器 is that word, but it is not this term. |
-| instruction (given to Jiki) | 指令 | zh-CN | The verb pattern is 给 Jiki 下指令 / 把指令写在白板上. |
+| interpreter | 翻译 (翻译员 where a countable person noun reads better) | zh-CN | 解释器 is the word for the software. Needs a native speaker's eye: this rendering was chosen to name a character whose job was to interpret the reader's code, which is not how Exercism uses the word. On Exercism an interpreter is the program that runs the code. Left as it stands rather than changed by an agent. |
 | mental model | 思维模型 | zh-CN | |
 | (programming) language | 编程语言 | zh-CN | Full form on introduction; the bare 语言 is fine later in the same page once the context is set (e.g. 计算机能听懂的语言). Do not mix in the English word. |
 | variable | 变量 | zh-CN | |
@@ -105,25 +104,22 @@ These are terms where the Chinese is used in prose, so the "Use (zh-CN/en)" colu
 | backwards compatibility | 向下兼容 | zh-CN | Do not write 向后兼容: bare 向后 can read as "towards the future" (cf. 后来 = "later"), which inverts the meaning. |
 | component | 组件 | zh-CN | Fully localized, not kept in English. |
 | bug (a defect, in prose) | bug | en | Keep it lower-case in prose; the UI label `Bug` stays capitalized. |
-| repository (git) | 代码仓库 | zh-CN | Always write the full 代码仓库 for the git sense, because bare 仓库 is the Jiki warehouse metaphor (see § Jiki physical metaphors). |
+| repository (git) | 代码仓库 | zh-CN | Always write the full 代码仓库 for the git sense, because bare 仓库 is the everyday word for a warehouse. |
 
 ### Platform & curriculum vocabulary
 
 | English | Chinese | Use (zh-CN/en) | Notes |
 |---------|---------|----------|-------|
 | feature (platform capability) | 功能 | zh-CN | Deliberately distinct from 函数 (function); the two do not collide in Mainland usage. Never use 函数 for a product feature. |
-| course | 课程 | zh-CN | The whole Jiki course. Counted with 门, and the short form 这门课 is the natural way to say "this course" in running prose, so both are this one term. Distinct from 课 (lesson), 课程体系 (curriculum) and 教程 (tutorial). |
+| course | 课程 | zh-CN | The whole course the reader is taking. Counted with 门, and the short form 这门课 is the natural way to say "this course" in running prose, so both are this one term. Distinct from 课 (lesson), 课程体系 (curriculum) and 教程 (tutorial). |
 | lesson | 课 | zh-CN | One teaching unit: 第 3 课, 一节课, counted with 节. |
 | exercise | 练习 | zh-CN | |
-| scenario | 场景 | zh-CN | Jiki-specific: a structured variant within an exercise. |
 | curriculum | 课程体系 | zh-CN | |
 | level | 关卡 | zh-CN | The gamified sense. |
 | milestone | 里程碑 | zh-CN | |
-| pathway | 学习路径 | zh-CN | |
 | bootcamp | 训练营 | zh-CN | |
 | syllabus | 教学大纲 | zh-CN | |
 | mentor / mentoring | 导师 / 指导 | zh-CN | |
-| track (curriculum path) | 学习路线 | zh-CN | |
 | tutorial | 教程 | zh-CN | |
 | solution (learner's submission) | 提交的解答 | zh-CN | |
 | canvas (graphics exercises) | 画布 | zh-CN | The drawing surface in creative-coding exercises. |
@@ -131,9 +127,9 @@ These are terms where the Chinese is used in prose, so the "Use (zh-CN/en)" colu
 
 ## Keep in English
 
-These stay in English in prose. Where the source `<define>`s one of these terms, use the Chinese in the gloss column below (per the format in `global/voice.md`); with no `<define>`, use the English bare, with no gloss. Only the interface labels/tokens below and true acronyms and product/language names count as kept in English; everyday prose words are translated (see § Core decisions and § Tooling & engineering).
+These stay in English in prose. Where the English itself explains one of these terms, use the Chinese in the gloss column below (per the format in `global/voice.md`); with no an explanation in the English, use the English bare, with no gloss. Only the interface labels/tokens below and true acronyms and product/language names count as kept in English; everyday prose words are translated (see § Core decisions and § Tooling & engineering).
 
-| Term | Chinese gloss (on `<define>`) | Notes |
+| Term | Chinese word, where the English explains the term | Notes |
 |------|-------------------------------|-------|
 | API | 应用程序接口 | Not a word a beginner knows; where defined, explain the concept in Chinese, not just gloss the acronym. |
 | CLI (the concept) | 命令行 | Where the source defines it, explain CLI as 命令行 (command line). In dev-tool contexts after that gloss, `CLI` may be used as the acronym; 命令行 remains the general-prose term. |
@@ -141,4 +137,4 @@ These stay in English in prose. Where the source `<define>`s one of these terms,
 | `Code`, `Debug`, `Test`, `Bug` (UI labels) | (no gloss) | **Only the interface labels and tokens of those names.** The everyday words in prose are translated: code is 代码, frontend/backend are 前端/后端 (see § Core decisions). Only bare `bug` also stays English in prose (see § Tooling & engineering). |
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |

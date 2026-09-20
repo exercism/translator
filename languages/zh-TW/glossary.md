@@ -57,8 +57,7 @@ These are terms where the Chinese is used in prose, so the "Use (zh-TW/en)" colu
 | English | Chinese | Use (zh-TW/en) | Notes |
 |---------|---------|----------------|-------|
 | keyword | 關鍵字 | zh-TW |  |
-| interpreter | 翻譯員 | zh-TW | **The person, not the program.** Jiki *is* the interpreter ("your interpreter is Jiki... It's his job to interpret the code that you write"), so the word has to describe a person doing a job. Never use 直譯器 for Jiki: the 器 suffix names a device, so it cannot name a character the reader is being introduced to as a friend. |
-| instruction (given to Jiki) | 指令 | zh-TW | Everyday word for something you tell Jiki to do; not a formal or legal register. Used with 給 (給 Jiki 指令), or as what gets written on the board. |
+| interpreter | 翻譯員 | zh-TW | 直譯器 is the word for the software, with the 器 suffix naming a device. Needs a native speaker's eye: this rendering was chosen to name a character whose job was to interpret the reader's code, which is not how Exercism uses the word. On Exercism an interpreter is the program that runs the code. Left as it stands rather than changed by an agent. |
 | mental model | 心智模型 | zh-TW | |
 | character (mental-model "little person") | 小傢伙 | zh-TW | The imagined figure "living inside the computer" in the mental-model metaphor on the using-functions page. A more general, affectionate word (like "little guy") than 角色, which reads as a game/screen character and fits the maze figure instead — see `../zh/glossary.md`. The two senses take different words in this locale. |
 | (programming) language | 程式語言 (full) / 語言 (once context is clear) | zh-TW | Use 語言 alone for "a language a computer understands" where 程式語言 has already been established in the same passage. |
@@ -93,25 +92,23 @@ These are terms where the Chinese is used in prose, so the "Use (zh-TW/en)" colu
 | English | Chinese | Use (zh-TW/en) | Notes |
 |---------|---------|----------------|-------|
 | feature (platform capability) | 功能 | zh-TW | Deliberately distinct from 函式 (function); the two do not collide in Taiwan usage. Never use 函式 for a product feature. |
-| course | 課程 | zh-TW | The whole Jiki course the learner is taking (在這門課程裡). 課程 is reserved for this sense; a single lesson inside it is 單元, and the syllabus-level sense is 課程大綱. |
+| course | 課程 | zh-TW | The whole course the reader is taking (在這門課程裡). 課程 is reserved for this sense; a single lesson inside it is 單元, and the syllabus-level sense is 課程大綱. |
 | lesson | 單元 | zh-TW | One teaching unit inside a 課程; 一堂課 is fine in casual prose. Must not be 課程, which is "course". |
 | exercise | 練習 | zh-TW | |
-| curriculum | 課程大綱 / 課綱 | zh-TW | Low-medium confidence: may read as overly "school system" for Jiki's warmer tone. Flag for native-speaker review via `/action-forum-post`. |
-| level | 關卡 (preferred, gamified) / 等級 | zh-TW | 關卡 fits Jiki's tone better; use 等級 only where a plain ranking sense is meant. |
-| track (curriculum path) | 學習路徑 | zh-TW | |
+| curriculum | 課程大綱 / 課綱 | zh-TW | Low-medium confidence: may read as overly "school system" for a warm tone. Flag for native-speaker review via `/action-forum-post`. |
 | mentor / mentoring | 導師 / 引導 | zh-TW | |
 
 ## Keep in English
 
 These stay in English in prose. See `../zh/guide.md` § Loanword policy for why this section is short: the loanword policy is "fully localize", so only true acronyms, product/language names, code tokens, and the handful of loanwords Taiwanese developers genuinely write in Chinese prose belong here.
 
-| Term | Chinese gloss (on `<define>`) | Notes |
+| Term | Chinese word, where the English explains the term | Notes |
 |------|-------------------------------|-------|
-| API | 應用程式介面 | Not a word a beginner knows; where the source `<define>`s it, explain the concept in Chinese, not just gloss the acronym. |
-| CLI (the concept) | 命令列 | Explain CLI as 命令列 (command line) where the source `<define>`s it. |
+| API | 應用程式介面 | Not a word a beginner knows; where the English itself explains the term, explain the concept in Chinese, not just gloss the acronym. |
+| CLI (the concept) | 命令列 | Explain CLI as 命令列 (command line) where the English itself explains the term. |
 | bug | (no gloss) | Do not use 錯誤, which is "error". The activity is localized: 除錯. |
 | JavaScript, Python, React | (no gloss) | Product / language names. |
 | `Debug`, `Test`, `Code` | (no gloss) | Only as capitalized UI labels / technical tokens. The prose words are localized: 除錯, 測試, 程式碼. |
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |

@@ -23,10 +23,10 @@ These are terms where the Romanian is used in prose, so the "Use (ro/en)" column
 | English | Romanian | Use (ro/en) | Notes |
 |---------|----------|-------------|-------|
 | true / false | adevărat / fals | ro | Not capitalised in prose. |
-| array | matrice | ro | Feminine: „o matrice", „două matrice". Never `tablou`, which does not read as an array to a Romanian speaker. See also "chain" under Jiki physical metaphors for the teaching metaphor used alongside it. |
+| array | matrice | ro | Feminine: „o matrice", „două matrice". Never `tablou`, which does not read as an array to a Romanian speaker. |
 | list | listă | ro | Feminine: „o listă", „două liste". Use where the source says "list"; use `matrice` where it says "array". |
 | index | indice | ro | Plural `indici`. Not `index`, which reads as the index of a book or a database. |
-| character (text) | caracter | ro | A single text character. Keep distinct from `personaj` (the on-screen game figure) under Jiki physical metaphors. |
+| character (text) | caracter | ro | A single text character. Keep distinct from `personaj` (a character in a story). |
 | letter (of a string) | literă | ro | Distinct from `caracter`. |
 | float / decimal | număr zecimal | ro | Use `număr cu virgulă mobilă` only where the floating-point nature itself is the point. |
 | compound data type | tip de date compus | ro | Distinct from plain `tip de date`. |
@@ -38,9 +38,8 @@ These are terms where the Romanian is used in prose, so the "Use (ro/en)" column
 | English | Romanian | Use (ro/en) | Notes |
 |---------|----------|-------------|-------|
 | if statement | condiție | ro | „condiția `if`" when the keyword itself is named; keep `if` in backticks as the real keyword, as with „bucla `for`". Not `instrucțiune`, which is reserved for "statement (executable)" below. |
-| statement (executable) | instrucțiune | ro | The imperative sense: a line of code that does something and gets executed. Shares the word with "instruction (given to Jiki)" below. |
+| statement (executable) | instrucțiune | ro | The imperative sense: a line of code that does something and gets executed. It is the ordinary word for a single thing someone is told to do as well. |
 | statement (logical claim) | afirmație | ro | The proposition sense: a claim that is true or false. Keep distinct from `instrucțiune`; pick by meaning, not by the English word. |
-| instruction (given to Jiki) | instrucțiune | ro | What the learner puts on the board for Jiki to follow. Everyday Romanian, not a legal-register word. Deliberately the same word as "statement (executable)". |
 | to return (a value) | a returna | ro | „returnează 30". Not `a întoarce`, which reads as physically turning something around. |
 | return value | valoare returnată | ro | Not `valoare de retur`, which belongs to finance. |
 | input (to a function) | intrare | ro | Also what the input-slot metaphor is built on („fanta de intrare"). |
@@ -56,7 +55,7 @@ These are terms where the Romanian is used in prose, so the "Use (ro/en)" column
 | loop | buclă | ro | „bucla `for`", „bucla `while`". Not `ciclu` or `instrucțiune repetitivă`, which are the academic textbook register. |
 | nested | imbricat | ro | „bucle imbricate" = nested loops. When glossed, gloss the full term (_nested loop_), not the bare adjective. |
 | keyword | cuvânt-cheie | ro | Hyphenated, per DOOM. Plural `cuvinte-cheie`. |
-| interpreter | interpretor | ro | **A person doing a job, not a program.** On concept pages Jiki *is* the interpreter („interpretorul tău este Jiki", „treaba lui este să interpreteze codul pe care îl scrii"). Never `interpret`, which in Romanian is a spoken-language interpreter or a performer, a different job entirely. |
+| interpreter | interpretor | ro | The program that runs the code. Never `interpret`, which in Romanian is a spoken-language interpreter or a performer, a different job entirely. |
 | (programming) language | limbaj (de programare) | ro | Never `limbă`, which is a natural language. Use `limbaj de programare` where the programming sense needs stating, and bare `limbaj` once it is established, including in the "a language a computer understands" framing. |
 | code block | bloc de cod | ro | `bloc de instrucțiuni` is the textbook form; `bloc de cod` is friendlier. Keep distinct from `domeniu de vizibilitate` (scope) below. |
 | to run / execute (code) | a rula | ro | `a rula` for running a program or a block; `a executa` for a single instruction being carried out. |
@@ -83,11 +82,9 @@ These are terms where the Romanian is used in prose, so the "Use (ro/en)" column
 |---------|----------|-------------|-------|
 | feature (platform capability) | funcționalitate | ro | Deliberately kept distinct from `funcție`, which is reserved for the CS "function" concept. |
 | concept (learning unit) | noțiune | ro | Concept Library = Biblioteca de noțiuni. Not `concept`, which is vaguer and everyday. |
-| course | curs | ro | The whole Jiki course the learner is taking („în cursul acesta, interpretorul tău este Jiki"). Keep distinct from `lecție` and `programă` (curriculum). |
+| course | curs | ro | The whole course the reader is taking („în cursul acesta"). Keep distinct from `lecție` and `programă` (curriculum). |
 | task (within an exercise) | sarcină | ro | Distinct from `exercițiu` (the exercise itself). |
 | scenario | scenariu | ro | |
-| track (curriculum path) | traseu | ro | Keep distinct from `parcurs` (pathway) below. |
-| pathway | parcurs | ro | Keep distinct from `traseu` (track) above. |
 | solution (learner's submission) | soluție | ro | |
 | plan (subscription tier) | abonament | ro | Enables „abonamentul {tier}". Not `plan`, which reads as a schedule. |
 | dashboard | panou de control | ro | Deliberately **not** `tablou de bord`, which is the dashboard of a car. |
@@ -100,7 +97,7 @@ These are terms where the Romanian is used in prose, so the "Use (ro/en)" column
 
 These stay in English in Romanian prose, with the Romanian gloss to use for each.
 
-| Term | Romanian gloss (on `<define>`) | Notes |
+| Term | Romanian word, where the English explains the term | Notes |
 |------|---------------------------------|-------|
 | string | _șir de caractere_ | Declines without a hyphen: „stringul", „stringuri" (see `guide.md`). Use `șir de caractere` only as the gloss where the source defines it, then `string` throughout. |
 | Boolean | _valoare logică_ | Where the source defines it, explain it means a `valoare logică`, then use `Boolean`. |
@@ -118,7 +115,7 @@ These stay in English in Romanian prose, with the Romanian gloss to use for each
 | Code, Bug, Frontend, Backend | (no gloss) | As UI labels and code tokens. |
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |
 
 ## Brackets
 
@@ -130,3 +127,70 @@ These stay in English in Romanian prose, with the Romanian gloss to use for each
 | `<>` | paranteze unghiulare | |
 
 How to phrase a bracket in running prose is in `guide.md`.
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Romanian has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Romanian | Use (ro/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| exercise |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| syllabus |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| iteration (a submitted version of a solution) |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| mentor / mentoring |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| badge |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| challenge (community event) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

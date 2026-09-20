@@ -21,9 +21,9 @@ These are terms where the Italian is used in prose, so the "Use (it/en)" column 
 | English | Italian | Use (it/en) | Notes |
 |---------|---------|-------------|-------|
 | float / decimal | numero in virgola mobile | it | Use _numero decimale_ only for the plain "has a decimal point" sense, not the technical float type. |
-| array / list | array | it | A bare _array (array)_ gloss is unnecessary; where the source `<define>`s it, gloss with a one-line explanation of the concept instead, since the word itself is already English. Plural is invariant: _gli array_. Do not mix in "vettore" within one document. Never use "matrice" (means 2D matrix). Exercise prose sometimes says "list" informally for the same concept; render both as _array_. |
+| array / list | array | it | A bare _array (array)_ gloss is unnecessary; where the English itself explains the term, gloss with a one-line explanation of the concept instead, since the word itself is already English. Plural is invariant: _gli array_. Do not mix in "vettore" within one document. Never use "matrice" (means 2D matrix). Exercise prose sometimes says "list" informally for the same concept; render both as _array_. |
 | string | stringa | it | Never left bare in English. |
-| template literal / template string | stringa interpolata | it | Confirmed by a native speaker. Never leave a bare _template literal_ or _template string_ in Italian prose. The `${...}` syntax itself is _interpolazione_; the verb is _interpolare_. Where the source `<define>`s it, explain it as a _stringa interpolata_, a string with values inserted directly into it. |
+| template literal / template string | stringa interpolata | it | Confirmed by a native speaker. Never leave a bare _template literal_ or _template string_ in Italian prose. The `${...}` syntax itself is _interpolazione_; the verb is _interpolare_. Where the English itself explains the term, explain it as a _stringa interpolata_, a string with values inserted directly into it. |
 
 ### Functions & control flow
 
@@ -47,8 +47,7 @@ These are terms where the Italian is used in prose, so the "Use (it/en)" column 
 
 | English | Italian | Use (it/en) | Notes |
 |---------|---------|-------------|-------|
-| interpreter | interprete | it | **A person doing a job, not a program.** Jiki *is* the interprete ("il tuo interprete è Jiki", "l'interprete amichevole"). Never "interpretatore" or a device-flavoured coinage. Masculine/feminine invariant in form: _l'interprete_. |
-| instruction (given to Jiki) | istruzione | it | A single thing the learner tells Jiki to do. Everyday word, not a legal/formal register one. Deliberately the same word as _statement (executable)_ above: in Italian these are one concept and splitting them would invent a distinction the language does not make. |
+| interpreter | interprete | it | The program that runs the code. Never "interpretatore". Masculine/feminine invariant in form: _l'interprete_. |
 | (programming) language | linguaggio (di programmazione) | it | _linguaggio_, never _lingua_ (which means a natural human language). Also used for the "language a computer understands" framing: _un linguaggio che il computer capisce_. |
 | code block | blocco di codice | it | Deliberately distinct from _scope_ below. |
 | comment (in code) | commento | it | A `//` or `#` note in the source that the computer ignores. Masculine: _il commento_, plural _i commenti_. The word stands alone: qualify it as _commento nel codice_ only where the surrounding sentence could be read as a remark or a piece of feedback. Verb: _commentare_ ("aggiungere un commento"); for commenting a line out, say _trasformare in commento_, never "commentare fuori". |
@@ -56,8 +55,8 @@ These are terms where the Italian is used in prose, so the "Use (it/en)" column 
 | nested | annidato | it | e.g. _ciclo annidato_ = nested loop. Prefer over "nidificato". |
 | modulo / remainder operator | operatore modulo (operator) / resto (value) | it | Use _operatore modulo_ for the `%` operator; _resto_ for the resulting value. |
 | toggle | azionare | it | Verb. "Ian azionò l'interruttore e la luce si accese." Confirmed by two native speakers: a single plain verb, more natural than the earlier draft _alternare_, which invited an on/off two-word pairing. |
-| scope | scope | en | Where the source `<define>`s it, gloss as _ambito (di visibilità)_, then use _scope_. |
-| state (program state) | stato | it | Where the source `<define>`s it, or wherever the concept is being introduced/explained rather than just referenced, gloss it as _stato, cioè le informazioni che descrivono la situazione attuale del programma_ (adjust case/preposition to the sentence). Use this clarifying gloss consistently wherever "state" is explained, not only on the `concept/state` page. What is standing is the **pattern**, an appositive introduced by _cioè_ that says concretely what the state is, not one fixed string: a bare later reference to _lo stato_ is left alone (glossing every mention turns the clarification into noise), and where the sentence names a specific state the appositive names that instead, e.g. _uno stato, cioè la registrazione del fatto che stiamo viaggiando a sinistra o a destra_. The `concept/state` page keeps its own reviewer-approved expansion of `<define>state</define>`, _stato (_state_ in inglese), cioè la condizione in cui si trova qualcosa_; do not overwrite it with the wording above. |
+| scope | scope | en | Where the English itself explains the term, gloss as _ambito (di visibilità)_, then use _scope_. |
+| state (program state) | stato | it | Where the English itself explains the term, or wherever the concept is being introduced/explained rather than just referenced, gloss it as _stato, cioè le informazioni che descrivono la situazione attuale del programma_ (adjust case/preposition to the sentence). Use this clarifying gloss consistently wherever "state" is explained, not only on the `concept/state` page. What is standing is the **pattern**, an appositive introduced by _cioè_ that says concretely what the state is, not one fixed string: a bare later reference to _lo stato_ is left alone (glossing every mention turns the clarification into noise), and where the sentence names a specific state the appositive names that instead, e.g. _uno stato, cioè la registrazione del fatto che stiamo viaggiando a sinistra o a destra_. A reviewer-approved longer expansion also exists, _stato (_state_ in inglese), cioè la condizione in cui si trova qualcosa_, and is not to be overwritten with the wording above where it already stands. |
 
 ### Tooling & engineering
 
@@ -72,12 +71,9 @@ These are terms where the Italian is used in prose, so the "Use (it/en)" column 
 | English | Italian | Use (it/en) | Notes |
 |---------|---------|-------------|-------|
 | feature (platform capability) | funzionalità | it | Deliberately distinct from _funzione_ (function) to avoid collision. |
-| course | corso | it | The whole Jiki course the learner is taking: _in questo corso_. Distinct from _lezione_ (lesson) and _percorso_ (curriculum). |
-| level (a stage of the course) | livello | it | The unit the learner completes to unlock the next one, and the unit the milestone emails celebrate. Jiki's progression is deliberately game-like (levelling up), so the videogame connotation of _livello_ is wanted, not a drawback. Never _modulo_ (already the `%` operator, and _modulo_ = a web form in the app UI), never _passaggio_, _sezione_ or _lezione_. "Next level" is always _il prossimo livello_ across the whole milestone-email series. |
+| course | corso | it | The whole course the reader is taking: _in questo corso_. Distinct from _lezione_ (lesson) and _percorso_ (curriculum). |
 | lesson (inside a level) | lezione | it | The individual teaching unit a level is made of; several lessons make one _livello_. Use it only where the English says "lesson", never as a rendering of "level". |
 | curriculum | percorso | it | Never bare "curriculum": in Italian it means a CV/résumé, a false friend. Use _percorso_ for the learning-curriculum sense. |
-| pathway | percorso | it | A structured learning sequence. Same word as _curriculum_ above; the two senses rarely appear together in one document. |
-| track (curriculum path) | indirizzo | it | Confirmed by a native speaker: the standard Italian word for a course of study (secondary-school _indirizzo_, university track). Stays distinct from _percorso_ (pathway). |
 | mentor / mentoring | mentore / mentoring | it | "Mentoring" is used as-is; "mentore" is the native word for the person. |
 | tutorial | tutorial | en | Established as-is in Italian tech/education writing. |
 | "Run Code" (the button) | Esegui il codice | it | The app's run button. Prose that tells the learner to press it quotes the button's own label, so use this exact wording every time, never the shorter _Esegui codice_. |
@@ -88,13 +84,13 @@ These are terms where the Italian is used in prose, so the "Use (it/en)" column 
 
 These stay in English in Italian prose, with the Italian gloss to use for each.
 
-| Term | Italian gloss (on `<define>`) | Notes |
+| Term | Italian word, where the English explains the term | Notes |
 |------|----------------------------------|-------|
-| API | explain what it is in Italian | Where the source `<define>`s it, explain the concept in Italian ("un'API, cioè un modo per far comunicare due programmi tra loro"), not just gloss the acronym. Feminine: _l'API_. |
-| framework | _struttura di sviluppo riutilizzabile_ | Where the source `<define>`s it, explain it means a reusable _framework_, then use the English word freely. Masculine: _il framework_. |
-| CLI (the concept) | _interfaccia a riga di comando_ | Where the source `<define>`s it, explain CLI as _interfaccia a riga di comando_ (command-line interface). |
-| canvas (graphics exercises) | _area di disegno_ | The drawing surface in creative-coding exercises. Where the source `<define>`s it, explain it as the _area di disegno_ (the `canvas` element), then use _canvas_. Where the source does not `<define>` it (exercise tasks, describers, hints), never leave a bare _canvas_: use _area di disegno_. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
+| API | explain what it is in Italian | Where the English itself explains the term, explain the concept in Italian ("un'API, cioè un modo per far comunicare due programmi tra loro"), not just gloss the acronym. Feminine: _l'API_. |
+| framework | _struttura di sviluppo riutilizzabile_ | Where the English itself explains the term, explain it means a reusable _framework_, then use the English word freely. Masculine: _il framework_. |
+| CLI (the concept) | _interfaccia a riga di comando_ | Where the English itself explains the term, explain CLI as _interfaccia a riga di comando_ (command-line interface). |
+| canvas (graphics exercises) | _area di disegno_ | The drawing surface in creative-coding exercises. Where the English itself explains the term, explain it as the _area di disegno_ (the `canvas` element), then use _canvas_. Where the source does not an explanation in the English it (exercise tasks, describers, hints), never leave a bare _canvas_: use _area di disegno_. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |
 | `move()` (exercise function) | _muovi_ | Gloss the command with the imperative _muovi_, matching the command's behaviour. Never the reflexive infinitive _muoversi_, which describes the character moving itself rather than instructing it. The same imperative pattern applies to any other exercise function glossed this way. |
 
 ## Brackets
@@ -107,3 +103,70 @@ Naming convention and worked example are in `guide.md`.
 | `[]` | parentesi quadre | |
 | `{}` | parentesi graffe | |
 | `<>` | parentesi angolari | |
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Italian has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Italian | Use (it/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| exercise |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| syllabus |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| solution |  |  |  |
+| iteration (a submitted version of a solution) |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| badge |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| challenge (community event) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

@@ -55,12 +55,11 @@ These are terms where the Croatian is used in prose, so the "Use (hr/en)" column
 | return value | povratna vrijednost | hr | |
 | function body | tijelo funkcije | hr | Never `telo`. |
 | brackets (the two after a function name) | oble zagrade | hr | Bare `zagrade` is enough where the context is a function call. Which bracket type to name, and when, is in the Brackets section below. |
-| interpreter | **tumač** | hr | **A person doing a job, not a program.** On concept pages Jiki *is* the interpreter (`tvoj tumač je Jiki`, `njegov je posao tumačiti kôd koji pišeš`). Never `interpreter` or `interpretator`, which name the program and also mean a musical performer, and never `prevoditelj`, which is the word for a compiler. Lean on the framing rather than the bare label. |
-| instruction (given to Jiki) | uputa | hr | What the learner writes on the board for Jiki to follow. Everyday word, deliberately distinct from `naredba` (an executable statement of code). |
+| interpreter | **tumač** | hr | Never `prevoditelj`, which is the word for a compiler. Needs a native speaker's eye: this rendering was chosen to name a character whose job was to interpret the reader's code, which is not how Exercism uses the word. On Exercism an interpreter is the program that runs the code. Left as it stands rather than changed by an agent. |
 | else clause / branch | inače | hr | `inače` in prose; `grana `else`` where the code branch itself is meant. |
 | built-in | ugrađen | hr | `ugrađene funkcije`, as against `korisnički definirane funkcije`. |
 | equal sign | znak jednakosti | hr | Assignment as an action is `pridruživanje`. |
-| bang (the `!` character) | uskličnik | hr | Croatian names it functionally where the logical sense is meant (`negacija`); use the glyph itself on a `<define>`. |
+| bang (the `!` character) | uskličnik | hr | Croatian names it functionally where the logical sense is meant (`negacija`); use the glyph itself on an explanation in the English. |
 | placeholder | rezervirano mjesto | hr | |
 | pure (function) | čista funkcija | hr | When glossed, gloss the full term *pure function*, not the bare adjective. |
 
@@ -107,7 +106,7 @@ These are terms where the Croatian is used in prose, so the "Use (hr/en)" column
 
 | English | Croatian | Use (hr/en) | Notes |
 |---------|----------|-------------|-------|
-| course | tečaj | hr | The whole Jiki course the learner is taking. **Never `kolegij` or `e-kolegij`**, which mean a university degree module. |
+| course | tečaj | hr | The whole course the reader is taking. **Never `kolegij` or `e-kolegij`**, which mean a university degree module. |
 | task (within an exercise) | zadatak | hr | Distinct from `vježba` (the exercise itself). |
 | level | razina | hr | |
 | milestone | etapa | hr | The numbered marker on the learning path (`Etapa 3`). Deliberately not `prekretnica` (a turning point, which a numbered path marker is not), and deliberately not `postignuće`, which is spoken for by the Achievements feature. Where English uses "milestone" loosely rather than as the platform feature, translate for sense instead. |
@@ -154,7 +153,7 @@ These are terms where the Croatian is used in prose, so the "Use (hr/en)" column
 
 These stay in English in Croatian prose, with the Croatian gloss to use for each.
 
-| Term | Croatian gloss (on `<define>`) | Notes |
+| Term | Croatian word, where the English explains the term | Notes |
 |------|--------------------------------|-------|
 | string | _niz znakova_ | Exception: the string concept itself uses `niz znakova` where the source defines it, then `string` throughout. Masculine; declines normally (`stringa`, `u stringu`). |
 | Boolean | _logička vrijednost_ | The type name is `logički tip`. Where the source defines it, gloss it, then use `Boolean`. |
@@ -174,7 +173,7 @@ These stay in English in Croatian prose, with the Croatian gloss to use for each
 | JavaScript, Python, React | (no gloss) | Decline directly, with no hyphen: `Pythona`, `u Reactu`. |
 | Variable and function names | (no gloss) | The identifiers themselves are never translated. Where the phrase itself appears in prose, it is `varijable i nazivi funkcija`. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | Never translated. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |
 
 ## Brackets
 
@@ -185,4 +184,69 @@ These stay in English in Croatian prose, with the Croatian gloss to use for each
 | `{}` | vitičaste zagrade | |
 | `<>` | šiljaste zagrade | |
 
-`&`, `\|` and the backtick have no agreed Croatian name: Croatian technical writing prints the glyph rather than naming it. On a `<define>`, show the glyph itself. How to phrase a bracket in running prose is in `guide.md`.
+`&`, `\|` and the backtick have no agreed Croatian name: Croatian technical writing prints the glyph rather than naming it. On an explanation in the English, show the glyph itself. How to phrase a bracket in running prose is in `guide.md`.
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Croatian has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Croatian | Use (hr/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| exercise |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| syllabus |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| solution |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| mentor / mentoring |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |

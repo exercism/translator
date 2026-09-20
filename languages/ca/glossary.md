@@ -19,7 +19,7 @@ These are terms where the Catalan is used in prose. Split by theme for readabili
 | English | Catalan | Use (ca/en) | Notes |
 |---------|---------|----------|-------|
 | float / decimal | nombre decimal | ca | Use the simpler _decimal_ form for learner-facing prose. |
-| array / list | llista | ca | _Llista_ is Jiki's single array/list term; keep it distinct from _matriu_ (2-D matrix, a different concept). |
+| array / list | llista | ca | _Llista_ is the single array/list term; keep it distinct from _matriu_ (2-D matrix, a different concept). |
 | Boolean | booleà | ca | Fully localized; do not keep "Boolean" in English. |
 
 ### Functions & control flow
@@ -37,8 +37,7 @@ These are terms where the Catalan is used in prose. Split by theme for readabili
 
 | English | Catalan | Use (ca/en) | Notes |
 |---------|---------|----------|-------|
-| interpreter | intèrpret | ca | **A person doing a job, not a program.** On concept pages Jiki *is* the intèrpret, so the word has to be able to name a character. Never a machine-forming coinage (_interpretador_, _programa intèrpret_): those name a tool and cannot name Jiki. |
-| instruction (given to Jiki) | instrucció | ca | Everyday word, as in "donar les instruccions correctes al Jiki". Not a formal or legal register word (_ordre_, _directiva_). |
+| interpreter | intèrpret | ca | The program that runs the code. Never the coinage _interpretador_. |
 | mental model | model mental | ca | Use it verbatim, not a paraphrase like _manera de pensar_. |
 | (programming) language | llenguatge (de programació) | ca | _Llenguatge_ for both senses on a page: the programming language, and "a language a computer understands". Never _idioma_, which is a natural human language. |
 | error | error | ca | |
@@ -65,18 +64,16 @@ These are terms where the Catalan is used in prose. Split by theme for readabili
 | English | Catalan | Use (ca/en) | Notes |
 |---------|---------|----------|-------|
 | feature (platform capability) | funcionalitat | ca | Kept distinct from _funció_ (function) to avoid collision, per `global/terms.md`. |
-| course | curs | ca | The whole Jiki course the learner is taking ("En aquest curs, el teu intèrpret és el Jiki"). Keep distinct from _lliçó_ (lesson) and _currículum_ (curriculum). |
-| pathway | camí | ca | Kept distinct from _itinerari_ (track) even though they're near-synonyms in English too. |
-| track (curriculum path) | itinerari | ca | The curriculum path a learner follows. Never _recorregut_. |
+| course | curs | ca | The whole course the reader is taking ("En aquest curs"). Keep distinct from _lliçó_ (lesson) and _currículum_ (curriculum). |
 | canvas (graphics exercises) | llenç | ca | |
 | Q&A | preguntes i respostes | ca | Expand in Catalan; don't keep the English acronym. |
 
 ## Keep in English
 
 These stay in English in Catalan prose, with the Catalan gloss to use for each (per the
-format in `global/voice.md`); with no `<define>`, use the English bare, no gloss.
+format in `global/voice.md`); with no an explanation in the English, use the English bare, no gloss.
 
-| Term | Catalan gloss (on `<define>`) | Notes |
+| Term | Catalan word, where the English explains the term | Notes |
 |------|--------------------------------|-------|
 | API | _interfície de programació d'aplicacions_ | |
 | framework | _entorn de treball_ | "Framework" is what Catalan developers actually say, so it is the ordinary word here (`global/voice.md`). |
@@ -87,4 +84,72 @@ format in `global/voice.md`); with no `<define>`, use the English bare, no gloss
 | Frontend, Backend | (no gloss) | |
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
-| Jikiscript / programming keywords (`repeat`, `function`, `if`, `for`, ...) | (no gloss) | Always English, including inside prose. Translate only the surrounding explanation. |
+| Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |
+
+## Exercism product vocabulary: PROPOSED, NOT YET AGREED
+
+**Nobody who speaks Catalan has agreed any row in this section, and no rendering has been
+proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
+the rows we most need a native speaker to fill in, because each one appears on hundreds of
+pages. The target column is deliberately empty: an agent's invented rendering sitting in a
+glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
+pinned glossary thread, and a row moves into an agreed section once a native speaker has
+settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
+on Exercism.
+
+| English | Proposed Catalan | Use (ca/en) | Notes |
+|---------|------------------|------------------|-------|
+| track |  |  |  |
+| to join (a track) |  |  |  |
+| exercise |  |  |  |
+| concept exercise / learning exercise |  |  |  |
+| practice exercise |  |  |  |
+| syllabus |  |  |  |
+| learning mode / practice mode |  |  |  |
+| locked / unlocked / available / in progress / completed |  |  |  |
+| to unlock |  |  |  |
+| solution |  |  |  |
+| iteration (a submitted version of a solution) |  |  |  |
+| to submit |  |  |  |
+| to publish (a solution) / published |  |  |  |
+| community solutions |  |  |  |
+| to star / stars |  |  |  |
+| mentor / mentoring |  |  |  |
+| student (the person being mentored) |  |  |  |
+| mentoring request |  |  |  |
+| mentoring session / discussion |  |  |  |
+| code review |  |  |  |
+| mentoring queue |  |  |  |
+| testimonial (left for a mentor) |  |  |  |
+| supermentor |  |  |  |
+| automated feedback |  |  |  |
+| analyzer |  |  |  |
+| representer |  |  |  |
+| representation |  |  |  |
+| test runner |  |  |  |
+| tests passed / tests failed |  |  |  |
+| online editor / the editor |  |  |  |
+| the Exercism CLI |  |  |  |
+| reputation |  |  |  |
+| badge |  |  |  |
+| trophy |  |  |  |
+| journey (the user's history page) |  |  |  |
+| contributor / contributing |  |  |  |
+| maintainer |  |  |  |
+| Insiders |  |  |  |
+| donation / to donate / donor |  |  |  |
+| perks |  |  |  |
+| partner |  |  |  |
+| flair (marker beside a username) |  |  |  |
+| Dig Deeper (tab) |  |  |  |
+| approach (to an exercise) |  |  |  |
+| article (on an exercise) |  |  |  |
+| deep dive (video) |  |  |  |
+| challenge (community event) |  |  |  |
+| cohort |  |  |  |
+| community |  |  |  |
+| notification |  |  |  |
+| favorites |  |  |  |
+| difficulty: easy / medium / hard |  |  |  |
+| handle (username) |  |  |  |
+| automation (feedback on representations) |  |  |  |
