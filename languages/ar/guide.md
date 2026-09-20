@@ -24,7 +24,7 @@ modern versus classical, not formal versus informal.
   typical of formal literary Arabic.
 - **Grammatical gender on second-person forms.** Arabic verbs, pronouns, and imperatives
   agree in gender with the person addressed (أنتَ / جرّبْ for masculine vs. أنتِ / جرّبي for
-  feminine). Since Jiki addresses an unknown reader, **default to masculine grammatical
+  feminine). Since the reader is unknown, **default to masculine grammatical
   forms** for generic "you" and imperatives. Never switch mid-document between masculine
   and feminine forms for the same generic reader.
 - **Encouraging imperatives**, matching the warm-mentor tone from `global/voice.md`:
@@ -83,7 +83,7 @@ needs no special manual markup:
 - **No manual bidi markers around code.** Embed English code and keywords directly in
   running Arabic prose; do not insert directional-override characters or `<bdi>`-style
   wrapping. The renderer's native bidi algorithm handles the mixed-direction text on its
-  own. (A `<define>` gloss is the one exception, see "Term clarification" below.)
+  own.
 - **Use inline code formatting (backticks) for every code token.** In RTL prose the code
   styling is also what visually separates an embedded LTR token (a variable name, a
   keyword like `if`, a function name) from the surrounding Arabic text, so never leave a
@@ -98,25 +98,24 @@ needs no special manual markup:
 - **Arabize core CS vocabulary rather than keeping it in English.** The default for Arabic
   is the Arabic term; take it from the glossary, whose "Keep in English" list is
   deliberately short.
-- **A bracketed English gloss appears only where the source has a `<define>`**, never on
-  first occurrence and never on your own initiative (the no-auto-gloss rule in
-  `global/voice.md`). Elsewhere the Arabic term stands alone, however technical it is:
-  _دالة_, not _دالة (function)_.
-- **When a `<define>` does call for a gloss, judge whether it teaches anything.** It is
-  worth writing for genuine CS jargon a reader will need to map onto English they meet in
-  code or docs (function, variable, loop, array, Boolean). An ordinary word that merely
-  appears in a technical sentence (condition, comparison, value) gains nothing from a
-  bracketed English term; test: "would a non-programmer already know this Arabic word?" If
-  yes, drop the parenthetical and leave the term as it is (see "Skip a gloss that would
-  teach nothing" in `global/voice.md`).
+- **A bracketed English gloss appears only where the English text itself stops to explain
+  the term**, never on first occurrence and never on your own initiative (the no-auto-gloss
+  rule in `global/voice.md`). Elsewhere the Arabic term stands alone, however technical it
+  is: _دالة_, not _دالة (function)_.
+- **Where the English does explain a term, judge whether the English word teaches
+  anything.** It is worth writing for genuine CS jargon a reader will need to map onto
+  English they meet in code or docs (function, variable, loop, array, Boolean). An ordinary
+  word that merely appears in a technical sentence (condition, comparison, value) gains
+  nothing from a bracketed English term; test: "would a non-programmer already know this
+  Arabic word?" If yes, drop the parenthetical and leave the term as it is (see "Skip a
+  gloss that would teach nothing" in `global/voice.md`).
 
 ## The سلسلة collision
 
 سلسلة is both the ordinary Arabic word for a physical chain and the root of the standard
-term for "string", and Jiki uses "chain" as its load-bearing physical metaphor for arrays.
-So: **never use bare سلسلة on its own.** Always use the qualified compound the glossary
-gives for the sense you mean (array metaphor, string), and never shorten one back
-to bare سلسلة for brevity, however often it repeats on a page. If a compound feels too
+term for "string". So: **never use bare سلسلة on its own.** Always use the qualified
+compound the glossary gives for the sense you mean, and never shorten it back to bare
+سلسلة for brevity, however often it repeats on a page. If a compound feels too
 long in a sentence, flag it rather than shortening it.
 
 ## Style notes
@@ -126,19 +125,18 @@ long in a sentence, flag it rather than shortening it.
 - **Rhetorical asides** ("So what does this look like in code?"): keep them as natural
   Arabic rhetorical questions, e.g. "فكيف يبدو هذا في الكود؟", matching the warm,
   conversational tone from `global/voice.md`.
-- **Jiki-name handling:** "Jiki" stays as the Latin product name; if it needs a
-  grammatical role in an Arabic sentence (e.g. possession), treat it as an indeclinable
-  foreign proper noun and use
-  idafa around it rather than trying to inflect it: "دليل Jiki" (Jiki's guide), not an
-  inflected Arabic form of the name itself.
+- **Latin-script product names:** a name such as "Exercism" stays in Latin script; if it
+  needs a grammatical role in an Arabic sentence (e.g. possession), treat it as an
+  indeclinable foreign proper noun and use idafa around it rather than trying to inflect
+  it: "دليل Exercism" (Exercism's guide), not an inflected Arabic form of the name itself.
 
 ## Worked examples
 
 Concrete Arabic for the principles in `global/voice.md`.
 
 **Titles and headlines:**
-- "انطلاقة Jiki" / "تعرّف على Jiki", not an overly dramatic literal rendering of "Jiki is
-  born."
+- "انطلاقة Exercism" / "تعرّف على Exercism", not an overly dramatic literal rendering of a
+  launch announcement.
 - "طريقة جديدة لتعلّم البرمجة" (a new way to learn programming), natural SVO.
 
 **Calls to action:**
@@ -156,4 +154,4 @@ Concrete Arabic for the principles in `global/voice.md`.
 
 **Demonstratives: always the full هذا/هذه/هذي, never the short ذا/ذه/ذي.** The short forms
 belong to classical/literary Arabic and read as religious or literary register, not the
-living everyday language this course's audience (18-35) uses day to day.
+living everyday language this audience uses day to day.

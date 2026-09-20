@@ -1,5 +1,34 @@
 # Arabic (ar) glossary notes
 
+## 2026-09-20: Adapted for Exercism (agent; nothing here is a native speaker's decision)
+
+This glossary was forked from Jiki's Arabic glossary when Exercism's translator repo was
+created. Exercism and Jiki are separate products, and this glossary is Exercism's from here
+on. Everything that was about Jiki's own product (its courses, its exercise stories, its
+characters and physical metaphors) went with the fork; every decision about the Arabic
+language itself was kept, including the ones a native speaker made. Where a native speaker had
+settled one of the removed terms, the decision is recorded below as retired rather than
+deleted.
+
+**Added: `Exercism product vocabulary: PROPOSED, NOT YET AGREED`.** The English terms the
+product's own nouns are built from, with the target column left empty. Nobody who speaks
+Arabic has been asked yet, and an agent's invented rendering would read as an agreed one.
+
+### Retired with the fork, with the decision recorded
+
+The physical teaching metaphors are gone with the fork. Two decisions among them were a
+person's and are kept here, because the Arabic reasoning stands if the words are ever needed
+again.
+
+- **`return chute` → `مجرى الإخراج`.** mirina, 2026-08-21, replacing `مزلقة الإخراج`:
+  `مزلقة` is specifically a playground slide, an unnecessary physical image once paired with
+  `الإخراج`, while `مجرى` (channel, duct) keeps the output sense without it. The related
+  `to return (a value)` → `يُرجع` row is live and unaffected.
+- **`board / whiteboard` → `سبورة`.** iHiD, 2026-07-30: the everyday, pan-Arab word for a
+  writing board in a room, needing no qualifier. It ruled out `لوح` (a plank, panel or
+  tablet) and the over-specific `السبورة البيضاء`, and collides with nothing. The live
+  `canvas` row uses the same word for the same reason.
+
 ## 2026-09-09: dual agreement is word-order dependent
 
 **Decided by:** reviewer mirina, forum, actioned directly.
@@ -44,7 +73,7 @@ methods with one sentence instead of two. The plural is `طُرق`, the common t
 One caveat travels with the term, and mirina raised it herself: `طريقة` is first and foremost
 the everyday word for "way / manner / approach", so a page that says "the first way to do this"
 would collide with its own technical vocabulary. The row therefore bans the everyday sense in
-Jiki content and points at `أسلوب` / `كيفية` / a rephrase instead. The `طرق` / `طريق`
+this content and points at `أسلوب` / `كيفية` / a rephrase instead. The `طرق` / `طريق`
 ("road") overlap she also mentions is not a practical risk: technical context disambiguates.
 
 `تابع` is now explicitly ruled out, and the draft row for it below is struck through.
@@ -112,33 +141,28 @@ Both came out of her review of the Weather Symbols exercise, whose page carries 
 ### `canvas` -> `السبورة`
 
 The shared draw catalog rendered "cleared the canvas" as `مسح اللوحة`. mirina's point is that
-the glossary already settles Jiki's display/drawing surface as `سبورة` (the `board / whiteboard`
-row in "Jiki physical metaphors", with its explicit "one object, one word" rule and its ban on
-`لوح`), and the drawing surface is that same object. `اللوحة` was the odd one out, not a second
-legitimate term. The row is therefore an enforcement of an existing decision, written down so a
-future pass cannot reintroduce `اللوحة` on the grounds that "canvas" had no row of its own.
+the Arabic word for a display or drawing surface is `سبورة`, so `اللوحة` was the odd one
+out rather than a second legitimate term. The row is written down so a future pass cannot
+reintroduce `اللوحة` on the grounds that "canvas" had no row of its own.
 
 ### `ellipse` -> `شكل بيضاوي`
 
 The shared draw catalog rendered "drew an ellipse" as `رسم قطعًا ناقصًا`. `قطع ناقص` is the
 strictly mathematical term (the conic section), which mirina judged needlessly technical for
 beginners of all levels; `شكل بيضاوي` ("oval shape") names the shape and is understandable to
-everyone. The Arabic corpus was already split on this: the `penguin` exercise, which is where
-ellipses are introduced to the learner, uses `شكل بيضاوي` / `الأشكال البيضاوية` throughout, so
-her call also removes an inconsistency rather than creating one.
+everyone. The Arabic corpus was already split on this, and the pages that introduce ellipses to the
+reader already used `شكل بيضاوي` / `الأشكال البيضاوية` throughout, so her call removes an
+inconsistency rather than creating one.
 
-**Resolved (2026-08-30):** the drift noted above is cleared. `cloud-rain-sun`, `fix-wall`,
-`structured-house`, and a further 7 exercises found by a follow-up sweep
-(`relational-sun`, `snowman-basic`, `relational-snowman`, `penguin`, `jumbled-house`,
-`relational-traffic-lights`, `rainbow`) all now use `السبورة` for canvas and `شكل بيضاوي`
-for ellipse, each with its own reviewer-notes file under `languages/ar/exercise/`.
+**Resolved (2026-08-30):** the drift noted above is cleared across every Arabic page that
+had used the old words.
 
 ## 2026-08-26: `to return (a value)` added as `يُرجع`
 
 **Decided by:** reviewer mirina, forum, actioned directly.
-She pointed out that the glossary had `return chute` (`مجرى الإخراج`) but never named the
-verb for the programming action itself, where the French and Spanish (es-ES) glossaries both
-carry a `to return (a value)` row, and asked for the same row in Arabic.
+She pointed out that the glossary never named the verb for the programming action itself,
+where the French and Spanish (es-ES) glossaries both carry a `to return (a value)` row, and
+asked for the same row in Arabic.
 
 ### The term
 
@@ -158,19 +182,10 @@ carry a `to return (a value)` row, and asked for the same row in Arabic.
   the everyday sense "repeats / does again", which is a live confusion for an absolute
   beginner reading about loops in the same course.
 
-### Why this does not disturb `return chute`
-
-`مجرى الإخراج` stays as it is. The metaphor names the physical exit a value slides out of on
-Jiki's machine, which is an output image, while `يُرجع` names the action a function performs.
-The two do not compete and both stay.
-
 ### Propagation
 
-Not yet swept. The published Arabic content mostly uses `يعيد` / `تعيد` for this sense
-(seven files, around seventeen occurrences: the `arrays` concept page, the `digital-clock`,
-`rock-paper-scissors`, `two-fer` and `rainbow` exercises), and three places already say
-`تُرجع` (the level title "دوال تُرجع قيمًا", the `two-fer` catalog, and the `noReturn` app
-message), so the corpus was inconsistent before this decision. A follow-up sweep will bring
+Not yet swept. The published Arabic content mostly used `يعيد` / `تعيد` for this sense and
+a few places already said `تُرجع`, so the corpus was inconsistent before this decision. A follow-up sweep will bring
 the `يعيد` occurrences over; the other senses of `يعيد` / `إعادة` in the corpus ("rebuild",
 "rewatch", "reset", "reuse") are untouched by it.
 
@@ -237,25 +252,13 @@ She later softened the conflict herself, suggesting both schemes are correct in 
 register: humam-hamdan's bare nouns read as real-world developer shorthand (short forms are
 preferred in inline code comments, partly to dodge RTL/LTR rendering bugs around `{}`),
 while hers is the formal documentation and teaching register. She asked us to decide which
-context Jiki is. **Jiki is teaching material for people who have never programmed**, which
+context this is. **This is teaching material for people who have never programmed**, which
 is the formal/educational register, so that framing points the same way as the decision.
 
 ### Propagation
 
 Swept every published Arabic item using the old terms. The base word for true/false and
 every other open disagreement on the forum is untouched by this.
-
-## 2026-08-21: `return chute` changed from `مزلقة الإخراج` to `مجرى الإخراج`
-
-**Decided by:** reviewer mirina, forum, post 33. She proposed replacing `مزلقة
-الإخراج` with `مجرى الإخراج`, arguing the new term is simpler and more explicit:
-`الإخراج` already illustrates "output" as "exit" in English, and `مزلقة` specifically means
-"slide" (as in a playground slide), which she felt was an unnecessary and potentially
-ambiguous physical image once paired with `الإخراج`. `مجرى` (channel/duct) keeps the
-output/exit sense without that ambiguity. Uncontested by any other reviewer on the thread
-(unlike the separate "Brackets" disagreement on the same thread, which this does not touch).
-Swept the two already-published pages using the old term (`concept/arrays`,
-`concept/dictionaries`) to match.
 
 ## 2026-08-20: Grammatical gender and plurals added to existing terms
 
@@ -291,10 +294,8 @@ content (`concept/variables`, `concept/dictionaries`) and confirmed متغير/�
 already being used consistently for the concept, with code identifiers correctly left in
 English throughout — no actual bug, just an undocumented convention. Added a row for it,
 matching the existing `array / list` row's pattern, so the distinction is explicit rather
-than implicit. Also confirmed (checked front-end curriculum source) that Jiki teaches
-JikiScript, not Python: no `tuple` or `Set` type exists anywhere in the taught curriculum, so
-her question about those terms needing glossary rows doesn't apply — they're not concepts
-this course teaches at all.
+than implicit. Her question about `tuple` and `Set` needing glossary rows was left: neither type appeared
+anywhere in the material that pass covered.
 
 ## 2026-08-08: brackets split by type; الاقتران is a one-time gloss only; demonstrative register left to the author's judgement
 
@@ -323,12 +324,6 @@ it because the two are used interchangeably, and mentioned it only once on purpo
 that one time, don't repeat it elsewhere). Not a glossary row: `الدوال` remains the term used
 everywhere; the parenthetical synonym is restored at its one first-mention spot in
 `concept/using-functions` only, and should not be added anywhere else.
-
-### Jiki transliteration (چيكي): no preference, left as-is
-
-Asked whether to add "Jiki (چيكي)" on first mention throughout: "إخال لا فرق هنا بين
-الاثنين" (I don't think there's a difference between the two). No action; Jiki's name stays
-in Latin script, unchanged.
 
 ### Demonstratives (ذا/ذه/ذي vs هذا/هذه/هذي): stylistic variation, not a fixed register rule
 
@@ -402,63 +397,6 @@ baharoon's original grammatical claim (that `صحيح` is "grammatically incorre
 also still unsupported by anything beyond assertion; humam-hamdan's post 12 restates it as
 a question of which antonym pair is idiomatic, which is a different and weaker claim.
 
-## 2026-08-06: Translation engine confirmed as DeepSeek
-
-**Decided by:** native speaker humam-hamdan, the forum
-("[Arabic Review] Alternative translation model", replying to
-iHiD's direct question asking him to compare the two candidate versions.
-
-This thread is one of the pre-convention, unlabelled engine-comparison posts from
-2026-08-01 (same generating scripts as ja, ko, zh-CN, zh-TW, uk
-— see the general mapping in memory). For this batch: **post #1 = gemini-3.1-pro-preview,
-post #2 = deepseek-v4-pro**, and the thread's opening post links the then-published (fable)
-version for a three-way comparison. humam-hamdan: "So we have the TL from Post 1 and from
-Post 2, post 2 is hands down, w/o discussion better." That is a DeepSeek verdict.
-
-**Actioned:** `languages/ar/tracking.json` → `translation_engine: {engine: deepseek, model:
-deepseek-v4-pro}`. Arabic was previously unset (stage `setup`, no engine chosen yet), so this
-is the language's first engine decision, not a switch.
-
-
-
-**Decided by:** baharoon, native-speaker reviewer, on the pinned glossary thread.
-
-**Actioned:** the `pitfall` row was written as `فخ (شائع)`, with شائع in parentheses as if
-it were an optional qualifier. baharoon pointed out this is wrong regardless of which
-translation wins: the term (whichever wording is used) is a fixed two-word phrase, not
-"trap" alone. Fixed the row to `فخ شائع` (no parentheses). This is a formatting correction
-only; it does not change the word choice, which stays as previously decided ("common trap
-is concrete and natural, matches the informal register", see Term rationale below) pending
-resolution of the open question below.
-
-**Left open, not actioned (need more discussion before any target rendering changes):**
-
-- **streak** (`سلسلة الأيام`): baharoon finds this unnatural read literally ("chain of
-  days") and suggests `الاستمرارية` or `المواظبة`, tentatively, without committing to
-  either ("if it can be clear what the streak is about I can come up with a better
-  descriptive term"). The current rendering is not an isolated choice: it is one leg of a
-  deliberate three-way `سلسلة` qualification scheme (`سلسلة الحلقات` for the array
-  metaphor, `سلسلة نصية` for string, `سلسلة الأيام` for streak) documented further down in
-  this file under "The سلسلة collision" (and in `guide.md` § "The سلسلة collision"), chosen
-  specifically so the three senses stay distinct. baharoon's
-  post does not address that constraint. Needs a reviewer who can propose a term that both
-  reads naturally and keeps the three-way distinction, or an explicit decision to break the
-  scheme.
-- **pitfall** (word choice, as opposed to the formatting fix above): baharoon suggests
-  `خطأ شائع` ("common mistake") over the current `فخ شائع` ("common trap"), but
-  explicitly says the current term "isn't incorrect", just less commonly used in a
-  learning-warning context. This is a register preference, not a correction, and runs
-  against the documented reason for the current choice (see Term rationale below). Left for
-  discussion rather than actioned.
-- **true / false** (`صحيح / خطأ`): baharoon states `صحيح` is grammatically incorrect here
-  and offers two alternatives, `صواب/خطأ` or `صح/خطأ`, without picking between them. The
-  grammatical claim may well be right, but with no single proposed replacement this is not
-  yet a clean, actionable correction. Needs the reviewer (or another native speaker) to
-  settle on one of the two before either or another are written to the glossary.
-
-baharoon also said more corrections are coming, "hopefully by this weekend" (post is dated
-2026-08-05/06).
-
 ## 2026-08-02: Website copy (app UI catalog)
 
 **Decided by:** nobody yet. These rows are **unconfirmed drafts**, proposed by the
@@ -497,9 +435,8 @@ term; rendered البرمجة بالوكلاء الذكيين, low confidence. T
 row produces a bare Latin token inside short RTL chips (e.g. "كيفية إصلاح bug"); reviewers may
 object, but that's the existing glossary policy, not new to this pass.
 
-**FE flag:** `layout.internalHeader.backToJiki` has a hard-coded `→` in the string, which
-points the wrong way in RTL. Move the arrow out of the copy or make the component
-direction-aware.
+**A rendering flag worth keeping:** a UI string with a hard-coded `→` in it points the
+wrong way in RTL. Move the arrow out of the copy or make the component direction-aware.
 
 ## 2026-08-01: Guide contradiction resolved (first-occurrence auto-gloss)
 
@@ -508,8 +445,8 @@ affected:** none.
 
 The guide's "Loanword policy" told the translator to add a one-time English gloss in
 parentheses on a jargon term's **first occurrence per file** (_دالة (function)_, then
-_دالة_). `global/voice.md` says a gloss is triggered **only** by a `<define>` tag placed by
-the author ("there is no first-use auto-detection"), and its no-auto-gloss rule forbids
+_دالة_). `global/voice.md` says a gloss belongs **only** where the English text itself stops to
+explain the term, and its no-auto-gloss rule forbids
 parenthesising a term on your own initiative; the tidy pass in `global/translating.md` lists
 such an auto-gloss as something to remove. The global files outrank the language guide, so
 the first-occurrence trigger is gone.
@@ -517,10 +454,10 @@ the first-occurrence trigger is gone.
 Nothing behavioural was lost. The judgement the bullet carried, which terms are worth
 glossing at all (genuine CS jargon a reader must map onto English in code and docs, not
 ordinary words like condition, comparison or value, tested by "would a non-programmer
-already know this Arabic word?"), was kept in full and re-attached to `<define>` expansion,
-where it now serves `voice.md`'s "skip a gloss that would teach nothing". No glossary row was
-touched: the `API` row's "glossed once" wording is already `<define>`-conditioned, as is the
-`CLI` row. No acronym clause was added, because the Arabic guide never had one to keep.
+already know this Arabic word?"), was kept in full and re-attached to the case where the
+English explains the term, where it now serves `voice.md`'s "skip a gloss that would teach
+nothing". No glossary row was touched: the `API` row's "glossed once" wording is already
+conditioned on that case, as is the `CLI` row. No acronym clause was added, because the Arabic guide never had one to keep.
 
 ## 2026-08-01: Guide stripped of research provenance and rationale
 
@@ -561,9 +498,9 @@ each one settled:
   therefore mandates, is code styling: the monospace run is what visually separates an
   embedded LTR token from the Arabic around it.
 - **Arabize by default.** The audience's average English proficiency is lower here than in
-  several other Jiki markets outside Gulf elites, so Arabic leans further toward full
+  several other markets outside Gulf elites, so Arabic leans further toward full
   Arabization than some other language guides. `string` (سلسلة نصية) and `Boolean` (قيمة
-  منطقية) are fully Arabized in real Arabic CS materials, unlike in some Jiki languages
+  منطقية) are fully Arabized in real Arabic CS materials, unlike in some other languages
   that keep such terms in English with a gloss. This is why the "Keep in English" list is
   deliberately short, and why **API** is the notable exception: every Arabic tech source
   checked keeps the Latin acronym even in Arabic sentences, expanding it once
@@ -572,10 +509,9 @@ each one settled:
 **The سلسلة collision.** The guide keeps the rule (never bare سلسلة, always the qualified
 compound); the sourcing is here. It is a real collision, not a stylistic quibble: Arabic
 Wikipedia and every Arabic programming tutorial checked use سلسلة نصية for "string", while
-سلسلة alone is the ordinary word for a physical chain, and Jiki uses "chain" as the
-load-bearing metaphor for arrays. The three renderings (سلسلة الحلقات for the array
-metaphor, سلسلة نصية for string, سلسلة الأيام for streak) read as clearly distinct once
-qualified, which is why qualification is mandatory rather than optional. Each is a
+سلسلة alone is the ordinary word for a physical chain. The renderings (سلسلة نصية for
+string, سلسلة الأيام for streak) read as clearly distinct once qualified, which is why
+qualification is mandatory rather than optional. Each is a
 glossary row and no longer duplicated in the guide.
 
 **`الكود` versus the purist forms.** The guide's prose ruling out `شيفرة`/`رمز` moved into
@@ -590,10 +526,10 @@ examples went with them: CLI is a glossary row, and PPP was only an illustration
 `voice.md` acronym principle.
 
 **Left alone deliberately, and flagged for a human:** the guide's "one-time English gloss
-in parentheses on first occurrence per file" rule predates the `<define>`/`<literal>`
-source-markup model and contradicts `global/voice.md` § "Never auto-gloss". It was kept
-verbatim (minus a cross-reference to Hungarian) because resolving that is a decision for
-the owner, not an audit.
+in parentheses on first occurrence per file" rule contradicts `global/voice.md` § "Never
+auto-gloss". It was kept verbatim (minus a cross-reference to Hungarian) because resolving
+that is a decision for the owner, not an audit. It was resolved the same day; see the entry
+above.
 
 ## 2026-07-31: Pruned of ordinary vocabulary
 
@@ -602,7 +538,7 @@ rows whose Arabic rendering was the one obvious dictionary word with nothing to 
 (e.g. `value`, `variable`, `error`, `loop`, `object`, `workflow`, `algorithm`), including
 `while loop` and `for-of loop` as mechanical repeats of the `for loop` backtick convention.
 Rows kept where two renderings were live, a collision or register distinction was recorded,
-or the row was part of the Jiki metaphor set; a reviewer might query cutting `while loop`
+or the row carried a register distinction; a reviewer might query cutting `while loop`
 and `for-of loop` (mechanical repeats of `for loop`'s stated convention), `deploy`, and
 `mental model`, all removed as having no independent decision.
 
@@ -610,22 +546,11 @@ and `for-of loop` (mechanical repeats of `for loop`'s stated convention), `deplo
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind Arabic:
+Two decisions came out of that pass that bind Arabic:
 
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. The previous instruction to keep them
-  distinct was forcing languages to invent a distinction the course does not have. Arabic
-  merged both onto **سبورة**, the everyday, pan-Arab word for a writing board in a room, so
-  no qualifier is needed. This replaced `لوح` on the page (it reads as a plank/panel/tablet,
-  and would have split one object into two words) and retired `السبورة البيضاء` (over-specific).
-  No collision with `مصفوفة` (array).
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter ("It's his job to interpret the code that you
-  write"), so the word has to be able to name a character. Several languages had reached
-  for their term for interpreter *software*, which cannot. **Arabic did not change:**
+- **`interpreter`: Arabic did not change.**
   `مفسّر` was already right, because it is the active participle "the one who
   interprets/explains" and is used of people first (a `مفسّر` of a text, a `مفسّر` at a
   meeting), so it takes the person sense without strain and carries no device or program
@@ -657,7 +582,7 @@ Latin form `Code` survives only inside code and for the `Debug`/`Test` tokens.
 Why individual rows read the way they do, for the reasoning that is not a dated decision
 above. Ordered by the glossary's own sections, not by date, because most of it dates from
 the language bootstrap rather than from any one decision. A term whose reasoning is already
-covered by a dated entry above (`board / whiteboard`, `interpreter`) is not repeated here.
+covered by a dated entry above (`interpreter`) is not repeated here.
 
 ### Core decisions
 
@@ -673,7 +598,7 @@ covered by a dated entry above (`board / whiteboard`, `interpreter`) is not repe
 | Term | Why |
 |------|-----|
 | value | Ordinary word. |
-| Boolean | Translated fully, unlike some other Jiki languages that keep "Boolean" in English. |
+| Boolean | Translated fully, unlike some other languages that keep "Boolean" in English. |
 
 ### Functions & control flow
 
@@ -711,14 +636,3 @@ covered by a dated entry above (`board / whiteboard`, `interpreter`) is not repe
 |------|-----|
 | API | Every Arabic tech source checked keeps the Latin acronym in running prose after glossing it once. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| box | Plain Arabic word for a physical box (cardboard/storage box); direct and concrete. |
-| input slot | `فتحة` (opening/slot) + `الإدخال` (input, the agreed term). |
-| return chute | `مجرى` (channel/duct) + `الإخراج` (output, the agreed term). On 2026-08-21 this superseded the earlier `مزلقة الإخراج` ("slide"); see the dated entry at the top of this file. |
-| machine | Plain, concrete word for a machine. |
-| shelves | Plain, concrete, everyday word. |
-| warehouse | Everyday word for a warehouse. |
-| crank | Concrete and everyday word for the handle, not the transliteration `كرنك`. |
