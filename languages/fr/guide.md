@@ -17,9 +17,9 @@ default to the form used in France.
   impersonal/collective **"on"** ("on va voir...", "on utilise...") for framing sentences,
   rather than addressing the reader with "tu" in every single sentence. Reserve direct
   "tu" for imperatives, encouragement, and moments that are genuinely about the reader.
-- **"Tu" is the reader, never the character.** When the English describes the character's
-  own orientation or actions, keep it on the character ("si Jiki regarde vers la droite"),
-  not on the reader ("si tu regardes vers la droite").
+- **"Tu" is the reader, and nobody else.** When the English describes some other actor's
+  own orientation or actions, keep it on that actor ("si le personnage regarde vers la
+  droite"), not on the reader ("si tu regardes vers la droite").
 - Encouraging imperatives and framing:
   - "On va voir..." / "Voyons..." (Let's look at...)
   - "Essaie" / "Essaie de..." (Try it out)
@@ -83,10 +83,8 @@ These recur in translated-from-English French and are worth actively checking fo
 - "librairie" (a code library) → **bibliothèque**
 - "définitivement" (meaning "definitely") → **assurément**, **tout à fait**, **vraiment**
 - "résoudre / traverser un labyrinthe" (to solve/traverse a maze) → **sortir du
-  labyrinthe**, **explorer le labyrinthe** (French doesn't "solve" a maze). The preferred
-  concrete phrasing is **"faire sortir le personnage du labyrinthe"**, naming the
-  character as the one exiting rather than treating the maze itself as an object being
-  solved.
+  labyrinthe**, **explorer le labyrinthe**. French doesn't "solve" a maze, so name what the
+  walker does rather than treating the maze as an object being solved.
 - Note: "réaliser" meaning "to realize/understand" is accepted modern usage, not an
   anglicism to flag.
 
@@ -112,17 +110,17 @@ consistently:
   "3.14". This does not apply inside code blocks.
 - **Non-breaking space before `%` and units**: "25 %", "10 €".
 - **English words dropped into French prose are set in italics** (e.g. "une boucle
-  _repeat_", "une _string_"), the ordinary French convention for a foreign word used
-  unglossed. This is a different case from **the literal Jiki keyword/function name
-  referenced as code**, which stays in code font per the glossary's own entries (e.g. "le
-  mot-clé `repeat`", the keyword `if`): backticks mark it as syntax, not prose. Picking
-  between the two is about what the word is doing in the sentence, not which word it is —
-  the same word ("repeat") takes backticks when the sentence is talking about the code
-  construct, and italics when it is just being used as an English loanword in a French
-  sentence (e.g. "une boucle _repeat_" describing the general pattern, vs "le mot-clé
-  `repeat`" pointing at the actual keyword). Flagged as an inconsistency by native-speaker
-  review (resu-xunil, t/1621, t/1622, 2026-08-15); apply this rule going forward and fix
-  drift as it's found rather than doing a dedicated sweep.
+  _while_", "une _string_"), the ordinary French convention for a foreign word used
+  unglossed. This is a different case from **a literal keyword or function name referenced
+  as code**, which stays in code font per the glossary's own entries (e.g. "le mot-clé
+  `while`", the keyword `if`): backticks mark it as syntax, not prose. Picking between the
+  two is about what the word is doing in the sentence, not which word it is. The same word
+  takes backticks when the sentence is talking about the code construct, and italics when it
+  is just being used as an English loanword in a French sentence ("une boucle _while_"
+  describing the general pattern, against "le mot-clé `while`" pointing at the actual
+  keyword). Flagged as an inconsistency by native-speaker review (resu-xunil, 2026-08-15);
+  apply this rule going forward and fix drift as it is found rather than doing a dedicated
+  sweep.
 
 ## Style notes
 
@@ -135,40 +133,27 @@ consistently:
   #".
 - **Rhetorical asides** ("So what does this look like?") → keep them as natural French
   rhetorical questions: "Alors, à quoi ça ressemble ?"
-- **"Jiki" stays invariant.** As a proper/character name it does not inflect; use "Jiki"
-  the same way in every grammatical position ("le personnage de Jiki", "Jiki t'explique
-  que...").
-- **Exercise catalog `tasks`/`scenarios` names take the imperative, second person
-  singular**, matching the already-approved catalogs (rainbow "Dessine l'arc-en-ciel",
-  rock-paper-scissors "Détermine le gagnant", maze-solve-basic "Guide le personnage...").
-  Never the infinitive ("Créer...", "Résoudre..."). This applies to verb-phrase names only;
-  a name that is a noun phrase in English (e.g. "Occurrences multiples") stays a noun
-  phrase in French and is unaffected. Task/scenario *descriptions* were already consistently
-  imperative before this rule was written down; only the `name` fields had drifted.
-- **Gerund-style `###` headings in exercise instructions take the imperative**, matching the
-  same pattern as catalog names above: English "Drawing a fox face" or "Putting into
-  practice what you've learned" become "Dessine une tête de renard" / "Mets en pratique ce
-  que tu as appris", never the infinitive ("Dessiner...", "Mettre...").
-- **Exercise `title` (frontmatter) takes the imperative when the English title is a verb
-  phrase**, same convention as above: "Fix the Wall" → "Répare le mur", "Turn Around" →
-  "Fais demi-tour", never the infinitive ("Faire demi-tour"). A title that is a noun
-  phrase in English (e.g. "Snowman", "Digital Clock") stays a noun phrase in French and is
-  unaffected.
+- **An English verb phrase used as a name takes the imperative, second person singular.**
+  This covers exercise titles, the `###` headings inside instructions, and any other short
+  label built on a verb: "Turn Around" → "Fais demi-tour", "Drawing a fox face" → "Dessine
+  une tête de renard", "Putting into practice what you've learned" → "Mets en pratique ce
+  que tu as appris". Never the infinitive ("Faire demi-tour", "Dessiner...", "Mettre...").
+  A name that is a noun phrase in English ("Snowman", "Digital Clock", "Occurrences
+  multiples") stays a noun phrase in French and is unaffected.
 - **The dev term _en dur_ (hardcoded) is always wrapped in guillemets**: « en dur », never
   bare. On its first use in a file, gloss it briefly where there is room (e.g. "utiliser une
   valeur fixe au lieu d'une variable que l'on peut modifier à tout moment").
 - **Capitalise the coordinate letters X, Y and Z in prose parentheticals**: "(position X du
   soleil)", "(Y du rouge)", "(X du boîtier)". Code identifiers keep their own casing
   (`sunX`, `sunY`) and are never changed.
-- **"We expected..." in check messages is _On s'attendait à ce que..._**, never _On
+- **"We expected..." in a test-failure message is _On s'attendait à ce que..._**, never _On
   attendait que..._ (which means waiting for something to happen, not expecting it) and
-  never _Nous nous attendions à ce que..._ (the course's collective voice is the impersonal
-  _on_).
-- **A letter/tile state named in prose takes the plain French adjective, agreed**, not the
-  untranslated code literal in guillemets: "la première rangée donne entièrement `absent`",
-  "des lettres présentes", "ses deux premières lettres correctes", never "en correct" or
-  "« present »". The code-formatted literal is kept only where the sentence points at the
-  value the code returns, per the backticks-vs-italics rule above.
+  never _Nous nous attendions à ce que..._ (the collective voice is the impersonal _on_).
+- **A state named in prose takes the plain French adjective, agreed**, not the untranslated
+  code literal in guillemets: "des lettres présentes", "ses deux premières lettres
+  correctes", never "en correct" or "« present »". The code-formatted literal is kept only
+  where the sentence points at the value the code returns, per the backticks-vs-italics rule
+  above.
 - **Gloss a color code-literal value in parentheses on its first mention in a file**:
   `"yellow"` (jaune), `"red"` (rouge), `"skyblue"` (bleu ciel). Gloss straight after the
   code-formatted value, no comma before the parenthesis. Only needed once per file, on the
