@@ -230,6 +230,16 @@ decision about the language itself. Hungarian's Exercism product terms are propo
 awaiting a native speaker; every other language's `PROPOSED, NOT YET AGREED` block is empty
 until one is bootstrapped for Exercism.
 
+**Taking a locale live is three changes in three repos, in this order.** (1) `exercism/i18n`
+`locales.json`: the locale joins `targets` when its content starts landing and
+`productionTargets` once every source is held, which turns the checker and the completeness
+gate on for it. (2) `exercism/website` `config/application.rb` `available_locales` (plus a
+name in `Locale::Name::NAMES`), deployed. (3) `exercism/terraform`
+`terraform/cloudflare/workers/locale-redirect.js` `SERVED_LOCALES`, applied: the Cloudflare
+Worker that redirects a first-time visitor to their language at the edge. The Worker is always
+last, because it must never send anyone to a prefix the site does not serve. Nothing in this
+repo does any of the three; a pass only fills `locales/<locale>/`.
+
 ## Open, and not to be decided by accident
 
 Each is marked `TODO(iHiD)` where it bites: whether contributor-facing `building/` docs and
