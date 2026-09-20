@@ -13,7 +13,7 @@ dropping politeness.
 - **Never である体 (plain-formal) or だ体 (plain-casual)**, and never drop to plain form for
   whole sentences. Keep the です・ます sentence endings consistent start to finish.
 - **Invitational 〜ましょう** for shared steps we take together with the reader. This is the
-  natural match for Jiki's "Let's look at...": 「見てみましょう」「始めましょう」「書いて
+  natural match for "Let's look at...": 「見てみましょう」「始めましょう」「書いて
   みましょう」.
 - **〜てみましょう / 〜てみてください** for "try it": 「実行してみましょう」「試してみて
   ください」.
@@ -27,8 +27,8 @@ dropping politeness.
 
 **Do not address the reader as あなた.** Japanese avoids an explicit "you"; the reader is
 addressed implicitly. "You can create a variable" is 「変数を作ることができます」, never
-「あなたは変数を作ることができます」. Refer to the character **Jiki by name, with no
-honorific** (no Jikiさん).
+「あなたは変数を作ることができます」. Refer to a person named in the text **by name, with no
+honorific**.
 
 **The one exception: 私 for the author's own voice.** Where the English source has the author
 genuinely speaking about himself ("When I learnt to code 34 years ago", "In my head, there's
@@ -47,8 +47,8 @@ Japanese-specific mechanical rules that are easy to get wrong from outside the l
   こと、もの、とき、ため、ように、～ています.
 - **Spacing.** Japanese has no spaces between words, and **by default no space belongs
   anywhere in Japanese prose**, including where Latin script, numerals or code sit inside it:
-  write 「Jikiは、プログラミングの旅を案内してくれる友達です」「棚の上に3つの機械が置いて
-  あります」, not 「Jiki は…」or 「3 つの機械」. Follow this consistently, including in
+  write 「Exercismは、プログラミングの旅を案内してくれるサイトです」「棚の上に3つの機械が置いて
+  あります」, not 「Exercism は…」or 「3 つの機械」. Follow this consistently, including in
   the glossary. Four things qualify it:
   - **Wrap every inline code or API term in a Markdown code span** (`` `move` ``,
     `` `turnLeft` ``, `` `if` ``, `` `()` ``) and write **no space around it**:
@@ -68,7 +68,7 @@ Japanese-specific mechanical rules that are easy to get wrong from outside the l
   コンピューター、フォルダー. Do not apply the older JIS "drop the final ー" rule.
 - **Punctuation.** Full-width 。 and 、. `！` is fine for encouragement. `？` is optional
   (the particle か already marks a question); use it sparingly for a light tone. Use
-  full-width parentheses **（）** for the `<define>` English gloss and for asides. Use the
+  full-width parentheses **（）** for an English gloss and for asides. Use the
   middle dot **・** for compound loanwords and inline lists (キーと値のペア、A・B・C). When
   ？ or ！ ends a sentence mid-paragraph, follow it with a **full-width** space 　, never a
   half-width one: 「では、条件はどんなふうに書くのでしょうか？　たいていは…」.
@@ -96,7 +96,7 @@ sentence-final predicate carries the point, so do not bury it or trail off.
 - **が introduces something new** into the discourse: 「`move`という機械があります」
   (there is a machine called `move`; it is new information).
 - **は marks the topic** already in play, and also carries **contrast**: 「`move`の機械は、
-  Jikiを歩かせます」(as for the move machine, ... ); 「でも、これは少し違います」(this
+  一歩進ませます」(as for the move machine, ... ); 「でも、これは少し違います」(this
   one, by contrast, is different).
 
 When you translate a sentence, ask: **is this thing new, or already being talked about?**
@@ -155,8 +155,8 @@ New takes が; known/contrastive takes は.
 Concrete Japanese for the principles in `global/voice.md`.
 
 **Titles and headlines:**
-- Avoid: 「ついにJikiが誕生！」(too dramatic) → Prefer: 「Jikiのご紹介」/「Jikiを
-  始めよう」
+- Avoid: 「ついにExercismが誕生！」(too dramatic) → Prefer: 「Exercismのご紹介」/
+  「Exercismを始めよう」
 - Avoid: 「プログラミングを学ぶ新しい方法」(stiff, literal) → Prefer: 「プログラミング
   学習の新しいかたち」
 - Use sentence flow, not English title-case calques.

@@ -12,7 +12,7 @@ Readers are in Russia and in Russian-speaking communities elsewhere.
   "sir/madam" formality would, so it is what realizes the "modern, informal address"
   principle of `global/voice.md` here.
 - **Never use "ты" (ty)** for sustained address.
-- **Get the Jiki warmth from three levers instead of from ты** (this is the important bit):
+- **Get the warmth from three levers instead of from ты** (this is the important bit):
   - **Inclusive "давайте" + a perfective verb** for anything framed as a shared activity:
     "Давайте посмотрим", "Давайте попробуем", "Давайте начнём" (Let's look/try/begin). This
     reads exactly as warm as an English "Let's..." opener and pairs naturally with вы.
@@ -67,8 +67,8 @@ Russian-specific rules that are easy to get wrong when translating from English:
   - **Open with a rhetorical question**, which also suits the warm, spoken-voice register:
     "Что такое функция? Это блок кода, который..." (the "это" here answers a question
     rather than filling a subject-predicate dash slot, so no dash is required).
-  - **Recast as a comparison** when the English defines by likeness, which the Jiki
-    metaphors do constantly: "Functions are like little machines..." → "Функции похожи на
+  - **Recast as a comparison** when the English defines by likeness, which teaching prose
+    does constantly: "Functions are like little machines..." → "Функции похожи на
     маленькие автоматы...". The plural plus "похожи на" removes the copula slot entirely.
     This is usually the most natural of the three on concept pages.
   - Reach for these patterns by default whenever the English source defines something with
@@ -85,6 +85,6 @@ Russian-specific rules that are easy to get wrong when translating from English:
   first word and proper nouns), never English-style title case.
 - **Rhetorical asides** ("So what does this look like in code?") → keep them as natural
   Russian rhetorical questions: "А как это выглядит в коде?"
-- **The Jiki name.** Keep "Jiki" in Latin script and treat it as indeclinable: use a
-  preposition to carry the grammatical role instead of a case suffix ("у Jiki", "с Jiki"),
-  never an invented Cyrillic-style ending.
+- **Latin-script product names.** Keep them in Latin script and treat them as
+  indeclinable: use a preposition to carry the grammatical role instead of a case suffix
+  ("на Exercism", "с Exercism"), never an invented Cyrillic-style ending.

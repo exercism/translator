@@ -67,10 +67,9 @@ Finnish passive implies a **human** agent. ”Arvo tulostetaan ruudulle” tells
 automatic derivation or name the actor:
 
 - ”arvo **tulostuu** ruudulle” (the value gets printed), not ”arvo tulostetaan ruudulle”.
-- ”`repeat` **suorittaa** lohkon viisi kertaa”, ”Jiki **lukee** taululta seuraavan ohjeen”.
+- ”`while` **suorittaa** lohkon viisi kertaa”, ”ohjelma **lukee** seuraavan rivin”.
 
-Jiki is a character who does things, so name him: ”Jiki suorittaa koodin” beats ”koodi
-suoritetaan” every time.
+Name the thing that acts: ”ohjelma suorittaa koodin” beats ”koodi suoritetaan” every time.
 
 ## Information structure and natural rhythm
 
@@ -136,17 +135,17 @@ start where a Finnish writer would have started it?" If not, reorder.
   - ”kun haluat kutsua funktiota, kirjoita sen nimi ja sen perään sulkeet (`()`).”
 - **Rhetorical asides** ("So what do these conditions look like?") stay natural Finnish
   questions: ”Miltä nämä ehdot sitten näyttävät?”
-- **Jiki-name inflection:** `Jiki`, genitive **`Jikin`**, partitive `Jikiä`, allative
-  `Jikille`, adessive `Jikillä`, illative `Jikiin`. Jiki is a front/neutral-vowel word, so
-  it takes front endings (`-llä`, `-ssä`, `-ä`). **No consonant gradation**: a native
-  Finnish `-ki` noun would gradate (mäki → mäen), but foreign and modern proper names are
-  exempt, exactly as `Niki → Nikin`. `*Jien` must never appear. `pikku-Jiki` inflects on
-  the second part only: `pikku-Jikin`, `pikku-Jikille`.
+- **Inflecting a Latin-script proper name.** A foreign name takes ordinary Finnish endings,
+  picked by its vowels: a front/neutral-vowel name takes front endings (`-llä`, `-ssä`,
+  `-ä`). **No consonant gradation**: a native Finnish `-ki` noun would gradate (mäki → mäen),
+  but foreign and modern proper names are exempt, exactly as `Niki → Nikin`. A hyphenated
+  compound inflects on the second part only.
 
 ## Worked examples
 
 **Titles and headlines** (sentence case, natural order, no drama):
-- Avoid: "Jiki on syntynyt" (melodramatic) → Prefer: "Jiki on täällä" / "Julkaisimme Jikin"
+- Avoid: "Exercism on syntynyt" (melodramatic) → Prefer: "Exercism on täällä" /
+  "Julkaisimme Exercismin"
 - Avoid: "Uusi tapa oppia koodaamaan" is fine; avoid the calqued "Uusi tie kohti koodausta"
 - Avoid: "käytännön harjoitustehtäviä" (redundant) → Prefer: "käytännön harjoituksia"
 

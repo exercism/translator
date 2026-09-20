@@ -37,7 +37,7 @@ Rules that hold across every Portuguese locale:
   strip accents to simplify.
 - **Rhetorical questions** (e.g. "So what does a loop do?") → keep them as natural
   rhetorical questions in the target register; do not flatten them into statements.
-- **Jiki name and definite articles.** "Jiki" is invariable in Portuguese (no inflection
-  needed). Portuguese also uses the definite article with proper names more freely than
-  English; use it with "Jiki" in mid-sentence where it reads naturally ("o Jiki aparece"),
-  and drop the article in titles and direct address.
+- **Latin-script product names and definite articles.** A name such as "Exercism" is
+  invariable in Portuguese (no inflection needed). Portuguese also uses the definite article
+  with proper names more freely than English; use it mid-sentence where it reads naturally
+  ("o Exercism apareceu"), and drop the article in titles and direct address.

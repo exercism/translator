@@ -5,8 +5,8 @@ typography.
 
 ## Script
 
-Serbian is digraphic (Cyrillic and Latin are both official). **Write all Jiki Serbian
-content in Latin script**, in prose, headings and UI strings alike. Code is Latin/ASCII
+Serbian is digraphic (Cyrillic and Latin are both official). **Write all Serbian content
+in Latin script**, in prose, headings and UI strings alike. Code is Latin/ASCII
 regardless, so Latin prose sits with it without a script clash.
 
 **Diacritics are mandatory, always.** č, ć, š, đ, ž must appear correctly in every word
@@ -50,7 +50,7 @@ headings or short UI strings.
   past tense is built with a gendered participle, so "when you wrote `move`" forces a choice
   between "napisao si" (male reader) and "napisala si" (female reader), and either one
   addresses half the audience wrongly. Rewrite the clause in the present, which is
-  genderless: "Kada napišeš `move`, a zatim te dve zagrade, time govoriš Jikiju da...",
+  genderless: "Kada napišeš `move`, a zatim te dve zagrade, time pozivaš funkciju...",
   not "Kada si napisao `move`...". Apply the same recast to first-person narration and to
   any "we did / we saw" recap. Where the past really is unavoidable (a genuinely past
   event, e.g. "kada sam učio da programiram"), use it; the author of the concept pages is
@@ -79,13 +79,9 @@ headings or short UI strings.
   normal jobs (compound words, and the case-suffix attachment above).
 - **Rhetorical asides** ("So what does this look like in code?") → keep them as natural
   Serbian rhetorical questions: „Pa kako ovo izgleda u kodu?“
-- **Jiki: character vs product name.** When "Jiki" refers to the friendly guide
-  character in narrative prose ("Jiki will help you", "tell Jiki to...", "your
-  interpreter is Jiki", "Jiki's warehouse"), transliterate it as „Džiki“ and decline it
-  with standard endings where grammar requires: „Džikija“ (genitive), „Džikiju“
-  (dative). This is how the name is actually pronounced and written in Serbian; keeping
-  the Latin "J" spelling there reads as "Yikee", not "Jiki". When "Jiki" instead names
-  the product, course, or brand (the site name, the course title, marketing copy, a
-  subject line naming the platform), keep the Latin spelling "Jiki" unchanged. The same
-  split applies to "Jeremy" when he appears as a person/narrator in first person, prose:
-  „Džeremi“, declined normally.
+- **A person's name in narrative prose is transliterated; a product name is not.** Where a
+  person appears as a person or a narrator in running prose, transliterate the name so it is
+  pronounced correctly in Serbian and decline it with standard endings where grammar
+  requires it ("Jeremy" is „Džeremi“, genitive „Džeremija“): keeping an English spelling
+  there makes a Serbian reader sound out the wrong name. Where the name instead names the
+  product or the site, keep the Latin spelling unchanged.

@@ -94,6 +94,6 @@ Romanian-specific rules that English speakers (and machine translation) get wron
   - „ca să apelezi o funcție, îi scrii numele și apoi cele două paranteze (`()`).”
 - **Rhetorical asides** ("So what do these conditions look like?") stay as natural
   Romanian rhetorical questions: „Și cum arată aceste condiții?”
-- **Jiki-name inflection:** „Jiki” does not take Romanian endings. Use the prepositive
-  „lui” for the genitive and dative („atelierul **lui** Jiki”, „îi spui **lui** Jiki”) and
-  „pe Jiki” for the direct object. Flag any form that reads awkwardly.
+- **Latin-script proper names** do not take Romanian endings. Use the prepositive „lui” for
+  the genitive and dative of a personal name, and „pe” for the direct object. Flag any form
+  that reads awkwardly.

@@ -150,8 +150,8 @@ _con la larghezza e l'altezza indicate_ where the English itself describes rathe
   (a button, a panel, a section heading) is a label being pointed at, not a quotation:
   _troverai una sezione "Funzioni"_, _premi "Esegui il codice"_. Reserve « » for quoted
   speech and quoted material.
-- **Jiki-name handling:** "Jiki" does not inflect; use it as an invariant proper noun
-  ("Jiki ti aiuterà", "il consiglio di Jiki"), with a preposition supplying the case
+- **Latin-script product names** do not inflect; use them as invariant proper nouns
+  ("Exercism ti aiuterà", "il consiglio di Exercism"), with a preposition supplying the case
   relationship rather than a suffix.
 - **Avoid stacking "puoi" and "poi" adjacent to each other** ("puoi poi" / "poi puoi"):
   the word-order combination reads as a tongue-twister regardless of which comes first.

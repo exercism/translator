@@ -53,9 +53,9 @@ Indonesian-specific rules that English speakers get wrong:
 - **"We" is two different words: use inclusive "kita" by default.** Indonesian splits
   English "we" by whether the person being addressed is included.
   - **"Kita"** includes the reader. This is the normal case in this course, where "we" means
-    the learner and Jiki working through something together: "Semua hal ini akan kita bahas"
+    the reader and the writer working through something together: "Semua hal ini akan kita bahas"
     (we'll cover all of this), "Mari kita mulai" (let's begin).
-  - **"Kami"** excludes the reader: Jiki (or the course authors) and someone else, doing
+  - **"Kami"** excludes the reader: the authors and someone else, doing
     something the learner is not part of. Use it for things done *for* the learner, not
     *with* them: "tiga instruksi pertama sudah kami tuliskan" (we've already written the
     first three instructions for you).

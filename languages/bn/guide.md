@@ -107,32 +107,30 @@ of word you have first, then apply its default.
   translate with the glossary's existing choice and flag the term in the pass report rather
   than switching it silently.
 - **Acronyms (API, CLI, HTML, ...) and product/language names (JavaScript, Python, React)
-  stay in Latin script**, exactly as in English, even inside Bangla prose. Where the source
-  `<define>`s one, explain the concept in Bangla per the "Keep in English" table in
+  stay in Latin script**, exactly as in English, even inside Bangla prose. Where the English
+  itself explains one, explain the concept in Bangla per the "Keep in English" table in
   `glossary.md`; do not assume the acronym is self-explanatory to a beginner.
 
-### Glossing a `<define>`
+### Glossing a term the English explains
 
-`global/voice.md` defines when a term is introduced (only where the source places a
-`<define>`). What that produces in Bangla depends on the rendering, and the rule is
+`global/voice.md` defines when a term is introduced (only where the English itself stops to
+explain it). What that produces in Bangla depends on the rendering, and the rule is
 mechanical:
 
 - **Transliterated loanword: no gloss at all.** ইন্টারপ্রেটার, এরর, ফাংশন, স্ট্রিং and the
   rest are phonetic Bengali-script renderings of the English word, so a bracketed
   "(function)" after ফাংশন teaches nothing. Drop the tag and leave the prose alone. This is
-  the common case, and a page whose every `<define>` is a loanword correctly ends up with no
+  the common case, and a page whose every explained term is a loanword correctly ends up with no
   glosses anywhere; that is not an omission, and it does not need re-deciding page by page.
 - **Native or Sanskrit-derived word: give the gloss, once, where the tag is.** Format: the
   Bangla term, then the English in italics inside brackets after the marker word ইংরেজিতে
   ("in English"), e.g. শর্ত (ইংরেজিতে _condition_), ধারাবাহিকতা (ইংরেজিতে _streak_). The
   glossary's Notes column says which terms these are.
-- **A `<define>` on an acronym or product name** follows the "Keep in English" table in
+- **An explained acronym or product name** follows the "Keep in English" table in
   `glossary.md`: explain the concept in Bangla where that table gives an explanation
   (notably API), never merely re-spell the acronym.
-- A `<define en="...">` is prescriptive per `global/voice.md`: honour its exact English text
-  verbatim inside the brackets, still after ইংরেজিতে.
-- **A run of `<define>` tags spelling out an acronym: English first, then one combined
-  gloss.** Where consecutive `<define>` tags expand the letters of an acronym (RGB, HSL,
+- **An acronym spelled out letter by letter: English first, then one combined gloss.**
+  Where the English expands the letters of an acronym (RGB, HSL,
   ...), do not gloss them one at a time. Write the expansion in English, capitalised and
   comma-separated as in the source, then a single Bangla gloss for the whole set in
   brackets after অর্থাৎ. Attach the case ending to the acronym with a hyphen. So:
@@ -169,8 +167,6 @@ mechanical:
 Concrete Bangla for the principles in `global/voice.md`.
 
 **Titles and headlines** (natural word order, no drama, no redundancy):
-- Avoid an overly dramatic label like "জিকির জন্ম" (Jiki's "birth", too dramatic) → prefer
-  "জিকি এখন এখানে" / "পরিচয় করিয়ে দিচ্ছি জিকিকে" (Introducing Jiki)
 - Avoid a stiff calque of "A new way to learn to code" → prefer "কোড শেখার নতুন একটি পথ"
   (natural Bangla word order, SOV)
 

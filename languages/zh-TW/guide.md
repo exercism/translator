@@ -36,8 +36,8 @@ Concrete Taiwan Traditional Chinese for the principles in `global/voice.md`.
 - "Let's begin" → 我們開始吧
 - "You did it!" → 你做到了！很棒喔！
 
-**Introducing a term** (the `<define>` shapes from `global/voice.md`, realized with the
-family's 英文： marker from `../zh/guide.md` § Term clarification). Follow these rather than
+**Introducing a term** (where the English itself explains it, per `global/voice.md`,
+realized with the family's 英文： marker from `../zh/guide.md`). Follow these rather than
 re-deciding per page:
 - A prose term: 函式（英文：_functions_）. The Chinese is primary, the English goes once in
   full-width parentheses after 英文：, in italics.

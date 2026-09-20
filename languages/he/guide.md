@@ -14,9 +14,9 @@ grammar, and worked examples. Term choices are in `glossary.md` and are binding.
 - **There is no capitalization in Hebrew, and no italics.** Where English uses italics or
   title case for emphasis or for a title, Hebrew uses **double quotation marks** (`"…"`) or
   **bold**. So `*italic*` in an English source does not survive into Hebrew as italics:
-  convert it to quotes or bold. The one exception is a Latin-script English word inside a
-  `<define>` gloss, which stays italic because it is Latin script, not Hebrew. See "Term
-  clarification" below.
+  convert it to quotes or bold. The one exception is a Latin-script English word given where
+  the English itself explains a term, which stays italic because it is Latin script, not
+  Hebrew.
 - **Never put quotation marks around text the learner has to type.** They will type the
   quotes. This matters most for sentinel values and exact expected output, which
   `global/rules.md` already requires you to reproduce verbatim.
@@ -45,8 +45,7 @@ either, so every sentence addressed to the reader forces a choice of grammatical
   `כתוֹב/י`).
 - **Never use masculine singular** (`לחץ`, `נסה`) for the generic reader.
 - **Prefer first person plural for anything framed as "let's":** `נסתכל`, `נתחיל`,
-  `נכתוב`. It is genderless, and it matches Jiki's warm, we-are-doing-this-together
-  voice. This is the workhorse form.
+  `נכתוב`. It is genderless, and it matches the warm, we-are-doing-this-together voice. This is the workhorse form.
 - **Never mix forms on one page** (`לחץ` alongside `לחצו`). One form, start to finish.
 
 ### Imperatives
@@ -71,7 +70,7 @@ What separates stiff Hebrew from warm Hebrew, in descending order of leverage:
 
 - **Vocabulary layer.** `כעת`/`אולם`/`טרם`/`רכש` are the high-register siblings of
   `עכשיו`/`אבל`/`לפני`/`קנה`. Use the everyday ones.
-- **`תכלית` reads as formal "the main reason/purpose"**, too heavy for Jiki's casual voice.
+- **`תכלית` reads as formal "the main reason/purpose"**, too heavy for this casual voice.
   Prefer an "actually" framing (`תכנות הוא למעשה...`) or a "whole thing with X" framing
   (`כל הקטע עם תכנות הוא...`).
 - **Light-verb periphrasis is the main stiffness generator.** `לעשות שימוש` becomes
@@ -90,7 +89,7 @@ What separates stiff Hebrew from warm Hebrew, in descending order of leverage:
 
 - **Keep SVO.** After a fronted time or place adverbial, formal Hebrew inverts to
   verb-subject (`לאחר יום הולדתו קנה דני חתול`). That is correct but high register. For
-  Jiki's voice keep subject first.
+  this voice keep subject first.
 - **Time expressions go late.** English fronts them; Hebrew prefers them at the end.
 - **סמיכות versus של.** Lexicalised construct chains are neutral and should be kept
   (`שם המשתנה`, `קוד המקור`, `שורת הפקודה`). Productive construct chains and bound possessive
@@ -145,7 +144,7 @@ token**.
 - **Never open a paragraph, heading, list item, table cell or link text with a bare Latin
   token.** Rephrase so a Hebrew word leads, or backtick the token.
 - **A Hebrew prefix before a Latin run or a digit takes a maqaf `־` (U+05BE), with no
-  spaces:** `ב־JavaScript`, `ל־Jiki`, `ה־12`, `מ־2005`. Use the true maqaf, not a plain
+  spaces:** `ב־JavaScript`, `ל־Exercism`, `ה־12`, `מ־2005`. Use the true maqaf, not a plain
   hyphen.
 - **Do not hand-insert invisible bidi control characters** (RLM, LRM, LRE/RLE/PDF) into
   translated prose. Where markup is genuinely impossible (an HTML attribute, a catalog
@@ -174,7 +173,7 @@ follow the glossary term by term.
 
 Three near-identical Hebrew words carry three unrelated ideas: `מחרוזת` (string), `שרשרת`
 (the chain metaphor), and `שרשור` (string concatenation, same root as `שרשרת`). Everywhere
-in Jiki Hebrew content:
+in Hebrew content here:
 
 - **Never use bare `שרשרת` for the array metaphor.** Always use the qualified compound the
   glossary specifies.
@@ -211,16 +210,16 @@ second.
 - "In this exercise you'll build a small game" → `בתרגיל הזה תבנו משחק קטן`
 - "This programming journey" → not the calque `מסע התכנות הזה`, use `מסע התכנות שלנו`
   ("our programming journey") or `מסע התכנות שלפנינו` ("the programming journey ahead")
-- "He's going to be your friend on this journey. His job is..." → keep `Jiki` once, then
-  carry it with `הוא`: `הוא הולך להיות החבר שלכם במסע... התפקיד שלו הוא...`, not `Jiki הולך
-  להיות... Jiki התפקיד שלו הוא...`
+- Where English repeats a Latin-script name across consecutive sentences, name it once and
+  then carry it with `הוא`, rather than repeating the Latin run in every clause.
 - "Do a commit" → not bare English `commit` and not a literal translation, use `תעשה קומיט`
 - "Compile it" → `תקמפל את זה`; "merge" → `למרג'ג'`
 
 **Titles and headlines** (natural word order, no drama, no redundancy):
 - Prefer `דרך חדשה ללמוד לתכנת` over a literal rendering that doubles "practical" and
   "exercises".
-- Prefer `מכירים את Jiki` or `Jiki יוצא לדרך` over an overdramatic literal "Jiki is born".
+- Prefer `מכירים את Exercism` or `Exercism יוצא לדרך` over an overdramatic literal "… is
+  born".
 
 **Calls to action** (specific and action-oriented):
 - Signup: `התחילו עכשיו!` / `הירשמו עכשיו!`, not the vague `הצטרפו אלינו!`

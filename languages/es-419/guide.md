@@ -17,11 +17,10 @@ notes). Keep those splits and no others.
 
 Realizes the "modern, informal address" principle from `global/voice.md`:
 
-- **Use `tú` throughout.** Never `usted`, which is too formal and distant for the Jiki
-  voice.
+- **Use `tú` throughout.** Never `usted`, which is too formal and distant for this voice.
 - **Never use `voseo` (`vos`).**
 - **Plural "you" is always `ustedes`.** Never `vosotros` or its verb forms (`sois`,
-  `tenéis`, `mirad`). In practice Jiki addresses one reader, so the plural is rare, but when
+  `tenéis`, `mirad`). In practice the prose addresses one reader, so the plural is rare, but when
   it appears it is `ustedes`.
 - **`tú` takes second-person singular forms** ("vas a ver", "puedes", "escribe"), start to
   finish. The most common error is mixing `tú` with `usted` third-person forms: "tú puedes"
@@ -92,11 +91,12 @@ Additional to the shared style notes in `../es/guide.md` § Style notes:
   - "video" spelled **video**, no accent (not the Spanish "vídeo")
 - **Rhetorical questions** ("So what does a loop do?") → keep them as natural Spanish
   rhetorical questions: "Entonces, ¿qué hace un bucle?".
-- **Jiki name:** "Jiki" is invariable in Spanish (no inflection). Use it bare, as a proper
-  name ("Jiki te muestra...", "Jiki aparece"), never with an article, even though Spanish
+- **Latin-script product names** are invariable in Spanish (no inflection). Use them bare,
+  as proper names ("Exercism te muestra..."), never with an article, even though Spanish
   otherwise uses articles with names more freely than English.
-- **Titles and headlines:** "Conoce a Jiki" / "Ya llegó Jiki", not the dramatic "Nació Jiki";
-  "Aprende a programar de una forma nueva" / "Programación para quien recién empieza", not
+- **Titles and headlines:** "Conoce Exercism" / "Ya llegó Exercism", not the dramatic "Nació
+  Exercism"; "Aprende a programar de una forma nueva" / "Programación para quien recién
+  empieza", not
   the generic "Una nueva forma de aprender a programar".
 - **Calls to action:** "¡Empieza ahora!" / "¡Crea tu cuenta!" (not the vague "¡Únete!"),
   "¡Pruébalo!" / "¡Empieza gratis!".

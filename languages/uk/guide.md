@@ -54,9 +54,8 @@ the language.
   Ukrainian has no present-tense "to be", and the dash standing in for the omitted copula
   marks the predicative relationship between subject and predicate. Prefer a rephrase that
   carries the predicate with a verb, which is usually the more natural sentence anyway:
-  - "In this course, your interpreter is Jiki" -> _У цьому курсі роль інтерпретатора
-    виконує Jiki._
-  - "This is Jiki" -> _А ось і він, Jiki._
+  - "In this course, your interpreter is the browser" -> _У цьому курсі роль інтерпретатора
+    виконує браузер._
 
   **But when the sentence cannot be recast without losing it, write the dash.** This is the
   Ukrainian exception to the no-em-dash rule in `global/rules.md`, agreed with native
@@ -97,14 +96,12 @@ the language.
   imperfective verbs: a synthetic one-word form (_використовуватимемо_) and an analytic
   "будемо + infinitive" form (_будемо використовувати_). Prefer the analytic form unless
   the synthetic form is clearly more natural in a specific sentence.
-- **`Jiki` is indeclinable.** It ends in -i, so Ukrainian gives it no case endings and no
-  added ending in the genitive, dative, or instrumental. _склад Jiki_ ("Jiki's warehouse")
-  and _полиця Jiki_ are correct and complete; they are not evasions of a missing form, so
-  do not paraphrase around them with _склад, який належить Jiki_ or similar. Case is
-  carried by the surrounding words: _сказали Jiki_, _разом з Jiki_.
-- **`Jiki` is male: every verb describing his actions takes the masculine form.** This
-  applies throughout, and especially to the `describers` strings in exercise message
-  catalogs, where the verb is the first word and the agreement is easy to miss:
+- **A Latin-script name ending in -i is indeclinable.** Ukrainian gives it no case endings
+  and no added ending in the genitive, dative, or instrumental; the bare form is correct and
+  complete, and is not an evasion of a missing form, so do not paraphrase around it. Case is
+  carried by the surrounding words.
+- **Where a narrated actor is male, every verb describing his actions takes the masculine
+  form.** This is easy to miss where the verb is the first word of a string:
   _намалював_, _очистив_, _перетворив_, _оголосив_, _повернув_ (never _намалювала_,
   _очистила_, and so on).
 
@@ -114,10 +111,9 @@ the language.
   occurrence in a page: `&&` (логічне і), `||` (логічне або). Every later occurrence on
   that same page uses the short form only: `&&` (і), `||` (або).
 - **"Stick things together" / combine, join:** when the English is describing an abstract
-  capability (e.g. Jiki's interpreter being able to combine or join values, string
-  concatenation), use _поєднувати_, not _склеювати_. _Склеювати_ is literally glue-stick
-  gluing and is reserved for passages that actually depict Jiki's physical
-  glue/crank-machine imagery; plain "combine things" prose is not that.
+  capability (combining or joining values, string concatenation), use _поєднувати_, not
+  _склеювати_. _Склеювати_ is literally glue-stick gluing and is reserved for passages that
+  actually depict physical gluing; plain "combine things" prose is not that.
 - **"To look like" / "to have the appearance of":** never _виглядати_. Use _мати вигляд_
   (e.g. "Готова стіна повинна мати такий вигляд:", not "Готова стіна має виглядати так:").
 - **Code the learner writes never _зʼявляється_.** _Зʼявитися/зʼявлятися_ implies something

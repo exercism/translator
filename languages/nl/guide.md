@@ -95,17 +95,16 @@ Concrete techniques:
   opening mark with the other's closing mark.
 - **Numbers:** Dutch uses a decimal comma and a period (or thin space) as thousands
   separator, but leave numbers inside code untouched.
-- **Jiki-name inflection:** "Jiki" stays "Jiki"; the possessive is "Jiki's" (with
-  apostrophe-s, as Dutch does for names ending in a vowel sound). Flag if an inflected form
-  reads awkwardly.
+- **Latin-script product names** stay as they are; a possessive on a name ending in a vowel
+  sound takes apostrophe-s, as Dutch does. Flag if an inflected form reads awkwardly.
 
 ## Worked examples
 
 Concrete Dutch for the principles in `global/voice.md`.
 
 **Titles and headlines** (natural word order, sentence case, no drama, no redundancy):
-- Avoid: "De geboorte van Jiki" (too dramatic) → Prefer: "Jiki is er" / "Maak kennis met
-  Jiki"
+- Avoid: "De geboorte van Exercism" (too dramatic) → Prefer: "Exercism is er" / "Maak
+  kennis met Exercism"
 - Avoid: "Een nieuwe manier van het leren programmeren" (clumsy) → Prefer: "Leer
   programmeren op een nieuwe manier" / "Een nieuwe manier om te leren programmeren"
 

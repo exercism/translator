@@ -101,8 +101,7 @@ Turkish-specific rules that English speakers, and literal machine translation, g
   instead if a token would otherwise need to be capitalized.
 - **Prefer rephrasing so no case suffix ever attaches to a code token.** Put the token in
   front of an ordinary Turkish noun and suffix the noun instead:
-  - "telling Jiki to get the `move` machine" → **"Jiki'ye `move` makinesini ... söylemek"**,
-    not "`move`'u".
+  - "getting the `move` machine" → **"`move` makinesini almak"**, not "`move`'u almak".
   - Useful carrier nouns: _makinesi_ (machine), _fonksiyonu_ (function), _değişkeni_
     (variable), _deyimi_ (statement), _anahtar kelimesi_ (keyword), _dosyası_ (file).
 - **Where a suffix genuinely cannot be avoided, it attaches via apostrophe**, with the
@@ -124,8 +123,8 @@ Turkish-specific rules that English speakers, and literal machine translation, g
   verb: _derlemek_, _hata ayıklamak_, _çalıştırmak_. Reserve the "X etmek" pattern only
   for a term with no established native verb (see the glossary's "Keep in English"
   section).
-- **"Jiki" stays invariant** as a proper/character name; attach Turkish suffixes with an
-  apostrophe as usual ("Jiki'nin", "Jiki'ye") but never alter the name itself.
+- **A Latin-script product name stays invariant**; attach Turkish suffixes with an
+  apostrophe as usual ("Exercism'in", "Exercism'e") but never alter the name itself.
 
 ## Worked examples
 

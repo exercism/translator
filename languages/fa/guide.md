@@ -130,14 +130,14 @@ Handling Latin-script code tokens inside RTL Persian prose:
 
 - **Use the glossary's native Persian term as primary in prose**, not the English word.
 - **Never put the English term in brackets after the Persian one**, anywhere, for any term,
-  including where the source has a `<define>`. The Persian term always stands alone, however
-  technical it is: "تابع", not "تابع (function)" and not "تابع (_function_ به انگلیسی)". See
-  "Term clarification (Persian realisation)" below for what a `<define>` does expand to.
+  including where the English itself explains the term. The Persian term always stands alone,
+  however technical it is: "تابع", not "تابع (function)" and not "تابع (_function_ به
+  انگلیسی)".
 - **A small set of terms stay in Latin-script English inside Persian prose**: see the
   glossary's "Keep in English" table (API, CLI, framework, and similar terms real Iranian
   developers keep in English day to day). Where such a term is an acronym, do not leave it
   bare or merely transliterated; explain what it means in Persian, per the acronym rule in
-  `global/voice.md`. Any bracketed gloss beyond that comes only from a `<define>`.
+  `global/voice.md`. Nothing else earns a bracketed gloss.
 
 ## Describers (the timeline of what the learner's code did)
 
@@ -181,23 +181,22 @@ Handling Latin-script code tokens inside RTL Persian prose:
   on a page. Without them a Persian reader cannot tell a boolean value from ordinary "true"/
   "correct" usage, or the data type from the everyday adjective "logical".
 - **English "so" is not always پس.** It covers consequence, sequence, contrast and mere
-  linking; translate the sense, not the word. "So how do we tell Jiki…" → «حالا چطور …»; "So
+  linking; translate the sense, not the word. "So how do we do this…" → «حالا چطور …»; "So
   he gets out his pen" → «بعد از این کارها …»; "So what do these conditions look like?" (a
   contrast) → «اما این شرط‌ها …». Reserve پس for a genuine consequence.
 - **Rhetorical asides** ("So what does this look like in code?") → keep them as natural
   Persian rhetorical questions: «پس این در کد چه شکلی است؟»
-- **Jiki-name handling:** the name is written جیکی in all Persian prose (see the
-  glossary). Ezafe and possessive constructions attach to it exactly as to any other
-  Persian noun; there is no special Latin-name handling to apply, and no reason to
-  restructure a sentence around the name.
+- **Latin-script product names** stay in Latin script. Ezafe and possessive constructions
+  attach to them as to any Persian noun, and there is no reason to restructure a sentence
+  around a name.
 
 ## Worked examples
 
 Concrete Persian for the principles in `global/voice.md`.
 
 **Titles and headlines** (natural word order, no drama, no redundancy):
-- Avoid an overly dramatic register ("Jiki is born") → prefer a simple, warm announcement:
-  «جیکی را بشناسید» (Meet Jiki) / «جیکی شروع به کار کرد» (Jiki has started).
+- Avoid an overly dramatic register for a launch announcement; prefer a simple, warm one
+  («… را بشناسید», "meet …", or «… شروع به کار کرد», "… has started").
 - Prefer natural, concise word order: «روشی تازه برای یادگیری برنامه‌نویسی» (a new way to
   learn programming), not a redundant doubling like «تمرین‌های عملی و کاربردی» where one
   adjective already covers the meaning.

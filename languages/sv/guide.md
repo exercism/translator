@@ -11,7 +11,7 @@ writing diverge, follow what Swedish developers actually write.
 - **Use "du" throughout.** Swedish has no live formal/informal split.
 - **Never use "ni" to one reader.** "Ni" is only ever the plural.
 - **Prefer "du" over the generic "man".** Swedish instructional prose drifts into "man
-  skriver..."; Jiki is talking to *you*, so write "du skriver...". Use "vi" for the shared
+  skriver..."; the prose is talking to *you*, so write "du skriver...". Use "vi" for the shared
   journey ("nu ska vi titta på...").
 - Encouraging imperatives:
   - "Nu ska vi titta på koden här nedanför" (Let's look at the code below)
@@ -43,12 +43,13 @@ writing diverge, follow what Swedish developers actually write.
   `` `if`-satsen ``, `` en `for`-loop ``, `` `repeat`-blocket ``, `React-appen`. Where the
   loan is fully naturalized (`loop`, `sträng`, `array`, `bugg`), inflect it directly with
   no hyphen: `loopen`, `arrayen`, `strängar`.
-- **Genitive takes a bare -s, never an apostrophe.** `Jikis lager`, not `Jiki's lager`. A
+- **Genitive takes a bare -s, never an apostrophe.** `Exercisms sida`, not `Exercism's
+  sida`. A
   name already ending in s, x or z takes nothing at all.
 - **Swedish prefers a finite verb where English uses -ing.** "When writing code" → "När du
   skriver kod".
-- **The s-passive is natural, but Jiki's voice is personal.** "koden körs" is correct
-  Swedish, yet "Jiki kör koden" is what this course wants. Prefer the named actor.
+- **The s-passive is natural, but this voice is personal.** "koden körs" is correct
+  Swedish, yet "programmet kör koden" is what this content wants. Prefer the named actor.
 
 ## Information structure and natural rhythm
 
@@ -79,7 +80,7 @@ writer have started the sentence here, with this word?" If not, reorder.
 
 ### Self-check (signs you tracked English)
 
-Re-read for: a fronted phrase with no inversion; ”Låt oss...”; ”man” where Jiki is
+Re-read for: a fronted phrase with no inversion; ”Låt oss...”; ”man” where the prose is
 addressing the reader; särskrivning; the anglicisms and false friends the glossary rules
 out, plus _kontrollera_ used for "control".
 
@@ -93,20 +94,22 @@ out, plus _kontrollera_ used for "control".
   Never the English `“...”`, and never the low opening mark `„`.
 - **Capitalization:** only the first word of a heading and proper names. Never title case,
   never all caps. Language names, weekdays and months are lowercase (`svenska`, `måndag`).
-  A compound whose first part is a name keeps the capital: `Windows-program`, `mini-Jiki`.
+  A compound whose first part is a name keeps the capital: `Windows-program`,
+  `Exercism-kontot`.
 - **No Oxford comma.** Delete it when the English has one.
 - **Decimal comma**, and a space (not a comma) as the thousands separator.
 - **Ellipsis** takes a space before it in running text: ”så här ...”.
 - **Brackets in prose:** default to plain _parentes_. Only name the specific bracket type
   when it matters, and then show the glyph in a code tag immediately after: _hakparenteser
   (`[]`)_. The glyph-to-word mappings themselves are in `glossary.md`.
-- **Jiki-name inflection:** `Jiki`, genitive `Jikis`, no apostrophe. Never attach a definite
-  ending to the name (`Jikin` is wrong). Flag if an inflected form reads awkwardly.
+- **Latin-script product names** take a genitive `-s` and no apostrophe. Never attach a
+  definite ending to a name. Flag if an inflected form reads awkwardly.
 
 ## Worked examples
 
 **Titles and headlines** (sentence case, natural order, no drama):
-- Avoid: "Jiki är född" (melodramatic) → Prefer: "Jiki är här" / "Nu lanserar vi Jiki"
+- Avoid: "Exercism är född" (melodramatic) → Prefer: "Exercism är här" / "Nu lanserar vi
+  Exercism"
 - Avoid: "Ett nytt sätt av att lära sig koda" (calqued) → Prefer: "Ett nytt sätt att lära
   sig programmera"
 - Avoid: "praktiska övningsuppgifter" (redundant) → Prefer: "praktiska övningar"

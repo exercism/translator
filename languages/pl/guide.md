@@ -19,7 +19,7 @@ worked examples. Term choices are in `glossary.md` and are binding.
   addressee's grammatical gender when used with "Ty" (_zrobiłeś_ vs _zrobiłaś_), and the
   learner's gender is unknown. Prefer present tense, imperative, or infinitive phrasing
   over past-tense "you did X" constructions. If a past event must be described, phrase it
-  impersonally or from Jiki's point of view rather than the learner's.
+  impersonally rather than from the reader's point of view.
 - **The same applies to future-tense "will be able to" constructions.** Do not write
   „będziesz potrafić budować” (a bare infinitive after `będziesz` reads as off), and do not
   pick between „będziesz potrafił budować” and „będziesz potrafiła budować” (they force a
@@ -64,10 +64,6 @@ Polish-specific rules that English speakers get wrong:
     _komponent_, _moduł_, _operator_, _framework_) are ordinary Polish nouns: decline them
     normally (_interpretera_, _interpreterem_, _interpreterowi_) and do not prop them up
     with a classifier noun.
-- **Agree with _interpreter_ as a person, not a thing.** The word names Jiki, so the
-  clauses around it have to treat it as someone: „Twoim interpreterem jest Jiki”, „Jego
-  zadaniem jest interpretowanie kodu”, „interpreter, który poprowadzi Cię przez ten kurs”
-  (never „które”).
 - **Aspect (perfective vs imperfective) has no English equivalent and matters for
   imperatives.** A one-off instructional imperative wants the **perfective** aspect; the
   imperfective reads as nagging or "keep doing this repeatedly":
@@ -79,13 +75,12 @@ Polish-specific rules that English speakers get wrong:
   - "Let's look at the following code" → „Zobaczmy poniższy kod” (perfective,
     1st-person-plural)
   - "Let's begin" → „Zacznijmy”
-  - When translating any Jiki imperative, ask "is this a single instruction or an
+  - When translating any imperative, ask "is this a single instruction or an
     ongoing/repeated action?" and pick the aspect accordingly; do not default to one
     aspect out of habit.
-- **Gender agreement** applies to adjectives, pronouns, and past-tense verbs. It matters
-  most for the Jiki physical metaphors, since each metaphor noun has a fixed grammatical
-  gender that any modifying adjective must agree with. Check the glossary's gender note
-  before attaching an adjective to a metaphor term.
+- **Gender agreement** applies to adjectives, pronouns, and past-tense verbs. Each noun has
+  a fixed grammatical gender that any modifying adjective must agree with, so check the
+  glossary's gender note before attaching an adjective to a term.
 
 ## Style notes
 
@@ -102,8 +97,7 @@ Polish-specific rules that English speakers get wrong:
 - **Numbers, if they appear in prose or examples:** decimal comma, not period (`1,5` not
   `1.5`); a space as the thousands separator, not a comma (`16 384` not `16,384`). This
   does not apply to numbers inside code, which stay exactly as written in the source.
-- **Jiki-name inflection:** „Jiki” and „Jikiego”/„Jikiemu” (genitive/dative) are the
-  standard inflected forms. Flag if an inflected form reads awkwardly in a specific
-  sentence.
+- **Latin-script product names** take standard Polish endings where a sentence needs them.
+  Flag if an inflected form reads awkwardly in a specific sentence.
 - **Calls to action** are specific and perfective: „Zacznij teraz!”, „Rozpocznij naukę!”,
   „Spróbuj sam!”, „Przetestuj za darmo!”, never the vague „Dołącz do nas!”.

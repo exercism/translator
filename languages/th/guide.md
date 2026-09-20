@@ -6,7 +6,7 @@ The Thai-specific realization of `global/voice.md`: script and spacing, register
 
 - **Write in Thai script.** Never transliterate Thai into Latin letters.
 - **Numerals stay Western (0-9).** Never Thai digits (๐-๙), including in dates and versions.
-- **Thai has no capitalization and no working italics.** Where an English source uses `*italic*` on text you are translating, render it as **bold**. Italics survive only on a Latin-script English term inside a `<define>` gloss (see "Term clarification").
+- **Thai has no capitalization and no working italics.** Where an English source uses `*italic*` on text you are translating, render it as **bold**. Italics survive only on a Latin-script English term given where the English itself explains a term.
 - **The space is punctuation, not a word separator.** Thai runs words together and uses a space where English uses a comma or a full stop. A stray space mid-clause reads as a break the author did not intend, so place every space deliberately.
 - **Put one space before and after every Latin run**: `ในภาษา Python มีข้อมูลหลายชนิด`, `เรียกไฟล์นี้ว่า Source Code แล้ว`. This applies to code spans, product names and bare English words alike.
 - **Never insert zero-width spaces (U+200B) or hand-break lines** to control wrapping. Thai line-breaking belongs to the renderer; hand-inserted breaks corrupt copy-paste and search.
@@ -23,10 +23,10 @@ The Thai-specific realization of `global/voice.md`: script and spacing, register
 
 ## Register and address (critical)
 
-- **Never use the politeness particles `ครับ` or `ค่ะ`.** They are marked for the *speaker's* gender, so either one assigns Jiki a gender in every sentence it appears in. Particle-free is the standard register for written Thai product and learning copy.
+- **Never use the politeness particles `ครับ` or `ค่ะ`.** They are marked for the *speaker's* gender, so either one assigns the writer a gender in every sentence it appears in. Particle-free is the standard register for written Thai product and learning copy.
 - **Address the reader as `คุณ`, and drop it wherever Thai allows.** Thai omits pronouns freely, and an omitted pronoun reads warmer than a repeated one. Never `ท่าน`, which is banking and government register.
-- **Use `เรา` ("we") for anything framed as "let's".** It is the workhorse for Jiki's we-are-doing-this-together voice, and it is genderless: `มาดูโค้ดนี้กัน`, `เรามาเริ่มกันเลย`.
-- **Refer to Jiki by name, not by a pronoun.** Thai commonly repeats a name where English would say "he", and it avoids `เขา` having to carry a gender.
+- **Use `เรา` ("we") for anything framed as "let's".** It is the workhorse for the we-are-doing-this-together voice, and it is genderless: `มาดูโค้ดนี้กัน`, `เรามาเริ่มกันเลย`.
+- **Refer to a person by name, not by a pronoun.** Thai commonly repeats a name where English would say "he", and it avoids `เขา` having to carry a gender.
 - **Avoid `มัน` for "it".** It is for animals, or for something the writer dislikes. Repeat the noun or drop the pronoun: `หรือให้ลอยอยู่`, not `หรือให้มันลอยอยู่`.
 - **Write active, not passive.** Thai passives reduce readability and lift the register: `ดาวน์โหลดโปรแกรมนี้ไม่ได้`, not a passive construction copying the English.
 

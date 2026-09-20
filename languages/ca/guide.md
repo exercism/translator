@@ -36,10 +36,9 @@ Catalan-specific rules English speakers get wrong:
   or mute h. "the object" → "l'objecte" (not "la objecte"); "the interpreter" →
   "l'intèrpret"; "the list" → "la llista" stays as-is (consonant start).
 - **Personal article before names:** Catalan puts an article before a person's given name in
-  ordinary prose, so Jiki is **"el Jiki"**, not bare "Jiki": "el teu intèrpret és el Jiki",
-  "el prestatge del Jiki", "li diu al Jiki què ha de fer". Contract it as normal (del, al).
-  Use the standard "el/la" form, not the colloquial "en/na". Bare _Jiki_ is correct only
-  where the name is a label rather than a person: a page title, the product name, or a
+  ordinary prose, so a person named in the text takes **"el"** or **"la"**, contracted as
+  normal (del, al). Use the standard "el/la" form, not the colloquial "en/na". A bare name is
+  correct only where it is a label rather than a person: a page title, a product name, or a
   heading.
 - **Weak pronouns "hi" and "en":** used constantly in natural Catalan and easy to drop as
   an English speaker. "There are three ways to do this" → "Hi ha tres maneres de fer-ho"
@@ -55,7 +54,7 @@ Catalan-specific rules English speakers get wrong:
   English colon-juxtaposed or relativizer-dropped construction across: "una funció que
   retorna un valor".
 - **Punctuation:** use «guillemets» for quotation («com aquesta»), never curly or English
-  double quotes. This includes quoted speech inside prose: when Jiki or the narrator says
+  double quotes. This includes quoted speech inside prose: when a narrator or a character says
   something, it goes in guillemets, «Si passa això, aleshores he de fer allò». Lowercase
   after a colon unless what follows is a full quoted sentence.
 
@@ -73,8 +72,6 @@ Catalan-specific rules English speakers get wrong:
 ## Worked examples
 
 **Titles and headlines** (natural word order, no drama, no redundancy):
-- Avoid: "Ha nascut el Jiki!" (too dramatic) → Prefer: "Ja tenim el Jiki" / "Et presentem
-  el Jiki"
 - Avoid: "Una nova manera d'aprendre a programar" (flat, literal) → Prefer: "Aprèn a
   programar d'una manera nova" / "Un nou camí per aprendre a programar"
 

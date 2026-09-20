@@ -82,7 +82,8 @@ Additional to the shared style notes in `../pt/guide.md` § Style notes:
 ## Worked examples
 
 **Titles and headlines** (sentence case, natural word order, no drama, no redundancy):
-- Avoid: "Nasceu o Jiki" (too dramatic) → Prefer: "Conheça o Jiki" / "O Jiki chegou"
+- Avoid: "Nasceu o Exercism" (too dramatic) → Prefer: "Conheça o Exercism" / "O Exercism
+  chegou"
 - Avoid: "Uma nova forma de aprender a programar" (generic) → Prefer: "Aprenda a programar de um
   jeito novo" / "Programação para quem está começando"
 

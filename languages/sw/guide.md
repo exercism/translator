@@ -17,7 +17,7 @@ whatever their home dialect.
 - Keep verb forms in second-person singular consistently, start to finish.
 - **Write in the short, direct, encouraging register of real Swahili tutorial content**, not
   the more formal or bureaucratic Swahili of government and legal documents.
-- Encouraging imperatives, in the Jiki voice:
+- Encouraging imperatives:
   - "Hebu tuangalie msimbo ufuatao" (Let's look at the following code)
   - "Jaribu mwenyewe" (Try it yourself)
   - "Hebu tuanze" (Let's begin)
@@ -62,14 +62,13 @@ whatever their home dialect.
 - **Em dashes:** use a comma for a mid-sentence aside, or split into two sentences.
 - **Rhetorical asides:** keep them as natural Swahili rhetorical questions, e.g. "Sasa,
   hivi vinaonekanaje?" (So what do these look like?).
-- **Jiki-name treatment:** treat "Jiki" as an invariant proper noun; where Swahili grammar
-  would otherwise require a class-agreement marker (e.g. referring back to Jiki with a
-  pronoun), use the class used for people/animate nouns (class 1/2, "yeye" for Jiki as a
-  character).
-- **Titles and headlines:** "Jiki Imezinduliwa" / "Karibu kwa Jiki" (Jiki has launched /
-  Welcome to Jiki), not the dramatic "Kuzaliwa kwa Jiki" (the birth of Jiki). Do not render
-  an English pun or wordplay title word for word; find a Swahili phrase that carries the
-  same warmth and simplicity.
+- **Latin-script product names:** treat a name such as "Exercism" as an invariant proper
+  noun; where Swahili grammar would otherwise require a class-agreement marker, use the class
+  that fits what the name refers to.
+- **Titles and headlines:** "Exercism Imezinduliwa" / "Karibu kwa Exercism" (Exercism has
+  launched / Welcome to Exercism), not the dramatic "Kuzaliwa kwa Exercism" (the birth of
+  Exercism). Do not render an English pun or wordplay title word for word; find a Swahili
+  phrase that carries the same warmth and simplicity.
 - **Calls to action:** "Anza sasa!" (Start now!) / "Jisajili sasa!" (Sign up now!), not the
   vague "Jiunge nasi!" (Join us!); "Jaribu mwenyewe!" (Try it yourself!) / "Ijaribu bila
   malipo!" (Try it for free!).

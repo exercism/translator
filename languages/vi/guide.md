@@ -18,8 +18,8 @@ address terms are fixed here:
 | "you all" (occasional) | các bạn | (none) |
 | "I" (mentor voice) | mình | tôi, ta |
 | "we / let's" (with the reader) | chúng ta / chúng mình | chúng tôi |
-| "we" (Jiki team, without the reader) | chúng tôi | (none) |
-| "he" (Jiki, third person) | cậu ấy | nó, bạn ấy, anh ấy |
+| "we" (the team, without the reader) | chúng tôi | (none) |
+| "he" (a male actor, third person) | cậu ấy | nó, bạn ấy, anh ấy |
 
 - **Singular "bạn" is the everyday address.** "Các bạn" is fine occasionally for a
   genuinely communal moment, but is not the default.
@@ -27,12 +27,11 @@ address terms are fixed here:
   or "anh"/"chị".
 - **"Chúng ta" is the default "we"/"let's"**, with **"chúng mình"** usable where extra
   warmth fits. **Never "chúng tôi"** for a walk-through-together moment: it is grammatically
-  *exclusive* and shuts the reader out. Reserve "chúng tôi" for statements about the Jiki
-  team itself ("we built this platform"), never for narrating alongside the reader.
-- **Jiki in the third person is "cậu ấy."** This is not a breach of the kinship-hierarchy
-  ban above, which governs only how the prose addresses the *reader*: "cậu ấy" is the
-  ordinary peer third person and claims no age or status over the reader. When Jiki speaks
-  in his own voice, his first person is "mình", the same as the mentor voice.
+  *exclusive* and shuts the reader out. Reserve "chúng tôi" for statements about the team
+  itself ("we built this platform"), never for narrating alongside the reader.
+- **A male third person is "cậu ấy."** This is not a breach of the kinship-hierarchy ban
+  above, which governs only how the prose addresses the *reader*: "cậu ấy" is the ordinary
+  peer third person and claims no age or status over the reader.
 
 ## Grammar
 

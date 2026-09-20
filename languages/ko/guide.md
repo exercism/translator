@@ -17,7 +17,7 @@ the more distant 하십시오체. This is the single most important thing to get
 - **Use 해요체 throughout**: verb endings in `-아요/어요/해요`, e.g. 만들어요, 볼까요,
   해봐요.
 - **Never use 반말**, including where a teacher-to-student framing might seem to license
-  it, and no matter how casual Jiki's brand voice is elsewhere.
+  it, and no matter how casual the brand voice is elsewhere.
 - **Reserve 하십시오체** (`-습니다/니다`) for rare moments of real procedural weight (a
   destructive, irreversible action) if any occur; it is not the default register. Everyday
   teaching prose, encouragement, and explanation all stay in 해요체.
@@ -28,7 +28,7 @@ the more distant 하십시오체. This is the single most important thing to get
   만들 수 있어요".
 - **Soft, collaborative framing over blunt instruction.** Prefer "저장할까요?" (shall we
   save it?) over "저장하시겠습니까?" (a procedural, distant register). Use the shared-step
-  construction `-아/어 봐요` or `-아/어 봅시다` for Jiki's "Let's..." invitations: "함께
+  construction `-아/어 봐요` or `-아/어 봅시다` for "Let's..." invitations: "함께
   살펴봐요" (Let's look at it together), "한번 해봐요" (Try it out), "시작해볼까요?"
   (Shall we begin?).
 - **Subject honorific `-시-`: only where the subject is the reader alone.** `-시-` raises
@@ -54,9 +54,9 @@ Korean-specific rules that English speakers get wrong:
   - **Exception: re-establish the subject when the topic has drifted away from it.**
     Dropping works only while the reader can still track who the sentence is about. If the
     immediately preceding sentence's grammatical topic was something else (e.g. "지시는..."
-    about instructions, not Jiki) and the next sentence's implicit subject reverts to a
-    name/character mentioned two or more sentences back, spell that subject out again
-    ("Jiki는...") rather than dropping it. This is not a blanket return to explicit
+    about instructions, not the actor) and the next sentence's implicit subject reverts to a
+    name mentioned two or more sentences back, spell that subject out again rather than
+    dropping it. This is not a blanket return to explicit
     subjects; it applies at the specific point where the topic chain would otherwise leave
     the reader guessing.
 - **Particles (조사) mark grammatical role, not English-style word order or prepositions.**
@@ -77,12 +77,12 @@ Korean-specific rules that English speakers get wrong:
   "배열의 요소" (the element(s) of the array) are both fine. Add -들 only when plurality
   needs emphasis, not on every countable noun out of habit (an English-tracking tell).
 - **Counters (단위성 의존명사) for numbers.** Korean counts things with a number +
-  counter-word pattern, not a bare number. Common Jiki-relevant counters: 개 (generic
+  counter-word pattern, not a bare number. Common counters: 개 (generic
   objects, e.g. "3개의 요소" = 3 elements, "괄호 두 개" = two brackets), 대 (machines and
   vehicles, e.g. "기계 세 대" = three machines), 번 (times/occurrences, e.g. "두 번
   반복해요" = repeat it twice), 장 (flat sheets, e.g. a piece of paper), 개월/년
   (durations). Do not drop the counter; "3 요소" reads as broken Korean. Pick the counter by
-  what the thing physically is: Jiki's machines take 대, not 개.
+  what the thing physically is: a machine takes 대, not 개.
 - **Sino-Korean vs. native-Korean numerals.** Use **native-Korean numerals** (하나, 둘,
   셋...) for counting small everyday quantities with a counter ("세 개의 상자" = three
   boxes), and **Sino-Korean numerals** (일, 이, 삼...) for indices, sequence, and
@@ -100,7 +100,7 @@ as natural Korean, verb-final, with the real point placed correctly.
 - **가/이 introduces something new** into the discourse: "`move`라는 기계가 있어요." (There
   is a machine called `move`; it is new information.)
 - **는/은 marks the topic** already in play, and also carries **contrast**: "`move`
-  기계는 Jiki를 걷게 해요." (As for the `move` machine, it makes Jiki walk.) "그런데 이건
+  기계는 한 칸 움직여요." (As for the `move` machine, it moves one step.) "그런데 이건
   좀 달라요." (This one, by contrast, is a bit different.)
 
 When translating a sentence, ask: **is this thing new, or already being talked about?**
@@ -171,9 +171,9 @@ New takes 가/이; known or contrastive takes 는/은.
   something else.
 - **Rhetorical asides** ("So what do these conditions look like?") → keep them as natural
   Korean rhetorical questions in 해요체: "그럼 조건은 어떻게 생겼을까요?"
-- **Jiki-name handling.** "Jiki" stays as the Latin product name; when a particle
-  attaches, choose it by the pronounced ending ("Jiki가", "Jiki는", "Jiki를"). Use the bare
-  name with **no honorific suffix** (never Jiki님).
+- **Latin-script product names** stay in Latin script; when a particle attaches, choose it
+  by the pronounced ending ("Exercism이", "Exercism은", "Exercism을"). Use the bare name with
+  **no honorific suffix**.
 - **Paragraph breaks matter as much as sentence-level wording.** Even when every sentence
   translates well individually, mechanically keeping the English source's paragraph
   boundaries can hurt readability, pacing, and flow in Korean. Re-judge where a paragraph
@@ -185,8 +185,8 @@ New takes 가/이; known or contrastive takes 는/은.
 Concrete Korean for the principles in `global/voice.md`.
 
 **Titles and headlines** (natural word order, no drama, no redundancy):
-- Avoid: "지키(Jiki)가 마침내 탄생했습니다!" (too dramatic, wrong register) → Prefer:
-  "Jiki를 소개해요" / "Jiki, 지금 시작해요"
+- Avoid: "Exercism이 마침내 탄생했습니다!" (too dramatic, wrong register) → Prefer:
+  "Exercism을 소개해요" / "Exercism, 지금 시작해요"
 - Avoid: "코딩을 배우는 새로운 방법" (stiff, literal calque) → Prefer: "새로운 방식의
   코딩 학습" / "코딩을 배우는 새로운 길"
 

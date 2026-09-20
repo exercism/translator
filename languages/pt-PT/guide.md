@@ -10,7 +10,7 @@ are binding.
 
 Readers are in Portugal. European Portuguese is a **separate locale from Brazilian
 Portuguese**, not a variant of it: never carry a Brazilian choice over by default. Be
-restrained with anglicisms; the warmth of Jiki's voice comes from register and
+restrained with anglicisms; the warmth of this voice comes from register and
 encouragement, not from loanwords.
 
 ## Formality (critical)
@@ -90,7 +90,8 @@ Additional to the shared style notes in `../pt/guide.md` § Style notes:
 ## Worked examples
 
 **Titles and headlines** (sentence case, natural word order, no drama, no redundancy):
-- Avoid: "Nasceu o Jiki" (too dramatic) → Prefer: "Conhece o Jiki" / "Chegou o Jiki"
+- Avoid: "Nasceu o Exercism" (too dramatic) → Prefer: "Conhece o Exercism" / "Chegou o
+  Exercism"
 - Avoid: "Uma nova forma de aprender a programar" (generic) → Prefer: "Aprende a programar
   de outra forma" / "Programação para quem está a começar"
 

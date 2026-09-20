@@ -75,15 +75,13 @@ Greek-specific rules English speakers get wrong:
 - **"For now" → "Για την ώρα"**, not the literal "Για τώρα".
 - **"Ones and zeros" → "μηδενικά και άσσους"** (zeros before ones), not "άσσους και
   μηδενικά".
-- **Jiki-name inflection:** keep "Jiki" in its plain form (nominative-like), since it is a
-  foreign proper noun. Flag if a genitive form ("του Jiki") reads awkwardly in a specific
-  sentence so it can be revisited.
+- **Latin-script proper names** stay in their plain form (nominative-like), since they are
+  foreign proper nouns. Flag if a genitive form ("του Exercism") reads awkwardly in a
+  specific sentence so it can be revisited.
 
 ## Worked examples
 
 **Titles and headlines** (natural word order, no drama, no redundancy):
-- Avoid: "Γεννήθηκε το Jiki!" (too dramatic) → Prefer: "Το Jiki είναι εδώ" / "Σου
-  συστήνουμε το Jiki"
 - Avoid: "Ένας νέος τρόπος για να μάθεις προγραμματισμό" (stiff, calque-y) → Prefer:
   "Μάθε προγραμματισμό με έναν νέο τρόπο"
 

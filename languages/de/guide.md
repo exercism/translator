@@ -62,15 +62,12 @@ German-specific rules that English speakers get wrong:
 - **Calque traps to avoid:** "macht Sinn" (prefer "ergibt Sinn" / "ist sinnvoll"); dropping
   the preposition before a bare year ("2024", not "in 2024"); "einmal mehr" as a stiff
   calque of "once more" (prefer "noch einmal").
-- **Keep the Interpreter personal.** Jiki is the Interpreter, so write the prose around it
-  personally ("dein Interpreter", "seine Aufgabe ist es, ... zu interpretieren") and use the
-  verb `interpretieren` nearby, rather than describing the Interpreter as a tool.
 
 ## Worked examples
 
 **Titles and headlines** (natural word order, no drama, no redundancy):
-- Avoid: "Die Geburt von Jiki" (too dramatic) → Prefer: "Jiki ist da" / "Willkommen bei
-  Jiki"
+- Avoid: "Die Geburt von Exercism" (too dramatic) → Prefer: "Exercism ist da" /
+  "Willkommen bei Exercism"
 - Avoid: "Ein neuer Weg, um das Programmieren zu lernen" (stiff, over-literal) → Prefer:
   "Programmieren lernen, neu gedacht" / "So lernst du Programmieren"
 

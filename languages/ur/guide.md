@@ -13,7 +13,7 @@ and write in for school, media, and formal communication.
 - **Numerals stay Western Arabic (0-9), not Eastern Arabic-Indic digits**, including
   mid-sentence in running prose. Write `30`, not `۳۰`.
 - **Punctuation:** use `۔` (a small circle) as the Urdu full stop and `،` (a reversed
-  comma) as the Urdu comma. For quoted speech (Jiki saying something, a quoted line of
+  comma) as the Urdu comma. For quoted speech (a character speaking, a quoted line of
   reasoning) use the Urdu quotation pair `”…“`, opening with `”` and closing with `“`,
   which is the right-to-left mirror of the English convention. Never use `"…"`. There is no
   capitalization system in the script; do not try to simulate one.
@@ -83,18 +83,18 @@ Urdu-specific rules that English speakers get wrong:
   where informal Urdu web writing sometimes borrows one from English.
 - **Rhetorical asides** ("So what does this look like in code?") → keep them as natural
   Urdu rhetorical questions, e.g. "تو یہ کوڈ میں کیسا نظر آتا ہے؟"
-- **Jiki-name handling:** treat "Jiki" as a foreign proper noun, kept in Latin script (it
-  is a brand/character name, per the "never translated" list in `global/terms.md`).
-  Attach Urdu postpositions directly after it with no transliteration of the name itself,
-  e.g. "Jiki کو" (to Jiki), "Jiki نے" (Jiki [did]).
+- **Latin-script product names:** treat a name such as "Exercism" as a foreign proper noun,
+  kept in Latin script (per the "never translated" list in `global/terms.md`). Attach Urdu
+  postpositions directly after it with no transliteration of the name itself, e.g.
+  "Exercism کو", "Exercism نے".
 
 ## Worked examples
 
 Concrete Urdu for the principles in `global/voice.md`.
 
 **Titles and headlines**:
-- Avoid an overly dramatic register ("Jiki is born") → prefer a simple, warm announcement
-  register: "Jiki سے ملیے" (Meet Jiki) / "Jiki شروع ہو گیا" (Jiki has started).
+- Avoid an overly dramatic register for a launch announcement; prefer a simple, warm one:
+  "Exercism سے ملیے" (Meet Exercism) / "Exercism شروع ہو گیا" (Exercism has started).
 - Keep titles verb-final and concise; do not front-load an English-style gerund clause.
 
 **Calls to action**:

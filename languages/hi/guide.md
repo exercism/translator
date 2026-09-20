@@ -9,7 +9,7 @@ The general audience profile is in `global/voice.md`. In addition, for Hindi:
 
 - Readers are across India, especially the Hindi-belt states (UP, Bihar, MP, Rajasthan and
   others). Many recognise English technical words when they hear them spoken, but they are
-  not fluent *readers* of English prose. That is the whole reason Jiki is translated into
+  not fluent *readers* of English prose. That is the whole reason this is translated into
   Hindi at all.
 - **So Devanagari has to carry the entire page.** A reader who cannot comfortably read
   English prose cannot decode a Latin-script word dropped into the middle of a Hindi
@@ -162,7 +162,7 @@ Latin script is used only for:
 - code, keywords, and identifiers (`move()`, `turnLeft`, `if`, `for`, `repeat`), which are
   never translated or transliterated, per `global/rules.md`;
 - literal UI labels the learner sees on screen (**Run Code**);
-- product, language and brand names (JavaScript, Python, React, Jiki);
+- product, language and brand names (JavaScript, Python, React, Exercism);
 - acronyms pronounced as letters (API, CLI, HTML, JSON).
 
 Everything else is Devanagari. `glossary.md` § "Keep in English" lists the exceptions
@@ -221,10 +221,10 @@ Hindi-specific rules that English speakers (and literal machine translation) get
 - **Ergative case (ने) in the simple past for transitive verbs.** When a transitive verb
   is in simple past tense, the subject takes ने and the verb agrees with the object, not
   the subject.
-  - "Jiki explained the concept" → "Jiki ने कॉन्सेप्ट समझाया।" (not "Jiki समझाया"; the ने
+  - "The mentor explained the concept" → "मेंटर ने कॉन्सेप्ट समझाया।" (not "मेंटर समझाया"; the ने
     is required)
-  - This does not apply to intransitive verbs or to non-past tenses: "Jiki explains" →
-    "Jiki समझाता है।" (no ने)
+  - This does not apply to intransitive verbs or to non-past tenses: "the mentor explains" →
+    "मेंटर समझाता है।" (no ने)
 - **Gender agreement is unavoidable and must be consistent.** Every Hindi noun is
   masculine or feminine, including every borrowed technical noun, and verbs, adjectives
   and postpositions all agree with it. `glossary.md` records the gender of every noun in
@@ -295,7 +295,7 @@ What Hindi has available, to use where a particular sentence calls for it:
   ("the input", "the output", "the return value"); Hindi says what it *does*. Write "यह
   फंक्शन दो संख्याएँ लेता है और उनका जोड़ देता है", not "इस फंक्शन का इनपुट दो संख्याएँ हैं
   और आउटपुट उनका जोड़ है". Keep the noun only where the sentence genuinely needs one (a
-  `<define>`, a heading, a term being named).
+  a heading, a term being named).
 - **The words that make the situation concrete.** Hindi often wants a participle or a short
   phrase that the English leaves implicit. Saying the पात्र is *stuck in* the भूलभुलैया, or
   that **Run Code** is a *button*, costs two words and makes the sentence land. Adding them
@@ -350,8 +350,8 @@ opening, or the one from the maze example above, onto the next sentence you tran
   Hindi rhetorical questions: "तो यह कोड में कैसा दिखता है?"
 - **Sentence length and shape** are covered in § "Sentence structure", which is where the
   rules for any sentence longer than a simple statement live.
-- **"Jiki" stays as "Jiki"** (Latin script, like a brand/character name), inflected with
-  Hindi postpositions as needed: "Jiki को", "Jiki ने", "Jiki के साथ".
+- **A Latin-script product name stays in Latin script**, taking Hindi postpositions as
+  needed: "Exercism को", "Exercism ने", "Exercism के साथ".
 
 ## Worked examples
 

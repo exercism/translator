@@ -19,8 +19,8 @@ A locale's binding term list is this file's `glossary.md` plus that locale's own
   open with **¿** and **¡** and close with **?** / **!**: "¿Qué hace un bucle?",
   "¡Pruébalo!". Never drop the opening mark.
 - **Quotation marks are the angular « ».** Use « » (comillas latinas) for quoted material
-  in prose: Jiki te saluda con «hola». Use “ ” (comillas inglesas) only for a quotation
-  nested inside a « » one: «Jiki dijo “hola” y esperó». Never use the straight typewriter
+  in prose: el programa te saluda con «hola». Use “ ” (comillas inglesas) only for a
+  quotation nested inside a « » one: «dijo “hola” y esperó». Never use the straight typewriter
   `"` and never the low-opening `„ ”` pattern. Quote characters inside code, output, or backticks are reproduced exactly
   as written (see `global/rules.md`); never restyle them.
 - **Titles and headings take sentence case**, capitalizing only the first word and proper

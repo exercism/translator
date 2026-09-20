@@ -26,12 +26,12 @@ locale's own `glossary.md`; together they are binding.
 **Fully localize.** Render core CS vocabulary (string, Boolean, array, and the rest of the
 core term list) with the Chinese term, in both locales. The only exceptions:
 
-- **The acronyms API and CLI.** Keep the acronym itself in English. Where the source
-  `<define>`s one, explain the concept in Chinese using the gloss in that locale's glossary
-  (the two locales' gloss phrases differ by script); with no `<define>`, use the acronym
-  bare and add no gloss.
+- **The acronyms API and CLI.** Keep the acronym itself in English. Where the English itself
+  explains one, explain the concept in Chinese using the gloss in that locale's glossary
+  (the two locales' gloss phrases differ by script); otherwise use the acronym bare and add
+  no gloss.
 - **Product and language names** (JavaScript, Python, React, ...) and **code tokens**
-  (variable/function names, CLI commands, Jikiscript keywords), which are never translated.
+  (variable/function names, CLI commands, programming keywords), which are never translated.
 
 ## Mechanics: numerals, spacing, punctuation
 
@@ -55,13 +55,3 @@ core term list) with the Chinese term, in both locales. The only exceptions:
 - **Em dashes.** Replace an em dash with a full-width comma (，) for a mid-sentence aside,
   or with two separate sentences.
 
-## Jiki physical metaphors
-
-The load-bearing teaching metaphors from `content-types/concept-pages.md` all work in
-Chinese. **Box**, **whiteboard**, **input slot** and **return chute** render identically in
-both scripts and live in this family's `glossary.md`. **Chain** (array), **machine**
-(function) and **shelves** (storage) differ by script or by word choice, so each locale's
-own `glossary.md` carries its rendering; use that rendering exactly.
-
-- **Chain (array metaphor).** Both locales use a physical-chain image, never a "list" or
-  "sequence" abstraction.
