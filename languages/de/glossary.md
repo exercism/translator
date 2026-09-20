@@ -82,8 +82,8 @@ themselves actually use, so the English word is the ordinary German word there.
 ## Keep in English
 
 These stay in English in prose. Where the English itself explains one of these terms, use the
-German in the gloss column below (per the format in `global/voice.md`); with no
-an explanation in the English, use the English bare, with no gloss.
+German in the gloss column below (per the format in `global/voice.md`); and where it does not, use
+the English bare, with no gloss.
 
 | Term | German word, where the English explains the term | Notes |
 |------|------------------------------|-------|

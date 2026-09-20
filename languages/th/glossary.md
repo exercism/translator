@@ -19,7 +19,7 @@ These are terms where the Thai is used in prose, so the "Use (th/en)" column is 
 
 | English | Thai | Use (th/en) | Notes |
 |---------|------|-------------|-------|
-| string | สตริง | th | `สายอักขระ` only as the one-time an explanation in the English gloss where the source defines it, then `สตริง` throughout. |
+| string | สตริง | th | `สายอักขระ` only as the one-time gloss where the English itself explains the term, then `สตริง` throughout. |
 | character (text) | อักขระ | th | A single text character. Keep distinct from `ตัวอักษร` (letter) and `ตัวละคร` (a character in a story). |
 | letter (of a string) | ตัวอักษร | th | Distinct from `อักขระ`, matching the English pair. |
 | number | ตัวเลข | th | Not `จำนวน`, which is the quantity/mathematical sense. |
@@ -45,7 +45,7 @@ These are terms where the Thai is used in prose, so the "Use (th/en)" column is 
 | to define (a function) | สร้าง / นิยาม | th | `สร้าง` for the warm teaching voice; `นิยาม` only where the source is formal. |
 | parameter | พารามิเตอร์ | th | The declaration-site name. |
 | argument | อาร์กิวเมนต์ | th | The call-site value. Keep the pair distinct. |
-| to return (a value) | คืนค่า | th | Not `ส่งค่ากลับ`. The bracketed an explanation in the English gloss word must be _return_, never _returning_. |
+| to return (a value) | คืนค่า | th | Not `ส่งค่ากลับ`. The bracketed English word in such a gloss must be _return_, never _returning_. |
 | return value | ค่าที่คืนออกมา | th | The noun. Keep distinct from the verb above. |
 | if statement | คำสั่งเงื่อนไข | th | The `if` keyword stays English. English hint on first use: `คำสั่งเงื่อนไข (_if statement_)`. |
 | statement (executable) | คำสั่ง | th | The imperative sense: a line of code that does something and gets executed. It is the ordinary word for a single thing someone is told to do as well. English hint on first use: `คำสั่ง (_statement_)`, which also keeps it apart from the CLI-command reading of the bare word. |

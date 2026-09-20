@@ -84,8 +84,8 @@ These are terms where the Japanese is used in prose, so the "Use (ja/en)" column
 These stay in English in prose. This set is deliberately **small in Japanese**: strong
 native terms cover most concepts (e.g. `string` → 文字列, `Boolean` → 真偽値, `framework` →
 フレームワーク), so only genuinely Latin-script items live here. Where the source
-an explanation in the Englishs one of these terms, use the Japanese in the gloss column below; with no
-an explanation in the English, use the English bare, no gloss.
+explains one of these terms, use the Japanese in the gloss column below; and where it does not, use
+the English bare, with no gloss.
 
 | Term | Japanese word, where the English explains the term | Notes |
 |------|--------------------------------|-------|

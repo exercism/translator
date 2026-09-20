@@ -46,7 +46,7 @@ These are terms where the Finnish is used in prose, so the "Use (fi/en)" column 
 | to define (a function) | määritellä | fi | Noun: _määrittely_. Keep distinct from _esitellä_ (to declare). |
 | argument | argumentti | fi | The call-site value, against _parametri_ at the declaration site. Finnish course material often says _todellinen parametri_ / _muodollinen parametri_ instead; that pairing is heavier than this course wants, so use _parametri_ and _argumentti_. |
 | input (to a function) / output | syöte / tuloste | fi | The standard Finnish pair. Use _tulos_ where the source means the computed result rather than what comes out of the machine. |
-| to return (a value) | palauttaa | fi | The noun is _paluuarvo_. ”palauttaa 30:n”. The bracketed an explanation in the English gloss word must be _return_, never _returning_. |
+| to return (a value) | palauttaa | fi | The noun is _paluuarvo_. ”palauttaa 30:n”. The bracketed English word in such a gloss must be _return_, never _returning_. |
 | to declare / declaration | esitellä / esittely | fi | Careful: _esitellä_ also means "to introduce" in everyday Finnish, so keep the sentence around it unambiguous. |
 | initializer | alkuarvo | fi | The starting value given at declaration. The verb is _alustaa_. |
 | built-in | valmis | fi | _valmis funktio_ reads naturally to a beginner. _sisäänrakennettu_ is the literal rendering and reads heavy. |

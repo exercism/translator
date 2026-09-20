@@ -71,7 +71,7 @@ These are terms where the Catalan is used in prose. Split by theme for readabili
 ## Keep in English
 
 These stay in English in Catalan prose, with the Catalan gloss to use for each (per the
-format in `global/voice.md`); with no an explanation in the English, use the English bare, no gloss.
+format in `global/voice.md`); where it does not, use the English bare, no gloss.
 
 | Term | Catalan word, where the English explains the term | Notes |
 |------|--------------------------------|-------|

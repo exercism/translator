@@ -235,7 +235,7 @@ speaker and written to `glossary.md` on 2026-08-03; see the entry at the top of 
 | line of code | linijka kodu | _linijka_ (informal, matches this voice) vs _wiersz_ (formal); line-count checks recur across exercises. | medium |
 | meridiem / am-pm indicator | meridiem (indeclinable); _oznaczenie_ for "indicator" | Keep the Latin term where the source teaches it, paraphrase elsewhere; recurs in clock content. | medium |
 | quotation marks | cudzysłów / podwójny cudzysłów | **Ambiguity, not just a term choice**: Polish prose quotes are „…", but the code a learner types uses straight ". Worth deciding whether teaching pages should show the `"` glyph explicitly. | medium |
-| string in error-message prose (no `<define>`) | declined loanword, e.g. _stringami_ | Register call: declining the bare loanword vs _ciągami znaków_ in error messages; follows the existing keep-English row but a native speaker may want to settle it. | medium |
+| string in error-message prose (unglossed) | declined loanword, e.g. _stringami_ | Register call: declining the bare loanword vs _ciągami znaków_ in error messages; follows the existing keep-English row but a native speaker may want to settle it. | medium |
 
 Possible `global/terms.md` gaps flagged: "template string", "compound data type", the
 paper/coin metaphors.
@@ -271,8 +271,8 @@ kept here:
 - **Acronym worked examples (removed).** The guide carried worked examples for `API` and
   `CLI` that duplicated their `glossary.md` "Keep in English" rows. They also said the
   expansion happens on "first use", which conflicts with `global/voice.md` (a gloss is
-  triggered only by a `<define>` tag, never by first occurrence). The glossary rows already
-  say "where the source `<define>`s it", so deleting the guide copies resolves the conflict
+  triggered only by the English itself explaining a term, never by first occurrence). The glossary rows already
+  say "where the English itself explains the term", so deleting the guide copies resolves the conflict
   without changing any decision.
 - **Metaphor gender list (removed).** The guide listed _łańcuch_ masculine, _pudełko_
   neuter, _maszyna_ and _półka_ feminine. Every one of those genders is already in the

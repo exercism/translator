@@ -47,7 +47,7 @@ These are terms where the Urdu form is used in prose, either a settled translite
 | operator | عامل | ur | |
 | statement (executable) | بیان | ur | The imperative sense: a line of code that does something. Keep distinct from the logical-claim sense below by context. |
 | statement (logical claim) | دعویٰ | ur | The proposition sense: a claim that is true or false. Pick by meaning, not by the English word. |
-| function | فنکشن | ur | Where the English itself explains the term, gloss it in the guide § "Term clarification" format, فنکشن (_function_); a term being a settled loanword never suppresses an explanation in the English gloss. The keyword `function` in code stays English. |
+| function | فنکشن | ur | Where the English itself explains the term, gloss it in the guide's gloss format, فنکشن (_function_); a term being a settled loanword never suppresses that gloss. The keyword `function` in code stays English. |
 | to call (a function) | کال کرنا | ur | "فنکشن کال کرنا." |
 | brackets (the two after a function name) | قوسین | ur | The round brackets `()` written after a function name. "قوسین" is a dual form and already means the pair, so it needs no counting word; where the kind must be distinguished, "گول قوسین" (round) versus "مربع قوسین" (square). See guide § "Brackets" for the phrasing rule. |
 | to define (a function) | تعریف کرنا | ur | |

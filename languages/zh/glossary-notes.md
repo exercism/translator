@@ -76,19 +76,19 @@ Rationale removed from `guide.md`, kept for the record:
   `zh-TW` had no `feature` row, so one was added (功能) carrying the "never use 函式 for a
   product feature" instruction.
 
-## 2026-08-01: Acronym glossing corrected to the `<define>` model
+## 2026-08-01: Acronym glossing corrected to the explained-in-English model
 
 **Decided by:** agent, on the authority of `global/voice.md`. **Terms affected:** none; this
 is a guide correction.
 
 The family guide's loanword policy told the translator to gloss API and CLI "on first use in
-a document". `global/voice.md` states that a `<define>` tag is the **only** trigger for
+a document". `global/voice.md` states that the English explaining a term is the **only** trigger for
 clarifying a term, that there is no first-use auto-detection, and that auto-glossing is
 forbidden (`global/translating.md`'s tidy pass lists auto-glosses as something to remove).
 API and CLI are genuine acronyms, which `voice.md` does license explaining, so the terms stay
 in the exceptions list and keep their per-locale gloss phrases; only the first-occurrence
-framing was removed. The guide now says: where the source `<define>`s one, explain the
-concept in Chinese; with no `<define>`, use the acronym bare with no gloss. The reference to
+framing was removed. The guide now says: where the English itself explains one, explain the
+concept in Chinese; where it does not, use the acronym bare with no gloss. The reference to
 building a "keep in English, gloss once" table was removed with it.
 
 ## 2026-08-01: Parentheses around glosses are full-width (unconfirmed draft)
@@ -98,7 +98,7 @@ on both locales' pinned glossary threads).
 
 The family guide contradicted itself: it said to use "half-width ( ) around an English word
 or code token", but its own example for that rule was full-width (变量（variable）), the
-family's § Term clarification rule specifies full-width parentheses containing English
+family's glossing rule specifies full-width parentheses containing English
 (函数（英语：function）), and both locales' worked examples use full-width for exactly this
 case (函式（英語：_functions_）, `move`（移動）). Every worked instance in the family
 disagreed with the imperative, so the imperative was the outlier and was rewritten to match:
@@ -146,7 +146,7 @@ the forum, post #3. **Terms affected:** `true / false`.
 
 真/假 was an unconfirmed agent row. cherylli checked several Chinese CS books and reports
 they consistently use `true`/`false` untranslated rather than 真/假, so this moves to Keep
-in English: gloss as 真/假 only where the source `<define>`s it, then use `true`/`false`
+in English: gloss as 真/假 only where the English itself explains the term, then use `true`/`false`
 freely, matching how code literals were already handled.
 
 ## 2026-08-01: Native-speaker review of the shared Chinese terms
@@ -172,7 +172,7 @@ general view for consideration"), post 1. Applied by agent.
 ## 2026-08-07: Term-clarification marker corrected from 英語：/英语： to 英文：
 
 **Decided by:** native speaker (ramhuw), post #1. **Terms affected:** the family's term-clarification
-marker (`§ Term clarification` in `guide.md`), not a glossary row.
+marker (the glossing rules in `guide.md`), not a glossary row.
 
 The marker recorded in "2026-08-01: Parentheses around glosses are full-width" was still an
 unconfirmed draft awaiting native-speaker confirmation. ramhuw points out that 英語 mostly

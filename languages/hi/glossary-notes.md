@@ -74,7 +74,7 @@ available, per `global/rules.md` § 'When unsure.'" Its content, unchanged:
   borrowed, but it now sits next to a Hindi verb (लौटाना). Worth confirming the pair reads
   naturally together.
 - **input / output (इनपुट / आउटपुट)**: kept as nouns, contrary to @shubham-gupta-git's
-  proposal to drop them, because a `<define>` and the इनपुट स्लॉट metaphor both need a noun.
+  proposal to drop them, because a glossed term and the इनपुट स्लॉट metaphor both need a noun.
   His point is carried as a prose rule instead. Needs a native speaker to confirm the bare
   noun is acceptable in the noun-only positions.
 - **string, class, method, backwards compatibility, streak**: gender unconfirmed.
@@ -1142,7 +1142,7 @@ flag, so it read as closer to a live register choice than the other cuts.
 **Decided by:** @dazecodes, the forum.
 **Terms affected:** `edge case`.
 
-@dazecodes proposed rewording the `<define>` gloss from "कोई असामान्य स्थिति जो कम होती है
+@dazecodes proposed rewording the gloss from "कोई असामान्य स्थिति जो कम होती है
 पर हो सकती है" to "कोई असामान्य स्थिति जिसका होने का अवसर कम होता है लेकिन हो सकता है". Applied
 as given; the row is now settled.
 
@@ -1174,7 +1174,7 @@ confirmed until a native speaker reviews them specifically.
 **Terms affected:** `template literal`; and, as a documented limit on scope, every other row
 as it stood in the 2026-07-18 snapshot.
 
-@suditi proposed rewording the `<define>` gloss for `template literal` from "expressions को
+@suditi proposed rewording the gloss for `template literal` from "expressions को
 अंदर लिखने वाली string" to "एक तरह की string जिसमें expressions इस्तमाल कर सकते है", saying
 the intent is "a string that can use expressions". Applied with the spelling normalised to
 इस्तेमाल / "कर सकते हैं" (the post's इस्तमाल / "कर सकते है" are non-standard spellings of the

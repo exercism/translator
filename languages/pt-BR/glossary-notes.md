@@ -171,7 +171,7 @@ flagged as wanting a second opinion:
 Checked the source of the three using-functions concept pages
 (`using-functions`, `using-functions-with-inputs`, `using-functions-with-return-values`)
 against the combined pt/pt-BR glossary. Every term they need was already covered except
-one: `using-functions-with-inputs` defines `<define>comments</define>` (the `//` line a
+one: `using-functions-with-inputs` defines "comments" (the `//` line a
 learner writes as a private note), which had no row in either file. `global/terms.md`
 lists it as a term needing a glossary entry in every language. Added `comentário` to this
 locale's glossary, not yet used in a real translated file. It reads as an ordinary word

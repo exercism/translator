@@ -56,7 +56,7 @@ reaching for either is the specific failure mode this decision exists to prevent
 
 ### Dropping the English gloss for cognates is confirmed, not a draft
 
-The standing policy is that a prose `<define>` gloss is dropped when the Catalan is a
+The standing policy is that a prose gloss is dropped when the Catalan is a
 recognisable cognate of the English (_intèrpret_, _error_, _funcions_ and most of the file),
 so a Catalan concept page can legitimately carry no English glosses at all. That policy was
 drafted by an agent and explicitly flagged as wanting a native speaker's view before being
@@ -171,7 +171,7 @@ justification were moved here. No behavioural instruction was dropped. What move
   the course teaches. As a rule this is already `global/voice.md` § "Default to the ordinary,
   common word", so the guide no longer restates it.
 - **Why cognate glosses are dropped.** Catalan and English share the Latin script and most
-  of this vocabulary, so the great majority of prose `<define>` terms would gloss to
+  of this vocabulary, so the great majority of prose glossed terms would gloss to
   something the reader can already see is the same word. A parenthetical there teaches
   nothing, so `global/voice.md` § "Skip a gloss that would teach nothing" drops it. The
   imperative and the "no glosses at all is expected" reassurance stay in the guide; the
@@ -198,7 +198,7 @@ Duplication removed at the same time, with the surviving statement named:
 **Contradiction fixes in the same pass:**
 
 - **API acronym handling.** The guide told the translator to expand API "on first use",
-  which contradicts `global/voice.md`: only a `<define>` triggers a gloss and there is no
+  which contradicts `global/voice.md`: only the English explaining a term triggers a gloss and there is no
   first-use auto-detection. The expansion itself duplicated the glossary's API row, so the
   first-occurrence framing and the example were both removed. What survived, because it is
   Catalan-specific and lived nowhere else, is the **gender and elision** the example was
@@ -267,7 +267,7 @@ chute`, `board / whiteboard`), `interpreter`, `instruction`, `mental model`,
 and `(programming) language`, among others across the file. None of these has been checked
 by a native speaker.
 
-**Standing cognate-gloss policy, also unconfirmed:** a prose `<define>` gloss is dropped
+**Standing cognate-gloss policy, also unconfirmed:** a prose gloss is dropped
 when the Catalan is a recognisable cognate of the English (`intèrpret`/interpreter,
 `error`/error, `funcions`/functions, and most of the file), on the reasoning that a
 parenthetical teaching the reader something they can already see is the same word teaches

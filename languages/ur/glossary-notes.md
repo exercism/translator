@@ -107,7 +107,7 @@ the Script section, once as a "Numbers in running prose" style note); it is now 
 with "including mid-sentence in running prose" folded into it. The "Audience specifics" and
 "Worked examples" sections restated `global/voice.md`'s own headings (titles, calls to
 action, acronyms); the restatements were dropped and the concrete Urdu examples kept. The
-"Term clarification" section restated voice.md's rule that a `<define>` tag is the only
+the term-clarification section restated voice.md's rule that the English explaining a term is the only
 trigger for a gloss; only the Urdu-specific consequence was kept, namely that a settled
 transliteration the reader recognizes is still glossed where the source marks it. The
 worked example explaining "API" was dropped from the guide because the identical Urdu
@@ -153,10 +153,10 @@ control flow" and "Loops, state & program flow" tables) are draft renderings, no
 reviewed by a native speaker.
 
 **One contradiction fixed.** The `function` row said the term needed no gloss because it is
-a settled transliteration, while the guide's own worked example under "Term clarification"
+a settled transliteration, while the guide's own worked example under the glossing rules
 showed it glossed: فنکشن (_function_). Resolved in favour of the guide: glossing is
-triggered by a `<define>` in the source, never by how settled a transliteration is, so a
-settled loanword never suppresses a `<define>` gloss. The `function` row now says so.
+triggered by the English explaining a term, never by how settled a transliteration is, so a
+settled loanword never suppresses that gloss. The `function` row now says so.
 
 ## Term rationale
 

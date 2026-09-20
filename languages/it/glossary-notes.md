@@ -69,7 +69,7 @@ that re-explains a term it introduced two paragraphs ago reads as padding.
 
 What is standing is the pattern (an appositive with _cioè_ naming concretely what the state
 is), not one fixed string. Her own later review of the `concept/state` page is the proof:
-there she wrote _cioè la condizione in cui si trova qualcosa_ for the `<define>` expansion and
+there she wrote _cioè la condizione in cui si trova qualcosa_ for the expansion and
 _cioè la registrazione del fatto che stiamo viaggiando a sinistra o a destra_ for the
 direction sentence, both the same shape, both tuned to their sentence. That page keeps her
 wording; the glossary's phrasing is not force-fitted over a native speaker's own later call on
@@ -825,13 +825,13 @@ sentences where the geometric sense is already obvious.
 
 He also flagged that `drawRainbow.description` used a bare "canvas" although nothing in
 the curriculum has explained the word yet. The glossary already chose _area di disegno_,
-but its note only covered the `<define>`d case, which left catalog strings (task
+but its note only covered the case where the English explains the term, which left catalog strings (task
 descriptions, describers, hints) with no instruction and so falling back to the English
 loanword. The note now states explicitly that an undefined occurrence is always _area di
 disegno_. No new term was introduced: this is the existing decision applied to a case it
 had not been written for. Nothing was added to the Italian prose to explain "canvas",
 because the English source does not explain it either; the underlying gap (the source
-arguably wants a `<define>` on its first use of "canvas") is an English source-markup
+arguably wants an explanation on its first use of "canvas") is an English source
 question, not an Italian one.
 
 ## 2026-08-01: Conjunction and subject-repetition style rules, from the variables review
@@ -889,7 +889,7 @@ in the glossary. What came out, and why:
   makes its failure mode different from a free-word-order language's was analysis, not
   instruction. The rule ("do not map English clause-by-clause"; the risk is flat, monotone
   prose that keeps the English shape and sentence boundaries) is unchanged.
-- **Cognate-gloss rationale, removed.** The rule that a `<define>` on a transparent cognate
+- **Cognate-gloss rationale, removed.** The rule that a gloss on a transparent cognate
   expands to nothing extra was justified by Italian and English sharing the Latin alphabet
   and a large Latinate vocabulary, by its being an instance of "Skip a gloss that would
   teach nothing" in `global/voice.md`, and by "it matches the Catalan precedent". The rule
@@ -905,9 +905,9 @@ in the glossary. What came out, and why:
 - **"Acronyms" worked example, removed.** It gave API and CLI "first use" renderings that
   `glossary.md` already carries verbatim in its Keep-in-English table. Removing it also
   settles a wording conflict with `global/voice.md`: glossing is triggered only by a
-  `<define>` tag and there is no first-use auto-detection, so instructions phrased as "first
+  an explanation in the English and there is no first-use auto-detection, so instructions phrased as "first
   use" invite exactly the auto-gloss `voice.md` forbids. The acronym category is still
-  listed in Term clarification, and the two glossary rows are untouched.
+  listed in the glossing rules, and the two glossary rows are untouched.
 - **"Titles and headlines" worked examples, removed.** The two Avoid/Prefer pairs ("È Nato
   Exercism!" → "Ecco Exercism" / "Exercism è arrivato"; "Un nuovo modo di imparare a programmare che
   cambia tutto" → "Un nuovo modo di imparare a programmare") only demonstrated two rules

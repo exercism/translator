@@ -162,7 +162,7 @@ New takes 가/이; known or contrastive takes 는/은.
   full-width/half-width forms consistent with the rest of the file; question marks and
   exclamation marks are used the same way as in English for a warm, direct tone
   ("한번 해볼까요?", "잘하셨어요!"). For a first-use English gloss, use the 영어: form in
-  Term clarification above, nothing else.
+  the glossing rules above, nothing else.
 - **Shortening a long term on repeat.** Korean prose gets heavy if a multi-word term is
   spelled out every time. Where the glossary's term is a compound and the short head noun is
   unambiguous in context, name it in full on introduction and use the short form afterwards

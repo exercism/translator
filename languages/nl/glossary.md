@@ -56,7 +56,7 @@ throughout. Split by theme for readability; every table below follows the same c
 ## Keep in English
 
 These stay in English in prose. Where the English itself explains one of these terms, use the
-Dutch in the gloss column below; with no an explanation in the English, use the English bare, no gloss.
+Dutch in the gloss column below; where it does not, use the English bare, no gloss.
 
 | Term | Dutch word, where the English explains the term | Notes |
 |------|-----------------------------|-------|

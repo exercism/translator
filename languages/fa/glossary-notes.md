@@ -73,10 +73,10 @@ it went to `guide.md` under "Style notes" rather than to the glossary.
 
 He asked for the convention to be recorded: when a page introduces a word the learner has
 not met before, the word goes in «…», giving his own example of the Repeat page's
-introduction of کلیدواژه. Applied on that page to the three terms the source `<define>`s on
+introduction of کلیدواژه. Applied on that page to the three terms the English itself explains on
 first mention (کلیدواژه، بلوک کد، حلقه); later mentions stay plain, so the marking reads as
 "here is a new term" and not as scare quotes. This sits alongside, and does not disturb, the
-2026-08-01 decision that a parenthetical Persian gloss comes only from a `<define>` tag.
+2026-08-01 decision that a parenthetical Persian gloss comes only from the English explaining a term.
 
 ## 2026-08-04: "choice" splits into گزینه (an option) and انتخاب (what a player picked)
 
@@ -238,7 +238,7 @@ agent the same day. **Terms affected:** the `Boolean` row's plural note and the 
 **Protected: both are a native speaker's decisions and are not to be reversed by an agent.**
 
 - **item/element → عنصر, never آیتم.** He asked for آیتم to be replaced with عنصر
-  throughout the Arrays concept page. The page was already using عنصر for the `<define>`d
+  throughout the Arrays concept page. The page was already using عنصر for the glossed
   "element" and آیتم for English's "item", which are the same thing in this material, so the
   fix is one word for both rather than a two-term split. آیتم was the only Persian content
   anywhere using it (swept: the Arrays page was the sole occurrence across all translated
@@ -273,25 +273,25 @@ else he raised on that thread had been fixed; this one had not, and our reply on
 had defended it as a course-wide styling decision instead. It is not one that survives a
 native speaker saying "never ever": the guide defers to the human.
 
-- **`guide.md`, "Term clarification (Persian realisation)".** The Persian-primary bullet no
+- **`guide.md`, the Persian glossing rules.** The Persian-primary bullet no
   longer produces a bracket. It now states the override explicitly, because a worker loads
   `voice.md` as well as the guide and would otherwise follow `voice.md`'s default: Persian
   never appends an English term in brackets after a Persian term, and never writes the
-  marker `به انگلیسی` at all, in any content type, whether or not the source `<define>`s
+  marker `به انگلیسی` at all, in any content type, whether or not the English explains
   the term.
 - **What is kept.** The two bracket forms whose brackets carry *Persian* are unaffected,
   because the objection was to being shown English the reader did not ask for: an
   English-primary term still glosses into Persian (`_API_ (رابط برنامه‌نویسی کاربردی)`), and
   a code identifier still carries its Persian meaning (`` `turnLeft` `` (به چپ بچرخ)).
 - **`guide.md`, "Loanword policy".** The bullet that permitted a bracketed English gloss
-  where the source has a `<define>` (itself the narrowed form of the older first-use rule,
+  where the English itself explains the term (the narrowed form of the older first-use rule,
   see 2026-08-01 below) is replaced by the flat prohibition.
 - **Existing content swept.** 33 occurrences removed across 12 already-translated Persian
   files (10 concept pages, 2 exercise instruction pages). "Never ever" is not a per-page
   request, so the sweep covered everything already translated, not just
   `concepts/using-functions`.
 - **Expected checker noise.** `check-translation`'s gloss-count check is a heuristic that
-  compares bracketed glosses against the source's `<define>`/`<literal>` count, so Persian
+  compares bracketed glosses against the source's own count, so Persian
   pages will now WARN with a lower gloss count than tags. That is the rule working, not a
   failure. It is a WARN and never gates a pass.
 
@@ -353,22 +353,22 @@ error catalog (which uses دستور throughout for `statement`, correctly).
 affected:** `AI` (Notes column only; the term and its Persian gloss are unchanged).
 
 Two places told the translator to gloss on first use, which `global/voice.md` forbids:
-glossing is triggered **only** by a `<define>` tag in the source, and the tidy pass in
+glossing is triggered **only** by the English explaining a term in the source, and the tidy pass in
 `global/translating.md` lists an unprompted parenthetical as something to remove. `voice.md`
-outranks the guide, so both were repointed at `<define>`.
+outranks the guide, so both were repointed at that case.
 
 - **Guide, "Loanword policy".** "Gloss the English term once per file on first occurrence"
-  ("تابع (function)" then "تابع") is replaced by the `<define>`-only rule. The test it
+  ("تابع (function)" then "تابع") is replaced by that rule. The test it
   carried, which terms deserve a gloss at all (genuine CS jargon yes; a word a
-  non-programmer already knows, no), was kept in full and re-attached to `<define>`
+  non-programmer already knows, no), was kept in full and re-attached to that case
   expansion, where it serves `voice.md`'s "skip a gloss that would teach nothing".
 - **Guide, "Keep in English".** The Latin-script term list said those terms were "glossed
   once in Persian on first use". The list itself is unchanged. The gloss instruction is now
   split: an acronym in that list is still explained in Persian rather than left bare or
   transliterated, because `global/voice.md` mandates that separately under "Acronyms and
-  foreign terms"; any other bracketed gloss comes only from a `<define>`.
+  foreign terms"; any other bracketed gloss comes only from the English explaining a term.
 - **Glossary, `AI` row.** "Gloss once on first use per the glossary" now reads "Gloss it in
-  Persian only where the source `<define>`s it, never on first use of your own initiative".
+  Persian only where the English itself explains the term, never on first use of your own initiative".
   The decision (English "AI" in prose, هوش مصنوعی as the gloss, flagged for native-speaker
   confirmation) is untouched.
 

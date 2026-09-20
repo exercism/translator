@@ -47,10 +47,10 @@ every German item in every pass, so the material below was moved out of it and k
 
 - The "Jargon and loanword rules" section told the translator to gloss `String` with
   `Zeichenkette` "once at first use, then `String` throughout". `global/voice.md` is
-  explicit that a gloss is triggered **only** by a `<define>` tag and that auto-glossing is
+  explicit that a gloss is triggered **only** by the English explaining a term and that auto-glossing is
   forbidden, and the tidy pass in `global/translating.md` lists auto-glosses as something to
   remove. The first-use trigger was removed. The term decision itself was already correct in
-  `glossary.md` (`string` row: gloss as "String (Zeichenkette)" where the source `<define>`s
+  `glossary.md` (`string` row: gloss as "String (Zeichenkette)" where the English itself explains
   it, then "String" throughout), so nothing was lost.
 - The "Acronyms" worked examples told the translator to explain "API" and "CLI" "on first
   use", the same forbidden auto-gloss trigger. Both are term decisions already carried

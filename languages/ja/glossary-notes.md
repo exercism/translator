@@ -28,7 +28,7 @@ kept here because the reasoning still stands if any of these words is ever neede
 **Decided by:** alexfalcon528, a native speaker, on
 <, reviewing the If Statements concept page.
 **Glossary row added:** bouncer (club/bar doorkeeper) → バウンサー, under "Platform &
-curriculum vocabulary". **Guide section affected:** "Term clarification".
+curriculum vocabulary". **Guide section affected:** the glossing rules.
 
 We had rendered the club doorman as 門番. He explained that 門番 is the guard of a gate, as
 in the gate of a castle, and that the anglicism バウンサー is the word Japanese actually uses
@@ -206,7 +206,7 @@ So this was an oversight, not a real conflict, and the example is now `関数（
 with the Latin-only scope of the italics stated explicitly.
 
 Also in the Orthography section, "full-width parentheses （） for the **first-use** English
-gloss" now reads "for the `<define>` English gloss", so the wording cannot be read as
+gloss" now reads "for an English gloss", so the wording cannot be read as
 licensing a first-use auto-gloss, which `global/voice.md` forbids.
 
 **Left alone:** the `brackets` row's instruction to show the glyph 「括弧（`()`）」 on first

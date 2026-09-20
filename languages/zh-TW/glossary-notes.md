@@ -51,7 +51,7 @@ Rationale and provenance removed from `guide.md`, kept for the record:
 - **Quotation marks.** 「」/『』 is the standard Taiwan typesetting convention and contrasts
   with Mainland's curly quotes. It is already in use in published zh-TW content; if a native
   speaker objects, change it in the guide once, through `/action-forum-post`.
-- **`<define>` shapes.** The two worked shapes (函式（英語：_functions_）and `move`（移動）)
+- **Gloss shapes.** The two worked shapes (函式（英語：_functions_）and `move`（移動）)
   are settled by published zh-TW content rather than re-decided per page.
 
 Duplication removed (behaviour unaffected, the same instruction still exists elsewhere):

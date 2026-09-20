@@ -9,9 +9,9 @@ decision log (`glossary-notes.md`).
 |---------|--------|----------|-------|
 | programming / coding | প্রোগ্রামিং | bn | |
 | developer | ডেভেলপার | bn | |
-| streak | ধারাবাহিকতা | bn | Daily-use-streak sense (learning-platform). Not phonetically self-evident, so it takes the an explanation in the English gloss (see guide § Glossing an explanation in the English). |
+| streak | ধারাবাহিকতা | bn | Daily-use-streak sense (learning-platform). Not phonetically self-evident, so it takes a gloss where the English explains it (see guide § "Glossing a term the English explains"). |
 | tech / tech industry | টেক ইন্ডাস্ট্রি | bn | |
-| pitfall | বিপদ | bn | Takes the an explanation in the English gloss. |
+| pitfall | বিপদ | bn | Takes a gloss where the English explains it. |
 | common | কমন | bn | Phonetic transliteration, not a translated word. Confirmed by native-speaker review (see notes). |
 | game | গেম | bn | Phonetic transliteration, not খেলা. Confirmed by native-speaker review (see notes). |
 | draw (a tied result) | ড্র | bn | Phonetic transliteration, not টাই or সমতা. Confirmed by native-speaker review (see notes). |
@@ -47,13 +47,13 @@ by theme for readability; every table below follows the same columns.
 
 | English | Bangla | Use (bn/en) | Notes |
 |---------|--------|----------|-------|
-| condition | শর্ত | bn | Not phonetically self-evident, so it takes the an explanation in the English gloss. |
+| condition | শর্ত | bn | Not phonetically self-evident, so it takes a gloss where the English explains it. |
 | if statement | `if` স্টেটমেন্ট | bn | Keep the keyword `if` in code font (it is a real keyword); pair with স্টেটমেন্ট. |
 | comparison | তুলনা | bn | Stands alone; no gloss needed. |
 | expression | এক্সপ্রেশন | bn | |
 | operator | অপারেটর | bn | |
 | statement (executable) | স্টেটমেন্ট | bn | The imperative sense: a line of code that does something and gets executed. |
-| statement (logical claim) | বিবৃতি | bn | The proposition sense: a claim that is true or false. Pick by meaning, not by the English word. Not phonetically self-evident, so it takes the an explanation in the English gloss. |
+| statement (logical claim) | বিবৃতি | bn | The proposition sense: a claim that is true or false. Pick by meaning, not by the English word. Not phonetically self-evident, so it takes a gloss where the English explains it. |
 | function | ফাংশন | bn | The *keyword* `function` in code stays English; the concept in prose is ফাংশন. |
 | to call (a function) | কল করা | bn | Loanword verb via করা (see guide § Grammar). |
 | to define (a function) | ডিফাইন করা | bn | Loanword verb via করা. |
@@ -107,7 +107,7 @@ by theme for readability; every table below follows the same columns.
 
 These stay in Latin script in prose (acronyms and product/language names), per real Bangla
 technical-writing convention, with the Bangla explanation to use for each (where the
-source an explanation in the Englishs the term).
+English itself explains the term).
 
 | Term | Bangla word, where the English explains the term | Notes |
 |------|--------------------------------------|-------|

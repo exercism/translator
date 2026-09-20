@@ -513,7 +513,7 @@ and is recorded here instead:
 
 No other contradiction was found: the Latin-script decision reads consistently everywhere it
 appears (including the "never write Cyrillic `енгл.`" rule that depends on it), and the guide
-already triggers glossing only from a `<define>` tag, never on first occurrence, as
+already triggers glossing only where the English explains a term, never on first occurrence, as
 `global/voice.md` requires.
 
 ## 2026-07-31: `deploy` is "postavi na server", not "deploj"; `return chute` is "izlazni otvor", not "izlazni žleb"

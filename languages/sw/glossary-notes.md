@@ -76,10 +76,10 @@ applies" is not a rule).
 
 **The acronym bullet was removed from the guide.** It said not to drop an acronym bare on
 first use and to explain the concept in Swahili instead. The first-occurrence framing
-contradicts `global/voice.md`, which has no first-use auto-detection: only a `<define>`
+contradicts `global/voice.md`, which has no first-use auto-detection: only the English explaining a term
 triggers a gloss, ever. The surviving content is already carried, in exactly that form, by
 the `API` and `CLI` rows in `glossary.md` ("explain the concept where the source
-`<define>`s it, do not just gloss the acronym"), and the general principle by
+the English explains it, do not just gloss the acronym"), and the general principle by
 `global/voice.md`. Nothing behavioural was lost.
 
 **Contradictions fixed in the guide's worked examples. Status: unconfirmed drafts.** Three

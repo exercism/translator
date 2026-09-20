@@ -74,7 +74,7 @@ These are terms where the Spanish is used in prose, so the "Use (es/en)" column 
 ## Keep in English
 
 These stay in English in prose. Where the English itself explains one of these terms, use the
-Spanish in the gloss column below; with no an explanation in the English, use the English bare, no gloss.
+Spanish in the gloss column below; where it does not, use the English bare, no gloss.
 
 | Term | Spanish word, where the English explains the term | Notes |
 |------|-------------------------------|-------|

@@ -231,7 +231,7 @@ imperatively there):
 
 **Cut from the guide as duplication, not as a decision change:**
 
-- § "Identical-gloss terms" moved wholesale to `../es/guide.md` § Term clarification (es-ES
+- § "Identical-gloss terms" moved wholesale to `../es/guide.md` (es-ES
   stated the same rule in its own words; see the family notes). The `framework` row's
   pointer at it was repointed to the family guide.
 - Three "Regional lexicon" bullets that repeated glossary rows verbatim: floating point →

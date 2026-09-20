@@ -16,7 +16,7 @@ The agreed term list for what is distinct about Mainland Simplified Chinese. Rea
 
 ## Localize (use the Chinese term)
 
-These are terms where the Chinese is used in prose, so the "Use (zh-CN/en)" column is `zh-CN` throughout; where the English explains the term add the English per `../zh/guide.md` § "Term clarification", e.g. 函数（英文：function）. Split by theme for readability; every table below follows the same columns.
+These are terms where the Chinese is used in prose, so the "Use (zh-CN/en)" column is `zh-CN` throughout; where the English explains the term add the English per `../zh/guide.md`, e.g. 函数（英文：function）. Split by theme for readability; every table below follows the same columns.
 
 ### Values & data types
 
@@ -126,7 +126,7 @@ These are terms where the Chinese is used in prose, so the "Use (zh-CN/en)" colu
 
 ## Keep in English
 
-These stay in English in prose. Where the English itself explains one of these terms, use the Chinese in the gloss column below (per the format in `global/voice.md`); with no an explanation in the English, use the English bare, with no gloss. Only the interface labels/tokens below and true acronyms and product/language names count as kept in English; everyday prose words are translated (see § Core decisions and § Tooling & engineering).
+These stay in English in prose. Where the English itself explains one of these terms, use the Chinese in the gloss column below (per the format in `global/voice.md`); where it does not, use the English bare, with no gloss. Only the interface labels/tokens below and true acronyms and product/language names count as kept in English; everyday prose words are translated (see § Core decisions and § Tooling & engineering).
 
 | Term | Chinese word, where the English explains the term | Notes |
 |------|-------------------------------|-------|

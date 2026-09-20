@@ -74,7 +74,7 @@ These stay in English in es-419 prose, with the Spanish gloss to use for each wh
 | string | _cadena_ (or _cadena de caracteres_) | Exception: in the string concept itself, explain _cadena_ where the English itself explains the term, then use _string_ throughout. |
 | array | _arreglo_ | Exception: in the array concept itself, explain _arreglo_ where the English itself explains the term, then use _array_. Exercise prose sometimes says "list" informally for the same concept; render it with the same _array_/_arreglo_ decision, do not introduce _lista_ as a separate term. |
 | Boolean | _booleano_ | Exception: in the Boolean concept, explain _booleano_ where the English itself explains the term, then use _Boolean_. |
-| framework | (explain the concept in Spanish) | It is spelled the same in both languages, so there is no gloss to give: where the English itself explains the term, say briefly what it is (a reusable structure you build on top of) instead of bracketing the English. See `../es/guide.md` § Term clarification. |
+| framework | (explain the concept in Spanish) | It is spelled the same in both languages, so there is no gloss to give: where the English itself explains the term, say briefly what it is (a reusable structure you build on top of) instead of bracketing the English. See `../es/guide.md`. |
 
 ## Brackets
 

@@ -113,11 +113,11 @@ lands.
 
 | English | Proposed target | Rationale / notes | Confidence |
 |---------|-----------------|-------------------|------------|
-| variable | variabele | Core term, not yet a glossary row (the guide's gender list implies _de variabele_). The pass also skipped its `<define>` gloss as a near-identical same-script loanword; future passes should do the same consistently. | high |
+| variable | variabele | Core term, not yet a glossary row (the guide's gender list implies _de variabele_). The pass also skipped its gloss as a near-identical same-script loanword; future passes should do the same consistently. | high |
 | equal sign | isgelijkteken | Versus the looser _gelijkteken_ or "het =-teken"; recurs in assignment explanations, worth settling once. | medium |
 | `{}` (curly brackets / braces) | accolades | New row for the Brackets table, which currently lists only `()`. Canonical Dutch word; a row would also settle showing the glyph, as "accolades (`{}`)". | high |
 | keyword | sleutelwoord | Used per the guide's gender list (_het sleutelwoord_) but not a glossary row; English _keyword_ would also be defensible in Dutch dev writing. | medium |
-| statement (assertion sense) | bewering | The `if` concept `<define>`s "statements" in the say-it-aloud/true-or-false sense, distinct from the glossary's "statement (executable)" row (which stays English). Rendered Dutch-primary as "beweringen (_statements_ in het Engels)"; needs confirming that this sense should not also stay English. | medium |
+| statement (assertion sense) | bewering | The `if` concept explains "statements" in the say-it-aloud/true-or-false sense, distinct from the glossary's "statement (executable)" row (which stays English). Rendered Dutch-primary as "beweringen (_statements_ in het Engels)"; needs confirming that this sense should not also stay English. | medium |
 | repeat loop | repeat-loop | Confirm the "do not translate named loop types" rule (for/while/do while) extends to `repeat`, so the concept title stays "De repeat-loop", not "De repeat-lus". | medium |
 | to announce (a result, RPS family) | omroepen | Three defensible renderings (omroepen / aankondigen / bekendmaken); family catalog and exercise both use _omroepen_ (separable: "riep ... om"), matching announcing to the _speelzaal_ ("playing hall"; not _speelhal_, which reads as an arcade). | medium |
 | hue (HSL) | kleurtoon | _tint_ is equally common in Dutch colour-picker UI (Photoshop nl uses _Kleurtoon_). Must match the draw family catalog and exercises, so needs settling once for the family. | medium |

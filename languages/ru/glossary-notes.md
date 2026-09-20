@@ -21,7 +21,7 @@ translating `two-fer`, `strings`, `digital-clock`, `arrays`, `weather-symbols`:
 
 | English | Proposed target | Notes | Confidence |
 |---------|-----------------|-------|------------|
-| compound data type | составной тип данных | `<define>`-introduced teaching term; составной vs композитный is a real fork, recurs on later concept pages. | high |
+| compound data type | составной тип данных | a glossed teaching term; составной vs композитный is a real fork, recurs on later concept pages. | high |
 | box (drawing/grid cell, draw family) | ячейка | **Collides with the agreed `box` (value container) → коробка.** Draw exercises use "box" for a canvas grid slot, a different sense; коробка would blur the value metaphor. Needs settling before future draw passes split between коробка/ячейка/квадрат. | medium |
 | concatenation | конкатенация | Alternatives: «склеивание» (warmer) or «соединение строк». | medium |
 | template string | шаблонная строка | Vs «строковый шаблон» vs keeping English; MDN-ru uses «шаблонные строки». | medium |

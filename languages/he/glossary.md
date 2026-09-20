@@ -74,7 +74,7 @@ These are terms where the Hebrew is used in prose, so the "Use (he/en)" column i
 
 ## Keep in English
 
-These stay in English in Hebrew prose. Where the source an explanation in the Englishs one of them, use the Hebrew in the gloss column; with no an explanation in the English, use the English bare, with no gloss.
+These stay in English in Hebrew prose. Where the English itself explains one of them, use the Hebrew in the gloss column; where it does not, use the English bare, with no gloss.
 
 | Term | Hebrew word, where the English explains the term | Notes |
 |------|-------------------------------|-------|

@@ -592,7 +592,7 @@ Proposed rows (all unconfirmed drafts):
   other loop-part names. (for-loops pass)
 - `infinite loop` → **нескінченний цикл** (medium). Alternative _безкінечний_ exists, so
   one form is worth pinning; recurs across loop content. (while-loops pass)
-- `data structure` → **структура даних** (high). `<define>`d umbrella term sitting next to
+- `data structure` → **структура даних** (high). a glossed umbrella term sitting next to
   the agreed _тип даних_ rows; pinned so passes do not conflate the two. (dictionaries pass)
 - `spiral notebook sheet (dictionary metaphor)` → **аркуш зі спірального блокнота**
   (medium). The dictionary-metaphor object set, parallel to коробка/ланцюжок.

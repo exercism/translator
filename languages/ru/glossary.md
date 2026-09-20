@@ -65,8 +65,8 @@ These are terms where the Russian is used in prose, so the "Use (ru/en)" column 
 
 These stay in English (or as an established English loanword) in Russian prose, with the
 Russian gloss to use for each. Where the English itself explains one of these terms, use the
-Russian in the gloss column below (per the format in `global/voice.md`); with no
-an explanation in the English, use the English bare, with no gloss.
+Russian in the gloss column below (per the format in `global/voice.md`); and where it does not, use
+the English bare, with no gloss.
 
 | Term | Russian word, where the English explains the term | Notes |
 |------|--------------------------------|-------|

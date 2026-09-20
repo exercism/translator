@@ -59,7 +59,7 @@ These are terms where the Croatian is used in prose, so the "Use (hr/en)" column
 | else clause / branch | inače | hr | `inače` in prose; `grana `else`` where the code branch itself is meant. |
 | built-in | ugrađen | hr | `ugrađene funkcije`, as against `korisnički definirane funkcije`. |
 | equal sign | znak jednakosti | hr | Assignment as an action is `pridruživanje`. |
-| bang (the `!` character) | uskličnik | hr | Croatian names it functionally where the logical sense is meant (`negacija`); use the glyph itself on an explanation in the English. |
+| bang (the `!` character) | uskličnik | hr | Croatian names it functionally where the logical sense is meant (`negacija`); show the glyph itself where the English explains it. |
 | placeholder | rezervirano mjesto | hr | |
 | pure (function) | čista funkcija | hr | When glossed, gloss the full term *pure function*, not the bare adjective. |
 
@@ -182,7 +182,7 @@ These stay in English in Croatian prose, with the Croatian gloss to use for each
 | `{}` | vitičaste zagrade | |
 | `<>` | šiljaste zagrade | |
 
-`&`, `\|` and the backtick have no agreed Croatian name: Croatian technical writing prints the glyph rather than naming it. On an explanation in the English, show the glyph itself. How to phrase a bracket in running prose is in `guide.md`.
+`&`, `\|` and the backtick have no agreed Croatian name: Croatian technical writing prints the glyph rather than naming it. Where the English explains it, show the glyph itself. How to phrase a bracket in running prose is in `guide.md`.
 
 ## Exercism product vocabulary: PROPOSED, NOT YET AGREED
 

@@ -40,7 +40,7 @@ These are terms where the Swedish is used in prose, so the "Use (sv/en)" column 
 | statement (executable) | sats | sv | The imperative sense: a line of code that does something and gets executed. |
 | statement (logical claim) | påstående | sv | The proposition sense: a claim that is true or false; also a test assertion. Pick by meaning, not by the English word. |
 | to call (a function) | anropa | sv | Never _kalla_ or _kalla på_, which is calling out to a person. |
-| to return (a value) | returnera | sv | Not _återlämna_ or _ge tillbaka_. The noun is _returvärde_. The bracketed an explanation in the English gloss word must be _return_, never _returning_. |
+| to return (a value) | returnera | sv | Not _återlämna_ or _ge tillbaka_. The noun is _returvärde_. The bracketed English word in such a gloss must be _return_, never _returning_. |
 | input (to a function) / output | indata / utdata | sv | Not _inmatning / utmatning_, which are the acts of typing in and printing out. |
 | interpreter | tolk | sv | Never _programtolk_ or _interpretator_. Needs a native speaker's eye: this rendering was chosen to name a character whose job was to interpret the reader's code, which is not how Exercism uses the word. On Exercism an interpreter is the program that runs the code. Left as it stands rather than changed by an agent. |
 | pure (function) | ren | sv | _en ren funktion_. When glossed, gloss the full term _pure function_, not the bare adjective. |

@@ -60,8 +60,8 @@ These are terms where the Portuguese is used in prose, so the "Use (pt/en)" colu
 ## Keep in English
 
 These stay in English in prose. Where the English itself explains one of these terms, use the
-Portuguese in the gloss column below (per the format in `global/voice.md`); with no
-an explanation in the English, use the English bare, with no gloss.
+Portuguese in the gloss column below (per the format in `global/voice.md`); and where it does not, use
+the English bare, with no gloss.
 
 | Term | Portuguese word, where the English explains the term | Notes |
 |------|----------------------------------|-------|

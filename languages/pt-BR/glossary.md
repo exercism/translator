@@ -84,8 +84,8 @@ column structure as the family file.
 ## Keep in English
 
 These stay in English in prose. Where the English itself explains one of these terms, use the
-Portuguese in the gloss column below (per the format in `global/voice.md`); with no
-an explanation in the English, use the English bare, with no gloss. Terms below diverge from
+Portuguese in the gloss column below (per the format in `global/voice.md`); and where it does not, use
+the English bare, with no gloss. Terms below diverge from
 `../pt/glossary.md` or exist only for Brazilian Portuguese.
 
 | Term | Portuguese word, where the English explains the term | Notes |

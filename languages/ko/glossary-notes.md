@@ -251,7 +251,7 @@ document. This mirrors the phrasing Korean coding-education brands like Codeit a
 **The gloss format was standardised on 인터프리터(영어: _interpreters_)**, no space before
 the parenthesis, against two rival formats present in the guide at the time (a spaced form,
 and a bare parenthetical with no 영어: marker). The chosen form is now the only one
-described in the guide's Term clarification section.
+described in the guide's glossing rules.
 
 ## Term rationale
 

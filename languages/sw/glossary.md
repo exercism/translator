@@ -109,7 +109,7 @@ columns as above.
 
 These stay in English in Swahili prose, with the Swahili gloss to use for each. No ordinary
 Swahili word was found for any of them (rather than a policy choice), so where the source
-an explanation in the Englishs one, use the gloss below; with no an explanation in the English, use the English bare, with no gloss.
+explains one, use the gloss below; where it does not, use the English bare, with no gloss.
 
 | Term | Swahili word, where the English explains the term | Notes |
 |------|----------------------------------|-------|

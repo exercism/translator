@@ -24,7 +24,7 @@ person referred to, `-` = not a noun.
 
 These are used in Hindi prose, either as the agreed Devanagari spelling of a borrowed term
 or as an ordinary Hindi word. They are Hindi-primary: used bare in prose, with the italic
-English in brackets only where the source an explanation in the Englishs the term (see `guide.md` § "Term
+English in brackets only where the English itself explains the term (see `guide.md` § "Term
 clarification"). Split by theme for readability; every table below follows the same columns.
 
 ### Values & data types
@@ -56,7 +56,7 @@ clarification"). Split by theme for readability; every table below follows the s
 | to call (a function) | कॉल करना | - | hi | "फंक्शन को कॉल करना". |
 | parameter | पैरामीटर | m | hi | The declaration-site name: "फंक्शन बनाते समय दिया गया नाम". Kept distinct from आर्गुमेंट. |
 | argument | आर्गुमेंट | m | hi | The call-site value: "फंक्शन को कॉल करते समय दी गई वास्तविक वैल्यू". Kept distinct from पैरामीटर. |
-| input (to a function) | इनपुट | m | hi | The noun, for where a noun is needed (an explanation in the English, a heading, the इनपुट स्लॉट metaphor). In ordinary prose say what the फंक्शन does instead: "फंक्शन दो संख्याएँ लेता है", not "फंक्शन का इनपुट दो संख्याएँ हैं" (see `guide.md` § "Sentence structure"). |
+| input (to a function) | इनपुट | m | hi | The noun, for where a noun is needed (a heading, the इनपुट स्लॉट metaphor). In ordinary prose say what the फंक्शन does instead: "फंक्शन दो संख्याएँ लेता है", not "फंक्शन का इनपुट दो संख्याएँ हैं" (see `guide.md` § "Sentence structure"). |
 | output | आउटपुट | m | hi | As इनपुट above; in prose, "फंक्शन जोड़ देता है" rather than "फंक्शन का आउटपुट जोड़ है". |
 | to return (a value) | लौटाना | - | hi | "यह फंक्शन एक वैल्यू लौटाता है।" Transitive (लौटाना), never the intransitive लौटना or the redundant वापस लौटना. वापस देना is fine where the prose is leaning on the machine metaphor. **Never रिटर्न करना.** |
 | return value | रिटर्न वैल्यू | f | hi | Noun form, for where a noun is needed. In prose prefer the verb: "जो वैल्यू यह फंक्शन लौटाता है". |

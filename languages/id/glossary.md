@@ -55,7 +55,7 @@ These are terms where the Indonesian is used in prose by default; the "Use (id/e
 | interpreter | interpreter | en | Where the English itself explains the term, gloss _penerjemah_, then use `interpreter`. Not _juru bahasa_ (specifically spoken-language interpreting between people). |
 | (programming) language | bahasa pemrograman | id | Full form on introduction; plain `bahasa` afterwards, including for "a language a computer understands" (_bahasa yang dimengerti komputer_). Never the English `language` in prose. |
 | variable | variabel | id | Use `variabel`, not the official/academic coinage `peubah`. |
-| assignment | assignment | en | `memberikan nilai` as a paraphrase is also fine for the verb (see below). Where the source an explanation in the Englishs the noun, gloss _pengisian nilai_. |
+| assignment | assignment | en | `memberikan nilai` as a paraphrase is also fine for the verb (see below). Where the English itself explains the noun, gloss _pengisian nilai_. |
 | to assign | memberikan nilai / menginisialisasi | id | Verb form; prefer this over a bare loanword. |
 | error | error | en | Kept in code/debugging contexts; use _kesalahan_ when explaining the general concept in plain prose. Do not use _galat_. |
 | loop | perulangan | id | Use `perulangan`, not the official coinage `gelung`. |
@@ -83,7 +83,7 @@ These stay in English in Indonesian prose, with the Indonesian gloss to use for 
 | scope | _cakupan_ | See "Loops, state & program flow" above. |
 | interpreter | _penerjemah_ | See "Loops, state & program flow" above. |
 | method | (see notes) | See "Loops, state & program flow" above; kept English with no separate gloss needed. |
-| component | _komponen_ | Include the gloss where the source an explanation in the Englishs the term; optional otherwise. |
+| component | _komponen_ | Include the gloss where the English itself explains the term; optional otherwise. |
 | API | _suatu mekanisme yang berfungsi sebagai jembatan penghubung antara dua perangkat lunak agar dapat berkomunikasi dan bertukar data_ | Where the English itself explains the term, explain the concept with this wording (adapt to fit the sentence), not just expand the acronym as _Antarmuka Pemrograman Aplikasi_. |
 | framework | _kerangka kerja_ | Where the English itself explains the term, gloss _kerangka kerja_ (the structure or guideline used to tackle a task in an organised way), then use `framework`. Always the full _kerangka kerja_, never bare _kerangka_, which reads as a skeleton. |
 | CLI | _antarmuka baris perintah_ | Explain CLI as _antarmuka baris perintah_ (command-line interface) where the English itself explains the term. |

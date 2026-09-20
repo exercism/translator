@@ -158,7 +158,7 @@ These are terms where the Ukrainian is used in prose, so the "Use (uk/en)" colum
 ## Keep in English
 
 These stay in English in Ukrainian prose. Where the English itself explains one of these terms,
-use the Ukrainian gloss shown below; with no an explanation in the English, use the English bare, with no gloss.
+use the Ukrainian gloss shown below; where it does not, use the English bare, with no gloss.
 
 | Term | Ukrainian word, where the English explains the term | Notes |
 |------|-----------------------------------|-------|

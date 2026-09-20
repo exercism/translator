@@ -73,12 +73,12 @@ rendering changed.
 **Auto-gloss instruction removed (authority: `global/voice.md`).** The § Style notes bullet
 on "list" as an informal synonym for "array" told the translator to keep the glossary's
 `array` term "(the English word, glossed once as _matriz_)". `global/voice.md` is explicit
-that a `<define>` in the source is the **only** trigger for a gloss and that auto-glossing is
+that the English explaining a term is the **only** trigger for a gloss and that auto-glossing is
 forbidden, and `global/translating.md`'s tidy pass lists auto-glosses as removable. `array`
 is an ordinary word, not an acronym, so the separate licence to explain acronyms does not
 apply. The bullet now just says to use the glossary's `array` term and not to introduce
 _lista_; the `array` row in `glossary.md` already says the gloss is _matriz_ **on
-`<define>`**, which is the correct and only home for that instruction.
+the English explaining a term**, which is the correct and only home for that instruction.
 
 **Quotation marks** were moved to the family guide and the dangling "do not use the
 Hungarian `„ "` pattern" cross-reference dropped; the new family-level rule and its

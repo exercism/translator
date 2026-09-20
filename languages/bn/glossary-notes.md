@@ -287,8 +287,8 @@ new row under "Loops, state & program flow" in `glossary.md`.
 **Decided by:** native-speaker review (sohayelmahmud, forum, posts 1 and 3,
 `concept/colors`).
 
-The general `<define>` rule glosses a native or Sanskrit-derived term where the tag sits,
-as লাল (ইংরেজিতে _red_). Applied to an acronym expansion, where three `<define>` tags sit
+The general glossing rule glosses a native or Sanskrit-derived term where the tag sits,
+as লাল (ইংরেজিতে _red_). Applied to an acronym expansion, where three consecutive explanations sit
 in one sentence, that produced three parenthetical asides in a row, each repeating the
 letter: লাল (ইংরেজিতে _red (R)_), সবুজ (ইংরেজিতে _green (G)_), নীল (ইংরেজিতে _blue (B)_).
 He asked for the English expansion to lead, capitalised as in English so the reader can see
@@ -296,7 +296,7 @@ the letters line up with the acronym, followed by one combined Bangla gloss afte
 Red, Green, Blue (অর্থাৎ লাল, সবুজ আর নীল). One gloss reads as a single explanation of the
 acronym rather than three interruptions, and it keeps the letter-to-word mapping visible
 without spelling the letter out again. He confirmed in post 3 that this is the pattern for
-any acronym, not just this page. Recorded as a bullet under "Glossing a `<define>`" in
+any acronym, not just this page. Recorded as a bullet under "Glossing a term the English explains" in
 `guide.md`; applied to `concept/colors`. `concept/rgb` and `concept/hsl` use the same
 "stands for" construction and will pick it up when they are next translated.
 

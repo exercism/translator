@@ -547,7 +547,7 @@ already a `guide.md` note before this post.
 **Status:** human-suggested, adopted.
 **Terms affected:** `framework`.
 
-The term still stays in English in prose; only its `<define>` gloss moved, from bare
+The term still stays in English in prose; only its gloss moved, from bare
 _πλαίσιο_ to _πλαίσιο εργασίας_. Bare _πλαίσιο_ can simply mean "frame", so on its own it
 does not tell a beginner what a software framework is; _πλαίσιο εργασίας_ is the precise
 and idiomatic Greek rendering for this sense.

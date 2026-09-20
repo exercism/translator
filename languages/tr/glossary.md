@@ -11,7 +11,7 @@ decision log (`glossary-notes.md`).
 
 ## Localize (use the Turkish term)
 
-These are terms where the Turkish is used in prose, so the "Use (tr/en)" column is `tr` throughout. Where the source an explanation in the Englishs a term, add the English version in brackets, e.g. "fonksiyon (function)". Split by theme for readability; every table below follows the same columns.
+These are terms where the Turkish is used in prose, so the "Use (tr/en)" column is `tr` throughout. Where the English itself explains a term, add the English version in brackets, e.g. "fonksiyon (function)". Split by theme for readability; every table below follows the same columns.
 
 ### Values & data types
 
