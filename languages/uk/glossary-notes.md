@@ -608,7 +608,7 @@ native-speaker-sourced.
 - **From the exercise/two-fer pass:** `default (value)` → **типове значення / типовий**,
   chosen over _за замовчуванням_ and _усталений_; recurs across hints and exercises.
 - **From the concept/strings pass:** `piece of paper` (the string metaphor object) →
-  **аркуш паперу**, part of the Jiki metaphor set alongside коробка/ланцюжок; _папірець_
+  **аркуш паперу**, part of the the metaphor set alongside коробка/ланцюжок; _папірець_
   and _листок_ are equally plausible, which is exactly why it needs pinning. The pass
   itself used _аркуш паперу_ in prose but _папірець_ once in an image alt; the row settles
   on _аркуш паперу_.
@@ -630,9 +630,7 @@ consistently on one screen. Whether catalog error messages are exempt from the _
 
 ## 2026-08-01: Jiki takes masculine verb agreement, especially in `describers`
 
-**Decided by:** decard (native speaker), on forum topic
-the forum, reviewing the rainbow and rock-paper-scissors
-exercises. **Terms affected:** none; this is a grammar rule, recorded in `guide.md`.
+**Decided by:** decard (native speaker), on the forum, reviewing two exercises. **Terms affected:** none; this is a grammar rule, recorded in `guide.md`.
 
 decard flagged that the uk exercise message catalogs described Jiki's actions with
 feminine past-tense verbs (_намалювала_, _очистила_, _перетворила_, _оголосила_,
@@ -780,7 +778,7 @@ under "Localize" for the groups that had no home:
   English". Real Ukrainian alternatives exist, but the English form is what Ukrainian
   developers actually say, and the camel image the concept page leans on is carried by the
   surrounding explanation rather than by the term itself. `label` (the name stuck on the
-  outside of a variable box) → **етикетка**, added to "Jiki physical metaphors" because it
+  outside of a variable box) → **етикетка**, added to the physical metaphors because it
   belongs to the recurring box-metaphor set alongside _коробка_. _Підпис_, _наліпка_ and
   _ярлик_ are all defensible; the point of glossarying it is that this word recurs every
   time variables come up, so it must not drift between pages.
@@ -857,9 +855,9 @@ under "Keep in English" as a technical token, and it is unclear whether he means
 in prose or the literal text of a UI button, which would be a UI-string decision rather
 than a glossary row. Asked for clarification on the thread; still open.
 
-## 2026-07-12: Native-speaker corrections from forum topic
+## 2026-07-12: Native-speaker corrections from the forum
 
-**Decided by:** iternewo (native speaker), forum topic (post of 2026-07-12).
+**Decided by:** iternewo (native speaker), on the forum (post of 2026-07-12).
 **Terms affected:** `for loop`, `while loop`, `for-of loop`, `mentor`.
 
 - **`for loop` / `while loop` / `for-of loop`** all take the pattern _цикл_ + the real
@@ -940,13 +938,3 @@ repeated here.
 |------|-----|
 | framework | Kept as a loanword; well-attested in Ukrainian dev writing. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| chain | Not _ланцюг_: the plain word carries real cultural weight (кайдани/shackles, a Shevchenko-era literary association with captivity). _Ланцюжок_ (diminutive) avoids that and already has precedent as a Ukrainian pedagogical device for sequential/ordered things ("логічний ланцюжок," "математичні ланцюжки" in early-grades teaching materials). |
-| input slot | The narrow opening you feed something into. СУМ (the standard Ukrainian dictionary) attests an explicit coin/token-slot sense for this word. |
-| return chute | The tray/chute image, as in a vending machine's coin return or a delivery chute. Pairs with _щілина_ into one coherent "vending machine" mental model; keeps the input/output asymmetry that English gets from "slot" vs. "chute." |
-| machine | _Машинка_ is warmer but reads as a toy car or a sewing machine. |
-| crank | _Ручка_ also means "pen", but the collocation and physical context leave no ambiguity. _Корба_ is the precise word for a crank handle but is uncommon and regionally marked. |
-| board / whiteboard | Ordinary word for a writing board in a room. |

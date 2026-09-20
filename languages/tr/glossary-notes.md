@@ -58,7 +58,7 @@ the term would land, have no Turkish translation yet.
 **Decided by:** native speaker (macroicetr), the forum ("[Turkish Review] Exercise:
 Solve the Maze").
 **Status:** human-decided, settled.
-**Terms affected:** new `move (the character)` row in "Jiki physical metaphors".
+**Terms affected:** new `move (the character)` row in the physical metaphors.
 
 macroicetr's original batch on the maze exercise moved the hint prose from _taşımak_ to
 _götürmek_, and they returned to point out that two spots had been missed: the `move()`
@@ -126,7 +126,7 @@ was changed, and no translated file was edited.
 
 ### Open question: how to gloss `let`
 
-**Not decided, and deliberately not decided here.** `let` is Jiki's variable-declaration
+**Not decided, and deliberately not decided here.** `let` is the course's variable-declaration
 keyword, and like every keyword it stays English in code and prose. The question is only what
 one-off Turkish gloss it gets the first time a learner meets it.
 
@@ -275,7 +275,7 @@ nothing was reworded into a different rule. What was cut, and why it was true:
   simply "the casual register": it signals an already-established intimacy or equal
   footing. Real Turkish tutorials, from community sites to government curricula,
   consistently avoid it in written instructional prose, reserving it for short marketing
-  CTAs or content aimed at children. Used in Jiki prose it would read off-register rather
+  CTAs or content aimed at children. Used in this prose it would read off-register rather
   than warm and modern. `-iniz` was likewise rejected for body prose because it reads
   officious in a warm tutorial.
 - **Status of the address system.** The `siz`-only system, with warmth carried by the
@@ -308,7 +308,7 @@ was the one obvious dictionary word with nothing to decide (e.g. `value`, `numbe
 distinction (`index`, `property`/`feature`, `parameter`/`argument`, the two `statement`
 rows, `course`), a rejected coinage (`foot-gun`, `state / stateful`), an English-keyword
 suffixing pattern (`if statement`, `for`/`while`/`for-of loop`, `break`), and the whole
-"Keep in English" and "Jiki physical metaphors" sections untouched. A reviewer querying any
+"Keep in English" and the physical metaphors sections untouched. A reviewer querying any
 single cut should check `concept (learning unit)`, `exercise`, and `scenario`: their notes
 gave context rather than a rejected alternative, so they read as settled vocabulary rather
 than open decisions.
@@ -317,19 +317,12 @@ than open decisions.
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind Turkish:
+Two decisions came out of that pass that bind Turkish:
 
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. Turkish renders both as **beyaz tahta**,
-  always written in full: bare _tahta_ also means wood or a plank and reads as a classroom
-  blackboard, so it is not a safe short form.
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter, so the word has to be able to name a character.
-  Turkish kept **yorumlayıcı**: the `-yıcı` suffix is agentive and applies to people as
-  readily as to tools, as in _yönetici_ or _yayıncı_, so it can name Jiki. Ruled out:
+- **`interpreter`.** Turkish kept **yorumlayıcı**: the `-yıcı` suffix is agentive and applies to people as
+  readily as to tools, as in _yönetici_ or _yayıncı_, so it can name a person. Ruled out:
   _çevirmen_/_tercüman_, which mean a person who translates between human languages and
   lose the "turns it into ones and zeros" sense, and _yorumcu_, which means a commentator.
 - **Default to the ordinary, common word**, whatever its etymology (now in
@@ -344,7 +337,7 @@ Three decisions came out of that pass that bind Turkish:
 Rows added for the using-functions concept page, and one deliberate call on a term with no
 clean everyday option:
 
-- `instruction (given to Jiki)` settled as **talimat**, despite the catalogue asking for an
+- `instruction` settled as **talimat**, despite the catalogue asking for an
   everyday rather than formal register: _talimat_ looks formal on paper, but the
   alternatives are worse. _komut_ is the word for a CLI command and would collide;
   _yönerge_ is more bureaucratic still.
@@ -415,11 +408,3 @@ repeated here.
 | API | Not a word a beginner knows. |
 | framework | Native coinages exist only in dictionaries; real Turkish developer writing uses "framework". |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| box | Plain, concrete Turkish word for a box. |
-| chain | Standard Turkish for a physical chain. |
-| return chute | The everyday word for a playground slide; TDK's own definition also covers a log chute, so the "things slide out here" sense is native to the word, not a stretch. |
-| warehouse | Ordinary, concrete word for a storeroom or warehouse. |

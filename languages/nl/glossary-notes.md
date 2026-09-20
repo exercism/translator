@@ -27,7 +27,7 @@ translating `two-fer`, `strings`, `digital-clock`, `arrays`, `weather-symbols`:
 |---------|-----------------|-------|------------|
 | data type | datatype | Closed compound, "het datatype". Competing formal rendering "gegevenstype". | high |
 | compound data type | samengesteld datatype | Glossed once as "(compound data type in het Engels)"; follows whichever base term wins. | medium |
-| coin (number metaphor) | munt | Jiki metaphor: numbers enter the machine as coins. Pin it so no page drifts to "muntje"/"geldstuk". | high |
+| coin (number metaphor) | munt | the teaching metaphor: numbers enter the machine as coins. Pin it so no page drifts to "muntje"/"geldstuk". | high |
 | concatenation | concatenatie | Alternative is descriptive ("aan elkaar plakken"/"samenvoegen"); recurs in string exercises. | medium |
 | property (e.g. `length`) | eigenschap | Leaving "property" bare is also defensible in NL dev writing. | medium |
 | to display (on screen) | tonen | Competes with "weergeven"/"laten zien"; mixing them shows up on shared screens. | medium |
@@ -156,7 +156,7 @@ post #2121, and its six linked sub-threads: topics 905, 906, 907, 908, 911, 912.
 rows that had one obvious canonical Dutch rendering with nothing to decide (e.g. `value`,
 `condition`, `keyword`, `variable`, `error`, `object`, and the "no gloss" catalogue of
 product names and keywords). Kept every row recording a rejected alternative, a collision,
-a register/scope distinction, or Jiki metaphor-set membership. A reviewer may want to
+a register/scope distinction, or the teaching metaphor-set membership. A reviewer may want to
 double check the removal of `parameter`/`argument`'s sibling rows `input`/`output`, and of
 the individual bracket-glyph rows (`[]`, `{}`, `<>`), since those sat in otherwise-kept
 tables.
@@ -165,19 +165,12 @@ tables.
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind Dutch:
+Two decisions came out of that pass that bind Dutch:
 
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. Dutch renders both as **whiteboard**: bare
-  _bord_ reads first as a plate or a road sign, and _schoolbord_ is specifically a
-  blackboard, while _whiteboard_ is genuinely the everyday Dutch word for the object.
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter, so the word has to be able to name a character.
-  Dutch keeps the English word **interpreter**, because that is what Dutch developer
-  writing actually says and it is an agent noun, so "jouw interpreter is Jiki" reads
+- **`interpreter`.** Dutch keeps the English word **interpreter**, because that is what Dutch developer
+  writing actually says and it is an agent noun, so "jouw interpreter" reads
   naturally about a person. **tolk** is recorded as the define-site gloss precisely because
   it is the everyday Dutch word for a *person* who interprets (between languages), not for
   a program.
@@ -200,7 +193,7 @@ Rows added or corrected drafting the concept page:
 - **`task` added as `taak`**, so `opdracht` stays free for the exercise itself rather than
   being reused for a sub-step within one.
 - **`statement (executable)` corrected from `_instructie_` to `_uitvoerbare instructie_`**,
-  because plain `instructie` now collides with `instruction (given to Jiki)`.
+  because plain `instructie` now collides with `instruction`.
 
 ## Term rationale
 
@@ -230,7 +223,7 @@ already covered by a dated entry above (`board / whiteboard`, `interpreter`, `ex
 |------|-----|
 | loop | Established Dutch term; the English _loop_ would read as an anglicism. |
 | error | Ordinary word. |
-| instruction (given to Jiki) | Everyday word Dutch already uses for this. |
+| instruction | Everyday word Dutch already uses for this. |
 | mental model | Ordinary Dutch phrase. |
 
 ### Keep in English
@@ -238,19 +231,6 @@ already covered by a dated entry above (`board / whiteboard`, `interpreter`, `ex
 | Term | Why |
 |------|-----|
 | array | Standard in NL dev usage. |
-
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| box | Plain Dutch word for a box; direct and concrete. |
-| chain | A physical chain (a necklace/bike chain). |
-| input slot | _invoer_ (input) + _gleuf_ (a slot, like a coin slot). One word. |
-| return chute | _retour_ (return) + _glijbaan_ (a playground slide/chute). One word. |
-| machine | Plain word. |
-| crank | _de slinger_ is the ordinary word for a handle you turn on a machine, not engine jargon. |
-| warehouse | _de loods_ is a big practical shed you can walk around in, fitting Jiki hanging out among his machine shelves. _pakhuis_ is rejected as too storage-formal (goods in storage, nobody working there). |
-| workshop | The room Jiki works in, where the _planken_ live (scope page). |
 
 ### Brackets
 

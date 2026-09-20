@@ -97,21 +97,11 @@ noted, but neither alternative amounted to a real fork a translator would need g
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind European Spanish:
+Two decisions came out of that pass that bind European Spanish:
 
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. The previous instruction to keep them
-  distinct was forcing languages to invent a distinction the course does not have, and
-  several collided with their own word for `array` trying. European Spanish merged both
-  onto **pizarra**, the everyday word for the board on a wall in Spain, ruling out
-  _tablero_ (a game board or a dashboard) and _tablón_ (a noticeboard). No collision with
-  `array`, which stays English in this locale.
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter ("your interpreter is Jiki... It's his job to
-  interpret"), so the word has to be able to name a character. Several languages had
+- **`interpreter`.** Several languages had
   reached for their term for interpreter *software*, which cannot. **es-ES did not change:**
   _intérprete_ was already right, being the ordinary Spanish word for a human interpreter.
   What changed is that the row now says so, and rules out _interpretador_ or any other
@@ -127,7 +117,7 @@ Three decisions came out of that pass that bind European Spanish:
 entry above governs.
 
 **Rows added** for the terms the using-functions concept page needed: `identifier`,
-`brackets (the two after a function name)`, `instruction (given to Jiki)`, `mental model`,
+`brackets (the two after a function name)`, `instruction`, `mental model`,
 `(programming) language`, `course`, and the metaphor rows `machine`, `warehouse`,
 `shelves`, `crank`, alongside the merged `board / whiteboard` row above.
 
@@ -193,8 +183,3 @@ covered by a dated entry above (`board / whiteboard`, `interpreter`) is not repe
 | array | Spanish developers in Spain keep "array" in prose; it is the ordinary word for them, not a jargon import. |
 | framework | _Marco de trabajo_ is well-attested as a loanword gloss in Spanish developer writing. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| input slot | _Ranura_ is exactly a coin/token slot, pairing with the family glossary's _rampa de salida_ (return chute) into one coherent vending-machine mental model. |

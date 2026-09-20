@@ -1,22 +1,5 @@
 # Mainland Simplified Chinese (zh-CN) glossary notes
 
-## 2026-08-06: Translation engine switched to `deepseek`
-
-**Decided by:** taylorren, a native speaker, on the "Alternative translation model"
-comparison thread. **Status:** settled.
-**Terms affected:** none (engine choice, not a glossary or guide change).
-**Files affected:** none; `tracking.json` already carried the block, this entry records the
-decision behind it.
-
-Jeremy posted an alternative-model rendering of a Mainland Simplified Chinese page alongside
-the published one and asked which read better. taylorren answered "I'd say I like the 'new'
-translation better", and the language was switched to it.
-
-Mainland Simplified Chinese therefore runs on `deepseek` rather than the `fable` default.
-This was a genuine switch, made on a native speaker's verdict, not on our own judgement or
-on cost. It is recorded here rather than in the shared `zh` family notes because the engine
-is set per locale in `tracking.json`, not per family.
-
 ## 2026-08-02: Website copy (app UI catalog)
 
 **Decided by:** nobody yet. These rows are **unconfirmed drafts**, proposed by the
@@ -31,7 +14,6 @@ written to `glossary.md`.
 | plan (subscription) | 方案 | Chosen over 套餐/计划. | medium |
 | Dashboard | 主页 | 仪表盘 judged too technical for beginners. | medium |
 | Deep Dive (walkthrough video) | 深度解析 | Feature name across dashboard, hints panel, modals. | medium |
-| Ask Jiki (feature/tab) | 问 Jiki | Header variant: "卡住了？问问 Jiki 吧！". | medium |
 | scrubber (execution timeline) | 时间轴 | Picked over 进度条 to avoid colliding with video/lesson progress bars. | medium |
 | bonus scenario | 附加场景 | Pairs with existing 场景; bare "Bonus" badge → 附加. | medium |
 | unlock / locked (gamified) | 解锁 / 未解锁 | 锁定 was the alternative. | medium |
@@ -61,9 +43,9 @@ Duplication removed (behaviour unaffected, the same instruction still exists els
 
 - The **"feature" vs "function"** style note (功能 vs 函数) is a term mapping and now lives
   only in `glossary.md`'s `feature (platform capability)` row.
-- The **Jiki physical metaphors (zh-CN specifics)** section restated glyphs that are already
+- The **the physical metaphors (zh-CN specifics)** section restated glyphs that are already
   glossary rows (链/链条, 机器, 货架, 仓库, 摇柄) and repeated the board/whiteboard
-  one-word-one-object instruction that `glossary.md` § Jiki physical metaphors already
+  one-word-one-object instruction that `glossary.md` § the physical metaphors already
   states in full. Cut from the guide; the glossary is unchanged.
 - The pitfall "break long English relative-clause chains into short Chinese sentences" is
   inherited verbatim from `../zh/guide.md` § Writing norms, so the locale copy was cut. The
@@ -116,7 +98,7 @@ unconfirmed agent draft before this entry.
   the reviewer picks one. Raise it on the forum.
 - **`curriculum` (课程体系) left unchanged; the proposed 课程 cannot be applied.** The reviewer
   suggested shortening 课程体系 to 课程, but 课程 is already this glossary's term for `course`
-  (the whole Jiki course), a collision the 2026-07-30 entry below deliberately resolved by
+  (the whole course), a collision the 2026-07-30 entry below deliberately resolved by
   moving `lesson` to 课. Taking 课程 for `curriculum` would recreate exactly that clash. If
   课程体系 reads too heavy, a different short form is needed; raise it on the forum.
 
@@ -124,28 +106,19 @@ unconfirmed agent draft before this entry.
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `interpreter`, `board / whiteboard`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind Mainland Simplified Chinese:
+Two decisions came out of that pass that bind Mainland Simplified Chinese:
 
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter ("It's his job to interpret the code that you
-  write"), so the word has to be able to name a character. This is the one decision that
+- **`interpreter`.** This is the one decision that
   changed already-published Chinese text: the row moved from **解释器 to 翻译**. 解释器 is
   wrong for this sense because the 器 suffix marks a device, not a person, and cannot name
   a character; 翻译 is the ordinary Mainland word for the person who translates or
   interprets, and works as both noun and verb, matching the source's "his job to
-  interpret". **Open question, not yet resolved:** whether calling Jiki 翻译 will confuse
+  interpret". **Open question, not yet resolved:** whether 翻译 will confuse
   learners who later meet 解释器 as the real technical term for interpreter software, since
   the two words now name different things in the same course. Left for native-speaker
   feedback.
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. Rendered as **白板** for both uses, the
-  ordinary word for a writing board in a room, with no collision with 数组 (array). This
-  term lives in the shared family file (`../zh/glossary.md`) because it is
-  character-identical in both scripts; recorded here too because the decision binds this
-  locale's usage.
 - **Default to the ordinary, common word**, whatever its etymology (now in
   `global/voice.md`). Where a language's own developer writing uses the English word, the
   English word is the ordinary word and the right choice; where it does not, the native
@@ -157,15 +130,15 @@ Three decisions came out of that pass that bind Mainland Simplified Chinese:
 **Decided by:** agent, in the same pass. **Status: unconfirmed drafts**, except where the
 entry above governs.
 
-- Rows added for the concept page: `mental model`, `instruction (given to Jiki)`,
+- Rows added for the concept page: `mental model`, `instruction`,
   `(programming) language`, `brackets (the two after a function name)`, `input (to a
   function)`, and the metaphor rows `machine`, `crank`, `shelves`, `warehouse`.
 - **`crank` moved from 手柄 to 摇柄.** 手柄 reads first as a game controller in Mainland
-  usage, which is the wrong image for the crank Jiki turns to power a machine up; 摇柄 does
+  usage, which is the wrong image for a crank someone turns to power a machine up; 摇柄 does
   not carry that association.
 - **The `course` / `lesson` collision was resolved by correcting `lesson`.** Both had been
   rendered with 课程. `lesson` is now 课 (第 3 课, 一节课, counted with 节), freeing 课程 to
-  be the one term for `course` (the whole Jiki course, counted with 门).
+  be the one term for `course` (the whole course, counted with 门).
 - **The "Keep in English" row for `Code`/`Bug`/`Frontend`/`Backend` was narrowed to UI
   labels and tokens only.** The guide's own examples write 代码 and 前端 in prose, so
   keeping the whole set of everyday words in English contradicted the guide it sat next to.
@@ -188,7 +161,7 @@ already covered by a dated entry above (`interpreter`, `board / whiteboard`, `cr
 |------|-----|
 | code (the noun, in prose) | 代码 is the ordinary Mainland word for code in prose. |
 | streak | Deliberately not Duolingo-derived: the Duolingo zh-CN string could not be confirmed live during research, so a plain descriptive term was used instead. |
-| pitfall | 坑 fits Jiki's warm, informal register; 陷阱 is the fallback for a genuinely formal register. |
+| pitfall | 坑 fits this warm, informal register; 陷阱 is the fallback for a genuinely formal register. |
 | frontend / backend | 前端 and 后端 are the ordinary Mainland words for these concepts. |
 
 ### Functions & control flow
@@ -201,7 +174,7 @@ already covered by a dated entry above (`interpreter`, `board / whiteboard`, `cr
 
 | Term | Why |
 |------|-----|
-| instruction (given to Jiki) | Everyday word, not a formal or legal register. |
+| instruction | Everyday word, not a formal or legal register. |
 | mental model | 思维模型 is plainer and more transparent for a general reader than the academic 心智模型. |
 
 ### Tooling & engineering
@@ -214,11 +187,5 @@ already covered by a dated entry above (`interpreter`, `board / whiteboard`, `cr
 
 | Term | Why |
 |------|-----|
-| level | The gamified sense, 关卡, fits Jiki's tone. |
+| level | The gamified sense, 关卡, fits this tone. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| chain | 链 / 链条 is the root of 链表 ("linked list") in standard Chinese data-structures textbooks (e.g. 严蔚敏《数据结构》): an unusually well-grounded, native metaphor, not an import. |
-| warehouse | 仓库 is the ordinary word for a warehouse, so it stays; the collision this creates with git "repository" is why that sense is always written in full as 代码仓库. |

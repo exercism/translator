@@ -1,21 +1,5 @@
 # Japanese (ja) glossary notes
 
-## 2026-08-06: Translation engine switched to `deepseek`
-
-**Decided by:** alexfalcon528, a native speaker, on the "Alternative translation model"
-comparison thread, actioned by iHiD on the same thread.
-**Status:** settled. **Terms affected:** none (engine choice, not a glossary or guide
-change). **Files affected:** none; `tracking.json` already carried the block, this entry
-records the decision behind it.
-
-Jeremy posted a blind comparison of alternative-model renderings of a Japanese page against
-the published one. alexfalcon528 picked the third version as "by far the most natural"; that
-version was DeepSeek. Jeremy switched Japanese to it and had the existing Japanese content
-retranslated.
-
-Japanese therefore runs on `deepseek` rather than the `fable` default. This was a genuine
-switch, made on a native speaker's verdict, not on our own judgement or on cost.
-
 ## 2026-08-03: bouncer is バウンサー, and everyday words take no English gloss
 
 **Decided by:** alexfalcon528, a native speaker, on
@@ -261,12 +245,12 @@ whiteboard`, protected as owner decisions above, were untouched.
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `interpreter`, `board / whiteboard`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind Japanese:
+Two decisions came out of that pass that bind Japanese:
 
 - **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter ("It's his job to interpret the code that you
+  concept pages the interpreter was a character ("It's his job to interpret the code that you
   write"), so the word has to be able to name a character, not just software. **This
   reverses Japanese's own earlier choice.** The row previously sat at `インタープリター`,
   chosen deliberately *because* `通訳` was rejected, on the reasoning that `通訳` "reads as
@@ -276,13 +260,6 @@ Three decisions came out of that pass that bind Japanese:
   Japanese word for a person who interprets one language into another, which is precisely
   Jiki's job (code into 1 と 0), and `インタープリター`/`インタプリタ` are kept only to name
   the software Jiki is not. The row moved to **`通訳`**.
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor, and forcing two words for it invents a
-  distinction the course does not make. The row moved from **`ボード`** to
-  **`ホワイトボード`**: bare `ボード` in Japanese reads as a plank, a circuit board, or a
-  board game, none of which is the intended image, while `ホワイトボード` is the everyday
-  word for a writing board in a room and does not collide with `配列` (array).
 - **Default to the ordinary, common word**, whatever its etymology (now in
   `global/voice.md`). Where a language's own developer writing uses the English word, the
   English word is the ordinary word and the right choice; where it does not, the native
@@ -293,7 +270,7 @@ Three decisions came out of that pass that bind Japanese:
 **Decided by:** agent, in the same pass. **Status: unconfirmed drafts**, except where the
 entry above governs.
 **Terms affected:** rows the using-functions concept pages needed (`interpreter`,
-`instruction (given to Jiki)`, `mental model`, `(programming) language`,
+`instruction`, `mental model`, `(programming) language`,
 `brackets (the two after a function name)`, `input (to a function)`, `error`, `character`,
 and the metaphor rows `machine`, `shelf / shelves`, `board / whiteboard`), plus `warehouse`
 and `workshop`.
@@ -351,7 +328,7 @@ covered by a dated entry above (`interpreter`, `board / whiteboard`) is not repe
 
 | Term | Why |
 |------|-----|
-| instruction (given to Jiki) | 指示 is the everyday word; 命令 reads as a military/legal-register command (and as a CPU instruction). |
+| instruction | 指示 is the everyday word; 命令 reads as a military/legal-register command (and as a CPU instruction). |
 | mental model | イメージ is the picture-in-your-head framing; メンタルモデル is jargon a beginner does not have. |
 | (programming) language | 言葉 is warmer for the "language the computer understands" framing, and is how Japanese beginner material puts it; プログラミング言語 remains the technical compound. |
 | scope | Standard katakana. |
@@ -377,16 +354,3 @@ covered by a dated entry above (`interpreter`, `board / whiteboard`) is not repe
 |------|-----|
 | API | Not a word a beginner knows, so the concept has to be explained, not just the acronym expanded. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| box | The canonical Japanese metaphor for a variable ("put a value into a box"); direct, concrete, and already how Japanese teaches variables. |
-| machine | Literal and natural; Jiki's functions are little machines on a shelf. |
-| shelf / shelves | Literal and natural. |
-| warehouse | The place Jiki hangs out and keeps his machine shelf (using-functions page); ordinary, concrete word. |
-| workshop | The room Jiki works in, where the shelves live (scope page); 「工房」sounds artisanal/craft-studio, so 作業場 is preferred. |
-| crank | Japanese has no everyday one-word noun for a machine crank, and クランク reads as an engine part. |
-| chain | Physical chain holding things in order. Japanese usually pictures an array as a row of boxes, so 鎖 is understandable but less idiomatic. |
-| input slot | The concrete "insertion opening" a function's input goes into. |
-| return chute | The opening a function's output comes out of; pairs with 差し込み口 into one "machine" mental model. |

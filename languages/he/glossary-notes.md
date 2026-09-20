@@ -23,7 +23,7 @@ English-tracking phrasing, all folded into `guide.md`:
   better than the literal demonstrative. Added as a new row in the Translationese
   anti-patterns table (generalised to "`X הזה` for an abstract shared noun", since the same
   calque risk applies to `הקורס הזה`, `החוויה הזאת`, etc., not only "journey").
-- **`תכלית` is too formal**, reading as "the main reason" rather than Jiki's casual voice.
+- **`תכלית` is too formal**, reading as "the main reason" rather than this casual voice.
   The contributor's two suggested informal framings ("actually…", "the whole thing with
   X…") were added to Register levers.
 - **Latin-script `Jiki` breaks reading flow, and dev-workflow verbs should be
@@ -84,7 +84,7 @@ independently proposed by both chunk workers.
 Flags, not glossary rows: several in-scope strings quote button text owned by
 still-untranslated namespaces ("Not now, maybe later", "Continue", "Upgrade to Premium",
 "Settings", "Get started" → "התחלה") — resolves itself once those namespaces are translated,
-but wording must then match. `layout.internalHeader.backToJiki`'s trailing arrow was flipped
+but wording must then match. a header UI string's trailing arrow was flipped
 `→`→`←` for RTL (arguably CSS's job, Aron's call). Hebrew plurals exceed English in three
 keys (ICU categories `two`/`many` added where English only has `one`/`other`) — correct, not
 a defect.
@@ -124,7 +124,7 @@ The research rested on the Academy of the Hebrew Language (כללי הפיסוק
 Eight decisions were put to the owner and confirmed:
 
 - **Address the reader in the plural** (`אתם`, `לחצו`, `תוכלו`), with first person plural for anything framed as "let's". Hebrew has no gender-neutral second person, so this is forced. Plural address is what Israeli instructional prose has converged on, it is prescribed by Microsoft's Hebrew guide and by the Gezer open-source rules, and the Academy's grammar committee recommended it. Masculine singular was rejected as excluding half the audience and reading as legacy software chrome; slash and dot forms (`משתמש/ת`) were rejected because the Academy, the Open University and every localization guide reject them and they produce unreadable word forms.
-- **`function` is `פונקציה`, not `פעולה`.** This is the sharpest fork in Hebrew CS vocabulary: the Ministry of Education's school textbooks use `פעולה` exclusively (0 occurrences of `פונקציה` across two volumes, against 1,056 of `פעולה`), while adult tutorials, real developer speech and the Academy all use `פונקציה`. Jiki teaches a general adult audience rather than replicating school C#/Java pedagogy, so it targets adult industry Hebrew. This is the single row most worth putting to a native speaker.
+- **`function` is `פונקציה`, not `פעולה`.** This is the sharpest fork in Hebrew CS vocabulary: the Ministry of Education's school textbooks use `פעולה` exclusively (0 occurrences of `פונקציה` across two volumes, against 1,056 of `פעולה`), while adult tutorials, real developer speech and the Academy all use `פונקציה`. the course teaches a general adult audience rather than replicating school C#/Java pedagogy, so it targets adult industry Hebrew. This is the single row most worth putting to a native speaker.
 - **Native Hebrew is primary for core CS vocabulary, but real usage wins term by term.** Hebrew's native words (`משתנה`, `לולאה`, `מערך`, `מחרוזת`, `תו`) are genuinely ordinary, unlike some Academy consumer-tech coinages, so Hebrew sits closer to Persian than to Arabic here. Where real usage is decisively a loanword it takes the loanword: `באג` over the Academy's `תקל`, `דיבוג` over `ניפוי שגיאות`, `בוליאני` over `טיפוס לוגי`, `איטרציה` over `חִזְרוּר`.
 - **"Jiki" stays in Latin script** in Hebrew prose, with maqaf-attached prefixes and `של` for possession, introduced once as `Jiki (ג'יקי)` to fix the pronunciation. Transliterating throughout would be out of step with how every Israeli tech source writes product names. `ג'יקי הקטן` is the one place the name is written in Hebrew script, because it takes a Hebrew adjective.
 - **The `<define>` gloss marker is `באנגלית:`**, the Hebrew Wikipedia convention (present in thousands of articles), rather than the literary `בלעז`.
@@ -142,7 +142,7 @@ Three terms were deliberately **left out** of the glossary rather than guessed a
 
 **Sources behind the typography, punctuation and address rules.** The Academy of the Hebrew Language's כללי הפיסוק (approved 1992, published 1994, revised 2017), which Hebrew Wikipedia and Israeli publishing both defer to, is the authority for: the ordinary Latin punctuation set; the behaviour of parentheses around a Latin run and the fact that Latin script makes quotation marks unnecessary (נספח א); and the maqaf `־` before a Latin run or a digit (§32ה), which is also what real Hebrew localization does. Plural address to the reader is the settled convention for Hebrew instructional prose: the Academy's grammar committee recommended it, Microsoft's Hebrew Style Guide mandates it for help content, and the Gezer rules governing Hebrew open-source translation require it specifically for the body of a guide. Slash, dot and blended inclusive forms (`משתמש/ת`) are rejected by the Academy explicitly, produce unreadable word forms, and are mangled by screen readers. Masculine singular for the generic reader reads as legacy software chrome or a military instruction. Standard Hebrew typography does not use italic type at all, which is why English italics and title case become double quotation marks or bold.
 
-**Why the register rules read as they do.** First person plural is the workhorse because Hebrew's first person is genderless, so it sidesteps the gender question entirely. Mixing `לחץ` and `לחצו` on one page is the most visible amateur tell in Hebrew. A whole page of future-as-imperative (`תעשו… תלחצו…`) reads as transcribed speech, and rendering every English "Let's" as `בואו נ…` reads over-caffeinated. Hebrew has no morphological negative imperative, which is why the negative is always `אל` plus future. On word order: the uninverted (subject-first) version after a fronted adverbial is marked as *lower* register rather than neutral, so keeping SVO for Jiki's voice is a deliberate choice, not an accident; and breaking one English sentence into two or three Hebrew ones is normal and expected, not a liberty.
+**Why the register rules read as they do.** First person plural is the workhorse because Hebrew's first person is genderless, so it sidesteps the gender question entirely. Mixing `לחץ` and `לחצו` on one page is the most visible amateur tell in Hebrew. A whole page of future-as-imperative (`תעשו… תלחצו…`) reads as transcribed speech, and rendering every English "Let's" as `בואו נ…` reads over-caffeinated. Hebrew has no morphological negative imperative, which is why the negative is always `אל` plus future. On word order: the uninverted (subject-first) version after a fronted adverbial is marked as *lower* register rather than neutral, so keeping SVO for this voice is a deliberate choice, not an accident; and breaking one English sentence into two or three Hebrew ones is normal and expected, not a liberty.
 
 **Why the guide targets adult industry Hebrew.** Two registers of Hebrew CS vocabulary coexist and readers may arrive from either: the Ministry of Education's school CS textbooks, and adult tutorial/industry Hebrew. Where they diverge, the guide targets adult industry Hebrew, because that is the language a learner will meet in real code and in real conversation. The `פונקציה`/`פעולה` fork above is the sharpest instance.
 
@@ -209,13 +209,3 @@ Why individual rows read the way they do, for the reasoning not already carried 
 | lightness | Hebrew collapses lightness and brightness into `בהירות`, and the Academy's `בהיקות` is not used by ordinary speakers, so the fix is a qualifier rather than a different word. |
 | slider, frame | Both rows exist to block a wrong attractor: `סליידר` means an image carousel in practice, and `מסגרת` means a picture border, which is a real trap in a drawing course. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| input slot, coin | `חריץ` is the ordinary word for the coin slot on a vending machine, which is what makes the coin metaphor land alongside it. |
-| return chute | `מגלשה` is the everyday word for a playground slide, so the physical picture is immediate. |
-| crank | `ידית` is the ordinary word for a handle; see the dated entry for the rejected alternatives. |
-| board / whiteboard | `לוח` is the everyday word for a board in a room and, unlike several other languages, carries no collision with the word for array. The row names `טבלה` so a pass does not drift toward it for a data table. |
-| label | `תווית` is a written label; `מדבקה` is specifically an adhesive sticker, which is not what Jiki's labels are. |
-| cell (of a maze grid) | `משבצת` is a square on a grid, as on a board game. `תא` reads as a spreadsheet cell, which is the wrong picture in a programming course. |

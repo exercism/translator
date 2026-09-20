@@ -5,11 +5,11 @@
 **Decided by:** native speaker **mlistewnik**, reviewing the `arithmetic` concept page,
 the forum (post 1:. **Term affected:** canvas.
 
-The existing translation used `płótno` throughout for "canvas" (the drawing surface Jiki
+The existing translation used `płótno` throughout for "canvas" (the drawing surface the code
 draws shapes on). mlistewnik pointed out that `płótno` has a narrow meaning in Polish — a
 painter's fabric, or a painting — which reads wrong here. They initially considered `obszar
 roboczy` (thinking of a defined space in a graphical interface), but settled on `plansza`
-once they noticed Jiki standing next to the drawing: a physical drawing-board framing fits
+once they pictured someone standing next to the drawing: a physical drawing-board framing fits
 better than either a painting or an abstract workspace.
 
 Applied to the `arithmetic` page as part of the same review. `płótno` also appears in 8
@@ -89,7 +89,7 @@ family needs: a flat, bounded area on a marked-out surface, not a container some
 inside.
 
 Keeping the two senses on separate words also protects the variable metaphor. _Pudełko_ is
-load-bearing for "a box on Jiki's shelves that holds one value"; using the same word for a
+load-bearing for "a box on the shelves that holds one value"; using the same word for a
 square of a grid would make a learner read the forecast grid as six containers of values, and
 would blur the one image the variables concept is built on. The existing `box (value
 container) → pudełko` row is untouched by this decision.
@@ -129,7 +129,7 @@ Deliberately left alone, because they are not the flagged collocation and are or
 **Decided by:** native speaker **mlistewnik** on the website-copy review thread, post 4:
 **Terms affected:** none (grammar rule, recorded in `guide.md` under Grammar).
 
-The app's "Ask about..." prompt in the Ask Jiki panel was translated as „Zapytaj o...”,
+The app's "Ask about..." prompt was translated as „Zapytaj o...”,
 followed by an animated rotating phrase („jak podejść do tego ćwiczenia”, „co oznacza ten
 błąd”, ...). mlistewnik reported this as a grammatical error: the `o` is a calque of English
 "ask about". In Polish, `pytać`/`zapytać` takes `o` only before a **noun** („spytaj o drogę”),
@@ -177,7 +177,7 @@ nothing about it is recorded here.
 
 Proposes **szczelina wrzutowa** for `input slot` (currently the unconfirmed coinage `otwór
 wejściowy`), citing real vending-machine manuals as the source (a narrow coin/card slot,
-closer to Jiki's physical input-slot metaphor than the rounder-sounding `otwór`). Reviewer
+closer to the physical input-slot metaphor than the rounder-sounding `otwór`). Reviewer
 disclosed partial LLM assistance in researching it, cross-checked against real manuals
 though, so the term itself is worth keeping as a candidate even if the process that found it
 isn't the personal-recollection kind we usually ask for. Needs a second, LLM-free native
@@ -205,7 +205,7 @@ speaker and written to `glossary.md` on 2026-08-03; see the entry at the top of 
 | piece of paper (string metaphor) | kartka papieru | Load-bearing recurring metaphor; over _papier_/_karteczka_ so every page pictures the same object. | medium |
 | coin (machine-input metaphor) | moneta | Recurring metaphor for number inputs to machines. | medium |
 | template string | kept English, as-is | Polish devs say it in English; consistent with the existing "string stays English" row. MDN-pl uses _literały szablonowe_ as an alternative. | medium |
-| line of code | linijka kodu | _linijka_ (informal, matches Jiki voice) vs _wiersz_ (formal); line-count checks recur across exercises. | medium |
+| line of code | linijka kodu | _linijka_ (informal, matches this voice) vs _wiersz_ (formal); line-count checks recur across exercises. | medium |
 | meridiem / am-pm indicator | meridiem (indeclinable); _oznaczenie_ for "indicator" | Keep the Latin term where the source teaches it, paraphrase elsewhere; recurs in clock content. | medium |
 | quotation marks | cudzysłów / podwójny cudzysłów | **Ambiguity, not just a term choice**: Polish prose quotes are „…", but the code a learner types uses straight ". Worth deciding whether teaching pages should show the `"` glyph explicitly. | medium |
 | string in error-message prose (no `<define>`) | declined loanword, e.g. _stringami_ | Register call: declining the bare loanword vs _ciągami znaków_ in error messages; follows the existing keep-English row but a native speaker may want to settle it. | medium |
@@ -227,7 +227,7 @@ kept here:
   Polish-speaking regions (Polish has no dialect split the guide needs to arbitrate), plus
   the research finding that the Polish online-education and IT-bootcamp market (e.g.
   Kodilla) already writes to young adult beginners in a direct, informal register, so
-  Jiki's voice fits an established norm rather than having to invent one. That research is
+  this voice fits an established norm rather than having to invent one. That research is
   the reason the "Ty" decision was easy; it is not an instruction.
 - **Provenance for the "Ty" register (removed from the guide).** The informal-Ty choice
   follows established Polish programming-education sites and professional Polish
@@ -250,85 +250,7 @@ kept here:
 - **Metaphor gender list (removed).** The guide listed _łańcuch_ masculine, _pudełko_
   neuter, _maszyna_ and _półka_ feminine. Every one of those genders is already in the
   glossary's metaphor table, which the guide now points at instead.
-- **`interpreter` rationale (removed).** The "person, not a program" reasoning and the ban
-  on _program interpretujący_ both live in the glossary row and in the 2026-07-30 entry
-  below. The guide keeps only the residual grammatical instruction: agree with the word as
-  a person („który", never „które").
-- **Word-order example (removed).** "The function returns a value." → „Funkcja zwraca
-  wartość." was a straightforward mapping needing no reordering, so it taught nothing the
-  rule did not.
-
-**One contradiction fixed.** The guide's quotation-mark rule named the Polish „…" pair,
-but every example in the file closed with a straight ASCII `"` instead of U+201D. The rule
-won: the closing glyph is now stated as U+201D explicitly and every example in the guide
-uses it. This is standard Polish orthography, not an open question, so it is a correction
-rather than a draft. Note that some examples inside `glossary.md` still close with a
-straight quote; the rows were left untouched rather than reworded.
-
-## 2026-08-01: `string` moves to Keep in English, glossed as `ciąg znaków` on first mention
-
-**Decided by:** native speaker (siling) on the pinned Polish glossary thread, post #5. **Terms affected:** `string`.
-
-The row previously rendered `string` as `ciąg znaków` throughout prose. siling pointed out
-that real Polish programming conversation says "string", reaching for `ciąg znaków` only
-when actually defining the concept. This was an unconfirmed agent row (no prior
-native-speaker decision on it), so it moves straight to Keep in English: `ciąg znaków` on
-first `<define>`, `string` afterwards. `łańcuch` stays excluded, for the same reason as
-before: it would collide with the chain/array metaphor.
-
-Also raised in the same post, not actioned: whether `array` and `list` (both currently
-`tablica`) should split into two terms, matching Python's distinct `list`/`array` types.
-Held as-is: `global/terms.md` already treats "array / list" as one concept project-wide,
-because Jiki's own curriculum only has one such data structure and English prose sometimes
-calls it "list" informally, not because it introduces a second, Python-style type. Replied
-on the thread explaining this rather than changing the row.
-
-## 2026-07-31: `return chute` is `kanał zwrotny`, settled by a native speaker
-
-**Decided by:** owner (iHiD), on the correction of native speaker **bavar** on the pinned
-Polish glossary thread:
-**Terms affected:** `return chute` (and, by exclusion, `input slot`).
-
-`return chute` changes from **`zsyp zwrotny`** to **`kanał zwrotny`**. bavar's point is
-semantic, not stylistic: in ordinary Polish a _zsyp_ is a one-way disposal chute (the
-rubbish or laundry chute in a block of flats), something you throw things down and never
-get anything back from, which is the opposite of what the return chute does. `kanał
-zwrotny` is ordinary Polish and reads straightforwardly as the channel a value comes back
-along. The old rendering was an agent coinage that no native speaker had ever seen, so
-there was nothing to overrule.
-
-**This row is now human-decided and settled.** It changes only by fresh agreement with a
-human, raised on that thread.
-
-**`input slot` (`otwór wejściowy`) is untouched and still an unconfirmed coinage.** It was
-drafted alongside `zsyp zwrotny` in the same pass and nobody has checked it; bavar's post
-did not mention it. It still needs native-speaker input in its own right, and the fact that
-its pair has now been settled is not evidence for it.
-
-## 2026-07-30: Owner decisions from the 28-language using-functions pass
-
-**Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
-languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
-
-Two decisions came out of that pass that bind Polish, plus a general principle:
-
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. **Polish is the hardest case of all 28**: it
-  has exactly one everyday word for a physical writing board, `tablica`, and `tablica` is
-  already the agreed term for `array`. Rather than collide the two, the merged term took
-  **`notatnik`** instead, which keeps the "surface you write instructions on that someone
-  else then reads and follows" idea, at the cost of losing the board image itself.
-  Recorded honestly: a native speaker reviewing this may well prefer to accept the
-  collision and use `tablica` for both senses, letting context disambiguate, over losing
-  the board picture. That question is open and should go to a native speaker via
-  `/action-forum-post`. Whichever way it resolves, the future dictionary spiral-notepad
-  metaphor must not reuse `notatnik`, since this decision has already spent it on the
-  board/whiteboard sense.
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter, so the word has to be able to name a character.
-  Polish did not change rendering: the loanword `interpreter` was kept, because it is an
+- **`interpreter`.** Polish did not change rendering: the loanword `interpreter` was kept, because it is an
   `-er` agent noun that Polish developer writing genuinely uses for a person, unlike a
   program-only paraphrase such as `program interpretujący`. What changed is that the row
   now says so, and rules that paraphrase out explicitly.
@@ -344,7 +266,7 @@ Two decisions came out of that pass that bind Polish, plus a general principle:
 entry above governs.
 
 **Rows added**, for the terms the using-functions concept page needed: `instruction (given
-to Jiki)`, `mental model`, `(programming) language`, `brackets (the two after a function
+`, `mental model`, `(programming) language`, `brackets (the two after a function
 name)`, `course` (a new "Platform & curriculum" section), and the metaphor rows `crank` and
 `warehouse`.
 
@@ -392,13 +314,13 @@ repeated here.
 | condition, comparison | Ordinary words, so they stand alone. |
 | operator | Direct cognate. |
 | statement (executable) | `instrukcja` is the standard Polish CS term for an executable statement. |
-| parameter | Jiki's own writing keeps the textbook-correct distinction between parameter and argument, even though Polish developers sometimes conflate the two informally. |
+| parameter | the English source's own writing keeps the textbook-correct distinction between parameter and argument, even though Polish developers sometimes conflate the two informally. |
 
 ### Loops, state & program flow
 
 | Term | Why |
 |------|-----|
-| instruction (given to Jiki) | Polish has one ordinary word for this and for "statement (executable)", and coining a second would read worse. |
+| instruction | Polish has one ordinary word for this and for "statement (executable)", and coining a second would read worse. |
 | mental model | The standard Polish rendering, used in Polish psychology and UX writing. |
 | (programming) language | Ordinary Polish word, known to every beginner. |
 | for-of loop | No independent Polish name exists for this construct. |
@@ -419,13 +341,3 @@ repeated here.
 | API | Not a term a beginner knows, so the concept has to be explained, not just the acronym expanded. |
 | workflow | Confirmed by Poland's own language authority (PWN) as having no settled Polish rendering for the dev/CI-CD sense. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| box | Plain Polish word for "box"; direct and concrete. |
-| crank | Ordinary Polish word for a hand crank. |
-| warehouse | Ordinary word for a storeroom/warehouse; the shelves stand in it. |
-| input slot | No established Polish pedagogical precedent for this compound. |
-| bouncer | Settled by a native speaker (marysska6, the forum, 2026-08-02): `bramkarz` is ambiguous and reads first as "goalkeeper", so the bar-door scenario misfires. `ochroniarz` is the neutral word for the door-security role. |
-| return chute | `zsyp` (a chute an object drops through, e.g. a laundry/garbage chute) fits a returned value better than `zjeżdżalnia` (a slide, which implies a person riding it). |

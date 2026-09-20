@@ -14,7 +14,7 @@ Rationale and provenance removed from `guide.md`, kept for the record:
   approachable, demystifying tone. Scratch's zh-TW localization (beyond-coding.org.tw,
   oxxostudio.tw, junyiacademy.org) confirms concrete, playful metaphor is an established
   convention in Chinese-language programming education for beginners (e.g. block → 積木,
-  "building blocks"), which fits Jiki's metaphor-driven teaching well. That research is what
+  "building blocks"), which fits metaphor-driven teaching well. That research is what
   the freer particle calibration and the metaphor renderings rest on.
 - **Sourcing.** Duolingo's zh-TW app UI is not a trustworthy reference for this locale:
   native Taiwanese users report it contains Simplified-character contamination and
@@ -37,10 +37,10 @@ Duplication removed (behaviour unaffected, the same instruction still exists els
   carrying the "never use 函式 for a product feature" instruction, and the guide note was cut.
 - The **board-is-one-object-one-word** instruction (including "never coin a second word for
   the instruction-board sense, never use 板子 or a word that already means array") moved
-  verbatim into `glossary.md` § Jiki physical metaphors, alongside the metaphor rows it
+  verbatim into `glossary.md` § the physical metaphors, alongside the metaphor rows it
   governs, matching how `zh-CN`'s glossary already carries it. This is cherylli-adjacent
   owner-settled content and was moved, not reworded.
-- The **Jiki physical metaphors (zh-TW specifics)** bullets restated glyphs that are already
+- The **the physical metaphors (zh-TW specifics)** bullets restated glyphs that are already
   glossary rows (鏈子 and its 鎖鏈 exclusion, 機器, 架子/置物架). Cut from the guide; the
   glossary rows are unchanged.
 - The **Mechanics** paragraph (Arabic numerals, CJK/Latin spacing, full-width punctuation and
@@ -96,24 +96,17 @@ covers the mental-model sense only; the maze/on-screen sense stays 角色 in the
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`.
-**Terms affected:** `interpreter`, `board / whiteboard`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind Taiwan Traditional Chinese:
+Two decisions came out of that pass that bind Taiwan Traditional Chinese:
 
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter ("your interpreter is Jiki... It's his job to
-  interpret the code that you write"), so the word has to be able to name a character.
-  **This changed the published rendering**: `interpreter` moves from 直譯器 to **翻譯員**.
+- **`interpreter`.** **This changed the published rendering**: `interpreter` moves from 直譯器 to **翻譯員**.
   直譯器 takes the 器 suffix, which marks a device, and a device word cannot name a
   character the reader is meeting as a friend. Two alternatives were considered and
   rejected: **直譯員** keeps continuity with the CS term (直譯器) learners meet later in
   more technical contexts, but it is a coinage, not a word anyone actually uses; **口譯員**
   is the ordinary word for a human interpreter, but specifically a *speech* interpreter,
   the wrong domain for code.
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. This locale renders both with the shared
-  family term 白板 (see `../zh/glossary.md`), so no separate zh-TW rendering was needed.
 - **Default to the ordinary, common word**, whatever its etymology (now in
   `global/voice.md`). Where Taiwan developer writing genuinely uses the English word, the
   English word is the ordinary word and the right choice (e.g. `bug`); where it does not,
@@ -128,12 +121,12 @@ entry above governs.
 Rows added or corrected for the using-functions concept page, none changing an existing
 human decision:
 
-- Terms the page needed that had not been written down: `instruction (given to Jiki)`,
+- Terms the page needed that had not been written down: `instruction`,
   `mental model`, `(programming) language`, `brackets (the two after a function name)`,
   `input (to a function)`, and the metaphor rows `machine`, `crank`, `shelves`,
   `warehouse`.
 - **The `course` / `lesson` collision was resolved.** `lesson` is corrected from 課程 to
-  **單元**, which frees 課程 to mean `course` (the whole Jiki course the learner is
+  **單元**, which frees 課程 to mean `course` (the whole course the learner is
   taking), matching Taiwan online-course platform usage for a single teaching unit.
 - **The "Keep in English" leftovers were resolved.** `Code`, `Bug`, `Frontend`, `Backend`
   no longer sit blanket-exempted in English: that contradicted both the Chinese family's
@@ -190,9 +183,3 @@ already covered by a dated entry above (`interpreter`, `board / whiteboard`, `co
 | module | Deliberately different from `zh-CN`'s 模块. |
 | algorithm | Deliberately different from `zh-CN`'s 算法. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| warehouse | Plain, concrete word. |
-| crank | 手把 is the ordinary word for a handle; 曲柄 is engineering jargon. |

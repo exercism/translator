@@ -59,18 +59,18 @@ Korean translation of the Modern JavaScript Tutorial at ko.javascript.info.
 **Why 반말 is banned outright.** Korean etiquette treats an unknown adult reader, including
 a "student" in a teacher/learner relationship, as someone you address politely by default,
 so 반말 (당신을 아는 사이가 아닌 학습자에게는 무례하게 들립니다) would read as presumptuous
-no matter how casual Jiki's brand voice is elsewhere.
+no matter how casual the brand voice is elsewhere.
 
 **Why the second-person pronoun is dropped.** Explicit 당신 reads oddly formal or even
 pointed outside a few narrow contexts (married couples, formal address to an unnamed reader
 in print, song lyrics), and 너 is the 반말 problem restated.
 
-**Why Jiki takes no honorific suffix.** Jiki is the friendly guide; the bare name keeps the
+**Why a product name takes no honorific suffix.** The bare name keeps the
 voice warm rather than corporate.
 
 **Where the pro-drop exception came from.** A native-speaker review flagged a sentence about
-what Jiki can do, several clauses after "Jiki" was last the grammatical subject, as reading
-better with "Jiki는" restated than left implicit. That report is what the guide's
+what a named actor can do, several clauses after that name was last the grammatical subject,
+as reading better with the name restated than left implicit. That report is what the guide's
 "re-establish the subject when the topic has drifted" exception encodes; it was never a
 blanket return to explicit subjects.
 
@@ -122,7 +122,7 @@ explanatory analogy.
 
 창고 was an unconfirmed agent draft. Dojany's point: in Korean, 창고 reads as a plain
 storage space (a logistics warehouse or junk room), not somewhere a person works with
-tools, which is the intended image (Jiki's machine shelf lives there). Many Korean readers
+tools, which is the intended image (the machine shelf lives there). Many Korean readers
 live in apartments, where private garages/sheds/workshop-style storage are unfamiliar, so
 창고 pulls even harder toward "storage" than it might for a Western reader. 작업실 (a room
 where someone works, builds, or uses tools) matches the illustration and the metaphor.
@@ -197,25 +197,13 @@ earlier draft rather than overwriting a native speaker's prior call.
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind Korean:
+Two decisions came out of that pass that bind Korean:
 
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. The previous instruction to keep them
-  distinct was forcing languages to invent a distinction the course does not have, and
-  several collided with their own word for `array` trying. **Korean merged the two draft
-  renderings onto 칠판**, the everyday word for a write-and-wipe board in a room (every
-  Korean reader knows it from a classroom, and it is used loosely of whiteboards too), and
-  it collides with nothing else in the glossary (`array` is 배열). It retires the earlier
-  draft 화이트보드, which named a specific office object rather than the everyday teaching
-  image.
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter ("It's his job to interpret the code that you
-  write"), so the word has to be able to name a character. Several languages had reached
+- **`interpreter`.** Several languages had reached
   for their term for interpreter *software*, which cannot. **Korean did not change:**
-  인터프리터 was kept, because the `-기` device suffix in 해석기 cannot name Jiki, and the
+  인터프리터 was kept, because the `-기` device suffix in 해석기 names a device rather than a person, and the
   construction 인터프리터 역할 ("the interpreter role") lets the loanword name a person
   where a bare apposition would read oddly.
 - **Default to the ordinary, common word**, whatever its etymology (now in
@@ -230,7 +218,7 @@ entry above governs.
 
 **Rows added for the concept page.** The using-functions page needed terms the glossary
 did not yet cover: `mental model`, `(programming) language`, `brackets (the two after a
-function name)`, `input (to a function)`, `instruction (given to Jiki)`, and the metaphor
+function name)`, `input (to a function)`, `instruction`, and the metaphor
 rows `machine`, `input slot`, `return chute`, `crank`, `shelves`, `warehouse`.
 
 **`course` moved from 코스 to 강의.** 강의 is what Korean online-learning platforms
@@ -293,7 +281,7 @@ covered by a dated entry above (`board / whiteboard`, `interpreter`, `course`, `
 
 | Term | Why |
 |------|-----|
-| instruction (given to Jiki) | Everyday word ("알맞은 지시를 내려요"); 명령 was rejected as a command from a superior that also collides with the CS "command" term. |
+| instruction | Everyday word ("알맞은 지시를 내려요"); 명령 was rejected as a command from a superior that also collides with the CS "command" term. |
 | mental model | 머릿속 모형, settled by the owner on a native speaker's report (see the 2026-07-31 entry above). Not 멘탈 모델, and not the earlier-rejected hybrid 머릿속 모델. |
 | (programming) language | 언어 is the ordinary word and covers both senses. |
 | error | Ordinary word in written/educational Korean; docs and formal writing favor "오류" over colloquial "에러". |
@@ -312,15 +300,3 @@ covered by a dated entry above (`board / whiteboard`, `interpreter`, `course`, `
 | API | "아피" does not exist as a transliterated form, so the acronym is universally kept in raw Latin script. |
 | framework | Loanword; the standard term. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| box | Direct precedent: the Korean translation of the Modern JavaScript Tutorial (ko.javascript.info) already teaches variables with "'상자' 안에 데이터를 저장하는데, 이 상자에는 특별한 이름표가 붙어 있다고 상상해 봅시다" (imagine storing data inside a "box" with a name tag). 상자 (native/Sino-Korean) reads warmer and more tutorial-appropriate than the loanword "박스". |
-| machine | Direct precedent: Korean functional-programming beginner material models a function as a beverage-packaging machine (기계) that takes materials in and returns a finished product, mapping closely onto Jiki's own function-as-machine framing. |
-| input slot | Pairs naturally with 기계: Korean vending machines are labelled with a "동전 투입구" (coin slot), so 투입구 is an immediately familiar, concrete image for "the opening a function's input goes into", not a coinage. |
-| return chute | Pairs with 투입구 the same way a vending machine has a coin slot and a product-dispensing slot (배출구, "product dispensing/ejection opening"). Concrete and familiar; avoids a dry technical rendering of "return". |
-| chain | No direct precedent found in Korean beginner CS material (existing Korean array explanations tend to use a classroom/numbered-seats metaphor instead), but 사슬 is the ordinary, everyday Korean word for a physical chain and carries the same "linked things in a row" image as the English metaphor. |
-| shelves | No direct precedent found either way. 선반 is the ordinary native word for "shelf" and is linguistically safe, but untested in this specific teaching context. |
-| warehouse | Ordinary everyday word for a warehouse or storeroom. |
-| crank | Korean has no single everyday noun for a crank, so the concrete handle-plus-turn phrasing carries the physical image instead. |

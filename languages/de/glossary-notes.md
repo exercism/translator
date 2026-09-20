@@ -1,22 +1,5 @@
 # German (de) glossary notes
 
-## 2026-08-06: Translation engine confirmed as `fable`
-
-**Decided by:** xcodeowl, a native speaker, on the "Alternative translation model"
-comparison thread, confirmed by iHiD on the same thread.
-**Status:** settled. **Terms affected:** none (engine choice, not a glossary or guide
-change). **Files affected:** none; `tracking.json` already carried the block, this entry
-records the decision behind it.
-
-Jeremy posted an alternative-model rendering of a German page alongside the published one
-and asked which read better. xcodeowl preferred the original, and Jeremy confirmed German
-would stay as it was.
-
-This is a **confirmation of the existing default, not a switch**: German was already running
-on `fable`, and it continues to. What the verdict changed is that the choice is now
-native-speaker-backed, which per `orchestrator.md` is what a `translation_engine` block
-means.
-
 ## 2026-08-02: Website copy (app UI catalog)
 
 **Decided by:** nobody yet. These rows are **unconfirmed drafts**, proposed by the
@@ -101,9 +84,7 @@ use the verb `interpretieren` nearby) was kept in the guide's style notes.
 
 ## 2026-07-31: `input slot` = `Trichter` (resolves the open objection)
 
-**Decided by:** owner (iHiD), on the proposal by native speaker `neillana`, forum topic
-the forum, posts
-[/340/6],
+**Decided by:** owner (iHiD), on the proposal by native speaker `neillana`, on the forum.
 [/340/7] and
 [/340/10].
 **Terms affected:** `input slot`. **Supersedes** the `input slot` half of the "Open
@@ -113,10 +94,10 @@ already closed by the entry below this one).
 `Eingabeschlitz` is replaced by **`Trichter`**. `neillana` argued `Eingabeschlitz` denotes
 something narrow (a coin slot, `Münzschlitz`) and that both `Schlitz` and `Schacht` read as
 old-fashioned and overly technical. Asked by the owner what fits an opening that takes
-paper, coins and a chain of things, `neillana` answered that the Jiki animation's input
-slots literally are hoppers ("I just watched it again and the input slots actually are
-hoppers", "If you think about the thing Jiki puts the stuff into to get it into the machine,
-it is simply 'Trichter'"), and that `Trichter` is live, common vocabulary. `Eingabefach` was
+paper, coins and a chain of things, `neillana` answered that the animation's input slots
+literally are hoppers ("I just watched it again and the input slots actually are hoppers",
+"If you think about the thing the stuff goes into to get it into the machine, it is simply
+'Trichter'"), and that `Trichter` is live, common vocabulary. `Eingabefach` was
 offered only as a fallback if we wanted to avoid the hopper association, and is not adopted.
 The owner adopted `Trichter`. It also keeps the in/out metaphor pair concrete beside
 `return chute` = `Ausgaberutsche`.
@@ -153,29 +134,18 @@ another agreed term): `programming / coding`, `tech / tech industry`, `developer
 `operator`, `to call (a function)`, `to define (a function)`, `to return (a value)`,
 `keyword`, `variable`, `assignment`, `to assign`, `error`, `nested`, `to run / execute
 (code)`, `class`, `method`, `object`, `module`, `algorithm`, `component`. Anything with a
-rejected alternative, a collision note, an open forum objection, or part of the Jiki
-metaphor set was left untouched; a reviewer querying `component` or `class`/`method`/`object`
+rejected alternative, a collision note, an open forum objection, or part of the metaphor set was left untouched; a reviewer querying `component` or `class`/`method`/`object`
 (direct, uncontested cognates) is the most likely challenge.
 
 ## 2026-07-30: Owner decisions from the 28-language using-functions pass
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind German:
+Two decisions came out of that pass that bind German:
 
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. The previous instruction to keep them
-  distinct was forcing languages to invent a distinction the course does not have, and
-  several collided with their own word for `array` trying. German renders both as
-  **Tafel**: the everyday word for a writing board in a room, idiomatic with the verbs the
-  metaphor needs ("etwas auf die Tafel schreiben"), and it does not collide with `Array`
-  (the older German word for that is `Feld`).
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter, so the word has to be able to name a character.
-  Several languages had reached for their term for interpreter *software*, which cannot.
+- **`interpreter`.**
   German renders it as **Interpreter**, naturalized as a German noun and inflected as one
   ("der Interpreter, dein Interpreter"), and the transparent agent noun to the everyday
   verb "interpretieren", which the surrounding prose uses ("Seine Aufgabe ist es, den Code
@@ -188,8 +158,7 @@ Three decisions came out of that pass that bind German:
 
 ## 2026-07-12: `float / decimal` = `Gleitkommazahl` settled on the forum
 
-**Decided by:** native speakers `elzda` and `neillana`, forum topic
-the forum.
+**Decided by:** native speakers `elzda` and `neillana`, on the forum.
 **Terms affected:** `float / decimal`.
 
 `elzda` objected to `Gleitkommazahl` as a word they had never heard, and proposed
@@ -214,8 +183,8 @@ same thread.
 
 ## Open objections (unresolved): `loop body` and `input slot`
 
-**Raised by:** native speakers `elzda` and `neillana`, forum topic
-the forum, 2026-07-11 to 2026-07-13. **Not decided.** The owner
+**Raised by:** native speakers `elzda` and `neillana`, on the forum, 2026-07-11 to
+2026-07-13. **Not decided.** The owner
 has not ruled on either, so the current glossary renderings stand unconfirmed and must not
 be changed on this basis alone.
 
@@ -230,7 +199,7 @@ be changed on this basis alone.
   denotes something narrow (a coin slot, `Münzschlitz`), while `Eingabeschacht` denotes
   something larger (a shaft, for something like a sheet of paper). Asked by the owner what
   fits an input that takes paper, coins, and a chain of things, `neillana` proposed
-  **`Trichter`** (hopper): "If you think about the thing Jiki puts the stuff into to get it
+  **`Trichter`** (hopper): "If you think about the thing the stuff goes into to get it
   into the machine, it is simply 'Trichter'... I just watched it again and the input slots
   actually are hoppers," with **`Eingabefach`** offered as an alternative "if you don't want
   the association with hoppers."
@@ -269,7 +238,7 @@ covered by a dated entry above (`board / whiteboard`, `interpreter`, `float / de
 
 | Term | Why |
 |------|-----|
-| instruction (given to Jiki) | Everyday word in German beginner programming material (Scratch and school material talk about "Befehle"), and the established German rendering of a machine instruction ("Befehlszeile", "Befehlssatz"). |
+| instruction | Everyday word in German beginner programming material (Scratch and school material talk about "Befehle"), and the established German rendering of a machine instruction ("Befehlszeile", "Befehlssatz"). |
 | mental model | Ordinary word; "mentales Modell" is the stiffer academic calque. |
 | (programming) language | Fully native. |
 | increment | Reads more naturally for beginners than the loanword "inkrementieren". |
@@ -291,12 +260,3 @@ covered by a dated entry above (`board / whiteboard`, `interpreter`, `float / de
 |------|-----|
 | framework | "Rahmenwerk" is a purist coinage nobody uses. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| box | Direct, concrete; fully naturalized loanword. |
-| chain | Standard German for a physical chain. |
-| return chute | "Ausgabe" (output, agreed term above) + "Rutsche" (a slide/chute, the same word used for a playground slide). |
-| machine | Direct, concrete. |
-| warehouse | Concrete and everyday; "Lager" alone is vaguer. |

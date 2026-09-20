@@ -67,7 +67,7 @@ The original glossary gave _itinerari_ to **pathway** and _recorregut_ to **trac
 reasoning that "itinerari formatiu" is well established in Catalan education contexts. That
 reasoning was right about the word and wrong about which English term it belongs to:
 _itinerari_ is precisely a structured course of study someone follows to the end, which is
-what Jiki calls a **track**. _Recorregut_ is a route travelled, with no curricular sense,
+a **track**. _Recorregut_ is a route travelled, with no curricular sense,
 and reads oddly for a curriculum path. **Pathway**, the looser "way in" sense, takes _camí_,
 the ordinary everyday word, which is already how the app catalog renders the marketing
 phrasings ("el teu camí en la programació", "el teu camí d'aprenentatge"). The net effect is
@@ -136,14 +136,14 @@ justification were moved here. No behavioural instruction was dropped. What move
   singular), "vós" (semi-formal/institutional plural) and "vostè" (formal singular).
   Software UI copy conventionally uses "vós" (the Softcatalà/TERMCAT localization
   convention), and UOC distance-learning material recommends "vosaltres" for a mixed-age
-  student body, but neither is Jiki's genre. Real tutorial/mentor-voice writing (e.g. the
+  student body, but neither is this genre. Real tutorial/mentor-voice writing (e.g. the
   UPC-affiliated Catalan edition of "Introducció a la programació", 2014) uses "tu"
-  throughout, and it matches the informal register Jiki uses in its other languages.
+  throughout, and it matches the informal register used in the other languages.
 - **Why Catalan technical terms are used rather than invented or borrowed.**
   Catalan-medium computer-science teaching is well established at university level (UPC,
   UB, UOC and UdG all publish CS course material in Catalan), so learners are not meeting
   an invented vocabulary: real, current Catalan terms exist for almost every core concept
-  Jiki teaches. As a rule this is already `global/voice.md` § "Default to the ordinary,
+  the course teaches. As a rule this is already `global/voice.md` § "Default to the ordinary,
   common word", so the guide no longer restates it.
 - **Why cognate glosses are dropped.** Catalan and English share the Latin script and most
   of this vocabulary, so the great majority of prose `<define>` terms would gloss to
@@ -206,7 +206,7 @@ Loops/state & program flow, Tooling & engineering, Platform & curriculum vocabul
 the English term has one obvious Catalan rendering and nothing was left to decide: mostly
 transparent cognates (`variable`, `object`, `error`'s neighbours like `class`/`method`/
 `property`) and ordinary dictionary words (`streak`, `pitfall`, `value`, `lesson`,
-`exercise`). Nothing in the "Keep in English" or "Jiki physical metaphors" sections was
+`exercise`). Nothing in the "Keep in English" or the physical metaphors sections was
 touched, and no row this file records as an owner decision (`board / whiteboard`,
 `interpreter`) was removed. A reviewer might query cutting `if statement` (condicional) and
 `string` (cadena de caràcters): both were dropped because their Notes column carried no
@@ -217,22 +217,15 @@ translations.
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind Catalan:
+Two decisions came out of that pass that bind Catalan:
 
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. Catalan did not change: it already used
-  **pissarra** for both, so this row widened to say so explicitly rather than changing the
-  rendering.
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter, so the word has to be able to name a character.
-  Catalan did not change: _intèrpret_ was already right, because it is the everyday Catalan
+- **`interpreter`.** Catalan did not change: _intèrpret_ was already right, because it is the everyday Catalan
   word for a human interpreter or translator and doubles as the CS term without sounding
   like a device. What changed is that the row now says so, and rules out a
   machine-forming coinage (_interpretador_, _programa intèrpret_), which names a tool and
-  cannot name Jiki.
+  name a tool rather than a person.
 - **Default to the ordinary, common word**, whatever its etymology (now in
   `global/voice.md`). Where a language's own developer writing uses the English word, the
   English word is the ordinary word and the right choice; where it does not, the native
@@ -245,7 +238,7 @@ entry above governs.
 
 The rows the using-functions concept page needed were drafted in this pass: the metaphor
 rows (`machine`, `crank`, `shelves`, `warehouse`, `box`, `chain`, `input slot`, `return
-chute`, `board / whiteboard`), `interpreter`, `instruction (given to Jiki)`, `mental model`,
+chute`, `board / whiteboard`), `interpreter`, `instruction`, `mental model`,
 and `(programming) language`, among others across the file. None of these has been checked
 by a native speaker.
 
@@ -279,7 +272,7 @@ covered by a dated entry above (`board / whiteboard`, `interpreter`) is not repe
 | value, number | Ordinary words. |
 | true / false | Medium confidence; not independently cross-verified, flagged for review on first real use. |
 | float / decimal | TERMCAT also has _nombre de coma flotant_ for the floating-point representation specifically; _decimal_ was chosen as the simpler learner-facing form. |
-| array / list | Real Catalan CS usage (UPC OCW, Jutge.org) distinguishes _vector_/_taula_ (fixed array), _llista_ (Python-style dynamic list), and _matriu_ (2-D matrix); _llista_ was chosen as Jiki's single term since it avoids the matrix collision. |
+| array / list | Real Catalan CS usage (UPC OCW, Jutge.org) distinguishes _vector_/_taula_ (fixed array), _llista_ (Python-style dynamic list), and _matriu_ (2-D matrix); _llista_ was chosen as the single term since it avoids the matrix collision. |
 | string | Confirmed by TERMCAT and by direct textbook usage (chapter title "Cadenes de caràcters"). |
 | Boolean | Unlike some languages, Catalan fully localizes this term. |
 
@@ -330,18 +323,5 @@ covered by a dated entry above (`board / whiteboard`, `interpreter`) is not repe
 |------|-----|
 | API | TERMCAT confirms the acronym is accepted as-is once explained. |
 | framework | TERMCAT lists it as an accepted synonym alongside _entorn de treball_. |
-| bootcamp | Jiki's predecessor intensive program; no natural Catalan equivalent found, kept English like in other languages. |
+| bootcamp | a predecessor intensive program; no natural Catalan equivalent found, kept English like in other languages. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| box | Small-container word (matchbox-scale); the right physical size for "a value goes in a box." |
-| chain | _Filera_ (a row/line of things) is the current, widely used word for the "things lined up in a row" sense, and collides with nothing. See the 2026-08-05 entry above for why it replaced _reguitzell_ and why _cadena_ was rejected. |
-| input slot | _entrada_ (input) + _ranura_ (a slot/opening). Catalan already uses _ranura_ for a hardware expansion slot, which reinforces rather than undermines the metaphor. |
-| return chute | _sortida_ (output) + _conducte_ (a duct/channel). No established term exists since this is a Jiki-only coinage; no collision found. |
-| machine | Direct cognate; both the general and everyday-appliance senses map onto "takes an input, does work, produces output." |
-| crank | The small hand crank on a machine; ordinary everyday word, no technical double meaning. |
-| shelves | Plain word for storage shelves; no technical double meaning found. |
-| warehouse | Ordinary everyday word for a storeroom/warehouse. |
-| board / whiteboard | Covers both the classroom blackboard and the modern whiteboard sense. |

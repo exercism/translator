@@ -10,7 +10,7 @@ Portuguese Stage 2 batch-3 pass. **Terms affected:** `true / false`.
 
 The row still renders the concept as _verdadeiro / falso_; nothing about the term itself
 changed. What the Notes column did not say is which of the two jobs the English words do in
-Jiki's source, and the two want opposite treatment.
+the English source, and the two want opposite treatment.
 
 Where the sentence is saying whether something is the case ("if the condition is true"), the
 words are ordinary prose and take the Portuguese. Where **true** or **false** names the

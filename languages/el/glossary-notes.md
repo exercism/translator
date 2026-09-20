@@ -98,21 +98,6 @@ formal-register word that means "infiltration" or "sneaking in" without the innu
 feminine, like `διείσδυση`, so the title's `Η ... της Annalyn` structure carries over
 unchanged: `Η παρείσφρηση της Annalyn`.
 
-## 2026-08-06: Translation engine switched to `deepseek`
-
-**Decided by:** astyanax, the authoritative native-speaker reviewer for Greek, on the
-"Alternative translation model" comparison thread.
-**Status:** settled. **Terms affected:** none (engine choice, not a glossary or guide
-change). **Files affected:** none; `tracking.json` already carried the block, this entry
-records the decision behind it.
-
-Jeremy posted an alternative-model rendering of a Greek page alongside the published one and
-asked which read better. astyanax answered that "in general the new version is better... I
-do prefer the new version", and Greek was switched to it.
-
-Greek therefore runs on `deepseek` rather than the `fable` default. This was a genuine
-switch, made on a native speaker's verdict, not on our own judgement or on cost.
-
 ## 2026-08-05: Weekday and month names ARE capitalized (reverses a wrong guide rule)
 
 **Decided by:** astyanax (native speaker).
@@ -301,7 +286,7 @@ maze-solve-repeat). **None of them has been written into `glossary.md`.**
 Astyanax's first pass flagged "τρέξε τον βρόχο" and "έναν βρόχο", asking for the final -ν
 to drop before β. Applying that surfaced the masculine/neuter distinction: Triantafyllidis'
 grammar traditionally keeps τον/έναν's -ν in every position specifically so it stays
-distinguishable from neuter το/ένα. Asked astyanax directly whether Jiki prose should drop
+distinguishable from neuter το/ένα. Asked astyanax directly whether this prose should drop
 it on masculine forms generally; he checked further (including a university course page
 using the traditional form) and confirmed: **keep -ν on masculine τον/έναν always**, and
 apply the drop rule only to την/δεν/μην. `concepts/while-loops/el.md` was fixed to the
@@ -320,8 +305,8 @@ batch). Pass translated `two-fer`, `strings`, `digital-clock`, `arrays`, `weathe
 | data type | τύπος δεδομένων | Canonical Greek CS term; recurs across concept pages. | high |
 | compound data type | σύνθετος τύπος δεδομένων | Defined in `arrays`; sets the pattern for later compound types. | medium |
 | element (of an array) | στοιχείο | "αντικείμενο" would collide with "object" later. | high |
-| coin (number metaphor) | κέρμα | Jiki machine-slot metaphor; κέρμα vs νόμισμα needs settling. | high |
-| piece of paper (string metaphor) | κομμάτι χαρτί | Jiki string metaphor; shortens to bare "χαρτί" once established. | high |
+| coin (number metaphor) | κέρμα | the machine-slot metaphor; κέρμα vs νόμισμα needs settling. | high |
+| piece of paper (string metaphor) | κομμάτι χαρτί | the string metaphor; shortens to bare "χαρτί" once established. | high |
 | input (value passed to a function/machine) | είσοδος | Proposed independently twice (two-fer, strings), same target both times. Must stay distinct from the agreed "θυρίδα" (input slot, physical opening). | medium |
 | quotation marks | εισαγωγικά (διπλά εισαγωγικά) | Greek "εισαγωγικά" defaults to guillemets («»); here it must always mean straight double quotes. | medium |
 | concatenation | συνένωση | Recurs across string exercises. | medium |
@@ -358,7 +343,7 @@ currently use, so a reviewer rejecting one implies fixing those pages.
 | initializer (for-loop part) | αρχικοποίηση | Alternative: αρχικοποιητής. Names one of the three canonical for-loop parts. | medium |
 | increment (for-loop part) | αύξηση | Alternative: προσαύξηση (common in Greek CS texts); plainer everyday word chosen per voice guidance. | medium |
 | else clause / clause | ρήτρα `else` | ρήτρα is used in Greek CS teaching (cf. "ρήτρα WHERE") but can read legalistic to a beginner; alternative: τμήμα. Native speaker should confirm. | medium |
-| spiral notebook (dictionary metaphor) | σπιράλ σημειωματάριο | Jiki physical metaphor for dictionaries; alternatives: μπλοκ σπιράλ, τετράδιο. Bare σημειωματάριο after first mention in-page. | medium |
+| spiral notebook (dictionary metaphor) | σπιράλ σημειωματάριο | the physical metaphor for dictionaries; alternatives: μπλοκ σπιράλ, τετράδιο. Bare σημειωματάριο after first mention in-page. | medium |
 | turn around (maze manoeuvre) | αναστροφή | Everyday word for a U-turn; alternatives: μεταβολή, στροφή προς τα πίσω. Family-wide consistency matters. | medium |
 | checksum | άθροισμα ελέγχου | Alternatives: keep English "checksum"; ψηφίο ελέγχου means check digit, a different thing. Recurs in ISBN/Luhn content. | medium |
 | dress code | dress code (kept in English) | Ordinary term in Greek nightlife context; ενδυματολογικός κώδικας reads bureaucratic. | medium |
@@ -387,7 +372,7 @@ consistency fixes below are **unconfirmed drafts**.
 The rationale moved out of the guide, kept here so a later reader does not "fix" a rule
 back to the option that was already considered and rejected:
 
-- **Informal εσύ.** It matches Jiki's "friend teaching you" voice, and εσείς reads cold
+- **Informal εσύ.** It matches the "friend teaching you" voice, and εσείς reads cold
   and institutional against that mentor voice. The official school Πληροφορική curriculum
   defaults to εσείς, but that is the classroom-plural "you" addressing a room of students,
   not a deliberate politeness register, so it is not the model to follow. The guide now
@@ -434,7 +419,7 @@ English passive", was folded into the Word order bullet.
 research): no rule on the disjunctive ή (whether it takes an accent, and how it is
 distinguished from the article η in prose); no rule on declining, or refusing to decline,
 Latin-script code identifiers and English-kept technical terms in Greek case frames (only
-"Jiki" is covered); and nothing on final sigma when such a term takes a Greek ending.
+a Latin-script product name is covered); and nothing on final sigma when such a term takes a Greek ending.
 
 ## 2026-07-31: `let` glosses once as "έστω", confirmed by a native speaker
 
@@ -503,7 +488,7 @@ glossary to i18n is what surfaces them for native-speaker review.
 **Status:** human-decided, settled.
 **Terms affected:** `to throw / raise an error` (new row).
 
-The page rendered "Jiki will give an error" as _δώσει ένα σφάλμα_. Astyanax's verdict was
+The page rendered "it will give an error" as _δώσει ένα σφάλμα_. Astyanax's verdict was
 that it "isn't wrong, but it doesn't sound too great": what Greek would typically say is
 _πετάει ένα σφάλμα_ ("throws") or _αναφέρει ένα σφάλμα_ ("reports"). He also ruled out the
 near-miss a translator is most likely to reach for: _κάνει ένα σφάλμα_ is what a **person**
@@ -566,26 +551,16 @@ were cut along with the rest.
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind Greek:
+Two decisions came out of that pass that bind Greek:
 
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. The previous instruction to keep them
-  distinct was forcing languages to invent a distinction the course does not have, and
-  several collided with their own word for `array` trying. **Greek did not change:** it
-  already rendered both as `ασπροπίνακας`, precisely because bare `πίνακας` is the agreed
-  word for `array` and a qualifier was already needed to avoid that collision. What changed
-  is that the row now records the reason instead of just the choice.
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter ("It's his job to interpret the code that you
-  write"), so the word has to be able to name a character. Several languages had reached
+- **`interpreter`.** Several languages had reached
   for their term for interpreter *software*, which cannot. **Greek did not change:**
   `διερμηνευτής` was already right, because it is first of all the human interpreter of
   speech, and only secondarily anything else. What changed is that the row now rules out
   `διερμηνευτικό πρόγραμμα` and any other `-πρόγραμμα`/device compound, which name a tool
-  and so cannot name Jiki.
+  and so name a tool rather than a person.
 - **Default to the ordinary, common word**, whatever its etymology (now in
   `global/voice.md`). Where a language's own developer writing uses the English word, the
   English word is the ordinary word and the right choice; where it does not, the native
@@ -596,7 +571,7 @@ Three decisions came out of that pass that bind Greek:
 **Decided by:** agent, in the same pass. **Status: unconfirmed drafts**, except where the
 entry above governs.
 
-**Rows added**, filling gaps the concept-page pass hit: `instruction (given to Jiki)`,
+**Rows added**, filling gaps the concept-page pass hit: `instruction`,
 `mental model`, `(programming) language`, `brackets (the two after a function name)`,
 `input (to a function)`, and the metaphor rows `machine`, `crank`, `shelves`, `warehouse`,
 `board / whiteboard`.
@@ -656,7 +631,7 @@ covered by a dated entry above (`board / whiteboard`, `interpreter`, `code block
 | Term | Why |
 |------|-----|
 | condition, comparison | Ordinary Greek words, so they stand alone. |
-| statement (executable) / instruction (given to Jiki) | Greek has one ordinary word for both, and splitting them would invent a distinction the reader does not have. |
+| statement (executable) | Greek has one ordinary word for both, and splitting them would invent a distinction the reader does not have. |
 
 ### Loops, state & program flow
 
@@ -682,14 +657,3 @@ covered by a dated entry above (`board / whiteboard`, `interpreter`, `code block
 | component | React-era Greek developer speech says "component". |
 | deploy (verb) | No established native beginner-level term exists; real Greek developers say "κάνω deploy". |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| box | Plain Greek word for "box"; direct and concrete. |
-| chain | Ordinary physical chain (bike chain, jewellery chain); the specialist `αλυσίδωση` (hash-table chaining) is obscure enough at university level not to meaningfully collide for beginners. |
-| input slot | The everyday word for a small physical opening you post/insert something into (post-office box slot, coin slot). |
-| return chute | The everyday word for a playground slide; gives the same "slides down and pops out the bottom" physical image as the input slot. |
-| shelves | Direct match, ordinary household word. |
-| warehouse | Ordinary word for a storage building. |
-| crank | The everyday word for a hand crank you turn (car crank, well crank). |

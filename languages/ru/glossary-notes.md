@@ -1,22 +1,5 @@
 # Russian (ru) glossary notes
 
-## 2026-08-06: Translation engine confirmed as `fable`
-
-**Decided by:** alexisl and danya7onoff, both native speakers, on the "Alternative
-translation model" comparison thread. **Status:** settled.
-**Terms affected:** none (engine choice, not a glossary or guide change).
-**Files affected:** `tracking.json` (`translation_engine`).
-
-Jeremy posted an alternative-model rendering of a Russian page alongside the published one
-and asked which read better. alexisl answered "The original is much better" and danya7onoff
-agreed, "og is better in my opinion". No closing reply was posted on the thread, so this
-entry is where the decision is recorded.
-
-This is a **confirmation of the existing default, not a switch**: Russian was already
-running on `fable`, and it continues to. What changed is that the choice is now
-native-speaker-backed and therefore recorded as a `translation_engine` block, which per
-`orchestrator.md` means a human has confirmed that model for this language.
-
 ## 2026-08-02: Proposed terms from the Stage 2 batch 2 catch-up pass (unconfirmed drafts)
 
 **Decided by:** agent (proposals only, nothing written to `glossary.md`). The catch-up pass
@@ -28,7 +11,7 @@ translating `two-fer`, `strings`, `digital-clock`, `arrays`, `weather-symbols`:
 | box (drawing/grid cell, draw family) | ячейка | **Collides with the agreed `box` (value container) → коробка.** Draw exercises use "box" for a canvas grid slot, a different sense; коробка would blur the value metaphor. Needs settling before future draw passes split between коробка/ячейка/квадрат. | medium |
 | concatenation | конкатенация | Alternatives: «склеивание» (warmer) or «соединение строк». | medium |
 | template string | шаблонная строка | Vs «строковый шаблон» vs keeping English; MDN-ru uses «шаблонные строки». | medium |
-| piece of paper (string metaphor) | лист бумаги | Jiki metaphor set: strings *are* pieces of paper Jiki writes on. Diminutive «бумажка» used when fed into a slot; needs settling if unwanted. | medium |
+| piece of paper (string metaphor) | лист бумаги | the metaphor set: strings *are* pieces of paper written on. Diminutive «бумажка» used when fed into a slot; needs settling if unwanted. | medium |
 | meridiem (am/pm indicator) | «meridiem» (Latin script, no gloss) | Names the `meridiem` parameter and `am`/`pm` sentinels; a Russian rendering would sever the code link. | medium |
 | bootcamp | буткемп | Ordinary Russian dev word; register debatable for beginner content (учебный курс as alternative). | medium |
 | coins (number metaphor) | монеты | Metaphor-set membership (numbers go into slots as coins). | low |
@@ -36,7 +19,7 @@ translating `two-fer`, `strings`, `digital-clock`, `arrays`, `weather-symbols`:
 
 Two rows worth prioritising: **compound data type** (high confidence, recurs across concept
 pages) and **box → ячейка** (a genuine metaphor collision that will otherwise drift across
-the whole draw family). Possible `global/terms.md` gaps: `compound data type`, and the Jiki
+the whole draw family). Possible `global/terms.md` gaps: `compound data type`, and the
 metaphor nouns `piece of paper` / `coin`.
 
 ## 2026-08-01: Guide pruned to rules only
@@ -48,22 +31,22 @@ here instead:
 
 **Why вы, not ты (research provenance).** The вы decision rests on a survey of real Russian
 technical-education prose: learn.javascript.ru (the RU adaptation of javascript.info, the
-closest real-world analog to a Jiki concept page) uses вы throughout in instructional body
+closest real-world analog to a concept page) uses вы throughout in instructional body
 copy ("используйте", "объявляйте", "потратьте"); Hexlet's course copy does the same
 ("Изучите...", "Освоите..."); Skillbox's explanatory body copy does too ("Вы освоите...",
 "Вы научитесь..."). Only short marketing headlines occasionally punch with an informal
 imperative ("Найди новую профессию"), the way English ad copy sometimes drops to a
-fragment. That is a slogan device, not a sustained address register, and Jiki's
+fragment. That is a slogan device, not a sustained address register, and this
 concept/lesson prose is not slogan copy. ты was rejected because it undersells the
 content's authority for this genre and is not attested in any real instructional-RU
 precedent checked. Warmth in Russian tutorial writing comes from encouraging, inclusive
 phrasing and a spoken-voice rhythm, not from switching to intimate address. **Status:
 unconfirmed draft**, not yet reviewed by a native speaker.
 
-**Why "Jiki" is indeclinable.** Russian commonly keeps foreign brand and product names in
-Latin script rather than transliterating them, and "Jiki" is a character/brand name, so it
+**Why a Latin-script product name is indeclinable.** Russian commonly keeps foreign brand
+and product names in Latin script rather than transliterating them, so such a name
 is kept in Latin script and given no case endings. This had not been exercised in a real
-translated file when the rule was written; if an indeclinable "Jiki" in a long sentence
+translated file when the rule was written; if an indeclinable Latin name in a long sentence
 ever reads awkwardly, it is worth raising via `/action-forum-post`. **Status: unconfirmed
 draft.**
 
@@ -83,7 +66,8 @@ brackets first-mention/short-form pattern.
 
 **Titles and calls to action (kept here, not in the guide).** Concrete Russian for
 `global/voice.md`'s title and CTA principles, if a future pass wants examples: titles
-"Знакомьтесь, Jiki" / "Встречайте Jiki" rather than the over-dramatic "Родился Jiki";
+"Знакомьтесь, Exercism" / "Встречайте Exercism" rather than an over-dramatic "Родился
+Exercism";
 signup CTAs "Начните сейчас!" / "Зарегистрируйтесь бесплатно!" rather than the vague
 "Присоединяйтесь к нам!"; trial CTAs "Попробуйте прямо сейчас!" / "Испытайте бесплатно!".
 
@@ -101,24 +85,17 @@ canonical rendering and nothing to decide were removed (e.g. `value`, `number`, 
 `algorithm`, `workflow`, `auth`, product names like `JavaScript`/`Python`/`React`). Rows kept
 include every genuine either/or (`string`, `scope`, `Boolean`, `array/list`), every collision
 or scope distinction (`statement` senses vs `оператор`, `exercise` vs `task`, `error` vs
-`exception`), and the whole Jiki metaphor set, which is unchanged.
+`exception`), and the whole the metaphor set, which is unchanged.
 
 ## 2026-07-30: Owner decisions from the 28-language using-functions pass
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind Russian:
+Two decisions came out of that pass that bind Russian:
 
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. Russian had no board row at all before this
-  pass, so **доска** was added as a single term covering both senses: the everyday word for
-  a board in a room, with no collision against the agreed term for `array` (_массив_).
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter, so the word has to be able to name a character.
-  Several languages had reached for their term for interpreter *software*, which cannot.
+- **`interpreter`.**
   **Russian did not change, and pushed back rather than complying:** _интерпретатор_ was
   kept, because the `-тор` suffix is agentive in Russian and used of people (_автор_,
   _организатор_), and general dictionaries give "the one who interprets something" as the
@@ -177,13 +154,13 @@ covered by a dated entry above (`board / whiteboard`, `interpreter`) is not repe
 | Term | Why |
 |------|-----|
 | condition, comparison | Ordinary words. |
-| statement (executable) | Deliberately distinct from `оператор` to avoid the classic RU CS collision: older sources like GOST 28397-89 use "оператор" for both the imperative and the symbol sense; Jiki keeps them separate. |
+| statement (executable) | Deliberately distinct from `оператор` to avoid the classic RU CS collision: older sources like GOST 28397-89 use "оператор" for both the imperative and the symbol sense; this content keeps them separate. |
 
 ### Loops, state & program flow
 
 | Term | Why |
 |------|-----|
-| instruction (given to Jiki) | Everyday word. |
+| instruction | Everyday word. |
 | mental model | Ordinary, transparent phrasing. |
 | (programming) language | Fully native. |
 | scope | Fully native; unlike Hungarian/Serbian, Russian does not keep "scope" in English. |
@@ -202,14 +179,3 @@ covered by a dated entry above (`board / whiteboard`, `interpreter`) is not repe
 |------|-----|
 | API | Not a word a beginner knows, so the concept has to be explained, not just the acronym expanded. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| machine | A vending/ticket machine ("автомат") is a familiar, concrete Russian cultural object with exactly this shape: a slot to put something in, a tray where something comes out. |
-| box | Plain Russian word for "box"; direct and concrete. |
-| chain | The light "chain of things" sense (as in "цепочка событий"). |
-| input slot | The coin-slot sense. |
-| return chute | The dispensing tray of a vending machine. |
-| shelves | Plain Russian word for "shelves." |
-| warehouse | Plain Russian word for a warehouse; concrete, and fits a place with shelves in it. |

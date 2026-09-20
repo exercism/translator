@@ -1,22 +1,5 @@
 # Swedish (sv) glossary notes
 
-## 2026-08-06: Translation engine confirmed as `fable`
-
-**Decided by:** sneakymallard, a native speaker, on the "Alternative translation model"
-comparison thread. **Status:** settled.
-**Terms affected:** none (engine choice, not a glossary or guide change).
-**Files affected:** `tracking.json` (`translation_engine`).
-
-Jeremy posted an alternative-model rendering of a Swedish page alongside the published one
-and asked which read better. sneakymallard answered "I think the original is slightly
-better". No closing reply was posted on the thread, so this entry is where the decision is
-recorded.
-
-This is a **confirmation of the existing default, not a switch**: Swedish was already
-running on `fable`, and it continues to. What changed is that the choice is now
-native-speaker-backed and therefore recorded as a `translation_engine` block, which per
-`orchestrator.md` means a human has confirmed that model for this language.
-
 ## 2026-08-05: Website copy (codingExercise, seo, articles, blog, checkout)
 
 **Decided by:** nobody yet. **Unconfirmed drafts**, proposed by the scoped
@@ -134,9 +117,9 @@ existed on this row, so the correction is applied directly.
 - **`array` is _array_.** The prescriptive sources disagree with each other and with practice: SIS recommends _fält_, IDG calls _vektor_ "not always correct" and offers _uppställning_ instead, and the LTH compendium uses _vektor_ while footnoting that _fält_ "skapar stor förvirring" because of English "field". None of _fält_, _vektor_ or _uppställning_ is what a Swedish JavaScript developer says. This is the row most likely to draw an objection, and it should.
 - **`indentation` is _indrag_ and `to run` is _köra_,** against the anglicisms _indentering_ and _exekvera_ that appear even in course material.
 
-**`interpreter` is _tolk_, deliberately a person.** Jiki *is* the interpreter on the concept pages, so the word has to be able to name a character. Swedish has the verb _tolka_ for interpreting code (the LTH compendium uses _tolka/tolkas/tolkar_ throughout and never the noun), and _tolk_ is its ordinary agent noun. IDG lists _programtolk_ as the main term for the software, with _interpretator_ and the short form _tolk_ alongside; _programtolk_ carries an explicit program morpheme and _interpretator_ names a piece of machinery, so both are ruled out for Jiki.
+**`interpreter` is _tolk_, deliberately a person.** It was chosen for a framing in which the interpreter was a character, so the word had to be able to name one. Swedish has the verb _tolka_ for interpreting code (the LTH compendium uses _tolka/tolkas/tolkar_ throughout and never the noun), and _tolk_ is its ordinary agent noun. IDG lists _programtolk_ as the main term for the software, with _interpretator_ and the short form _tolk_ alongside; _programtolk_ carries an explicit program morpheme and _interpretator_ names a piece of machinery, so both were ruled out.
 
-**The metaphor set is the least evidenced part of this glossary.** _låda_, _kedja_, _maskin_, _vev_, _hylla_, _verkstad_, _tavla_, _mynt_, _lapp_ are ordinary Swedish words with nothing to argue about. Three were chosen on judgement and want a native speaker's eye: _inkast_ for the input slot (the word in _myntinkast_, a coin slot, which is exactly Jiki's picture), _rutschkana_ for the return chute (a playground slide, chosen because the obvious _utkast_ already means "draft"), and _lager_ for the warehouse (the literal word, though it also means "layer" and "stock").
+**The metaphor set is the least evidenced part of this glossary.** _låda_, _kedja_, _maskin_, _vev_, _hylla_, _verkstad_, _tavla_, _mynt_, _lapp_ are ordinary Swedish words with nothing to argue about. Three were chosen on judgement and want a native speaker's eye: _inkast_ for the input slot (the word in _myntinkast_, a coin slot, which is exactly the picture), _rutschkana_ for the return chute (a playground slide, chosen because the obvious _utkast_ already means "draft"), and _lager_ for the warehouse (the literal word, though it also means "layer" and "stock").
 
 **`board / whiteboard` is _tavla_, one word for one object,** per the cross-language decision recorded on 2026-07-30 for every language. Swedish has no collision to worry about here, since `array` is _array_ rather than anything board-shaped.
 

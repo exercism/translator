@@ -10,7 +10,7 @@ written to `glossary.md`.
 
 | English | Proposed target | Notes | Confidence |
 |---------|-----------------|-------|------------|
-| challenge (Jiki Challenges) | thử thách | Must stay distinct from _bài tập_ (exercise). | medium |
+| challenge | thử thách | Must stay distinct from _bài tập_ (exercise). | medium |
 | Deep Dive | Phân tích chuyên sâu | Keeping English is a defensible alternative; needs a native-speaker call. | medium |
 | dashboard | trang tổng quan | Kept-English "Dashboard" also circulates. | medium |
 | scenario (test) | kịch bản | Sets precedent against _tình huống_. | medium |
@@ -41,7 +41,7 @@ rule, is:
   (howkteam, viblo, F8, CodeGym), not a formal classroom.
 - Vietnamese tech-education content is peer-to-peer and informal by convention, not
   textbook-dry. Choosing a peer voice over a school-hierarchy voice is itself a signal that
-  Jiki isn't a stiff classroom.
+  this isn't a stiff classroom.
 
 The surviving rule in the guide is simply to use the register real Vietnamese programming
 communities use with each other.
@@ -60,19 +60,19 @@ communities use with each other.
 - **"Chúng ta"** is neutral and inclusive of the reader; "chúng mình" is warmer and also
   inclusive.
 
-### Jiki's third-person pronoun (why the alternatives lost)
+### The third-person pronoun for a narrated character (why the alternatives lost)
 
-Jiki is a character the prose talks *about* constantly ("it's his job to interpret", "he
+A narrated character is talked *about* constantly ("it's his job to interpret", "he
 can remember things"), so this pronoun recurs on nearly every concept page and had to be
 fixed once. **"Cậu ấy"** is a warm, peer-level third person for a young male character,
-which is what Jiki is. The rejected options:
+which is what such a character is. The rejected options:
 
-- **"Nó"** is grammatically available for a non-human, but it flattens Jiki into a thing or
+- **"Nó"** is grammatically available for a non-human, but it flattens the character into a thing or
   a piece of software, exactly the reading the course is built to avoid.
 - **"Bạn ấy"** collides with "bạn", the reader's own address, so every sentence mentioning
-  both Jiki and the reader reads ambiguously.
+  both the character and the reader reads ambiguously.
 - **"Anh ấy"** imports the older-male kinship framing the guide rules out for the reader,
-  and applying it to Jiki would put him above the reader.
+  and applying it to the character would put him above the reader.
 
 ### "bị" / "được"
 
@@ -101,23 +101,15 @@ Guillemets remain ruled out. A native speaker may overturn this.
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `interpreter`, `board / whiteboard`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
 Two decisions from that pass changed Vietnamese renderings, plus a general principle:
 
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter, so the word has to be able to name a character.
-  Vietnamese moved from **`trình thông dịch`** to **`thông dịch viên`**: `trình` literally
+- **`interpreter`.** Vietnamese moved from **`trình thông dịch`** to **`thông dịch viên`**: `trình` literally
   means "program", so `trình thông dịch` names software and cannot name a character, while
   `thông dịch viên` is the ordinary word for a person who interprets, keeps the link with
   the verb `thông dịch` already on the page, and stays distinct from the compiler term
   `trình biên dịch`.
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor; the previous instruction to keep them
-  distinct was forcing languages to invent a distinction the course does not have.
-  Vietnamese merged both onto **`bảng`**, the everyday word for a board in a room, which
-  does not collide with `mảng` (array).
 - **Default to the ordinary, common word**, whatever its etymology (now in
   `global/voice.md`). Where a language's own developer writing uses the English word, the
   English word is the ordinary word and the right choice; where it does not, the native
@@ -173,9 +165,9 @@ repeated here.
 
 | Term | Why |
 |------|-----|
-| instruction (given to Jiki) | Everyday word. |
+| instruction | Everyday word. |
 | mental model | The picture-in-your-head framing ("một người tí hon sống trong máy tính"). |
-| state / stateful | We standardise on the native term since Jiki teaches the general concept, not a specific framework. |
+| state / stateful | We standardise on the native term since the course teaches the general concept, not a specific framework. |
 | scope | Matches the Hungarian/Japanese pattern of keeping this specific term English; Vietnamese developer prose commonly keeps "scope" too, especially in fixed compounds (block scope, function scope). |
 
 ### Tooling & engineering
@@ -194,13 +186,3 @@ repeated here.
 | mentor / mentoring | Overwhelmingly kept English in Vietnamese dev-education content. |
 | list (Python data type) | Python-specific Vietnamese material overwhelmingly keeps "list" in English even in otherwise-Vietnamese prose. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| box | Plain Vietnamese word for "box"; direct, concrete, and familiar to a child. |
-| chain | Standard Vietnamese for a physical chain. |
-| input slot | The everyday word for a slot something is inserted into (e.g. a coin slot, "khe bỏ tiền"). |
-| return chute | The literal sliding chute an output comes out of. |
-| machine | A function modelled as a machine, with an input slot and a return chute. |
-| warehouse | Everyday word for a storehouse. |

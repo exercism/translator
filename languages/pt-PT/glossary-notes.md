@@ -216,25 +216,16 @@ keys. Not renamed by this pass.
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `interpreter`, `board / whiteboard`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind European Portuguese:
+Two decisions came out of that pass that bind European Portuguese:
 
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter ("It's his job to interpret the code that you
-  write"), so the word has to be able to name a character. **European Portuguese changed**:
+- **`interpreter`.** **European Portuguese changed**:
   earlier translation work had deliberately avoided _intérprete_ because it "reads as a
-  human interpreter", and that reasoning inverted once Jiki is understood as a character
+  human interpreter", and that reasoning inverted once the interpreter was understood as a character
   whose job is interpreting: a human interpreter is exactly what the word needs to name.
   The row now reads **intérprete**, and rules out _interpretador_, which names interpreter
   software and cannot describe a character.
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. The previous instruction to keep them
-  distinct was forcing languages to invent a distinction the course does not have.
-  European Portuguese merged both onto **quadro**, rejecting _quadro branco_ as
-  over-specific (it split one metaphor into two words) and _painel_ as a control panel or a
-  signboard, not something you write on.
 - **Default to the ordinary, common word**, whatever its etymology (now in
   `global/voice.md`). Where a language's own developer writing uses the English word, the
   English word is the ordinary word and the right choice; where it does not, the native
@@ -246,7 +237,7 @@ Three decisions came out of that pass that bind European Portuguese:
 entry above governs.
 
 **Rows added** for the terms the using-functions concept page needed: `interpreter`,
-`instruction (given to Jiki)`, `mental model`, `(programming) language`, `brackets (the two
+`instruction`, `mental model`, `(programming) language`, `brackets (the two
 after a function name)`, `course`, and the metaphor rows `board / whiteboard`, `warehouse`,
 `crank`. None of these change an existing decision; they fill gaps the page hit.
 
@@ -298,14 +289,6 @@ covered by a dated entry above (`interpreter`, `board / whiteboard`) is not repe
 | Term | Why |
 |------|-----|
 | framework | The native term is understood but rarely forced in practice, so European Portuguese keeps the English word in running prose after a single gloss; diverges from pt-BR, which glosses simply as `framework`. |
-
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| chain | pt-BR's equivalent entry warns of a different collision risk, with electric current; both renderings are valid for their own locale. |
-| machine | Direct, concrete word; not currently used in pt-BR material. |
-| warehouse | Ordinary word for a storage building. |
 
 ## 2026-08-01: Guide pruned; rationale moved here
 

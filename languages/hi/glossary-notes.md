@@ -77,7 +77,6 @@ Every row keeps its Hindi, its gender and its `Use` value. Only the Notes text c
 | encapsulation | "Advanced/OOP term; low confidence, flag for native-speaker review." | "Advanced/OOP term." |
 | backwards compatibility | "Low confidence, term and gender; flag for native-speaker review." | (empty) |
 | milestone | "'A stop/stage on a journey.' Medium confidence: flag for native-speaker review." | "'A stop/stage on a journey.'" |
-| scenario | "Jiki-specific: a structured variant within an exercise. Low confidence: flag for native-speaker review." | "Jiki-specific: a structured variant within an exercise." |
 | mental model | "Flag for native-speaker review." | (removed; the "not मेंटल मॉडल" instruction stays) |
 | interpreter | "दुभाषिया is the native word for a human interpreter (a different job): flag for native-speaker review." | "Not दुभाषिया, which is a human language interpreter, a different job." (see the exception noted below) |
 | saturation | "**Unconfirmed.** Neither @dazecodes nor @suditi had a view on this one, so it is still a translation pass's draft, unlike the two rows either side of it. Already shipped in `rainbow` and the `draw` catalog." | (empty) |
@@ -428,15 +427,15 @@ the app shows in reply to something the learner just did.
 **Their two framings are not identical, and the difference is worth recording.** @suditi
 draws the line at *title vs everything else* ("most cases" get -एं, the problem name does
 not). @dazecodes draws it at *short label vs request* (short phrases get -एं, requests get
--इए). On every case Jiki actually has they agree, because our titles are also the places we
-ask something of the learner, and our -एं strings are all buttons, menu items and reactions.
+-इए). On every case that actually arises they agree, because our titles are also the places we
+ask something of the reader, and our -एं strings are all buttons, menu items and reactions.
 The guide states both halves rather than picking one framing, and resolves the one place they
 could disagree (a short piece of teaching text) in favour of @dazecodes' test, since a hint
 that asks something of the learner is a request whatever its length.
 
 **"Problem name" is read as the exercise title**, and by extension the task, scenario and
 level titles, which are the same kind of object. That reading is an inference: the question
-she was answering did not mention titles, so she introduced the case herself, and Jiki has no
+she was answering did not mention titles, so she introduced the case herself, and there is no
 other screen furniture that "problem name" could plausibly mean. If she meant something
 narrower, the cost of the wider reading is politeness we did not need, not rudeness.
 
@@ -647,7 +646,7 @@ as written for this sense:
 - **वापस करना** leans towards giving back something borrowed.
 - **वापस देना** is good and is exactly his "gives back" gloss, so it is kept in the row's
   Notes as the warmer alternative, especially where the prose is on the machine metaphor
-  (Jiki's आउटपुट की फिसलपट्टी).
+  (on the machine metaphor's आउटपुट की फिसलपट्टी).
 
 This is the same treatment @suditi's rewrites got on 2026-08-02 below: take the native
 speaker's judgement and keep standard grammar and orthography. **Confidence: high on the
@@ -692,8 +691,8 @@ We have not done that, for three reasons:
 2. **लेना and देना are not translations of "input" and "output".** They are "to take" and
    "to give". Written into a glossary as the target for those two terms, they would say that
    an इनपुट स्लॉट is a "take slot", which is not what he means.
-3. **Some positions need a noun, and Jiki has them.** A `<define>` attaches to a term, and
-   the `input slot` / `return chute` metaphors are noun phrases. The `function` row's own
+3. **Some positions need a noun.** Where the English explains a term, it attaches to a term,
+   and the `input slot` / `return chute` metaphors are noun phrases. The `function` row's own
    gloss ("एक ऐसी मशीन जैसा कोड जो इनपुट लेकर आउटपुट देता है") already uses the nouns with
    his verbs, which is the shape we want.
 
@@ -701,84 +700,6 @@ So both rows stay, their Notes now say to build the sentence around the verb whe
 prose allows and to use the bare noun only where a noun is unavoidable, and the
 noun-in-noun-position question is listed as open for a native speaker. **Confidence: medium**
 on keeping the rows; this is the part of his post most worth going back to him about.
-
-## 2026-08-02: Translation engine changed to DeepSeek, and two terms ruled on
-
-**Decided by:** @suditi, a native speaker, in post 5 of the forum ("[Hindi Review]
-Alternative translation model"), reading a blind three-way comparison. **Status:
-native-speaker confirmed**, for the engine and for both terms.
-
-**Terms affected:** `canapé / canapés` (new row), `guest list` (new row).
-
-### The engine: DeepSeek, not fable
-
-A blind A/B/C comparison was posted using an excerpt from the `bouncer-dress-code` exercise,
-chosen deliberately because it is unrelated to the maze-based worked examples in `guide.md`,
-so no engine could copy an answer out of its own context. All three engines were given
-byte-identical governance context. The mapping, not disclosed on the thread:
-
-- **A = Gemini** (`gemini-3.1-pro-preview`)
-- **B = fable** (the subagent path, the incumbent)
-- **C = DeepSeek** (`deepseek-v4-pro`)
-
-Her verdict:
-
-> "Both models A and B still follow the English sentence structure, which doesn't always make
-> sense in Hindi.
-> Model C has the best sentence structure. Plus, the sentences are easy to read, sound natural
-> and are concise. This a really good model for translation to Hindi. This might be as good as
-> it gets."
-
-`hi`'s `translation_engine` in `tracking.json` is therefore `deepseek` /
-`deepseek-v4-pro`.
-
-**This supersedes the 2026-08-01 entry below** ("Confirmed translation engine: fable"), where
-an unnamed alternative model was rated worse than fable on the forum and the incumbent was
-kept. **The two results are not in conflict.** That test ran before the 2026-08-01 guide and
-glossary rewrite, so it compared engines working from a guide we have since established was
-broken (it prescribed the Urdu-leaning register, see that entry). This test ran on the fixed
-guide. What changed is the instructions, not her opinion.
-
-**Objective corroboration, worth keeping.** Gemini reproduced verbatim the exact comma-splice
-construction that `guide.md` § "Sentence structure (critical)" names as the rejected form,
-"आपका काम है, ...", on content unrelated to the worked example that rule is drawn from, with
-that rule sitting in its prompt. DeepSeek and fable both used the corrected "आपका काम यह है
-कि". That is a direct rule violation rather than a matter of taste, and it is the hardest
-signal in the test.
-
-**Caveat on how much B-vs-C is worth.** The two API engines (A and C) ran at temperature 0.3;
-the fable version (B) came from a worker subagent, which has no temperature control. So A-vs-C
-is a like-for-like comparison and B-vs-C is a softer one: some of the gap between fable and
-DeepSeek may be sampling rather than model. Her verdict on C is unaffected either way, since
-it is about what C produced.
-
-### The two terms
-
-Both are **native-speaker confirmed and therefore protected**, per "Glossary writes are
-additive" in `global/workflow.md`: neither changes without fresh agreement from a native
-speaker, raised where it was settled.
-
-They matter more than a usual pair of rows because **DeepSeek got both of them wrong in the
-sample it won on** (it wrote कैनापेज़ and मेहमानों की सूची). The rows exist to stop the
-retranslation reproducing the winning engine's own errors.
-
-- **`canapé / canapés` → कैनेपे.** Her words: "canapés - Plural form in Hindi is not the same
-  as it is in English. कैनेपे would be the best as I think it is its own plural in Hindi." So
-  the noun does not take an English-style plural in any form (not कैनापेज़, not कैनेपेस);
-  singular and plural are the same word and plurality is carried by the verb, an adjective or
-  a quantifier. Gender is **not** confirmed: she ruled on the form only, and the row says so.
-- **`guest list` → गेस्ट लिस्ट**, not मेहमानों की सूची. Her words: "guest list - गेस्ट लिस्ट
-  is a common phrase doesn't feel as clunky as मेहमानों की सूची." The row is scoped to the
-  real-world sense (the list of invited people at an event) so it cannot collide with the
-  existing `array / list` → ऐरे row, which is the data-structure sense; the existing row is
-  untouched.
-
-Her plural point is stated once, generally, as a bullet in `guide.md` § "Grammar": do not
-transliterate an English plural onto a borrowed noun, because many are their own plural
-(निर्देश already behaved this way in the glossary). It is recorded at **medium confidence**
-and deliberately does not claim that Hindi nouns never inflect. Both rows sit in a new
-"Exercise scenario vocabulary" section of the glossary, for real-world nouns an exercise's
-story is built on.
 
 ## 2026-08-02: @suditi answers the open questions
 
@@ -984,7 +905,7 @@ NCERT/RBSE textbooks:
   घोषित और इनिशीलाइज किया है।"
 - *The old bare-Latin policy was backwards.* Real readable Hindi technical prose writes
   technical nouns in Devanagari and reserves bare Latin for identifiers, keywords, code and
-  UI strings, which is exactly what Jiki's `<literal>` markup already covers. The old guide
+  UI strings, which is exactly what the source markup already covers. The old guide
   also contradicted itself: it said readers are not fluent readers of English prose, then
   put 61 terms in Latin script, which is precisely what such a reader cannot decode.
 - *Coinages are judged one at a time, by whether they already earned their keep in Hindi
@@ -1072,7 +993,7 @@ contradiction in a file that is loaded on every Hindi pass would keep producing 
 output.
 
 Resolved in favour of **`शर्त`**, on what the glossary already does: the `if statement` row's
-gloss is "शर्त जांचने का तरीका", so `शर्त` is already the word Hindi Jiki content uses for a
+gloss is "शर्त जांचने का तरीका", so `शर्त` is already the word Hindi this content uses for a
 condition, and `condition` was pruned from the glossary as ordinary vocabulary rather than
 kept as jargon. `condition` was therefore removed from the guide's English-loanword list; the
 ordinary-words sentence naming `शर्त` is untouched. `statement` stays in the loanword list,
@@ -1115,8 +1036,8 @@ the default, natural way modern Hindi tutorial content addresses a reader it doe
 personally; that this is not the stiff, bureaucratic register "formal" implies in English but
 simply the unmarked, respectful way to address a stranger-audience, the equivalent of English
 "you" carrying no formality marking at all; that तुम is right for peers, close friends and
-younger family but reads as presumptuous or overly familiar for a learner meeting Jiki for
-the first time; and that तू is only for very close intimacy or, in the wrong context,
+younger family but reads as presumptuous or overly familiar for a reader meeting the site
+for the first time; and that तू is only for very close intimacy or, in the wrong context,
 rudeness. A one-line version of this survives in the guide as the boundary condition; the
 full analysis lives here.
 
@@ -1136,7 +1057,7 @@ independently-checked, real-world Hindi-medium programming-education source (Cod
 course titles and index, javahindi.com's Python tutorial prose quoted directly, WsCube Tech
 page titles, and Apna College's explicitly Hinglish house style) instead keeps core
 programming nouns as English loanwords. This is corroborated by the platform's own
-prioritization rationale: Jiki targets Hindi precisely because it reaches learners with
+prioritization rationale: Hindi is targeted precisely because it reaches learners with
 weaker English-*reading* fluency, not learners unfamiliar with English *technical
 vocabulary*, which is already widely absorbed into everyday spoken Hindi tech discourse via
 YouTube, WhatsApp and workplace English. The guide recorded **confidence: high** for the
@@ -1148,7 +1069,7 @@ concrete do-not list.
 writing an English loanword inside a Devanagari sentence: bare Latin script ("for loop एक
 entry controlled loop है") or Devanagari transliteration ("C भाषा में **वेरिएबल** क्या हैं?").
 Direct-quoted running prose (not just page titles) favors bare Latin script; Devanagari
-transliteration shows up more in titles and headings. Jiki's split (Devanagari for "Localize"
+transliteration shows up more in titles and headings. the split (Devanagari for "Localize"
 terms, bare Latin for "Keep in English" terms) keeps sentences readable, all-Devanagari
 except for the specific jargon token, while matching how the strongest prose evidence writes
 flowing tutorial text. The guide recorded this section's confidence as **medium-high**.
@@ -1201,7 +1122,7 @@ as given; the row is now settled.
 
 **Decided by:** agent, in the same pass that applied the two rewordings above and below.
 **Status: unconfirmed drafts.**
-**Terms affected:** `interpreter`, `instruction (given to Jiki)`, `mental model`, `input (to
+**Terms affected:** `interpreter`, `instruction`, `mental model`, `input (to
 a function)`, `output`.
 
 In the same commit that applied @suditi's and @dazecodes's rewordings, an agent also
@@ -1245,7 +1166,7 @@ above. **This section predates the 2026-08-01 rewrite at the top of this file**;
 appeals to the old loanword-and-bare-Latin policy, the rewrite entry supersedes it. The
 word-level rationale below (which everyday Hindi word, and why) still holds. Ordered by the glossary's own sections, not by date, because most of it dates from
 the language bootstrap rather than from any one decision. Terms whose reasoning is already
-covered by a dated entry above (`edge case`, `interpreter`, `instruction (given to Jiki)`,
+covered by a dated entry above (`edge case`, `interpreter`, `instruction`,
 `mental model`, `input (to a function)`, `output`, `to return (a value)`, `template
 literal`) are not repeated here.
 
@@ -1311,15 +1232,3 @@ literal`) are not repeated here.
 | tutorial | Fully absorbed loanword, near-universal in this context. |
 | solution (learner's submission) | Ordinary school-math word ("हल करना" = to solve); warmer fit than the loanword सॉल्यूशन. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| box | Plain, concrete Hindi word for "box"; simple and familiar. |
-| chain | Concrete word for a physical chain. |
-| input slot | इनपुट (agreed above) + स्लॉट, a familiar concrete image (a coin slot, a ticket slot). |
-| return chute | आउटपुट (agreed above) + फिसलपट्टी, the everyday word for a playground slide, mirroring the same concrete, delightful image used in other languages' renderings. |
-| machine | Ordinary, universal Hindi word for "machine". |
-| shelves | "Cupboard/shelf-unit"; warm, concrete, and familiar (everyone has one at home). |
-| warehouse | Ordinary Hindi word for a warehouse/store-room; the place Jiki hangs out, with his machine shelf in it. |
-| crank | "To turn the handle": the everyday way to say it. |

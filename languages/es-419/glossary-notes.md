@@ -63,9 +63,9 @@ pointers in C or C++ the same argument can be read from and written to. His conc
 that "argumento will be preferred when passing in to a function".
 
 That is a reasoned case rather than a preference, offered by exactly the second reviewer
-matcots5 asked to hear from, so it settles the question: **_argumento_ everywhere Jiki's
+matcots5 asked to hear from, so it settles the question: **_argumento_ everywhere the
 English says "input" in the passed-to-a-function sense**. The cost is real and accepted:
-Jiki's English deliberately says "input" rather than "argument" to stay jargon-free, and
+the English deliberately says "input" rather than "argument" to stay jargon-free, and
 es-419 now collapses both English words onto _argumento_. The `input slot` metaphor is
 unaffected and stays _ranura_: that is a physical slot on the machine, not the value going
 into it.
@@ -138,10 +138,10 @@ native speaker could object. **Both have since been settled by reviewers on the 
 and written into `glossary.md`; see the 2026-08-03 entry above.** The drafting reasoning is
 kept below because it is what the reviewers were answering.
 
-- **input** (a value passed into a function, Jiki's usual word for it) → **argumento**. Used
+- **input** (a value passed into a function, the English source's usual word for it) → **argumento**. Used
   throughout the shared `draw` category catalog ("Todos los argumentos deben ser números").
-  It collapses Jiki's "input" onto the already-agreed _argumento_ (call-site value), which
-  reads naturally but loses the distinction Jiki draws between the two words, and it sits next
+  It collapses the English "input" onto the already-agreed _argumento_ (call-site value), which
+  reads naturally but loses the distinction the English draws between the two words, and it sits next
   to the separate _input slot_ → _ranura_ metaphor. Medium confidence; the alternative is
   _entrada_, which is flatter but keeps the words apart. **This one is already inconsistent
   across the batch and needs settling**: `concept/variables` renders "four inputs" as _cuatro
@@ -215,7 +215,7 @@ imperatively there):
 - Sentence case for titles, which is pan-Spanish and now lives in the family guide.
 - The `tú` + second-person-conjugation grammar bullet, folded into § Formality where the
   same rule was already half-stated; the "definite article with names" bullet, folded into
-  the § Style notes "Jiki name" bullet it existed to support; and the "avoid comma-chained
+  the § Style notes product-name bullet it existed to support; and the "avoid comma-chained
   subordinate clauses" bullet, folded into the § Grammar "Sentence rhythm" bullet.
 - The § "Worked examples" and § "Common EN→es-419 pitfalls" tail, whose surviving content
   (titles, calls to action, acronyms, calques and false friends) is now single-instance
@@ -242,21 +242,11 @@ MDN-Spanish rendering.
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind es-419:
+Two decisions came out of that pass that bind es-419:
 
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. es-419 had previously kept `tablero` for the
-  instruction board specifically, to hold it apart from `pizarrón`, which was the agreed
-  word for a function's whiteboard. The merge removes the reason for that split: with one
-  object and one word, the term is **`pizarrón`**, the ordinary es-419 word for a board you
-  write on (not the Spain `pizarra`). `tablero` is dropped from this role: in es-419 it
-  names a panel or a game board, not something you write instructions on.
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter ("It's his job to interpret the code that you
-  write"), so the word has to be able to name a character. Several languages had reached
+- **`interpreter`.** Several languages had reached
   for their term for interpreter *software*, which cannot. **es-419 did not change:**
   _intérprete_ was already right, being the ordinary Spanish word for a human interpreter
   (someone who interprets speech), and it takes a character naturally. What changed is that
@@ -273,7 +263,7 @@ Three decisions came out of that pass that bind es-419:
 entry above governs.
 
 **Rows added** to cover terms the using-functions concept page needed and that had not
-been written down for es-419 before: `instruction (given to Jiki)`, `mental model`,
+been written down for es-419 before: `instruction`, `mental model`,
 `(programming) language`, `brackets (the two after a function name)`, and the metaphor rows
 `machine`, `crank`, `shelves`, `warehouse`, and `board / whiteboard` (the last per the owner
 decision above).
@@ -335,13 +325,6 @@ covered by a dated entry above (`board / whiteboard`, `interpreter`) is not repe
 
 | Term | Why |
 |------|-----|
-| string | Keeping _string_ English frees _cadena_ for the "chain" array metaphor; see `../es/glossary.md` § Jiki physical metaphors. |
+| string | Keeping _string_ English frees _cadena_ for the "chain" array metaphor; see `../es/glossary.md` § the physical metaphors. |
 | framework | Kept as a loanword in prose; well-attested in LatAm dev writing. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| input slot | Exact fit in Spanish: the narrow slot you insert a coin into, like on a piggy bank. |
-| warehouse | _almacén_ is the pan-regional word. |
-| crank | Concrete, ordinary word. |

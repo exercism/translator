@@ -97,22 +97,13 @@ there is no glyph mismatch to fix). Both are top candidates for native-speaker r
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind Swahili:
+Two decisions came out of that pass that bind Swahili:
 
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. The previous instruction to keep them
-  distinct was forcing languages to invent a distinction the course does not have. Swahili
-  merges both onto **ubao**, the everyday word for a board on a wall (`ubao wa darasa`, a
-  classroom board), dropping the earlier `ubao mweupe` (whiteboard) for the function sense.
-  No collision with `array`, which is `orodha`.
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter ("It's his job to interpret the code that you
-  write"), so the word has to be able to name a character. **`mkalimani` was confirmed**: it
+- **`interpreter`.** **`mkalimani` was confirmed**: it
   is the ordinary Swahili word for a human interpreter, class 1/2 animate, so it takes the
-  same agreement Jiki himself takes (`mkalimani huyu`, `wakalimani hawa`), and it is the
+  same agreement a person takes (`mkalimani huyu`, `wakalimani hawa`), and it is the
   word an ordinary speaker already knows rather than a coinage.
 - **Default to the ordinary, common word**, whatever its etymology (now in
   `global/voice.md`). Where a language's own developer writing uses the English word, the
@@ -211,7 +202,7 @@ repeated here.
 | Term | Why |
 |------|-----|
 | keyword | No credible source found. |
-| instruction (given to Jiki) | Everyday word for something you tell someone to do and they then carry out, which is exactly the board metaphor ("kuweka maagizo kwenye ubao"). Not a formal or legal register word. |
+| instruction | Everyday word for something you tell someone to do and they then carry out, which is exactly the board metaphor ("kuweka maagizo kwenye ubao"). Not a formal or legal register word. |
 | mental model | The picture-in-your-head framing. `modeli` is a common nativized loanword. The looser `picha ya kichwani` (picture in your head) is a natural alternative and reads well next to the source's own "in my head" phrasing; an open question for native-speaker review. |
 | (programming) language | `lugha` is the ordinary Swahili word for a language and beginners already know it, so it was used rather than an English borrowing. |
 | code (in prose) | The learner's code as running prose ("the code that you write" = "msimbo unaoandika"). Medium confidence. |
@@ -250,15 +241,3 @@ repeated here.
 | course | Well-established nativized loanword in ordinary use. |
 | exercise | Ordinary word for an exercise or drill, already standard in Swahili schooling. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| box | Ordinary, concrete word for a box/crate/chest; already used tech-adjacently in `sanduku la barua pepe` (email inbox, literally "letter-box"). Medium confidence. |
-| chain | Chosen over `mlolongo` (also "sequence/series", but more abstract) because Jiki's metaphor is specifically a physical chain image; `mnyororo` is the concrete, physical word (bicycle chain, dog chain). Medium confidence; this is a judgment call, an open question for native-speaker review. |
-| machine | Everyday, concrete word for household/mechanical machines (`mashine ya kufulia` = washing machine); should transfer naturally. Medium-high confidence. |
-| input slot | `tundu` = a small physical opening/hole (concrete, e.g. `tundu la sindano` = eye of a needle) + `ingizo` (input, agreed term above). Low-medium confidence. |
-| return chute | `mteremko` = a slope/descent + `matokeo` (output, agreed term above). This is the weakest-verified metaphor term in this bootstrap; the more literal "chute/slide" candidate (`utelezi`) could not be independently confirmed. An open question for native-speaker review. |
-| shelves | Ordinary, concrete word for a shelf. Not independently researched for this bootstrap; medium confidence based on general vocabulary. |
-| warehouse | Ordinary, concrete word for a warehouse or store where goods are kept, which is exactly the image ("ghala la Jiki"). |
-| crank | Ordinary, concrete word for a handle you grip and turn. |

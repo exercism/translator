@@ -17,7 +17,7 @@ Rationale removed from `guide.md`, kept for the record:
   Hungarian does: there is no verb conjugation that shifts with formality, so the pronoun is
   the only lever. 你 (informal, direct) is what every general-audience programming tutorial
   site checked in research uses; 您 is reserved for customer service, elders, or officialdom,
-  none of which fits Jiki's voice. Chinese also has no gendered second-person address, so the
+  none of which fits this voice. Chinese also has no gendered second-person address, so the
   gender-neutral-phrasing problem some other languages face (see e.g. `es-419/guide.md`) does
   not arise here.
 - **Particle calibration.** Mainland general-audience tutorial prose (廖雪峰的官方网站,

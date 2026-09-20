@@ -2,14 +2,14 @@
 
 ## 2026-08-30: `level` settled on `livello`; `lesson` is `lezione` and is a different thing
 
-**Decided by:** Jiki product side, answering a question native speaker kernelaklees asked on
+**Decided by:** the product side, answering a question native speaker kernelaklees asked on
 three level-milestone email review threads. **Terms affected:**
 `level (a stage of the course)` and `lesson (inside a level)` (two new rows, under "Platform
 & curriculum vocabulary"). This closes the open 2026-08-16 entry below.
 
 Her question was not "which Italian synonym reads best" but "what is an English *level*
 structurally", because Italian would render a course, a module, a lesson, a section and a
-plain procedural step all differently. The answer is that Jiki's progression is deliberately
+plain procedural step all differently. The answer is that the progression is deliberately
 game-like: a learner completes a level and unlocks the next one, and the milestone email is
 the celebration of that. So the videogame connotation she was worried about in `livello` is
 the connotation the product wants, not a mistranslation to design around. `livello` stands.
@@ -257,21 +257,6 @@ they are needed adds style, and asked where the ambiguity actually is. With one 
 speaker's earlier decision on one side and a live disagreement on the other, changing the
 rule now would mean picking a side, so nothing was changed pending their agreement. Earlier
 rounds on this rule are logged at and.
-
-## 2026-08-06: Translation engine switched to `deepseek`
-
-**Decided by:** FraSanga, a native speaker, on the "Alternative translation model"
-comparison thread. **Status:** settled.
-**Terms affected:** none (engine choice, not a glossary or guide change).
-**Files affected:** none; `tracking.json` already carried the block, this entry records the
-decision behind it.
-
-Jeremy posted an alternative-model rendering of an Italian page alongside the published one
-and asked which read better. FraSanga preferred the second (alternative) version, and
-Italian was switched to it.
-
-Italian therefore runs on `deepseek` rather than the `fable` default. This was a genuine
-switch, made on a native speaker's verdict, not on our own judgement or on cost.
 
 ## 2026-08-06: euphonic _d_ rule reconfirmed, no guide change needed
 
@@ -704,7 +689,7 @@ the glyphs the guide's own examples already used, which is self-consistency, not
 typographic decision.
 
 FraSanga rewrote the interpreter paragraph of `concept/using-functions` using «...» for
-Jiki's reported speech and said explicitly that this is how quoted dialogue is marked. That
+reported speech and said explicitly that this is how quoted dialogue is marked. That
 is the standard Italian book convention (_caporali_ as the first quotation level, high
 double quotes as the second), and it matches what the other Romance guides already do after
 their own native speakers asked for it (`fr`, `es`). A native speaker's clear, specific
@@ -721,7 +706,7 @@ this date still carries straight quotes in prose and needs a separate sweep to m
 **Terms affected:** `crank (machine crank)`, Notes column only. The target, _manovella_,
 is unchanged.
 
-The `crank` row fixed the noun but not the verb, and `concept/using-functions` had Jiki
+The `crank` row fixed the noun but not the verb, and one concept page had the character
 _girare la manovella_ and then _accendere_ the machine. FraSanga: once you commit to
 _girare la manovella_, the verb that goes with it is **_caricare_** (to wind up), as with a
 wind-up toy car, where the more you wind it the further it goes. _Accendere_ (to switch on)
@@ -753,7 +738,7 @@ existing `chain` row.
 | infinite loop | ciclo infinito | Fixed phrase tied to the loop row; recurs across concept pages and interpreter errors. | high |
 | dictionary (data type) | dizionario | Proposed by both dictionaries and word-count workers. Array stayed English, so this sets the it/en direction for this type; also decides against _mappa_. | high |
 | key / value (dictionary pair) | chiave / valore | Core dictionary vocabulary ("coppie chiave-valore"); _chiave_ is not a cognate so its gloss direction is worth fixing. | high |
-| spiral notebook (dictionary metaphor) | blocco note a spirale | Jiki metaphor; source alternates notepad/notebook, one rendering needed. Alternative: _quaderno a spirale_. | medium |
+| spiral notebook (dictionary metaphor) | blocco note a spirale | the teaching metaphor; source alternates notepad/notebook, one rendering needed. Alternative: _quaderno a spirale_. | medium |
 | Sensing (function category) | Percezione | Family-wide category label (maze); _Rilevamento_/_Sensori_ also defensible. | medium |
 | to turn around / turn-around | fare dietrofront | _girarsi_/_voltarsi_/_tornare indietro_ available; _tornare indietro_ would wrongly imply retracing steps. Names both a function and a maze action. | medium |
 | checksum | somma di controllo | Loanword _checksum_ vs native phrase; native is self-explaining for beginners. | medium |
@@ -785,7 +770,7 @@ glossary row has been written; these await agreement.
 | English | Proposed target | Rationale / notes | Confidence |
 |---------|-----------------|-------------------|------------|
 | default (value) | valore predefinito | _di default_ is the common loan alternative; worth settling so passes don't split. Used in a two-fer hint. | medium |
-| piece of paper (string metaphor) | foglio di carta | Recurring string metaphor (Jiki writes text on paper); _pezzo di carta_ is the defensible alternative. Also proposed in batch 1 (`if` page). | high |
+| piece of paper (string metaphor) | foglio di carta | Recurring string metaphor (text written on paper); _pezzo di carta_ is the defensible alternative. Also proposed in batch 1 (`if` page). | high |
 | meridiem (am/pm indicator) | meridiem (kept in English) | It is also the code parameter name, so prose and code match; _indicatore am/pm_ is the paraphrase alternative. Clock exercises will reuse it. | medium |
 | Time (function category label) | Ora | Category labels must stay one term across exercises; _Tempo_ reads as duration, not clock time. | medium |
 | data type | tipo di dati | _tipo di dato_ (singular) equally defensible; the plural/singular choice should be settled once. | medium |
@@ -898,7 +883,7 @@ in the glossary. What came out, and why:
   use" invite exactly the auto-gloss `voice.md` forbids. The acronym category is still
   listed in Term clarification, and the two glossary rows are untouched.
 - **"Titles and headlines" worked examples, removed.** The two Avoid/Prefer pairs ("È Nato
-  Jiki!" → "Ecco Jiki" / "Jiki è arrivato"; "Un nuovo modo di imparare a programmare che
+  Exercism!" → "Ecco Exercism" / "Exercism è arrivato"; "Un nuovo modo di imparare a programmare che
   cambia tutto" → "Un nuovo modo di imparare a programmare") only demonstrated two rules
   already stated imperatively: sentence case in Style notes, and "no melodrama, no
   redundancy" in `global/voice.md`. Kept here for reference; they are correct Italian.
@@ -1011,21 +996,11 @@ entry below, `array / list`, `(programming) language`, `curriculum`/`pathway`, a
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind Italian:
+Two decisions came out of that pass that bind Italian:
 
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. The previous instruction to keep them
-  distinct was forcing languages to invent a distinction the course does not have. Italian
-  had coined **`tabellone`** for the board purely to avoid `lavagna`, which was bound to the
-  function whiteboard, and rated that choice low confidence (a `tabellone` is a
-  stadium-scale display, not a room fixture). With the merge that constraint disappeared,
-  and the term moved to **`lavagna`**, the ordinary word for a board in a room.
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter ("It's his job to interpret the code that you
-  write"), so the word has to be able to name a character. Several languages had reached
+- **`interpreter`.** Several languages had reached
   for their term for interpreter *software*, which cannot. **Italian did not change:**
   _interprete_ was already right, being both the everyday human-interpreter word and the
   standard CS term, with no machine or program morpheme in it. What changed is that the row
@@ -1041,7 +1016,7 @@ Three decisions came out of that pass that bind Italian:
 entry above governs.
 
 Rows added to cover terms the using-functions concept page needed: `instruction (given to
-Jiki)`, `mental model`, `(programming) language`, `variable`, `assignment`, `to assign`,
+`mental model`, `(programming) language`, `variable`, `assignment`, `to assign`,
 `code block`, `error`, and the metaphor rows `machine`, `crank`, `shelves`, `warehouse`,
 `board / whiteboard`.
 
@@ -1119,11 +1094,3 @@ covered by a dated entry above (`board / whiteboard`, `interpreter`) is not repe
 | API | Not a word a beginner knows. |
 | framework | Established loanword in Italian dev writing. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| box | Plain, concrete Italian word for a box. |
-| chain | Standard Italian for a physical chain. |
-| input slot | The narrow slot you post a coin or letter into (a piggy bank, a vending machine, a letterbox); the dictionary-precise alternative _feritoia_ is more technical/less concrete. |
-| return chute | The playground-slide image: concrete and child-vivid, matching the informal register of the other metaphors. Treccani confirms both the playground-slide and vending-machine-delivery-chute senses. |

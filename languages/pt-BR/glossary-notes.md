@@ -1,22 +1,5 @@
 # Brazilian Portuguese (pt-BR) glossary notes
 
-## 2026-08-06: Translation engine confirmed as `fable`
-
-**Decided by:** sorrizo and oxe-b, both native speakers, on the "Alternative translation
-model" comparison thread. **Status:** settled.
-**Terms affected:** none (engine choice, not a glossary or guide change).
-**Files affected:** `tracking.json` (`translation_engine`).
-
-Jeremy posted an alternative-model rendering of a Brazilian Portuguese page alongside the
-published one and asked which read better. Both reviewers preferred the original, and the
-thread was closed with "we will keep the current version rather than switching models on
-this evidence".
-
-This is a **confirmation of the existing default, not a switch**: Brazilian Portuguese was
-already running on `fable`, and it continues to. What changed is that the choice is now
-native-speaker-backed and therefore recorded as a `translation_engine` block, which per
-`orchestrator.md` means a human has confirmed that model for this language.
-
 ## 2026-08-05: Seven rows proposed from the website-copy translation pass (unconfirmed drafts)
 
 **Decided by:** nobody. **Status: unconfirmed drafts**, proposed by the workers translating
@@ -141,113 +124,14 @@ there.
 **Two existing rows were confirmed in the same post**, both of which had been our own calls
 flagged as wanting a second opinion:
 
-- **`interpreter` → intérprete** is right, and _interpretador_ is not. This was reversed once
-  before (see the 2026-07-30 owner-decisions entry below), so the confirmation matters.
-- **`board / whiteboard` → quadro** is clean for the whiteboard/instruction-board sense.
-
-Neither rendering moves; both rows are now protected, and their Notes say so.
-
-**Forward guidance, no glossary row yet: a chess/checkers-style board is _tabuleiro_, not
-_quadro_.** oxe-b added that if a grid-of-squares board ever appears, _tabuleiro_ is the word
-for it, and _quadro_ would be wrong there. No Jiki content needs it today, so there is
-nothing for a translator to act on and no row was added; this note is here so that the first
-pass that does hit one reaches for _tabuleiro_ and does not widen _quadro_ to cover it. It
-pairs with the existing `cell (grid square)` → _casa_ row, which already borrows the
-board-game frame.
-
-## 2026-08-03: `return chute` corrected to `boca da máquina`, and the row left the family file
-
-**Decided by:** native speakers (alanprofeta, oxe-b), forum posts and.
-**Status: confirmed.**
-**Terms affected:** `return chute`.
-
-The previous rendering, `calha de saída`, was an unconfirmed draft carrying its own
-"low-to-medium confidence; flag for native-speaker confirmation on first real use" warning.
-alanprofeta read it in isolation and said it struck him as very odd, but had no alternative
-to offer. We replied with the metaphor's actual context (Jiki's machine is a vending
-machine: you post a value into the input slot at the top, and the return value comes out of
-the opening at the bottom) and asked for a suggestion.
-
-oxe-b answered with two candidates:
-
-- **`bandeja de retirada`**, the more formal, manual-style term (literally a "collection
-  tray").
-- **`boca da máquina`**, the colloquial term Brazilians actually use for the opening on a
-  vending machine or an ATM.
-
-`boca da máquina` is the choice, on oxe-b's own stated preference for exactly this context.
-It also fits the two rules that were already going to decide it: `global/voice.md`'s
-"default to the ordinary, common word", and the requirement that the metaphor keep teaching.
-`bandeja de retirada` is accurate but reads as signage rather than as something Jiki would
-say, and it names a tray, which pictures a value resting in a receptacle rather than being
-pushed out of the machine. `boca` is what a Brazilian reader already calls that opening, and
-it binds the chute to the machine that owns it, which is the whole point of the metaphor.
-
-It also sits well beside the confirmed `input slot → fenda`: `fenda` is the narrow slot a
-value goes *in*, `boca` is the wide opening it comes *out* of, and the two words are not
-confusable with each other.
-
-**The row moved out of `../pt/glossary.md` into the two locale glossaries.** `boca da
-máquina` is a Brazilian colloquialism, and no European Portuguese speaker has been asked
-about it, so promoting it family-wide would be assuming what the family rule
-(`global/workflow.md`, "only move it up to the family file once it is confirmed identical
-across every locale") says must be confirmed. pt-PT keeps `calha de saída` verbatim, warning
-and all, now in `../pt-PT/glossary.md`; its effective glossary is unchanged, and its
-translated content was not touched.
-
-## 2026-08-02: Proposed terms from the Stage 2 batch 2 catch-up pass (unconfirmed drafts)
-
-**Decided by:** agent (proposals only, nothing written to `glossary.md`). The catch-up pass
-translating `two-fer`, `strings`, `digital-clock`, `arrays`, `weather-symbols`.
-
-**The one real conflict, needs a native-speaker ruling.** `languages/pt/glossary.md`
-(family) already has a human-confirmed row: `input slot → fenda`. The `strings` worker
-extended `fenda` to cover ordinary "input" too, merging the source's "an extra input" and
-"the fifth slot" onto the one metaphor word. The `two-fer` and `weather-symbols` workers
-went the other way, proposing `entrada` for ordinary "input" and deliberately keeping it
-distinct from the `fenda` metaphor. Both can't stand — recommend keeping `fenda` for the
-physical-slot metaphor and adding `entrada` for the ordinary "value passed in" sense, with a
-Notes line on each pointing at the other, but this is a native-speaker call and `strings` is
-already published with the merged reading.
-
-| English | Proposed target | Notes | Confidence |
-|---------|-----------------|-------|------------|
-| input (ordinary sense, distinct from the fenda metaphor — see conflict above) | entrada | | medium |
-| compound data type | tipo de dado composto | Core teaching term, recurs on later compound-type pages. Pairs with "tipo de dado". | high |
-| template string | kept English, no gloss | Brazilian dev writing uses the English term; alternatives (_literal de modelo_, _string de modelo_) exist, so this sets a precedent. | medium |
-| display (the time) | mostrar | Chosen over _exibir_ for warmer register; other display-style exercises should match. | medium |
-| meridiem | kept as-is / quoted | Source names it as a term of art; alternative is paraphrasing as "o indicador de am/pm". | medium |
-
-**Note:** the `arrays` item's proposed delta was lost (its worker stopped responding across
-three relay attempts) despite the page itself translating and publishing cleanly (stamped
-`012da550948ba2ebcfaf953cd0906f3f`, first real use of "calha de saída" flagged for the
-native-speaker confirmation the family glossary asks for). Worth a `tidy` re-ask later to
-recover whatever term choices it made. Possible `global/terms.md` gap: "template string".
-
-## 2026-07-30: Owner decisions from the 28-language using-functions pass
-
-**Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
-languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `interpreter`, `board / whiteboard`, and, as a principle, every row.
-
-Three decisions came out of that pass that bind Brazilian Portuguese:
-
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter ("It's his job to interpret the code that you
-  write"), so the word has to be able to name a character. **Brazilian Portuguese
+- **`interpreter`.** **Brazilian Portuguese
   reversed an earlier choice here.** An earlier pass had deliberately picked
   `interpretador` over `intérprete`, on the grounds that `intérprete` names a human
   spoken-language interpreter and would read as the wrong kind of person. That reasoning
-  inverted once Jiki is understood as a character whose job is interpreting ("o trabalho
+  inverted once the interpreter was understood as a character whose job is interpreting ("o trabalho
   dele é interpretar o código"): a human-shaped word is exactly what is needed, and
   `intérprete` is that word, while `interpretador` names interpreter *software* and cannot
   describe a character. The row now reads `intérprete`, and rules out `interpretador`.
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. The previous instruction to keep them
-  distinct was forcing languages to invent a distinction the course does not have.
-  Brazilian Portuguese renders both as **quadro**, the ordinary word for a board on a
-  wall, with no second word (never `quadro branco` or `lousa`) for the same object.
 - **Default to the ordinary, common word**, whatever its etymology (now in
   `global/voice.md`). Where a language's own developer writing uses the English word, the
   English word is the ordinary word and the right choice; where it does not, the native
@@ -270,7 +154,7 @@ once confirmed identical there.
 
 No other gap was found: the `board / whiteboard`, `machine`, `crank`, `shelves`,
 `warehouse`, `interpreter`, `mental model`, `(programming) language`, `instruction (given
-to Jiki)` and `brackets` rows this pass expected to need adding were already present in
+` and `brackets` rows this pass expected to need adding were already present in
 this file from an earlier pass. A search of this locale's guide and glossary also found no
 instance of `brackets` glossed as `colchetes` where `parênteses` was meant; the file
 already used `parênteses` consistently for the function-call bracket pair.
@@ -306,7 +190,7 @@ by a dated entry above (`interpreter`, `board / whiteboard`) is not repeated her
 
 | Term | Why |
 |------|-----|
-| instruction (given to Jiki) | Portuguese has one ordinary word (`instrução`) for both an executable statement and an instruction given to Jiki; coining a second would read worse than sharing it. |
+| instruction | Portuguese has one ordinary word (`instrução`) for both an executable statement and an instruction someone is given; coining a second would read worse than sharing it. |
 | scope | `escopo` is fully nativized in Brazilian tech writing, unlike pt-PT's `âmbito`. |
 
 ### Keep in English
@@ -314,12 +198,6 @@ by a dated entry above (`interpreter`, `board / whiteboard`) is not repeated her
 | Term | Why |
 |------|-----|
 | framework | Both _framework_ and _estrutura_ appear in Brazilian dev writing; _framework_ reads more natural. |
-
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| warehouse | `galpão` preferred over `armazém`, which reads commercial/industrial in Brazil. |
 
 ## 2026-07-31: `cell` added from forum feedback on maze-solve-basic
 

@@ -21,11 +21,11 @@ written to `glossary.md`.
 | Learn to Build | بنانا سیکھیں | Translated to parallel پروگرامنگ سیکھیں; could stay English as a brand title. | low |
 
 `syntax` and `Learn to Build` are the two rows worth a native speaker's ruling on the Urdu
-glossary thread. Flag, not a row: Urdu first-person verbs are gendered — Jiki's "I'll try
+glossary thread. Flag, not a row: Urdu first-person verbs are gendered: an "I'll try
 first" phrasing was kept masculine (سوچ رہا ہے), consistent with treating the interpreter as
 a character; a reviewer should confirm that's the intended default.
 
-Cross-cutting RTL note (not Urdu-specific): `layout.internalHeader.backToJiki` bakes a
+Cross-cutting RTL note (not Urdu-specific): a header UI string bakes a
 literal directional arrow into the catalog string (`→`/`←`), which belongs in CSS/an icon,
 not catalog text — every RTL locale will hit this.
 
@@ -40,8 +40,7 @@ verb-final SOV, Urdu punctuation, Western digits, ergative "ne" on perfective cl
 light verbs) were drafted during the language bootstrap and then exercised end to end on
 the first real Urdu page, the using-functions concept page. They draw on real Urdu tutorial
 forums, general-audience Urdu tech explainers, Mozilla's Urdu localization style guide, and
-Urdu Wikipedia. Duolingo has no Urdu course and no Urdu-language UI, so unlike most Jiki
-languages there was no Duolingo Urdu tone to benchmark against. None of this has yet been
+Urdu Wikipedia. Duolingo has no Urdu course and no Urdu-language UI, so unlike most other languages there was no Duolingo Urdu tone to benchmark against. None of this has yet been
 reviewed by a native speaker: the conventions remain unconfirmed drafts, except those
 covered by the 2026-07-30 owner entry below.
 
@@ -60,13 +59,13 @@ tokens into an RTL line is a documented, still-unresolved pain point even for ma
 RTL-aware projects (KDE's localization team tracks it as open bugs). Backticked code is
 visually distinct and reads far more cleanly than an unmarked script switch.
 
-**Formality: aap, not tum or tu.** This looks like a departure from other Jiki languages'
+**Formality: aap, not tum or tu.** This looks like a departure from other languages'
 "use the informal register", and is not. In real Urdu digital and educational writing aap
 *is* the modern, warm, everyday register, confirmed across independent sources: an Urdu
 programming-tutorial forum thread, a general-audience Urdu coding explainer, and Mozilla's
 Urdu localization style guide, all of which use it for exactly this kind of warm,
 instructional, second-person address. Tum carries either family/close-friend intimacy or,
-from an unfamiliar voice like Jiki's, reads as presumptuous; tu is intimate-to-rude outside
+from an unfamiliar voice, reads as presumptuous; tu is intimate-to-rude outside
 very close relationships. Aap is therefore the correct mentor-voice choice, not a formality
 downgrade.
 
@@ -74,7 +73,7 @@ downgrade.
 by the dual form of the word itself, and the accompanying code and images already show two
 brackets.
 
-**Jiki plus postpositions.** The pattern of attaching Urdu postpositions directly after the
+**A Latin-script name plus postpositions.** The pattern of attaching Urdu postpositions directly after the
 Latin-script name is already in use in real translated content (the using-functions concept
 page). The general instruction to flag awkward constructions for native-speaker review was
 dropped from the guide as a restatement of `global/rules.md` § "When unsure".
@@ -102,21 +101,11 @@ absent here. No coverage gap was filled and no new rule was added.
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind Urdu:
+Two decisions came out of that pass that bind Urdu:
 
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. The previous instruction to keep them
-  distinct was forcing languages to invent a distinction the course does not have. Urdu
-  renders both as **وائٹ بورڈ**, not the page's bare "بورڈ": bare "بورڈ" in Pakistan reads
-  first as an examination or education board, so it would mislead rather than clarify.
-  "وائٹ بورڈ" is what a writing board in a room is actually called, and it has no collision
-  with "زنجیر" (array).
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter ("It's his job to interpret the code that you
-  write"), so the word has to be able to name a character. Urdu's previous rendering,
+- **`interpreter`.** Urdu's previous rendering,
   the transliteration "انٹرپریٹر", reads as software and is opaque to a beginner, so it
   could not do that job. It moves to **مترجم**, the ordinary Urdu agent noun for "one who
   translates/interprets", which matches the verb the page already uses for the job,
@@ -135,7 +124,7 @@ Three decisions came out of that pass that bind Urdu:
 entry above governs.
 
 The rows added for the using-functions concept page (the metaphor terms, `mental model`,
-`instruction (given to Jiki)`, `(programming) language`, and the rest of the "Functions &
+`instruction`, `(programming) language`, and the rest of the "Functions &
 control flow" and "Loops, state & program flow" tables) are draft renderings, not yet
 reviewed by a native speaker.
 
@@ -207,7 +196,7 @@ language bootstrap. A term whose reasoning is already covered by a dated entry a
 | assignment | Native word meaning "assignment/delegation," used for the concept of giving a variable its value. |
 | to assign | Light verb built from the noun above. |
 | code block | "کوڈ" (code, never translated) + "بلاک" (transliterated "block"); self-explanatory once both halves are known. |
-| error | Ordinary Urdu word for "mistake/error." Matches Jiki's non-blaming tone well. |
+| error | Ordinary Urdu word for "mistake/error." Matches the non-blaming tone well. |
 | nested | Native descriptive phrase, "layer within layer." |
 | iteration | Native word meaning "repetition." |
 | to run / execute (code) | Ordinary Urdu verb, "to run/operate." |
@@ -231,19 +220,6 @@ language bootstrap. A term whose reasoning is already covered by a dated entry a
 | Term | Why |
 |------|-----|
 | CPU, RAM, USB, HTML, CSS, JSON | Standard practice in Urdu print and digital media to keep these acronyms in Latin script even mid-sentence. |
-
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| box | Plain, everyday Urdu word for "box"; direct and concrete. |
-| chain | Standard Urdu word for a physical chain. |
-| machine | Established loanword, now an ordinary Urdu word for "machine," not a fresh coinage. |
-| input slot | "ان پٹ" (input) + transliterated "سلاٹ" (slot). |
-| return chute | "واپسی" (return) + "نالی" (a channel/chute/gutter), an apt everyday physical image for something sliding out. |
-| shelves | Everyday Urdu word for a cupboard/shelving unit where things are kept; warmer and more concrete than a transliterated "شیلف." |
-| warehouse | Ordinary, concrete Urdu word for a warehouse/store-room; the place Jiki hangs out and keeps his machine shelf. |
-| crank | "ہینڈل گھمانا" is the everyday phrasing; "دستہ" is the more literary word and reads stiff here. |
 
 ### Platform & curriculum vocabulary
 

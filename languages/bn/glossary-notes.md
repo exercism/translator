@@ -144,7 +144,7 @@ directly. All of it came out of his review of the Scroll and Shoot exercise.
 ### "left" -> বাম
 
 The Bangla translations used বাঁ and its inflections (বাঁয়ে, বাঁয়ের, বাঁ দিকে) throughout. He
-called বাঁ "too formal to Jiki", which he reads as a friendly environment, and said that in
+called বাঁ "too formal" for a friendly environment, and said that in
 everyday speech people always say বাম. He explicitly asked for it to be changed in the other
 places too and suggested it be added to the glossary. Scroll and Shoot itself was swapped in
 this pass; the rest of the Bangla corpus still carries roughly 150 occurrences across about 65
@@ -447,7 +447,7 @@ UI label) is preserved below for a native speaker to weigh in on.
 | scenario | সিনারিও | Agreed independently by both chunk workers. | medium |
 | challenge | চ্যালেঞ্জ | | medium |
 | lesson | পাঠ | Pedagogy word, ordinary Bangla, not লেসন. | medium |
-| instructions (exercise panel) | নির্দেশনা | Deliberately distinct from the glossary's নির্দেশ ("instruction given to Jiki"). | medium |
+| instructions (exercise panel) | নির্দেশনা | Deliberately distinct from the glossary's নির্দেশ ("an instruction someone is given"). | medium |
 | to unlock | আনলক করা / হওয়া | | medium |
 | subscription / subscribe | সাবস্ক্রিপশন / সাবস্ক্রাইব করা | | medium |
 | locked (content state) | লক করা | | medium |
@@ -460,7 +460,7 @@ UI label) is preserved below for a native speaker to weigh in on.
 
 Flags for a product/FE decision, not glossary rows: sidebar asymmetry ("Learn to Build" and
 "Projects" stay Latin, but "Learn to Code" became কোড শিখুন — a Bangla heading directly above
-an English one); `lesson.documentTitle` renders the brand as জিকি rather than Latin "Jiki";
+an English one); one page-title UI string rendered a brand name in Bengali script rather than Latin;
 `layout.localeBanner.cta` "Change to {language}" was rephrased to "{language} সংস্করণে যান"
 because Bangla needs a case ending that can't attach cleanly to the placeholder — only works
 if `{language}` is a bare language name, worth Aron confirming.
@@ -469,21 +469,11 @@ if `{language}` is a bare language name, worth Aron confirming.
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind Bangla:
+Two decisions came out of that pass that bind Bangla:
 
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. The previous instruction to keep them
-  distinct was forcing languages to invent a distinction the course does not have, and
-  several collided with their own word for `array` trying. Bangla merged both onto
-  **বোর্ড**: Bangla already calls a classroom writing board বোর্ড, and it does not
-  collide with অ্যারে. হোয়াইটবোর্ড, previously used as a second, separate term, is
-  retired.
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter ("It's his job to interpret the code that you
-  write"), so the word has to be able to name a character. Several languages had reached
+- **`interpreter`.** Several languages had reached
   for their term for interpreter *software*, which cannot. **Bangla did not change:**
   ইন্টারপ্রেটার was already right, because the bare transliteration carries no machine or
   program morpheme, so, like ডেভেলপার, it reads naturally as a role a person holds, and
@@ -501,7 +491,7 @@ Three decisions came out of that pass that bind Bangla:
 entry above governs.
 
 **Rows added** for terms the using-functions concept page needed: `instruction (given to
-Jiki)`, `mental model`, `(programming) language`, `brackets (the two after a function
+`mental model`, `(programming) language`, `brackets (the two after a function
 name)`, `input (to a function)`, and the metaphor rows `machine`, `crank`, `shelves`,
 `warehouse`, `board / whiteboard`.
 
@@ -561,10 +551,10 @@ it is not for, say, Hungarian's _függvény_. Note this is a deliberate Bangla-s
 against the Japanese コート example in `global/voice.md`: Bengali-script transliteration is
 already legible to the reader, so it does not buy what katakana buys.
 
-**Why the Jiki physical metaphors were expected to land in Bangla.** Bangla pedagogical
+**Why the the physical metaphors were expected to land in Bangla.** Bangla pedagogical
 writing already reaches naturally for concrete container metaphors: real Bangla tutorial
 content independently describes an array's slots as খোপ (compartments/pigeonholes, the
-same word used for a train berth or a mail pigeonhole). That was the evidence that Jiki's
+same word used for a train berth or a mail pigeonhole). That was the evidence that the
 physical-metaphor approach (box, chain, machine, input slot, return chute) would land
 naturally rather than feeling foreign. খোপ is not itself an agreed term and has no
 glossary row.
@@ -576,7 +566,7 @@ page" instruction.
 
 **Also cut from the guide, as duplication rather than rationale:** the lists of individual
 term renderings (all already rows in `glossary.md`, unchanged), the bullet restating
-`global/rules.md` on Jikiscript keywords staying English (also a row in the "Keep in
+`global/rules.md` on programming keywords staying English (also a row in the "Keep in
 English" table), the worked example repeating the glossary's API explanation verbatim, and
 a second copy of the "warmth does not mean downgrading the pronoun" rule that appeared in
 both § Formality and § Style notes (kept once, in § Formality).
@@ -602,7 +592,7 @@ and in the row's own Notes column in `glossary.md`, not treated as a decision.
 | streak | Native Bangla word meaning "continuity/consistency". |
 | tech / tech industry | Loanword pairing; established in Bangla tech media. |
 | pitfall | Native word; plain বিপদ alone reads as generic "danger" without the gloss. |
-| left (direction) | বাম, confirmed by native-speaker review 2026-09-06 (sohayelmahmud, forum, post 1). বাঁ is the more formal/literary form; বাম is what is said in everyday Bangla, which is the register Jiki wants. |
+| left (direction) | বাম, confirmed by native-speaker review 2026-09-06 (sohayelmahmud, forum, post 1). বাঁ is the more formal/literary form; বাম is what is said in everyday Bangla, which is the register this content wants. |
 | Scroll and Shoot (exercise name) | Fully transliterated including the conjunction, confirmed by native-speaker review 2026-09-06 (sohayelmahmud, forum, post 1). |
 
 ### Values & data types
@@ -662,15 +652,3 @@ and in the row's own Notes column in `glossary.md`, not treated as a decision.
 | "For the bonus, ..." (lead-in label) | বোনাস: confirmed by native-speaker review 2026-08-18 (sohayelmahmud, forum, posts 1 and 2); he called বোনাসের জন্য: unnatural for a sentence-opening label. |
 | weekday (name of a day of the week) | বার, confirmed by native-speaker review 2026-08-18 (sohayelmahmud, forum, posts 1 and 2). He raised it twice: দিন carries several senses in Bangla (calendar day, and the verb "give"), so a sentence that uses দিন for a named weekday makes the reader "think twice which দিন you meant". বার is what Bangla speakers actually use for the name of a day of the week, and the calendar-day sense keeps দিন. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| box | Plain, universally known Bangla word for "box"; direct and concrete. |
-| chain | **Open:** loanword, in wide everyday use (e.g. a bicycle chain) and already associated with sequential/linked structures in real Bangla programming content. শিকল (the literal native word) is a plausible alternative if native-speaker feedback prefers a less loanword-heavy metaphor. |
-| input slot | **Open:** ইনপুট (agreed) + স্লট; mirrors the coin-slot/card-slot machine image common in Bangla daily life, but not independently attested in a real Bangla source. |
-| return chute | **Open:** রিটার্ন (agreed) + স্লাইড; real Bangla journalism confirms স্লাইড is how a playground slide is named, and no single native noun for a chute-like object was found. The "input slot / return chute" *machine* framing as a pair has not been seen in real Bangla content. |
-| machine | Loanword, universally understood. |
-| crank | হাতল is the ordinary word for a handle or lever, not engine jargon. |
-| shelves | Plain, universally known native Bangla word for "shelf". |
-| warehouse | Ordinary, concrete Bangla word for a warehouse or store-room. |

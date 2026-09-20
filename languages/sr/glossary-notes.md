@@ -155,31 +155,6 @@ one out).
 right test, and it is the test "etapa" passes; miroslav-inc's and little_mouse's reading of
 the English meaning is the right reading, and it is what ruled "prekretnica" out.
 
-## 2026-08-06: Translation engine switched to `deepseek`
-
-**Decided by:** native speaker **miroslav-inc** (the verdict), on the "[Serbian Review]
-Alternative translation model" comparison thread, plus
-**Jeremy** (project owner), who confirmed which engine the preferred version came from.
-**Status:** settled. **Terms affected:** none (engine choice, not a glossary or guide
-change). **Files affected:** `tracking.json`, which now carries the `translation_engine`
-block.
-
-Jeremy posted an alternative-model rendering of the Serbian `concept/using-functions` page
-alongside the published one and asked which read more naturally. miroslav-inc answered:
-"both version are fine, I would prefer second (from this post)", the "second" being the
-alternative quoted in the thread's opening post rather than the published version on the
-review site.
-
-**Unusual provenance, recorded deliberately:** the thread never names the model behind the
-alternative, by design (the comparison was run unlabelled so the verdict would not be
-biased by the engine's name). Jeremy, who ran the experiment, confirmed directly to the
-orchestrator that the alternative was DeepSeek. So the preference is the native speaker's
-and the engine identity is the owner's; neither is inferable from the thread text alone,
-and anyone re-reading later will not find "deepseek" written anywhere in it.
-
-Serbian therefore runs on `deepseek` rather than the `fable` default. This was a genuine
-switch, made on a native speaker's verdict, not on our own judgement or on cost.
-
 ## 2026-08-04: clothing-item terms confirmed and added; `smart` (attire) still open
 
 **Raised by:** native speaker **little_mouse** on the `bouncer-dress-code` review thread, and **confirmed by the same reviewer** on
@@ -321,7 +296,7 @@ plain "kurs" as the two options.
 adopted into Serbian prose is respelled phonetically *throughout* ("framework" → "frejmvork"),
 which "bootkamp" only half does, so the old spelling was inconsistent with the language's
 stated pattern rather than a deliberate exception. And "kurs" is already the agreed rendering
-of `course` (the whole Jiki course a learner is taking), so reusing it for `bootcamp` would
+of `course` (the whole course a learner is taking), so reusing it for `bootcamp` would
 collapse two curriculum-vocabulary terms the glossary deliberately keeps apart. That
 aleksaelezovic calls "butkamp" "not really a word" is expected of a recent loanword and is
 not an objection to it; the row records the declension so it is used as an ordinary Serbian
@@ -479,7 +454,7 @@ and is recorded here instead:
 - **The ти/ви justification.** The guide argued the informal "ti" choice at length:
   institutional Serbian CS material (official course manuals, university textbooks) actually
   defaults to formal "vi", but that register belongs to academic/institutional writing rather
-  than to Jiki's warm, informal, mentor-like brand voice; "ti" is what real Serbian marketing
+  than to this warm, informal, mentor-like brand voice; "ti" is what real Serbian marketing
   and youth-oriented tutorial content uses, and matches the rest of Jiki's languages. The
   rule ("use ti, never vi") is unchanged in the guide.
 - **Cross-language commentary on word order.** A parenthetical compared Serbian's
@@ -629,20 +604,11 @@ rendering on its own).
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`, following `946293c`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
-Three decisions came out of that pass that bind Serbian:
+Two decisions came out of that pass that bind Serbian:
 
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. The previous instruction to keep them
-  distinct was forcing languages to invent a distinction the course does not have, and
-  several collided with their own word for `array` trying. **Serbian did not change:** it
-  already used **tabla** for both, so the two rows merged with no text change. There is no
-  collision with "niz" (array).
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter ("It's his job to interpret the code that you
-  write"), so the word has to be able to name a character. Several languages had reached
+- **`interpreter`.** Several languages had reached
   for their term for interpreter *software*, which cannot. **Serbian kept the loanword
   "interpreter"**: it is what Serbian dev writing actually uses, and it already names a
   person in general Serbian, as of a performer interpreting a song, so it carries no
@@ -659,7 +625,7 @@ Three decisions came out of that pass that bind Serbian:
 entry above governs.
 
 Rows were added for the terms the using-functions concept page needed (`instruction (given
-to Jiki)`, `mental model`, `(programming) language`, `brackets (the two after a function
+`, `mental model`, `(programming) language`, `brackets (the two after a function
 name)`, `input (to a function)`, and the metaphor rows `machine`, `shelves`, `warehouse`,
 `crank`, `board / whiteboard`).
 
@@ -754,15 +720,3 @@ repeated here.
 | API | Not a word a beginner knows. |
 | component | Fully naturalized Serbian tech vocabulary. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| box | Directly attested, independently, in two real Serbian CS-education sources with phrasing remarkably close to Jiki's own ("a value is thrown out of the box and a new one written into it"). |
-| chain | The same way Hungarian keeps both "lánc" (chain, metaphor) and "tömb" (array, technical term). |
-| input slot | Constructed from "ulaz" (input, agreed term) + "otvor" (an opening/slot). |
-| return chute | Constructed from "izlaz" (output, agreed term) + "žleb" (a groove/chute). |
-| machine | Plausible and low-risk (vending/factory-machine imagery is culturally universal), but unattested in existing Serbian CS-education material. |
-| shelves | Directly attested: a real Serbian CS lesson diagram is captioned "variables in an array are like boxes on a shelf" ("kutije na polici"). Attestation is not the same as native-speaker confirmation. |
-| warehouse | The ordinary Serbian word for a warehouse/storeroom. |
-| crank | "ručica" is the everyday word for a small handle/lever, unlike the more mechanical "kurbla". |

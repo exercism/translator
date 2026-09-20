@@ -20,21 +20,6 @@ and settings copy, and پله/گام read as a single small step rather than a m
 reaching. Applied to both occurrences in the app catalog: the exercise-path milestone label
 and the empty-challenges description.
 
-## 2026-08-06: Translation engine confirmed as `deepseek`
-
-**Decided by:** mominchezgi, the authoritative native-speaker reviewer for Persian, on the
-"Alternative translation model" comparison thread.
-**Status:** settled. **Terms affected:** none (engine choice, not a glossary or guide
-change). **Files affected:** none; `tracking.json` already carried the block, this entry
-records the decision behind it.
-
-Jeremy posted an alternative-model rendering of a Persian page alongside the published one
-and asked which read better. mominchezgi picked B, the alternative: "It's better in hard
-sentences...". Persian was confirmed on that engine.
-
-Persian therefore runs on `deepseek` rather than the `fable` default, on a native speaker's
-verdict rather than our own judgement or a cost argument.
-
 ## 2026-08-05: "bonus" (a task label) is امتیاز
 
 **Decided by:** native speaker mominchezgi,
@@ -306,7 +291,7 @@ reversed by an agent.** `canvas` (بوم) is the agent's own drafting, see below
 **canvas → بوم is the agent's own drafting, and is a deliberate departure from the wording
 mominchezgi suggested.** He asked for «بوم را پاک کرد» to be restructured to «الان تخته
 خالی است». The restructure was applied, but with بوم kept rather than تخته, because تخته is
-already the agreed word for Jiki's instruction board (the 2026-07-30 owner decision below,
+already the agreed word for the instruction board (the 2026-07-30 owner decision below,
 whose whole point is that one board is one word), and بوم is what the Rainbow task
 description already calls the drawing surface. Using تخته for the canvas would have created
 exactly the one-thing-two-words problem he raised about hue, one row further down. The
@@ -316,7 +301,7 @@ after all, that is a decision about the board row too, not just this string.
 ## 2026-08-02: "instruction" is دستورالعمل, not دستور
 
 **Decided by:** native speaker mominchezgi, actioned by an
-agent the same day. **Terms affected:** the `instruction (given to Jiki)` row.
+agent the same day. **Terms affected:** the `instruction` row.
 **Protected: this is a native speaker's decision and is not to be reversed by an agent.**
 
 The row previously said دستور, with a note explicitly rejecting دستورالعمل as reading like
@@ -381,13 +366,13 @@ third of the file was record-of-the-conversation rather than instruction. What w
 and why each choice was made, is below so none of it is lost.
 
 **Where the research came from.** Persian has no Duolingo course and no Duolingo site UI at
-all (checked, absent), so unlike most Jiki languages there is no Duolingo tone to benchmark
+all (checked, absent), so unlike most languages there is no Duolingo tone to benchmark
 against; this is the same position as Urdu. The guide was instead built from real Persian
 tech-education writing: Quera (quera.org/blog) and Faradars (blog.faradars.org), both
 long-running, human-authored Iranian CS-education publishers, cross-checked against Persian
 Wikipedia's programming articles and its own house style manual.
 
-**Why formal شما, not informal تو.** This looks like a departure from other Jiki languages'
+**Why formal شما, not informal تو.** This looks like a departure from other languages'
 "use the informal register", and is not. Quera and Faradars, both checked directly,
 consistently address the reader with شما, never تو. From an unfamiliar voice like Jiki's,
 تو reads as presumptuous rather than warm; شما is the actual modern, everyday-appropriate
@@ -485,19 +470,11 @@ metaphors) was touched.
 
 **Decided by:** owner (iHiD), from the results of the concept-page pass across all 28
 languages. Commit `1d91ad4`.
-**Terms affected:** `board / whiteboard`, `interpreter`, and, as a principle, every row.
+**Terms affected:** `interpreter`, and, as a principle, every row.
 
 Two decisions came out of that pass that bind Persian:
 
-- **`board / whiteboard` is one object, so one word.** The board the learner writes
-  instructions on for Jiki to follow, and the board a function keeps its own instructions
-  and notes on, are the same visual metaphor. Persian moved from **تابلو** to **تخته**:
-  تابلو reads as a painting, plaque, or road sign, not something you write instructions on,
-  while تخته is the ordinary Persian word for a board you write on in a room (the classroom
-  board: «پای تخته») and does not collide with آرایه (array).
-- **`interpreter` means the one who interprets, a person doing a job, not a program.** On
-  concept pages Jiki *is* the interpreter, so the word has to be able to name a character.
-  **Persian did not change:** مفسر was already right, because it is an agent noun (the one
+- **`interpreter`.** **Persian did not change:** مفسر was already right, because it is an agent noun (the one
   who interprets/expounds) that is used of people first and carries no device or program
   morpheme.
 
@@ -509,7 +486,7 @@ in `global/voice.md` as a general principle rather than a per-language note.
 **Decided by:** agent, in the same pass. **Status: unconfirmed drafts**, except where the
 entry above governs.
 **Terms affected:** the rows this pass added for the Using Functions concept page (the
-Functions & control flow and Jiki physical metaphors sections in particular), and the
+Functions & control flow and the physical metaphors sections in particular), and the
 guide's quotation-mark examples.
 
 The rows this pass needed for the concept page were drafted and added rather than
@@ -533,7 +510,7 @@ repeated here.
 |------|-----|
 | array | Standard Persian CS term; confirmed via Persian Wikipedia, Faradars, sariasan. |
 | index (array index) | Dominant generic CS term for an array index; confirmed via Persian Wikipedia, Faradars. |
-| string | Already the comfortable, established primary Persian term (unlike some other Jiki languages that keep "string" in English); confirmed via general Persian CS usage. |
+| string | Already the comfortable, established primary Persian term (unlike some other languages that keep "string" in English); confirmed via general Persian CS usage. |
 
 ### Functions & control flow
 
@@ -559,14 +536,3 @@ repeated here.
 |------|-----|
 | AI | Owner precedent, following the Hungarian decision. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| chain | Ordinary, concrete Persian word for a physical chain (bicycle chain, door chain, keychain); safe and unqualified for this metaphor. |
-| box | Plain Persian word for "box"; direct and concrete. |
-| input slot | ورودی (input, agreed CS term above) + دهانه (an opening/mouth). |
-| return chute | خروجی (output) + سرسره (a playground slide), the same warm, concrete move as Hungarian's "kimeneti csúszda". |
-| machine | Reads as "apparatus/mechanism", a good fit for a box-with-crank; ماشین was considered but reads more like a car/vehicle generically. |
-| spiral notebook page (dictionary metaphor) | A real, recognizable Iranian school item: a spiral-bound notebook. |
-| mini-Jiki | کوچولو is the standard warm Persian diminutive for small/cute characters, a good register fit for the small Jiki who works inside a function machine. |

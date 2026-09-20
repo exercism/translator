@@ -39,7 +39,7 @@ premium feature list.
 
 **Decided by:** agent, on the owner's (iHiD) instruction to strip research provenance and rationale from `guide.md`. **Status: no term decision was overturned**; the two changes to `glossary.md` are additive rows, and the one typographic ruling below is an **unconfirmed draft**.
 
-**Terms affected:** `Learn to Code (strand)`, `Learn to Build (strand)`, and the coined-name row (`Ask Jiki, Deep Dive, Jiki Premium, Bootcamp, the game names`).
+**Terms affected:** the product and strand name rows, all retired with the fork.
 
 **Moved out of the guide into `glossary.md`.** The guide's "Product and strand names" section was a term decision living in prose (the owner decision applied in every language): descriptive strand names are translated („Învață să programezi”, „Învață să construiești”), coined and branded names stay English. The renderings were carried across verbatim, as two rows under "Platform & curriculum vocabulary" and one under "Keep in English", and the section was deleted from the guide.
 
@@ -63,7 +63,7 @@ premium feature list.
 
 **Terms affected:** `if statement` (previously `instrucțiune if`).
 
-Florin's words: „Not ok in Romanian, use instead 'condiție', the word 'instrucțiune' means more like statement in english." That is precisely the problem with the old rendering: this glossary already spends `instrucțiune` on "statement (executable)" and on "instruction (given to Jiki)", so using it for the `if` construct as well made one ordinary word carry three jobs. `condiție` names the thing a beginner actually meets, and it frees `instrucțiune` for the two rows that keep it. Those two rows are unchanged.
+Florin's words: „Not ok in Romanian, use instead 'condiție', the word 'instrucțiune' means more like statement in english." That is precisely the problem with the old rendering: this glossary already spends `instrucțiune` on "statement (executable)" and on "instruction", so using it for the `if` construct as well made one ordinary word carry three jobs. `condiție` names the thing a beginner actually meets, and it frees `instrucțiune` for the two rows that keep it. Those two rows are unchanged.
 
 The backticked-keyword convention survives the change: „condiția `if`" when the keyword itself is named, matching „bucla `for`" on the `loop` row.
 
@@ -110,11 +110,11 @@ Three were straightforward. **`computer` → `calculator`** is simply the ordina
 
 The research rested on pre-2022, human-authored sources: the [Mozilla Romanian localization style guide](https://mozilla-l10n.github.io/styleguides/ro/index.html), the [Ubuntu Romanian team translation guide](https://wiki.ubuntu.com/RomanianTeam/Proiecte/Localizare/Ghid), DOOM2/DOOM3 and dexonline for orthography and word senses, and Romanian university and high-school CS course material (Politehnica București `ocw.cs.pub.ro`, `pbinfo.ro`, `infogenius.ro`, UnitBv course PDFs). Several Romanian-language tutorial sites were found to be machine-translated from English and were discarded rather than used as evidence of natural phrasing.
 
-**The register question ran through everything.** Romanian has two live technical registers that disagree: the school and university one (`ciclu`, `instrucțiune repetitivă`, `tablou`, `șir de caractere`) and the modern online dev one (`buclă`, `array`, `string`). Jiki is a warm mentor rather than a textbook, so the glossary takes the everyday word where that is genuinely what a reader says (`buclă`), and keeps the native term where the academic word is also the ordinary one. This is the row-by-row judgement most likely to draw native-speaker disagreement.
+**The register question ran through everything.** Romanian has two live technical registers that disagree: the school and university one (`ciclu`, `instrucțiune repetitivă`, `tablou`, `șir de caractere`) and the modern online dev one (`buclă`, `array`, `string`). the voice is a warm mentor rather than a textbook, so the glossary takes the everyday word where that is genuinely what a reader says (`buclă`), and keeps the native term where the academic word is also the ordinary one. This is the row-by-row judgement most likely to draw native-speaker disagreement.
 
 **Four rows are flagged as the first things to ask a native speaker about:**
 
-- **`interpreter` → `interpretor`.** The hard one. `global/terms.md` requires a word that can name a **person**, because Jiki *is* the interpreter. DEX defines `interpretor` as a program ("procesor specializat"), which is the failure mode that rule exists to prevent. It was chosen anyway because morphologically it is an ordinary `-or` agent noun, and Romanian `-or`/`-tor` names people as readily as machines (`doctor`, `profesor`, `traducător`); it carries no device morpheme and does not begin with "program". The alternative, `interpret`, is the person word but means a spoken-language interpreter or a performer, which is the same wrong job Hungarian rejected as `tolmács` and Serbian as `tumač`. Lowest-confidence row in the file.
+- **`interpreter` → `interpretor`.** The hard one. `global/terms.md` requires a word that can name a **person**, because the interpreter was a character. DEX defines `interpretor` as a program ("procesor specializat"), which is the failure mode that rule exists to prevent. It was chosen anyway because morphologically it is an ordinary `-or` agent noun, and Romanian `-or`/`-tor` names people as readily as machines (`doctor`, `profesor`, `traducător`); it carries no device morpheme and does not begin with "program". The alternative, `interpret`, is the person word but means a spoken-language interpreter or a performer, which is the same wrong job Hungarian rejected as `tolmács` and Serbian as `tumač`. Lowest-confidence row in the file.
 - **`array` → `tablou`.** The native term Romanian schooling teaches, consistent with the choices Hungarian and Serbian made. `array` (declined `array-ul`, `array-uri`) is very common in Romanian web-dev speech and is the obvious counter-proposal.
 - **`deploy` → `a publica`.** Romanian devs say „a face deploy" in speech, which cannot be written here. `a implementa` was rejected because it means "to implement".
 - **`placeholder` → `substituent`.** `placeholder` is also used bare in Romanian dev speech.
@@ -155,7 +155,7 @@ Why individual rows read the way they do, where the reasoning is not already cov
 
 | Term | Why |
 |------|-----|
-| statement / instruction | Romanian has one ordinary word, `instrucțiune`, for both the executable statement and what the learner tells Jiki to do. Coining a second would read worse, so the two rows deliberately share it, exactly as Hungarian does. The logical-claim sense is a genuinely different word, `afirmație`. |
+| statement / instruction | Romanian has one ordinary word, `instrucțiune`, for both the executable statement and a single thing the reader is told to do. Coining a second would read worse, so the two rows deliberately share it, exactly as Hungarian does. The logical-claim sense is a genuinely different word, `afirmație`. |
 | to return | `returnează` is attested in Romanian course material. `a întoarce` reads as physically turning something around. |
 | return value | `valoare de retur` belongs to finance. |
 | built-in | `încorporat` reads mechanical, as of a component built into a device. |
@@ -164,7 +164,7 @@ Why individual rows read the way they do, where the reasoning is not already cov
 
 | Term | Why |
 |------|-----|
-| loop | `buclă` is what modern Romanian tutorials use („bucla `for`", „bucle imbricate"). `ciclu` and `instrucțiune repetitivă` are the university and school register, and would make Jiki sound like a lecture. |
+| loop | `buclă` is what modern Romanian tutorials use („bucla `for`", „bucle imbricate"). `ciclu` and `instrucțiune repetitivă` are the university and school register, and would make this sound like a lecture. |
 | nested | `imbricat` is the established Romanian CS term and collocates naturally with `buclă`. |
 | keyword | DOOM hyphenates `cuvânt-cheie`; writing it as two words is an error a Romanian reader notices. |
 | (programming) language | Romanian splits `limbă` (a natural language) from `limbaj` (a programming language). Using `limbă` here is a classic tell of a bad translation. |
@@ -198,12 +198,3 @@ Why individual rows read the way they do, where the reasoning is not already cov
 | AI | Mirrors the owner decision made for Hungarian: "AI" in prose and marketing, not the purist `IA`. |
 | chat | Fully nativized, so a gloss would teach nothing. |
 
-### Jiki physical metaphors
-
-| Term | Why |
-|------|-----|
-| chain | `lanț` is the ordinary physical chain, and `verigă` gives a natural word for a single link. |
-| crank | `manivelă` is defined in DEX as the lever you turn to operate a mechanism, which is exactly the metaphor. |
-| return chute | `tobogan` is the playground slide and is also used for a chute that moves material between levels, so it is concrete and playful at once. `jgheab` is a gutter and reads rustic. |
-| board / whiteboard | `tablă` is the ordinary word for a board in a room. |
-| mini-Jiki | Romanian takes the `mini-` prefix with a hyphen naturally, so the name needs no adaptation. |
