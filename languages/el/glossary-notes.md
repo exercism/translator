@@ -2,8 +2,7 @@
 
 ## 2026-08-13: "backtick" glosses as "βαρεία", never "ανάποδο τικ"
 
-**Decided by:** astyanax, the authoritative native-speaker reviewer for Greek, on
-https://forum.jiki.io/t/1473.
+**Decided by:** astyanax, the authoritative native-speaker reviewer for Greek, on.
 **Status:** native-speaker-confirmed, settled.
 **Terms affected:** `backtick / backticks` (added, _βαρεία_ / _βαρείες_).
 **Files affected:** `locales/el/curriculum/concepts/string-templates/page.md` (three
@@ -25,8 +24,7 @@ English source leaves to the reader.
 
 ## 2026-08-11: "nested" is "εμφωλευμένος", never the colloquial "φωλιασμένος"
 
-**Decided by:** astyanax, the authoritative native-speaker reviewer for Greek, on
-https://forum.jiki.io/t/1399/1.
+**Decided by:** astyanax, the authoritative native-speaker reviewer for Greek, on.
 **Status:** native-speaker-confirmed, settled.
 **Terms affected:** `nested loop(s)` (added, _εμφωλευμένος βρόχος_), `Nested Loop (concept /
 heading)` (added, _Εμφωλευμένη Επανάληψη_).
@@ -49,8 +47,7 @@ two interpreter messages about nested code were swept in alongside the exercises
 
 ## 2026-08-10: "record" is "καταγραφή", not "αρχείο" (reads as "file")
 
-**Decided by:** astyanax, the authoritative native-speaker reviewer for Greek, on
-https://forum.jiki.io/t/1345/1.
+**Decided by:** astyanax, the authoritative native-speaker reviewer for Greek, on.
 **Status:** native-speaker-confirmed, settled.
 **Terms affected:** `record` (added, _καταγραφή_). **Files affected:**
 `locales/el/curriculum/concepts/state/page.md` (one occurrence, fixed).
@@ -66,7 +63,7 @@ changed from "ένα αρχείο για το αν ταξιδεύουμε αρι
 
 ## 2026-08-10: Ordinal/referent gender agreement rule added to `guide.md`
 
-**Decided by:** astyanax (native speaker), forum topic 1344 ("[Greek Review] Concept page:
+**Decided by:** astyanax (native speaker), the forum ("[Greek Review] Concept page:
 String Concatenation").
 **Status:** settled. `guide.md` updated with a new imperative bullet under Grammar.
 **Terms affected:** none (grammar rule, not a term row). **Files affected:**
@@ -88,8 +85,7 @@ only; no glossary or guide change follows from it.
 
 ## 2026-08-07: "infiltration" is "παρείσφρηση", not "διείσδυση" (unwanted innuendo)
 
-**Decided by:** astyanax, the authoritative native-speaker reviewer for Greek, on
-https://forum.jiki.io/t/1293/1.
+**Decided by:** astyanax, the authoritative native-speaker reviewer for Greek, on.
 **Status:** native-speaker-confirmed, settled.
 **Terms affected:** `infiltration` (added, _παρείσφρηση_). **Files affected:**
 `locales/el/curriculum/exercises/annalyns-infiltration/instructions.md` (title only; the
@@ -105,7 +101,7 @@ unchanged: `Η παρείσφρηση της Annalyn`.
 ## 2026-08-06: Translation engine switched to `deepseek`
 
 **Decided by:** astyanax, the authoritative native-speaker reviewer for Greek, on the
-"Alternative translation model" comparison thread (https://forum.jiki.io/t/920).
+"Alternative translation model" comparison thread.
 **Status:** settled. **Terms affected:** none (engine choice, not a glossary or guide
 change). **Files affected:** none; `tracking.json` already carried the block, this entry
 records the decision behind it.
@@ -121,8 +117,7 @@ switch, made on a native speaker's verdict, not on our own judgement or on cost.
 
 **Decided by:** astyanax (native speaker).
 **Raised by:** the Stage 2 batch 2 pass, flagged as a "possible guide bug" in the
-2026-08-02 entry below; put to astyanax on the pinned glossary thread,
-https://forum.jiki.io/t/497.
+2026-08-02 entry below; put to astyanax on the pinned glossary thread,.
 **Status:** native-speaker-confirmed, settled. `guide.md` corrected.
 **Terms affected:** none (guide-level orthography rule, not a term row).
 
@@ -143,7 +138,7 @@ unchanged, this is invisible to the `en_md5` staleness check, so any re-run must
 ## 2026-08-05: Straight double quotes confirmed as the house style
 
 **Decided by:** astyanax (native speaker), confirming an agent's editorial call.
-**Raised on:** the pinned glossary thread, https://forum.jiki.io/t/497.
+**Raised on:** the pinned glossary thread,.
 **Status:** native-speaker-confirmed, settled. `guide.md` already stated the rule; no edit
 needed.
 **Terms affected:** none (guide-level punctuation rule).
@@ -164,7 +159,7 @@ would close the attribute early.
 ## 2026-08-05: "throw an error" stays "πετάει" as the default rendering
 
 **Decided by:** astyanax (native speaker), confirming an existing editorial default.
-**Raised on:** the pinned glossary thread, https://forum.jiki.io/t/497.
+**Raised on:** the pinned glossary thread,.
 **Status:** confirmed, settled. No glossary change: the existing row already reads this way.
 **Terms affected:** `to throw / raise an error` (unchanged).
 
@@ -178,8 +173,7 @@ being an unreviewed editorial call.
 ## 2026-08-04: "hardcode" is "καρφωτή τιμή"
 
 **Decided by:** astyanax (native speaker).
-**Raised by:** astyanax on the Greek `relational-sun` exercise review thread,
-https://forum.jiki.io/t/1129.
+**Raised by:** astyanax on the Greek `relational-sun` exercise review thread,.
 **Terms affected:** `hardcode` (added, _καρφωτή τιμή_ / plural _καρφωτές τιμές_).
 
 The translation had rendered "hardcode"/"hard-code" as the loanword `hardcode` in one place
@@ -192,8 +186,7 @@ rejected both: "don't use `hardcode` or `hard-code`, and let's not translate it 
 ## 2026-08-03: "meridiem" is translated as "ένδειξη μεσημβρίας"
 
 **Decided by:** astyanax (native speaker).
-**Raised by:** astyanax on the Greek `digital-clock` exercise review thread,
-https://forum.jiki.io/t/1110.
+**Raised by:** astyanax on the Greek `digital-clock` exercise review thread,.
 **Terms affected:** `meridiem` (added, _ένδειξη μεσημβρίας_).
 
 The translation had kept `meridiem` as a bare Latin token inside Greek prose, on the
@@ -220,8 +213,7 @@ Greek term, so the connection is still visible on the page.
 ## 2026-08-03: "golf tee" is translated, not kept in English
 
 **Decided by:** astyanax (native speaker).
-**Raised by:** astyanax on the Greek `golf-rolling-ball-loop` exercise review thread,
-https://forum.jiki.io/t/1107.
+**Raised by:** astyanax on the Greek `golf-rolling-ball-loop` exercise review thread,.
 **Terms affected:** `golf tee` (added, _πάσσαλος του γκολφ_).
 
 The translation had left `tee` as a bare English word inside otherwise Greek prose. Astyanax
@@ -238,8 +230,7 @@ have been the odd choice here, not the safe one.
 ## 2026-08-03: `αληθής` stands as a fixed term; boolean literals get quotes in prose
 
 **Decided by:** agent, applying the existing glossary row.
-**Raised by:** astyanax (native speaker) on the Greek `word-count` exercise review thread,
-https://forum.jiki.io/t/1093.
+**Raised by:** astyanax (native speaker) on the Greek `word-count` exercise review thread,.
 **Status:** the quoting is applied; the grammar question underneath it is settled by the
 existing row, not reopened.
 **Terms affected:** none. The `true / false` row (_αληθής / ψευδής_) is unchanged.
@@ -263,8 +254,7 @@ the grammar question would have gone, which is why it did not need a human rulin
 ## 2026-08-02: "bug" stays English, but is explained once, at its first mention
 
 **Decided by:** owner (iHiD).
-**Raised by:** astyanax (native speaker) on the Greek `while` loops concept review thread,
-https://forum.jiki.io/t/1059, asking what a Greek beginner is meant to make of the bare
+**Raised by:** astyanax (native speaker) on the Greek `while` loops concept review thread, asking what a Greek beginner is meant to make of the bare
 English word.
 **Status:** human-decided, settled.
 **Terms affected:** `Bug` (existing "Keep in English" row, Notes column only).
@@ -305,8 +295,7 @@ maze-solve-repeat). **None of them has been written into `glossary.md`.**
 
 ## 2026-08-02: Final -ν (τελικό -ν) rule added to `guide.md`
 
-**Raised by:** astyanax (native speaker) on the Greek `while` loops concept review thread,
-https://forum.jiki.io/t/1059 (posts 2683, 2753).
+**Raised by:** astyanax (native speaker) on the Greek `while` loops concept review thread, (posts 2683, 2753).
 **Status:** settled.
 
 Astyanax's first pass flagged "τρέξε τον βρόχο" and "έναν βρόχο", asking for the final -ν
@@ -450,8 +439,7 @@ Latin-script code identifiers and English-kept technical terms in Greek case fra
 ## 2026-07-31: `let` glosses once as "έστω", confirmed by a native speaker
 
 **Decided by:** astyanax (native speaker), confirming an agent proposal.
-**Raised on:** the pinned glossary thread, https://forum.jiki.io/t/497/7 (asked at
-https://forum.jiki.io/t/497/6)
+**Raised on:** the pinned glossary thread, (asked at
 **Status:** native-speaker-confirmed, settled.
 **Terms affected:** `let` (the JavaScript keyword), new row under "Keep in English".
 
@@ -512,7 +500,6 @@ glossary to i18n is what surfaces them for native-speaker review.
 
 **Decided by:** owner (iHiD), on a native speaker's correction.
 **Raised by:** astyanax (native speaker) on the "Using Functions" concept review thread,
-https://forum.jiki.io/t/greek-review-concept-page-using-functions/746/2
 **Status:** human-decided, settled.
 **Terms affected:** `to throw / raise an error` (new row).
 
@@ -532,7 +519,6 @@ volunteered, so neither can be wrong.
 
 **Decided by:** owner (iHiD), on a native speaker's note.
 **Raised by:** astyanax (native speaker) on the "Using Functions" concept review thread,
-https://forum.jiki.io/t/greek-review-concept-page-using-functions/746/2
 **Status:** human-decided, settled. Added as a `guide.md` style note, not a glossary row
 (it is a phrasing/ordering preference, not a term choice).
 
@@ -550,7 +536,6 @@ already a `guide.md` note before this post.
 
 **Decided by:** owner (iHiD), adopting a native speaker's suggestion.
 **Suggested by:** astyanax (native speaker) on the pinned glossary thread,
-https://forum.jiki.io/t/greek-review-glossary/497
 **Status:** human-suggested, adopted.
 **Terms affected:** `framework`.
 

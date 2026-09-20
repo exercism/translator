@@ -3,8 +3,7 @@
 ## 2026-08-30: `level` settled on `livello`; `lesson` is `lezione` and is a different thing
 
 **Decided by:** Jiki product side, answering a question native speaker kernelaklees asked on
-three level-milestone email review threads (https://forum.jiki.io/t/1657,
-https://forum.jiki.io/t/1654/5 and https://forum.jiki.io/t/1659/3). **Terms affected:**
+three level-milestone email review threads. **Terms affected:**
 `level (a stage of the course)` and `lesson (inside a level)` (two new rows, under "Platform
 & curriculum vocabulary"). This closes the open 2026-08-16 entry below.
 
@@ -27,14 +26,12 @@ the next few lessons" as _le prossime lezioni_ without that reading as an incons
 
 Two published milestone emails were normalised to match, both of them places where an earlier
 suggestion of hers had been applied before this question was settled: `complex-conditionals`
-("Nel prossimo passaggio" from t/1641) and `advanced-loops` ("Nella prossima sezione" from
-t/1637) both become "Nel prossimo livello", which is what the other 17 emails in the series
+("Nel prossimo passaggio" from) and `advanced-loops` ("Nella prossima sezione" from) both become "Nel prossimo livello", which is what the other 17 emails in the series
 already say. She had explicitly asked for the series to be aligned once a term was chosen.
 
 ## 2026-08-30: the `state` gloss is a pattern, applied where the term is explained
 
-**Decided by:** this repo, resolving the open half of kernelaklees's question on
-https://forum.jiki.io/t/1647/1 ("if you like this explanation, we can add it there too").
+**Decided by:** this repo, resolving the open half of kernelaklees's question on ("if you like this explanation, we can add it there too").
 **Terms affected:** `state (program state)` (existing row, Notes extended; the term and her
 gloss wording are unchanged).
 
@@ -45,8 +42,7 @@ every later mention of _lo stato_ would turn a clarification into noise, and Ita
 that re-explains a term it introduced two paragraphs ago reads as padding.
 
 What is standing is the pattern (an appositive with _cioè_ naming concretely what the state
-is), not one fixed string. Her own later review of the `concept/state` page
-(https://forum.jiki.io/t/1453, posts 6 and 8, 2026-08-23, a week after t/1647) is the proof:
+is), not one fixed string. Her own later review of the `concept/state` page is the proof:
 there she wrote _cioè la condizione in cui si trova qualcosa_ for the `<define>` expansion and
 _cioè la registrazione del fatto che stiamo viaggiando a sinistra o a destra_ for the
 direction sentence, both the same shape, both tuned to their sentence. That page keeps her
@@ -61,7 +57,7 @@ they are: she reviewed and approved both.
 
 ## 2026-08-19: `layer` (of bricks, a wall) settled on `fila`
 
-**Decided by:** native-speaker review (kernelaklees, forum t/1179, `exercise/build-wall`). The
+**Decided by:** native-speaker review (kernelaklees, forum, `exercise/build-wall`). The
 existing translation used `strato` for the "top layer" of bricks a wall is built from; she
 said `strato` doesn't sound natural for masonry in Italian, and that a horizontal row of
 bricks is `fila` (or the technical `corso`), even though "layer" is the natural English word
@@ -72,18 +68,17 @@ family, four occurrences), which used identical `strato superiore` phrasing. Row
 
 ## 2026-08-16: `level` / `livello` (level-milestone emails) left open, needs product input (CLOSED 2026-08-30)
 
-**Raised by:** native speaker kernelaklees, on three level-milestone email review threads:
-https://forum.jiki.io/t/1657/1 ("Methods to the madness"), https://forum.jiki.io/t/1654/5
-("Now you're in charge") and https://forum.jiki.io/t/1659/3 ("Strings, attached", a later
+**Raised by:** native speaker kernelaklees, on three level-milestone email review threads: ("Methods to the madness"),
+("Now you're in charge") and ("Strings, attached", a later
 reply pointed at the same open question). **Status: closed on 2026-08-30, see the entry at the top of this file: `livello` stands, and `lezione` is a separate term for the units inside a level.** **Terms affected:**
 none. `livello` is unchanged in `glossary.md`; no row was added or edited.
 
-On t/1657 she said she is "not very fond of the word *level*": `livello` in Italian reads as
+On she said she is "not very fond of the word *level*": `livello` in Italian reads as
 a videogame progression step rather than part of a learning path, so she had been using
 `passaggio` instead, and said she was considering switching to `modulo` or `lezione`,
 personally favouring `modulo`.
 
-On t/1654 (posted the next day, after `livello` was kept over her `passaggio` in "Nel
+On (posted the next day, after `livello` was kept over her `passaggio` in "Nel
 prossimo livello" because that phrasing recurs across all 19 milestone emails) she went
 further: her concern is specifically the gamified connotation ("ho superato il livello"),
 and she said she cannot propose the right Italian term without knowing what the English
@@ -107,7 +102,7 @@ milestone emails.
 
 ## 2026-08-16: `state` gains a standing clarifying gloss
 
-**Decided by:** native speaker kernelaklees, https://forum.jiki.io/t/1647/1 ("Programs that
+**Decided by:** native speaker kernelaklees, ("Programs that
 respond" level-milestone email review). **Human-decided, agent-applied.** **Terms affected:**
 `state (program state)` (new row, under "Loops, state & program flow").
 
@@ -137,7 +132,7 @@ either; picking up the two already-reviewed emails is part of the same follow-up
 
 ## 2026-08-10: `statement (logical claim)` moved from `proposizione` to `(semplice) affermazione`
 
-**Decided by:** native speaker kernelaklees, https://forum.jiki.io/t/948 (post 5).
+**Decided by:** native speaker kernelaklees, (post 5).
 **Human-decided, agent-applied.** **Terms affected:** `statement (logical claim)` (existing
 row, under "Functions & control flow"); the Italian `concept/if` page.
 
@@ -156,7 +151,7 @@ fuller phrase is used where the concept is being introduced.
 
 ## 2026-08-08: avoid stacking "puoi"/"poi" adjacent to each other
 
-**Decided by:** native speaker FraSanga, https://forum.jiki.io/t/1269/3, answering a
+**Decided by:** native speaker FraSanga, answering a
 question about `exercise/look-around`'s wording. **Rule affected:** a new `guide.md` style
 note, not a glossary term.
 
@@ -169,8 +164,7 @@ note rather than a glossary row, since it's a phonetic/word-order rule, not a te
 
 ## 2026-08-07: `helper function(s)` settled on `funzione ausiliaria` / `funzioni ausiliarie`
 
-**Decided by:** native speaker FraSanga, three independent exercise review threads
-(https://forum.jiki.io/t/1296, https://forum.jiki.io/t/1297, https://forum.jiki.io/t/1298).
+**Decided by:** native speaker FraSanga, three independent exercise review threads.
 **Human-decided, agent-applied.** **Terms affected:** `helper function(s)` (new row, under
 "Functions & control flow"); the Italian instructions and/or message catalog of
 `lower-pangram`, `niche-named-party`, `alphanumeric`, `acronym`, `methodic-pangram` and
@@ -196,8 +190,7 @@ the fix removes one clause earlier, so it became "Ogni funzione ausiliaria scorr
 
 ## 2026-08-07: `tile rack` (Scrabble) settled on `leggìo`, never `portatessere`
 
-**Decided by:** native speaker FraSanga, tile-rack review thread
-(https://forum.jiki.io/t/1277/1). **Human-decided, agent-applied.** **Terms affected:**
+**Decided by:** native speaker FraSanga, tile-rack review thread. **Human-decided, agent-applied.** **Terms affected:**
 `tile rack (Scrabble)` (new row, under "Exercise domain vocabulary"); the `exercise/tile-rack`
 Italian instructions and message catalog.
 
@@ -222,7 +215,7 @@ rule in `guide.md`; no rule change was needed, only their application to this pa
 ## 2026-08-07: euphonic _d_ narrowed to _ed_/_ad_, _od_ dropped
 
 **Decided by:** native speakers kernelaklees and FraSanga, "Italian rules: recurring
-mistakes to fix" thread (https://forum.jiki.io/t/1264, posts 12, 14, 19, 20, 22, 23).
+mistakes to fix" thread.
 **Human-decided, agent-applied.** **Affected:** `guide.md` (Grammar section, the euphonic
 _d_ bullet); no glossary rows.
 
@@ -246,7 +239,7 @@ reported it appearing in an actual translation.
 ## 2026-08-07: guillemets scope left unchanged (reviewers not yet agreed)
 
 **Decided by:** nobody yet; recorded as an open question from the "Italian rules: recurring
-mistakes to fix" thread (https://forum.jiki.io/t/1264, posts 7, 14, 21, 23).
+mistakes to fix" thread.
 **Affected:** nothing. The guide's quotation-mark rules were deliberately not edited.
 
 kernelaklees reported guillemets being applied outside literary contexts and said that in
@@ -256,21 +249,20 @@ concept there is no better way to express) staying in double quotes. Measured ag
 the guide already says most of it: guillemets are for quoted material, UI labels take plain
 double quotes, and code and string literals are never touched. The one part that goes
 further than FraSanga's restatement is the bullet putting a word that is being named or
-defined (the _«Algoritmo»_ example) in guillemets, which came out of an earlier round on
-https://forum.jiki.io/t/1191 where kernelaklees asked for a clearer rule.
+defined (the _«Algoritmo»_ example) in guillemets, which came out of an earlier round on where kernelaklees asked for a clearer rule.
 
 That is exactly the point the two reviewers are still arguing: kernelaklees asked for an
 example of guillemets outside literature and FraSanga replied that using them only where
 they are needed adds style, and asked where the ambiguity actually is. With one native
 speaker's earlier decision on one side and a live disagreement on the other, changing the
 rule now would mean picking a side, so nothing was changed pending their agreement. Earlier
-rounds on this rule are logged at https://forum.jiki.io/t/762, /t/895, /t/1083, /t/1141,
+rounds on this rule are logged at, /t/895, /t/1083, /t/1141,
 /t/1179, /t/1208, /t/1191 and /t/1259.
 
 ## 2026-08-06: Translation engine switched to `deepseek`
 
 **Decided by:** FraSanga, a native speaker, on the "Alternative translation model"
-comparison thread (https://forum.jiki.io/t/929). **Status:** settled.
+comparison thread. **Status:** settled.
 **Terms affected:** none (engine choice, not a glossary or guide change).
 **Files affected:** none; `tracking.json` already carried the block, this entry records the
 decision behind it.
@@ -284,8 +276,7 @@ switch, made on a native speaker's verdict, not on our own judgement or on cost.
 
 ## 2026-08-06: euphonic _d_ rule reconfirmed, no guide change needed
 
-**Decided by:** native speakers kernelaklees and FraSanga, Checkerboard review thread
-(https://forum.jiki.io/t/1259, posts 6 and 7). **Human-decided, agent-applied.**
+**Decided by:** native speakers kernelaklees and FraSanga, Checkerboard review thread. **Human-decided, agent-applied.**
 **Affected:** nothing in `guide.md` or `glossary.md`; the Checkerboard translation only.
 
 kernelaklees asked for "the rule about using 'ad' before a vowel" to be added and FraSanga
@@ -299,8 +290,7 @@ only.
 
 ## 2026-08-06: no second-person possessive on shared work objects, and no second-person clitic on _fare_
 
-**Decided by:** native speaker kernelaklees, Battle Procedures review thread
-(https://forum.jiki.io/t/1257, post 1). **Human-decided, agent-applied.** **Affected:**
+**Decided by:** native speaker kernelaklees, Battle Procedures review thread. **Human-decided, agent-applied.** **Affected:**
 `guide.md` (new Grammar rule); no glossary rows.
 
 kernelaklees flagged _Abbiamo portato qui la tua soluzione_ and asked us to "get rid of
@@ -329,7 +319,7 @@ next retranslate/tidy pass on each item rather than done as a blind sweep.
 ## 2026-08-05: euphonic _d_ (_ed_/_ad_/_od_) before a vowel-initial word
 
 **Decided by:** native speakers FraSanga and kernelaklees, Relational Snowman review
-thread (https://forum.jiki.io/t/1142). **Human-decided, agent-applied.** **Affected:**
+thread. **Human-decided, agent-applied.** **Affected:**
 `guide.md` (new Grammar rule).
 
 FraSanga first flagged individual instances on this page ("e una variabile" -> "ed una
@@ -345,8 +335,7 @@ triage.
 
 ## 2026-08-05: construction `builders` are `muratori`, never `costruttori`
 
-**Decided by:** native speaker kernelaklees, Skyline review thread
-(https://forum.jiki.io/t/1180). **Human-decided, agent-applied.** **Affected:**
+**Decided by:** native speaker kernelaklees, Skyline review thread. **Human-decided, agent-applied.** **Affected:**
 `glossary.md` (new "Localize" row); the shared `cityscape` exercise-category message
 catalog and the Skyline exercise's own catalog.
 
@@ -363,8 +352,7 @@ were re-staged.
 ## 2026-08-05: no dash may separate clauses in Italian prose
 
 **Decided by:** native speakers kernelaklees and FraSanga, independently, across three
-exercise review threads: Bouncer (https://forum.jiki.io/t/1177), Annalyn's Infiltration
-(https://forum.jiki.io/t/1176) and Stripey Fabric (https://forum.jiki.io/t/1186).
+exercise review threads: Bouncer, Annalyn's Infiltration and Stripey Fabric.
 **Human-decided, agent-applied.** **Affected:** `guide.md` "Style notes"; no glossary rows.
 
 kernelaklees flagged it twice, on _La persona ha 25 anni — avrebbe dovuto essere fatta
@@ -390,8 +378,7 @@ consequence of the first, and a bare comma before a following _ma_ reads as a sp
 
 ## 2026-08-04: a building entrance is `ingresso`, never `entrata`
 
-**Decided by:** native speaker kernelaklees on the Skyline exercise review thread
-(https://forum.jiki.io/t/1180, post_id 3332). **Human-decided, agent-applied.** **Terms
+**Decided by:** native speaker kernelaklees on the Skyline exercise review thread. **Human-decided, agent-applied.** **Terms
 affected:** `entrance (building)` (new row); the `buildEntrance` describer string in the
 shared `cityscape` category message catalog, which reaches every cityscape-family exercise.
 
@@ -408,8 +395,7 @@ narrower claim; the underlying instruction (don't use it for "input") is unchang
 
 ## 2026-08-04: an ellipse has a `raggio orizzontale` and a `raggio verticale`
 
-**Decided by:** native speaker kernelaklees on the Build the Wall exercise review thread
-(https://forum.jiki.io/t/1179, post_id 3330). **Human-decided, agent-applied.** **Terms
+**Decided by:** native speaker kernelaklees on the Build the Wall exercise review thread. **Human-decided, agent-applied.** **Terms
 affected:** `radial width / radial height (ellipse)` (new row, under "Exercise domain
 vocabulary"); the ellipse describer strings in the shared `draw` category message catalog,
 which every drawing exercise renders.
@@ -438,7 +424,7 @@ because the same shared catalog strings are involved.
 ## 2026-08-04: a jumbled thing is `stravolto`, never `in disordine` / `disordinato`
 
 **Decided by:** native speakers kernelaklees and FraSanga on the Jumbled House exercise
-review thread (https://forum.jiki.io/t/1089, posts 2 and 4). **Human-decided,
+review thread. **Human-decided,
 agent-applied.** **Terms affected:** `jumbled (parts swapped/rearranged)` (new row, under
 "Exercise domain vocabulary"); the `exercise/jumbled-house` Italian title, description and
 image alt text.
@@ -470,8 +456,7 @@ translating a single title in isolation.
 ## 2026-08-04: the basic exercise of a pair is marked `semplice`, before the noun
 
 **Decided by:** native speakers kernelaklees and FraSanga, across the two Snowman review
-threads (raised on https://forum.jiki.io/t/1085, for `exercise/snowman-basic`; confirmed on
-https://forum.jiki.io/t/1118, post_id 3094, for `exercise/snowman`). **Human-decided,
+threads (raised on, for `exercise/snowman-basic`; confirmed on, post_id 3094, for `exercise/snowman`). **Human-decided,
 agent-applied.** **Terms affected:** `basic / simple (exercise-title modifier)` (new row,
 under "Platform & curriculum vocabulary"); the `exercise/snowman-basic` Italian title.
 
@@ -499,7 +484,7 @@ re-decide both the word and its position.
 ## 2026-08-04: an animal's face is `faccia`, not `viso` and not `muso`
 
 **Decided by:** native speakers kernelaklees and FraSanga on the Foxy Face exercise review
-thread (https://forum.jiki.io/t/1086, posts 5, 6, 7 and 9). **Human-decided,
+thread. **Human-decided,
 agent-applied.** **Terms affected:** none as a glossary row (see below); the Foxy Face
 translation and its message catalog.
 
@@ -523,8 +508,7 @@ why the page did not move to _viso_, and why _muso_ is not the compromise it loo
 
 ## 2026-08-03: `move()` glossed as the imperative `muovi`, never the reflexive `muoversi`
 
-**Decided by:** native speaker kernelaklees on the Take a Walk exercise review thread
-(https://forum.jiki.io/t/1083/3). **Human-decided, agent-applied.** **Terms affected:**
+**Decided by:** native speaker kernelaklees on the Take a Walk exercise review thread. **Human-decided, agent-applied.** **Terms affected:**
 `move()` (exercise function) (new row, under "Keep in English").
 
 The Italian instructions for `maze-solve-walk` glossed the command as _muoversi_. He pointed
@@ -542,8 +526,7 @@ would otherwise be re-decided per exercise.
 
 ## 2026-08-03: `tee` (golf) settled on the English word, never `chiodino`
 
-**Decided by:** native speaker kernelaklees on the Rolling Ball exercise review thread
-(https://forum.jiki.io/t/1090), answering a question native speaker FraSanga left open on
+**Decided by:** native speaker kernelaklees on the Rolling Ball exercise review thread, answering a question native speaker FraSanga left open on
 the same thread. **Human-decided, agent-applied.** **Terms affected:** `tee (golf)` (new
 row, under "Exercise domain vocabulary").
 
@@ -569,7 +552,7 @@ tempts a later pass into localizing this one too.
 ## 2026-08-03: `ballNotAtEnd` on `golf-rolling-ball-loop` moved off the past simple
 
 **Decided by:** agent, on the proposal of native speaker kernelaklees on the Rolling Ball
-exercise review thread (https://forum.jiki.io/t/1090). **Human-proposed, agent-applied.**
+exercise review thread. **Human-proposed, agent-applied.**
 **Terms affected:** none. This is a single-message wording fix, recorded in
 `languages/it/exercise/golf-rolling-ball-loop.md`.
 
@@ -593,7 +576,7 @@ message is not yet evidence about every past tense in Italian content, and a bla
 ## 2026-08-03: `refactor` settled on `riorganizzare`, never `rifattorizzare`
 
 **Decided by:** agent, from the two options native speaker FraSanga offered on the
-loopy-maze exercise review thread (https://forum.jiki.io/t/1091). **Human-proposed,
+loopy-maze exercise review thread. **Human-proposed,
 agent-applied.** **Terms affected:** `to refactor / refactoring` (new row, under "Loops,
 state & program flow").
 
@@ -614,7 +597,7 @@ third (_Riscrivi_, "rewrite", in the instruction frontmatter), now aligned.
 ## 2026-08-03: The "Run Code" button label fixed on `Esegui il codice`
 
 **Decided by:** agent, from established Italian usage, prompted by native speaker FraSanga
-on the penguin exercise review thread (https://forum.jiki.io/t/1087). **Human-flagged,
+on the penguin exercise review thread. **Human-flagged,
 agent-applied.** **Terms affected:** `"Run Code" (the button)` (new row, under "Platform &
 curriculum vocabulary").
 
@@ -633,7 +616,7 @@ and it produces prose that names a button that does not exist.
 ## 2026-08-03: Quotation-mark rule narrowed: UI labels are not quotations
 
 **Decided by:** agent, on the proposal of native speaker FraSanga on the maze-solve-walk
-exercise review thread (https://forum.jiki.io/t/1083). **Human-proposed, agent-applied.**
+exercise review thread. **Human-proposed, agent-applied.**
 **Terms affected:** none. This is a `guide.md` Style notes change.
 
 The 2026-08-02 switch to _caporali_ (below) recorded a native speaker's convention for
@@ -651,7 +634,7 @@ material, and must leave UI labels alone.
 ## 2026-08-03: Function input names stay in English in Italian prose
 
 **Decided by:** agent, on the proposal of native speaker FraSanga on the fix-wall exercise
-review thread (https://forum.jiki.io/t/1084). **Human-proposed, agent-applied.**
+review thread. **Human-proposed, agent-applied.**
 **Terms affected:** none. This is a `guide.md` rule, not a term mapping.
 
 `fix-wall` teaches four inputs, `left`, `top`, `width` and `height`, then closes with a
@@ -669,7 +652,7 @@ reason the mistake happens.
 ## 2026-08-02: `weather` settled on `meteo`, never `tempo`
 
 **Decided by:** agent, on the proposal of native speaker FraSanga on the weather-symbols
-exercise review thread (https://forum.jiki.io/t/1026/1). **Human-proposed, agent-applied.**
+exercise review thread. **Human-proposed, agent-applied.**
 **Terms affected:** `weather` (new row, under a new "Exercise domain vocabulary" heading).
 
 FraSanga passed the translation as linguistically correct but asked for one swap: _tempo_
@@ -689,7 +672,7 @@ without a fresh human agreement logged here.
 ## 2026-08-02: `template literal` localized to `stringa interpolata`
 
 **Decided by:** agent, on the confirmation of native speaker FraSanga on the two-fer review
-thread (https://forum.jiki.io/t/1020/2). **Human-proposed, agent-applied.**
+thread. **Human-proposed, agent-applied.**
 **Terms affected:** `template literal / template string`.
 
 The row sat under "Keep in English": it glossed the term as _stringa con espressioni
@@ -711,8 +694,7 @@ rendering.
 
 ## 2026-08-02: Quotation marks switched from straight quotes to caporali (« »)
 
-**Decided by:** agent, on the proposal of native speaker FraSanga on
-https://forum.jiki.io/t/762/10. **Human-proposed, agent-applied.**
+**Decided by:** agent, on the proposal of native speaker FraSanga on. **Human-proposed, agent-applied.**
 **Terms affected:** none. No glossary row was added, changed or removed; this is a
 `guide.md` Style notes change.
 
@@ -736,8 +718,7 @@ this date still carries straight quotes in prose and needs a separate sweep to m
 
 ## 2026-08-02: Crank verb note added to the `crank` row
 
-**Decided by:** agent, on the proposal of native speaker FraSanga on
-https://forum.jiki.io/t/762/10. **Human-proposed, agent-applied.**
+**Decided by:** agent, on the proposal of native speaker FraSanga on. **Human-proposed, agent-applied.**
 **Terms affected:** `crank (machine crank)`, Notes column only. The target, _manovella_,
 is unchanged.
 
@@ -821,7 +802,7 @@ English in prose and catalog alike.
 
 ## 2026-08-01: "drawing shapes" added; "canvas" note tightened, from the rainbow review
 
-**Decided by:** native speaker @FraSanga on forum topic 952 ("[Italian Review] Exercise:
+**Decided by:** native speaker @FraSanga on the forum ("[Italian Review] Exercise:
 Rainbow"), applied by agent.
 **Terms affected:** `drawing shapes (function category)` added; `canvas (graphics
 exercises)` Notes column extended (gloss unchanged).
@@ -845,7 +826,7 @@ question, not an Italian one.
 
 ## 2026-08-01: Conjunction and subject-repetition style rules, from the variables review
 
-**Decided by:** native speakers @kernelaklees and @FraSanga on forum topic 947
+**Decided by:** native speakers @kernelaklees and @FraSanga on the forum
 ("[Italian Review] Concept page: Creating and Using Variables"), applied by agent.
 **Terms affected:** none. No glossary row was added, changed or removed.
 
@@ -940,7 +921,7 @@ there was no convention to reconcile. Nothing in the guide contradicted `global/
 ## 2026-08-01: Confirmed `track (curriculum path)` on `indirizzo`
 
 **Decided by:** owner (iHiD), on native speaker FraSanga's confirmation on the pinned
-Italian glossary thread (https://forum.jiki.io/t/319/8). **Human-decided: settled.**
+Italian glossary thread. **Human-decided: settled.**
 **Terms affected:** `track (curriculum path)`.
 
 The row already read _indirizzo_ but carried an agent's low-confidence flag asking for
@@ -948,7 +929,7 @@ native-speaker confirmation. FraSanga gave exactly that: _indirizzo_ "is a suita
 translation", used in Italy when choosing a course of study at secondary school (general
 academic, music, technical) and at university to distinguish tracks such as cybersecurity
 and AI within one field. The flag was left in place after that reply and FraSanga noticed
-it was still there (https://forum.jiki.io/t/895/2). The Notes column now records the
+it was still there. The Notes column now records the
 confirmation instead of requesting it, and the row is protected: a native speaker has
 settled it, so no later pass may change the target without a fresh human agreement logged
 here.
@@ -956,9 +937,7 @@ here.
 ## 2026-08-01: Moved `toggle` from `alternare` to `azionare`
 
 **Decided by:** owner (iHiD), on the proposal of native speaker FraSanga and the agreement of
-native speaker giorgx12 on the pinned Italian glossary thread
-(https://forum.jiki.io/t/319/11, https://forum.jiki.io/t/319/12,
-https://forum.jiki.io/t/319/13). **Human-decided: settled.**
+native speaker giorgx12 on the pinned Italian glossary thread. **Human-decided: settled.**
 **Terms affected:** `toggle`.
 
 The row carried _alternare_, drafted only because it was a plain, natural Italian word with
@@ -975,7 +954,7 @@ later pass may change the target without a fresh human agreement logged here.
 ## 2026-07-31: Settled `streak` on `slancio` / `giorni di slancio`
 
 **Decided by:** owner (iHiD), on native speaker kernelaklees's confirmation on the pinned
-Italian glossary thread (https://forum.jiki.io/t/319/7). **Human-decided: settled.**
+Italian glossary thread. **Human-decided: settled.**
 **Terms affected:** `streak`.
 
 The row previously carried a low-confidence agent draft, _serie_, flagged for confirmation
@@ -989,7 +968,7 @@ change the target without a fresh human agreement logged here.
 ## 2026-07-31: Confirmed `tech / tech industry`
 
 **Decided by:** owner (iHiD), on the confirmation of native speaker kernelaklees on the
-pinned Italian glossary thread (https://forum.jiki.io/t/319/4). **Human-decided: settled.**
+pinned Italian glossary thread. **Human-decided: settled.**
 **Terms affected:** `tech / tech industry`.
 
 kernelaklees reviewed the Core decisions and confirmed the existing rendering: "You can keep
@@ -1007,7 +986,7 @@ meaning of the Notes without a fresh human agreement logged here.
 ## 2026-07-31: Added `comment (in code)`
 
 **Decided by:** owner (iHiD), on the proposal of native speaker giorgx12 on the pinned
-Italian glossary thread (https://forum.jiki.io/t/319/3). **Human-decided: settled.**
+Italian glossary thread. **Human-decided: settled.**
 **Terms affected:** `comment (in code)`.
 
 giorgx12 proposed adding "Comment" (the `//` kind) rendered as _Commento (nel codice)_.

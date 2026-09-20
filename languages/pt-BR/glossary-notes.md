@@ -3,7 +3,7 @@
 ## 2026-08-06: Translation engine confirmed as `fable`
 
 **Decided by:** sorrizo and oxe-b, both native speakers, on the "Alternative translation
-model" comparison thread (https://forum.jiki.io/t/931). **Status:** settled.
+model" comparison thread. **Status:** settled.
 **Terms affected:** none (engine choice, not a glossary or guide change).
 **Files affected:** `tracking.json` (`translation_engine`).
 
@@ -53,8 +53,8 @@ overwriting the other.
 
 ## 2026-08-04: `chave`, `barrar` and `segurança` confirmed; `branch` still unresolved
 
-**Decided by:** native speaker (sorrizo), forum post https://forum.jiki.io/t/288/3099,
-answering our four open questions at https://forum.jiki.io/t/288/3096. **Status: confirmed**
+**Decided by:** native speaker (sorrizo), forum post,
+answering our four open questions at. **Status: confirmed**
 for the first three; `branch (of a conditional)` remains an unconfirmed low-confidence draft.
 **Terms affected:** `key (in a dictionary)`, `to turn (someone) away`, `bouncer (the
 door-staff character)`, `branch (of a conditional)`.
@@ -86,7 +86,7 @@ approval of _bloco_.
 
 ## 2026-08-03: _iterar_ takes _sobre_, not _por_
 
-**Decided by:** native speaker (oxe-b), forum post https://forum.jiki.io/t/1109/1, reviewing
+**Decided by:** native speaker (oxe-b), forum post, reviewing
 the Arrays concept page. **Status: confirmed.**
 **Terms affected:** `iteration`.
 
@@ -101,8 +101,8 @@ The same post's other two suggestions were phrasing, not terms, and are recorded
 
 ## 2026-08-03: "input" splits away from _fenda_, and `intérprete` + `quadro` are confirmed
 
-**Decided by:** native speaker (oxe-b), forum post https://forum.jiki.io/t/288/15, answering
-our question at https://forum.jiki.io/t/288/14. **Status: confirmed.**
+**Decided by:** native speaker (oxe-b), forum post, answering
+our question at. **Status: confirmed.**
 **Terms affected:** `input (one a function declares)`, `input (a value passed in at a call)`,
 `interpreter`, `board / whiteboard`, and, by exclusion, the family row `input slot`.
 
@@ -157,8 +157,7 @@ board-game frame.
 
 ## 2026-08-03: `return chute` corrected to `boca da máquina`, and the row left the family file
 
-**Decided by:** native speakers (alanprofeta, oxe-b), forum posts
-https://forum.jiki.io/t/288/10 and https://forum.jiki.io/t/288/12.
+**Decided by:** native speakers (alanprofeta, oxe-b), forum posts and.
 **Status: confirmed.**
 **Terms affected:** `return chute`.
 
@@ -278,7 +277,7 @@ already used `parênteses` consistently for the function-call bracket pair.
 
 ## 2026-07-31: `tech industry` split into a software/programming-specific sense from forum feedback
 
-**Decided by:** native speaker (oxe-b), forum post https://forum.jiki.io/t/288/3.
+**Decided by:** native speaker (oxe-b), forum post.
 **Status: confirmed.**
 **Terms affected:** `tech / tech industry`.
 
@@ -324,8 +323,7 @@ by a dated entry above (`interpreter`, `board / whiteboard`) is not repeated her
 
 ## 2026-07-31: `cell` added from forum feedback on maze-solve-basic
 
-**Decided by:** native speaker (sorrizo), forum post
-https://forum.jiki.io/t/812/5. **Status: confirmed.**
+**Decided by:** native speaker (sorrizo), forum post. **Status: confirmed.**
 **Terms affected:** `cell (grid square, e.g. maze exercises)`.
 
 Reviewing the published `pt-BR` translation of `Solve the Maze`, sorrizo flagged "one cell"
@@ -341,8 +339,7 @@ glossary change there.
 
 ## 2026-08-01: `welcome` moved from the guide into the glossary, and the guide pruned
 
-**Decided by:** native speaker (oxe-b), forum posts https://forum.jiki.io/t/812/2 and
-https://forum.jiki.io/t/288/7, re-recorded here. **Status: confirmed** (the decision is
+**Decided by:** native speaker (oxe-b), forum posts and, re-recorded here. **Status: confirmed** (the decision is
 unchanged; only the file it lives in changed).
 **Terms affected:** `welcome (greeting / interjection)`.
 
@@ -423,8 +420,7 @@ confidence in the row. _Bloco_ names the code a branch runs, not the fork itself
 the English is about the fork the translations reached for the road-fork metaphor
 (_bifurcação_) instead. This one genuinely needs a native speaker.
 
-`character / figure` → _bonequinho_ is **not** a draft: sorrizo confirmed it as natural at
-https://forum.jiki.io/t/812/5 while flagging a different word on the same page. It was in de
+`character / figure` → _bonequinho_ is **not** a draft: sorrizo confirmed it as natural at while flagging a different word on the same page. It was in de
 facto use across the maze exercises without ever being written down, which is exactly the
 state that lets a later pass quietly replace it, so it now has a row.
 

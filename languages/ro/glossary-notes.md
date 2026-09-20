@@ -59,7 +59,7 @@ premium feature list.
 
 ## 2026-07-31: `if statement` is `condiție` (native speaker)
 
-**Decided by:** @florin-cuculeac (Florin Cuculeac), native speaker, on the pinned Romanian glossary thread ([post 4 of topic 825](https://forum.jiki.io/t/romanian-review-glossary/825/4)); approved for action by the owner (iHiD). **Status: human-decided, so this row is settled** and changes only by fresh agreement with a human, raised on that thread.
+**Decided by:** @florin-cuculeac (Florin Cuculeac), native speaker, on the pinned Romanian glossary thread ([post 4 of topic 825]); approved for action by the owner (iHiD). **Status: human-decided, so this row is settled** and changes only by fresh agreement with a human, raised on that thread.
 
 **Terms affected:** `if statement` (previously `instrucțiune if`).
 
@@ -73,7 +73,7 @@ This supersedes the "Not actioned" line in the entry below, which recorded this 
 
 ## 2026-07-31: `array` is `matrice`, `list` is `listă` (native speaker)
 
-**Decided by:** @florin-cuculeac (Florin Cuculeac), native speaker, on the pinned Romanian glossary thread ([post 3 of topic 825](https://forum.jiki.io/t/romanian-review-glossary/825/3)); approved for action by the owner (iHiD). **Status: human-decided, so these rows are settled** and change only by fresh agreement with a human, raised on that thread.
+**Decided by:** @florin-cuculeac (Florin Cuculeac), native speaker, on the pinned Romanian glossary thread ([post 3 of topic 825]); approved for action by the owner (iHiD). **Status: human-decided, so these rows are settled** and change only by fresh agreement with a human, raised on that thread.
 
 **Terms affected:** `array`, `list` (previously one row, `array / list` → `tablou`), and the notes on `dashboard`, `chain (array metaphor)` and `board / whiteboard`, which referred to the old term.
 
@@ -85,7 +85,7 @@ Three consequences elsewhere. The `dashboard` row keeps `panou de control`, but 
 
 Note that `matrice` is also the Romanian word for a mathematical matrix. That is a real overlap, and if it causes trouble in a translation the place to raise it is the same thread, with Florin.
 
-**Not actioned:** his separate objection to `if statement` → `instrucțiune if` ([post 4](https://forum.jiki.io/t/romanian-review-glossary/825/4), proposing `condiție`) is still under discussion and that row is untouched.
+**Not actioned:** his separate objection to `if statement` → `instrucțiune if` ([post 4], proposing `condiție`) is still under discussion and that row is untouched.
 
 ## 2026-07-31: Five rows added from the first two translations
 
@@ -104,7 +104,7 @@ Three were straightforward. **`computer` → `calculator`** is simply the ordina
 
 ## 2026-07-31: Language bootstrapped
 
-**Decided by:** agent, approved by the owner (iHiD). **Status: every row is an unconfirmed draft.** No native speaker has confirmed any rendering in this glossary. Romanian was requested on the forum the same day by @florin-cuculeac ([topic 714](https://forum.jiki.io/t/714)), who has not yet reviewed anything; the pinned glossary thread exists precisely to get these rows checked.
+**Decided by:** agent, approved by the owner (iHiD). **Status: every row is an unconfirmed draft.** No native speaker has confirmed any rendering in this glossary. Romanian was requested on the forum the same day by @florin-cuculeac ([topic 714]), who has not yet reviewed anything; the pinned glossary thread exists precisely to get these rows checked.
 
 **Terms affected:** every row in `glossary.md`.
 

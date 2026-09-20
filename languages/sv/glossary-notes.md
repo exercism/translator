@@ -3,7 +3,7 @@
 ## 2026-08-06: Translation engine confirmed as `fable`
 
 **Decided by:** sneakymallard, a native speaker, on the "Alternative translation model"
-comparison thread (https://forum.jiki.io/t/936). **Status:** settled.
+comparison thread. **Status:** settled.
 **Terms affected:** none (engine choice, not a glossary or guide change).
 **Files affected:** `tracking.json` (`translation_engine`).
 
@@ -98,7 +98,7 @@ avoid. The rule outranks its own examples, and no native speaker had decided oth
 
 **Decided by:** native speakers (sneakymallard flagging `array`, estyrke answering in detail,
 sneakymallard deferring to estyrke's developer judgement) on the pinned Swedish glossary
-thread, forum topic 828, posts #3, #5-8 (https://forum.jiki.io/t/828/7).
+thread, posts #3, #5-8.
 **Terms affected:** `array`, `dictionary`.
 
 sneakymallard flagged `array` as unfamiliar; asked to clarify, estyrke (a working developer,
@@ -115,7 +115,7 @@ developer usage explicitly.
 ## 2026-08-01: `ampersand` is `och-tecken`, not `et-tecken`
 
 **Decided by:** native speaker (estyrke, a working developer) on the pinned Swedish
-glossary thread, forum topic 828, post #6 (https://forum.jiki.io/t/828/6).
+glossary thread, post #6.
 **Terms affected:** `ampersand`.
 
 `et-tecken` was an unconfirmed agent draft. estyrke said they'd never seen or used it and

@@ -2,7 +2,7 @@
 
 ## 2026-08-06: "milestone" is مرحله; «نقطه‌ی عطف» is banned
 
-**Decided by:** native speaker mominchezgi (https://forum.jiki.io/t/1036, post 5), the word
+**Decided by:** native speaker mominchezgi, the word
 choice picked by an agent. **Terms affected:** new `milestone` row.
 **Protected: the ban on «نقطه‌ی عطف» is a native speaker's decision and is not to be
 reversed by an agent.**
@@ -23,7 +23,7 @@ and the empty-challenges description.
 ## 2026-08-06: Translation engine confirmed as `deepseek`
 
 **Decided by:** mominchezgi, the authoritative native-speaker reviewer for Persian, on the
-"Alternative translation model" comparison thread (https://forum.jiki.io/t/910).
+"Alternative translation model" comparison thread.
 **Status:** settled. **Terms affected:** none (engine choice, not a glossary or guide
 change). **Files affected:** none; `tracking.json` already carried the block, this entry
 records the decision behind it.
@@ -37,7 +37,7 @@ verdict rather than our own judgement or a cost argument.
 
 ## 2026-08-05: "bonus" (a task label) is امتیاز
 
-**Decided by:** native speaker mominchezgi (https://forum.jiki.io/t/1230, post 3554),
+**Decided by:** native speaker mominchezgi,
 actioned by an agent the same day. **Terms affected:** new `bonus` row.
 **Protected: this is a native speaker's decision and is not to be reversed by an agent.**
 
@@ -51,7 +51,7 @@ corrected to the امتیاز noun form.
 
 ## 2026-08-04: a term's first mention on a page is wrapped in guillemets
 
-**Decided by:** native speaker mominchezgi (https://forum.jiki.io/t/1164, post 3173),
+**Decided by:** native speaker mominchezgi,
 actioned by an agent the same day. **Terms affected:** none; this is a typographic rule, so
 it went to `guide.md` under "Style notes" rather than to the glossary.
 
@@ -64,7 +64,7 @@ first mention (کلیدواژه، بلوک کد، حلقه); later mentions stay
 
 ## 2026-08-04: "choice" splits into گزینه (an option) and انتخاب (what a player picked)
 
-**Decided by:** native speaker mominchezgi (https://forum.jiki.io/t/1138, post 3125),
+**Decided by:** native speaker mominchezgi,
 actioned by an agent the same day. **Terms affected:** the existing `choice` row.
 **Protected: this is a native speaker's decision and is not to be reversed by an agent.**
 
@@ -93,7 +93,7 @@ in `languages/fa/exercise/rock-paper-scissors.md` with the rest of his line edit
 
 ## 2026-08-04: "syntax" is نحوه‌ی نگارش; نحو is banned outright
 
-**Decided by:** native speaker mominchezgi (https://forum.jiki.io/t/1137, post 3120),
+**Decided by:** native speaker mominchezgi,
 actioned by an agent the same day. **Terms affected:** the new `syntax` row.
 **Protected: this is a native speaker's decision and is not to be reversed by an agent.**
 
@@ -120,8 +120,7 @@ is item-specific and so lives in `languages/fa/concept/dictionaries.md`.
 
 ## 2026-08-04: the Arrays gloss names the concept بولی
 
-**Decided by:** native speaker mominchezgi (https://forum.jiki.io/t/1095, posts 3117, 3189
-and 3251), actioned by an agent the same day. **Terms affected:** none; the `Boolean` row is
+**Decided by:** native speaker mominchezgi, actioned by an agent the same day. **Terms affected:** none; the `Boolean` row is
 unchanged and منطقی remains the term in running prose.
 **Protected: this is a native speaker's decision and is not to be reversed by an agent.**
 
@@ -145,7 +144,7 @@ and so lives in that same reviewer-notes file.
 
 ## 2026-08-03: "name" is اسم, not نام; dictionary pairs are جفت
 
-**Decided by:** native speaker mominchezgi (https://forum.jiki.io/t/1106), actioned by an
+**Decided by:** native speaker mominchezgi, actioned by an
 agent the same day. **Terms affected:** the new `name` and `pair` rows.
 **Protected: اسم is a native speaker's decision and is not to be reversed by an agent.**
 
@@ -167,7 +166,7 @@ so is recorded in `languages/fa/concept/dictionaries.md` rather than here.
 
 ## 2026-08-03: Boolean is منطقی, not بولی
 
-**Decided by:** native speaker mominchezgi (https://forum.jiki.io/t/1095), actioned by an
+**Decided by:** native speaker mominchezgi, actioned by an
 agent the same day. **Terms affected:** the `Boolean` row, and `guide.md`'s "Boolean values
 go in guillemets" rule.
 **Protected: this is a native speaker's decision and is not to be reversed by an agent.**
@@ -202,7 +201,7 @@ things and must keep their distinguishing noun.
 
 ## 2026-08-03: چیز is never the default word for "thing"
 
-**Decided by:** native speaker mominchezgi (https://forum.jiki.io/t/1097), actioned by an
+**Decided by:** native speaker mominchezgi, actioned by an
 agent the same day. **Terms affected:** none; this is a writing rule, not a term mapping.
 **Protected: this is a native speaker's decision and is not to be reversed by an agent.**
 
@@ -217,7 +216,7 @@ per-page note stands as the worked examples for it.
 
 ## 2026-08-03: Arrays page corrections (عنصر, بولی plural, bare ordinals)
 
-**Decided by:** native speaker mominchezgi (https://forum.jiki.io/t/1095), actioned by an
+**Decided by:** native speaker mominchezgi, actioned by an
 agent the same day. **Terms affected:** the `Boolean` row's plural note and the new
 `item / element (of an array)` row.
 **Protected: both are a native speaker's decisions and are not to be reversed by an agent.**
@@ -246,7 +245,7 @@ row and the "Values & data types" term rationale below for the existing reasonin
 
 ## 2026-08-03: No English term in brackets after a Persian term, ever
 
-**Decided by:** native speaker mominchezgi (https://forum.jiki.io/t/752, posts 11-13),
+**Decided by:** native speaker mominchezgi,
 ratified by the owner (iHiD) on 2026-08-03 and actioned by an agent the same day. **Terms
 affected:** none; this is a formatting rule, not a term mapping. **Protected: this is a
 native speaker's decision and is not to be reversed by an agent.**
@@ -282,8 +281,7 @@ native speaker saying "never ever": the guide defers to the human.
 
 ## 2026-08-03: Hue is فام; "draw" is رسم کردن; "choice" (noun) is گزینه
 
-**Decided by:** native speaker mominchezgi (https://forum.jiki.io/t/916/4 and
-https://forum.jiki.io/t/916/5), actioned by an agent on 2026-08-03. **Terms affected:** the
+**Decided by:** native speaker mominchezgi, actioned by an agent on 2026-08-03. **Terms affected:** the
 new `hue`, `draw (a shape)`, `canvas` and `choice` rows.
 **Protected: `hue`, `draw` and `choice` are a native speaker's decisions and are not to be
 reversed by an agent.** `canvas` (بوم) is the agent's own drafting, see below.
@@ -317,7 +315,7 @@ after all, that is a decision about the board row too, not just this string.
 
 ## 2026-08-02: "instruction" is دستورالعمل, not دستور
 
-**Decided by:** native speaker mominchezgi (https://forum.jiki.io/t/1036/2), actioned by an
+**Decided by:** native speaker mominchezgi, actioned by an
 agent the same day. **Terms affected:** the `instruction (given to Jiki)` row.
 **Protected: this is a native speaker's decision and is not to be reversed by an agent.**
 
@@ -335,7 +333,7 @@ error catalog (which uses دستور throughout for `statement`, correctly).
 
 ## 2026-08-02: "scenario" (سناریو) queried, left open
 
-**Raised by:** native speaker mominchezgi (https://forum.jiki.io/t/1036/2), who disliked the
+**Raised by:** native speaker mominchezgi, who disliked the
 transliteration سناریو in the app's exercise UI and asked for "a more common and better
 word" without naming one. **Status: open, no glossary row written.**
 
@@ -456,8 +454,8 @@ the date) duplicated the entry immediately below, which remains the record.
 
 "Jiki" was previously kept as a Latin product name in Persian prose, on the general
 never-translate-product-names rule. mominchezgi asked for جیکی instead, plainly ("I prefer
-جیکی", https://forum.jiki.io/t/752/4) and then confirmed they would back it as the standard
-for every page (https://forum.jiki.io/t/752/6).
+جیکی", and then confirmed they would back it as the standard
+for every page.
 
 The reason is specific and not the general bidi question the guide already answers: a
 single LTR Latin token dropped into RTL Persian running text breaks the reading flow, and
@@ -468,7 +466,7 @@ interruption. جیکی was also already in use in «جیکی کوچولو» (min
 bare name Latin was internally inconsistent as well.
 
 The guide had recorded this as an open question pending discussion on the pinned fa
-glossary thread (topic 683). That discussion never happened, so iHiD made the call directly
+glossary thread. That discussion never happened, so iHiD made the call directly
 on 2026-08-01 from the reviewer feedback already on record. The two files already using the
 Latin name (the using-functions concept page and the maze-solve-basic instructions
 description) were updated in the same pass.

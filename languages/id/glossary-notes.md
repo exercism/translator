@@ -3,7 +3,7 @@
 ## 2026-08-06: Translation engine confirmed as `fable`
 
 **Decided by:** deenovita, a native speaker, on the "Alternative translation model"
-comparison thread (https://forum.jiki.io/t/928). **Status:** settled.
+comparison thread. **Status:** settled.
 **Terms affected:** none (engine choice, not a glossary or guide change).
 **Files affected:** `tracking.json` (`translation_engine`).
 
@@ -142,16 +142,14 @@ challenge on the pinned glossary thread.
 
 ## 2026-08-02: `Code` → `kode` and `input slot` → `lubang` confirmed
 
-**Decided by:** native speaker (deenovita), forum topic 325 (https://forum.jiki.io/t/325/7).
+**Decided by:** native speaker (deenovita), the forum.
 **Terms affected:** `Code`, `input slot`. **No rendering changed.**
 
 Both rows already read as she confirmed. Row status upgraded to human-confirmed, protected.
 
-## 2026-08-02: Native-speaker review of the glossary (deenovita, forum topic 325)
+## 2026-08-02: Native-speaker review of the glossary (deenovita, the forum)
 
-**Decided by:** deenovita, a native Indonesian speaker, reviewing the glossary on
-https://forum.jiki.io/t/325 (posts https://forum.jiki.io/t/325/3 and
-https://forum.jiki.io/t/325/5). These rows were all unconfirmed agent drafts from the
+**Decided by:** deenovita, a native Indonesian speaker, reviewing the glossary on (posts and. These rows were all unconfirmed agent drafts from the
 bootstrap, so this is the first native reading of them and it stands.
 **Terms affected:** `string`, `API`, `framework`, `Code`, `return chute`.
 
@@ -179,7 +177,7 @@ bootstrap, so this is the first native reading of them and it stands.
   back on the thread and is not yet settled.
 - **`return chute` is _saluran keluaran_, not _perosotan_.** The bootstrap chose
   _perosotan_ (a playground slide) for physical playfulness over the drier _luncuran_.
-  Shown the actual image of the machine's chute (https://forum.jiki.io/t/325/4), deenovita
+  Shown the actual image of the machine's chute, deenovita
   said _perosotan_ sounds strange for it and offered _saluran keluaran_, or _keluaran_
   ("output") or _saluran_ ("channel") alone. _Saluran keluaran_ is the row because bare
   _keluaran_ collides with the existing gloss for `output`, while _saluran_ alone loses the

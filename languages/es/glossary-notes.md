@@ -2,7 +2,7 @@
 
 ## 2026-08-05: `code` → _código_, and `Code` leaves Keep in English
 
-**Decided by:** matcots5, native speaker (es-419), on forum topic 1198. A `code (what the
+**Decided by:** matcots5, native speaker (es-419), on the forum. A `code (what the
 learner writes)` row is added to § Core decisions and `Code` is dropped from the § Keep in
 English row, which now reads `Bug, Frontend, Backend`. The change is family-level rather
 than locale-level because no es-ES page had ever left "code" untranslated either, and both
@@ -56,8 +56,7 @@ was a pan-Spanish fact stated in only one, and neither locale contradicted the o
 
 ## 2026-08-01: `modulo / remainder operator` result term is _residuo_, not _resto_
 
-**Decided by:** native speaker (megareve) on the es-419 pinned glossary topic, forum topic
-312, post #4 (https://forum.jiki.io/t/312/4). **Terms affected:** `modulo / remainder
+**Decided by:** native speaker (megareve) on the es-419 pinned glossary topic, post #4. **Terms affected:** `modulo / remainder
 operator`.
 
 The row rendered the result of `%` as _resto (de la división)_. megareve asked for

@@ -2,8 +2,8 @@
 
 ## 2026-08-01: Paragraph breaks added to guide.md's Style notes
 
-**Decided by:** owner (iHiD), from native speaker (Dojany) feedback on forum topic 896
-("[Korean Review] Progress?" post #2, https://forum.jiki.io/t/896/2). Dojany flagged a
+**Decided by:** owner (iHiD), from native speaker (Dojany) feedback on the forum
+("[Korean Review] Progress?" post #2,. Dojany flagged a
 pattern they'd seen before with AI translation generally: even when individual sentences
 translate well, mechanically preserving the English source's paragraph breaks can hurt
 readability, pacing and flow in Korean, especially in beginner-focused educational content.
@@ -96,7 +96,7 @@ settling. Confidence: medium.
 
 ## 2026-08-01: Confirmed translation engine: DeepSeek
 
-**Decided by:** native speaker (Dojany), forum topic 885 ("[Korean Review] Alternative
+**Decided by:** native speaker (Dojany), the forum ("[Korean Review] Alternative
 translation model"), comparing three versions of concept/using-functions: the currently
 published version, a first alternative model, and a second alternative model. Dojany judged
 the second alternative ("Version 3") noticeably better overall for comprehensibility,
@@ -105,8 +105,7 @@ despite a few still-awkward sentences. Per iHiD, that version is DeepSeek. `ko`'
 
 ## 2026-08-01: `interpreter` (인터프리터) needs a first-use explanation
 
-**Decided by:** native speaker (Dojany) on the pinned Korean glossary thread, forum topic
-479, post #7 (https://forum.jiki.io/t/479/7). **Terms affected:** `interpreter`.
+**Decided by:** native speaker (Dojany) on the pinned Korean glossary thread, post #7. **Terms affected:** `interpreter`.
 
 인터프리터 itself is unchanged and confirmed as the right term (standard in Korean
 programming education and developer communities). Dojany's point is narrower: a complete
@@ -119,8 +118,7 @@ explanatory analogy.
 
 ## 2026-08-01: `warehouse` is 작업실, not 창고
 
-**Decided by:** native speaker (Dojany) on the pinned Korean glossary thread, forum topic
-479, post #6 (https://forum.jiki.io/t/479/6). **Terms affected:** `warehouse`.
+**Decided by:** native speaker (Dojany) on the pinned Korean glossary thread, post #6. **Terms affected:** `warehouse`.
 
 창고 was an unconfirmed agent draft. Dojany's point: in Korean, 창고 reads as a plain
 storage space (a logistics warehouse or junk room), not somewhere a person works with
@@ -137,7 +135,7 @@ Italian keeps `magazzino` (warehouse) distinct from `officina` (workshop).
 ## 2026-07-31: `mental model` is 머릿속 모형, not 멘탈 모델
 
 **Decided by:** owner (iHiD), on a native speaker's correction from Dojany on the pinned
-Korean glossary thread: https://forum.jiki.io/t/korean-review-glossary/479/3
+Korean glossary thread:
 **Status: human-decided, settled.** Protected: do not change it back without a further
 native-speaker decision on the forum.
 **Terms affected:** `mental model`.
@@ -174,7 +172,7 @@ already covered under "Keep in English" rather than to record a Korean-specific 
 
 **Decided by:** agent, applying the standing rule that a clean native-speaker-backed
 correction to an unconfirmed row is actioned directly. Source: borntobesso on the pinned
-Korean glossary thread, https://forum.jiki.io/t/479/4. No reply has followed that post as of
+Korean glossary thread,. No reply has followed that post as of
 this check (thread has 4 posts total; post 4 is the latest).
 
 **Terms affected:** `statement (executable)`.

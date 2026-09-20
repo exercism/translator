@@ -169,7 +169,7 @@ source and is a different point (production-quality code vs a golf target); left
 
 ## 2026-09-04: `neat` / `clean` (of code) → _propre_, never _élégant_
 
-**Decided by:** mirina, the forum, post 8, reviewing
+**Decided by:** mirina, post 8, reviewing
 `exercise/matching-socks`.
 **Status:** settled.
 **Terms affected:** `neat / clean (of code or a solution)` (new row, "Tooling &
@@ -250,7 +250,7 @@ and reverted any found to feminine. See the sweep report below for the file list
 
 ## 2026-08-17: CLI gender corrected from feminine to masculine (_le CLI_, not _la CLI_)
 
-**Decided by:** mirina, the forum, post 106 (post_id
+**Decided by:** mirina, post 106 (post_id
 5242), actioned directly on her evidence per "no approval needed for native-speaker calls."
 She tagged resu-xunil and williamapc for their views too, so this could still get contested
 feedback later, but her post itself reads as a clear, well-evidenced recommendation rather
@@ -276,7 +276,7 @@ agreement) and fixed them to masculine. See the sweep report for the file list a
 
 ## 2026-08-16: italics rule extended to `true`/`false`/`template`/`template strings`/`params`; `API`/`framework`/`workflow`/`CLI`/`canvas`/`code`/`bug`/`frontend`/`backend`/`debug` confirmed to stay un-italicized
 
-**Decided by:** resu-xunil, the forum, post 102, answering
+**Decided by:** resu-xunil, post 102, answering
 our own open question from post 100 (see the 2026-08-14 entry below): when the `string`/
 `template literal` italics rule was settled, we explicitly asked whether it should extend
 to the other terms we keep in English (`framework`, `workflow`, `canvas`, `API`, `CLI`), or
@@ -341,7 +341,7 @@ English"), this file. No files under `../i18n` needed changes.
 
 ## 2026-08-14: the `string` open question, closed (bare English terms now italicized)
 
-**Decided by:** resu-xunil and williamapc, the forum, posts 94-96.
+**Decided by:** resu-xunil and williamapc, posts 94-96.
 
 The glossary had recorded a tension: `string` was kept English so _chaîne_ stayed free for
 the array-chain metaphor, but the ordinary-word principle pointed at _chaîne de caractères_,
@@ -370,7 +370,7 @@ English" table).
 
 ## 2026-08-11: `build` stays contextual, no glossary row (settled, question closed)
 
-**Decided by:** resu-xunil, the forum, post 83,
+**Decided by:** resu-xunil, post 83,
 confirmed by mirina in post 92.
 **Status:** settled. The question is closed, not open to a further round.
 **Terms affected:** none. `build` deliberately has **no** row in
@@ -397,7 +397,7 @@ an unanswered question, propose a delta for it, or re-raise it on the thread. No
 
 ## 2026-08-11: "challenge" (platform content type) → _défi_ gets its own row (settled)
 
-**Decided by:** mirina, the forum, post 90.
+**Decided by:** mirina, post 90.
 **Status:** settled.
 **Terms affected:** new row `challenge (platform content type)` → _défi_ in
 `languages/fr/glossary.md` (Platform & curriculum vocabulary); the existing

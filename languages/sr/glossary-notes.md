@@ -3,7 +3,7 @@
 ## 2026-08-26: `smart` (attire) is "poslovno" and `formal` (attire) is "svečano" (settled)
 
 **Decided by:** native speaker **little_mouse** on the pinned Serbian glossary thread
-([post 25](https://forum.jiki.io/t/402/25)). **Terms affected:** `smart (attire)`,
+([post 25]). **Terms affected:** `smart (attire)`,
 `formal (attire)`. **Status: human-decided, settled. Both are now rows in `glossary.md`.**
 **Files affected:** `glossary.md`, plus `bouncer-dress-code`'s `instructions.md` and message
 catalog in `../i18n/locales/sr/` (swept in the same pass; see below).
@@ -66,7 +66,7 @@ neater solution, which has nothing to do with attire.
 ## 2026-08-24: `Jiki`/`Jeremy` transliterate to „Džiki“/„Džeremi“, but only as characters (settled)
 
 **Decided by:** Jeremy, directly, in response to little_mouse's forum post
-([t/935/7](https://forum.jiki.io/t/935/7)). **Terms affected:** `Jiki`, `Jeremy`.
+([t/935/7]). **Terms affected:** `Jiki`, `Jeremy`.
 **Status: settled. Files affected:** `guide.md`, `glossary.md`, and every existing sr
 translated file that mentions "Jiki" or "Jeremy" in narrative prose (a corpus sweep, tracked
 separately, not part of this note).
@@ -88,7 +88,7 @@ mechanical find-and-replace: "This is Jiki, and he's going to help you" is a cha
 
 **Decided by:** an owner-authorised ruling (Jeremy explicitly asked for a final call on this
 one disagreement rather than continued escalation) made by a dispatched agent, on the pinned
-Serbian glossary thread ([t/402](https://forum.jiki.io/t/402)) after three rounds of
+Serbian glossary thread ([t/402]) after three rounds of
 native-speaker input that pulled in opposite directions. **Terms affected:**
 `milestone`. **Status: settled** (it supersedes the "OPEN: `milestone` in the dashboard UI"
 item below, which is kept for the record). **Files affected:** `glossary.md`,
@@ -96,14 +96,14 @@ item below, which is kept for the record). **Files affected:** `glossary.md`,
 
 ### What the reviewers said
 
-- **miroslav-inc** ([post 3](https://forum.jiki.io/t/402/3), and again in
-  [post 17](https://forum.jiki.io/t/402/17)): "prekretnica" is wrong, because a milestone is
+- **miroslav-inc** ([post 3], and again in
+  [post 17]): "prekretnica" is wrong, because a milestone is
   an achievement, so the word should be "postignuće" or "dostignuće" (or the English
   "milestone" left untranslated).
-- **little_mouse** ([post 8](https://forum.jiki.io/t/402/8)), independently: not
+- **little_mouse** ([post 8]), independently: not
   "prekretnica", "since it is used more like some accomplished mid-goal here"; offered
   "tačka", "cilj", or miroslav-inc's "dostignuće".
-- **aleksaelezovic** ([post 11](https://forum.jiki.io/t/402/11)): keep "prekretnica" as the
+- **aleksaelezovic** ([post 11]): keep "prekretnica" as the
   closest translation of the English word, while conceding it is "more similar to word
   checkpoint" and offering "cilj", "dostignuće" or "faza" for the dashboard use case, ending
   "I would just discuss milestone some more maybe, or change it in the future".
@@ -159,7 +159,7 @@ the English meaning is the right reading, and it is what ruled "prekretnica" out
 ## 2026-08-06: Translation engine switched to `deepseek`
 
 **Decided by:** native speaker **miroslav-inc** (the verdict), on the "[Serbian Review]
-Alternative translation model" comparison thread (https://forum.jiki.io/t/935), plus
+Alternative translation model" comparison thread, plus
 **Jeremy** (project owner), who confirmed which engine the preferred version came from.
 **Status:** settled. **Terms affected:** none (engine choice, not a glossary or guide
 change). **Files affected:** `tracking.json`, which now carries the `translation_engine`
@@ -176,7 +176,7 @@ alternative, by design (the comparison was run unlabelled so the verdict would n
 biased by the engine's name). Jeremy, who ran the experiment, confirmed directly to the
 orchestrator that the alternative was DeepSeek. So the preference is the native speaker's
 and the engine identity is the owner's; neither is inferable from the thread text alone,
-and anyone re-reading t/935 later will not find "deepseek" written anywhere in it.
+and anyone re-reading later will not find "deepseek" written anywhere in it.
 
 Serbian therefore runs on `deepseek` rather than the `fable` default. This was a genuine
 switch, made on a native speaker's verdict, not on our own judgement or on cost.
@@ -184,8 +184,8 @@ switch, made on a native speaker's verdict, not on our own judgement or on cost.
 ## 2026-08-04: clothing-item terms confirmed and added; `smart` (attire) still open
 
 **Raised by:** native speaker **little_mouse** on the `bouncer-dress-code` review thread
-([t/1125 post 1](https://forum.jiki.io/t/1125/1)), and **confirmed by the same reviewer** on
-2026-08-04 in [t/1125 post 3](https://forum.jiki.io/t/1125/3) (post_id 3157). **Terms
+([t/1125 post 1]), and **confirmed by the same reviewer** on
+2026-08-04 in [t/1125 post 3] (post_id 3157). **Terms
 affected:** `ballgown`, `tuxedo`, `suit`, `dress`, `denim`, plus further input on
 `smart (attire)` and `formal (attire)`. **Status: all five clothing terms are confirmed and
 now rows in `glossary.md`; `smart` remains open.**
@@ -211,10 +211,9 @@ confidence three times in the same post ("I am 80% sure", "I am not sure", "mayb
 read fashion texts"), and the hedging was not cleanly separable term by term: the list came
 in the same breath as the `smart`/`formal` point they explicitly left unresolved. Per
 "Decisions" in `global/workflow.md`, a low-confidence proposal goes back to the reviewer for
-confirmation rather than being written in as settled, so a follow-up question was posted on
-t/1125.
+confirmation rather than being written in as settled, so a follow-up question was posted on the forum.
 
-little_mouse answered it on 2026-08-04 in [post 3157](https://forum.jiki.io/t/1125/3) with
+little_mouse answered it on 2026-08-04 in [post 3157] with
 "I'm sure about clothing words", which withdraws the hedge from these five specifically and
 confirms them exactly as first written (no wording changes). They are therefore now rows in
 `glossary.md`, decided by a native speaker, and are not to be reworded or removed by an
@@ -223,7 +222,7 @@ agent. The confirmation is deliberately narrow: in the same post they kept `smar
 
 **`smart` (attire) still an unconfirmed draft; this post is input, not a resolution.** The
 question was left open on the pinned glossary thread
-([t/402](https://forum.jiki.io/t/402), see the 2026-08-04 entry below), and this post is the
+([t/402], see the 2026-08-04 entry below), and this post is the
 same reviewer returning to the same question rather than a new dispute. What is new is the
 direction they lean: they now say "we don't have to nitpick", that "svečano" and "elegantno"
 can stay as "less precise but OK", and offer `smart` = "smart" (bare English) and `formal` =
@@ -231,13 +230,13 @@ can stay as "less precise but OK", and offer `smart` = "smart" (bare English) an
 close by reopening it themselves ("maybe it could be actually changed or we should read
 fashion texts"), plus a useful observation for whoever settles it: the two words are a
 register scale, "smart is more casual than formal". So the published wording stands
-unchanged, the row stays a draft, and the question stays open on t/402.
+unchanged, the row stays a draft, and the question stays open on the forum.
 
 ## 2026-08-04: `dress code` and `dead end` confirmed; `smart` (attire) stays open
 
 **Decided by:** native speaker **little_mouse** on the pinned Serbian glossary thread
-([post 3080](https://forum.jiki.io/t/402/3080)), answering the draft terms posted in
-[post 2946](https://forum.jiki.io/t/402/2946). **Terms affected:** `dress code`,
+([post 3080]), answering the draft terms posted in
+[post 2946]. **Terms affected:** `dress code`,
 `dead end`, `smart (attire)`, `formal (attire)`. **Status: two settled, one left open.**
 
 **`dress code` = "pravila oblačenja". Settled, moved into `glossary.md`.** little_mouse
@@ -312,8 +311,8 @@ If a native speaker confirms or corrects any of these on the forum, move it into
 ## 2026-08-02: `bootcamp` is "butkamp", not "bootkamp"
 
 **Decided by:** native speaker **aleksaelezovic** on the pinned Serbian glossary thread
-([post 2522](https://forum.jiki.io/t/402/2522)), answering the questions asked in
-[post 2484](https://forum.jiki.io/t/402/2484). **Terms affected:** `bootcamp`.
+([post 2522]), answering the questions asked in
+[post 2484]. **Terms affected:** `bootcamp`.
 **Status: human-decided, settled.**
 
 The row read **"bootkamp"**, a hybrid that keeps the English "boot" spelling and respells
@@ -336,8 +335,8 @@ corresponding content fix; a glossary change does not update already-translated 
 ## 2026-08-02: `toggle` splits into a noun and a verb row
 
 **Decided by:** native speaker **aleksaelezovic** on the pinned Serbian glossary thread
-([post 2522](https://forum.jiki.io/t/402/2522)), answering the questions asked in
-[post 2484](https://forum.jiki.io/t/402/2484). **Terms affected:** `toggle`.
+([post 2522]), answering the questions asked in
+[post 2484]. **Terms affected:** `toggle`.
 **Status: human-decided, settled** (the split and the noun; the verb is settled *as*
 context-dependent).
 
@@ -362,8 +361,8 @@ different questions: "prekidač" is the noun, the rest are the verb.
 ## 2026-08-02: `dictionary` = "rečnik" and `milestone` = "prekretnica" confirmed by a second native speaker
 
 **Confirmed by:** native speaker **aleksaelezovic** on the pinned Serbian glossary thread
-([post 2522](https://forum.jiki.io/t/402/2522)), answering the questions asked in
-[post 2484](https://forum.jiki.io/t/402/2484). **Terms affected:** `dictionary`, `milestone`.
+([post 2522]), answering the questions asked in
+[post 2484]. **Terms affected:** `dictionary`, `milestone`.
 **No rendering changed.**
 
 - **`dictionary` → "rečnik": human-confirmed, protected.** This is a second independent
@@ -400,7 +399,7 @@ copy is real; do not re-litigate the row from the glossary alone.
 ## 2026-08-02: `dictionary` is "rečnik", not "mapa"
 
 **Decided by:** owner (iHiD), on the correction of native speaker **little_mouse** on the
-pinned Serbian glossary thread ([post 8](https://forum.jiki.io/t/402/8), post id 2371).
+pinned Serbian glossary thread ([post 8], post id 2371).
 **Terms affected:** `dictionary`. **Status: human-decided, settled.**
 
 The row read **"mapa"**. little_mouse's point is that the two words are split by language in
@@ -534,7 +533,7 @@ already triggers glossing only from a `<define>` tag, never on first occurrence,
 ## 2026-07-31: `deploy` is "postavi na server", not "deploj"; `return chute` is "izlazni otvor", not "izlazni žleb"
 
 **Decided by:** native speaker **aleksaelezovic** on the pinned Serbian glossary thread
-([post 6](https://forum.jiki.io/t/402/6)), actioned directly.
+([post 6]), actioned directly.
 **Terms affected:** `deploy`, `return chute` (Jiki physical metaphor). **Status: settled.**
 
 Both terms were raised in the same post as the `scope`/`method` correction above but were
@@ -561,7 +560,7 @@ correct; no change made there (already recorded in the entry above).
 
 **Decided by:** owner (iHiD), on the correction of native speaker **aleksaelezovic** on the
 pinned Serbian glossary thread
-([post 5](https://forum.jiki.io/t/402/5), [post 6](https://forum.jiki.io/t/402/6)).
+([post 5], [post 6]).
 **Terms affected:** `scope`, `method (a function that belongs to a class)`. **Status:
 human-decided, settled.**
 
@@ -589,7 +588,7 @@ rather than resolved unilaterally. The same post also endorsed the existing rend
 
 **Decided by:** owner (iHiD), on the correction of native speaker **miroslav-inc** on the
 pinned Serbian glossary thread
-([post](https://forum.jiki.io/t/serbian-review-glossary/402/3)).
+([post]).
 **Terms affected:** `feature (platform capability)`. **Status: human-decided, settled.**
 
 The row read **"mogućnost"**, an agent draft that reached for "capability" in order to steer
@@ -615,8 +614,8 @@ speakers on the same thread.
 
 **Decided by:** owner (iHiD), on the correction of native speaker **aleksaelezovic** on the
 pinned Serbian glossary thread
-([post](https://forum.jiki.io/t/serbian-review-glossary/402/4)), raised against the "Solve
-the Maze" exercise ([topic 814](https://forum.jiki.io/t/serbian-review-exercise-solve-the-maze/814)).
+([post]), raised against the "Solve
+the Maze" exercise ([topic 814]).
 **Terms affected:** `maze`. **Status: human-decided, settled.**
 
 The exercise rendered "maze" as **"labirint"**. That form is not wrong, and it is the one a

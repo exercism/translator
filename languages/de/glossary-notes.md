@@ -3,7 +3,7 @@
 ## 2026-08-06: Translation engine confirmed as `fable`
 
 **Decided by:** xcodeowl, a native speaker, on the "Alternative translation model"
-comparison thread (https://forum.jiki.io/t/919), confirmed by iHiD on the same thread.
+comparison thread, confirmed by iHiD on the same thread.
 **Status:** settled. **Terms affected:** none (engine choice, not a glossary or guide
 change). **Files affected:** none; `tracking.json` already carried the block, this entry
 records the decision behind it.
@@ -102,10 +102,10 @@ use the verb `interpretieren` nearby) was kept in the guide's style notes.
 ## 2026-07-31: `input slot` = `Trichter` (resolves the open objection)
 
 **Decided by:** owner (iHiD), on the proposal by native speaker `neillana`, forum topic
-[t/340](https://forum.jiki.io/t/german-review-glossary/340), posts
-[/340/6](https://forum.jiki.io/t/german-review-glossary/340/6),
-[/340/7](https://forum.jiki.io/t/german-review-glossary/340/7) and
-[/340/10](https://forum.jiki.io/t/german-review-glossary/340/10).
+[t/340], posts
+[/340/6],
+[/340/7] and
+[/340/10].
 **Terms affected:** `input slot`. **Supersedes** the `input slot` half of the "Open
 objections (unresolved)" entry below, which is now closed in full (its `loop body` half was
 already closed by the entry below this one).
@@ -127,9 +127,9 @@ raised on that same thread.
 ## 2026-07-31: `loop body` = `Schleifenblock` (resolves the open objection)
 
 **Decided by:** owner (iHiD), on the objection raised by native speakers `elzda` and
-`neillana`, forum topic [t/340](https://forum.jiki.io/t/german-review-glossary/340), posts
-[/340/4](https://forum.jiki.io/t/german-review-glossary/340/4) and
-[/340/11](https://forum.jiki.io/t/german-review-glossary/340/11).
+`neillana`, forum topic [t/340], posts
+[/340/4] and
+[/340/11].
 **Terms affected:** `loop body`. **Supersedes** the `loop body` half of the "Open
 objections (unresolved)" entry below; the `input slot` half of that entry still stands.
 
@@ -189,7 +189,7 @@ Three decisions came out of that pass that bind German:
 ## 2026-07-12: `float / decimal` = `Gleitkommazahl` settled on the forum
 
 **Decided by:** native speakers `elzda` and `neillana`, forum topic
-[t/340](https://forum.jiki.io/t/340).
+[t/340].
 **Terms affected:** `float / decimal`.
 
 `elzda` objected to `Gleitkommazahl` as a word they had never heard, and proposed
@@ -215,7 +215,7 @@ same thread.
 ## Open objections (unresolved): `loop body` and `input slot`
 
 **Raised by:** native speakers `elzda` and `neillana`, forum topic
-[t/340](https://forum.jiki.io/t/340), 2026-07-11 to 2026-07-13. **Not decided.** The owner
+[t/340], 2026-07-11 to 2026-07-13. **Not decided.** The owner
 has not ruled on either, so the current glossary renderings stand unconfirmed and must not
 be changed on this basis alone.
 

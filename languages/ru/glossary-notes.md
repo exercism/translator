@@ -3,7 +3,7 @@
 ## 2026-08-06: Translation engine confirmed as `fable`
 
 **Decided by:** alexisl and danya7onoff, both native speakers, on the "Alternative
-translation model" comparison thread (https://forum.jiki.io/t/934). **Status:** settled.
+translation model" comparison thread. **Status:** settled.
 **Terms affected:** none (engine choice, not a glossary or guide change).
 **Files affected:** `tracking.json` (`translation_engine`).
 

@@ -3,7 +3,7 @@
 ## 2026-08-06: Translation engine switched to `deepseek`
 
 **Decided by:** alexfalcon528, a native speaker, on the "Alternative translation model"
-comparison thread (https://forum.jiki.io/t/887), actioned by iHiD on the same thread.
+comparison thread, actioned by iHiD on the same thread.
 **Status:** settled. **Terms affected:** none (engine choice, not a glossary or guide
 change). **Files affected:** none; `tracking.json` already carried the block, this entry
 records the decision behind it.
@@ -19,7 +19,7 @@ switch, made on a native speaker's verdict, not on our own judgement or on cost.
 ## 2026-08-03: bouncer is バウンサー, and everyday words take no English gloss
 
 **Decided by:** alexfalcon528, a native speaker, on
-<https://forum.jiki.io/t/1102/2>, reviewing the If Statements concept page.
+<, reviewing the If Statements concept page.
 **Glossary row added:** bouncer (club/bar doorkeeper) → バウンサー, under "Platform &
 curriculum vocabulary". **Guide section affected:** "Term clarification".
 
@@ -41,7 +41,7 @@ because it is 20 in Japan and few readers know the source's 21 is not a mistake.
 ## 2026-08-03: no spaces around Latin, numerals or code in Japanese prose
 
 **Decided by:** alexfalcon528, a native speaker, on
-<https://forum.jiki.io/t/japanese-review-using-functions/764> (post 6), answering a direct
+< (post 6), answering a direct
 question we asked in post 5 about what the general rule should be. He had raised the same
 observation twice before, in the "Overall" section of posts 2 and 4.
 **Guide section affected:** "Orthography and mechanics" → Spacing, Half-width characters,
@@ -79,8 +79,8 @@ numerals are always half-width, and times use the 24-hour clock.
 ## 2026-08-03: `crank` becomes クランク, and the program-sense `interpreter` keeps its ー
 
 **Decided by:** alexfalcon528, a native speaker, on
-<https://forum.jiki.io/t/japanese-review-glossary/311> (post 5), with the crank point made
-independently a second time on <https://forum.jiki.io/t/japanese-review-using-functions/764>
+< (post 5), with the crank point made
+independently a second time on <
 (post 2, paragraph 5).
 **Terms affected:** `crank (machine crank)`; `interpreter (the program)`.
 
@@ -118,7 +118,7 @@ the row held before that split, stays rejected.
 ## 2026-08-02: `interpreter` splits into インタプリタ (program) and 通訳者 (person)
 
 **Decided by:** owner (iHiD), accepting a native speaker's challenge from
-alexfalcon528 on <https://forum.jiki.io/t/japanese-review-glossary/311> (post 3).
+alexfalcon528 on < (post 3).
 **Terms affected:** `interpreter`; the `course` row's example sentence.
 
 **This supersedes the `interpreter` decision in the 2026-07-30 owner-decisions entry

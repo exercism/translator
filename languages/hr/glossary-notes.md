@@ -4,7 +4,7 @@
 
 **Decided by:** the project owner (Jeremy), who agreed the researched proposal put to him in full by a `/bootstrap-language hr` pass. **Status:** agreed, but **unconfirmed by any native speaker**. **Terms affected:** every row in `glossary.md`. **Files affected:** `guide.md`, `glossary.md`, `glossary-notes.md`, `tracking.json`, and an "Exercise scenario vocabulary" section added to `global/terms.md`.
 
-**No row here carries native-speaker authority.** Croatian had no community glossary submission and no forum request behind it: a search of the forum for "croatian" and "hrvatski" returned only Serbian threads, and the new-language-request topic ([t/714](https://forum.jiki.io/t/714)) had no Croatian entry. Every rendering below is an agent draft agreed by the owner on the strength of the sourcing, and the pinned glossary thread exists to get it corrected. A later pass may revise any of it on a native speaker's word, with no row protected by "Glossary writes are additive" until a speaker has actually signed one off.
+**No row here carries native-speaker authority.** Croatian had no community glossary submission and no forum request behind it: a search of the forum for "croatian" and "hrvatski" returned only Serbian threads, and the new-language-request topic ([t/714]) had no Croatian entry. Every rendering below is an agent draft agreed by the owner on the strength of the sourcing, and the pinned glossary thread exists to get it corrected. A later pass may revise any of it on a native speaker's word, with no row protected by "Glossary writes are additive" until a speaker has actually signed one off.
 
 ### The two things most worth a native speaker's eyes
 
@@ -55,7 +55,7 @@ Rows flagged in the report as lowest-confidence beyond the two headline items, a
 
 ## 2026-09-05: First native-speaker input (naziv funkcije)
 
-**Decided by:** lilitu, the Croatian volunteer reviewer, on the pinned glossary thread ([t/1436](https://forum.jiki.io/t/1436/4)). **Status:** agreed and applied. **Terms affected:** `function name` (new row), and the `Variable and function names` row in the Keep in English table. **Files affected:** `glossary.md`, `glossary-notes.md`.
+**Decided by:** lilitu, the Croatian volunteer reviewer, on the pinned glossary thread ([t/1436]). **Status:** agreed and applied. **Terms affected:** `function name` (new row), and the `Variable and function names` row in the Keep in English table. **Files affected:** `glossary.md`, `glossary-notes.md`.
 
 This is the **first row in the Croatian glossary carrying native-speaker authority**; every other row is still the unconfirmed bootstrap draft described above.
 
@@ -65,7 +65,7 @@ Left open and asked back on the thread: whether a single variable's name is `naz
 
 ## 2026-09-05: The two headline decisions confirmed, plus naziv varijable
 
-**Decided by:** lilitu, the Croatian volunteer reviewer, on the pinned glossary thread ([t/1436](https://forum.jiki.io/t/1436/6)). **Status:** agreed and applied. **Terms affected:** `variable name` (new row), `interpreter` (confirmed, unchanged), and the `ti` register rule in `guide.md` (confirmed, unchanged). **Files affected:** `glossary.md`, `glossary-notes.md`.
+**Decided by:** lilitu, the Croatian volunteer reviewer, on the pinned glossary thread ([t/1436]). **Status:** agreed and applied. **Terms affected:** `variable name` (new row), `interpreter` (confirmed, unchanged), and the `ti` register rule in `guide.md` (confirmed, unchanged). **Files affected:** `glossary.md`, `glossary-notes.md`.
 
 **`variable name` = `naziv varijable`.** Asked back on the thread after the `naziv funkcije` row landed, and answered directly: the same `naziv`-not-`ime` logic applies to a single variable's name. The row mirrors `function name`, including the reminder that the identifier in the code is never translated.
 

@@ -3,7 +3,7 @@
 ## 2026-08-24: canvas translates as `plansza`, not `płótno`
 
 **Decided by:** native speaker **mlistewnik**, reviewing the `arithmetic` concept page,
-forum topic 1881 (post 1: https://forum.jiki.io/t/1881/1). **Term affected:** canvas.
+the forum (post 1:. **Term affected:** canvas.
 
 The existing translation used `płótno` throughout for "canvas" (the drawing surface Jiki
 draws shapes on). mlistewnik pointed out that `płótno` has a narrow meaning in Polish — a
@@ -18,7 +18,7 @@ exercise-categories/draw); those are a separate tidy sweep, not yet done, flagge
 
 ## 2026-08-04: praise messages use `Robisz postępy!` and `Kawał dobrej roboty!`
 
-mlistewnik (forum topic 1025, posts 3110 and 3114) flagged two Polish UI praise strings in
+mlistewnik (posts 3110 and 3114) flagged two Polish UI praise strings in
 the first website-copy pass as sounding wrong to a native speaker.
 
 `Świetny postęp!` (from English "Great progress!", key `challenges.empty.allStartedDescription`):
@@ -48,8 +48,8 @@ must not read as a near-duplicate of its neighbours.
 ## 2026-08-03: the maze character turns with `obracać się`, never `skręcać`
 
 **Decided by:** native speakers **mlistewnik** and **siling**, on the maze-solve-basic review
-thread, forum topic 811: mlistewnik in post 9 (https://forum.jiki.io/t/811/9), siling agreeing
-in post 11 (https://forum.jiki.io/t/811/11).
+thread, the forum: mlistewnik in post 9, siling agreeing
+in post 11.
 **Terms affected:** `turn (the maze character's turnLeft()/turnRight() instruction)` (new row);
 also the example wording inside the `character (the little figure in the maze exercises)` row.
 
@@ -78,8 +78,7 @@ with wording that still exists in the content. The `ludzik` decision itself is u
 
 ## 2026-08-03: the draw-family grid cell is `pole`, never `pudełko`
 
-**Decided by:** native speaker **mlistewnik** on the pinned Polish glossary thread, forum
-topic 417, post 11: https://forum.jiki.io/t/417/11
+**Decided by:** native speaker **mlistewnik** on the pinned Polish glossary thread, post 11:
 **Terms affected:** `box (draw-family grid cell)` (new row).
 
 We had asked, in the glossary announcement, whether the grid cell a learner draws into should
@@ -108,8 +107,7 @@ interpreter catalog) is the value-container sense and is correct.
 
 ## 2026-08-03: success messages open with `Dobra robota!`, not `Świetna robota!`
 
-**Decided by:** native speaker **mlistewnik** on the website-copy review thread, forum topic
-1025, post 7: https://forum.jiki.io/t/1025/7
+**Decided by:** native speaker **mlistewnik** on the website-copy review thread, post 7:
 **Terms affected:** `Great work! / Great job! (success or congratulation opener)` (new row).
 
 The exercise-completion success messages opened with „Świetna robota!". mlistewnik's verdict:
@@ -128,8 +126,7 @@ Deliberately left alone, because they are not the flagged collocation and are or
 
 ## 2026-08-02: no `o` after `zapytaj` before a subordinate clause
 
-**Decided by:** native speaker **mlistewnik** on the website-copy review thread, forum topic
-1025, post 4: https://forum.jiki.io/t/1025/4
+**Decided by:** native speaker **mlistewnik** on the website-copy review thread, post 4:
 **Terms affected:** none (grammar rule, recorded in `guide.md` under Grammar).
 
 The app's "Ask about..." prompt in the Ask Jiki panel was translated as „Zapytaj o...”,
@@ -147,8 +144,7 @@ modal) are correct and were left alone.
 
 ## 2026-08-02: the maze character is `ludzik`, not `postać`
 
-**Decided by:** native speaker **mlistewnik** on the maze-solve-basic review thread, forum
-topic 811, post 9: https://forum.jiki.io/t/811/9
+**Decided by:** native speaker **mlistewnik** on the maze-solve-basic review thread, post 9:
 **Terms affected:** `character (the little figure in the maze exercises)` (new row).
 
 The English describes a *little person* walking the maze. `postać` is the generic word for a
@@ -176,7 +172,7 @@ nothing about it is recorded here.
 
 ## 2026-08-02: `input slot` candidate from mlistewnik, not yet confirmed
 
-**Raised by:** mlistewnik (forum topic 417, post 7): https://forum.jiki.io/t/417/7
+**Raised by:** mlistewnik (post 7):
 **Status:** open, one candidate logged, not written to `glossary.md`.
 
 Proposes **szczelina wrzutowa** for `input slot` (currently the unconfirmed coinage `otwór
@@ -239,7 +235,7 @@ kept here:
 - **Provenance for the future-tense rule (removed from the guide).** The rule against
   „będziesz potrafić / potrafił / potrafiła budować", and the „nauczysz się budować"
   rephrase in its place, came from a **native speaker** on the forum:
-  <https://forum.jiki.io/t/770/2>. The rule itself stays in the guide; this is a
+  <. The rule itself stays in the guide; this is a
   native-speaker decision and must not be overturned without fresh agreement on that
   thread.
 - **Justification for the impersonal/się register (removed).** Using się constructions for
@@ -271,8 +267,7 @@ straight quote; the rows were left untouched rather than reworded.
 
 ## 2026-08-01: `string` moves to Keep in English, glossed as `ciąg znaków` on first mention
 
-**Decided by:** native speaker (siling) on the pinned Polish glossary thread, forum topic
-417, post #5 (https://forum.jiki.io/t/417/5). **Terms affected:** `string`.
+**Decided by:** native speaker (siling) on the pinned Polish glossary thread, post #5. **Terms affected:** `string`.
 
 The row previously rendered `string` as `ciąg znaków` throughout prose. siling pointed out
 that real Polish programming conversation says "string", reaching for `ciąg znaków` only
@@ -291,7 +286,7 @@ on the thread explaining this rather than changing the row.
 ## 2026-07-31: `return chute` is `kanał zwrotny`, settled by a native speaker
 
 **Decided by:** owner (iHiD), on the correction of native speaker **bavar** on the pinned
-Polish glossary thread: https://forum.jiki.io/t/polish-review-glossary/417/3
+Polish glossary thread:
 **Terms affected:** `return chute` (and, by exclusion, `input slot`).
 
 `return chute` changes from **`zsyp zwrotny`** to **`kanał zwrotny`**. bavar's point is
@@ -432,5 +427,5 @@ repeated here.
 | crank | Ordinary Polish word for a hand crank. |
 | warehouse | Ordinary word for a storeroom/warehouse; the shelves stand in it. |
 | input slot | No established Polish pedagogical precedent for this compound. |
-| bouncer | Settled by a native speaker (marysska6, forum topic 1012, 2026-08-02): `bramkarz` is ambiguous and reads first as "goalkeeper", so the bar-door scenario misfires. `ochroniarz` is the neutral word for the door-security role. |
+| bouncer | Settled by a native speaker (marysska6, the forum, 2026-08-02): `bramkarz` is ambiguous and reads first as "goalkeeper", so the bar-door scenario misfires. `ochroniarz` is the neutral word for the door-security role. |
 | return chute | `zsyp` (a chute an object drops through, e.g. a laundry/garbage chute) fits a returned value better than `zjeżdżalnia` (a slide, which implies a person riding it). |

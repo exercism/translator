@@ -76,7 +76,7 @@ column structure as the family file.
 |---------|------------|-----------------|-------|
 | course | curso | pt-BR | The whole Jiki course: _neste curso, o seu intérprete é o Jiki_. Keep distinct from `lição` (lesson). |
 | cell (grid square, e.g. maze exercises) | casa | pt-BR | "Move the character forward one cell" → "avance uma casa" (like a square on a board game), not "uma célula", which reads as a biology/spreadsheet term and feels unnatural here. |
-| character / figure (the walker in maze exercises) | bonequinho | pt-BR | The little figure the learner moves around the grid. Confirmed as natural by a native speaker (sorrizo) on https://forum.jiki.io/t/812/5; already in use across the maze exercises. |
+| character / figure (the walker in maze exercises) | bonequinho | pt-BR | The little figure the learner moves around the grid. Confirmed as natural by a native speaker (sorrizo) on already in use across the maze exercises. |
 | bouncer (the door-staff character) | segurança | pt-BR | _o segurança da balada_. Masculine despite the `-a` ending. Not _porteiro_ (reads as a residential doorman rather than club door staff). |
 | to turn (someone) away | barrar | pt-BR | _barrar a pessoa na porta_. Use _barrar_ in the nightclub-door context; _recusar a entrada_ only where the sentence needs an object phrase rather than a single verb. |
 | dress code | código de vestimenta | pt-BR | **Unconfirmed draft.** The rule about what may be worn, as posted at a club door. |

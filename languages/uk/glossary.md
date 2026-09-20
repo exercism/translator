@@ -94,7 +94,7 @@ These are terms where the Ukrainian is used in prose, so the "Use (uk/en)" colum
 | pattern (a repeating pattern in data or in a drawing) | закономірність | uk | Unconfirmed draft (agent, 2026-08-03). The regularity the learner spots and turns into a loop. Not _патерн_ (a borrowing) and not _шаблон_, which this glossary already leans on for _шаблонний рядок_ and _лінії шаблону_. |
 | anchor (a variable or value everything else is measured from) | опорна змінна / опорне значення | uk | Unconfirmed draft (agent, 2026-08-03). The one value other values are derived from, in exercises that build every dimension off a single starting figure. Use _опорна змінна_ for the variable, _опорне значення_ for the number in it. Never _якір_ (the ship's anchor, or an HTML anchor). |
 | toggle | перемикати | uk | |
-| to create (a variable / a counter) | створити | uk | Unconfirmed draft (agent, 2026-08-12, iternewo t/880). Not _завести_, which reads as informal/colloquial for setting up a variable. |
+| to create (a variable / a counter) | створити | uk | Unconfirmed draft (agent, 2026-08-12, iternewo). Not _завести_, which reads as informal/colloquial for setting up a variable. |
 | state / stateful | стан | uk | |
 | scope | область видимості | uk | |
 | class | клас | uk | |

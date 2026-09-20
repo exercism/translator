@@ -2,8 +2,7 @@
 
 ## 2026-08-02: HSL colour terms — lightness is _helderheid_, not _lichtheid_
 
-**Decided by:** native speaker (quaap), forum topic 979, post 2601
-(https://forum.jiki.io/t/979/2601), reviewing the `rainbow` exercise.
+**Decided by:** native speaker (quaap), post 2601, reviewing the `rainbow` exercise.
 
 - **lightness → helderheid.** The draft used _lichtheid_, the literal translation of
   "lightness". quaap: it is a literal translation "but is almost never used"; the natural
@@ -41,7 +40,7 @@ No disagreements between workers. Possible `global/terms.md` gaps flagged: `conc
 
 ## 2026-08-01: Confirmed translation engine — fable (stick with original)
 
-**Decided by:** native speaker (sleeplessbyte), forum topic 930 ("[Dutch Review] Alternative
+**Decided by:** native speaker (sleeplessbyte), the forum ("[Dutch Review] Alternative
 translation model"). sleeplessbyte flagged that the alternative version mistranslated "code"
 (verb) as "codeer"/"coderen", a common but incorrect rendering that actually means "to
 encode" (opposite of "to decode"), not "to write code". Per iHiD: Dutch stays on fable.
@@ -110,14 +109,14 @@ lands.
 | hue (HSL) | kleurtoon | _tint_ is equally common in Dutch colour-picker UI (Photoshop nl uses _Kleurtoon_). Must match the draw family catalog and exercises, so needs settling once for the family. | medium |
 | lightness (HSL) | lichtheid | _helderheid_ is the everyday word but technically means brightness/value (HSV's V). The precise term was chosen; a native speaker may prefer _helderheid_ for beginners. | medium |
 
-## 2026-08-01: Native-speaker glossary review (forum topic 339 sub-threads)
+## 2026-08-01: Native-speaker glossary review (the forum sub-threads)
 
-**Decided by:** native speaker (sleeplessbyte), forum topic 339 ("[Dutch Review] Glossary")
+**Decided by:** native speaker (sleeplessbyte), the forum ("[Dutch Review] Glossary")
 post #2121, and its six linked sub-threads: topics 905, 906, 907, 908, 911, 912.
 **Terms affected:** `float`/`decimal`, `expression`, `return value`, `loop`, `array`,
 `scope`, `return chute`.
 
-- **`float` / `decimal` split into two separate terms** (topic 905). The single row
+- **`float` / `decimal` split into two separate terms**. The single row
   `reëel getal` was wrong on two counts: "reëel getal" means "real number", a different
   mathematical concept, and English itself treats float and decimal as non-synonymous, so
   one Dutch term for both loses a distinction learners need for floating-point
@@ -126,10 +125,10 @@ post #2121, and its six linked sub-threads: topics 905, 906, 907, 908, 911, 912.
   talstelsel_). `float` is now **zwevendekommagetal**, the literal "floating point
   number"; the reviewer flagged _drijvendekommagetal_ as a seen-but-disliked alternative,
   no citation for which is better, so it was not used.
-- **`expression`'s "uitdrukking is an acceptable synonym" note was backwards** (topic 906).
+- **`expression`'s "uitdrukking is an acceptable synonym" note was backwards**.
   In the programming sense, _uitdrukking_ reads as an everyday phrase or idiom, not code;
   the note now says the opposite of what it said before.
-- **`return value`: retourwaarde was reversed to `returnwaarde`** (topic 907). Dutch
+- **`return value`: retourwaarde was reversed to `returnwaarde`**. Dutch
   programming usage (confirmed via the Dutch Wikipedia article, titled "Returnwaarde")
   keeps the English word _return_ rather than translating it to _retour_; "retourwaarde"
   is non-existent/non-sensical Dutch in this context. _resultaat_ is a common looser
@@ -141,14 +140,13 @@ post #2121, and its six linked sub-threads: topics 905, 906, 907, 908, 911, 912.
   translating only half a keyword-based compound is worse than translating none of it, so
   `for loop`/`while loop`/`do while loop` now stay _for-loop_/_while-loop_/_do
   while-loop_.
-- **`array`'s Keep-in-English gloss moved from `rij` to `reeks`** (topic 911). _rij_ reads
+- **`array`'s Keep-in-English gloss moved from `rij` to `reeks`**. _rij_ reads
   as confusable with "row"; the reviewer also noted _array_ has itself entered Dutch as an
   ordinary word.
-- **`scope`'s Keep-in-English gloss gained a caution against a bare one-word rendering**
-  (topic 911). A single word (_bereik_ alone reads narrower, closer to "reach") risks
+- **`scope`'s Keep-in-English gloss gained a caution against a bare one-word rendering**. A single word (_bereik_ alone reads narrower, closer to "reach") risks
   making the gloss harder to understand than no gloss at all; the note now recommends a
   short explanatory clause where there's room, per the reviewer's suggested phrasing.
-- **`return chute`: retourglijbaan corrected to `resultaatglijbaan`** (topic 912), for the
+- **`return chute`: retourglijbaan corrected to `resultaatglijbaan`**, for the
   same reason as `return value` above: keeping the "retour" framing was the wrong choice
   of Dutch word for what is returned.
 

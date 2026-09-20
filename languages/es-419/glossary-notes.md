@@ -3,7 +3,7 @@
 ## 2026-08-05: "code" is translated, _código_, and leaves the Keep in English list
 
 **Decided by:** matcots5, native speaker, on the `exercise/maze-turn-around` review thread
-(forum topic 1198). **Term affected:** `code (what the learner writes)`, a new row in the
+(the forum). **Term affected:** `code (what the learner writes)`, a new row in the
 family glossary `../es/glossary.md` § Core decisions; `Code` is removed from that file's
 § Keep in English row, which now reads `Bug, Frontend, Backend`.
 
@@ -20,7 +20,7 @@ chain metaphor, `array` is the ordinary word for Spanish developers, and so on).
 identical string "Code, Bug, Frontend, Backend" appears in the published glossaries of a
 dozen unrelated languages, so it is bootstrap-template boilerplate that was never a Spanish
 decision, and no native speaker had ever confirmed it. matcots5 read and approved the
-glossary in general terms back on topic 312 post 6, but a rationale-free row inside a
+glossary in general terms back on the forum post 6, but a rationale-free row inside a
 keep-in-English list is not the same thing as seeing the word in running prose; this is the
 first time any native speaker has been shown the actual effect and asked about it.
 
@@ -46,8 +46,7 @@ That sweep is a separate pass.
 
 ## 2026-08-03: `input` → _argumento_, and the HSL colour trio settled
 
-**Decided by:** megareve and matcots5, both native speakers, on the glossary thread (forum
-topic 312, posts 10, 12 and 14). **Terms affected:** `input (a value passed into a function)`
+**Decided by:** megareve and matcots5, both native speakers, on the glossary thread (posts 10, 12 and 14). **Terms affected:** `input (a value passed into a function)`
 (new row), `hue (colour control)`, `lightness (colour control)`, `saturation (colour control)`
 (new rows). All four were the unconfirmed drafts recorded in the 2026-08-02 entry below; they
 are now written into `glossary.md`.
@@ -85,7 +84,7 @@ _brillo_, these rows are worth revisiting.
 ## 2026-08-03: `character` (the on-screen figure) → _personaje_, and "Ewww!" → _¡Guácala!_
 
 **Decided by:** megareve and matcots5, both native speakers, on the `exercise/maze-solve-basic`
-review thread (forum topic 800). They agree with each other on every point below; nothing here
+review thread. They agree with each other on every point below; nothing here
 is contested. **Terms affected:** `character / little person (the figure on screen)` (new row),
 `Ewww! / Yuck! (disgust interjection)` (new row).
 
@@ -114,8 +113,7 @@ notes at `languages/es-419/exercise/maze-solve-basic.md` instead.
 
 ## 2026-08-03: `height` → _altura_, never _alto_
 
-**Decided by:** megareve, a native speaker, on the `exercise/rainbow` review thread (forum
-topic 1066). **Terms affected:** `height (of a shape or box)` (new row).
+**Decided by:** megareve, a native speaker, on the `exercise/rainbow` review thread. **Terms affected:** `height (of a shape or box)` (new row).
 
 The draw-category catalog rendered `heightPositive` as "El alto debe ser mayor que 0".
 _El alto_ is grammatical but reads worse than _la altura_ here, and at the head of a
@@ -136,7 +134,7 @@ with it (_el mismo alto_ → _la misma altura_, _un alto de_ → _una altura de_
 translated the `rock-paper-scissors` and `rainbow` exercise message catalogs (those catalogs
 have no API path, so they stay on the subagent path even though es-419 runs on DeepSeek). They
 were recorded here so the wording used in those two exercises stayed traceable, and so a
-native speaker could object. **Both have since been settled by reviewers on forum topic 312
+native speaker could object. **Both have since been settled by reviewers on the forum
 and written into `glossary.md`; see the 2026-08-03 entry above.** The drafting reasoning is
 kept below because it is what the reviewers were answering.
 

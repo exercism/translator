@@ -31,8 +31,7 @@ Rationale removed from `guide.md`, kept for the record:
 - **CJK/Latin spacing.** The half-width space between Chinese text and adjacent plain Latin
   is a strong, widely followed community convention (not a single national standard) in both
   Simplified and Traditional technical writing. The exception for bold/inline-code runs is
-  **native-speaker-confirmed** (taylorren, forum topic 820, post #2,
-  https://forum.jiki.io/t/820/2, 2026-08-01): Chinese does not use space as a word separator
+  **native-speaker-confirmed** (taylorren, post #2, 2026-08-01): Chinese does not use space as a word separator
   at all, and the bold/code formatting already marks the boundary visually, so an added space
   is redundant and reads wrong to native readers. Do not overturn this without taylorren.
 - **Full-width punctuation and Arabic numerals** are shared typesetting conventions across
@@ -96,8 +95,8 @@ question and has not weighed in.
 
 ## 2026-08-01: `character` (maze/on-screen figure) is `角色`; mental-model sense split out
 
-**Decided by:** native speaker (cherylli), forum topic 821, posts #2/#4/#5, and topic 792,
-post #3 (https://forum.jiki.io/t/821/2, /4, /5; https://forum.jiki.io/t/792/3).
+**Decided by:** native speaker (cherylli), posts #2/#4/#5, and topic 792,
+post #3.
 **Terms affected:** `character` (the maze/on-screen figure).
 
 zh-TW was using 小人 (unconfirmed, no glossary row) in one spot, flagged as reading like "a
@@ -118,16 +117,16 @@ stays 角色 for both senses unless a zh-CN native speaker says otherwise.
 ## 2026-08-01: `true / false` moves to Keep in English
 
 **Decided by:** native speaker (cherylli) on the pinned Traditional Chinese glossary thread,
-forum topic 414, post #3 (https://forum.jiki.io/t/414/3). **Terms affected:** `true / false`.
+the forum, post #3. **Terms affected:** `true / false`.
 
 真/假 was an unconfirmed agent row. cherylli checked several Chinese CS books and reports
 they consistently use `true`/`false` untranslated rather than 真/假, so this moves to Keep
 in English: gloss as 真/假 only where the source `<define>`s it, then use `true`/`false`
 freely, matching how code literals were already handled.
 
-## 2026-08-01: Native-speaker review of the shared Chinese terms (forum topic 868)
+## 2026-08-01: Native-speaker review of the shared Chinese terms
 
-**Decided by:** native speaker taylorren, on forum topic 868 ("SC translations discussion and
+**Decided by:** native speaker taylorren, on the forum ("SC translations discussion and
 general view for consideration"), post 1. Applied by agent.
 **Terms affected:** `workflow`, `dictionary`.
 
@@ -143,12 +142,11 @@ general view for consideration"), post 1. Applied by agent.
   writing, including Python's own Chinese documentation. Changing it would also move the term
   out of this shared file, because 词典/詞典 is not character-identical across scripts, so it
   would have to become one row per locale. Left as 字典 until the reviewer confirms whether
-  the proposal was aimed at the data-structure sense; raise it on topic 868.
+  the proposal was aimed at the data-structure sense; raise it on the forum.
 
 ## 2026-08-07: Term-clarification marker corrected from 英語：/英语： to 英文：
 
-**Decided by:** native speaker (ramhuw), forum topic 1287, post #1
-(https://forum.jiki.io/t/1287/1). **Terms affected:** the family's term-clarification
+**Decided by:** native speaker (ramhuw), post #1. **Terms affected:** the family's term-clarification
 marker (`§ Term clarification` in `guide.md`), not a glossary row.
 
 The marker recorded in "2026-08-01: Parentheses around glosses are full-width" was still an

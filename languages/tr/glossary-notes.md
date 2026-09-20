@@ -2,8 +2,8 @@
 
 ## 2026-08-03: Drawing/color terms, `keyword` and `let` confirmed by macroicetr
 
-**Decided by:** native speaker (macroicetr), forum topic 328 ("[Turkish Review] Glossary"),
-post 8: https://forum.jiki.io/t/328/8.
+**Decided by:** native speaker (macroicetr), the forum ("[Turkish Review] Glossary"),
+post 8:.
 **Status:** human-decided, settled. Supersedes the "unconfirmed drafts" status recorded in
 the entry below, and closes the open question on `let` recorded there.
 **Terms affected:** `hue`, `saturation`, `lightness`, `canvas`, `keyword`, and a new `let`
@@ -55,7 +55,7 @@ the term would land, have no Turkish translation yet.
 
 ## 2026-08-03: `move` (the character) is _götürmek_, never _taşımak_
 
-**Decided by:** native speaker (macroicetr), forum topic 816 ("[Turkish Review] Exercise:
+**Decided by:** native speaker (macroicetr), the forum ("[Turkish Review] Exercise:
 Solve the Maze").
 **Status:** human-decided, settled.
 **Terms affected:** new `move (the character)` row in "Jiki physical metaphors".
@@ -185,8 +185,8 @@ açın") run much longer than English and want a visual check in nav/tabs/button
 
 ## 2026-08-02: Glossary review from macroicetr — applied
 
-**Decided by:** native speaker (macroicetr), forum topic 328 ("[Turkish Review] Glossary"),
-post 3: https://forum.jiki.io/t/328/3, raised 2026-08-01 and applied to `glossary.md` on
+**Decided by:** native speaker (macroicetr), the forum ("[Turkish Review] Glossary"),
+post 3:, raised 2026-08-01 and applied to `glossary.md` on
 2026-08-02. Turkish has a single active reviewer and nothing here is contested, so these are
 that speaker's own calls on their own language and were actioned directly rather than being
 held for the next retranslate. Supersedes the earlier logging of this thread as
@@ -235,7 +235,7 @@ catalog), so no published file needed editing.
 
 ## 2026-08-01: Confirmed translation engine — fable (stick with original)
 
-**Decided by:** native speaker (macroicetr), forum topic 938 ("[Turkish Review] Alternative
+**Decided by:** native speaker (macroicetr), the forum ("[Turkish Review] Alternative
 translation model"). The alternative model read more naturally/human-like but produced more
 errors, deviated from the original meaning while trying to sound natural, and was harder to
 understand as a result; macroicetr said "if I had to choose, I'd prefer the original."

@@ -2,7 +2,7 @@
 
 ## 2026-08-22: the shared `string` gloss stops hardcoding the Brazilian spelling
 
-**Decided by:** native speaker (rlsmota), forum topic 341 post 6, replying to the glossary
+**Decided by:** native speaker (rlsmota), the forum post 6, replying to the glossary
 update in post 3097. **Terms affected:** the family row `string` in `../pt/glossary.md`;
 this locale's `character` row is unchanged.
 

@@ -2,7 +2,7 @@
 
 ## 2026-09-09: dual agreement is word-order dependent (t/470/56)
 
-**Decided by:** reviewer mirina, forum https://forum.jiki.io/t/470/56, actioned directly.
+**Decided by:** reviewer mirina, forum, actioned directly.
 
 A precision on the entry below. When we wrote the agreement paradigm down we recorded the dual
 as `تُرجع الخاصيتان الأبعاد`, phrased as though it were the dual form full stop. mirina's point
@@ -24,7 +24,7 @@ the non-human plurals named beside `الدوال` / `الخصائص` / `المص
 
 ## 2026-09-08: `method` added as `طريقة` (t/470/53)
 
-**Decided by:** reviewer mirina, forum https://forum.jiki.io/t/470/53, actioned directly.
+**Decided by:** reviewer mirina, forum, actioned directly.
 
 `method` had no row of its own. The word `طريقة` was already in use across Arabic curriculum
 prose and was even named inside the `to return (a value)` row's Notes (as a feminine subject
@@ -37,7 +37,7 @@ page and `التوابع` in the panel beside it.
 
 `طريقة` wins on evidence rather than on which pass happened first: ARABTERM and Arabic
 Wikipedia both give it for the OOP sense, it is what the Arabic corpus already uses, and its
-feminine gender matches `دالة`, so the agreement rule set in t/1865 covers functions and
+feminine gender matches `دالة`, so the agreement rule set on the forum covers functions and
 methods with one sentence instead of two. The plural is `طُرق`, the common technical form;
 `طَرائق` is correct but reads literary and academic.
 
@@ -49,9 +49,9 @@ Jiki content and points at `أسلوب` / `كيفية` / a rephrase instead. The
 
 `تابع` is now explicitly ruled out, and the draft row for it below is struck through.
 
-## 2026-09-08: `to return (a value)` extended to properties (t/1865, post 5)
+## 2026-09-08: `to return (a value)` extended to properties
 
-**Decided by:** reviewer mirina, forum https://forum.jiki.io/t/1865/5, actioned directly.
+**Decided by:** reviewer mirina, forum, actioned directly.
 
 Follow-up to the 2026-09-06 entry below. We had applied her agreement rule to method calls
 (`mentors.includes(...)` -> `ستُرجع` / `فستُرجع`) but left the sentence above it,
@@ -75,13 +75,12 @@ mirina also noted approvingly that the agent could not decide the property case 
 did raise the question rather than guess, which is the behaviour we want on an open grammar
 point.
 
-## 2026-09-06: verb agreement for `to return (a value)` made explicit (t/1865, post 3)
+## 2026-09-06: verb agreement for `to return (a value)` made explicit
 
-**Decided by:** reviewer mirina, forum https://forum.jiki.io/t/1865/3, actioned directly.
+**Decided by:** reviewer mirina, forum, actioned directly.
 
 The glossary row for `to return (a value)` recorded only `يُرجع`, the masculine singular
-present form. mirina's point is that the word itself was never in doubt (she set it herself in
-t/470/46) but that a single citation form is not enough to translate from: the verb has to
+present form. mirina's point is that the word itself was never in doubt (she set it herself on the forum/46) but that a single citation form is not enough to translate from: the verb has to
 agree with whatever is doing the returning, and in programming prose that is almost never a
 masculine singular noun.
 
@@ -104,9 +103,9 @@ The actionable half went to the glossary row's Notes (the conjugation matrix) an
 `guide.md`'s grammar section (non-human plural agreement, and agreeing with the implied subject
 when a function or method acts), since both apply well beyond this one term.
 
-## 2026-08-30: `canvas` added as `السبورة`, `ellipse` added as `شكل بيضاوي` (t/1869)
+## 2026-08-30: `canvas` added as `السبورة`, `ellipse` added as `شكل بيضاوي`
 
-**Decided by:** reviewer mirina, forum https://forum.jiki.io/t/1869, actioned directly.
+**Decided by:** reviewer mirina, forum, actioned directly.
 Both came out of her review of the Weather Symbols exercise, whose page carries the shared
 "draw" category messages.
 
@@ -134,9 +133,9 @@ her call also removes an inconsistency rather than creating one.
 `relational-traffic-lights`, `rainbow`) all now use `السبورة` for canvas and `شكل بيضاوي`
 for ellipse, each with its own reviewer-notes file under `languages/ar/exercise/`.
 
-## 2026-08-26: `to return (a value)` added as `يُرجع` (t/470, post 46)
+## 2026-08-26: `to return (a value)` added as `يُرجع`
 
-**Decided by:** reviewer mirina, forum https://forum.jiki.io/t/470/46, actioned directly.
+**Decided by:** reviewer mirina, forum, actioned directly.
 She pointed out that the glossary had `return chute` (`مجرى الإخراج`) but never named the
 verb for the programming action itself, where the French and Spanish (es-ES) glossaries both
 carry a `to return (a value)` row, and asked for the same row in Arabic.
@@ -175,11 +174,11 @@ message), so the corpus was inconsistent before this decision. A follow-up sweep
 the `يعيد` occurrences over; the other senses of `يعيد` / `إعادة` in the corpus ("rebuild",
 "rewatch", "reset", "reuse") are untouched by it.
 
-## 2026-08-22: brackets restructured to `قوس` + shape qualifier, overriding the 2026-08-08 scheme (t/470, post 32)
+## 2026-08-22: brackets restructured to `قوس` + shape qualifier, overriding the 2026-08-08 scheme
 
 **Decided by:** project owner iHiD, resolving a direct conflict between two native speakers
-in mirina's favour. The linguistic case is mirina's (https://forum.jiki.io/t/470/32); the
-call to adopt it over humam-hamdan's earlier decision (https://forum.jiki.io/t/470/16) is
+in mirina's favour. The linguistic case is mirina's; the
+call to adopt it over humam-hamdan's earlier decision is
 iHiD's, made explicitly because the two proposals could not both stand and we had told the
 thread (post 34) we would not pick a side unilaterally. **Both humam-hamdan's rows and this
 override are native-speaker input; this entry exists so it is on the record that the earlier
@@ -244,11 +243,11 @@ is the formal/educational register, so that framing points the same way as the d
 ### Propagation
 
 Swept every published Arabic item using the old terms. The base word for true/false and
-every other open disagreement on t/470 is untouched by this.
+every other open disagreement on the forum is untouched by this.
 
-## 2026-08-21: `return chute` changed from `مزلقة الإخراج` to `مجرى الإخراج` (t/470, post 33)
+## 2026-08-21: `return chute` changed from `مزلقة الإخراج` to `مجرى الإخراج`
 
-**Decided by:** reviewer mirina, forum t/470, post 33. She proposed replacing `مزلقة
+**Decided by:** reviewer mirina, forum, post 33. She proposed replacing `مزلقة
 الإخراج` with `مجرى الإخراج`, arguing the new term is simpler and more explicit:
 `الإخراج` already illustrates "output" as "exit" in English, and `مزلقة` specifically means
 "slide" (as in a playground slide), which she felt was an unnecessary and potentially
@@ -258,9 +257,9 @@ output/exit sense without that ambiguity. Uncontested by any other reviewer on t
 Swept the two already-published pages using the old term (`concept/arrays`,
 `concept/dictionaries`) to match.
 
-## 2026-08-20: Grammatical gender and plurals added to existing terms (t/470, post 24)
+## 2026-08-20: Grammatical gender and plurals added to existing terms
 
-**Decided by:** reviewer mirina, forum t/470, post 24. She reviewed the existing glossary
+**Decided by:** reviewer mirina, forum, post 24. She reviewed the existing glossary
 term by term and confirmed her proposed grammatical gender and plural form for each Arabic
 word already agreed there, without proposing any change to the word itself. This is an
 enrichment pass, not a re-decision: every word audited here already matched what was in the
@@ -271,7 +270,7 @@ folded into this batch.
 
 ## 2026-08-19: Demonstratives settled on هذا/هذه/هذي only, reversing the 2026-08-08 call
 
-**Decided by:** reviewer mirina, forum t/470, post 22, following up on the earlier
+**Decided by:** reviewer mirina, forum, post 22, following up on the earlier
 "stylistic variation" note below. She researched the short forms ذا/ذه/ذي and found they
 belong to classical/literary Arabic (العربية الفصحى), associated with religious and literary
 texts, not the living everyday language her reading group actually uses — a poor fit for
@@ -283,7 +282,7 @@ next time that page is touched.
 
 ## 2026-08-19: `variable` (the concept) given its own glossary row
 
-**Decided by:** reviewer mirina's question on forum t/470, post 20. She was reasonably
+**Decided by:** reviewer mirina's question on forum, post 20. She was reasonably
 confused by the "Keep in English" table listing "Variable and function names" as never
 translated, having also seen the general word "variable" translated in concept prose. Those
 are two different things: the table entry means literal code identifiers (`leftPosition`,
@@ -297,9 +296,9 @@ JikiScript, not Python: no `tuple` or `Set` type exists anywhere in the taught c
 her question about those terms needing glossary rows doesn't apply — they're not concepts
 this course teaches at all.
 
-## 2026-08-08: brackets split by type; الاقتران is a one-time gloss only; demonstrative register left to the author's judgement (t/470, t/740)
+## 2026-08-08: brackets split by type; الاقتران is a one-time gloss only; demonstrative register left to the author's judgement (t/470)
 
-**Decided by:** native speaker humam-hamdan (https://forum.jiki.io/t/470/16), answering four
+**Decided by:** native speaker humam-hamdan, answering four
 questions raised while applying his full review of `concept/using-functions` (t/740/3).
 
 ### Brackets: no shared default, each glyph gets its own word (actioned)
@@ -339,10 +338,9 @@ what I varied for variety, to reduce monotony). Not a rule to codify in the guid
 deliberate authorial variation, not a register decision that would make other pages wrong
 for using standard `هذا`/`هذه`.
 
-## 2026-08-07: pitfall and streak settled; true/false contested (t/470)
+## 2026-08-07: pitfall and streak settled; true/false contested
 
-**Decided by:** native speakers humam-hamdan (https://forum.jiki.io/t/470/5) and baharoon
-(https://forum.jiki.io/t/470/3), on the pinned Arabic glossary thread. humam-hamdan's post
+**Decided by:** native speakers humam-hamdan and baharoon, on the pinned Arabic glossary thread. humam-hamdan's post
 answers, term by term, the three points baharoon raised the day before and that were left
 open in the 2026-08-06 entry below.
 
@@ -404,14 +402,14 @@ baharoon's original grammatical claim (that `صحيح` is "grammatically incorre
 also still unsupported by anything beyond assertion; humam-hamdan's post 12 restates it as
 a question of which antonym pair is idiomatic, which is a different and weaker claim.
 
-## 2026-08-06: Translation engine confirmed as DeepSeek (t/886)
+## 2026-08-06: Translation engine confirmed as DeepSeek
 
-**Decided by:** native speaker humam-hamdan, forum topic 886
-("[Arabic Review] Alternative translation model", https://forum.jiki.io/t/886/5), replying to
+**Decided by:** native speaker humam-hamdan, the forum
+("[Arabic Review] Alternative translation model", replying to
 iHiD's direct question asking him to compare the two candidate versions.
 
 This thread is one of the pre-convention, unlabelled engine-comparison posts from
-2026-08-01 (same generating scripts as ja t/887, ko t/885, zh-CN t/888, zh-TW t/902, uk t/903
+2026-08-01 (same generating scripts as ja, ko, zh-CN, zh-TW, uk
 — see the general mapping in memory). For this batch: **post #1 = gemini-3.1-pro-preview,
 post #2 = deepseek-v4-pro**, and the thread's opening post links the then-published (fable)
 version for a three-way comparison. humam-hamdan: "So we have the TL from Post 1 and from
@@ -423,8 +421,7 @@ is the language's first engine decision, not a switch.
 
 
 
-**Decided by:** baharoon, native-speaker reviewer, on the pinned glossary thread
-(https://forum.jiki.io/t/470/3).
+**Decided by:** baharoon, native-speaker reviewer, on the pinned glossary thread.
 
 **Actioned:** the `pitfall` row was written as `فخ (شائع)`, with شائع in parentheses as if
 it were an optional qualifier. baharoon pointed out this is wrong regardless of which
@@ -473,7 +470,7 @@ Agreed independently across chunk workers:
 
 | English | Proposed target | Notes | Confidence |
 |---------|-----------------|-------|------------|
-| ~~dashboard~~ | ~~لوحة التحكم~~ | **Confirmed by mirina, t/795/7 (2026-08-24), moved to `glossary.md`.** | ~~medium~~ |
+| ~~dashboard~~ | ~~لوحة التحكم~~ | **Confirmed by mirina/7 (2026-08-24), moved to `glossary.md`.** | ~~medium~~ |
 | Premium (tier name) | kept Latin | | medium |
 | concept | مفهوم | | medium |
 | unlock | فتح | | medium |
@@ -485,7 +482,7 @@ Agreed independently across chunk workers:
 | milestone | محطة | | medium |
 | scrubber | شريط التنقّل | | low |
 | Spotlight mode | وضع التركيز | | low |
-| ~~method~~ | ~~تابع~~ | **Rejected by mirina, t/470/53 (2026-09-08); `طريقة` written to `glossary.md` instead.** | ~~medium~~ |
+| ~~method~~ | ~~تابع~~ | **Rejected by mirina/53 (2026-09-08); `طريقة` written to `glossary.md` instead.** | ~~medium~~ |
 
 Two disagreements needing a call before a tidy pass (feature names, recur across namespaces):
 

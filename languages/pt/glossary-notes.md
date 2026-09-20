@@ -34,7 +34,7 @@ form the split belongs in the locale files rather than in this row.
 ## 2026-08-03: `return chute` is no longer a shared row
 
 **Decided by:** native speakers (alanprofeta, oxe-b) on the Brazilian Portuguese glossary
-thread, https://forum.jiki.io/t/288/10 and https://forum.jiki.io/t/288/12.
+thread, and.
 **Terms affected:** `return chute`.
 
 The shared row `return chute → calha de saída` was an unconfirmed draft that carried its own

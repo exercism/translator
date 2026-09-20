@@ -2,7 +2,7 @@
 
 ## 2026-08-19: `variable` plural settled on वेरिएबलो, never वेरिएबल्स
 
-**Decided by:** native-speaker review (suditi, forum t/1734, `exercise/relational-sun`). The
+**Decided by:** native-speaker review (suditi, forum, `exercise/relational-sun`). The
 singular वेरिएबल was already settled; the plural had drifted to the English-style
 वेरिएबल्स (adding the English `-s` sound) in machine-translated content. She confirmed
 वेरिएबलो (the native Hindi plural ending) reads correctly and asked for it applied "within
@@ -163,9 +163,9 @@ and if a native speaker prefers it for the human-interpreter framing the row sho
 
 **Why.** The section prescribed "आपका काम यह है कि ..." as *the* fix for a comma splice, with
 a worked example built on it. That construction came from @suditi's own rewrite of one
-`maze-solve-basic` sentence (topic 804), and it was correct for that sentence. Two reviewers
+`maze-solve-basic` sentence, and it was correct for that sentence. Two reviewers
 have since criticised sentences built exactly that way as still reading like English carried
-across word for word: @aadish-code-create on topic 1063 quoted `rainbow`'s "आपका काम यह है कि
+across word for word: @aadish-code-create on the forum quoted `rainbow`'s "आपका काम यह है कि
 100 खड़ी पट्टियों से एक सुंदर इंद्रधनुष पैटर्न बनाइए।" as a direct translation of "Your task
 is to make a beautiful rainbow pattern made up of 100 vertical bars", and @suditi's original
 complaint was the same family of fault. Presenting one reviewer's repair of one sentence as
@@ -200,7 +200,7 @@ point legible.
 
 **Honest assessment, and it is not optimistic.** This wording is better than what it replaces:
 it can no longer be read as prescribing a shape, and it names the specific failure the two
-reviewers reported. But the controlled experiment on topic 925 already showed the limit. A
+reviewers reported. But the controlled experiment on the forum already showed the limit. A
 leaner guide removed the bad construction without producing a good one, and the engine ignored
 an explicit instruction to restructure, which is the same result reported for other languages.
 "Do not preserve the English sentence's shape" is a negative instruction with no positive
@@ -211,10 +211,10 @@ next pass is per-item reviewer notes (`languages/hi/exercise/<slug>.md`), senten
 and that remains the only working lever. The value of this edit is that the guide no longer
 actively teaches the construction reviewers are complaining about.
 
-## 2026-08-04: Chandrabindu restored, colour and orientation terms fixed, shapes settled (topic 482)
+## 2026-08-04: Chandrabindu restored, colour and orientation terms fixed, shapes settled
 
-**Decided by:** @dazecodes and @suditi, on the pinned Hindi glossary thread (topic 482), with
-@suditi's introduction on topic 481. **Status: native-confirmed**, and the first of these
+**Decided by:** @dazecodes and @suditi, on the pinned Hindi glossary thread, with
+@suditi's introduction on the forum. **Status: native-confirmed**, and the first of these
 **overrules a house default we set ourselves two days earlier**. **Terms affected:** the
 nasalization rule in `guide.md` § Orthography, plus `hue`, `lightness`, `horizontal /
 vertical`, `circle`, `hex (colour)` and the oblique plural in the `challenge` row.
@@ -364,11 +364,11 @@ Both were found while sanity-checking the rows against live text, and neither is
 
 `scenarios.maze1.description` still opened with "आपका काम है, ...", the construction
 `guide.md` § "Sentence structure" names as the rejected form, in content @suditi has
-approved. The obvious repair was the rewrite she gave on topic 804, "आपका काम यह है कि ...",
+approved. The obvious repair was the rewrite she gave on the forum, "आपका काम यह है कि ...",
 which is what the reviewer note in `languages/hi/exercise/maze-solve-basic.md` tells a pass
 to use.
 
-It was not used, because @aadish-code-create (topic 1063) has since criticised exactly that
+It was not used, because @aadish-code-create has since criticised exactly that
 shape as still reading like English carried across. Taking one reviewer's repair of one
 sentence and stamping it onto every later sentence is how a rewrite becomes a formula, and
 a formula is the thing he is objecting to.
@@ -387,9 +387,9 @@ now a fronted correlative (जो ... , उसे ...), which is how Hindi build
 plus a second sentence for the avoidance. That change is ours, on the guide's "split, don't
 carry across" rule, and no reviewer asked for it.
 
-## 2026-08-03: The imperative form settled (-इए vs -एं), plus challenge and page (forum topic 999)
+## 2026-08-03: The imperative form settled (-इए vs -एं), plus challenge and page
 
-**Decided by:** @suditi (post 5) and @dazecodes (post 6) of forum topic 999 ("[Hindi] First
+**Decided by:** @suditi (post 5) and @dazecodes (post 6) of the forum ("[Hindi] First
 website copy translated"), both native speakers, answering a question we put to them.
 **Status: native-speaker confirmed**, on two independent readings.
 
@@ -460,10 +460,9 @@ additive" in `global/workflow.md`.
 
 ### An independent second verdict on the engine, on a different thread
 
-@dazecodes has also backed @suditi's translation-quality judgement once before: on **forum
-topic 893** ("[Hindi Review] Progress?"), post 7, "I agree, the third is the best of the
+@dazecodes has also backed @suditi's translation-quality judgement once before: on **the forum** ("[Hindi Review] Progress?"), post 7, "I agree, the third is the best of the
 three", agreeing with her post 5 on the same three candidates. **That is not a second verdict
-on the DeepSeek choice**, which was made on topic 925 from a different, blind A/B/C sample
+on the DeepSeek choice**, which was made on the forum from a different, blind A/B/C sample
 (see the 2026-08-02 entry below); topic 893 was an earlier, unlabelled three-way comparison
 of ungoverned model output. What it is worth is that our two most active Hindi reviewers
 independently pick the same Hindi out of a set, which is the assumption the single-reviewer
@@ -513,7 +512,7 @@ actually breaks a page. **The corpus is the weaker half of the argument**: DeepS
 both halves of it, so the anusvara majority is partly a model habit rather than an
 independent fact about Hindi.
 
-**Draft question for the pinned Hindi glossary thread (topic 482), for @suditi,
+**Draft question for the pinned Hindi glossary thread, for @suditi,
 @shubham-gupta-git and @dazecodes:**
 
 > One orthography question we have decided ourselves and would like checked. Our Hindi pages
@@ -565,11 +564,11 @@ to weigh who said a thing rather than simply follow the rule, and this guide has
 demonstrated (2026-08-01 entry below) that its examples and framing steer output harder than
 its rules do.
 
-The underlying decisions are already logged in the topic 804 and topic 925 entries below;
+The underlying decisions are already logged on the forum and topic 925 entries below;
 this entry records the exact text that was removed, so nothing is lost.
 
 **Orthography, nukta.** The guide carried @suditi's verdict in full, quoted from post 3/4 of
-forum topic 804, ahead of the rule: "@suditi's verdict is that it is decided per word, not by
+the forum, ahead of the rule: "@suditi's verdict is that it is decided per word, not by
 a blanket policy: 'Nuktas are complicated. For some words, you can drop it because they are
 so commonly used that they know what it means even when you don't add the nukta. I guess it's
 fine if you drop it for सिर्फ, but for the rest it would depend on the word.'" The
@@ -605,10 +604,10 @@ to what was there before, including the standard spellings कि and भूल�
 deliberately kept over her की and भुलभुलिया (see the topic 804 entry below). **That decision
 still stands and is not reopened by this edit.**
 
-## 2026-08-02: `return` stops being a hybrid verb; `input`/`output` stay nouns (forum topic 482)
+## 2026-08-02: `return` stops being a hybrid verb; `input`/`output` stay nouns
 
 **Decided by:** @shubham-gupta-git, a native speaker and a new third Hindi voice, in post 5
-of forum topic 482 (the pinned glossary thread). **Terms affected:** `to return (a value)`
+of the forum (the pinned glossary thread). **Terms affected:** `to return (a value)`
 (changed), `return value`, `input (to a function)`, `output` (all three kept, with new
 Notes). **Status: native-speaker proposed, one voice.** @suditi and @dazecodes have not
 weighed in; every row here stays challengeable and none of them is protected.
@@ -703,9 +702,9 @@ prose allows and to use the bare noun only where a noun is unavoidable, and the
 noun-in-noun-position question is listed as open for a native speaker. **Confidence: medium**
 on keeping the rows; this is the part of his post most worth going back to him about.
 
-## 2026-08-02: Translation engine changed to DeepSeek, and two terms ruled on (forum topic 925)
+## 2026-08-02: Translation engine changed to DeepSeek, and two terms ruled on
 
-**Decided by:** @suditi, a native speaker, in post 5 of forum topic 925 ("[Hindi Review]
+**Decided by:** @suditi, a native speaker, in post 5 of the forum ("[Hindi Review]
 Alternative translation model"), reading a blind three-way comparison. **Status:
 native-speaker confirmed**, for the engine and for both terms.
 
@@ -734,7 +733,7 @@ Her verdict:
 `deepseek-v4-pro`.
 
 **This supersedes the 2026-08-01 entry below** ("Confirmed translation engine: fable"), where
-an unnamed alternative model was rated worse than fable on topic 925 and the incumbent was
+an unnamed alternative model was rated worse than fable on the forum and the incumbent was
 kept. **The two results are not in conflict.** That test ran before the 2026-08-01 guide and
 glossary rewrite, so it compared engines working from a guide we have since established was
 broken (it prescribed the Urdu-leaning register, see that entry). This test ran on the fixed
@@ -781,9 +780,9 @@ and deliberately does not claim that Hindi nouns never inflect. Both rows sit in
 "Exercise scenario vocabulary" section of the glossary, for real-world nouns an exercise's
 story is built on.
 
-## 2026-08-02: @suditi answers the open questions (forum topic 804)
+## 2026-08-02: @suditi answers the open questions
 
-**Decided by:** @suditi, a native speaker, in posts 3 and 4 of forum topic 804, after
+**Decided by:** @suditi, a native speaker, in posts 3 and 4 of the forum, after
 reading the retranslated `maze-solve-basic`. **Status: native-speaker confirmed**, except
 `value`, which she declined to rule on.
 
@@ -932,7 +931,7 @@ separate chunk workers rather than one.
 
 ## 2026-08-01: Guide and glossary rewritten: the shipped Hindi was Urdu in Devanagari
 
-**Decided by:** iHiD, after native-speaker review (@suditi, forum topic 893) and a corpus
+**Decided by:** iHiD, after native-speaker review (@suditi on the forum) and a corpus
 study. **Terms affected:** the script policy for every technical noun, plus the rows listed
 below. **Status: unconfirmed draft**, except the two rows that already carried native
 sign-off (`template literal`, `edge case`), which are unchanged in wording.
@@ -1170,7 +1169,7 @@ executable sense) and leans towards `शर्त` for condition (it is the word
 
 ## 2026-08-01: Confirmed translation engine: fable (stick with original)
 
-**Decided by:** native speaker (suditi), forum topic 925 ("[Hindi Review] Alternative
+**Decided by:** native speaker (suditi), the forum ("[Hindi Review] Alternative
 translation model"). suditi found the alternative model's version worse than the original:
 transliterated sentences that don't read naturally in Hindi, and overly complex sentence
 structures not broken up the way Hindi prose normally would be. iHiD confirmed (post #3):
@@ -1189,9 +1188,9 @@ reviewer may want to double-check `solution (learner's submission)`: हल was 
 loanword सॉल्यूशन for warmth, but that reasoning lived only in rationale, not a Notes-column
 flag, so it read as closer to a live register choice than the other cuts.
 
-## 2026-07-30: Native speaker rewords "edge case" (t/482)
+## 2026-07-30: Native speaker rewords "edge case"
 
-**Decided by:** @dazecodes, forum topic 482.
+**Decided by:** @dazecodes, the forum.
 **Terms affected:** `edge case`.
 
 @dazecodes proposed rewording the `<define>` gloss from "कोई असामान्य स्थिति जो कम होती है
@@ -1220,9 +1219,9 @@ snapshot @suditi's "rest of the glossary seems okay" comment (below) was reactin
 so it cannot be read as covering them either. None of the four should be treated as
 confirmed until a native speaker reviews them specifically.
 
-## 2026-07-19: Native speaker rewords "template literal"; general sign-off is not a row confirmation (t/482)
+## 2026-07-19: Native speaker rewords "template literal"; general sign-off is not a row confirmation
 
-**Decided by:** @suditi, forum topic 482.
+**Decided by:** @suditi, the forum.
 **Terms affected:** `template literal`; and, as a documented limit on scope, every other row
 as it stood in the 2026-07-18 snapshot.
 

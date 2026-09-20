@@ -1,12 +1,12 @@
 # Bangla (bn) glossary notes
 
-## 2026-09-07: Structured House, canonical circle and triangle descriptions (t/2381)
+## 2026-09-07: Structured House, canonical circle and triangle descriptions
 
-**Decided by:** reviewer sohayelmahmud, forum https://forum.jiki.io/t/2381, post 1, actioned
+**Decided by:** reviewer sohayelmahmud, forum, post 1, actioned
 directly. Two items on the Structured House exercise, both applied and the item approved in the
 same pass; he confirmed the rest of the page as fine.
 
-The same point as Stripey Fabric (t/2380), now on a second pair of functions. `circle`'s English
+The same point as Stripey Fabric, now on a second pair of functions. `circle`'s English
 is identical to Cloud Rain Sun's, so Structured House's কেন্দ্র ধরে paraphrase was aligned to the
 Cloud Rain Sun wording (plain কেন্দ্রে, which is also the standing guide rule for a shape drawn
 around a centre point). For `triangle` he gave a wording of his own, তিনটি শীর্ষবিন্দু ও একটি রং
@@ -16,16 +16,16 @@ carrying that description (foxy-face, jumbled-house, penguin, structured-house).
 strings are now named in the guide's fixed-string rule.
 
 The wider `circle` variance across the other drawing exercises is unchanged and still part of the
-corpus-wide sweep flagged on t/2380, not done here.
+corpus-wide sweep flagged on the forum, not done here.
 
-## 2026-09-07: Stripey Fabric, and identical English means identical Bangla (t/2380)
+## 2026-09-07: Stripey Fabric, and identical English means identical Bangla
 
-**Decided by:** reviewer sohayelmahmud, forum https://forum.jiki.io/t/2380, post 1, actioned
+**Decided by:** reviewer sohayelmahmud, forum, post 1, actioned
 directly. One item on the Stripey Fabric exercise, applied and the item approved in the same
 pass; he confirmed the rest of the page as fine.
 
 He pasted the `rectangle` description and category from Cloud Rain Sun again (the same move as
-on Sprouting Flower, t/2379) and asked why the same description is worded differently in
+on Sprouting Flower) and asked why the same description is worded differently in
 different exercises: these should be universal. He is right, and the point is general rather
 than about this page, so it is a guide rule: where a built-in function's English description or
 category is identical across exercises, the Bangla is identical too, word for word.
@@ -54,9 +54,9 @@ those differences are terminology choices rather than paraphrase, e.g. ট্র
 and চলাচল versus চলাফেরা versus মুভমেন্ট for "Movement"). That is a corpus-wide sweep rather than
 a line fix, so it was flagged rather than done in this pass.
 
-## 2026-09-07: Sprouting Flower, and কেন্দ্রে for a centred shape (t/2379)
+## 2026-09-07: Sprouting Flower, and কেন্দ্রে for a centred shape
 
-**Decided by:** reviewer sohayelmahmud, forum https://forum.jiki.io/t/2379, post 1, actioned
+**Decided by:** reviewer sohayelmahmud, forum, post 1, actioned
 directly. Two items on the Sprouting Flower exercise, both applied and the item approved in the
 same pass; he confirmed the rest of the page as fine.
 
@@ -78,9 +78,9 @@ without the "horizontal radius"/"vertical radius" gloss Cloud Rain Sun's English
 Adding that gloss here would put information in the Bangla that is not in this exercise's
 English, so only the কেন্দ্রে half of his ellipse wording was taken. Told to him on the thread.
 
-## 2026-09-07: Run-Length Encoding multi-digit hint (t/2378)
+## 2026-09-07: Run-Length Encoding multi-digit hint
 
-**Decided by:** reviewer sohayelmahmud, forum https://forum.jiki.io/t/2378, post 1, actioned
+**Decided by:** reviewer sohayelmahmud, forum, post 1, actioned
 directly. One line-level item on the Run-Length Encoding exercise, applied and the item
 approved in the same pass; everything else on the page he confirmed as fine.
 
@@ -92,9 +92,9 @@ make room for it", and names the running total এখন পর্যন্ত �
 a naturalness fix, not a correction. No guide or glossary change follows: সংখ্যা for "number"
 is already the glossary row, and nothing here generalises past this sentence.
 
-## 2026-09-07: Formal Dinner wording, and the lost "9 lines" (t/2377)
+## 2026-09-07: Formal Dinner wording, and the lost "9 lines"
 
-**Decided by:** reviewer sohayelmahmud, forum https://forum.jiki.io/t/2377, post 1, actioned
+**Decided by:** reviewer sohayelmahmud, forum, post 1, actioned
 directly. Ten line-level items on the Formal Dinner exercise, all applied and the item
 approved in the same pass.
 
@@ -120,9 +120,9 @@ He also asked a process question, not about this content: what to do when he spo
 on an item he has already approved. Answered on the thread: post it wherever is convenient
 (the old thread, a new one, anywhere), approval is not a lock, and we will fix it.
 
-## 2026-09-06: "drawers" is ড্রয়ার, not দেরাজ (t/2349)
+## 2026-09-06: "drawers" is ড্রয়ার, not দেরাজ
 
-**Decided by:** reviewer sohayelmahmud, forum https://forum.jiki.io/t/2349, post 1, actioned
+**Decided by:** reviewer sohayelmahmud, forum, post 1, actioned
 directly.
 
 Reviewing the Matching Socks exercise, he flagged the single occurrence of দেরাজ (the native
@@ -136,9 +136,9 @@ transliterated rather than translated, even though ordinary non-CS vocabulary ot
 defaults to the native word. দেরাজ is not wrong, it is simply not what anyone says. It appeared
 only once in the whole Bangla corpus, so no sweep was needed.
 
-## 2026-09-06: "left" is বাম, not বাঁ; Scroll and Shoot title transliterated (t/2346)
+## 2026-09-06: "left" is বাম, not বাঁ; Scroll and Shoot title transliterated
 
-**Decided by:** reviewer sohayelmahmud, forum https://forum.jiki.io/t/2346, post 1, actioned
+**Decided by:** reviewer sohayelmahmud, forum, post 1, actioned
 directly. All of it came out of his review of the Scroll and Shoot exercise.
 
 ### "left" -> বাম
@@ -172,9 +172,9 @@ down".
 longer, use dash, easy to read". That is a typography rule, so it went to the guide's
 Punctuation and script conventions section, not the glossary.
 
-## 2026-09-06: `factor` split from উৎপাদক; "sixteen" spelled ষোল (t/2344)
+## 2026-09-06: `factor` split from উৎপাদক; "sixteen" spelled ষোল
 
-**Decided by:** reviewer sohayelmahmud, forum https://forum.jiki.io/t/2344, actioned directly.
+**Decided by:** reviewer sohayelmahmud, forum, actioned directly.
 Both came out of his review of the Raindrop Sounds exercise.
 
 ### `factor` -> গুণনীয়ক
@@ -195,7 +195,7 @@ the exercise under review.
 
 ## 2026-09-03: "relational" (exercise family) is আনুপাতিক, not আপেক্ষিক
 
-**Decided by:** native-speaker review (sohayelmahmud, forum t/2322, post 1).
+**Decided by:** native-speaker review (sohayelmahmud, forum, post 1).
 
 Same shape as the snowman-family fix earlier the same day: `relational-sun` and
 `relational-traffic-lights` used আপেক্ষিক ("relative"), while `relational-snowman` already
@@ -207,7 +207,7 @@ no change. No other `relational-*` exercises exist.
 
 ## 2026-09-03: "snowman" (exercise theme) is তুষারমানব, not স্নোম্যান
 
-**Decided by:** native-speaker review (sohayelmahmud, forum t/2320, post 3).
+**Decided by:** native-speaker review (sohayelmahmud, forum, post 3).
 
 Flagged as a cross-exercise consistency issue: `relational-snowman` used স্নোম্যান
 throughout, `snowman` used তুষারমানব throughout, and `snowman-basic` mixed both terms
@@ -222,13 +222,12 @@ snowman-family exercises (`relational-snowman`, `snowman`, `snowman-basic`).
 
 ## 2026-09-03: "drawing" (noun) is ড্রয়িং, distinct from the verb আঁকা
 
-**Decided by:** native-speaker review (sohayelmahmud, forum t/1696, weather-symbols, and
-t/2294, post 1).
+**Decided by:** native-speaker review (sohayelmahmud, forum, weather-symbols, and, post 1).
 
 First raised on the "weather-symbols" concept's "Drawing a day" heading: "একটি দিনের
 ড্রয়িং", not "একটি দিন আঁকা" — the gerund-noun transliteration reads as more natural and
 more professional for a heading/noun use than a calque built on the verb আঁকা ("to draw").
-Raised a second time, independently, on `exercise/finish-wall` (t/2294, post 1): "In the
+Raised a second time, independently, on `exercise/finish-wall`: "In the
 first drawing exercise you completed," was rendered as "প্রথম আঁকার অনুশীলনীটি" (a calque on
 the verb); he flagged it again with "maybe i flagged this before, here phonetic is more
 natural" — and he was right, it was the same call. Applied his exact wording and recorded as
@@ -238,7 +237,7 @@ draw" something) is unaffected and stays আঁকা.
 
 ## 2026-09-02: "shift" (cipher operation) is a phonetic loanword, not সরান
 
-**Decided by:** native-speaker review (sohayelmahmud, forum t/2285, posts 1, 3).
+**Decided by:** native-speaker review (sohayelmahmud, forum, posts 1, 3).
 
 First pass declined his post-1 suggestion, which read as a synonym swap (change/convert for
 shift); that would have collided with the glossary's existing টাইপ কনভার্সন ("Type
@@ -257,7 +256,7 @@ new row under "Loops, state & program flow" in `glossary.md`.
 
 ## 2026-08-23: Acronym expansions get one combined gloss, not one per letter
 
-**Decided by:** native-speaker review (sohayelmahmud, forum t/1849, posts 1 and 3,
+**Decided by:** native-speaker review (sohayelmahmud, forum, posts 1 and 3,
 `concept/colors`).
 
 The general `<define>` rule glosses a native or Sanskrit-derived term where the tag sits,
@@ -275,7 +274,7 @@ any acronym, not just this page. Recorded as a bullet under "Glossing a `<define
 
 ## 2026-08-18: কী (dictionary key) always glossed with the English word
 
-**Decided by:** native-speaker review (sohayelmahmud, forum t/1707, `concept/dictionaries`).
+**Decided by:** native-speaker review (sohayelmahmud, forum, `concept/dictionaries`).
 He flagged that কী has multiple meanings in Bangla (it also means "what"), so using it bare
 for the programming term "key" makes a reader stop and disambiguate. His fix: always write
 "কী (key)", every single occurrence, throughout a page that uses it in that sense, "even if
@@ -287,7 +286,7 @@ uses কী for a dictionary key should get the same sweep next time it's touche
 
 ## 2026-08-18: email is ইমেইল, never ইমেল or "email address"
 
-**Decided by:** native-speaker review (sohayelmahmud, forum t/1660 and t/1662). He asked
+**Decided by:** native-speaker review (sohayelmahmud, forum and). He asked
 for this to be added to the glossary directly. Two rules: use the phonetic spelling ইমেইল
 (double ই), not ইমেল, everywhere the word appears (subject, preview, cta, body, footer);
 and never translate "address" separately in "email address", since Bangla speakers say just
@@ -298,7 +297,7 @@ clean. Row added to `glossary.md` under Platform & curriculum vocabulary.
 
 ## 2026-08-18: "Have fun!" is about the work, and Type Conversion carries a gloss
 
-**Decided by:** native-speaker review (sohayelmahmud, forum t/1699, post 1, exercise
+**Decided by:** native-speaker review (sohayelmahmud, forum, post 1, exercise
 `digital-root`). Two of his four corrections are rules rather than one-off wordings, and
 both had already been settled the same way in `luhn`, so they are now recorded once here
 instead of being rediscovered per exercise.
@@ -307,9 +306,9 @@ instead of being rediscovered per exercise.
   an invitation to a party rather than to the exercise. First fix attempt was কাজটা উপভোগ
   করুন! (or bare উপভোগ করুন! where the sentence already names the work), matching what
   `luhn` already used; applied to `cloud-rain-sun`, `space-invaders-solve-basic` and
-  `bouncer-dress-code` (forum t/1713-1715, t/1709). But on t/1715 and t/473 (2026-08-19) he
+  `bouncer-dress-code` (forum-1715). But on the forum and (2026-08-19) he
   said even that "looks a bit odd" and went looking for a better cultural fit, then settled
-  on **শুভকামনা!** ("best wishes") as the natural Bangla closing wish, confirmed on t/1717
+  on **শুভকামনা!** ("best wishes") as the natural Bangla closing wish, confirmed on the forum
   (Foxy Face) as also the right fit for "Good luck!", not just "Have fun!" — so শুভকামনা! is
   now the one closing-wish translation regardless of which English phrase it renders. Row in
   `glossary.md` updated accordingly (Platform & curriculum vocabulary). A full sweep swapping
@@ -333,7 +332,7 @@ reads as "no"/"not", and the `Number()` description reads better as অঙ্ক
 
 ## 2026-08-18: Clock times keep Latin digits
 
-**Decided by:** native-speaker review (sohayelmahmud, forum t/1695, post 2, exercise
+**Decided by:** native-speaker review (sohayelmahmud, forum, post 2, exercise
 `digital-clock`). The scenario descriptions had converted the clock times to Bengali
 numerals (৬:৩৫, ১১:০৪, ২৩:৩২); he asked for them back in Latin digits, since the learner
 reads the same time on the clock itself. Recorded as a bullet in `guide.md` under
@@ -347,7 +346,7 @@ keeping বর্তমান সময় দেখান. Both are item-level 
 
 ## 2026-08-18: "For the bonus" is a bare label, not a purpose phrase
 
-**Decided by:** native-speaker review (sohayelmahmud, forum t/1694, posts 1 and 2, exercise
+**Decided by:** native-speaker review (sohayelmahmud, forum, posts 1 and 2, exercise
 `two-fer`). He raised it twice, saying বোনাসের জন্য: is unnatural: where "For the bonus,"
 opens a sentence it is functioning as a label, so Bangla wants the bare noun and a colon
 (বোনাস: এটি কি মাত্র ৬ লাইনের কোডে লিখে দেখাতে পারবেন?). The genuinely prepositional use
@@ -361,7 +360,7 @@ split into separate sentences.
 
 ## 2026-08-18: Describer lines are passive in Bangla
 
-**Decided by:** native-speaker review (sohayelmahmud, forum t/1693, post 5284, exercise
+**Decided by:** native-speaker review (sohayelmahmud, forum, post 5284, exercise
 `rainbow`). The English describer lines have no stated subject ("drew a rectangle ...",
 "cleared the canvas", "converted HSL color ..."), which he reads as passive, and he asked
 for every Bangla describer to match: এঁকেছে → আঁকা হয়েছে, ফেলেছে → ফেলা হয়েছে, করেছে →
@@ -377,7 +376,7 @@ classifier (রংধনুটি আঁকুন), and error strings read bette
 
 ## 2026-08-18: Badge names and role words stay phonetic
 
-**Decided by:** native-speaker review (sohayelmahmud, forum t/1700, badges). He corrected two
+**Decided by:** native-speaker review (sohayelmahmud, forum, badges). He corrected two
 badge names that had been translated into Bangla back to transliterations: "Maze Navigator"
 is মেইজ নেভিগেটর, not গোলকধাঁধা নেভিগেটর, and "Townsfolk" is টাউনসফোক, not শহরবাসী. He made the
 same call inside body prose for two role/level words: "expert" is এক্সপার্ট and "beginner" is
@@ -398,7 +397,7 @@ rendered by sense rather than word-for-word ("two heads are better than one" as
 
 ## 2026-08-18: Phonetic-first for well-known English game and everyday terms
 
-**Decided by:** native-speaker review (sohayelmahmud, forum t/1692, posts 1 and 2, exercise
+**Decided by:** native-speaker review (sohayelmahmud, forum, posts 1 and 2, exercise
 `rock-paper-scissors`). He raised the point twice: an English name or word that Bangla
 speakers already use as a loanword should be transliterated phonetically, not translated
 and not replaced by a native equivalent.
@@ -422,7 +421,7 @@ reads better as প্রদত্ত ফাংশনগুলো than দেও
 
 ## 2026-08-17: "common" stays phonetic, not translated
 
-**Decided by:** native-speaker review (sohayelmahmud, forum t/1684, post 5178, concept
+**Decided by:** native-speaker review (sohayelmahmud, forum, post 5178, concept
 `repeat`). He said the word "common" is always used in English in this context, so Bangla
 should render it phonetically as কমন rather than translating it (e.g. not সাধারণ). Row added
 to `glossary.md`.
@@ -603,8 +602,8 @@ and in the row's own Notes column in `glossary.md`, not treated as a decision.
 | streak | Native Bangla word meaning "continuity/consistency". |
 | tech / tech industry | Loanword pairing; established in Bangla tech media. |
 | pitfall | Native word; plain বিপদ alone reads as generic "danger" without the gloss. |
-| left (direction) | বাম, confirmed by native-speaker review 2026-09-06 (sohayelmahmud, forum t/2346, post 1). বাঁ is the more formal/literary form; বাম is what is said in everyday Bangla, which is the register Jiki wants. |
-| Scroll and Shoot (exercise name) | Fully transliterated including the conjunction, confirmed by native-speaker review 2026-09-06 (sohayelmahmud, forum t/2346, post 1). |
+| left (direction) | বাম, confirmed by native-speaker review 2026-09-06 (sohayelmahmud, forum, post 1). বাঁ is the more formal/literary form; বাম is what is said in everyday Bangla, which is the register Jiki wants. |
+| Scroll and Shoot (exercise name) | Fully transliterated including the conjunction, confirmed by native-speaker review 2026-09-06 (sohayelmahmud, forum, post 1). |
 
 ### Values & data types
 
@@ -645,12 +644,12 @@ and in the row's own Notes column in `glossary.md`, not treated as a decision.
 | mental model | Ordinary adjective + loanword noun; the picture-in-your-head framing. |
 | (programming) language | ভাষা is the ordinary Bangla word for "language" and beginners already know it. |
 | variable | Loanword; confirmed as the real dev/tutorial-register standard over the textbook word চলক. |
-| assignment | Loanword, confirmed by native-speaker review 2026-08-15 (sohayelmahmud, forum t/473, post 4948) as the standard over নিয়োগ/কাজ. |
+| assignment | Loanword, confirmed by native-speaker review 2026-08-15 (sohayelmahmud, forum, post 4948) as the standard over নিয়োগ/কাজ. |
 | code block | Loanword pairing; both halves already familiar in Bangla tech writing. |
 | loop | Loanword, the real dev/tutorial-register standard. |
 | error | Loanword; confirmed as the dev/tutorial-register standard over the more formal word ত্রুটি. |
-| nested | Loanword, confirmed by native-speaker review 2026-08-15 (sohayelmahmud, forum t/473, post 4948); use নেস্টেড alone, or নেস্টেড লুপ / লুপের ভিতর লুপ when spelling out "nested loop". |
-| iteration | Loanword, confirmed by native-speaker review 2026-08-15 (sohayelmahmud, forum t/473, post 4948) as the standard over পুনরাবৃত্তি. |
+| nested | Loanword, confirmed by native-speaker review 2026-08-15 (sohayelmahmud, forum, post 4948); use নেস্টেড alone, or নেস্টেড লুপ / লুপের ভিতর লুপ when spelling out "nested loop". |
+| iteration | Loanword, confirmed by native-speaker review 2026-08-15 (sohayelmahmud, forum, post 4948) as the standard over পুনরাবৃত্তি. |
 | class | Loanword. |
 | object | Loanword. |
 
@@ -659,9 +658,9 @@ and in the row's own Notes column in `glossary.md`, not treated as a decision.
 | Term | Why |
 |------|-----|
 | course | Loanword, universal in Bangla for a taught course. |
-| greeting (email opener) | স্বাগতম! confirmed by native-speaker review 2026-08-15/16 (sohayelmahmud, forum t/1660, t/1661, t/1662, t/1663) over নমস্কার, which he flagged as Hindu-coded and inappropriate for a secular product; he explicitly said "স্বাগতম! is the best for this type of mail, you can lock it in" (t/1661). Applied across the bn mailer files. |
-| "For the bonus, ..." (lead-in label) | বোনাস: confirmed by native-speaker review 2026-08-18 (sohayelmahmud, forum t/1694, posts 1 and 2); he called বোনাসের জন্য: unnatural for a sentence-opening label. |
-| weekday (name of a day of the week) | বার, confirmed by native-speaker review 2026-08-18 (sohayelmahmud, forum t/1696, posts 1 and 2). He raised it twice: দিন carries several senses in Bangla (calendar day, and the verb "give"), so a sentence that uses দিন for a named weekday makes the reader "think twice which দিন you meant". বার is what Bangla speakers actually use for the name of a day of the week, and the calendar-day sense keeps দিন. |
+| greeting (email opener) | স্বাগতম! confirmed by native-speaker review 2026-08-15/16 (sohayelmahmud, forum) over নমস্কার, which he flagged as Hindu-coded and inappropriate for a secular product; he explicitly said "স্বাগতম! is the best for this type of mail, you can lock it in". Applied across the bn mailer files. |
+| "For the bonus, ..." (lead-in label) | বোনাস: confirmed by native-speaker review 2026-08-18 (sohayelmahmud, forum, posts 1 and 2); he called বোনাসের জন্য: unnatural for a sentence-opening label. |
+| weekday (name of a day of the week) | বার, confirmed by native-speaker review 2026-08-18 (sohayelmahmud, forum, posts 1 and 2). He raised it twice: দিন carries several senses in Bangla (calendar day, and the verb "give"), so a sentence that uses দিন for a named weekday makes the reader "think twice which দিন you meant". বার is what Bangla speakers actually use for the name of a day of the week, and the calendar-day sense keeps দিন. |
 
 ### Jiki physical metaphors
 

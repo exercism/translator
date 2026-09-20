@@ -2,7 +2,7 @@
 
 ## 2026-08-06: Translation engine confirmed as `fable`
 
-**Decided by:** native speaker `faiifaiipuipui`, on the "[Thai Review] Which of these three translations reads best?" comparison thread (https://forum.jiki.io/t/1050, post 2), 2026-08-04. **Status:** settled.
+**Decided by:** native speaker `faiifaiipuipui`, on the "[Thai Review] Which of these three translations reads best?" comparison thread, 2026-08-04. **Status:** settled.
 **Terms affected:** none (engine choice, not a glossary or guide change).
 **Files affected:** `tracking.json` only, which now carries a `translation_engine` block of `{"engine": "fable", "model": "fable"}`. It had no block before, meaning the engine was unconfirmed.
 
@@ -32,7 +32,7 @@ Thai therefore stays on the `fable` default, but that is now a native speaker's 
 
 ## 2026-08-04: English hint in parentheses for terms Thai speakers say in English
 
-**Decided by:** native speaker `faiifaiipuipui` on the pinned glossary thread (https://forum.jiki.io/t/1049, post 3), actioned by agent under the owner's standing instruction to apply clean, uncontested native-speaker recommendations. First native-speaker feedback Thai has had.
+**Decided by:** native speaker `faiifaiipuipui` on the pinned glossary thread, actioned by agent under the owner's standing instruction to apply clean, uncontested native-speaker recommendations. First native-speaker feedback Thai has had.
 
 He asked whether some rows could show the English word in parentheses as a hint, because for many programming terms Thai speakers say the English even where a Thai word exists, and listed the terms he has "seldom heard someone say in Thai" in a learning-to-program context. The convention itself was already the Thai realisation of `<define>` (Thai first, English in italic brackets); what is new is applying it to a term on first use in a page even where the English source carries no markup. The rule lives in `guide.md` under "Term clarification"; the per-row trigger is the phrase "English hint on first use" in the `Notes` column.
 

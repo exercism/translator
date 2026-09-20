@@ -1,6 +1,6 @@
 # Hebrew (he) glossary notes
 
-## 2026-08-29: First native-speaker feedback (forum t/1302)
+## 2026-08-29: First native-speaker feedback (forum)
 
 **Decided by:** duke-of-spacingham (native Hebrew speaker, community reviewer), actioned
 directly per this repo's rule that a native speaker's call outranks a default assumption.

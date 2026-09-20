@@ -4,7 +4,7 @@
 
 **Decided by:** decard (native-speaker reviewer), applied per the standing rule that a
 native speaker's grammar call outranks a house-style rule written for English. **Source:**
-forum topic 1495, posts 5594, 5658, 5736 and 6833.
+the forum, posts 5594, 5658, 5736 and 6833.
 
 decard raised the same point three times across a month: where Ukrainian omits the
 present-tense copula, the dash between subject and predicate is not intonational decoration,
@@ -38,7 +38,7 @@ rule is untouched for every other language and every other use.
 
 ## 2026-08-16: capitalized formal "Ви"/"Вас" in transactional mailer copy
 
-**Decided by:** iternewo (native-speaker reviewer). **Source:** forum topic 1495, post_id
+**Decided by:** iternewo (native-speaker reviewer). **Source:** the forum, post_id
 5248 (api-email review batch).
 
 Reviewing `account_mailer.welcome`, iternewo corrected lowercase "вас"/"ви" to capitalized
@@ -61,7 +61,7 @@ only to `account_mailer.welcome`, the item she actually flagged. If she confirms
 thread that capitalized Ви/Вас should extend to the transactional family more broadly (or to
 everything), promote this to a `guide.md` rule then rather than assuming it now.
 
-**Decided by:** iternewo (native-speaker reviewer). **Source:** https://forum.jiki.io/t/880/113.
+**Decided by:** iternewo (native-speaker reviewer). **Source:**.
 **Status:** confirmed.
 
 iternewo corrected "Заведіть змінну"/"Заведіть лічильник" to "Створіть змінну"/"Створіть
@@ -71,7 +71,7 @@ _створити_ is the neutral, correct verb. Added under Core decisions.
 
 ## 2026-08-12: _ваговий коефіцієнт_ for "weight", and you-imperatives in exercise hints
 
-**Decided by:** decard (native-speaker reviewer). **Source:** https://forum.jiki.io/t/880/101.
+**Decided by:** decard (native-speaker reviewer). **Source:**.
 **Status:** confirmed.
 
 Two general points came out of decard's review of five exercises (hamming, hello,
@@ -97,7 +97,7 @@ sign-off was swept; he has been asked on the thread whether he wants it applied 
 
 ## 2026-08-11: "Have fun!" and other sign-offs have no default translation
 
-**Decided by:** decard (native-speaker reviewer). **Source:** https://forum.jiki.io/t/880/103.
+**Decided by:** decard (native-speaker reviewer). **Source:**.
 **Status:** confirmed, standing process rule.
 
 Asked whether _Успіхів!_ should be swept across every "Have fun!" in the curriculum, decard
@@ -118,7 +118,7 @@ sounds unnatural, so it is never a rendering of "Have fun!".
 
 ## 2026-08-08: decard sets his own re-review condition for approval (standing, per-reviewer)
 
-**Decided by:** decard (native-speaker reviewer). **Source:** https://forum.jiki.io/t/880.
+**Decided by:** decard (native-speaker reviewer). **Source:**.
 **Status:** confirmed, standing process preference.
 
 decard has asked that items he reviews are not marked `"approved"` in
@@ -130,12 +130,12 @@ that it now reads correctly.
 
 This is a standing preference for every uk item decard reviews, not a one-off for a single
 thread. It was applied first to `exercise/bouncer`, `exercise/bouncer-wristbands` and
-`exercise/build-wall`, whose wording fixes from t/880 were applied on 2026-08-08 with their
+`exercise/build-wall`, whose wording fixes from were applied on 2026-08-08 with their
 `status` deliberately left unset.
 
 ## 2026-08-08: Two style rules from decard's exercise review (виглядати, зʼявлятися)
 
-**Decided by:** decard (native-speaker reviewer). **Source:** https://forum.jiki.io/t/880.
+**Decided by:** decard (native-speaker reviewer). **Source:**.
 **Status:** confirmed, applies across all uk content.
 
 Two rules were added to the Style notes section of `languages/uk/guide.md`, both flagged by
@@ -227,7 +227,7 @@ outranks a later native-speaker call.
 ## 2026-08-04: "build a snowman" is three verbs, split by register, not one term
 
 **Decided by:** decard (native speaker), on
-[t/880 post 3284](https://forum.jiki.io/t/880/3284). **Status:** settled by a native
+[t/880 post 3284]. **Status:** settled by a native
 speaker; outranks any agent's later opinion. **Terms affected:** the verb used for
 "build/assemble" a snowman across `exercise/snowman`, `exercise/snowman-basic` and
 `exercise/relational-snowman`. No glossary row has been written, because there is no single
@@ -338,7 +338,7 @@ written.
   them until then; do not sweep them to one form on an agent's judgement.
 - **`frame` (the house's body) remains unresolved, and now affects two exercises.** The
   Structured House pass used _каркас будинку_, which is the exact word decard flagged on
-  [t/880 post 42](https://forum.jiki.io/t/880/42) as reading like scaffolding rather than a
+  [t/880 post 42] as reading like scaffolding rather than a
   finished building (see the entry below). A row has now been written, marked contested, so
   that the term is visible on the published glossary page and a reviewer can settle it in
   one place. It is **not** a decision: the open question below stands, and the rendering
@@ -358,7 +358,7 @@ written.
 ## 2026-08-03: Drawing vocabulary from the Stage 3 exercise review, and the `&&`/`||` house rule
 
 **Decided by:** decard (native speaker) on [t/880 posts
-36-45](https://forum.jiki.io/t/880/36), with iternewo (native speaker) on post 38.
+36-45], with iternewo (native speaker) on post 38.
 **Terms affected:** `icon`, `scene`, `guide lines`, `target image`, `corner point /
 vertex`, `lock icon`, `to expect / to take (input)`.
 
@@ -399,7 +399,7 @@ Two questions from this batch are genuinely unresolved. Neither has been guessed
 files, and both need a native speaker to settle them.
 
 - **A better Ukrainian word for `frame` (the house's frame/scaffolding).** decard, [t/880
-  post 42](https://forum.jiki.io/t/880/42): "Also, about the word 'каркас' (frame).
+  post 42]: "Also, about the word 'каркас' (frame).
   'Каркас' is closer to scaffolding then to a finished building. So far we're not sure how
   to properly translate it, maybe we'll adress this later, but if you have any suggestions
   - please share. The word needs to be changed all across the exercise, not only in this
@@ -407,7 +407,7 @@ files, and both need a native speaker to settle them.
   and the Jumbled House sentences he gave replacements for now avoid the word entirely
   (_верхнього краю будинку_, _на верху будинку_) rather than picking a new one.
 - **Whose left is "the penguin's left"?** iternewo, [t/880 post
-  38](https://forum.jiki.io/t/880/38): "the penguin's left side is missing from the
+  38]: "the penguin's left side is missing from the
   perspective of the penguin, however, the exercise takes the user's perspective. Should we
   change it? I feel like Ukrainians take the perspective of the object of drawing when
   drawing it." This is a question about the **English** source's convention across the
@@ -417,7 +417,7 @@ files, and both need a native speaker to settle them.
 ## 2026-08-03: `Jeremy` transliterated as Джеремі, `workhorse` becomes ключовий інструмент
 
 **Decided by:** iternewo (native speaker) on [t/880 post
-28](https://forum.jiki.io/t/880/28), agreed by decard (native speaker) in the same
+28], agreed by decard (native speaker) in the same
 thread. **Terms affected:** `Jeremy`, `workhorse`.
 
 - **`Jeremy` → Джеремі, in prose, everywhere.** iternewo asked for the name to be
@@ -480,7 +480,7 @@ golf-rolling-ball-loop, maze-solve-repeat). **None of them has been written into
 ## 2026-08-02: Two more em-dash workaround patterns confirmed, not a rule exception
 
 **Decided by:** agent, on native speaker decard's Word Count feedback, [t/880 post
-2614](https://forum.jiki.io/t/880). **Terms affected:** none (a Style/Grammar guide
+2614]. **Terms affected:** none (a Style/Grammar guide
 pattern, not a glossary row).
 
 decard asked for a literal em dash in two sentences (a repeated predicate, and a
@@ -495,8 +495,8 @@ If a genuinely dash-unavoidable case ever surfaces, that would be the trigger to
 ## 2026-08-02: `radial width / radial height` RESOLVED, `camel case` glossed once, `Boolean` localized
 
 **Decided by:** decard (native speaker) on the pinned Ukrainian glossary thread,
-[t/308 post 12](https://forum.jiki.io/t/308/12), for the first two; iternewo (native
-speaker) on [t/308 post 13](https://forum.jiki.io/t/308/13) for the third.
+[t/308 post 12], for the first two; iternewo (native
+speaker) on [t/308 post 13] for the third.
 **Terms affected:** `radial width / radial height`, `camel case`, `Boolean`.
 
 - **`radial width / radial height` → горизонтальний радіус / вертикальний радіус.** This
@@ -625,7 +625,7 @@ native-speaker-sourced.
   Ukrainian coinage would diverge from the sentinel values `am`/`pm` the learner must
   produce.
 
-**Open question for the pinned thread ([t/308](https://forum.jiki.io/t/308)):** the
+**Open question for the pinned thread ([t/308]):** the
 `string` row mandates _рядок тексту_ in prose, but the uk draw-family base catalog (a
 prior decision) uses bare `типу string` in error messages. The weather-symbols pass
 followed the family catalog for its sibling error message so the two catalogs read
@@ -635,7 +635,7 @@ consistently on one screen. Whether catalog error messages are exempt from the _
 ## 2026-08-01: Jiki takes masculine verb agreement, especially in `describers`
 
 **Decided by:** decard (native speaker), on forum topic
-[t/880](https://forum.jiki.io/t/880), reviewing the rainbow and rock-paper-scissors
+[t/880], reviewing the rainbow and rock-paper-scissors
 exercises. **Terms affected:** none; this is a grammar rule, recorded in `guide.md`.
 
 decard flagged that the uk exercise message catalogs described Jiki's actions with
@@ -677,7 +677,7 @@ now states only rules. Everything below was removed from it.
 
 - **`journey`** (as in "our journey into the world of programming") → **подорож**, added to
   "Core decisions" with the decision verbatim: prefer _подорож_ over _мандрівка_. The
-  reasoning, from iternewo (native speaker) on [t/784](https://forum.jiki.io/t/784):
+  reasoning, from iternewo (native speaker) on [t/784]:
   _подорож_ is a journey with a defined plan and goal and has wider register, matching how
   Jiki frames the course; _мандрівка_ emphasizes the emotion and process of wandering and
   reads as tourism-flavored, which is the wrong connotation here.
@@ -720,19 +720,19 @@ now states only rules. Everything below was removed from it.
   rather than in the guide.
 - **The handoff-imperative exception** (a standalone instruction to the learner takes the
   plain imperative, додайте, while narrative prose stays inclusive) came from iternewo
-  (native speaker) in [t/817 posts 2 and 4](https://forum.jiki.io/t/817), and was confirmed
+  (native speaker) in [t/817 posts 2 and 4], and was confirmed
   there as a one-line-category fix, not a request to drop "ми" generally.
 - **Quotation marks.** The « » primary convention is the 2019 official orthography
   (Український правопис). The guide's warning not to carry over a „ "-primary convention was
   originally phrased against Hungarian specifically.
 - **Dative -ові/-еві vs -у/-ю**, **conjunction euphony і vs й** and **the analytic future
   tense** all come from iternewo (native speaker) on
-  [t/784](https://forum.jiki.io/t/784). He confirmed the dative rule applies generally
+  [t/784]. He confirmed the dative rule applies generally
   rather than only to "interpreter", gave _створювати і власні машини_ as the euphony
   example, and said the analytic "будемо + infinitive" future reads easier than the
   synthetic form in this kind of prose.
 - **_поєднувати_ vs _склеювати_** was confirmed against the English source on
-  [t/784](https://forum.jiki.io/t/784): "He can stick things together" sits in a list of
+  [t/784]: "He can stick things together" sits in a list of
   abstract interpreter capabilities (repeat, conditionals, memory, errors), not in the
   crank/machine scene, so the neutral rendering is correct there. **This rule was left in
   the guide, not moved to the glossary**, because it is conditional on context rather than a
@@ -745,8 +745,8 @@ now states only rules. Everything below was removed from it.
 ## 2026-08-01: `string` always glossed as _рядок тексту (англ. string)_, never bare English
 
 **Decided by:** native speakers (iternewo and decard, agreed together) on the pinned
-Ukrainian glossary thread, forum topic 308, post #11 (https://forum.jiki.io/t/308/11), and
-on the new-content thread, topic 880, post #3 (https://forum.jiki.io/t/880/3).
+Ukrainian glossary thread, post #11, and
+on the new-content thread, post #3.
 **Terms affected:** `string`.
 
 The row previously followed the usual "Keep in English" pattern: gloss once as _рядок_ on
@@ -803,7 +803,7 @@ under "Localize" for the groups that had no home:
   `rx`/`ry`. The English is itself a coinage, and the Ukrainian is a literal calque of it,
   so it may read as ambiguous or simply odd to a Ukrainian speaker (the alternative framings
   are a semi-axis reading, or just "width/height of the ellipse"). Flag this one on the
-  pinned Ukrainian glossary thread, [t/308](https://forum.jiki.io/t/308), and treat the row
+  pinned Ukrainian glossary thread, [t/308], and treat the row
   as provisional until it comes back.
 
 These are agent proposals from live translation work, added immediately per the standing
@@ -812,7 +812,7 @@ rule above so that publishing the glossary to i18n is what surfaces them for rev
 ## 2026-07-31: `dashboard` added as панель керування
 
 **Decided by:** iternewo (native speaker), in
-[t/817 posts 2 and 4](https://forum.jiki.io/t/817).
+[t/817 posts 2 and 4].
 **Terms affected:** `dashboard`.
 
 - iternewo flagged in post 2 that `dashboard` appears in the Solve the Maze exercise but was
@@ -826,10 +826,10 @@ rule above so that publishing the glossary to i18n is what surfaces them for rev
 ## 2026-07-31: `Test` confirmed staying in English
 
 **Decided by:** iternewo (native speaker), in
-[t/308 post 6](https://forum.jiki.io/t/ukrainian-review-glossary/308/6), answering the
+[t/308 post 6], answering the
 clarifying question asked in post 5 of the same thread.
 
-- In [post 4](https://forum.jiki.io/t/ukrainian-review-glossary/308/4) iternewo proposed
+- In [post 4] iternewo proposed
   `Test` → _Тест_ alongside the `tech / tech industry` change above. Post 5 asked him to
   clarify whether he meant the word in prose (a straightforward glossary row) or the literal
   label on the editor's Test button (a UI-string decision affecting every language, not just
@@ -845,7 +845,7 @@ clarifying question asked in post 5 of the same thread.
 ## 2026-07-31: `tech / tech industry` becomes IT-індустрія
 
 **Decided by:** iHiD (owner), on iternewo's (native speaker) proposal in
-[t/308 post 4](https://forum.jiki.io/t/ukrainian-review-glossary/308/4).
+[t/308 post 4].
 **Terms affected:** `tech / tech industry`.
 
 - **`tech / tech industry`** now renders as **IT-індустрія**, replacing the bootstrap guess
@@ -861,9 +861,9 @@ under "Keep in English" as a technical token, and it is unclear whether he means
 in prose or the literal text of a UI button, which would be a UI-string decision rather
 than a glossary row. Asked for clarification on the thread; still open.
 
-## 2026-07-12: Native-speaker corrections from forum topic t/308
+## 2026-07-12: Native-speaker corrections from forum topic
 
-**Decided by:** iternewo (native speaker), forum topic t/308 (post of 2026-07-12).
+**Decided by:** iternewo (native speaker), forum topic (post of 2026-07-12).
 **Terms affected:** `for loop`, `while loop`, `for-of loop`, `mentor`.
 
 - **`for loop` / `while loop` / `for-of loop`** all take the pattern _цикл_ + the real

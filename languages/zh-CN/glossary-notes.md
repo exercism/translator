@@ -3,7 +3,7 @@
 ## 2026-08-06: Translation engine switched to `deepseek`
 
 **Decided by:** taylorren, a native speaker, on the "Alternative translation model"
-comparison thread (https://forum.jiki.io/t/888). **Status:** settled.
+comparison thread. **Status:** settled.
 **Terms affected:** none (engine choice, not a glossary or guide change).
 **Files affected:** none; `tracking.json` already carried the block, this entry records the
 decision behind it.
@@ -71,8 +71,7 @@ Duplication removed (behaviour unaffected, the same instruction still exists els
 
 ## 2026-08-01: `statement (logical claim)` is `判定`, not `断言`
 
-**Decided by:** native speaker taylorren, on forum topic 868, post #3
-(https://forum.jiki.io/t/868/3). **Terms affected:** `statement (logical claim)`.
+**Decided by:** native speaker taylorren, on the forum, post #3. **Terms affected:** `statement (logical claim)`.
 
 Follow-up to the entry below, which left this one an open question between 判定/判断 and
 命题. taylorren recommends 判定/判断 (interchangeable) and explicitly rules out 命题: a
@@ -81,9 +80,9 @@ implies a fuller claim or conjecture whose truth isn't yet known (his example: "
 number greater than 4 is the sum of two primes"). Picked 判定 as the single settled row
 value since he said the two were interchangeable.
 
-## 2026-08-01: Native-speaker review of the Mainland terms (forum topic 868)
+## 2026-08-01: Native-speaker review of the Mainland terms
 
-**Decided by:** native speaker taylorren, on forum topic 868 ("SC translations discussion and
+**Decided by:** native speaker taylorren, on the forum ("SC translations discussion and
 general view for consideration"), post 1. Applied by agent. Every row touched below was an
 unconfirmed agent draft before this entry.
 **Terms affected:** `if statement`, `modulo / remainder operator`, `backwards compatibility`,
@@ -114,12 +113,12 @@ unconfirmed agent draft before this entry.
   reviewer said 断言 is "OK but maybe too formal" for very young users and offered 判定/判断
   without choosing between them. Two un-chosen alternatives is not a decision, and there is a
   third candidate (命题, the standard word for a logical proposition), so the row stands until
-  the reviewer picks one. Raise it on topic 868.
+  the reviewer picks one. Raise it on the forum.
 - **`curriculum` (课程体系) left unchanged; the proposed 课程 cannot be applied.** The reviewer
   suggested shortening 课程体系 to 课程, but 课程 is already this glossary's term for `course`
   (the whole Jiki course), a collision the 2026-07-30 entry below deliberately resolved by
   moving `lesson` to 课. Taking 课程 for `curriculum` would recreate exactly that clash. If
-  课程体系 reads too heavy, a different short form is needed; raise it on topic 868.
+  课程体系 reads too heavy, a different short form is needed; raise it on the forum.
 
 ## 2026-07-30: Owner decisions from the 28-language using-functions pass
 

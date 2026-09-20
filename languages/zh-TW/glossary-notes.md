@@ -68,7 +68,7 @@ script-variant characters and so is a family-file candidate; it is logged in
 
 ## 2026-08-01: Confirmed translation engine — Gemini Pro 3.1
 
-**Decided by:** native speaker (cherylli), forum topic 902 ("[Traditional Chinese Review]
+**Decided by:** native speaker (cherylli), the forum ("[Traditional Chinese Review]
 Alternative translation model"), comparing three versions of concept/using-functions: the
 currently published version, a first alternative, and a second alternative. cherylli judged
 the second alternative more natural overall. iHiD confirmed (post #5) that version is
@@ -77,8 +77,8 @@ Gemini Pro 3.1. `zh-TW`'s `translation_engine` is now set to `gemini` (`gemini-p
 
 ## 2026-08-01: `character` (mental-model "little person") is `小傢伙`, separate from the maze figure
 
-**Decided by:** native speaker (cherylli), forum topic 821 posts #2/#4/#5 and topic 792 post
-#3 (https://forum.jiki.io/t/821/2, /4, /5; https://forum.jiki.io/t/792/3).
+**Decided by:** native speaker (cherylli), the forum posts #2/#4/#5 and topic 792 post
+#3.
 **Terms affected:** `character` (the "little man inside the computer" mental-model image on
 the using-functions page).
 

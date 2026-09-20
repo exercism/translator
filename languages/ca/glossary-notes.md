@@ -2,8 +2,7 @@
 
 ## 2026-08-05: Chain metaphor becomes _filera_, and the cognate-gloss policy is settled
 
-**Decided by:** mnoe (native speaker), on the Catalan glossary review thread (forum topic
-536, post 4). Single reviewer, no dispute, clear recommendations, so actioned directly per
+**Decided by:** mnoe (native speaker), on the Catalan glossary review thread (post 4). Single reviewer, no dispute, clear recommendations, so actioned directly per
 the project's rule that the guide and glossary defer to native speakers when the two
 disagree.
 
@@ -48,7 +47,7 @@ entries are kept as the record of what was decided when.
 ## 2026-08-04: Loop word order, track/pathway swap, and three terms brought into Catalan
 
 **Decided by:** mnoe (native speaker), on the Catalan website-copy review thread
-(forum topic 994, posts 2 and 3). Single reviewer, no dispute, clear recommendations,
+(posts 2 and 3). Single reviewer, no dispute, clear recommendations,
 so actioned directly per the project's rule that the guide and glossary defer to native
 speakers when the two disagree.
 

@@ -68,8 +68,8 @@ These are terms where the Arabic is used in prose, so the "Use (ar/en)" column i
 |---------|--------|-------------|-------|
 | course | دورة | ar | The whole Jiki course the learner is taking ("في هذه الدورة، مفسّرك هو Jiki"). Keep distinct from `درس` (lesson) and `منهج` (curriculum). Feminine; plural دورات. |
 | dashboard | لوحة التحكم | ar | Confirmed by mirina (t/795/7): not necessarily the most elegant term, but correct and widely understandable. |
-| canvas (the drawing surface) | السبورة | ar | The surface the drawing exercises draw on is the **same object** as the board in the "Jiki physical metaphors" table, so it takes the same word: `مسح السبورة` for "cleared the canvas". Do not use `اللوحة` or `لوحة الرسم` for it. Set by mirina (t/1869). Feminine; plural سبورات. |
-| ellipse (the drawing shape) | شكل بيضاوي | ar | "Oval shape", not the strictly mathematical `قطع ناقص`, which is conic-section terminology and needlessly technical for absolute beginners. Set by mirina (t/1869). Masculine (head-word `شكل`); plural أشكال بيضاوية. |
+| canvas (the drawing surface) | السبورة | ar | The surface the drawing exercises draw on is the **same object** as the board in the "Jiki physical metaphors" table, so it takes the same word: `مسح السبورة` for "cleared the canvas". Do not use `اللوحة` or `لوحة الرسم` for it. Set by mirina. Feminine; plural سبورات. |
+| ellipse (the drawing shape) | شكل بيضاوي | ar | "Oval shape", not the strictly mathematical `قطع ناقص`, which is conic-section terminology and needlessly technical for absolute beginners. Set by mirina. Masculine (head-word `شكل`); plural أشكال بيضاوية. |
 
 ## Keep in English
 
