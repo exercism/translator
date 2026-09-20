@@ -138,8 +138,8 @@ How to phrase a bracket in running prose is in `guide.md`.
 ## Exercism product vocabulary: PROPOSED, NOT YET AGREED
 
 **Nobody who speaks Hungarian has agreed any row in this section.** They are an agent's
-proposals, written when this glossary was adapted from Jiki's, so that a first pass is at least
-consistent. If you are a native speaker reading this: these are the rows we most need you to
+proposals, written when this glossary was adapted for Exercism, so that a first pass is at
+least consistent. If you are a native speaker reading this: these are the rows we most need you to
 check, because each one appears on hundreds of pages. Tell us on the pinned glossary thread
 which are wrong. A row moves up into an agreed section only on a native speaker's say-so,
 recorded in `glossary-notes.md`, which also holds the basis for each proposal.
