@@ -13,7 +13,7 @@ decision log (`glossary-notes.md`).
 | developer | **programer** | sr | |
 | pitfall | **zamka** | sr | Stands alone; no gloss needed. |
 | pattern (a recurring shape you reuse) | **šablon** | sr | Deliberately not "obrazac", which reads first as a form to fill in and is the more formal register. |
-| Jiki (the character) | **Džiki** | sr | Decided by Jeremy (t/935/7), 2026-08-24. Only when "Jiki" is the friendly guide character in narrative prose. Decline normally: „Džikija“ (genitive), „Džikiju“ (dative). Never for the product/brand name, which stays "Jiki" (Latin). See the guide's "Jiki: character vs product name" note. |
+| Jiki (the character) | **Džiki** | sr | Decided by Jeremy, 2026-08-24. Only when "Jiki" is the friendly guide character in narrative prose. Decline normally: „Džikija“ (genitive), „Džikiju“ (dative). Never for the product/brand name, which stays "Jiki" (Latin). See the guide's "Jiki: character vs product name" note. |
 | Jeremy (as narrator/person) | **Džeremi** | sr | Same decision as above, same split (person vs any use as a bare label/brand mention). Decline normally. |
 
 ## Localize (use the Serbian term)

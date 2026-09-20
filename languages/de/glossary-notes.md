@@ -102,7 +102,7 @@ use the verb `interpretieren` nearby) was kept in the guide's style notes.
 ## 2026-07-31: `input slot` = `Trichter` (resolves the open objection)
 
 **Decided by:** owner (iHiD), on the proposal by native speaker `neillana`, forum topic
-[t/340], posts
+the forum, posts
 [/340/6],
 [/340/7] and
 [/340/10].
@@ -127,7 +127,7 @@ raised on that same thread.
 ## 2026-07-31: `loop body` = `Schleifenblock` (resolves the open objection)
 
 **Decided by:** owner (iHiD), on the objection raised by native speakers `elzda` and
-`neillana`, forum topic [t/340], posts
+`neillana`, the forum, posts
 [/340/4] and
 [/340/11].
 **Terms affected:** `loop body`. **Supersedes** the `loop body` half of the "Open
@@ -189,7 +189,7 @@ Three decisions came out of that pass that bind German:
 ## 2026-07-12: `float / decimal` = `Gleitkommazahl` settled on the forum
 
 **Decided by:** native speakers `elzda` and `neillana`, forum topic
-[t/340].
+the forum.
 **Terms affected:** `float / decimal`.
 
 `elzda` objected to `Gleitkommazahl` as a word they had never heard, and proposed
@@ -215,7 +215,7 @@ same thread.
 ## Open objections (unresolved): `loop body` and `input slot`
 
 **Raised by:** native speakers `elzda` and `neillana`, forum topic
-[t/340], 2026-07-11 to 2026-07-13. **Not decided.** The owner
+the forum, 2026-07-11 to 2026-07-13. **Not decided.** The owner
 has not ruled on either, so the current glossary renderings stand unconfirmed and must not
 be changed on this basis alone.
 

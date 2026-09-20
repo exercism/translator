@@ -256,8 +256,7 @@ example of guillemets outside literature and FraSanga replied that using them on
 they are needed adds style, and asked where the ambiguity actually is. With one native
 speaker's earlier decision on one side and a live disagreement on the other, changing the
 rule now would mean picking a side, so nothing was changed pending their agreement. Earlier
-rounds on this rule are logged at, /t/895, /t/1083, /t/1141,
-/t/1179, /t/1208, /t/1191 and /t/1259.
+rounds on this rule are logged at and.
 
 ## 2026-08-06: Translation engine switched to `deepseek`
 

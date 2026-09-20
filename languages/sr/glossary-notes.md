@@ -65,8 +65,7 @@ neater solution, which has nothing to do with attire.
 
 ## 2026-08-24: `Jiki`/`Jeremy` transliterate to „Džiki“/„Džeremi“, but only as characters (settled)
 
-**Decided by:** Jeremy, directly, in response to little_mouse's forum post
-([t/935/7]). **Terms affected:** `Jiki`, `Jeremy`.
+**Decided by:** Jeremy, directly, in response to little_mouse's forum post. **Terms affected:** `Jiki`, `Jeremy`.
 **Status: settled. Files affected:** `guide.md`, `glossary.md`, and every existing sr
 translated file that mentions "Jiki" or "Jeremy" in narrative prose (a corpus sweep, tracked
 separately, not part of this note).
@@ -88,7 +87,7 @@ mechanical find-and-replace: "This is Jiki, and he's going to help you" is a cha
 
 **Decided by:** an owner-authorised ruling (Jeremy explicitly asked for a final call on this
 one disagreement rather than continued escalation) made by a dispatched agent, on the pinned
-Serbian glossary thread ([t/402]) after three rounds of
+Serbian glossary thread after three rounds of
 native-speaker input that pulled in opposite directions. **Terms affected:**
 `milestone`. **Status: settled** (it supersedes the "OPEN: `milestone` in the dashboard UI"
 item below, which is kept for the record). **Files affected:** `glossary.md`,
@@ -183,9 +182,8 @@ switch, made on a native speaker's verdict, not on our own judgement or on cost.
 
 ## 2026-08-04: clothing-item terms confirmed and added; `smart` (attire) still open
 
-**Raised by:** native speaker **little_mouse** on the `bouncer-dress-code` review thread
-([t/1125 post 1]), and **confirmed by the same reviewer** on
-2026-08-04 in [t/1125 post 3] (post_id 3157). **Terms
+**Raised by:** native speaker **little_mouse** on the `bouncer-dress-code` review thread, and **confirmed by the same reviewer** on
+2026-08-04 in post 3 (post_id 3157). **Terms
 affected:** `ballgown`, `tuxedo`, `suit`, `dress`, `denim`, plus further input on
 `smart (attire)` and `formal (attire)`. **Status: all five clothing terms are confirmed and
 now rows in `glossary.md`; `smart` remains open.**
@@ -222,7 +220,7 @@ agent. The confirmation is deliberately narrow: in the same post they kept `smar
 
 **`smart` (attire) still an unconfirmed draft; this post is input, not a resolution.** The
 question was left open on the pinned glossary thread
-([t/402], see the 2026-08-04 entry below), and this post is the
+(the forum, see the 2026-08-04 entry below), and this post is the
 same reviewer returning to the same question rather than a new dispute. What is new is the
 direction they lean: they now say "we don't have to nitpick", that "svečano" and "elegantno"
 can stay as "less precise but OK", and offer `smart` = "smart" (bare English) and `formal` =

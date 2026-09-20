@@ -1,6 +1,6 @@
 # Arabic (ar) glossary notes
 
-## 2026-09-09: dual agreement is word-order dependent (t/470/56)
+## 2026-09-09: dual agreement is word-order dependent
 
 **Decided by:** reviewer mirina, forum, actioned directly.
 
@@ -22,7 +22,7 @@ order, which is why that one could be stated without a word-order caveat.
 She also spotted an omission in the same list: `الطرق`, the plural of `طريقة`, was missing from
 the non-human plurals named beside `الدوال` / `الخصائص` / `المصفوفات`. Added in both files.
 
-## 2026-09-08: `method` added as `طريقة` (t/470/53)
+## 2026-09-08: `method` added as `طريقة`
 
 **Decided by:** reviewer mirina, forum, actioned directly.
 
@@ -201,10 +201,10 @@ means `{}` under the new one, and `قوس` alone meant `{}` and is now the gener
 all four. Any future edit touching bracket wording has to read the surrounding glyph rather
 than pattern-match the word.
 
-### mirina's reasoning (t/470/32)
+### mirina's reasoning
 
 She rejected the premise of humam-hamdan's argument directly: "I do not agree with this
-translation or with the argument put forward by humam-hamdan (t/470/16) against translating
+translation or with the argument put forward by humam-hamdan against translating
 'Brackets' as 'قوس' because the word should be reserved for 'Curly brackets.' This argument
 is not based on any objective evidence." Her positive case:
 
@@ -231,7 +231,7 @@ exactly the shape adjectives mirina uses, and only then assigned bare nouns that
 with each other about which shape `معقوف` denotes; mirina's scheme is consistent with the
 naming both of them started from.
 
-### mirina's own framing of the disagreement (t/470/36)
+### mirina's own framing of the disagreement
 
 She later softened the conflict herself, suggesting both schemes are correct in their own
 register: humam-hamdan's bare nouns read as real-world developer shorthand (short forms are
@@ -296,10 +296,10 @@ JikiScript, not Python: no `tuple` or `Set` type exists anywhere in the taught c
 her question about those terms needing glossary rows doesn't apply — they're not concepts
 this course teaches at all.
 
-## 2026-08-08: brackets split by type; الاقتران is a one-time gloss only; demonstrative register left to the author's judgement (t/470)
+## 2026-08-08: brackets split by type; الاقتران is a one-time gloss only; demonstrative register left to the author's judgement
 
 **Decided by:** native speaker humam-hamdan, answering four
-questions raised while applying his full review of `concept/using-functions` (t/740/3).
+questions raised while applying his full review of `concept/using-functions`.
 
 ### Brackets: no shared default, each glyph gets its own word (actioned)
 

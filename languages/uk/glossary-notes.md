@@ -227,7 +227,7 @@ outranks a later native-speaker call.
 ## 2026-08-04: "build a snowman" is three verbs, split by register, not one term
 
 **Decided by:** decard (native speaker), on
-[t/880 post 3284]. **Status:** settled by a native
+post 3284. **Status:** settled by a native
 speaker; outranks any agent's later opinion. **Terms affected:** the verb used for
 "build/assemble" a snowman across `exercise/snowman`, `exercise/snowman-basic` and
 `exercise/relational-snowman`. No glossary row has been written, because there is no single
@@ -338,7 +338,7 @@ written.
   them until then; do not sweep them to one form on an agent's judgement.
 - **`frame` (the house's body) remains unresolved, and now affects two exercises.** The
   Structured House pass used _каркас будинку_, which is the exact word decard flagged on
-  [t/880 post 42] as reading like scaffolding rather than a
+  post 42 as reading like scaffolding rather than a
   finished building (see the entry below). A row has now been written, marked contested, so
   that the term is visible on the published glossary page and a reviewer can settle it in
   one place. It is **not** a decision: the open question below stands, and the rendering
@@ -357,8 +357,8 @@ written.
 
 ## 2026-08-03: Drawing vocabulary from the Stage 3 exercise review, and the `&&`/`||` house rule
 
-**Decided by:** decard (native speaker) on [t/880 posts
-36-45], with iternewo (native speaker) on post 38.
+**Decided by:** decard (native speaker) on posts 36-45, with iternewo (native
+speaker) on post 38.
 **Terms affected:** `icon`, `scene`, `guide lines`, `target image`, `corner point /
 vertex`, `lock icon`, `to expect / to take (input)`.
 
@@ -398,16 +398,14 @@ vertex`, `lock icon`, `to expect / to take (input)`.
 Two questions from this batch are genuinely unresolved. Neither has been guessed at in the
 files, and both need a native speaker to settle them.
 
-- **A better Ukrainian word for `frame` (the house's frame/scaffolding).** decard, [t/880
-  post 42]: "Also, about the word 'каркас' (frame).
+- **A better Ukrainian word for `frame` (the house's frame/scaffolding).** decard, post 42: "Also, about the word 'каркас' (frame).
   'Каркас' is closer to scaffolding then to a finished building. So far we're not sure how
   to properly translate it, maybe we'll adress this later, but if you have any suggestions
   - please share. The word needs to be changed all across the exercise, not only in this
   sentence." iternewo separately suggested _конструкція_ in post 38. No row has been added,
   and the Jumbled House sentences he gave replacements for now avoid the word entirely
   (_верхнього краю будинку_, _на верху будинку_) rather than picking a new one.
-- **Whose left is "the penguin's left"?** iternewo, [t/880 post
-  38]: "the penguin's left side is missing from the
+- **Whose left is "the penguin's left"?** iternewo, post 38: "the penguin's left side is missing from the
   perspective of the penguin, however, the exercise takes the user's perspective. Should we
   change it? I feel like Ukrainians take the perspective of the object of drawing when
   drawing it." This is a question about the **English** source's convention across the
@@ -416,8 +414,7 @@ files, and both need a native speaker to settle them.
 
 ## 2026-08-03: `Jeremy` transliterated as Джеремі, `workhorse` becomes ключовий інструмент
 
-**Decided by:** iternewo (native speaker) on [t/880 post
-28], agreed by decard (native speaker) in the same
+**Decided by:** iternewo (native speaker) on post 28, agreed by decard (native speaker) in the same
 thread. **Terms affected:** `Jeremy`, `workhorse`.
 
 - **`Jeremy` → Джеремі, in prose, everywhere.** iternewo asked for the name to be
@@ -479,8 +476,7 @@ golf-rolling-ball-loop, maze-solve-repeat). **None of them has been written into
 
 ## 2026-08-02: Two more em-dash workaround patterns confirmed, not a rule exception
 
-**Decided by:** agent, on native speaker decard's Word Count feedback, [t/880 post
-2614]. **Terms affected:** none (a Style/Grammar guide
+**Decided by:** agent, on native speaker decard's Word Count feedback, post 2614. **Terms affected:** none (a Style/Grammar guide
 pattern, not a glossary row).
 
 decard asked for a literal em dash in two sentences (a repeated predicate, and a
@@ -495,8 +491,8 @@ If a genuinely dash-unavoidable case ever surfaces, that would be the trigger to
 ## 2026-08-02: `radial width / radial height` RESOLVED, `camel case` glossed once, `Boolean` localized
 
 **Decided by:** decard (native speaker) on the pinned Ukrainian glossary thread,
-[t/308 post 12], for the first two; iternewo (native
-speaker) on [t/308 post 13] for the third.
+post 12, for the first two; iternewo (native
+speaker) on post 13 for the third.
 **Terms affected:** `radial width / radial height`, `camel case`, `Boolean`.
 
 - **`radial width / radial height` → горизонтальний радіус / вертикальний радіус.** This
@@ -625,7 +621,7 @@ native-speaker-sourced.
   Ukrainian coinage would diverge from the sentinel values `am`/`pm` the learner must
   produce.
 
-**Open question for the pinned thread ([t/308]):** the
+**Open question for the pinned thread:** the
 `string` row mandates _рядок тексту_ in prose, but the uk draw-family base catalog (a
 prior decision) uses bare `типу string` in error messages. The weather-symbols pass
 followed the family catalog for its sibling error message so the two catalogs read
@@ -635,7 +631,7 @@ consistently on one screen. Whether catalog error messages are exempt from the _
 ## 2026-08-01: Jiki takes masculine verb agreement, especially in `describers`
 
 **Decided by:** decard (native speaker), on forum topic
-[t/880], reviewing the rainbow and rock-paper-scissors
+the forum, reviewing the rainbow and rock-paper-scissors
 exercises. **Terms affected:** none; this is a grammar rule, recorded in `guide.md`.
 
 decard flagged that the uk exercise message catalogs described Jiki's actions with
@@ -677,7 +673,7 @@ now states only rules. Everything below was removed from it.
 
 - **`journey`** (as in "our journey into the world of programming") → **подорож**, added to
   "Core decisions" with the decision verbatim: prefer _подорож_ over _мандрівка_. The
-  reasoning, from iternewo (native speaker) on [t/784]:
+  reasoning, from iternewo (native speaker) on the forum:
   _подорож_ is a journey with a defined plan and goal and has wider register, matching how
   Jiki frames the course; _мандрівка_ emphasizes the emotion and process of wandering and
   reads as tourism-flavored, which is the wrong connotation here.
@@ -720,19 +716,19 @@ now states only rules. Everything below was removed from it.
   rather than in the guide.
 - **The handoff-imperative exception** (a standalone instruction to the learner takes the
   plain imperative, додайте, while narrative prose stays inclusive) came from iternewo
-  (native speaker) in [t/817 posts 2 and 4], and was confirmed
+  (native speaker) in post 2 and 4, and was confirmed
   there as a one-line-category fix, not a request to drop "ми" generally.
 - **Quotation marks.** The « » primary convention is the 2019 official orthography
   (Український правопис). The guide's warning not to carry over a „ "-primary convention was
   originally phrased against Hungarian specifically.
 - **Dative -ові/-еві vs -у/-ю**, **conjunction euphony і vs й** and **the analytic future
   tense** all come from iternewo (native speaker) on
-  [t/784]. He confirmed the dative rule applies generally
+  the forum. He confirmed the dative rule applies generally
   rather than only to "interpreter", gave _створювати і власні машини_ as the euphony
   example, and said the analytic "будемо + infinitive" future reads easier than the
   synthetic form in this kind of prose.
 - **_поєднувати_ vs _склеювати_** was confirmed against the English source on
-  [t/784]: "He can stick things together" sits in a list of
+  the forum: "He can stick things together" sits in a list of
   abstract interpreter capabilities (repeat, conditionals, memory, errors), not in the
   crank/machine scene, so the neutral rendering is correct there. **This rule was left in
   the guide, not moved to the glossary**, because it is conditional on context rather than a
@@ -803,7 +799,7 @@ under "Localize" for the groups that had no home:
   `rx`/`ry`. The English is itself a coinage, and the Ukrainian is a literal calque of it,
   so it may read as ambiguous or simply odd to a Ukrainian speaker (the alternative framings
   are a semi-axis reading, or just "width/height of the ellipse"). Flag this one on the
-  pinned Ukrainian glossary thread, [t/308], and treat the row
+  pinned Ukrainian glossary thread, the forum, and treat the row
   as provisional until it comes back.
 
 These are agent proposals from live translation work, added immediately per the standing
@@ -812,7 +808,7 @@ rule above so that publishing the glossary to i18n is what surfaces them for rev
 ## 2026-07-31: `dashboard` added as панель керування
 
 **Decided by:** iternewo (native speaker), in
-[t/817 posts 2 and 4].
+post 2 and 4.
 **Terms affected:** `dashboard`.
 
 - iternewo flagged in post 2 that `dashboard` appears in the Solve the Maze exercise but was
@@ -826,7 +822,7 @@ rule above so that publishing the glossary to i18n is what surfaces them for rev
 ## 2026-07-31: `Test` confirmed staying in English
 
 **Decided by:** iternewo (native speaker), in
-[t/308 post 6], answering the
+post 6, answering the
 clarifying question asked in post 5 of the same thread.
 
 - In [post 4] iternewo proposed
@@ -845,7 +841,7 @@ clarifying question asked in post 5 of the same thread.
 ## 2026-07-31: `tech / tech industry` becomes IT-індустрія
 
 **Decided by:** iHiD (owner), on iternewo's (native speaker) proposal in
-[t/308 post 4].
+post 4.
 **Terms affected:** `tech / tech industry`.
 
 - **`tech / tech industry`** now renders as **IT-індустрія**, replacing the bootstrap guess

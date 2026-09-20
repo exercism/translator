@@ -87,7 +87,7 @@ Every row keeps its Hindi, its gender and its `Use` value. Only the Notes text c
 carrying: genders for `string`, `class`, `method`, `backwards compatibility`, `streak` and
 `canapé`; term choice for `scenario`, `encapsulation`, `pure function`, `backwards
 compatibility`, `milestone`, `streak` and `pitfall`. `saturation` was the single unconfirmed
-row in "Drawing & colour"; @dazecodes confirmed it on 2026-08-05 (t/482 post 15), so that
+row in "Drawing & colour"; @dazecodes confirmed it on 2026-08-05 (post 15), so that
 section now has no unconfirmed rows.
 
 The glossary's own preamble also carried "A gender marked 'unconfirmed' in Notes is our best
@@ -266,8 +266,8 @@ for lightness." Masculine, so the same agreement change applies.
 Neither reviewer had a view when hue and lightness were ruled on. @suditi: "I've no idea
 about Hindi words for hue, saturation or lightness", and she deferred to @dazecodes, who
 ruled on the other two and said nothing about this one at the time. We went back to him with
-the single open term (t/482 post 14) and he confirmed it directly: "The word for saturation
-is fine" (t/482 post 15, 2026-08-05). संतृप्ति is therefore no longer a translation pass's
+the single open term (post 14) and he confirmed it directly: "The word for saturation
+is fine" (post 15, 2026-08-05). संतृप्ति is therefore no longer a translation pass's
 own guess; it is native-speaker confirmed, and "Drawing & colour" has no unconfirmed rows
 left.
 
