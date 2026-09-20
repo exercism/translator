@@ -123,7 +123,6 @@ These stay in English in Vietnamese prose, with the Vietnamese gloss to use for 
 | framework | bộ khung / khung làm việc | Where defined, explain it means a reusable structure, then use "framework". |
 | CLI (the concept) | giao diện dòng lệnh | Where defined, explain CLI as "giao diện dòng lệnh" (command-line interface), then use "CLI". |
 | component | component | UI/framework sense only (e.g. a React component). Where defined, gloss as "một phần giao diện có thể tái sử dụng". For the generic "a part of a system" sense, use "thành phần" instead (localized, no gloss needed). Pick by sense, never mix the two senses under one word. |
-| bootcamp | bootcamp | Where defined, gloss as "khóa học lập trình cấp tốc". |
 | mentor / mentoring | mentor | Where defined, gloss as "người hướng dẫn, cố vấn". |
 | list (Python data type) | list | Distinct from "mảng" (array). Where defined, gloss as "danh sách". |
 | JavaScript, Python, React | (no gloss) | Product/language names. |

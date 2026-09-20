@@ -76,7 +76,7 @@ These are terms where the Turkish is used in prose, so the "Use (tr/en)" column 
 
 | English | Turkish | Use (tr/en) | Notes |
 |---------|---------|-------------|-------|
-| hue | renk tonu | tr | Always the two-word form, including inside a compact describer argument list ("renk tonu: ${arg1}"); bare _ton_ is not a short form for it. |
+| hue | renk tonu | tr | Always the two-word form, including inside a compact argument list ("renk tonu: ${arg1}"); bare _ton_ is not a short form for it. |
 | saturation | doygunluk | tr | |
 | lightness | açıklık | tr | The HSL L channel is **always** _açıklık_, including where the English source says "brightness" loosely for the same channel (it does, in the `hsl` and `colors` concepts). Never render it _parlaklık_: that word is reserved for a genuinely separate brightness/luminosity concept, and using it here collapses the two. |
 | canvas (drawing surface) | tuval | tr | Takes ordinary case suffixes (_tuvali temizledi_, _tuval boyunca_). |

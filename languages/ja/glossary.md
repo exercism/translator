@@ -77,7 +77,6 @@ These are terms where the Japanese is used in prose, so the "Use (ja/en)" column
 | course | コース | ja | The whole course the reader is taking (「このコースでは」). Keep distinct from レッスン (lesson) and カリキュラム (curriculum); do not use 講座. |
 | milestone | マイルストーン | ja | 「節目」is a native alternative. |
 | solution (learner's submission) | 解答 | ja | The code the learner writes for an exercise. Avoid 「ソリューション」. |
-| bouncer (club/bar doorkeeper) | バウンサー | ja | Never 門番, which is a gatekeeper guarding the gate of a castle. |
 | foot-gun | (descriptive) | ja | Use a descriptive phrase such as「自滅の元になりやすい機能」rather than forcing a fixed term. |
 
 ## Keep in English

@@ -144,9 +144,8 @@ clarification"). Split by theme for readability; every table below follows the s
 | page (of the site or app) | पेज | m | hi | Never पृष्ठ, which carries the "page of a book" meaning. |
 | canvas (graphics exercises) | कैनवास | m | hi | The drawing surface in creative-coding exercises. |
 | feature (platform capability) | फीचर | m | hi | Kept distinct from फंक्शन; no collision risk in Hindi. सुविधा is a good alternative in warmer prose. |
-| character (the on-screen figure) | पात्र | m | hi | The little figure the learner moves in an exercise. Never किरदार (see `guide.md` § "Register"). Kept distinct from अक्षर (a text character). |
 | maze | भूलभुलैया | f | hi | Always spelled भूलभुलैया. Never "solved" (see the row below). |
-| to solve a maze / get through a maze | भूलभुलैया से बाहर निकलना | - | hi | **Never भूलभुलैया हल करना.** Hindi does not say you solved a maze; you got out of it or found a way out. Applies to the title ("भूलभुलैया से बाहर निकलिए"), to the exercise description, and to every later sentence about the task. Transitive, where the learner gets the पात्र out: "पात्र को भूलभुलैया से बाहर निकालना". हल stays correct for a learner's solution to an exercise (see `solution` above). |
+| to solve a maze / get through a maze | भूलभुलैया से बाहर निकलना | - | hi | **Never भूलभुलैया हल करना.** Hindi does not say you solved a maze; you got out of it or found a way out. Applies to the title ("भूलभुलैया से बाहर निकलिए"), to the exercise description, and to every later sentence about the task. Transitive, where the reader gets someone out: "भूलभुलैया से बाहर निकालना". हल stays correct for a learner's solution to an exercise (see `solution` above). |
 
 ### Drawing & colour (creative-coding exercises)
 
@@ -159,7 +158,7 @@ per `guide.md` § "Geometry terms carry an English gloss".
 | English | Hindi | Gender | Use (hi/en) | Notes |
 |---------|-------|--------|-------------|-------|
 | rectangle | आयत | m | hi | The school-geometry word. Glossed: "आयत (rectangle)". |
-| circle | वृत्त | m | hi | **Never गोला for the `circle` function**: गोला is "round", not "circle". गोला stays the maze's green target ("हरे गोले तक"), which is a ball on screen and not a named shape. Glossed: "वृत्त (circle)". |
+| circle | वृत्त | m | hi | **Never गोला for the `circle` function**: गोला is "round", not "circle". गोला stays available for a round object that is not the named shape. Glossed: "वृत्त (circle)". |
 | triangle | त्रिभुज | m | hi | Glossed: "त्रिभुज (triangle)". |
 | ellipse | दीर्घवृत्त | m | hi | Glossed: "दीर्घवृत्त (ellipse)". |
 | line (drawn on the canvas) | रेखा | f | hi | "एक रेखा खींची". Kept distinct from a line of code, which is लाइन. |

@@ -74,9 +74,7 @@ column structure as the family file.
 | English | Portuguese | Use (pt-BR/en) | Notes |
 |---------|------------|-----------------|-------|
 | course | curso | pt-BR | The whole course the reader is taking: _neste curso_. Keep distinct from `lição` (lesson). |
-| cell (grid square, e.g. maze exercises) | casa | pt-BR | "Move the character forward one cell" → "avance uma casa" (like a square on a board game), not "uma célula", which reads as a biology/spreadsheet term and feels unnatural here. |
-| character / figure (the walker in maze exercises) | bonequinho | pt-BR | The little figure the learner moves around the grid. Confirmed as natural by a native speaker (sorrizo) on already in use across the maze exercises. |
-| bouncer (the door-staff character) | segurança | pt-BR | _o segurança da balada_. Masculine despite the `-a` ending. Not _porteiro_ (reads as a residential doorman rather than club door staff). |
+| cell (a square on a grid) | casa | pt-BR | "Move forward one cell" → "avance uma casa" (like a square on a board game), not "uma célula", which reads as a biology/spreadsheet term and feels unnatural here. |
 | to turn (someone) away | barrar | pt-BR | _barrar a pessoa na porta_. Use _barrar_ in the nightclub-door context; _recusar a entrada_ only where the sentence needs an object phrase rather than a single verb. |
 | dress code | código de vestimenta | pt-BR | **Unconfirmed draft.** The rule about what may be worn, as posted at a club door. |
 | smart (of clothing, in a dress code) | roupa elegante | pt-BR | **Unconfirmed draft.** English "smart" here means dressed-up, never _inteligente_. Adjectivally: _elegante_. |

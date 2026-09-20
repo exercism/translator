@@ -84,13 +84,10 @@ These are terms where the Romanian is used in prose, so the "Use (ro/en)" column
 | concept (learning unit) | noțiune | ro | Concept Library = Biblioteca de noțiuni. Not `concept`, which is vaguer and everyday. |
 | course | curs | ro | The whole course the reader is taking („în cursul acesta"). Keep distinct from `lecție` and `programă` (curriculum). |
 | task (within an exercise) | sarcină | ro | Distinct from `exercițiu` (the exercise itself). |
-| scenario | scenariu | ro | |
 | solution (learner's submission) | soluție | ro | |
 | plan (subscription tier) | abonament | ro | Enables „abonamentul {tier}". Not `plan`, which reads as a schedule. |
 | dashboard | panou de control | ro | Deliberately **not** `tablou de bord`, which is the dashboard of a car. |
 | canvas (graphics exercises) | pânză | ro | The drawing-surface sense specifically. |
-| Learn to Code (strand) | Învață să programezi | ro | Descriptive strand names are translated. |
-| Learn to Build (strand) | Învață să construiești | ro | Descriptive strand names are translated. |
 | Run Code (button) | Rulează codul | ro | The on-screen button. Exercise instructions and the website-copy catalog must say exactly the same thing, or the instructions name a button that is not on screen. Not left in English: the "Keep in English" row for `Code` covers the bare UI token, not this sentence-shaped label. |
 
 ## Keep in English

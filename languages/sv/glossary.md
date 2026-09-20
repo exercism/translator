@@ -21,7 +21,7 @@ These are terms where the Swedish is used in prose, so the "Use (sv/en)" column 
 |---------|---------|-------------|-------|
 | number | tal | sv | The mathematical sense. Not _nummer_, which is an identifying number (as in _telefonnummer_). |
 | float / decimal | flyttal | sv | Use _decimaltal_ only where the source stresses the decimal point rather than the floating-point representation. |
-| character (text) | tecken | sv | **Never _karaktär_**, which means a personality or a figure in a story. For the on-screen figure see "character (game/maze figure)" under the metaphors. |
+| character (text) | tecken | sv | **Never _karaktär_**, which means a personality or a figure in a story. |
 | letter (of a string) | bokstav | sv | Distinct from _tecken_, which also covers digits, spaces and punctuation. |
 | true / false | sant / falskt | sv | Neuter forms with _värde_ and _villkor_ (_villkoret är sant_). Common-gender _sann / falsk_ when agreeing with an en-word (_jämförelsen är sann_). Lowercase in prose. |
 | string | sträng | sv | Inflects as a Swedish noun: _strängen_, _strängar_. |

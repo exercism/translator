@@ -21,7 +21,7 @@ These are terms where the Finnish is used in prose, so the "Use (fi/en)" column 
 |---------|---------|-------------|-------|
 | number | luku | fi | **Never _numero_**, which means a digit or an identifying number (as in _puhelinnumero_). This is the most common single error in Finnish beginner material. |
 | float / decimal | desimaaliluku | fi | The beginner-facing word. Use _liukuluku_ only where the floating-point representation itself is the point. |
-| character (text) | merkki | fi | Covers digits, spaces and punctuation too. For the on-screen figure see "character (game/maze figure)" under the metaphors. |
+| character (text) | merkki | fi | Covers digits, spaces and punctuation too. |
 | letter (of a string) | kirjain | fi | Distinct from _merkki_. |
 | true / false | tosi / epätosi | fi | Lowercase in prose. The literals `true`/`false` in code stay English. |
 | Boolean | totuusarvo | fi | Localized, not kept English: _totuusarvo_ ("truth value") teaches the idea better than the English word does. The type name in code stays `Boolean`. |

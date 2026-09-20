@@ -75,8 +75,7 @@ These are terms where the Greek is used in prose, so the "Use (el/en)" column is
 
 | English | Greek | Use (el/en) | Notes |
 |---------|-------|-------------|-------|
-| vs (versus, between two choices/scenarios) | **εναντίον** | el | Unconfirmed draft (agent, 2026-07-31). From the rock-paper-scissors exercise. |
-| golf tee | **πάσσαλος του γκολφ** | el | Confirmed by a native speaker (astyanax, 2026-08-03). Never left as bare English `tee`. `γκολφ` is transliterated here, matching `μπάλα γκολφ` in the same content. |
+| vs (versus, between two choices) | **εναντίον** | el | Unconfirmed draft (agent, 2026-07-31). |
 | meridiem (the `am`/`pm` indicator) | **ένδειξη μεσημβρίας** | el | Confirmed by a native speaker (astyanax, 2026-08-03). Never left as bare English `meridiem` in prose. Inflect the head noun and keep `μεσημβρίας` fixed in the genitive: `τη σωστή ένδειξη μεσημβρίας`, never `τη σωστή μεσημβρία`. The code identifier `meridiem` (in `displayTime(hour, minutes, meridiem)`) and the catalog key of the same name stay English. |
 | infiltration | **παρείσφρηση** | el | Confirmed by a native speaker (astyanax, 2026-08-07). Never `διείσδυση`, which carries an unwanted sexual innuendo. Feminine noun, same gender pattern as `διείσδυση` (`η παρείσφρηση`). |
 | record (a data record) | **καταγραφή** | el | Not `αρχείο`, which reads as "a file". Feminine noun (`μία καταγραφή`). |
@@ -88,7 +87,7 @@ These are terms where the Greek is used in prose, so the "Use (el/en)" column is
 | hue | **απόχρωση** | el | Unconfirmed draft (agent, 2026-07-31). Color-model term; recurs across the "draw" exercise family. |
 | saturation | **κορεσμός** | el | Unconfirmed draft (agent, 2026-07-31). |
 | lightness | **φωτεινότητα** | el | Unconfirmed draft (agent, 2026-07-31). |
-| bar (vertical drawing unit, e.g. a rainbow bar) | **ράβδος** | el | Unconfirmed draft (agent, 2026-07-31). Chosen over `γραμμή` specifically to avoid collision with the existing `line()` shape/describer, which is already glossaried as `γραμμή`. |
+| bar (vertical drawing unit, e.g. a rainbow bar) | **ράβδος** | el | Unconfirmed draft (agent, 2026-07-31). Chosen over `γραμμή` specifically to avoid collision with the `line()` shape, which is already glossaried as `γραμμή`. |
 | hardcode (verb) / hardcoded value | **καρφωτή τιμή** / plural **καρφωτές τιμές** | el | Confirmed by a native speaker (astyanax, 2026-08-04). Never the loanword `hardcode`/`hard-code`, and never `σκληροκωδικοποιημένος`. Verb sense renders as "βάζω καρφωτή τιμή". |
 
 ## Keep in English

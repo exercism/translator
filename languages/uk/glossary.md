@@ -123,13 +123,11 @@ These are terms where the Ukrainian is used in prose, so the "Use (uk/en)" colum
 | feature (platform capability) | можливість | uk | Deliberately distinct from _функція_ (function) to avoid collision. `function` (the programming concept) is _функція_; `feature` (a platform capability) is _можливість_. Never use _функція_ for a product feature. |
 | lesson | урок | uk | |
 | exercise | вправа | uk | |
-| scenario | сценарій | uk | |
 | curriculum | навчальна програма | uk | |
 | course | курс | uk | The whole course the reader is taking: _у цьому курсі_. Distinct from _урок_ (lesson) and _навчальна програма_ (curriculum). |
 | level | рівень | uk | |
 | dashboard | панель керування | uk | Not bare _панель_ (reads badly in context, e.g. _поверніться на панель_). The learner's own landing screen after login (progress, streak, next steps), not an admin area. |
 | milestone | віха / етап | uk | |
-| bootcamp | буткемп | uk | |
 | syllabus | силабус | uk | |
 | mentor | наставник | uk | _Ментор_ is an accepted alternative; do not mix наставник and ментор in one document. |
 | tutorial | туторіал / посібник | uk | |
@@ -146,18 +144,14 @@ These are terms where the Ukrainian is used in prose, so the "Use (uk/en)" colum
 | lightness | світлість | uk | Unconfirmed draft (agent, 2026-08-01). Deliberately distinct from _яскравість_ (brightness); keep it stable across the whole draw family. |
 | canvas (drawing surface) | полотно | uk | Unconfirmed draft (agent, 2026-08-01). The surface drawn on, not the HTML element name. Do not mix with _канва_ / _канвас_ in one document. |
 | hex color / hex string | шістнадцятковий колір / шістнадцятковий код кольору | uk | Unconfirmed draft (agent, 2026-08-01). Use the first for the colour itself, the second for the `#rrggbb` string. Not _hex-код_: keep the whole term in Ukrainian script. |
-| radial width / radial height (also "horizontal radius / vertical radius") | горизонтальний радіус / вертикальний радіус | uk | An ellipse's `radiusX`/`radiusY`. The English source says "radial width/height" in the describers and "horizontal/vertical radius" in the instructions and function description for the same two values: render **both** wordings with this one pair. Not the formal geometry terms _велика піввісь_ / _мала піввісь_. At the first ellipse occurrence (the Penguin exercise) carry the one-time aside saying these are not the real geometric names; nowhere else. |
+| radial width / radial height (also "horizontal radius / vertical radius") | горизонтальний радіус / вертикальний радіус | uk | An ellipse's `radiusX`/`radiusY`. The English source says "radial width/height" in some places and "horizontal/vertical radius" in others for the same two values: render **both** wordings with this one pair. Not the formal geometry terms _велика піввісь_ / _мала піввісь_. At the first ellipse occurrence carry the one-time aside saying these are not the real geometric names; nowhere else. |
 | box (drawing/forecast grid cell) | комірка | uk | Unconfirmed draft (agent, 2026-08-01). A numbered cell on the drawing canvas or forecast grid. Never _коробка_, which is reserved for the value-container metaphor. |
 | icon (a picture the learner draws) | картинка | uk | The thing being drawn in an exercise. Never _іконка_, which in Ukrainian means a UI icon (or a religious icon) and not a picture. |
 | scene (a drawn picture) | зображення / картинка | uk | Use _зображення_ after _створити_ (_створіть зображення погоди_) and _картинка_ elsewhere (_намалювати картинку погоди_). Never _сцена_, which does not carry the "picture" sense. |
 | guide lines (the faint outlines shapes sit inside) | напрямні лінії | uk | The shapes go _всередині напрямних ліній_, and must not cross them (_а не перетинати їх_). |
 | target image / template outline | лінії шаблону | uk | What the learner matches their drawing against. Never _цільове зображення_, which is not idiomatic Ukrainian. |
 | corner point / vertex (of a shape) | вершина | uk | A rectangle's top-left corner is _верхня ліва вершина_; a triangle is drawn _за трьома вершинами_. |
-| lock icon (a locked scenario) | символ замочка | uk | The diminutive _замочок_, not _замок_, which also means "castle". |
-| light (one lamp of a traffic light) | вогник | uk | Unconfirmed draft (agent, 2026-08-03). One of the three coloured lamps, in prose, describers and scenario names alike (_червоний вогник_, _вогники світлофора_). Not _світло_ (light as illumination) and not _лампа_ / _ліхтар_. The traffic light itself stays _світлофор_. |
-| amber (the middle traffic light) | бурштиновий | uk | Unconfirmed draft (agent, 2026-08-03). **Open question**: Ukrainian road usage normally calls this light _жовтий_, so a native speaker still has to choose between the literal _бурштиновий_ and the idiomatic _жовтий_ (see the decision log). Until then use _бурштиновий_ consistently. |
-| housing / casing (the traffic light's body) | корпус | uk | Unconfirmed draft (agent, 2026-08-03). The box the three lamps sit in. Not _кожух_ and not _коробка_, which is reserved for the value-container metaphor. |
-| snowball (one section of a snowman) | снігова куля | uk | Unconfirmed draft (agent, 2026-08-03). The stacked body sections. The full two-word form, not bare _куля_, which collides with the plain "circle/sphere" sense used elsewhere in the draw family. |
+| lock icon | символ замочка | uk | The diminutive _замочок_, not _замок_, which also means "castle". |
 | frame (the main body of a house) | каркас будинку | uk | Unconfirmed draft (agent, 2026-08-03). **Contested**: a native speaker has flagged _каркас_ as reading like scaffolding rather than a finished building, and the replacement is still open (see the decision log). Do not guess at a substitute; leave existing occurrences alone until it is settled. |
 | gap (the distance a shape is inset from an edge) | відступ | uk | Unconfirmed draft (agent, 2026-08-03). The spacing between a shape and the edge it sits in from (_з відступом `10` від його боків_). Not _проміжок_ or _зазор_. |
 

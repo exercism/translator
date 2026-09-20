@@ -59,7 +59,6 @@ These are terms where the Chinese is used in prose, so the "Use (zh-TW/en)" colu
 | keyword | 關鍵字 | zh-TW |  |
 | interpreter | 翻譯員 | zh-TW | 直譯器 is the word for the software, with the 器 suffix naming a device. Needs a native speaker's eye: this rendering was chosen to name a character whose job was to interpret the reader's code, which is not how Exercism uses the word. On Exercism an interpreter is the program that runs the code. Left as it stands rather than changed by an agent. |
 | mental model | 心智模型 | zh-TW | |
-| character (mental-model "little person") | 小傢伙 | zh-TW | The imagined figure "living inside the computer" in the mental-model metaphor on the using-functions page. A more general, affectionate word (like "little guy") than 角色, which reads as a game/screen character and fits the maze figure instead — see `../zh/glossary.md`. The two senses take different words in this locale. |
 | (programming) language | 程式語言 (full) / 語言 (once context is clear) | zh-TW | Use 語言 alone for "a language a computer understands" where 程式語言 has already been established in the same passage. |
 | variable | 變數 | zh-TW | |
 | assignment | 賦值 / 指定 | zh-TW | Noun. |

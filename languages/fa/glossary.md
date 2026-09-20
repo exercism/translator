@@ -37,7 +37,7 @@ throughout. Split by theme for readability; every table below follows the same c
 | English | Persian | Use (fa/en) | Notes |
 |---------|---------|-------------|-------|
 | hue (the H of HSL) | فام | fa | **One term everywhere; never رنگ‌مایه.** Applies in prose, hints, check messages and function descriptions alike. Saturation stays اشباع and lightness روشنایی. |
-| draw (a shape) | رسم کردن | fa | **Never کشیدن**, which also reads as "pull". Use رسم کنید for an instruction to the learner, رسم می‌کند for a function description, and رسم شد for a timeline describer. کشیدن is still fine in its non-drawing senses. |
+| draw (a shape) | رسم کردن | fa | **Never کشیدن**, which also reads as "pull". Use رسم کنید for an instruction to the reader, رسم می‌کند for a function description, and رسم شد for a past-tense record. کشیدن is still fine in its non-drawing senses. |
 | canvas (the drawing surface) | بوم | fa | The surface drawing code paints on. Keep distinct from تخته (a board or whiteboard): they are two different objects and must not share a word. |
 
 ### Platform & curriculum vocabulary

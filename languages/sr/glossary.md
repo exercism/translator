@@ -115,12 +115,10 @@ These are terms where the Serbian is used in prose, so the "Use (sr/en)" column 
 | feature (platform capability) | funkcionalnost | sr | The word Serbian developer and product writing actually uses ("nove funkcionalnosti"). Still never bare "funkcija", which is reserved for the CS "function" concept. "funkcionalnost" shares that root but is a separate, unambiguous word, so keep the two forms apart and never shorten one to the other. |
 | lesson | lekcija | sr | |
 | exercise | vežba | sr | |
-| scenario | scenario | sr | |
 | course | kurs | sr | The whole course the reader is taking ("na ovom kursu"). Keep distinct from "lekcija" (lesson) and "kurikulum" (curriculum). |
 | curriculum | kurikulum | sr | Distinct from "radni tok" (workflow) above; this is the curriculum-structure sense. |
 | level | nivo | sr | |
 | milestone | etapa | sr | The numbered marker on the learning path ("Etapa 3"). Feminine; declines normally ("u etapi", "završi etapu", pl. "etape"). Deliberately not "prekretnica" (a turning point, which a numbered path marker is not) and deliberately not "dostignuće"/"postignuće", which is spoken for by the separate Achievements feature ("Dostignuća" in the sidebar). Keep distinct from "nivo" (level). Where English uses "milestone" in the loose, everyday sense rather than as the platform feature, translate for sense (e.g. "cilj") instead of forcing this row. |
-| bootcamp | butkamp | sr | Corrected from the hybrid spelling "bootkamp" per native-speaker feedback (see glossary-notes.md): a loanword adopted into Serbian prose is respelled phonetically throughout, not half-kept in its English spelling. Declines normally ("butkampa", "u butkampu"). Deliberately not "kurs", which is spoken for by `course` above. |
 | syllabus | silabus | sr | |
 | mentor / mentoring | mentor / mentorstvo | sr | |
 | tutorial | tutorijal | sr | |

@@ -131,7 +131,7 @@ Not written into the tables above; flag these via `/action-forum-post` once real
 
 - **streak, pitfall**: descriptive phrases proposed above, not settled single words; genuinely uncertain.
 - **foot-gun**: no clean Urdu equivalent found; a descriptive phrase like "خود کو نقصان پہنچانے والی خصوصیت" (a feature that harms yourself) would work but hasn't been verified against any real source. Use a descriptive phrase case by case rather than forcing a fixed term, per `global/terms.md`'s own guidance on this entry.
-- **syllabus, bootcamp**: not yet decided; both would need transliteration ("سلیبس", "بوٹ کیمپ") kept distinct from "نصاب" (curriculum) and would need a concept explanation where the source defines them, but neither has appeared in real content yet to confirm against.
+- **syllabus**: not yet decided; it would need transliteration ("سلیبس") kept distinct from "نصاب" (curriculum), and a concept explanation where the English explains it, but it has not appeared in real content yet to confirm against.
 - **workflow, auth, tool/tooling, feature (platform), API-adjacent framework/component terms not listed above, edge case, backwards compatibility, encapsulation, pure function, template literal, exception**: not yet researched to the same confidence level as the terms above; decide on first real occurrence in a translation pass and propose via the normal glossary-delta process rather than guessing now.
 
 ## Exercism product vocabulary: PROPOSED, NOT YET AGREED

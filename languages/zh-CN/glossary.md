@@ -117,7 +117,6 @@ These are terms where the Chinese is used in prose, so the "Use (zh-CN/en)" colu
 | curriculum | 课程体系 | zh-CN | |
 | level | 关卡 | zh-CN | The gamified sense. |
 | milestone | 里程碑 | zh-CN | |
-| bootcamp | 训练营 | zh-CN | |
 | syllabus | 教学大纲 | zh-CN | |
 | mentor / mentoring | 导师 / 指导 | zh-CN | |
 | tutorial | 教程 | zh-CN | |

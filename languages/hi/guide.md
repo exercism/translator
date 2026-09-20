@@ -51,7 +51,7 @@ Choose by what the text is doing, not by which file it sits in.
 
 - **Asking the learner to do something takes -इए**: teaching prose, exercise instructions,
   hints, and anything phrased as a request. "इस कोड को चलाइए", "अब खुद करके देखिए".
-- **Titles take -इए**: exercise, task, scenario and level titles. -एं in a title reads as
+- **Titles take -इए**: exercise and section titles. -एं in a title reads as
   rude. "भूलभुलैया से बाहर निकलिए", "विजेता तय कीजिए", "अपने फंक्शन बनाइए".
 - **The interface's own short labels take -एं**: buttons, menu items, links, and the short
   messages the app shows in reply to what the learner just did. -इए on a button reads odd.
@@ -115,7 +115,7 @@ and unfamiliar in another. So the default stays the plain Hindi word. A loanword
 acceptable where it is genuinely common across the whole Hindi-speaking area rather than
 regional: किरदार is one of those, and on its own it is not evidence that a page has drifted
 into Urdu. Where `glossary.md` has already agreed the plain Hindi term, that agreement still
-binds (the on-screen figure is पात्र, never किरदार); this exception covers ordinary
+binds; this exception covers ordinary
 vocabulary the glossary does not settle.
 
 ### 2. Technical nouns: borrow, and write them in Devanagari

@@ -111,7 +111,6 @@ These are terms where the Croatian is used in prose, so the "Use (hr/en)" column
 | level | razina | hr | |
 | milestone | etapa | hr | The numbered marker on the learning path (`Etapa 3`). Deliberately not `prekretnica` (a turning point, which a numbered path marker is not), and deliberately not `postignuće`, which is spoken for by the Achievements feature. Where English uses "milestone" loosely rather than as the platform feature, translate for sense instead. |
 | concept (learning unit) | pojam | hr | Concept Library = `Zbirka pojmova`. Not `koncept`. |
-| scenario | scenarij | hr | Croatian spelling; never `scenario`. |
 | curriculum | kurikulum | hr | |
 | tutorial | vodič | hr | |
 | challenge (platform feature) | izazov | hr | |
@@ -166,7 +165,6 @@ These stay in English in Croatian prose, with the Croatian gloss to use for each
 | LLM | explain in Croatian | `veliki jezični model`. Inflects `LLM-a`. |
 | bug | (no gloss) | Genuinely the ordinary word in Croatian tech writing. |
 | widget, chat | (no gloss) | `programčić` exists in dictionaries and not in real use. |
-| bootcamp | (no gloss) | Kept English in Croatian tech-education copy. |
 | Debug, Test | (no gloss) | As keywords and UI tokens. |
 | Code, Bug, Frontend, Backend | (no gloss) | As UI labels and code tokens. The ordinary noun in prose follows the `kôd` row above. |
 | RGB, HSL | (no gloss) | Explain what the letters stand for in Croatian where the source does; the acronyms stay English. |

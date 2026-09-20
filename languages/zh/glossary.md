@@ -19,7 +19,6 @@ These are terms whose Chinese rendering is confirmed identical, character for ch
 | value | 值 | zh | Ordinary word. Identical in both scripts. |
 | dictionary | 字典 | zh | Identical in both scripts. |
 | element | 元素 | zh | Array element. Identical in both scripts. |
-| character (maze/on-screen figure) | 角色 | zh | The on-screen figure the learner controls in maze exercises. Not 小人 (reads as "a petty/mean person" or an old humble first-person pronoun in Chinese, not a friendly figure). Distinct from the text-character sense (字符 in zh-CN's glossary), so no collision. Identical in both scripts. For the separate "little person imagined inside the computer" mental-model sense, see each locale's own glossary — the two senses may take different words. |
 
 ### Tooling & engineering
 

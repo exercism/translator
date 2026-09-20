@@ -139,9 +139,9 @@ Handling Latin-script code tokens inside RTL Persian prose:
   bare or merely transliterated; explain what it means in Persian, per the acronym rule in
   `global/voice.md`. Nothing else earns a bracketed gloss.
 
-## Describers (the timeline of what the learner's code did)
+## Past-tense records of what the reader's code did
 
-- **Write a past-tense describer in the passive, never in the third-person active.** These
+- **Write a past-tense record in the passive, never in the third-person active.** These
   strings narrate an action with no doer named ("drew a rectangle…", "returned Yuki's
   choice"), and a Persian active verb leaves the reader hunting for a subject that was never
   mentioned. «مستطیلی … رسم شد», not «مستطیلی … رسم کرد»; «یوکی به عنوان خروجی برگردانده شد»,
@@ -149,10 +149,10 @@ Handling Latin-script code tokens inside RTL Persian prose:
 - **Drop a possessive that Persian does not need.** "Returned Yuki's choice" becomes «یوکی به
   عنوان خروجی برگردانده شد», not «گزینه‌ی یوکی برگردانده شد»: naming what was returned is
   enough, and the possessive construction reads as translationese.
-- **A describer that says a surface was emptied is stated as a fact, not as an action**, because
+- **A line that says a surface was emptied is stated as a fact, not as an action**, because
   the passive of "cleared" reads clumsily: «الان بوم خالی است» (the canvas is now empty), not
   «بوم پاک شد».
-- **This applies only where the English is a past-tense record.** Where a describer is a
+- **This applies only where the English is a past-tense record.** Where the English is a
   present-tense description of what an instruction does ("Move the character forward one
   cell"), keep the Persian present indicative («شخصیت را یک خانه به جلو می‌برد») and do not
   make it passive.

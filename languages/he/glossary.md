@@ -19,7 +19,7 @@ These are terms where the Hebrew is used in prose, so the "Use (he/en)" column i
 | English | Hebrew | Use (he/en) | Notes |
 |---------|--------|-------------|-------|
 | string | מחרוזת | he | Never swap with `שרשרת` (the chain metaphor). See guide § "The שרשרת / מחרוזת collision". |
-| character (text) | תו | he | A single text character. Keep distinct from `דמות` (the on-screen game figure). |
+| character (text) | תו | he | A single text character. Keep distinct from `דמות` (a character in a story). |
 | Boolean | בוליאני | he | Not `טיפוס לוגי`. The literal keywords `true`/`false` stay English inside code. |
 | float / decimal | עשרוני | he | Follows the current Python curriculum. Not `ממשי`, which is the older schoolbook term. |
 | index | אינדקס | he | Not `מציין` and not the Academy's `ציון`, which is unused in practice. |

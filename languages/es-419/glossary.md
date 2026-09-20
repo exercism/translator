@@ -14,7 +14,7 @@ decision log (`glossary-notes.md`).
 |---------|---------|------------------|-------|
 | tech / tech industry | tech / el sector tech | es-419 | "el sector tech" or "el mundo tech" for the industry sense. |
 | pitfall | trampa | es-419 | Stands alone. "Error común" also natural in a fuller phrase. |
-| Ewww! / Yuck! (disgust interjection) | ¡Guácala! | es-419 | The es-419 interjection for something gross (e.g. the maze poop message). Not the Spain _¡Puaj!_. |
+| Ewww! / Yuck! (disgust interjection) | ¡Guácala! | es-419 | The es-419 interjection for something gross. Not the Spain _¡Puaj!_. |
 
 ## Localize (use the Spanish term)
 
@@ -62,7 +62,6 @@ These are terms where the Spanish is used in prose, so the "Use (es-419/en)" col
 | hue (colour control) | tono | es-419 | The H of the HSL colour controls in the drawing exercises. Not _matiz_. |
 | lightness (colour control) | luminosidad | es-419 | The L of HSL. Not _brillo_, which names brightness rather than lightness, and not _claridad_. |
 | saturation (colour control) | saturación | es-419 | The S of HSL. |
-| character / little person (the figure on screen) | personaje | es-419 | The figure the learner moves around a maze or grid. Never _personajito_. Use _personaje chiquito_ only where the source marks the diminutive ("the little person"); plain _personaje_ everywhere else, including every "the character" in a describer or hint. Not the same word as `character` (a text character) in `../es/glossary.md`, which stays _carácter_; pick by meaning. |
 | height (of a shape or box) | altura | es-419 | Always _la altura_, never _el alto_: a bare "alto" reads as the interjection _¡alto!_ (stop). Width stays _el ancho_, so a pair reads _el ancho y la altura_, _un ancho de X y una altura de Y_. |
 | foot-gun | (descriptive, no fixed term) | es-419 | Idiomatic; render descriptively, e.g. "algo con lo que es fácil dispararte en el pie". Do not force a fixed term. |
 

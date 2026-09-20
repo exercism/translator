@@ -156,10 +156,10 @@ mechanical:
   "তিনটি শীর্ষবিন্দু ও একটি রং দিয়ে একটি ত্রিভুজ আঁকে", and the category for all three is
   "আকৃতি আঁকা". Vary the Bangla only where the English itself varies. A triangle's corner
   points are শীর্ষবিন্দু in this description, not কোণার বিন্দু.
-- **Describer lines (the frame-by-frame narration of what the code did) are agentless in
+- **Past-tense lines narrating what the code did are agentless in
   English, so they are passive in Bangla.** Use the impersonal passive, never the active
   third-person perfect: "drew a rectangle ..." is "... একটি আয়তক্ষেত্র আঁকা হয়েছে", not
-  "... এঁকেছে". The same applies to every other describer verb: মুছে ফেলেছে → মুছে ফেলা হয়েছে,
+  "... এঁকেছে". The same applies to every other such verb: মুছে ফেলেছে → মুছে ফেলা হয়েছে,
   রূপান্তর করেছে → রূপান্তর করা হয়েছে.
 
 ## Worked examples

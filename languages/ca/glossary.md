@@ -78,7 +78,6 @@ format in `global/voice.md`); with no an explanation in the English, use the Eng
 | API | _interfície de programació d'aplicacions_ | |
 | framework | _entorn de treball_ | "Framework" is what Catalan developers actually say, so it is the ordinary word here (`global/voice.md`). |
 | CLI | _interfície de línia d'ordres_ | Note: Catalan says "ordres", not "comandos"/"comandes" as Spanish content often does. |
-| bootcamp | (no gloss needed, transparent) | |
 | JavaScript, Python, React | (no gloss) | Product/language names. |
 | Test | (no gloss) | As a keyword/technical token. |
 | Frontend, Backend | (no gloss) | |

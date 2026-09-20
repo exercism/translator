@@ -20,7 +20,7 @@ These are terms where the Thai is used in prose, so the "Use (th/en)" column is 
 | English | Thai | Use (th/en) | Notes |
 |---------|------|-------------|-------|
 | string | สตริง | th | `สายอักขระ` only as the one-time an explanation in the English gloss where the source defines it, then `สตริง` throughout. |
-| character (text) | อักขระ | th | A single text character. Keep distinct from `ตัวอักษร` (letter) and `ตัวละคร` (the game figure). |
+| character (text) | อักขระ | th | A single text character. Keep distinct from `ตัวอักษร` (letter) and `ตัวละคร` (a character in a story). |
 | letter (of a string) | ตัวอักษร | th | Distinct from `อักขระ`, matching the English pair. |
 | number | ตัวเลข | th | Not `จำนวน`, which is the quantity/mathematical sense. |
 | float / decimal | ทศนิยม | th | Not `จำนวนจริง` (school maths) and not `โฟลต`. |
@@ -101,7 +101,6 @@ These are terms where the Thai is used in prose, so the "Use (th/en)" column is 
 | concept (learning unit) | คอนเซปต์ | th | One teachable idea in a track's syllabus. Keep distinct from `แนวคิด`, the everyday word "concept". |
 | exercise | แบบฝึกหัด | th | |
 | task (within an exercise) | งานย่อย | th | Distinct from `แบบฝึกหัด` (the exercise itself). |
-| scenario (exercise test case) | สถานการณ์ | th | Also the concept title. |
 | feature (platform capability) | ฟีเจอร์ | th | Keep visibly apart from `ฟังก์ชัน`. |
 
 ## Keep in English
