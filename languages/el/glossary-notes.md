@@ -1,5 +1,28 @@
 # Greek (el) glossary notes
 
+## 2026-09-20: Adapted for Exercism (agent; nothing here is a native speaker's decision)
+
+This glossary was forked from Jiki's Greek glossary when Exercism's translator repo was
+created. Exercism and Jiki are separate products, and this glossary is Exercism's from here
+on. Everything that was about Jiki's own product (its courses, its exercise stories, its
+characters and physical metaphors) went with the fork; every decision about the Greek
+language itself was kept, including the ones a native speaker made. Where a native speaker had
+settled one of the removed terms, the decision is recorded below as retired rather than
+deleted.
+
+**Added: `Exercism product vocabulary: PROPOSED, NOT YET AGREED`.** The English terms the
+product's own nouns are built from, with the target column left empty. Nobody who speaks
+Greek has been asked yet, and an agent's invented rendering would read as an agreed one.
+
+### Retired with the fork, with the decision recorded
+
+These rows named things Exercism does not have, so the rows are gone. The renderings are
+kept here because the reasoning still stands if any of these words is ever needed again.
+
+- `golf tee` → **πάσσαλος του γκολφ**. **(a native speaker's decision)** Confirmed by a
+  native speaker (astyanax, 2026-08-03). Never left as bare English `tee`. `γκολφ` is
+  transliterated here, matching `μπάλα γκολφ` in the same content.
+
 ## 2026-08-13: "backtick" glosses as "βαρεία", never "ανάποδο τικ"
 
 **Decided by:** astyanax, the authoritative native-speaker reviewer for Greek, on.

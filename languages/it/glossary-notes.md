@@ -1,5 +1,31 @@
 # Italian (it) glossary notes
 
+## 2026-09-20: Adapted for Exercism (agent; nothing here is a native speaker's decision)
+
+This glossary was forked from Jiki's Italian glossary when Exercism's translator repo was
+created. Exercism and Jiki are separate products, and this glossary is Exercism's from here
+on. Everything that was about Jiki's own product (its courses, its exercise stories, its
+characters and physical metaphors) went with the fork; every decision about the Italian
+language itself was kept, including the ones a native speaker made. Where a native speaker had
+settled one of the removed terms, the decision is recorded below as retired rather than
+deleted.
+
+**Added: `Exercism product vocabulary: PROPOSED, NOT YET AGREED`.** The English terms the
+product's own nouns are built from, with the target column left empty. Nobody who speaks
+Italian has been asked yet, and an agent's invented rendering would read as an agreed one.
+
+### Retired with the fork, with the decision recorded
+
+These rows named things Exercism does not have, so the rows are gone. The renderings are
+kept here because the reasoning still stands if any of these words is ever needed again.
+
+- `pathway` → percorso. A structured learning sequence. Same word as _curriculum_ above;
+  the two senses rarely appear together in one document.
+- `track (a curriculum path, a different thing from Exercism's track)` → indirizzo. **(a
+  native speaker's decision)** Confirmed by a native speaker: the standard Italian word
+  for a course of study (secondary-school _indirizzo_, university track). Stays distinct
+  from _percorso_ (pathway).
+
 ## 2026-08-30: `level` settled on `livello`; `lesson` is `lezione` and is a different thing
 
 **Decided by:** the product side, answering a question native speaker kernelaklees asked on

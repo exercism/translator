@@ -1,5 +1,20 @@
 # Portuguese (pt) family glossary notes
 
+## 2026-09-20: Adapted for Exercism (agent; nothing here is a native speaker's decision)
+
+This family glossary was forked from Jiki's Portuguese family glossary when Exercism's
+translator repo was created. Exercism and Jiki are separate products, and this glossary is
+Exercism's from here on. Everything that was about Jiki's own product (its courses, its
+exercise stories, its characters and physical metaphors) went with the fork; every decision
+about the Portuguese language itself was kept, including the ones a native speaker made. Where a
+native speaker had settled one of the removed terms, the decision is recorded below as
+retired rather than deleted.
+
+**Added: `Exercism product vocabulary: PROPOSED, NOT YET AGREED`.** The English terms the
+product's own nouns are built from, with the target column left empty, in the family file
+because the product's nouns are shared across the family. Nobody who speaks Portuguese has been
+asked yet, and an agent's invented rendering would read as an agreed one.
+
 The decision log behind `glossary.md` and `guide.md` in this family folder: what changed,
 why, and what still needs confirming. Reasoning only; term mappings live in `glossary.md`.
 

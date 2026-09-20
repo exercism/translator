@@ -1,5 +1,28 @@
 # Finnish (fi) glossary notes
 
+## 2026-09-20: Adapted for Exercism (agent; nothing here is a native speaker's decision)
+
+This glossary was forked from Jiki's Finnish glossary when Exercism's translator repo was
+created. Exercism and Jiki are separate products, and this glossary is Exercism's from here
+on. Everything that was about Jiki's own product (its courses, its exercise stories, its
+characters and physical metaphors) went with the fork; every decision about the Finnish
+language itself was kept, including the ones a native speaker made. Where a native speaker had
+settled one of the removed terms, the decision is recorded below as retired rather than
+deleted.
+
+**Added: `Exercism product vocabulary: PROPOSED, NOT YET AGREED`.** The English terms the
+product's own nouns are built from, with the target column left empty. Nobody who speaks
+Finnish has been asked yet, and an agent's invented rendering would read as an agreed one.
+
+### Retired with the fork, with the decision recorded
+
+These rows named things Exercism does not have, so the rows are gone. The renderings are
+kept here because the reasoning still stands if any of these words is ever needed again.
+
+- `track (a curriculum path, a different thing from Exercism's track)` → oppimispolku.
+  Not the bare _opintopolku_, which is the name of Finland's national education-
+  application service and reads as branding.
+
 ## 2026-08-02: Website copy (app UI catalog)
 
 **Decided by:** nobody yet. These rows are **unconfirmed drafts**, proposed by the

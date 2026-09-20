@@ -97,3 +97,19 @@ Romanian-specific rules that English speakers (and machine translation) get wron
 - **Latin-script proper names** do not take Romanian endings. Use the prepositive „lui” for
   the genitive and dative of a personal name, and „pe” for the direct object. Flag any form
   that reads awkwardly.
+
+## Interpolated values
+
+- **An interpolated value takes no case ending and no fixed article.** A UI string or an
+  analyzer comment is handed a word the translator cannot see (`%{track_title}`,
+  `{{handle}}`, `%{name}`), and the ending, article or agreement it would need depends on
+  that word.
+  - **Never attach a case ending to the placeholder**: it will be wrong for half the values.
+    Rephrase so that a Romanian noun beside it carries the ending: not "in `%{track_title}`",
+    but "in the `%{track_title}` track", with the ending on the word for "track".
+  - **Never let an article or an adjective agree with the placeholder** either. Put both on
+    that same carrier noun.
+  - After a numeral, use the form Romanian normally uses with a counted noun, whatever the
+    number turns out to be.
+- **The exact forms this produces still want a native speaker's eye**, since no Romanian
+  speaker has reviewed a real interpolated string here yet.

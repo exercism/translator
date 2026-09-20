@@ -5,6 +5,34 @@ The decision log behind `glossary.md`. Two rules bind every pass that reads it:
 1. **A pass that changes the glossary reads this file first, and appends an entry after.** If an entry below records a **human** deciding a term, it is settled: it changes only by fresh agreement with a human, raised where it was settled. If nothing here mentions the term, it is an **unconfirmed draft**, and a pass may correct it provided it appends an entry saying what it changed and why.
 2. **A translation pass never loads this file.** It loads `glossary.md` and needs the term, not the argument that produced it.
 
+## 2026-09-20: Adapted for Exercism (agent; nothing here is a native speaker's decision)
+
+This glossary was forked from Jiki's Romanian glossary when Exercism's translator repo was
+created. Exercism and Jiki are separate products, and this glossary is Exercism's from here
+on. Everything that was about Jiki's own product (its courses, its exercise stories, its
+characters and physical metaphors) went with the fork; every decision about the Romanian
+language itself was kept, including the ones a native speaker made. Where a native speaker had
+settled one of the removed terms, the decision is recorded below as retired rather than
+deleted.
+
+**Added: `Exercism product vocabulary: PROPOSED, NOT YET AGREED`.** The English terms the
+product's own nouns are built from, with the target column left empty. Nobody who speaks
+Romanian has been asked yet, and an agent's invented rendering would read as an agreed one.
+
+### Retired with the fork, with the decision recorded
+
+These rows named things Exercism does not have, so the rows are gone. The renderings are
+kept here because the reasoning still stands if any of these words is ever needed again.
+
+- `scenario` → scenariu.
+- `track (a curriculum path, a different thing from Exercism's track)` → traseu. Keep
+  distinct from `parcurs` (pathway) below.
+- `pathway` → parcurs. Keep distinct from `traseu` (track) above.
+- `Learn to Code (a strand name)` → Învață să programezi. Descriptive strand names are
+  translated.
+- `Learn to Build (a strand name)` → Învață să construiești. Descriptive strand names
+  are translated.
+
 ## 2026-08-02: Website copy (app UI catalog)
 
 **Decided by:** nobody yet. These rows are **unconfirmed drafts**, proposed by the

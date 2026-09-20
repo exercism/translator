@@ -1,5 +1,32 @@
 # Latin American Spanish (es-419) glossary notes
 
+## 2026-09-20: Adapted for Exercism (agent; nothing here is a native speaker's decision)
+
+This glossary was forked from Jiki's Latin American Spanish glossary when Exercism's translator repo was
+created. Exercism and Jiki are separate products, and this glossary is Exercism's from here
+on. Everything that was about Jiki's own product (its courses, its exercise stories, its
+characters and physical metaphors) went with the fork; every decision about the Latin American Spanish
+language itself was kept, including the ones a native speaker made. Where a native speaker had
+settled one of the removed terms, the decision is recorded below as retired rather than
+deleted.
+
+**Added: `Exercism product vocabulary: PROPOSED, NOT YET AGREED`.** The English terms the
+product's own nouns are built from, with the target column left empty. Nobody who speaks
+Latin American Spanish has been asked yet, and an agent's invented rendering would read as an agreed one.
+
+### Retired with the fork, with the decision recorded
+
+These rows named things Exercism does not have, so the rows are gone. The renderings are
+kept here because the reasoning still stands if any of these words is ever needed again.
+
+- `pathway` → ruta de aprendizaje.
+- `track (a curriculum path, a different thing from Exercism's track)` → ruta. Rendered
+  the same as _pathway_; they are near-synonyms, do not introduce a second word.
+- `character / little person (an on-screen figure)` → personaje, never _personajito_.
+  _personaje chiquito_ only where the English marks the diminutive ("the little person").
+  Not the same word as `character` (a text character) in `../es/glossary.md`, which stays
+  _carácter_.
+
 ## 2026-08-05: "code" is translated, _código_, and leaves the Keep in English list
 
 **Decided by:** matcots5, native speaker, on the `exercise/maze-turn-around` review thread

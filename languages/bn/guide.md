@@ -187,3 +187,19 @@ Concrete Bangla for the principles in `global/voice.md`.
   more natural" less formally; if a sentence genuinely reads awkwardly in আপনি, rephrase
   it, do not switch register.
 - Do not use তুমি or তুই forms even in a single aside "for warmth".
+
+## Interpolated values
+
+- **An interpolated value takes no case ending and no fixed article.** A UI string or an
+  analyzer comment is handed a word the translator cannot see (`%{track_title}`,
+  `{{handle}}`, `%{name}`), and the ending, article or agreement it would need depends on
+  that word.
+  - **Never attach a case ending to the placeholder**: it will be wrong for half the values.
+    Rephrase so that a Bengali noun beside it carries the ending: not "in `%{track_title}`",
+    but "in the `%{track_title}` track", with the ending on the word for "track".
+  - **Never let an article or an adjective agree with the placeholder** either. Put both on
+    that same carrier noun.
+  - After a numeral, use the form Bengali normally uses with a counted noun, whatever the
+    number turns out to be.
+- **The exact forms this produces still want a native speaker's eye**, since no Bengali
+  speaker has reviewed a real interpolated string here yet.

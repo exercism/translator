@@ -1,5 +1,33 @@
 # Bangla (bn) glossary notes
 
+## 2026-09-20: Adapted for Exercism (agent; nothing here is a native speaker's decision)
+
+This glossary was forked from Jiki's Bengali glossary when Exercism's translator repo was
+created. Exercism and Jiki are separate products, and this glossary is Exercism's from here
+on. Everything that was about Jiki's own product (its courses, its exercise stories, its
+characters and physical metaphors) went with the fork; every decision about the Bengali
+language itself was kept, including the ones a native speaker made. Where a native speaker had
+settled one of the removed terms, the decision is recorded below as retired rather than
+deleted.
+
+**Added: `Exercism product vocabulary: PROPOSED, NOT YET AGREED`.** The English terms the
+product's own nouns are built from, with the target column left empty. Nobody who speaks
+Bengali has been asked yet, and an agent's invented rendering would read as an agreed one.
+
+### Retired with the fork, with the decision recorded
+
+These rows named things Exercism does not have, so the rows are gone. The renderings are
+kept here because the reasoning still stands if any of these words is ever needed again.
+
+- `snowman` → তুষারমানব. **(a native speaker's decision)** Native compound ("snow-man"),
+  not the phonetic loanword স্নোম্যান. Same default as "exercise" → অনুশীলনী: ordinary
+  curriculum/theme vocabulary, not CS jargon. Standardized across the exercises that used it
+  after one of them mixed both terms internally.
+- `relational (an exercise-family theme)` → আনুপাতিক. **(a native speaker's decision)**
+  Not আপেক্ষিক ("relative"). আনুপাতিক ("proportional") is the native speaker's preferred
+  rendering for this exercise family's "things must scale together" theme. Standardized across the family
+  after some of its exercises used আপেক্ষিক instead.
+
 ## 2026-09-07: Structured House, canonical circle and triangle descriptions
 
 **Decided by:** reviewer sohayelmahmud, forum, post 1, actioned

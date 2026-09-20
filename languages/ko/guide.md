@@ -203,3 +203,15 @@ Concrete Korean for the principles in `global/voice.md`.
 - "First, install Node.js" → "먼저 Node.js를 설치해요" (a shared step, 해요체; not the
   distant "Node.js를 설치하십시오")
 - "Try running this code" → "이 코드를 한번 실행해 봐요"
+
+## Interpolated values
+
+- **A particle after an interpolated value cannot be chosen in advance.** A UI string is
+  handed a word the translator cannot see (`%{track_title}`, `{{handle}}`), and Korean picks
+  은/는, 이/가, 을/를 by whether that word ends in a consonant. Do not guess, and do not write
+  the "은(는)" double form into running prose.
+  - Rephrase so that a Korean noun follows the placeholder and takes the particle: not
+    "`%{track_title}`을", but "`%{track_title}` 트랙을".
+  - Where a sentence cannot be rephrased, choose a postposition that does not alternate.
+- **The exact forms this produces still want a native speaker's eye**, since no Korean
+  speaker has reviewed a real interpolated string here yet.

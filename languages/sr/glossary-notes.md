@@ -1,5 +1,40 @@
 # Serbian (sr) glossary notes
 
+## 2026-09-20: Adapted for Exercism (agent; nothing here is a native speaker's decision)
+
+This glossary was forked from Jiki's Serbian glossary when Exercism's translator repo was
+created. Exercism and Jiki are separate products, and this glossary is Exercism's from here
+on. Everything that was about Jiki's own product (its courses, its exercise stories, its
+characters and physical metaphors) went with the fork; every decision about the Serbian
+language itself was kept, including the ones a native speaker made. Where a native speaker had
+settled one of the removed terms, the decision is recorded below as retired rather than
+deleted.
+
+**Added: `Exercism product vocabulary: PROPOSED, NOT YET AGREED`.** The English terms the
+product's own nouns are built from, with the target column left empty. Nobody who speaks
+Serbian has been asked yet, and an agent's invented rendering would read as an agreed one.
+
+### Retired with the fork, with the decision recorded
+
+These rows named things Exercism does not have, so the rows are gone. The renderings are
+kept here because the reasoning still stands if any of these words is ever needed again.
+
+- **The guide character's name, transliterated.** A decision by Jeremy, 2026-08-24, on
+  little_mouse's report that the Latin spelling read as "Yikee" to a Serbian speaker: a
+  **person's** name in narrative prose is transliterated and declined normally (genitive
+  „-ja“, dative „-ju“), while a **product or brand** name keeps its Latin spelling. The
+  general rule survives in `guide.md`; only the character it named is gone.
+- `scenario` → scenario (an exercise test case, a structure Exercism does not have).
+- `pathway` → putanja. Keep distinct from "staza" (the track row below); both mean "path" but were assigned to
+  different concepts.
+- `bootcamp` → butkamp. **(a native speaker's decision)** Corrected from the hybrid
+  spelling "bootkamp" per native-speaker feedback: a loanword adopted into Serbian prose
+  is respelled phonetically throughout, not half-kept in its English spelling. Declines
+  normally ("butkampa", "u butkampu"). Deliberately not "kurs", which is spoken for by
+  `course` above.
+- `track (a curriculum path, a different thing from Exercism's track)` → staza. Keep
+  distinct from "putanja" (pathway) above.
+
 ## 2026-08-26: `smart` (attire) is "poslovno" and `formal` (attire) is "svečano" (settled)
 
 **Decided by:** native speaker **little_mouse** on the pinned Serbian glossary thread

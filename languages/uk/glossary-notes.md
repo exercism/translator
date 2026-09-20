@@ -1,5 +1,43 @@
 # Ukrainian (uk) glossary notes
 
+## 2026-09-20: Adapted for Exercism (agent; nothing here is a native speaker's decision)
+
+This glossary was forked from Jiki's Ukrainian glossary when Exercism's translator repo was
+created. Exercism and Jiki are separate products, and this glossary is Exercism's from here
+on. Everything that was about Jiki's own product (its courses, its exercise stories, its
+characters and physical metaphors) went with the fork; every decision about the Ukrainian
+language itself was kept, including the ones a native speaker made. Where a native speaker had
+settled one of the removed terms, the decision is recorded below as retired rather than
+deleted.
+
+**Added: `Exercism product vocabulary: PROPOSED, NOT YET AGREED`.** The English terms the
+product's own nouns are built from, with the target column left empty. Nobody who speaks
+Ukrainian has been asked yet, and an agent's invented rendering would read as an agreed one.
+
+### Retired with the fork, with the decision recorded
+
+These rows named things Exercism does not have, so the rows are gone. The renderings are
+kept here because the reasoning still stands if any of these words is ever needed again.
+
+- `scenario` → сценарій (an exercise test case, a structure Exercism does not have).
+- `pathway` → шлях навчання.
+- `bootcamp` → буткемп.
+- `track (a curriculum path, a different thing from Exercism's track)` → трек (курсу).
+- `lock icon` → символ замочка. The diminutive _замочок_, not _замок_, which also means
+  "castle".
+- `light (one lamp of a traffic light)` → вогник. One of the three coloured lamps (_червоний
+  вогник_, _вогники світлофора_).
+  Not _світло_ (light as illumination) and not _лампа_ / _ліхтар_. The traffic light
+  itself stays _світлофор_.
+- `amber (the middle traffic light)` → бурштиновий. **Open question**: Ukrainian road
+  usage normally calls this light _жовтий_, so a native speaker still has to choose
+  between the literal _бурштиновий_ and the idiomatic _жовтий_. Until then use
+  _бурштиновий_ consistently.
+- `housing / casing (the traffic light's body)` → корпус. The box the three lamps sit
+  in. Not _кожух_ and not _коробка_, which is reserved for the value-container metaphor.
+- `snowball (one section of a snowman)` → снігова куля. The stacked body sections. The
+  full two-word form, not bare _куля_, which collides with the plain "circle/sphere" sense.
+
 ## 2026-09-13: the omitted-copula dash is a Ukrainian exception to the no-em-dash rule
 
 **Decided by:** decard (native-speaker reviewer), applied per the standing rule that a
