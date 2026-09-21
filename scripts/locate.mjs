@@ -17,31 +17,31 @@
 //   node scripts/locate.mjs docs hu using/faqs.md
 //   node scripts/locate.mjs website hu --key=tracks.show.title --check
 //
-// A translated file's path says nothing about where its English came from, on
-// purpose: it is the git blob id of that English. So a reviewer's "the Ruby Bob
-// instructions say X in Hungarian" cannot be turned into a file by looking. This
-// resolves it, through the same registry and the same ref scripts/translate.mjs
+// A translated file's path is the git blob id of its English, so it says nothing
+// about where that English came from. A reviewer's "the Ruby Bob instructions
+// say X in Hungarian" therefore cannot be matched to a file by looking. This
+// script resolves it through the same registry and ref that scripts/translate.mjs
 // reads, and prints where the translation is.
 //
-// ## A fix OVERWRITES the blob-keyed file, and that is allowed
+// ## Fixes overwrite the blob-keyed file
 //
-// "Nothing under locales/ is ever deleted" does not mean a file is immutable. A
-// blob id pins which ENGLISH a file translates, forever; it does not pin the
-// translation's wording. Correcting a translation in place is an update, which
-// the i18n repo's no-deletions check permits and which its S3 layout expects (a
-// content object sits at a stable path precisely so that it can be corrected).
+// Nothing under locales/ is ever deleted, but files can be changed. A blob id
+// fixes which English a file translates; the wording of the translation can
+// still be corrected. Correcting a translation in place is an update, which the
+// i18n repo's no-deletions check allows and its S3 layout expects (a content
+// object sits at a stable path so that it can be corrected).
 //
 // One blob id serves every track whose English is byte-identical, so a fix to
-// two-fer's instructions is a fix for every track that carries them. That is
-// almost always what the reviewer wants. `shared-by` below says when it applies
-// within this repo; across repos it cannot be known from here, so treat any
-// practice exercise's instructions as shared.
+// two-fer's instructions applies to every track that carries them. That is
+// almost always what the reviewer wants. `shared-by` below shows the sharing
+// within this repo. Sharing across repos cannot be seen from here, so assume any
+// practice exercise's instructions are shared.
 //
-// --check puts the file on disk through the same checks a pass would: the i18n
+// --check runs the file on disk through the same checks a pass would: the i18n
 // repo's checkContentFile against the English blob, then scripts/lib/checks.mjs.
 // For a catalog key it runs the i18n repo's validate.mjs for that catalog. It
-// never writes, and it never stamps: a hand edit to a catalog unit leaves its
-// English, and therefore its stamp, exactly as they were.
+// never writes or stamps: a hand edit to a catalog unit leaves its English, and
+// so its stamp, unchanged.
 //
 // Exit codes: 0 found (and, with --check, clean), 1 not found or the check failed,
 // 2 found but not translated yet (nothing to fix: run the translate command).

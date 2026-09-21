@@ -1,10 +1,10 @@
-// deepseek.mjs: the one engine. DeepSeek translates every language.
+// deepseek.mjs: the translation engine. DeepSeek translates every language.
 //
 // Ported from the DeepSeek adapter in Jiki's scripts/lib/engines.js, with three
-// differences that all follow from one script now doing a whole pass:
+// differences, all because one script now does a whole pass:
 //
-//   - it THROWS instead of exiting. One failed item must not end a run of four
-//     thousand; the caller retries, then leaves the item absent and reports it.
+//   - it throws instead of exiting, so one failed item does not end a run of four
+//     thousand. The caller retries, then leaves the item absent and reports it.
 //   - curl is spawned asynchronously, so several calls can be in flight.
 //   - the model, endpoint and reasoning effort come from config.json, the one
 //     place they are pinned.
@@ -13,9 +13,9 @@
 //   { input, cacheHit, cacheMiss, thinking, output, cost }
 // `output` is billable output inclusive of thinking tokens; `cost` is dollars.
 //
-// The API key is read in scripts/lib/config.mjs and handed in. It is never
-// logged and never written to any file. It reaches curl through a config file on
-// stdin (`-K -`) and not through argv, where any `ps` could read it.
+// The API key is read in scripts/lib/config.mjs and passed in. It is never
+// logged or written to a file. It reaches curl through a config file on stdin
+// (`-K -`), because anything in argv is visible to `ps`.
 
 import fs from "node:fs";
 import os from "node:os";
@@ -27,18 +27,18 @@ const MAX_HTTP_ATTEMPTS = 5;
 const BASE_BACKOFF_MS = 4000;
 const REQUEST_TIMEOUT_S = 120;
 
-// Cloudflare fronts this host and has been observed 403ing non-browser clients,
-// which is why this goes through curl with a browser-like UA and not fetch.
+// Cloudflare fronts this host and has been seen returning 403 to non-browser
+// clients, so requests go through curl with a browser-like user agent.
 const USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 " +
   "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
 
-// DeepSeek pricing, dollars per million tokens, off-peak. Input is billed at two
-// very different rates depending on whether the prompt prefix hit the cache, so
-// every cost line uses the split and never a flat input rate: a cache hit is
-// 120x cheaper than a miss. That ratio is the whole reason the prompt is
-// assembled in a fixed order (see scripts/lib/prompt.mjs). DeepSeek has also
-// charges double during peak hours (01:00-04:00 and 06:00-10:00 UTC, weekdays).
+// DeepSeek pricing, in dollars per million tokens, off-peak. Input is billed at
+// two very different rates depending on whether the prompt prefix hit the cache
+// (a hit is 120x cheaper than a miss), so every cost line uses both rates. That
+// ratio is why the prompt is assembled in a fixed order (see
+// scripts/lib/prompt.mjs). DeepSeek charges double during peak hours
+// (01:00-04:00 and 06:00-10:00 UTC, weekdays).
 //
 // deepseek-flash, off-peak, from api-docs.deepseek.com/quick_start/pricing on
 // 2026-09-18.
@@ -77,11 +77,12 @@ export function addUsage(total, usage) {
 
 /**
  * One OpenAI-compatible chat/completions call, retrying on 429, 5xx and a
- * curl-level failure. Anything else throws: a 400 will not get better by being
- * sent again.
+ * curl-level failure. Anything else throws, because resending a 400 will not
+ * help.
  *
- * Thinking mode is on by default for this model and `temperature` is NOT
- * supported while thinking, so none is sent; `reasoning_effort` is the dial.
+ * Thinking mode is on by default for this model, and `temperature` is not
+ * supported while thinking, so none is sent. `reasoning_effort` controls it
+ * instead.
  */
 export async function call({ apiKey, system, prompt, json = false }) {
   const engine = config().engine;
@@ -158,12 +159,12 @@ export async function call({ apiKey, system, prompt, json = false }) {
   throw new Failure("unreachable");
 }
 
-/** Strip a code fence the model wrapped the WHOLE output in, if it did. */
+/** Strip a code fence that the model wrapped around the whole output, if there is one. */
 export function unfence(text) {
   const trimmed = text.trim();
   const fenced = /^```[a-zA-Z]*\n([\s\S]*)\n```$/.exec(trimmed);
-  // Only when the fence really wraps everything: a document that merely starts
-  // and ends with its own code blocks must not lose them.
+  // Only when the fence wraps everything. A document that happens to start and
+  // end with its own code blocks must keep them.
   if (fenced && !/^```/m.test(fenced[1])) return `${fenced[1].trim()}\n`;
   return `${trimmed}\n`;
 }

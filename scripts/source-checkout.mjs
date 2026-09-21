@@ -10,20 +10,21 @@
 //   node scripts/source-checkout.mjs python            # a track
 //   node scripts/source-checkout.mjs ruby --pr=1809    # also fetch that PR's head
 //
-// English is never stored in this repo. It is read from a checkout of the repo it
-// is authored in, as git objects and never as a working tree, exactly as the i18n
-// repo reads it (its ENGLISH-SOURCE.md is the authority). .source/ is gitignored
-// and rebuildable.
+// English is never stored in this repo. It is read from a checkout of the repo
+// where it is written, as git objects and never as a working tree, the same way
+// the i18n repo reads it (see its ENGLISH-SOURCE.md). .source/ is gitignored and
+// can be rebuilt.
 //
-// The clone is bare and blobless: trees say which files exist and what their blob
-// ids are, which is all "what is missing?" needs, and scripts/translate.mjs
+// The clone is bare and blobless. Trees give each file's path and blob id, which
+// is all that is needed to work out what is missing, and scripts/translate.mjs
 // fetches the blobs it is about to translate in one request. History is kept
-// (no --depth) because the previous version of an edited file is found by walking
-// it. `--full` fetches blobs too, for working offline.
+// (no --depth) because the previous version of an edited file is found by
+// walking it. `--full` fetches blobs too, for working offline.
 //
-// This is the ONLY script here that runs a git command that changes anything,
-// and it only ever touches .source/ inside this repo. It never runs git in a
-// sibling checkout, which may be shared with a live session.
+// Apart from scripts/run-issue.mjs, which commits and pushes in the i18n
+// checkout, this is the only script here that runs a git command that changes
+// anything, and it only touches .source/ inside this repo. It never runs git in
+// a sibling checkout, which may be shared with a live session.
 
 import fs from "node:fs";
 import path from "node:path";

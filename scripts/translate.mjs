@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 //
-// translate: one whole translation pass for one source of English.
+// translate: one full translation pass over one source of English.
 //
 // Usage:
 //   node scripts/translate.mjs <source> <locale[,locale]> [--dry-run] [--type=<id>]
@@ -25,48 +25,49 @@
 //   node scripts/translate.mjs track ruby hu --dry-run
 //   node scripts/translate.mjs website hu
 //
-// ## What it does, for every item, with no agent in the loop
+// ## Steps, for every item, with no agent involved
 //
 //   resolve    list the source repo's tree at a ref, and derive each file's
 //              content type from its path through the i18n repo's registry
-//   skip       drop everything the locale already holds. THE ONE MODE IS
-//              "TRANSLATE IF ABSENT". Git-sourced content is filed under the git
-//              blob id of its English, so a translation is of exactly that text
-//              forever: there is no staleness, no `outdated`, no `all`, no
-//              `tidy`. An edited English file is a new blob id, which is a file
-//              that does not exist yet, which is this mode.
-//   prompt     assemble it in the fixed order scripts/lib/prompt.mjs documents
+//   skip       drop everything the locale already has. The only mode is
+//              "translate if absent". Content from git is filed under the blob
+//              id of its English, so a translation always matches that exact
+//              text, and there is no staleness and no `outdated`, `all` or
+//              `tidy` mode. Edited English has a new blob id, so its
+//              translation is simply absent.
+//   prompt     assemble it in the fixed order described in scripts/lib/prompt.mjs
 //   translate  call DeepSeek (scripts/lib/deepseek.mjs)
-//   check      put the answer through the i18n repo's OWN check functions, then
-//              the few this repo adds (scripts/lib/checks.mjs)
-//   write      only what passed. A failed call or a rejected answer is retried
-//              (config.json `engine.attempts`), then LEFT ABSENT and reported.
-//              Absent is the honest state: the next run picks it up.
+//   check      run the answer through the i18n repo's check functions, then the
+//              few this repo adds (scripts/lib/checks.mjs)
+//   write      write only what passed. A failed call or a rejected answer is
+//              retried (config.json `engine.attempts`), then left absent and
+//              reported, and the next run picks it up.
 //
-// Two things are key-based and not blob-keyed, and the i18n repo keeps a per-unit
-// stamp for both: the two website catalogs, and each source repo's METADATA
-// catalog (names, titles and blurbs out of config.json and metadata.toml, at
-// locales/<locale>/metadata/<repo>.json). There, "absent" is a unit the locale
-// does not hold, and a unit whose stamp no longer matches English (`stale`) is
-// retranslated with the live translation given as the previous version.
-// Identical English the locale has already translated in another repo's metadata
-// catalog is COPIED, never bought twice (see reuseIndex). The
-// stamps are written by the i18n repo's `validate.mjs --stamp`, which this runs
-// at the end of a catalog pass, pinned to the commit the English was read at and
-// naming exactly the units this run rewrote. Nothing here writes a stamp.
+// Two things are keyed by name instead of by blob id, and the i18n repo keeps a
+// per-unit stamp for both: the two website catalogs, and each source repo's
+// metadata catalog (names, titles and blurbs from config.json and
+// metadata.toml, at locales/<locale>/metadata/<repo>.json). For these, "absent"
+// means a unit the locale does not have. A unit whose stamp no longer matches
+// its English (`stale`) is retranslated, with the current translation passed as
+// the previous version. English that the locale has already translated in
+// another repo's metadata catalog is copied instead of paid for again (see
+// reuseIndex). Stamps are written by the i18n repo's `validate.mjs --stamp`,
+// which this runs at the end of a catalog pass, pinned to the commit the
+// English was read at and naming exactly the units this run rewrote. This
+// script never writes a stamp itself.
 //
-// ## What comes back
+// ## Output
 //
-// Counts, and a list of failures with paths. Progress goes to stderr, the
-// summary to stdout and to state/runs/<run>.json. No translated text is ever
-// printed: the orchestrator reads the summary and never sees the words.
+// Counts, and a list of failures with paths. Progress goes to stderr, and the
+// summary goes to stdout and to state/runs/<run>.json. Translated text is never
+// printed, so the orchestrator reads the summary without seeing the words.
 //
-// ## Nothing here runs git in a way that changes anything
+// ## Git
 //
 // English is read as git objects (`ls-tree`, `cat-file`, `log`). In a blobless
-// checkout under this repo's own .source/, reading fetches the missing blobs in
-// one request, which is what that checkout is for. Nothing is committed,
-// anywhere: see "Git belongs to the orchestrator" in global/workflow.md.
+// checkout under this repo's .source/, reading fetches the missing blobs in one
+// request, which is what that checkout is for. Nothing is committed anywhere:
+// see "Git belongs to the orchestrator" in global/workflow.md.
 
 import fs from "node:fs";
 import path from "node:path";
@@ -87,8 +88,8 @@ const log = (message) => console.error(message);
  *
  * Order: `--repo=`, the i18n repo's own env override for that kind of repo, this
  * repo's .source/<name> (scripts/source-checkout.mjs), then a sibling working
- * copy. The i18n repo's .source/ is deliberately NOT a candidate: those are its
- * blobless caches, and reading English out of one fetches into it.
+ * copy. The i18n repo's .source/ is left out on purpose: those are its blobless
+ * caches, and reading English out of one would fetch into it.
  */
 function resolveSource(lib, sourceId, name, explicit) {
   const kind = lib.sourceRepos.REPO_KINDS[SOURCES[sourceId].kind];
@@ -133,11 +134,11 @@ function previousVersion(lib, { repo, ref, file, locale }) {
 // ------------------------------------------------------------------ pool ----
 
 /**
- * Run `worker` over `items`: the FIRST one alone, then the rest `size` at a time.
+ * Run `worker` over `items`: the first one alone, then the rest `size` at a time.
  *
- * The first call of a group goes out alone because it is what writes the group's
- * shared prefix into the provider's cache. Sent together, the first `size` calls
- * would all miss on the same several thousand tokens.
+ * The first call of a group goes out alone because it writes the group's shared
+ * prefix into the provider's cache. If the first `size` calls went out together,
+ * they would all miss the cache on the same several thousand tokens.
  */
 async function pool(items, size, worker) {
   if (items.length === 0) return;
@@ -209,8 +210,9 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, locale, f
         return;
       }
 
-      // A whole file comes back in one answer. One that cannot fit is not sent:
-      // a truncated answer is paid for and then rejected. See config.json.
+      // A whole file comes back in one answer, so a file too large for that is
+      // not sent: a truncated answer would be paid for and then rejected. See
+      // config.json.
       if (approxTokens(english) > config().engine.max_text_tokens) {
         return fail(`too large for one call (~${approxTokens(english)} tokens of English, the limit is ${config().engine.max_text_tokens}); chunking is not built, so this file needs iHiD`);
       }
@@ -236,7 +238,7 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, locale, f
             continue;
           }
           fs.mkdirSync(path.dirname(target), { recursive: true });
-          // `wx`: translate-if-absent is never an overwrite, even when two runs race.
+          // `wx` so that this never overwrites a file, even if two runs race.
           fs.writeFileSync(target, answer, { flag: "wx" });
           counts.written += 1;
           run.written.push(path.relative(lib.dir, target));
@@ -256,16 +258,16 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, locale, f
 // --------------------------------------------------------------- catalogs ---
 
 /**
- * Translations this locale already holds of identical English, by the hash of
- * that English.
+ * Translations this locale already has of identical English, keyed by the hash
+ * of that English.
  *
- * A blurb synced from problem-specifications into eighty tracks appears, byte for
- * byte, in eighty metadata catalogs, and paying to translate it eighty times
- * would also produce eighty different wordings of one sentence. The i18n repo
- * leaves deduplicating that to this script, and makes it cheap: a unit's stamp is
+ * A blurb synced from problem-specifications into eighty tracks appears byte for
+ * byte in eighty metadata catalogs. Translating it eighty times would cost eighty
+ * times as much and produce eighty different wordings of one sentence. The i18n
+ * repo leaves deduplication to this script and makes it cheap: a unit's stamp is
  * the git blob id of its English string, so identical English has an identical
- * stamp in every `*.meta.json`. Only STAMPED units are indexed, because the stamp
- * is the only record of which English a translation is a translation of.
+ * stamp in every `*.meta.json`. Only stamped units are indexed, because the stamp
+ * is the only record of which English a translation belongs to.
  *
  * This is why problem-specifications is translated before any track.
  */
@@ -287,7 +289,7 @@ function reuseIndex(lib, locale, exceptFile) {
  *
  * @param {object} spec
  * @param {string} spec.type     the row this is counted under
- * @param {"backend"|"frontend"|"metadata"} spec.kind  the CHECKER's kind
+ * @param {"backend"|"frontend"|"metadata"} spec.kind  the kind, as the checker names it
  * @param {string} spec.file     the catalog on disk, in the i18n repo
  * @param {{catalog, arrays}} spec.english
  * @param {string} spec.howto
@@ -321,15 +323,16 @@ async function translateCatalog({ lib, run, locale, flags, spec }) {
 
   const write = () => {
     fs.mkdirSync(path.dirname(file), { recursive: true });
-    // Merged INTO what is there: every key the file already held is still in
-    // `flatTarget`. Nothing under locales/ is ever removed by a pass.
+    // Merged into the existing file: every key it already had is still in
+    // `flatTarget`, so a pass never removes anything under locales/.
     fs.writeFileSync(file, `${JSON.stringify(catalogs.unflattenCatalog(kind, flatTarget, new Set(english.arrays ?? [])), null, 2)}\n`);
   };
 
-  // Identical English this locale has already translated is copied, not bought
-  // again. Counted apart from `written`, so the summary shows what was paid for.
-  // `twins` are units whose English is identical to an EARLIER unit of this same
-  // catalog: the first is translated, the rest are filled from it afterwards.
+  // English this locale has already translated is copied instead of paid for
+  // again. Copies are counted separately from `written`, so the summary shows
+  // what was paid for. `twins` are units whose English matches an earlier unit
+  // in the same catalog: the first is translated, and the rest are filled from
+  // it afterwards.
   const learned = new Map();
   const twins = [];
   if (spec.reuse) {
@@ -388,8 +391,8 @@ async function translateCatalog({ lib, run, locale, flags, spec }) {
       return batch.map((item) => ({ item, reason: error instanceof SyntaxError ? "the answer was not valid JSON" : error.message }));
     }
 
-    // Each unit is checked ALONE against its own English with the i18n repo's
-    // checkCatalog, so one bad unit never costs its neighbours.
+    // Each unit is checked on its own against its English with the i18n repo's
+    // checkCatalog, so one bad unit does not cause its neighbours to be rejected.
     const rejected = [];
     for (const item of batch) {
       const { unit } = item;
@@ -413,7 +416,7 @@ async function translateCatalog({ lib, run, locale, flags, spec }) {
       rewritten.push(unit.id);
       counts.written += 1;
       if (item.previous) counts.revised += 1;
-      // The same sentence later in THIS catalog (two exercises sharing a source line).
+      // For the same sentence later in this catalog (two exercises sharing a source line).
       if (spec.reuse && !unit.plural) learned.set(catalogs.unitHash(unit), candidate[unit.id]);
     }
     write();
@@ -447,9 +450,9 @@ async function translateCatalog({ lib, run, locale, flags, spec }) {
   if (rewritten.length === 0) return;
   run.written.push(path.relative(lib.dir, file), path.relative(lib.dir, catalogs.metaPath(file)));
 
-  // The stamp belongs to the checker. It is pointed at exactly the commit this
-  // run translated, and `--stamp-units` names what was rewritten, which is the
-  // only way a STALE unit may be re-stamped.
+  // The checker writes the stamps. It is pointed at the commit this run
+  // translated, and `--stamp-units` lists the units that were rewritten, which is
+  // the only way a stale unit can be stamped again.
   const slug = type.replace(/[^A-Za-z0-9.-]/g, "_");
   const unitsFile = path.join(run.dir, `${locale}.${slug}.stamp-units.json`);
   fs.writeFileSync(unitsFile, JSON.stringify(rewritten));
@@ -486,13 +489,13 @@ async function catalogSpecs({ lib, sourceId, name, repo, ref, sha, locale, flags
 // ------------------------------------------------------------------- main ---
 
 /**
- * The engine: DeepSeek. scripts/test.mjs may substitute a fake one, so that the
- * write, check and stamp path is exercised for real without a paid call.
+ * The engine: DeepSeek. scripts/test.mjs can substitute a fake one, so the write,
+ * check and stamp steps run for real without a paid call.
  *
- * That substitution is refused unless the i18n tree being written to is a test
- * fixture: EXERCISM_I18N_ROOT must be set, must not be the i18n checkout itself,
- * and must hold the marker file the test creates. A fake engine can therefore
- * never write a word into the real locales/.
+ * The fake is refused unless the i18n tree being written to is a test fixture:
+ * EXERCISM_I18N_ROOT must be set, must not be the i18n checkout itself, and must
+ * contain the marker file the test creates. So a fake engine cannot write into
+ * the real locales/.
  */
 async function engine(lib) {
   const fake = process.env.TRANSLATOR_TEST_ENGINE;
@@ -576,7 +579,7 @@ async function main() {
   // Sorted by locale, then by type: consecutive calls share the longest prefix.
   for (const locale of locales) {
     // Catalogs first. For a content source that is its metadata (names, titles,
-    // blurbs), which is what a student sees before they open anything.
+    // blurbs), which is what a student sees before opening anything.
     for (const spec of await catalogSpecs({ lib, sourceId, name, repo, ref, sha, locale, flags })) {
       await translateCatalog({ lib, run, locale, flags, spec });
     }
@@ -597,17 +600,17 @@ async function main() {
   else summary.usage = run.usage;
   fs.writeFileSync(path.join(run.dir, "summary.json"), `${JSON.stringify({ ...summary, writtenPaths: run.written }, null, 2)}\n`);
   report(summary, path.relative(ROOT, path.join(run.dir, "summary.json")));
-  // A dry run that resolved is a success, whatever it found: a file too large to
-  // send is something to report, not a reason for a command to stop.
+  // A dry run that resolved exits 0 whatever it found. A file too large to send
+  // is reported, and the command carries on.
   process.exit(!dryRun && (run.failures.length > 0 || run.checker.some((one) => one.exit !== 0)) ? 1 : 0);
 }
 
 /**
- * Dollar figures for a dry run. The group's prefix is priced as a MISS once and
- * a HIT on every later call, which is what the fixed prompt order buys. Output is
- * a guess (the text again, half as long again for a language wordier than
- * English) and EXCLUDES thinking tokens, which are billed as output and cannot be
- * known without calling. Read the figure as a floor.
+ * Dollar figures for a dry run. Each group's prefix is priced as a cache miss
+ * once and a cache hit on every later call, which is what the fixed prompt order
+ * allows. Output is an estimate (the text again, plus half for a language wordier
+ * than English) and excludes thinking tokens, which are billed as output and
+ * cannot be known without calling. Treat the figure as a lower bound.
  */
 function withCosts(estimates) {
   for (const types of Object.values(estimates)) {

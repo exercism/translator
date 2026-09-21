@@ -8,15 +8,15 @@
 //
 // Exit codes: 0 every type is routed (or a declared gap), 1 otherwise.
 //
-// A type with no route produces no error, no failed run and no missing file,
-// only a count that never moves. Nothing runs this automatically (this repo has
-// no CI), so it is a step of a pass: run it whenever the i18n registry, a how-to
-// or a command changes. The routes are declared in scripts/lib/routes.mjs.
+// A type with no route causes no error, no failed run and no missing file; its
+// count just never moves. No workflow runs this check, so it is a step of a
+// pass: run it whenever the i18n registry, a how-to or a command changes. The
+// routes are declared in scripts/lib/routes.mjs.
 //
-// It ASKS rather than trusting the declaration. The type ids come from the i18n
-// checkout's registry, not from a list here; "can the script run this type?" is
-// asked of scripts/translate.mjs itself (`--list-types`); and the how-to a type
-// is routed to must exist on disk. What is checked, per type:
+// Each fact is checked at its source. The type ids come from the i18n
+// checkout's registry, whether the script can run a type is asked of
+// scripts/translate.mjs (`--list-types`), and each routed how-to must exist on
+// disk. Per type, it checks that:
 //
 //   1. it is in ROUTES or GAPS, and not both
 //   2. content-types/<howto>.md exists
@@ -26,9 +26,9 @@
 //   5. (whole files only) a path of that type really derives to it through the
 //      registry's typeForPath, within the kind of repo its source reads
 //
-// And the other way round: nothing in ROUTES or GAPS that the registry has never
-// heard of, no how-to on disk that no type reaches, and every governance command
-// the repo documents exists.
+// It also checks the reverse: nothing in ROUTES or GAPS is missing from the
+// registry, every how-to on disk is reached by some type, and every governance
+// command the repo documents exists.
 
 import fs from "node:fs";
 import path from "node:path";

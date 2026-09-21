@@ -7,9 +7,9 @@
 // Usage:
 //   node scripts/test.mjs
 //
-// Nothing here calls an API, and nothing here touches the real i18n checkout's
-// locales/: the i18n scripts are pointed at the fixture with EXERCISM_I18N_ROOT,
-// exactly as that repo's own tests do.
+// Nothing here calls an API or touches the real i18n checkout's locales/. The
+// i18n scripts are pointed at the fixture with EXERCISM_I18N_ROOT, the same way
+// that repo's own tests do.
 
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -94,7 +94,7 @@ await test("the prompt prefix is byte-identical across items, and ordered rules,
   assert.equal(a, b);
   const order = ["global/rules.md", "global/voice.md", "global/translating.md", "languages/hu/guide.md", "languages/hu/glossary.md", "content-types/hints.md", "<instruction>"].map((marker) => a.indexOf(marker));
   assert.ok(order.every((at, index) => at > -1 && (index === 0 || at > order[index - 1])), `order was ${order}`);
-  // The WHOLE glossary, never a filtered one.
+  // The whole glossary, never a filtered one.
   assert.ok(a.includes(fs.readFileSync(path.join(ROOT, "languages/hu/glossary.md"), "utf8").trimEnd()));
   // Everything that varies by item comes after the prefix.
   const tail = fileTail({ sourcePath: "x.md", english: "Hello\n", previous: { english: "Hi\n", translation: "Szia\n" } });

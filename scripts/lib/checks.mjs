@@ -1,26 +1,28 @@
 // checks.mjs: the few mechanical checks this repo adds to the i18n checker's.
 //
-// The checker is exercism/i18n's scripts/lib/checks.mjs, and a candidate is put
-// through it first (scripts/translate.mjs). These are the facts about EXERCISM'S
-// Markdown that a checker filed by blob id cannot know, because it cannot know
-// what kind of document a blob is. Each one is something the website relies on
-// to render the page, so each is a rejection and never a warning:
+// The main checker is exercism/i18n's scripts/lib/checks.mjs, and
+// scripts/translate.mjs runs a candidate through it first. The checks here cover
+// Exercism-specific Markdown rules that the i18n checker cannot apply, because
+// it files content by blob id and does not know what kind of document a blob
+// is. The website relies on each of these to render the page, so each one
+// rejects the answer instead of warning:
 //
-//   - a fenced code block is reproduced byte for byte (global/rules.md). The one
+//   - a fenced code block is reproduced byte for byte (global/rules.md). The
 //     exception is an `exercism/note`, `exercism/caution` or `exercism/advanced`
-//     fence, which is an admonition holding prose and IS translated.
-//   - where ENGLISH leads `## 1. ...` headings with numbers, the translation
-//     carries the same numbers in the same order. The website joins a concept
-//     exercise's hints to its tasks by that number (content-types/hints.md).
-//     English without them is not compared: Hungarian and its like put the
-//     ordinal first, so `## Rule 1` becomes `## 1. szabály`.
+//     fence, which is an admonition containing prose, and is translated.
+//   - where the English starts `## 1. ...` headings with numbers, the
+//     translation has the same numbers in the same order. The website matches a
+//     concept exercise's hints to its tasks by that number
+//     (content-types/hints.md). Headings are not compared when the English has
+//     no numbers, because languages like Hungarian put the ordinal first, so
+//     `## Rule 1` becomes `## 1. szabály`.
 //   - every reference-style link still resolves: `[text][label]` needs a
 //     `[label]: url` definition, and no definition's URL may change.
 //   - no inline code span English has is lost.
-//   - `%{...}` tokens are the same set, DOTTED NAMES INCLUDED. The i18n checker
+//   - `%{...}` tokens are the same set, including dotted names. The i18n checker
 //     matches `%{\w+}`, which is what the website interpolates, but real analyzer
-//     comments also carry `%{method.name}` and `%{export.name}`, and a translated
-//     inner name there is just as wrong.
+//     comments also contain `%{method.name}` and `%{export.name}`, and translating
+//     the name inside those is just as wrong.
 //   - the answer is not the English handed back.
 //
 // Pure functions of two strings, so scripts/test.mjs can assert every one.
@@ -49,7 +51,7 @@ export function fencedBlocks(text) {
 
 const isAdmonition = (block) => block.info.startsWith("exercism/");
 
-/** The text with every fenced block that is CODE removed. Admonitions stay: they are prose. */
+/** The text with every fenced code block removed. Admonitions are kept, because they are prose. */
 export function withoutCode(text) {
   let out = text;
   for (const block of fencedBlocks(text)) if (!isAdmonition(block)) out = out.replace(block.body, "");
@@ -108,8 +110,8 @@ export function checkMarkdown(english, translated) {
   const lostUrls = enDefs.filter((def) => !targetUrls.has(def.url));
   if (lostUrls.length > 0) problems.push(`link definition(s) lost or changed: ${lostUrls.slice(0, 3).map((def) => `[${def.label}]: ${def.url}`).join(", ")}`);
   const defined = new Set(targetDefs.map((def) => def.label));
-  // Only when English's own references all resolve: some real files carry a
-  // dangling reference, and a translation is not held to fixing English.
+  // Only checked when the English's own references all resolve. Some real files
+  // have a dangling reference, and the translation is not expected to fix it.
   const enDefined = new Set(enDefs.map((def) => def.label));
   if (referenceUses(english).every((label) => enDefined.has(label))) {
     const dangling = referenceUses(translated).filter((label) => !defined.has(label));

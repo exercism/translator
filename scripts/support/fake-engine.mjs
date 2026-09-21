@@ -1,9 +1,9 @@
-// fake-engine.mjs: a stand-in for DeepSeek, for scripts/test.mjs ONLY.
+// fake-engine.mjs: a stand-in for DeepSeek, used only by scripts/test.mjs.
 //
-// It "translates" by marking text, which is enough to exercise everything around
-// the model for real: the prompt's shape, the i18n checker, the write, the stamp.
+// It "translates" by marking text, which is enough to run everything around the
+// model for real: the prompt's shape, the i18n checker, the write, the stamp.
 // scripts/translate.mjs refuses to load it unless the tree being written to is a
-// test fixture, so it can never put a word into the real locales/.
+// test fixture, so it cannot write into the real locales/.
 //
 // FAKE_ENGINE_BREAK=code makes it alter a code block, which the checker must
 // reject; FAKE_ENGINE_BREAK=english makes it hand the English back unchanged.

@@ -1,17 +1,17 @@
 // prompt.mjs: what the model is sent, and in what order.
 //
-// ## Prompt order is load-bearing
+// ## Prompt order matters
 //
-// DeepSeek bills a prompt-cache hit at roughly 1/120th of a miss, and a cache
-// can only reuse a shared PREFIX. So every prompt is assembled in one fixed
-// order, most widely shared first:
+// DeepSeek bills a prompt-cache hit at roughly 1/120th of a miss, and the cache
+// can only reuse a shared prefix. So every prompt is assembled in one fixed
+// order, with the most widely shared parts first:
 //
 //   1. global/rules.md              identical for every call there will ever be
 //   2. global/voice.md
 //   3. global/translating.md
 //   4. the language guide           identical for every call in one locale
 //      (the family guide first, for a locale that belongs to a family)
-//   5. the WHOLE glossary           (family glossary first, likewise)
+//   5. the whole glossary           (family glossary first, likewise)
 //   6. the content type's how-to    identical for every item of one type
 //      and that type's fixed instruction
 //   7. the previous version of this text and its translation, when English was
@@ -22,17 +22,16 @@
 // sorts its work by locale and then by type, so consecutive calls share
 // everything down to the end of step 6.
 //
-// **The glossary is never filtered to the terms a text happens to use.** A
-// filtered glossary is different bytes for every item, which ends the shared
-// prefix at step 4 and turns thousands of tokens per call from a hit into a
-// miss. It also removes the rows that tell a model what NOT to write.
+// The glossary is never filtered to the terms a text uses. A filtered glossary
+// would differ for every item, which would end the shared prefix at step 4 and
+// turn thousands of tokens per call from cache hits into misses. It would also
+// drop the rows that tell the model what not to write.
 //
-// Anything added above step 7 that varies by item throws the cache away for
-// everything after it. Add item-specific material at step 7 or below.
+// Anything that varies by item and is added before step 7 loses the cache for
+// everything after it. Add item-specific material at step 7 or later.
 //
-// global/pass-mechanics.md and global/workflow.md are deliberately NOT sent.
-// They describe what happens around the model, none of which the thing on the
-// other end of a prompt can do.
+// global/pass-mechanics.md and global/workflow.md are not sent. They describe
+// what happens around the model, and the model cannot act on any of it.
 
 import path from "node:path";
 import { ROOT, die, familyOf, languageName, readIfPresent } from "./config.mjs";

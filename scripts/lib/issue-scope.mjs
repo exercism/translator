@@ -1,18 +1,18 @@
-// issue-scope.mjs: what ONE pull request changed, worked out from git.
+// issue-scope.mjs: what one pull request changed, worked out from git.
 //
-// The issue a PR opens lists the English files it touched, and that list is NOT
-// read: it is text in an issue, and an issue is data that no decision is taken
-// from (scripts/lib/issues.mjs). The scope of a run is derived here instead, from
-// the source repo itself, given only the verified sha:
+// The issue a PR opens lists the English files it touched, and that list is
+// ignored, because no decision is taken from an issue's text
+// (scripts/lib/issues.mjs). The scope of a run is derived here from the source
+// repo itself, given only the verified sha:
 //
-//   paths   files whose blob id differs between the merge base and the sha. By
-//           blob id, so a rename or a mode change requires nothing.
+//   paths   files whose blob id differs between the merge base and the sha.
+//           Comparing blob ids means a rename or a mode change needs no work.
 //   units   catalog units (the website's two catalogs, or this repo's metadata
 //           catalog) whose English differs between the two, found by building
 //           the English at both commits with the i18n repo's own builders.
 //
-// The merge base is taken against the default branch as the checkout has it, so a
-// PR that is behind main is not charged with main's changes.
+// The merge base is taken against the checkout's default branch, so a PR that is
+// behind main is not given main's changes.
 
 import { SOURCES } from "./routes.mjs";
 

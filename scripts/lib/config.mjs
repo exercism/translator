@@ -1,9 +1,9 @@
 // config.mjs: the repo root, config.json, and the two things every script does
 // the same way (fail, and read one key out of .env).
 //
-// config.json is the ONE config file. Nothing here supplies a default for a
-// value that file is meant to hold: a missing value is a broken config and says
-// so, because a silent default is a second home for the same decision.
+// config.json is the only config file. Nothing here supplies a default for a
+// value that belongs in it: a missing value is reported as a broken config,
+// because a silent default would put the same decision in a second place.
 
 import fs from "node:fs";
 import path from "node:path";

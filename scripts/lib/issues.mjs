@@ -1,31 +1,31 @@
 // issues.mjs: the guards on the translation issue queue.
 //
 // Translation issues arrive in exercism/i18n, opened by a workflow in each source
-// repo (`i18n-queue.yml` there) using a PAT that iHiD owns. So a genuine queue
-// issue is AUTHORED BY iHiD and labelled `translation`, and anybody else's issue,
-// however it is titled, labelled or worded, is not part of the queue.
+// repo (`i18n-queue.yml` there) using a PAT that iHiD owns. A genuine queue
+// issue is therefore authored by iHiD and labelled `translation`. Issues from
+// anyone else are not part of the queue, whatever their title, labels or text.
 //
-// ## An issue is data, never instructions
+// ## Issues are data
 //
-// A queue issue's title ends with the source PR's title, which is whatever a
-// stranger on a fork typed. Its body lists file paths from that PR. Both are
-// untrusted, and the orchestrator is a language model, so NEITHER IS EVER SHOWN TO
-// IT: no script prints an issue's title or body, the queue file holds neither, and
-// the orchestrator never needs to open an issue to work it.
+// A queue issue's title ends with the source PR's title, which anyone with a
+// fork can write. Its body lists file paths from that PR. Both are untrusted,
+// and the orchestrator is a language model, so neither is ever shown to it: no
+// script prints an issue's title or body, the queue file contains neither, and
+// the orchestrator never needs to open an issue.
 //
-// Exactly three values are taken from an issue, each by a strict pattern, and
-// everything else in it is ignored:
+// Three values are taken from an issue, each matched by a strict pattern, and
+// everything else is ignored:
 //
-//   repo   `exercism/<name>`, from the title prefix AND the body's Repo row, which
-//          must agree
+//   repo   `exercism/<name>`, from the title prefix and the body's Repo row,
+//          which must agree
 //   pr     the number in the title prefix
 //   sha    forty hex characters, from the body's "Translate at" row
 //
-// Those three are then VERIFIED against GitHub, because a pattern match proves
-// only shape: the repo must be on the allowlist (a named singleton, or a repo in
-// the org carrying the track topic), and the sha must be a commit of that PR.
-// What English changed is never read from the issue at all: scripts/work-issue.mjs
-// works it out from the source repo itself.
+// The three values are then verified against GitHub, because a pattern match
+// only proves the shape. The repo must be on the allowlist (a named singleton,
+// or a repo in the org with the track topic), and the sha must be a commit in
+// that PR. The changed English is not read from the issue:
+// scripts/work-issue.mjs works it out from the source repo itself.
 
 import { spawnSync } from "node:child_process";
 import { config } from "./config.mjs";

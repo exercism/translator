@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 //
-// run-issue: work ONE queue issue end to end, with nobody watching.
+// run-issue: work one queue issue from start to finish, unattended.
 //
 // Usage:
 //   node scripts/run-issue.mjs <issue-number>
@@ -8,23 +8,22 @@
 // Exit codes: 0 finished (translated and pushed, or nothing to do), 1 anything
 // else, with the reason commented on the issue.
 //
-// This is what .github/workflows/translate-issue.yml runs, and the only place in
+// .github/workflows/translate-issue.yml runs this, and it is the only place in
 // this repo that commits and pushes. A PR in a source repo opens an issue in
-// exercism/i18n, that issue dispatches the workflow, and this takes it from the
-// issue number to a push on ../i18n `main` and a closed issue, which is what
-// re-runs the PR's completeness check. Nobody reads its output as it goes, so
-// every ending writes a comment on the issue saying what happened.
+// exercism/i18n, the issue dispatches the workflow, and this script goes from
+// the issue number to a push on ../i18n `main` and a closed issue. Closing the
+// issue re-runs the PR's completeness check. Nobody watches the output, so every
+// outcome is reported in a comment on the issue.
 //
-// The pass itself is scripts/lib/issue-pass.mjs, shared with
-// scripts/work-issue.mjs: an unattended run must do exactly what the orchestrator
-// does by hand, so the steps live in one place and this adds only what surrounds
-// them.
+// The pass itself is in scripts/lib/issue-pass.mjs, shared with
+// scripts/work-issue.mjs, so an unattended run does exactly what the
+// orchestrator does by hand. This script adds only the steps around it.
 //
 // ## What it does
 //
-//   verify     the issue, by scripts/lib/issues.mjs: author, label, allowlisted
-//              repo, and the sha belonging to that PR. Its title and body are
-//              never read as anything but those three values.
+//   verify     the issue, with scripts/lib/issues.mjs: author, label,
+//              allowlisted repo, and a sha that belongs to that PR. Only the
+//              repo, PR number and sha are taken from its title and body.
 //   scope      fetch the PR into .source/ and derive from git what it changed
 //   cap        a dry run gives the untranslated word count per locale; above
 //              config.json's `issue_word_cap` this stops and waits for iHiD
@@ -35,26 +34,26 @@
 //   push       commit in ../i18n and push to main, rebasing and retrying a
 //              non-fast-forward, then close the issue with the counts
 //
-// A CLOSED issue is never worked, and is checked twice: before anything else,
+// A closed issue is never worked. This is checked twice: before anything else,
 // and again just before the commit. The queue closes an issue as "not planned"
-// when `ready-to-translate` comes off its PR, and a dispatch that was pending or
-// in flight then would otherwise translate and push English nobody has approved.
-// That ending posts nothing on the issue and exits 0.
+// when `ready-to-translate` is removed from its PR, and a dispatch that was
+// pending or running at that point would otherwise translate and push English
+// that nobody has approved. In that case nothing is posted on the issue and the
+// script exits 0.
 //
-// Anything that fails leaves the issue OPEN and exits non-zero: an open issue is
-// the queue, and a closed one re-runs a check that would fail again.
-// .github/workflows/retry-stale-issues.yml comes back to it, so a transient
-// outage heals itself.
+// Any failure leaves the issue open and exits non-zero. Open issues are what the
+// queue retries, and closing one would re-run a check that fails again.
+// .github/workflows/retry-stale-issues.yml dispatches it again later, so a
+// temporary outage recovers on its own.
 //
 // ## Git
 //
-// This script is the one exception to "git belongs to the orchestrator" (see
-// CLAUDE.md), because it IS the automated path and no session is watching it.
-// It runs git in exactly two places and refuses to anywhere else: the i18n
-// checkout, and this repo's own gitignored .source/ (through
-// scripts/source-checkout.mjs). The push credential arrives as an environment
-// variable, is written into no file this repo keeps, and is scrubbed out of
-// everything printed.
+// This script is the exception to "git belongs to the orchestrator" (see
+// CLAUDE.md), because it is the automated path and no session is watching it.
+// It runs git in two places only: the i18n checkout, and this repo's gitignored
+// .source/ (through scripts/source-checkout.mjs). The push credential arrives as
+// an environment variable, is not written to any file this repo keeps, and is
+// removed from everything printed.
 
 import fs from "node:fs";
 import path from "node:path";
@@ -126,8 +125,8 @@ const IDENT = ["-c", "user.name=iHiD", "-c", "user.email=jez.walker@gmail.com"];
 /**
  * git, in the i18n checkout and nowhere else.
  *
- * Every other checkout on this machine is somebody else's: source repos are read
- * as objects at a ref, and .source/ belongs to scripts/source-checkout.mjs.
+ * Other checkouts are not this script's to change: source repos are read as
+ * objects at a ref, and .source/ is managed by scripts/source-checkout.mjs.
  */
 function git(args, { allowFail = false } = {}) {
   const result = spawnSync("git", args, { cwd: I18N, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
@@ -182,8 +181,8 @@ async function main() {
   if (words > cap) finish("over-cap", `${words} untranslated word(s) per locale, against a cap of ${cap}. Run \`node scripts/work-issue.mjs ${number} --approved-over-cap\` to let it through.`);
 
   const real = translate([]);
-  // No summary means the run did not get as far as writing one, so nothing is
-  // known about what it did. Never read that as "nothing to do".
+  // No summary means the run stopped before writing one, so it is unknown what it
+  // did. Treat that as a failure, never as "nothing to do".
   if (!real.summary) throw new Failure(`the run wrote no summary:\n${real.stdout.slice(-3000)}`);
   const counts = perLocaleCounts(real.summary);
   const written = itemsWritten(real.summary);
@@ -198,10 +197,10 @@ async function main() {
     finish("failures", `${countsBlock}\n\n${failures.length} item(s) were left absent and are listed below. Each was already retried, so the fix is another run of this issue, not a hand translation.\n\n${listed}`);
   }
 
-  // The checker the i18n repo's own CI runs, per locale, against the English
-  // this run translated. scripts/translate.mjs has already run it over what it
-  // wrote and stamped; this is the whole locale, because what is pushed to main
-  // has to be green there too.
+  // Runs the i18n repo's CI checker per locale against the English this run
+  // translated. scripts/translate.mjs has already checked what it wrote and
+  // stamped; this checks the whole locale, because what is pushed to main has to
+  // pass there too.
   const kind = SOURCES[issue.source].kind;
   const errors = [];
   for (const locale of locales) {
@@ -215,8 +214,9 @@ async function main() {
     finish("validate-errors", `${countsBlock}\n\n${errors.length} error line(s) from \`validate.mjs\`:\n\n${errors.slice(0, 20).map((line) => `- \`${line}\``).join("\n")}`);
   }
 
-  // The label can come off the source PR while this translates, which closes the
-  // issue as not planned. Then the English is no longer final, so nothing lands.
+  // The label can be removed from the source PR while this runs, which closes the
+  // issue as not planned. The English is then no longer final, so nothing is
+  // committed.
   if (issueStillOpen(number) === false) finish("closed", `${issueUrl(number)} was closed while this run translated; nothing was committed or pushed.`);
 
   git(["add", "--", "locales"]);

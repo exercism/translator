@@ -1,17 +1,16 @@
 // routes.mjs: for every content type in the i18n registry, the how-to that
 // governs it and the command that reaches it.
 //
-// The i18n repo's scripts/lib/content-types.mjs is the one place a PATH PATTERN
-// lives, and the type of a file is always derived from its source path through
-// that registry (`typeForPath`), never declared here. What the registry has no
-// business knowing is this repo's layout: which file under content-types/
-// explains a type to the model, and which slash command an operator types. That
-// is all this table holds.
+// The i18n repo's scripts/lib/content-types.mjs is the only place path patterns
+// are defined, and a file's type is always derived from its source path through
+// that registry (`typeForPath`), never declared here. This table holds only what
+// belongs to this repo's layout: which file under content-types/ explains a
+// type to the model, and which slash command an operator types.
 //
-// scripts/check-routes.mjs asserts that every registry type appears here exactly
+// scripts/check-routes.mjs checks that every registry type appears here exactly
 // once, that the how-to and the command exist, and that scripts/translate.mjs
-// itself agrees it can run the type. A type with no route does not fail, it
-// silently never happens, so run the check whenever the registry changes.
+// can run the type. A type with no route is skipped without any error, so run
+// the check whenever the registry changes.
 //
 // SOURCES is the other half: where English comes from, which is what the
 // commands are split by. `kind` is a REPO_KINDS id in the i18n repo's
@@ -61,13 +60,12 @@ export const ROUTES = {
 
   // --------------------------------------------------------------- metadata --
   //
-  // Names, titles and blurbs: the text that is NOT a whole file, which sits in
-  // config.json and metadata.toml among data. The registry declares these with
-  // `unit: "metadata"`, and they are not translated file by file: the i18n repo's
-  // scripts/lib/metadata.mjs extracts ONE keyed catalog per source repo
-  // (`locales/<locale>/metadata/<repo>.json`), and that catalog is the unit of
-  // work. So all of one source's metadata types share a route, and
-  // `--type=metadata` (or any one of these ids) runs that source's catalog.
+  // Names, titles and blurbs: short text stored among data in config.json and
+  // metadata.toml. The registry declares these with `unit: "metadata"`. They are
+  // translated as one keyed catalog per source repo, which the i18n repo's
+  // scripts/lib/metadata.mjs extracts (`locales/<locale>/metadata/<repo>.json`).
+  // So all of one source's metadata types share a route, and `--type=metadata`
+  // (or any one of these ids) runs that source's catalog.
   "exercise-metadata": { howto: "metadata", source: "track", metadata: true },
   "concept-metadata": { howto: "metadata", source: "track", metadata: true },
   "track-metadata": { howto: "metadata", source: "track", metadata: true },
@@ -77,15 +75,15 @@ export const ROUTES = {
   "blog-metadata": { howto: "metadata", source: "blog", metadata: true }
 };
 
-// Nothing is a deliberate gap today. The shape stays, because the route check
-// must be able to tell a declared gap (a type id and the reason nothing reaches
-// it) from an oversight, and the next type that lands half-built will need it.
+// There are no declared gaps today. GAPS stays so that the route check can tell
+// a declared gap (a type id and the reason nothing reaches it) from an
+// oversight, for the next type that arrives before it can be translated.
 export const GAPS = {};
 
-// TODO(iHiD): OPEN. Whether contributor-facing `building/` docs (155 of the 212
-// served pages) and mentor-facing `mentoring/` docs are translated is undecided
-// in the i18n repo, which keeps both types live. They are routed here like any
-// other type so that the decision is NOT made by this repo either way; the
-// /translate-docs command says out loud that both are included. Dropping one is
-// a change to the i18n registry, which this table then follows.
+// TODO(iHiD): open. It is undecided whether contributor-facing `building/` docs
+// (155 of the 212 served pages) and mentor-facing `mentoring/` docs are
+// translated. The i18n repo keeps both types live, and they are routed here like
+// any other type so that this repo does not make the decision either way. The
+// /translate-docs command says that both are included. Dropping one is a change
+// to the i18n registry, which this table then follows.
 export const SCOPE_UNDECIDED = ["docs-building", "docs-mentoring"];

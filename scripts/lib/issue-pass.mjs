@@ -1,23 +1,23 @@
 // issue-pass.mjs: one queue issue, from its number to a finished translation.
 //
-// Two entry points run exactly this and differ only in what surrounds it:
-// scripts/work-issue.mjs, which a human's orchestrator session starts and whose
-// output the orchestrator commits, and scripts/run-issue.mjs, which GitHub
-// Actions starts and which commits, pushes and closes the issue itself. The
-// steps between the issue number and the SUMMARY live here once, so the
-// unattended path can never drift from the one a person watches.
+// Two entry points run this and differ only in the steps around it:
+// scripts/work-issue.mjs, which the orchestrator session starts and whose output
+// the orchestrator commits, and scripts/run-issue.mjs, which GitHub Actions
+// starts and which commits, pushes and closes the issue itself. The steps from
+// the issue number to the SUMMARY live here, so the unattended path and the
+// manual one stay the same.
 //
-// Everything here is read-only except for the scope file it writes under
-// state/runs/ and the source fetch into .source/ that scripts/source-checkout.mjs
-// does. No git command here changes anything outside .source/.
+// Everything here is read-only, apart from the scope file written under
+// state/runs/ and the fetch into .source/ done by scripts/source-checkout.mjs.
+// No git command here changes anything outside .source/.
 //
-// ## The issue is data
+// ## Issues are data
 //
-// See scripts/lib/issues.mjs. Three values come out of an issue (repo, PR
-// number, sha), each by a strict pattern and each verified against GitHub, and
-// its title and body are never printed by anything. What English changed is
-// worked out from the source repo itself (scripts/lib/issue-scope.mjs), so an
-// issue can never widen a run beyond what its PR changed.
+// See scripts/lib/issues.mjs. Three values are taken from an issue (repo, PR
+// number, sha), each matched by a strict pattern and verified against GitHub,
+// and its title and body are never printed. The changed English is worked out
+// from the source repo itself (scripts/lib/issue-scope.mjs), so an issue cannot
+// widen a run beyond what its PR changed.
 
 import fs from "node:fs";
 import path from "node:path";
@@ -41,9 +41,9 @@ export function issueUrl(number) {
  * The verified issue, or a refusal carrying `reason`. Network, read-only.
  *
  * A closed issue is refused before anything is verified, with `closed` set. The
- * queue closes an issue as "not planned" when `ready-to-translate` comes off its
- * PR, and a dispatch still pending or in flight at that moment must not
- * translate the English the label no longer vouches for.
+ * queue closes an issue as "not planned" when `ready-to-translate` is removed
+ * from its PR, and a dispatch still pending or running at that point must not
+ * translate English that is no longer approved.
  */
 export function readIssue(number) {
   const fetched = fetchIssue(number);
@@ -101,7 +101,7 @@ export function translateForIssue({ issue, locales, repo, scopeFile, extra = [] 
 }
 
 /**
- * The most any ONE locale still has to translate, in words, from a dry run.
+ * The most words any single locale still has to translate, from a dry run.
  *
  * The cap is on untranslated text per locale: a PR whose text a locale already
  * holds (identical English from another track) costs nothing.
@@ -137,11 +137,12 @@ export function commitMessage(issue, items) {
 /**
  * What the unattended path does about the issue, given how the run ended.
  *
- * `close` is only ever true when the work is demonstrably finished: everything
- * translated and pushed, or every target already held. Every other end leaves
- * the issue open, because an open issue is the queue and a closed one re-runs
- * the source PR's check, which would then fail again. `quiet` posts nothing:
- * a closed issue was closed on purpose and gets no comment. Pure.
+ * `close` is true only when the work is clearly finished: everything translated
+ * and pushed, or every target already present. Any other outcome leaves the
+ * issue open, because open issues are what the queue retries, and closing one
+ * re-runs the source PR's check, which would fail again. `quiet` means post
+ * nothing: an issue that is already closed was closed on purpose and gets no
+ * comment. Pure.
  */
 export const OUTCOMES = {
   pushed: { close: true, exit: 0, headline: "Translated and pushed to `main`." },
