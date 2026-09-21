@@ -58,7 +58,8 @@ English is never stored in this repo or in `i18n`. It is read from a checkout of
 is authored in, **as git objects at a ref, never from a working tree**, through the `i18n`
 repo's own `scripts/lib/git.mjs` (its `ENGLISH-SOURCE.md` says why). A source is resolved in
 this order: `--repo=`, that repo kind's env override (`EXERCISM_WEBSITE_REPO`, ...), this
-repo's `.source/<name>` (made by `scripts/source-checkout.mjs`, bare and blobless), then a
+repo's `.source/<name>` (made by `scripts/source-checkout.mjs`: bare, and full locally so a
+run never fetches midway; blobless on GitHub Actions), then a
 sibling `../<name>`. With no `--ref=`, the ref is `origin/main` where the checkout has one,
 else `HEAD`, because a sibling working copy on a laptop is usually on a feature branch.
 
@@ -114,11 +115,21 @@ the numbers leading `## 1.` headings, reference-link labels and definitions, inl
 
 ERRORs block. WARNs are heuristics to read and never promote, as in the `i18n` repo.
 
+**A rejected Markdown answer is repaired before it is given up on**, when its code can be
+put back mechanically (`scripts/lib/repair.mjs`). Code is the English byte for byte, so when
+the answer has as many fenced blocks as the English, each code block is copied back from the
+English, and when it has as many inline code spans, the spans it changed are copied back.
+Prose is never touched, and the repaired text goes through the whole checker again. Only a
+text that passes is written, and the summary counts it under `repaired`.
+
 **A failed call or a rejected answer is retried** (`engine.attempts` in `config.json`),
 **then left absent and reported**, with its source path, its target path and the reason.
 Absent is the honest state and needs no bookkeeping: the next run of the same command finds it
-missing and tries again. Nothing is ever written half-checked, and a failed item is never
-handed to an agent to "finish".
+missing and tries again. Nothing is ever written half-checked. A rejected file's entry in
+`summary.json` also carries the source checkout and commit, the English path, the absolute
+target path and every checker error, and the last rejected answer is saved under the run's
+`rejected/` directory, so a file that keeps failing can be fixed by hand from there. A hand
+fix goes through the same checker before it counts.
 
 **A whole file above `engine.max_text_tokens` is not sent at all**, and is reported as a
 failure saying so. The answer has to come back in one piece, a truncated answer is paid for

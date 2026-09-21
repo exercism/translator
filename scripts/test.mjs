@@ -18,7 +18,8 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { ROOT } from "./lib/config.mjs";
 import { i18n } from "./lib/i18n.mjs";
-import { checkMarkdown, fencedBlocks, wordCount } from "./lib/checks.mjs";
+import { checkMarkdown, codeSpans, fencedBlocks, wordCount } from "./lib/checks.mjs";
+import { repairCode } from "./lib/repair.mjs";
 import { fileTail, fixedPrefix } from "./lib/prompt.mjs";
 import { unfence } from "./lib/deepseek.mjs";
 import { parseIssue } from "./lib/issues.mjs";
@@ -79,6 +80,108 @@ await test("English handed back unchanged is rejected, unless there is nothing t
   const prose = `# Title\n\n${"word ".repeat(30)}\n`;
   assert.match(checkMarkdown(prose, prose).join("|"), /unchanged/);
   assert.deepEqual(checkMarkdown("```text\nOne for you, one for me.\n```\n", "```text\nOne for you, one for me.\n```\n"), []);
+});
+
+// ------------------------------------------------------------------ repair ---
+
+const repaired = (english, translated) => {
+  const result = repairCode(english, translated);
+  return { ...result, problems: checkMarkdown(english, result.text) };
+};
+
+await test("repair: altered code blocks are copied back byte for byte, prose is left alone", () => {
+  const english = "Intro.\n\n```ruby\nx = 1 # one\n```\n\nMiddle.\n\n~~~python\ny = 2  # two\n~~~\n";
+  const hu = "Bevezető.\n\n```ruby\nx = 1 # egy\n```\n\nKözép.\n\n~~~py\ny = 2  # kettő\n~~~\n";
+  const result = repaired(english, hu);
+  assert.deepEqual(result.problems, []);
+  assert.equal(result.blocks, 2);
+  assert.equal(result.text, "Bevezető.\n\n```ruby\nx = 1 # one\n```\n\nKözép.\n\n~~~python\ny = 2  # two\n~~~\n");
+});
+
+await test("repair: a fence indented in a list item is code, and is repaired with its indentation", () => {
+  const english = "1. Run:\n\n   ```bash\n   ruby test.rb # run\n   ```\n\n2. Done.\n";
+  const hu = "1. Futtasd:\n\n   ```bash\n   ruby test.rb # futtatás\n   ```\n\n2. Kész.\n";
+  assert.match(checkMarkdown(english, hu).join("|"), /code was altered/);
+  const result = repaired(english, hu);
+  assert.deepEqual(result.problems, []);
+  assert.equal(result.text, "1. Futtasd:\n\n   ```bash\n   ruby test.rb # run\n   ```\n\n2. Kész.\n");
+});
+
+await test("repair: a different number of fenced blocks is left alone", () => {
+  const english = "A.\n\n```ruby\nx\n```\n\nB.\n\n```ruby\ny\n```\n";
+  const hu = "A.\n\n```ruby\nx # egy\n```\n\nB.\n";
+  const result = repairCode(english, hu);
+  assert.deepEqual([result.text, result.blocks], [hu, 0]);
+});
+
+await test("repair: an admonition keeps its translated prose, gets its fence lines back, and its inner code is code", () => {
+  const english = "Text.\n\n~~~~exercism/note\nA note with `x`.\n\n```ruby\nx = 1 # one\n```\n~~~~\n";
+  const hu = "Szöveg.\n\n~~~~exercism/megjegyzés\nEgy megjegyzés `x`-szel.\n\n```ruby\nx = 1 # egy\n```\n~~~~\n";
+  assert.match(checkMarkdown(english, hu).join("|"), /info string changed/);
+  const result = repaired(english, hu);
+  assert.deepEqual(result.problems, []);
+  assert.equal(result.text, "Szöveg.\n\n~~~~exercism/note\nEgy megjegyzés `x`-szel.\n\n```ruby\nx = 1 # one\n```\n~~~~\n");
+});
+
+await test("repair: an admonition paired with a code block is not repaired", () => {
+  const english = "~~~~exercism/note\nA note.\n~~~~\n";
+  const hu = "```text\nEgy megjegyzés.\n```\n";
+  assert.equal(repairCode(english, hu).blocks, 0);
+});
+
+await test("repair: translated inline code is put back, spans that only moved stay where they are", () => {
+  const english = "Call `add` with `a` and `b`, then `print` it.\n";
+  const hu = "Hívd meg az `összead`-ot `b`-vel és `a`-val, majd `print`eld ki.\n";
+  const result = repaired(english, hu);
+  assert.deepEqual(result.problems, []);
+  assert.equal(result.spans, 1);
+  assert.equal(result.text, "Hívd meg az `add`-ot `b`-vel és `a`-val, majd `print`eld ki.\n");
+});
+
+await test("repair: nested backticks, spans in link text, and spans inside code blocks", () => {
+  const english = "Use ``a `tick` here`` and [the `map` method][map].\n\n```ruby\nputs `ls`\n```\n\n[map]: https://example.org/map\n";
+  const hu = "Használd: ``egy `tick` itt`` és [a `térkép` metódus][map].\n\n```ruby\nputs `ls`\n```\n\n[map]: https://example.org/map\n";
+  assert.deepEqual(codeSpans(english).map((span) => span.content), ["a `tick` here", "map"]);
+  const result = repaired(english, hu);
+  assert.deepEqual(result.problems, []);
+  assert.equal(result.text, "Használd: ``a `tick` here`` és [a `map` metódus][map].\n\n```ruby\nputs `ls`\n```\n\n[map]: https://example.org/map\n");
+});
+
+await test("repair: a different number of inline spans is left alone", () => {
+  const english = "Use `a` and `b`.\n";
+  const hu = "Használd az `a`-t.\n";
+  assert.deepEqual(repairCode(english, hu), { text: hu, blocks: 0, spans: 0 });
+});
+
+await test("repair: a block the English leaves open runs to the end; an answer that leaves open a closed block is not repaired", () => {
+  const open = "Intro.\n\n```rust\nfn main() {}\n";
+  const closedByModel = "Bevezető.\n\n```rust\nfn main() {} // fő\n```\n";
+  const result = repaired(open, closedByModel);
+  assert.deepEqual(result.problems, []);
+  assert.equal(result.text, "Bevezető.\n\n```rust\nfn main() {}\n");
+  const closed = "Intro.\n\n```rust\nfn main() {}\n```\n\nMore prose.\n";
+  const leftOpen = "Bevezető.\n\n```rust\nfn main() {} // fő\n\nTovábbi szöveg.\n";
+  assert.equal(repairCode(closed, leftOpen).blocks, 0);
+});
+
+await test("fences in a file with CRLF line endings are found", () => {
+  const english = "Intro.\r\n\r\n```python\r\nx = 1\r\n```\r\n";
+  assert.equal(fencedBlocks(english).length, 1);
+  assert.equal(fencedBlocks(english)[0].info, "python");
+  assert.deepEqual(checkMarkdown(english, "Bevezető.\r\n\r\n```python\r\nx = 1\r\n```\r\n"), []);
+});
+
+await test("an inline code span may run over a line break, and reflowing it changes nothing", () => {
+  const english = "The shape `[ <test> [ <yes> ]\nif ]` covers `even?` / `odd?`.\n";
+  assert.deepEqual(codeSpans(english).map((span) => span.content), ["[ <test> [ <yes> ] if ]", "even?", "odd?"]);
+  assert.deepEqual(checkMarkdown(english, "A `[ <test> [ <yes> ] if ]` alak lefedi az `even?` / `odd?` eseteket.\n"), []);
+  assert.deepEqual(codeSpans("`a`\n\nb`").map((span) => span.content), ["a"]);
+  assert.deepEqual(codeSpans("`a``").length, 0);
+});
+
+await test("a backtick line with a closing run is inline code, not a fence", () => {
+  assert.equal(fencedBlocks("Run\n```rm -rf x/```\nthen.\n").length, 0);
+  assert.equal(fencedBlocks("```ruby\nx\n```\n")[0].info, "ruby");
 });
 
 await test("unfence strips a fence around the whole answer and nothing else", () => {
@@ -279,15 +382,32 @@ await test("edited English is a new blob id, translated with the previous versio
   assert.equal(after, before + 1);
 });
 
-await test("an answer that alters code is retried, then left ABSENT and reported with its paths", () => {
-  repo("ruby", { "docs/ABOUT.md": "# About\n\nRuby is lovely.\n\n```ruby\nputs 1\n```\n" });
+await test("an answer that alters code is repaired from the English, checked again, written and counted", () => {
+  const about = "# About\n\nRuby is `lovely`.\n\n```ruby\nputs 1 # one\n```\n";
+  repo("ruby", { "docs/ABOUT.md": about });
   const result = translate(["track", "ruby", "hu", `--repo=${ruby}`], { FAKE_ENGINE_BREAK: "code" });
+  assert.equal(result.status, 0, result.out);
+  const summary = summaryOf(result.out);
+  assert.equal(summary.repaired, 1);
+  assert.deepEqual([summary.counts.hu["track-docs"].written, summary.counts.hu["track-docs"].repaired], [1, 1]);
+  assert.equal(fs.readFileSync(held(lib.git.blobId(about)), "utf8"), "# About HU\n\nRuby is `lovely`. HU\n\n```ruby\nputs 1 # one\n```\n");
+});
+
+await test("an answer that cannot be repaired is retried, then left ABSENT and reported with what a hand fix needs", () => {
+  repo("ruby", { "docs/RESOURCES.md": "# Resources\n\nRead this.\n\n```ruby\nputs 2\n```\n" });
+  const result = translate(["track", "ruby", "hu", `--repo=${ruby}`], { FAKE_ENGINE_BREAK: "drop" });
   assert.equal(result.status, 1);
   const summary = summaryOf(result.out);
   assert.equal(summary.failures.length, 1);
-  assert.match(summary.failures[0].source, /ruby:docs\/ABOUT\.md/);
-  assert.match(summary.failures[0].reason, /code was altered/);
-  assert.ok(!fs.existsSync(path.join(I18N_ROOT, summary.failures[0].target.replace(/^.*?locales\//, "locales/"))));
+  const [failure] = summary.failures;
+  assert.match(failure.source, /ruby:docs\/RESOURCES\.md/);
+  assert.match(failure.reason, /^rejected by the checker: .*fenced blocks: English has 1, translation has 0/);
+  assert.equal(failure.repo, ruby);
+  assert.equal(failure.englishPath, "docs/RESOURCES.md");
+  assert.ok(path.isAbsolute(failure.targetPath) && failure.targetPath.endsWith(failure.target.replace(/^.*?locales\//, "locales/")));
+  assert.ok(failure.errors.length >= 2);
+  assert.equal(fs.readFileSync(failure.rejected, "utf8"), "# Resources HU\n\nRead this. HU\n");
+  assert.ok(!fs.existsSync(failure.targetPath));
 });
 
 await test("the website catalogs: written, plural groups in the locale's own categories, stamped at the commit translated", () => {

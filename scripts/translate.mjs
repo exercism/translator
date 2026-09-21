@@ -39,6 +39,9 @@
 //   translate  call DeepSeek (scripts/lib/deepseek.mjs)
 //   check      run the answer through the i18n repo's check functions, then the
 //              few this repo adds (scripts/lib/checks.mjs)
+//   repair     when the checker rejects a Markdown answer, copy its code back
+//              from the English where each block and span can be paired
+//              safely (scripts/lib/repair.mjs), and check it again
 //   write      write only what passed. A failed call or a rejected answer is
 //              retried (config.json `engine.attempts`), then left absent and
 //              reported, and the next run picks it up.
@@ -59,8 +62,15 @@
 // ## Output
 //
 // Counts, and a list of failures with paths. Progress goes to stderr, and the
-// summary goes to stdout and to state/runs/<run>.json. Translated text is never
-// printed, so the orchestrator reads the summary without seeing the words.
+// summary goes to stdout and to state/runs/<run>/summary.json. Translated text
+// is never printed, so the orchestrator reads the summary without seeing the
+// words. `repaired` counts the files written only after a code repair.
+//
+// A file still rejected after every attempt is listed under `failures` with
+// what is needed to fix it by hand: the source checkout and commit (`repo`,
+// `sha`), the English (`englishPath`, `englishId`), where the translation goes
+// (`targetPath`), every checker error (`errors`), and the last rejected answer,
+// saved under state/runs/<run>/rejected/ (`rejected`).
 //
 // ## Git
 //
@@ -78,6 +88,7 @@ import { ROUTES, GAPS, SOURCES } from "./lib/routes.mjs";
 import { SYSTEM, approxTokens, catalogTail, fileTail, fixedPrefix } from "./lib/prompt.mjs";
 import { USD_PER_CACHE_HIT, USD_PER_CACHE_MISS, USD_PER_OUTPUT, addUsage, call, unfence } from "./lib/deepseek.mjs";
 import { checkMarkdown, wordCount } from "./lib/checks.mjs";
+import { repairCode } from "./lib/repair.mjs";
 
 const log = (message) => console.error(message);
 
@@ -155,7 +166,7 @@ async function pool(items, size, worker) {
 
 // ---------------------------------------------------------------- content ---
 
-async function translateContent({ lib, run, sourceId, name, repo, ref, locale, flags }) {
+async function translateContent({ lib, run, sourceId, name, repo, ref, sha, locale, flags }) {
   const kindId = SOURCES[sourceId].kind;
   const kind = lib.sourceRepos.REPO_KINDS[kindId];
   const entries = lib.git.lsTree(repo, ref, kind.sparse ?? []);
@@ -196,16 +207,17 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, locale, f
     const counts = run.count(locale, type);
     const prefix = fixedPrefix({ locale, howto: ROUTES[type].howto, shape: "file" });
     const blobs = lib.git.readBlobs(repo, work.map((file) => file.id));
+    const unread = work.find((file) => !blobs.get(file.id));
+    if (unread) throw new Error(`the English blob of ${name}:${unread.path} (${unread.id}) is not in ${repo}`);
     log(`${locale} ${type}: ${work.length} to translate (${counts.held} already held)`);
 
     await pool(work, config().engine.concurrency, async (file) => {
       const target = lib.contentTypes.contentPath(locale, file.id, file.extension);
-      const fail = (reason) => {
+      const fail = (reason, detail = {}) => {
         counts.failed += 1;
-        run.failures.push({ locale, type, source: `${name}:${file.path}`, target: path.relative(lib.dir, target), reason });
+        run.failures.push({ locale, type, source: `${name}:${file.path}`, target: path.relative(lib.dir, target), reason, repo, sha, englishPath: file.path, englishId: file.id, targetPath: target, ...detail });
       };
       const bytes = blobs.get(file.id);
-      if (!bytes) return fail("the English blob could not be read from the checkout");
       const english = bytes.toString("utf8");
       if (english.trim() === "") {
         counts.skipped += 1;
@@ -225,24 +237,43 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, locale, f
       run.estimate(locale, type, { prefix, tail: prompt.slice(prefix.length), english });
       if (run.dryRun) return;
 
+      const check = (text) => {
+        const found = lib.checks.checkContentFile({ id: file.id, extension: file.extension, bytes: Buffer.from(text, "utf8") }, bytes);
+        return found.filter((one) => one.level === lib.checks.ERROR).map((one) => one.message).concat(checkMarkdown(english, text));
+      };
+
       let reason = "";
+      let rejected = null;
       for (let attempt = 1; attempt <= config().engine.attempts; attempt++) {
         try {
           const { text, usage } = await run.call({ apiKey: run.apiKey, system: SYSTEM, prompt });
           addUsage(run.usage, usage);
           let answer = unfence(text);
           if (!english.endsWith("\n")) answer = answer.replace(/\n$/, "");
+          // Code is compared byte for byte, line endings included, and the
+          // model answers with bare newlines whatever the English uses.
+          if (english.includes("\r\n")) answer = answer.replace(/\r?\n/g, "\r\n");
 
-          const found = lib.checks.checkContentFile({ id: file.id, extension: file.extension, bytes: Buffer.from(answer, "utf8") }, bytes);
-          const errors = found.filter((one) => one.level === lib.checks.ERROR).map((one) => one.message).concat(checkMarkdown(english, answer));
+          let errors = check(answer);
+          let repaired = false;
           if (errors.length > 0) {
-            reason = `rejected by the checker: ${errors.join("; ")}`;
+            const repair = repairCode(english, answer);
+            if (repair.blocks + repair.spans > 0) {
+              answer = repair.text;
+              errors = check(answer);
+              repaired = true;
+            }
+          }
+          if (errors.length > 0) {
+            reason = `rejected by the checker${repaired ? " after code repair" : ""}: ${errors.join("; ")}`;
+            rejected = { answer, errors, repaired };
             continue;
           }
           fs.mkdirSync(path.dirname(target), { recursive: true });
           // `wx` so that this never overwrites a file, even if two runs race.
           fs.writeFileSync(target, answer, { flag: "wx" });
           counts.written += 1;
+          if (repaired) counts.repaired += 1;
           run.written.push(path.relative(lib.dir, target));
           return;
         } catch (error) {
@@ -252,7 +283,13 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, locale, f
           if (error.code === "EEXIST") break;
         }
       }
-      fail(reason);
+      if (!rejected || reason.startsWith("another run")) return fail(reason);
+      // The last rejected answer is kept beside the run, so whoever fixes it by
+      // hand starts from it instead of from nothing.
+      const saved = path.join(run.dir, "rejected", locale, lib.contentTypes.contentRelativePath(file.id, file.extension));
+      fs.mkdirSync(path.dirname(saved), { recursive: true });
+      fs.writeFileSync(saved, rejected.answer);
+      fail(reason, { errors: rejected.errors, repaired: rejected.repaired, rejected: saved });
     });
   }));
 }
@@ -562,7 +599,7 @@ async function main() {
     checker: [],
     usage: {},
     count(locale, type) {
-      return ((this.counts[locale] ??= {})[type] ??= { total: 0, held: 0, copied: 0, written: 0, revised: 0, skipped: 0, failed: 0 });
+      return ((this.counts[locale] ??= {})[type] ??= { total: 0, held: 0, copied: 0, written: 0, repaired: 0, revised: 0, skipped: 0, failed: 0 });
     },
     estimate(locale, type, { prefix, tail, english, units = 1, echoed = "" }) {
       const row = ((this.estimates[locale] ??= {})[type] ??= { calls: 0, items: 0, words: 0, prefixTokens: approxTokens(SYSTEM + prefix), tailTokens: 0, textTokens: 0 });
@@ -593,7 +630,7 @@ async function main() {
     }
 
     const before = run.written.length;
-    await Promise.all([catalogs, translateContent({ lib, run, sourceId, name, repo, ref, locale, flags })]);
+    await Promise.all([catalogs, translateContent({ lib, run, sourceId, name, repo, ref, sha, locale, flags })]);
     if (!dryRun && run.written.length > before) {
       const result = spawnSync("node", [path.join(lib.dir, "scripts", "validate.mjs"), locale, "--type=content", `--content-repos=${repo}:${SOURCES[sourceId].kind}@${sha}`], { encoding: "utf8", env: process.env });
       const logFile = path.join(run.dir, `${locale}.content.validate.log`);
@@ -602,7 +639,8 @@ async function main() {
     }
   }
 
-  const summary = { source: `exercism/${name}`, ref, sha, dryRun, model: config().engine.model, counts: run.counts, failures: run.failures, written: run.written.length, checker: run.checker };
+  const repaired = Object.values(run.counts).flatMap((types) => Object.values(types)).reduce((sum, row) => sum + row.repaired, 0);
+  const summary = { source: `exercism/${name}`, ref, sha, dryRun, model: config().engine.model, repaired, counts: run.counts, failures: run.failures, written: run.written.length, checker: run.checker };
   if (dryRun) summary.estimates = withCosts(run.estimates);
   else summary.usage = run.usage;
   fs.writeFileSync(path.join(run.dir, "summary.json"), `${JSON.stringify({ ...summary, writtenPaths: run.written }, null, 2)}\n`);
@@ -645,6 +683,7 @@ function report(summary, file) {
         `  ${locale.padEnd(6)} ${type.padEnd(30)} total ${String(c.total).padStart(5)}  held ${String(c.held).padStart(5)}  ` +
           (c.copied ? `copied ${String(c.copied).padStart(5)}  ` : "") +
           (summary.dryRun ? `to translate ${String(estimate?.items ?? 0).padStart(5)}` : `written ${String(c.written).padStart(5)}  failed ${String(c.failed).padStart(4)}`) +
+          (c.repaired ? `  (${c.repaired} written after code repair)` : "") +
           (c.skipped ? `  empty in English ${c.skipped}` : "") +
           (c.revised ? `  (${c.revised} with a previous version)` : "") +
           (!summary.dryRun && todo > 0 ? `  not attempted ${todo}` : "")

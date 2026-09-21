@@ -5,8 +5,10 @@
 // scripts/translate.mjs refuses to load it unless the tree being written to is a
 // test fixture, so it cannot write into the real locales/.
 //
-// FAKE_ENGINE_BREAK=code makes it alter a code block, which the checker must
-// reject; FAKE_ENGINE_BREAK=english makes it hand the English back unchanged.
+// FAKE_ENGINE_BREAK=code makes it alter a code block and translate inline code,
+// which the checker rejects and the code repair puts right;
+// FAKE_ENGINE_BREAK=drop makes it leave out every code block, which cannot be
+// repaired; FAKE_ENGINE_BREAK=english makes it hand the English back unchanged.
 
 const between = (text, open, close) => {
   const start = text.lastIndexOf(open);
@@ -29,15 +31,16 @@ export default async function call({ prompt, json }) {
 
   const english = between(prompt, "<english-text", "</english-text>");
   if (process.env.FAKE_ENGINE_BREAK === "english") return { text: english, usage };
+  const breaking = process.env.FAKE_ENGINE_BREAK;
   let fenced = false;
   const lines = english.split("\n").map((line) => {
     if (/^\s*(```|~~~)/.test(line)) {
       fenced = !fenced;
-      return line;
+      return breaking === "drop" ? null : line;
     }
-    if (fenced) return process.env.FAKE_ENGINE_BREAK === "code" ? `${line} # lefordítva` : line;
+    if (fenced) return breaking === "drop" ? null : breaking === "code" ? `${line} # lefordítva` : line;
     if (!/\p{L}/u.test(line) || /^\s*\[[^\]]+\]:\s/.test(line)) return line;
-    return `${line} HU`;
+    return `${breaking === "code" ? line.replace(/`(\w+)`/g, "`$1_hu`") : line} HU`;
   });
-  return { text: lines.join("\n"), usage };
+  return { text: lines.filter((line) => line !== null).join("\n"), usage };
 }

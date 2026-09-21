@@ -9,7 +9,8 @@
 //
 //   - a fenced code block is reproduced byte for byte (global/rules.md). The
 //     exception is an `exercism/note`, `exercism/caution` or `exercism/advanced`
-//     fence, which is an admonition containing prose, and is translated.
+//     fence, which is an admonition containing prose, and is translated. A
+//     code block inside an admonition is code again.
 //   - where the English starts `## 1. ...` headings with numbers, the
 //     translation has the same numbers in the same order. The website matches a
 //     concept exercise's hints to its tasks by that number
@@ -27,40 +28,104 @@
 //
 // Pure functions of two strings, so scripts/test.mjs can assert every one.
 
-const FENCE = /^( {0,3})(`{3,}|~{3,})(.*)$/;
+// A fence opens at any indentation, so a code block inside a list item counts,
+// which is also how the i18n checker counts fence lines. A backtick fence's
+// info string cannot contain a backtick: a line like ```` ```ls``` ```` is an
+// inline code span, not a fence (CommonMark 4.5).
+const FENCE = /^(\s*)(`{3,}|~{3,})(.*)$/;
 
-/** Fenced blocks as `{ info, body }`, in order. `body` includes both fence lines. */
-export function fencedBlocks(text) {
+const fenceLine = (line) => {
+  const match = FENCE.exec(line.replace(/\r$/, ""));
+  if (!match || (match[2][0] === "`" && match[3].includes("`"))) return null;
+  return { marker: match[2], info: match[3].trim() };
+};
+
+/**
+ * Top-level fenced blocks, in order, as `{ info, body, start, end, opener, closer, admonition }`.
+ *
+ * `body` is `text.slice(start, end)` and includes both fence lines. `opener` and
+ * `closer` are those two lines (`closer` is null for a block left open at the
+ * end of the text). `offset` is added to every position, for a block parsed out
+ * of a larger text.
+ */
+export function fencedBlocks(text, offset = 0) {
   const blocks = [];
   let open = null;
+  let at = 0;
+  const finish = (end, closer) => {
+    blocks.push({ ...open, body: text.slice(open.start, end), start: open.start + offset, end: end + offset, closer });
+    open = null;
+  };
   for (const line of text.split("\n")) {
-    const match = FENCE.exec(line);
+    const fence = fenceLine(line);
+    const lineEnd = at + line.length;
     if (open === null) {
-      if (match) open = { marker: match[2], info: match[3].trim(), lines: [line] };
-      continue;
+      if (fence) open = { info: fence.info, marker: fence.marker, opener: line, start: at, admonition: fence.info.startsWith("exercism/") };
+    } else if (fence && fence.marker[0] === open.marker[0] && fence.marker.length >= open.marker.length && fence.info === "") {
+      finish(lineEnd, line);
     }
-    open.lines.push(line);
-    if (match && match[2][0] === open.marker[0] && match[2].length >= open.marker.length && match[3].trim() === "") {
-      blocks.push({ info: open.info, body: open.lines.join("\n") });
-      open = null;
-    }
+    at = lineEnd + 1;
   }
-  if (open !== null) blocks.push({ info: open.info, body: open.lines.join("\n") });
-  return blocks;
+  if (open !== null) finish(text.length, null);
+  return blocks.map(({ marker, ...block }) => block);
 }
 
-const isAdmonition = (block) => block.info.startsWith("exercism/");
-
-/** The text with every fenced code block removed. Admonitions are kept, because they are prose. */
-export function withoutCode(text) {
-  let out = text;
-  for (const block of fencedBlocks(text)) if (!isAdmonition(block)) out = out.replace(block.body, "");
+/**
+ * Every fenced block that the rules govern, in document order: the top-level
+ * ones, and inside an `exercism/` admonition (which is prose, and translated)
+ * the blocks it contains, to any depth.
+ */
+export function codeBlocks(text) {
+  const out = [];
+  const walk = (body, offset) => {
+    for (const block of fencedBlocks(body, offset)) {
+      out.push(block);
+      if (!block.admonition) continue;
+      const innerStart = block.opener.length + 1;
+      const innerEnd = block.closer === null ? block.body.length : block.body.length - block.closer.length - 1;
+      if (innerEnd > innerStart) walk(block.body.slice(innerStart, innerEnd), block.start + innerStart);
+    }
+  };
+  walk(text, 0);
   return out;
+}
+
+/**
+ * The text with every fenced code block blanked out: each character becomes a
+ * space and each newline stays, so every position still means the same place in
+ * the original. Admonitions are kept, because they are prose.
+ */
+export function withoutCode(text) {
+  let out = "";
+  let from = 0;
+  for (const block of codeBlocks(text).filter((one) => !one.admonition)) {
+    out += text.slice(from, block.start) + text.slice(block.start, block.end).replace(/[^\n]/g, " ");
+    from = block.end;
+  }
+  return out + text.slice(from);
+}
+
+/**
+ * Inline code spans outside fenced code, in order, as `{ start, end, raw, content }`.
+ *
+ * `raw` is the span with its backticks. A span may run on to the next line of
+ * its paragraph, but not over a blank line or into a list item, heading,
+ * quote or table row. `content` has each line break as a space, as the page
+ * renders it, so reflowing a span's line does not change it.
+ */
+export function codeSpans(text) {
+  const pattern = /(?<!`)(`+)(?!`)((?:(?!\r?\n[ \t]*(?:\r?\n|[-*+][ \t]|\d{1,9}[.)][ \t]|#{1,6}[ \t]|>|\|))[\s\S])*?[^`\r\n])\1(?!`)/g;
+  return [...withoutCode(text).matchAll(pattern)].map((match) => ({
+    start: match.index,
+    end: match.index + match[0].length,
+    raw: text.slice(match.index, match.index + match[0].length),
+    content: match[2].replace(/[ \t]*\r?\n[ \t]*/g, " ")
+  }));
 }
 
 const taskNumbers = (text) => [...withoutCode(text).matchAll(/^##\s+(\d+)\./gm)].map((match) => match[1]);
 
-const inlineCode = (text) => [...withoutCode(text).matchAll(/(`+)(?!`)([^\n]*?[^`\n])\1(?!`)/g)].map((match) => match[2]).sort();
+const inlineCode = (text) => codeSpans(text).map((span) => span.content).sort();
 
 const definitions = (text) => [...withoutCode(text).matchAll(/^ {0,3}\[([^\]\n]+)\]:\s*(\S+)/gm)].map((match) => ({ label: match[1].trim().toLowerCase(), url: match[2] }));
 
@@ -82,14 +147,14 @@ export function checkMarkdown(english, translated) {
     return ["the answer is the English text unchanged"];
   }
 
-  const [enBlocks, targetBlocks] = [fencedBlocks(english), fencedBlocks(translated)];
+  const [enBlocks, targetBlocks] = [codeBlocks(english), codeBlocks(translated)];
   if (enBlocks.length !== targetBlocks.length) {
     problems.push(`fenced blocks: English has ${enBlocks.length}, translation has ${targetBlocks.length}`);
   } else {
     enBlocks.forEach((block, index) => {
       const other = targetBlocks[index];
       if (block.info !== other.info) problems.push(`fenced block ${index + 1}: info string changed ("${block.info}" to "${other.info}")`);
-      else if (!isAdmonition(block) && block.body !== other.body) problems.push(`fenced block ${index + 1} (${block.info || "no language"}): code was altered; code is reproduced byte for byte`);
+      else if (!block.admonition && block.body !== other.body) problems.push(`fenced block ${index + 1} (${block.info || "no language"}): code was altered; code is reproduced byte for byte`);
     });
   }
 

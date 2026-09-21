@@ -15,7 +15,7 @@ these rules win.
   rejected. The one kind of fence that is not code is an
   Exercism admonition, whose info string starts `exercism/` (`~~~~exercism/note`,
   `exercism/caution`, `exercism/advanced`): its fence lines are reproduced exactly and the
-  prose inside it is translated.
+  prose inside it is translated. A code block inside an admonition is code again.
 - **Programming keywords.** Language keywords (e.g. `def`, `function`, `if`, `for`) stay in
   English everywhere, including inside prose. You translate the *explanation* around a
   keyword, never the keyword token itself.
