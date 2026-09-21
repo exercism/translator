@@ -25,7 +25,7 @@ import { Failure, config } from "./config.mjs";
 
 const MAX_HTTP_ATTEMPTS = 5;
 const BASE_BACKOFF_MS = 4000;
-const REQUEST_TIMEOUT_S = 900;
+const REQUEST_TIMEOUT_S = 120;
 
 // Cloudflare fronts this host and has been observed 403ing non-browser clients,
 // which is why this goes through curl with a browser-like UA and not fetch.

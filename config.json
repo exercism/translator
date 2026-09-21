@@ -43,7 +43,7 @@
     "model": "deepseek-flash",
     "endpoint": "https://api.deepseek.com/chat/completions",
     "reasoning_effort": "low",
-    "concurrency": 6,
+    "concurrency": 12,
     "attempts": 2,
     "catalog_batch_units": 40,
     "max_text_tokens": 150000
