@@ -37,10 +37,25 @@ export function issueUrl(number) {
   return `https://github.com/${config().github.i18n_repo}/issues/${number}`;
 }
 
-/** The verified issue, or a refusal carrying `reason`. Network, read-only. */
+/**
+ * The verified issue, or a refusal carrying `reason`. Network, read-only.
+ *
+ * A closed issue is refused before anything is verified, with `closed` set. The
+ * queue closes an issue as "not planned" when `ready-to-translate` comes off its
+ * PR, and a dispatch still pending or in flight at that moment must not
+ * translate the English the label no longer vouches for.
+ */
 export function readIssue(number) {
   const fetched = fetchIssue(number);
-  return fetched.ok ? verifyIssue(fetched) : fetched;
+  if (!fetched.ok) return fetched;
+  if (fetched.state !== "OPEN") return { ...fetched, ok: false, closed: true, reason: "the issue is closed" };
+  return verifyIssue(fetched);
+}
+
+/** Whether the issue is still open: true, false, or null when GitHub could not say. */
+export function issueStillOpen(number) {
+  const fetched = fetchIssue(number);
+  return fetched.ok ? fetched.state === "OPEN" : null;
 }
 
 /**
@@ -125,10 +140,12 @@ export function commitMessage(issue, items) {
  * `close` is only ever true when the work is demonstrably finished: everything
  * translated and pushed, or every target already held. Every other end leaves
  * the issue open, because an open issue is the queue and a closed one re-runs
- * the source PR's check, which would then fail again. Pure.
+ * the source PR's check, which would then fail again. `quiet` posts nothing:
+ * a closed issue was closed on purpose and gets no comment. Pure.
  */
 export const OUTCOMES = {
   pushed: { close: true, exit: 0, headline: "Translated and pushed to `main`." },
+  closed: { close: false, exit: 0, quiet: true, headline: "The issue is closed, so nothing was translated or pushed." },
   "nothing-to-do": { close: true, exit: 0, headline: "Nothing to do: every locale in scope already holds this text." },
   "no-production-locales": { close: false, exit: 0, headline: "Nothing to do: `locales.json` `productionTargets` is empty, so no locale is held to this change." },
   invalid: { close: false, exit: 1, headline: "This is not a valid queue issue, so nothing was translated." },

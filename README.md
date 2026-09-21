@@ -46,6 +46,11 @@ waiting more than two hours, so a GitHub or DeepSeek outage heals itself. A repe
 harmless: the one mode is "translate if absent", so an issue whose work is done finds nothing
 to do and closes.
 
+A closed issue is never worked. The source repo's queue closes an issue as "not planned" when
+`ready-to-translate` comes off the PR, so a dispatch that is pending or in flight at that
+moment stops without translating or pushing, and says nothing on the issue. A run checks
+this when it starts and again just before it commits.
+
 `scripts/work-issue.mjs` is the same pass without the git and without the issue: it is what a
 person runs when an issue needs a human decision (a change above `config.json`'s
 `issue_word_cap`, which the automated path refuses on its own).

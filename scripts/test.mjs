@@ -135,6 +135,8 @@ await test("only a plainly written positive integer is an issue number", () => {
 
 await test("the issue is closed only when the work is finished, and every other ending leaves it open", () => {
   for (const reason of ["pushed", "nothing-to-do"]) assert.deepEqual([issueOutcome(reason).close, issueOutcome(reason).exit], [true, 0]);
+  // A closed issue was withdrawn on purpose: nothing to do, and nothing said on it.
+  assert.deepEqual([issueOutcome("closed").close, issueOutcome("closed").exit, issueOutcome("closed").quiet], [false, 0, true]);
   // An empty productionTargets is nothing to do and nothing wrong: the issue waits.
   assert.deepEqual([issueOutcome("no-production-locales").close, issueOutcome("no-production-locales").exit], [false, 0]);
   for (const reason of ["invalid", "over-cap", "failures", "validate-errors", "deletions", "push-failed", "error"]) {

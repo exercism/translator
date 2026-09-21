@@ -35,6 +35,12 @@
 //   push       commit in ../i18n and push to main, rebasing and retrying a
 //              non-fast-forward, then close the issue with the counts
 //
+// A CLOSED issue is never worked, and is checked twice: before anything else,
+// and again just before the commit. The queue closes an issue as "not planned"
+// when `ready-to-translate` comes off its PR, and a dispatch that was pending or
+// in flight then would otherwise translate and push English nobody has approved.
+// That ending posts nothing on the issue and exits 0.
+//
 // Anything that fails leaves the issue OPEN and exits non-zero: an open issue is
 // the queue, and a closed one re-runs a check that would fail again.
 // .github/workflows/retry-stale-issues.yml comes back to it, so a transient
@@ -56,7 +62,7 @@ import { spawnSync } from "node:child_process";
 import { Failure, ROOT, config, parseArgs } from "./lib/config.mjs";
 import { i18n } from "./lib/i18n.mjs";
 import { SOURCES } from "./lib/routes.mjs";
-import { commitMessage, issueNumber, issueOutcome, issueScope, issueUrl, itemsWritten, perLocaleCounts, readIssue, translateForIssue, untranslatedWords } from "./lib/issue-pass.mjs";
+import { commitMessage, issueNumber, issueOutcome, issueScope, issueStillOpen, issueUrl, itemsWritten, perLocaleCounts, readIssue, translateForIssue, untranslatedWords } from "./lib/issue-pass.mjs";
 
 const { positional } = parseArgs(process.argv.slice(2));
 const number = issueNumber(positional[0]);
@@ -100,7 +106,7 @@ function finish(reason, detail) {
       console.error(`error: could not close issue ${number}: ${closed.error}`);
       process.exit(1);
     }
-  } else {
+  } else if (!outcome.quiet) {
     comment(body);
   }
   console.log(`${reason}: ${outcome.headline}`);
@@ -156,6 +162,7 @@ function pushToMain() {
 
 async function main() {
   const issue = readIssue(number);
+  if (issue.closed) finish("closed", `${issueUrl(number)} was closed before this run started.`);
   if (!issue.ok) finish("invalid", `${issueUrl(number)}: ${issue.reason}. Nothing was read from the issue beyond the repo, the PR number and the sha.`);
 
   const locales = lib.constants.PRODUCTION_LOCALES;
@@ -207,6 +214,10 @@ async function main() {
   if (errors.length > 0 || real.summary?.checker?.some((one) => one.exit !== 0)) {
     finish("validate-errors", `${countsBlock}\n\n${errors.length} error line(s) from \`validate.mjs\`:\n\n${errors.slice(0, 20).map((line) => `- \`${line}\``).join("\n")}`);
   }
+
+  // The label can come off the source PR while this translates, which closes the
+  // issue as not planned. Then the English is no longer final, so nothing lands.
+  if (issueStillOpen(number) === false) finish("closed", `${issueUrl(number)} was closed while this run translated; nothing was committed or pushed.`);
 
   git(["add", "--", "locales"]);
   if (git(["diff", "--cached", "--quiet"], { allowFail: true }).ok) finish("nothing-to-do", `${locales.join(", ")} already held every item this PR changed; nothing was left to commit.`);
