@@ -189,7 +189,9 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, locale, f
   const limit = Number(flags.limit) || Infinity;
   const hasStore = fs.existsSync(lib.contentTypes.contentRoot(locale));
 
-  for (const type of typeOrder.filter((id) => groups.has(id))) {
+  // Each type has its own prefix and warms its own cache entry, so the types
+  // run side by side.
+  await Promise.all(typeOrder.filter((id) => groups.has(id)).map(async (type) => {
     const work = groups.get(type).sort((a, b) => (a.path < b.path ? -1 : 1)).slice(0, limit);
     const counts = run.count(locale, type);
     const prefix = fixedPrefix({ locale, howto: ROUTES[type].howto, shape: "file" });
@@ -252,7 +254,7 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, locale, f
       }
       fail(reason);
     });
-  }
+  }));
 }
 
 // --------------------------------------------------------------- catalogs ---
@@ -576,17 +578,22 @@ async function main() {
   fs.mkdirSync(run.dir, { recursive: true });
   log(`English: exercism/${name} at ${repo} @ ${ref} (${sha})${dryRun ? "  [DRY RUN: nothing is called, nothing is written]" : ""}`);
 
-  // Sorted by locale, then by type: consecutive calls share the longest prefix.
+  // One locale at a time, so consecutive calls share the longest prefix.
   for (const locale of locales) {
-    // Catalogs first. For a content source that is its metadata (names, titles,
-    // blurbs), which is what a student sees before opening anything.
-    for (const spec of await catalogSpecs({ lib, sourceId, name, repo, ref, sha, locale, flags })) {
-      await translateCatalog({ lib, run, locale, flags, spec });
+    // Catalogs, which for a content source are its metadata (names, titles,
+    // blurbs), and content run side by side.
+    const catalogs = (async () => {
+      for (const spec of await catalogSpecs({ lib, sourceId, name, repo, ref, sha, locale, flags })) {
+        await translateCatalog({ lib, run, locale, flags, spec });
+      }
+    })();
+    if (SOURCES[sourceId].catalogs || flags.type === "metadata" || ROUTES[flags.type]?.metadata) {
+      await catalogs;
+      continue;
     }
-    if (SOURCES[sourceId].catalogs || flags.type === "metadata" || ROUTES[flags.type]?.metadata) continue;
 
     const before = run.written.length;
-    await translateContent({ lib, run, sourceId, name, repo, ref, locale, flags });
+    await Promise.all([catalogs, translateContent({ lib, run, sourceId, name, repo, ref, locale, flags })]);
     if (!dryRun && run.written.length > before) {
       const result = spawnSync("node", [path.join(lib.dir, "scripts", "validate.mjs"), locale, "--type=content", `--content-repos=${repo}:${SOURCES[sourceId].kind}@${sha}`], { encoding: "utf8", env: process.env });
       const logFile = path.join(run.dir, `${locale}.content.validate.log`);
