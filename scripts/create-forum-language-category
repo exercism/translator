@@ -1,44 +1,28 @@
 #!/usr/bin/env bash
 #
 # create-forum-language-category: create an i18n language subcategory on the
-# Exercism Discourse forum, matching the house style, and seed it with a pinned
-# "Want to Help - Start here?" topic.
+# Exercism Discourse forum and seed it with a pinned "Want to Help - Start here?"
+# topic.
 #
-# TODO(iHiD): UNVERIFIED RIGHTS. Creating a category, editing its About post and
-# pinning a topic all need an ADMIN-scoped API key on forum.exercism.org. Whether
-# the key in .env has that is not known, and nothing here assumes it: every call
-# goes through forum_ok, which reports the status and body of a refusal instead
-# of carrying on. The parent category (config.json `forum.parent_category_slug`)
-# must already exist; this script does not create it, and it did not exist when
-# this repo was written. orchestrator.md lists every right the forum user needs.
+# Creating a category, editing its About post and pinning a topic need an admin
+# API key. The key in .env is a single-user key for `system`, which is an admin.
+# The parent category (config.json `forum.parent_category_slug`) must already
+# exist. orchestrator.md lists every right the forum user needs.
 #
 # Usage:
-#   ./scripts/create-forum-language-category <lang> <emoji>
+#   ./scripts/create-forum-language-category <lang>
 #
 # Example:
-#   ./scripts/create-forum-language-category pt-BR brazil
+#   ./scripts/create-forum-language-category pt-BR
 #
-#   lang  : locale code (e.g. pt-BR, hu, de). Must exist in languages/names.json.
-#   emoji : a Discourse emoji shortname for the badge (e.g. brazil, hungary,
-#             globe_showing_americas). MUST be a real Discourse emoji shortname
-#             (verified below against the live /emojis.json), never guessed from
-#             the country/language name. Discourse's categories API accepts and
-#             silently stores ANY string in the emoji field, valid or not, so a
-#             guessed name that isn't a real emoji creates a category with a
-#             broken badge that renders as literal text, with no error at
-#             creation time. Two real past mistakes from guessing instead of
-#             checking: Turkey's flag is "türkiye" in Discourse's set, not
-#             "turkey" (the latter is the turkey-the-bird emoji); Catalan has no
-#             country flag at all (Catalonia isn't a Unicode-recognized flag),
-#             so "catalonia" was silently accepted as a non-existent emoji , 
-#             Andorra (the one country where Catalan is a sole official
-#             language) is the correct fallback in cases like this where no
-#             country flag matches the language directly. This script now
-#             verifies the emoji against /emojis.json itself and refuses to
-#             proceed if it isn't found; do not bypass that check.
+#   lang: locale code (e.g. pt-BR, hu, de). Must exist in languages/names.json.
 #
-# The category slug is derived as i18n-<lowercased lang> (e.g. i18n-pt-br).
-# The display name is derived as "<Name> (<lang>)" from languages/names.json.
+# The category slug is i18n-<lowercased lang> (e.g. i18n-pt-br) and the display
+# name is "<Name> (<lang>)" from languages/names.json. The forum runs Discourse
+# 3.3, which has no category emoji badges, so categories get a colour only, like
+# every other category there.
+#
+# Writes the category id to languages/<lang>/tracking.json.
 #
 # Reads credentials from the translator repo .env:
 #   DISCOURSE_API_KEY, DISCOURSE_API_USERNAME   (the forum's address is config.json `forum.base`)
@@ -59,9 +43,7 @@ command -v curl >/dev/null || die "curl is required"
 command -v jq >/dev/null || die "jq is required"
 
 LANG="${1:-}"
-EMOJI="${2:-}"
-[ -n "$LANG" ] && [ -n "$EMOJI" ] ||
-  die "usage: $(basename "$0") <lang> <emoji>"
+[ -n "$LANG" ] || die "usage: $(basename "$0") <lang>"
 
 # Guard against a spelled-out language name slipping in as $lang (e.g. "ukrainian"
 # instead of "uk"): this becomes the live Discourse category slug (i18n-<lang>), so a
@@ -93,15 +75,6 @@ DISCOURSE_API_USERNAME="${DISCOURSE_API_USERNAME:-system}"
 AUTH=(-H "Api-Key: ${DISCOURSE_API_KEY}" -H "Api-Username: ${DISCOURSE_API_USERNAME}")
 WELCOME_TITLE="Want to Help - Start here?"
 
-# Verify the emoji shortname is real before creating anything. Discourse's
-# categories API accepts any string here and silently stores it even if it
-# doesn't match a real emoji, producing a badge that renders as broken literal
-# text with no error at creation time (see the comment at the top of this file).
-EMOJI_EXISTS="$(curl -sSL -m 15 "$FORUM_BASE/emojis.json" \
-  | jq -e --arg e "$EMOJI" 'to_entries[] | .value[] | select(.name == $e)' >/dev/null 2>&1 && echo yes || echo no)"
-[ "$EMOJI_EXISTS" = "yes" ] ||
-  die "'$EMOJI' is not a real Discourse emoji shortname (checked $FORUM_BASE/emojis.json): do not guess from the country/language name, look it up first"
-
 # Resolve the parent category id dynamically (don't hardcode). Its slug is
 # config.json `forum.parent_category_slug`.
 site="$(curl -sSL -m 15 "$FORUM_BASE/site.json")"
@@ -117,12 +90,12 @@ else
   resp="$(curl -sS -m 20 -X POST "$FORUM_BASE/categories.json" "${AUTH[@]}" \
     -H "Content-Type: application/json" \
     -w $'\n%{http_code}' \
-    -d "$(jq -n --arg n "$NAME" --arg s "$SLUG" --argjson p "$PARENT_ID" --arg e "$EMOJI" \
-      '{name:$n, slug:$s, color:"0088CC", text_color:"FFFFFF", parent_category_id:$p, style_type:"emoji", emoji:$e}')")"
+    -d "$(jq -n --arg n "$NAME" --arg s "$SLUG" --argjson p "$PARENT_ID" \
+      '{name:$n, slug:$s, color:"0088CC", text_color:"FFFFFF", parent_category_id:$p}')")"
   RESP_BODY="$(forum_ok "creating the category" "$resp")" || exit 1
   CAT_ID="$(printf '%s' "$RESP_BODY" | jq -r '.category.id // empty')"
   [ -n "$CAT_ID" ] || die "failed to create category: $(printf '%s' "$RESP_BODY" | jq -c '.errors // .')"
-  echo "created category '$SLUG' -> id $CAT_ID (badge :$EMOJI:)" >&2
+  echo "created category '$SLUG' -> id $CAT_ID" >&2
 
   # Set the description on the auto-created About topic's first post.
   about="$(printf '%s' "$RESP_BODY" | jq -r '.category.topic_url' | grep -oE '[0-9]+$')"
@@ -161,5 +134,14 @@ fi
 curl -sS -m 15 -X PUT "$FORUM_BASE/t/${TID}/status.json" "${AUTH[@]}" \
   -d "status=pinned&enabled=true" -o /dev/null -w ""
 echo "pinned welcome topic $TID in category $CAT_ID" >&2
+
+TRACKING="$ROOT/languages/$LANG/tracking.json"
+if [ -f "$TRACKING" ]; then
+  tmp="$(mktemp)"
+  jq --argjson id "$CAT_ID" '.category_id = $id' "$TRACKING" >"$tmp" && mv "$tmp" "$TRACKING"
+  echo "recorded category id $CAT_ID in $TRACKING" >&2
+else
+  echo "no $TRACKING yet: record category_id $CAT_ID there when it is created" >&2
+fi
 
 echo "done: $FORUM_BASE/c/${SLUG}/${CAT_ID}"

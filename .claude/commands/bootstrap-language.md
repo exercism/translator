@@ -255,26 +255,12 @@ After the guide and glossary are written, create the forum infrastructure for th
 2. **Ensure the forum category exists.** Check `languages/<lang>/tracking.json` for a
    non-null `category_id` for this locale. If it is null or absent, run:
    ```bash
-   ./scripts/create-forum-language-category $lang <emoji>
+   ./scripts/create-forum-language-category $lang
    ```
-   The script derives the slug and display name from `languages/names.json`
-   automatically, but **you must choose the emoji shortname yourself, and never by
-   guessing from the country or language name.** Fetch `$FORUM_BASE/emojis.json` and find
-   the real shortname in its `flags` group first. Guessing has silently produced a wrong
-   or non-existent emoji twice before: "turkey" (a real emoji, but the turkey-the-bird,
-   not the flag: Discourse names Turkey's flag "türkiye") and "catalonia" (not a real
-   emoji at all: Catalonia isn't a Unicode-recognized flag). The script itself now
-   rejects a shortname that doesn't exist in `/emojis.json`, but that only catches "does
-   not exist," not "exists but is the wrong emoji," so look up the actual shortname
-   rather than relying on the script to catch a bad guess.
-   - **If the obvious flag choice is politically or nationally contested** (e.g. a
-     stateless or regional language like Catalan, Kurdish, or Basque; a disputed
-     territory; a language whose primary state doesn't match the community it serves),
-     do not silently pick one. Research the least contentious defensible option (for
-     example, a country where the language holds official status without being caught in
-     the dispute, such as Andorra for Catalan), state your reasoning, and surface the
-     choice to the owner in the Phase 6 report (or, if this is reached before Phase 6 is
-     written, flag it in chat) rather than deciding it unilaterally and moving on.
+   The script derives the slug and display name from `languages/names.json`, creates
+   the category and its pinned "Want to Help" topic, and records the category id in
+   `tracking.json`. The forum runs Discourse 3.3, which has no category emoji badges,
+   so there is no flag to choose.
 
 3. **The glossary must be pushed to GitHub before the post is created.** The pinned post
    links to `languages/$lang/glossary.md` on GitHub rather than carrying the table

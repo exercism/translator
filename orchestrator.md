@@ -310,17 +310,17 @@ hours, so a GitHub or DeepSeek outage recovers on its own.
 
 ### What the forum API user needs
 
-**TODO(iHiD): none of this is verified.** Nothing in this repo assumes these rights exist:
-every script that writes to the forum reports the HTTP status and body of a refusal and stops.
-When this was written there was no i18n category on forum.exercism.org, so until Jeremy (or a
-forum admin) creates the parent category, `scripts/forum-monitor` keeps nothing and says so on
-every poll.
+The key in `.env` is a single-user key for `system`, an admin, set up on 2026-09-21. Creating
+categories, editing About posts, posting topics and pinning were all used that day to set up
+the parent category "Translating Exercism (i18n)" (slug `i18n`, id 892) and Hungarian (id 893).
+Liking has not been used yet. Every script that writes to the forum reports the HTTP status and
+body of a refusal and stops.
 
 | Script | Calls | Needs |
 |---|---|---|
 | `forum-monitor`, `fetch-forum-topics`, reading a thread | `GET /posts.json`, `/site.json`, `/t/<id>.json` | Nothing for public categories. A key with read access if the i18n categories are made private. |
 | (by hand, once) | create the parent category, slug `i18n` (`config.json` `forum.parent_category_slug`) | A forum admin. No script does this. |
-| `create-forum-language-category` | `POST /categories.json`, `PUT /posts/<id>.json` (the About post), `POST /posts.json`, `PUT /t/<id>/status.json` (pin) | An admin-scoped key: creating a category is admin-only in Discourse. |
+| `create-forum-language-category` | `POST /categories.json`, `PUT /posts/<id>.json` (the About post), `POST /posts.json`, `PUT /t/<id>/status.json` (pin) | An admin key: creating a category is admin-only in Discourse. The `.env` key acts as `system`, an admin. |
 | `create-forum-glossary-post` | `POST /posts.json` (new topic), `PUT /t/<id>/status.json` (pin) | Create topics in the language category. Pinning needs moderator or category-moderator rights. |
 | `glossary-post-body --push` | `PUT /posts/<id>.json` | Edit the API user's own post. |
 | `reply-to-thread`, `post-glossary-reply` | `POST /posts.json` | Reply in the i18n categories. |
