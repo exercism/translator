@@ -1,29 +1,27 @@
-# Pick up any translation issue the automated queue has left sitting.
+# Re-dispatches translation issues that the automated queue has left open.
 #
-# translate-issue.yml runs once per dispatch, and a dispatch can be lost: a
-# GitHub outage, a DeepSeek outage, a run cancelled mid-flight, a failure that
-# left the issue open on purpose. Nothing else would ever come back to it,
-# because the only trigger over there is the issue being opened or rewritten.
-# So this sweeps the queue every six hours and dispatches the same event again.
+# translate-issue.yml runs once per dispatch, and a dispatch can be lost to a
+# GitHub or DeepSeek outage, a cancelled run, or a failure that deliberately
+# left the issue open. exercism/i18n only dispatches when an issue is opened or
+# updated, so without this sweep nothing would pick it up again. It runs every
+# six hours and dispatches the same event again for each waiting issue.
 #
-# Two hours is the delay, on the issue's own updatedAt: a run posts a comment on
-# every ending it does not close the issue for, which moves updatedAt, so a
-# failing issue is retried at most every two hours rather than every six minutes.
-# An issue that genuinely cannot be worked (above the word cap, an item that
-# fails every time) stays open and says why in its comments, which is what the
-# orchestrator session watches for.
+# An issue is only picked up if its updatedAt is more than two hours old. A run
+# that does not close its issue posts a comment, which moves updatedAt, so an
+# issue that has just failed is not retried straight away. An issue that cannot
+# be worked (above the word cap, or an item that fails every time) stays open
+# and says why in its comments, which the orchestrator session watches for.
 #
-# A dispatch is idempotent by construction: run-issue.mjs translates only what
-# the locale does not already hold, so a repeat of a finished issue finds
-# nothing to do and closes it.
+# Dispatching again is safe: run-issue.mjs only translates what a locale does
+# not already have, so a finished issue finds nothing to do and is closed.
 #
-# ## The tokens
+# ## Tokens
 #
 #   EXERCISM_I18N_PUSH_PAT           lists the open issues in exercism/i18n
 #   EXERCISM_TRANSLATOR_DISPATCH_PAT Contents read/write on this repo, to
-#                                    dispatch. The default GITHUB_TOKEN cannot be
-#                                    used: an event it raises deliberately starts
-#                                    no further workflow run.
+#                                    dispatch. The default GITHUB_TOKEN would not
+#                                    work, because events it raises do not start
+#                                    further workflow runs.
 
 name: Retry stale issues
 
@@ -53,8 +51,8 @@ jobs:
 
           CUTOFF=$(date -u -d '2 hours ago' +%Y-%m-%dT%H:%M:%SZ)
 
-          # number and updatedAt only: an issue's title and body are text typed
-          # by whoever opened a source PR, and nothing here reads them.
+          # Only number and updatedAt are fetched. An issue's title and body are
+          # written by whoever opened the source PR, and are never read here.
           NUMBERS=$(GH_TOKEN="$I18N_TOKEN" gh issue list --repo exercism/i18n \
             --state open --label translation --author iHiD --limit 100 \
             --json number,updatedAt \
