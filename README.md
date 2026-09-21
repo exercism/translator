@@ -33,7 +33,8 @@ A PR that changes English is translated without anyone stepping in:
    works out from git what the PR changed, translates it for every locale in `i18n`'s
    `locales.json` `productionTargets`, and checks the result with `validate.mjs` and
    `no-deletions.mjs`.
-4. It commits in the `i18n` checkout and pushes to `main`, rebasing and retrying if the push
+4. It commits `locales/` and the translation index the pass updated (`index/`) in the `i18n`
+   checkout and pushes to `main`, rebasing and retrying if the push
    is rejected as non-fast-forward. The website pulls that repo, so the push is what
    publishes the translations.
 5. It closes the issue with the per-locale counts and the run's cost. Closing re-runs the

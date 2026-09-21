@@ -40,6 +40,11 @@ Four things about it shape how a pass works:
   ref, never from a working tree.
 - Translation work reaches `i18n` as a direct commit to `main`. A pass writes files and
   stops, and the orchestrator commits.
+- After each pass over a source repo, `scripts/translate.mjs` updates that repo's entry in
+  `i18n`'s translation index (`index/json/<locale>/<repo>.json`, the blob ids held per source
+  path, newest first, at most six) and regenerates its Markdown, using `i18n`'s
+  `scripts/lib/translation-index.mjs`. Commit `index/` with `locales/`: `i18n`'s CI fails if
+  a page does not match its JSON.
 
 Guidance never goes into `i18n` and translated output never goes into this repo, so there is
 only ever one copy of each glossary.

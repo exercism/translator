@@ -31,7 +31,8 @@
 //              productionTargets, pinned to the PR's sha and that scope
 //   check      the i18n repo's validate.mjs for each locale, then its
 //              no-deletions.mjs over the commit
-//   push       commit in ../i18n and push to main, rebasing and retrying a
+//   push       commit locales/ and index/ (the translation index the pass
+//              updated) in ../i18n and push to main, rebasing and retrying a
 //              non-fast-forward, then close the issue with the counts
 //
 // A closed issue is never worked. This is checked twice: before anything else,
@@ -219,7 +220,10 @@ async function main() {
   // committed.
   if (issueStillOpen(number) === false) finish("closed", `${issueUrl(number)} was closed while this run translated; nothing was committed or pushed.`);
 
-  git(["add", "--", "locales"]);
+  // The translation index is updated by the pass and lands in the same commit.
+  const index = spawnSync("node", [path.join(lib.dir, "scripts", "build-index.mjs"), "all", "--check"], { encoding: "utf8", env: process.env });
+  if (index.status !== 0) finish("validate-errors", `${countsBlock}\n\n\`build-index.mjs --check\` failed:\n\n\`\`\`\n${index.stdout.trim().slice(0, 3000)}\n\`\`\``);
+  git(["add", "--", "locales", ...(fs.existsSync(path.join(I18N, "index")) ? ["index"] : [])]);
   if (git(["diff", "--cached", "--quiet"], { allowFail: true }).ok) finish("nothing-to-do", `${locales.join(", ")} already held every item this PR changed; nothing was left to commit.`);
 
   const message = path.join(ROOT, "state", "runs", `issue-${number}.commit.txt`);

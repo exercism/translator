@@ -445,7 +445,8 @@ git checkout main && git pull
 node scripts/validate.mjs <locale> --content-repos=<the checkouts that were translated>
                                  # the same gate CI runs; reads only. Read the ERRORs, not
                                  # just the exit code: it gates on productionTargets alone
-git add locales/<locale> && git commit
+node scripts/build-index.mjs all --check   # the translation index matches its JSON
+git add locales/<locale> index && git commit   # translate.mjs updates index/ with each pass
 node scripts/no-deletions.mjs    # nothing removed under locales/
 git push
 ```

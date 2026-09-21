@@ -45,6 +45,10 @@
 //   write      write only what passed. A failed call or a rejected answer is
 //              retried (config.json `engine.attempts`), then left absent and
 //              reported, and the next run picks it up.
+//   index      after the pass, update the i18n repo's translation index for
+//              this source repo (index/json/<locale>/<repo>.json) and regenerate
+//              its Markdown. Every translatable path whose English the locale
+//              now holds records that blob id as its latest translation.
 //
 // Two things are keyed by name instead of by blob id, and the i18n repo keeps a
 // per-unit stamp for both: the two website catalogs, and each source repo's
@@ -533,6 +537,26 @@ async function catalogSpecs({ lib, sourceId, name, repo, ref, sha, locale, flags
   return specs;
 }
 
+// ------------------------------------------------------------------ index ---
+
+/**
+ * Brings the i18n repo's translation index for one source repo up to date with
+ * the tree this pass read, and regenerates that repo's page and the README.
+ * The index module (scripts/lib/translation-index.mjs in the i18n repo) owns the
+ * format and the Markdown.
+ */
+function updateIndex({ lib, run, sourceId, name, repo, ref, locale }) {
+  const kindId = SOURCES[sourceId].kind;
+  const entries = lib.git.lsTree(repo, ref);
+  const files = lib.completeness.translatableFiles(kindId, entries);
+  const catalogFile = lib.metadata.metadataPath(locale, name);
+  const catalog = fs.existsSync(catalogFile) ? JSON.parse(fs.readFileSync(catalogFile, "utf8")) : {};
+  const index = lib.translationIndex;
+  const names = index.displayNames(kindId, entries, lib.git.refReader(repo, ref).readMany, locale, catalog);
+  const current = index.syncIndex(index.readIndex(locale, name, kindId), files, index.heldIn(locale), names);
+  for (const file of index.saveRepoIndex(current)) run.indexed.push(path.relative(lib.dir, file));
+}
+
 // ------------------------------------------------------------------- main ---
 
 /**
@@ -604,6 +628,7 @@ async function main() {
     estimates: {},
     failures: [],
     written: [],
+    indexed: [],
     checker: [],
     usage: {},
     count(locale, type) {
@@ -634,11 +659,13 @@ async function main() {
     })();
     if (SOURCES[sourceId].catalogs || flags.type === "metadata" || ROUTES[flags.type]?.metadata) {
       await catalogs;
+      if (!dryRun && !SOURCES[sourceId].catalogs) updateIndex({ lib, run, sourceId, name, repo, ref, locale });
       continue;
     }
 
     const before = run.written.length;
     await Promise.all([catalogs, translateContent({ lib, run, sourceId, name, repo, ref, sha, locale, flags })]);
+    if (!dryRun) updateIndex({ lib, run, sourceId, name, repo, ref, locale });
     if (!dryRun && run.written.length > before) {
       const result = spawnSync("node", [path.join(lib.dir, "scripts", "validate.mjs"), locale, "--type=content", `--content-repos=${repo}:${SOURCES[sourceId].kind}@${sha}`], { encoding: "utf8", env: process.env });
       const logFile = path.join(run.dir, `${locale}.content.validate.log`);
@@ -648,10 +675,10 @@ async function main() {
   }
 
   const repaired = Object.values(run.counts).flatMap((types) => Object.values(types)).reduce((sum, row) => sum + row.repaired, 0);
-  const summary = { source: `exercism/${name}`, ref, sha, dryRun, model: config().engine.model, repaired, counts: run.counts, failures: run.failures, written: run.written.length, checker: run.checker };
+  const summary = { source: `exercism/${name}`, ref, sha, dryRun, model: config().engine.model, repaired, counts: run.counts, failures: run.failures, written: run.written.length, indexed: run.indexed.length, checker: run.checker };
   if (dryRun) summary.estimates = withCosts(run.estimates);
   else summary.usage = run.usage;
-  fs.writeFileSync(path.join(run.dir, "summary.json"), `${JSON.stringify({ ...summary, writtenPaths: run.written }, null, 2)}\n`);
+  fs.writeFileSync(path.join(run.dir, "summary.json"), `${JSON.stringify({ ...summary, writtenPaths: run.written, indexPaths: run.indexed }, null, 2)}\n`);
   report(summary, path.relative(ROOT, path.join(run.dir, "summary.json")));
   // A dry run that resolved exits 0 whatever it found. A file too large to send
   // is reported, and the command carries on.
@@ -708,6 +735,7 @@ function report(summary, file) {
     const u = summary.usage;
     lines.push(`  tokens: ${u.input} in (cache hit ${u.cacheHit}, miss ${u.cacheMiss}), ${u.output} out (${u.thinking} thinking), $${u.cost.toFixed(4)} off-peak`);
   }
+  if (summary.indexed) lines.push(`  index: ${summary.indexed} file(s) updated under index/`);
   for (const one of summary.checker) lines.push(`  checker ${one.locale} ${one.type}: exit ${one.exit}${"stamped" in one ? `, stamped ${one.stamped}` : ""}${one.fails ? `, ${one.fails} ERROR line(s)` : ""} (${one.log})`);
   lines.push(`  failures: ${summary.failures.length}`);
   for (const failure of summary.failures.slice(0, 200)) lines.push(`    ${failure.locale} ${failure.type} ${failure.source}${failure.target ? ` -> ${failure.target}` : ""}: ${failure.reason}`);

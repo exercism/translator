@@ -6,7 +6,8 @@
 // (catalogs.mjs), which names, titles and blurbs a source repo shows a user and
 // their keys (metadata.mjs), which plural categories a locale needs
 // (plurals.mjs), how the website's English is flattened (website-english.mjs),
-// and every mechanical check (checks.mjs). A second copy would drift from the
+// every mechanical check (checks.mjs), and the translation index
+// (translation-index.mjs). A second copy would drift from the
 // first. So they are imported from the checkout that config.json names, and a
 // pass checks its candidate with the same functions CI runs.
 //
@@ -24,9 +25,9 @@ export async function i18n() {
   if (LOADED) return LOADED;
   const dir = i18nRepo();
   const load = (name) => import(pathToFileURL(path.join(dir, "scripts", "lib", name)).href);
-  const [constants, contentTypes, git, sourceRepos, catalogs, checks, plurals, websiteEnglish, completeness, contentStore, metadata] = await Promise.all(
-    ["constants.mjs", "content-types.mjs", "git.mjs", "source-repos.mjs", "catalogs.mjs", "checks.mjs", "plurals.mjs", "website-english.mjs", "completeness.mjs", "content-store.mjs", "metadata.mjs"].map(load)
+  const [constants, contentTypes, git, sourceRepos, catalogs, checks, plurals, websiteEnglish, completeness, contentStore, metadata, translationIndex] = await Promise.all(
+    ["constants.mjs", "content-types.mjs", "git.mjs", "source-repos.mjs", "catalogs.mjs", "checks.mjs", "plurals.mjs", "website-english.mjs", "completeness.mjs", "content-store.mjs", "metadata.mjs", "translation-index.mjs"].map(load)
   );
-  LOADED = { dir, constants, contentTypes, git, sourceRepos, catalogs, checks, plurals, websiteEnglish, completeness, contentStore, metadata };
+  LOADED = { dir, constants, contentTypes, git, sourceRepos, catalogs, checks, plurals, websiteEnglish, completeness, contentStore, metadata, translationIndex };
   return LOADED;
 }

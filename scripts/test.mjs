@@ -337,6 +337,7 @@ await test("a dry run reports the work and writes nothing", () => {
   assert.equal(summary.counts.hu["problem-specification"].total, 1);
   assert.equal(summary.estimates.hu["metadata/problem-specifications"].items, 3);
   assert.ok(!fs.existsSync(path.join(I18N_ROOT, "locales")));
+  assert.ok(!fs.existsSync(path.join(I18N_ROOT, "index")));
 });
 
 await test("problem-specifications: content is filed by blob id, metadata is written and stamped by the i18n checker", () => {
@@ -348,6 +349,10 @@ await test("problem-specifications: content is filed by blob id, metadata is wri
   const stamps = JSON.parse(fs.readFileSync(path.join(I18N_ROOT, "locales/hu/metadata/problem-specifications.meta.json"), "utf8")).stamps;
   assert.equal(Object.keys(stamps).length, 3);
   assert.deepEqual(summaryOf(result.out).checker.map((one) => one.exit), [0, 0]);
+  const index = JSON.parse(fs.readFileSync(path.join(I18N_ROOT, "index/json/hu/problem-specifications.json"), "utf8"));
+  assert.deepEqual(index.paths, { "exercises/bob/instructions.md": [bobId] });
+  assert.deepEqual(index.names, { "exercises/bob": { en: "Bob", hu: "HU Bob" } });
+  assert.match(fs.readFileSync(path.join(I18N_ROOT, "index/markdown/hu/problem-specifications.md"), "utf8"), /### Bob \(HU Bob\)\n\n- `instructions\.md` \(\[English\]\([^)]+\)\): \[Latest\]\(\.\.\/\.\.\/\.\.\/locales\/hu\/content\//);
 });
 
 await test("a track then finds its synced instructions already held, and COPIES identical metadata English instead of translating it", () => {
@@ -362,6 +367,12 @@ await test("a track then finds its synced instructions already held, and COPIES 
   assert.equal(counts["metadata/ruby"].written, 1); // only the track's own blurb was paid for
   const catalog = JSON.parse(fs.readFileSync(path.join(I18N_ROOT, "locales/hu/metadata/ruby.json"), "utf8"));
   assert.equal(catalog["exercise:bob:blurb"], `HU ${BLURB}`);
+  // The instructions were translated for problem-specifications, and are indexed here too.
+  const index = JSON.parse(fs.readFileSync(path.join(I18N_ROOT, "index/json/hu/ruby.json"), "utf8"));
+  assert.deepEqual(index.paths["exercises/practice/bob/.docs/instructions.md"], [bobId]);
+  assert.equal(index.paths["exercises/practice/bob/.docs/instructions.append.md"].length, 1);
+  assert.deepEqual(index.names["exercises/practice/bob"], { en: "Bob", hu: "HU Bob" });
+  assert.match(fs.readFileSync(path.join(I18N_ROOT, "index/markdown/hu/README.md"), "utf8"), /\[exercism\/problem-specifications\]\(problem-specifications\.md\)[\s\S]*\[exercism\/ruby\]\(ruby\.md\)/);
 });
 
 await test("a second run holds everything: translate-if-absent is the one mode", () => {
@@ -380,6 +391,10 @@ await test("edited English is a new blob id, translated with the previous versio
   assert.deepEqual([row.written, row.revised], [1, 1]);
   const after = fs.readdirSync(path.join(I18N_ROOT, "locales/hu/content"), { recursive: true }).filter((file) => String(file).endsWith(".md")).length;
   assert.equal(after, before + 1);
+  const ids = JSON.parse(fs.readFileSync(path.join(I18N_ROOT, "index/json/hu/ruby.json"), "utf8")).paths["docs/TESTS.md"];
+  assert.deepEqual(ids, [lib.git.blobId("# Tests\n\nRun the tests like this:\n\n```bash\nruby bob_test.rb\n```\n"), lib.git.blobId("# Tests\n\nRun the tests:\n\n```bash\nruby bob_test.rb\n```\n")]);
+  const check = sh("node", [path.join(lib.dir, "scripts", "build-index.mjs"), "all", "--check"], { env: ENV });
+  assert.equal(check.status, 0, check.out);
 });
 
 await test("an answer that alters code is repaired from the English, checked again, written and counted", () => {
