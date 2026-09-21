@@ -80,7 +80,7 @@ The current ${LANG_NAME} glossary lives here:
 
 ${LINKS}
 
-That file is always the live version: we update it as soon as we agree a change here, so it is the one to check rather than anything quoted further down this thread. The decisions behind it, and who made them, are in \`glossary-notes.md\` beside it.
+That file is always the live version: we update it as soon as we agree a change here, so check it before relying on anything quoted further down this thread. The decisions behind it, and who made them, are in \`glossary-notes.md\` beside it.
 
 When something is wrong, quote the row here (copy the term and what we render it as) and tell us what it should be instead. That way we know exactly which decision you are giving feedback on.
 
