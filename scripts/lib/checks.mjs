@@ -127,7 +127,13 @@ const taskNumbers = (text) => [...withoutCode(text).matchAll(/^##\s+(\d+)\./gm)]
 
 const inlineCode = (text) => codeSpans(text).map((span) => span.content).sort();
 
-const definitions = (text) => [...withoutCode(text).matchAll(/^ {0,3}\[([^\]\n]+)\]:\s*(\S+)/gm)].map((match) => ({ label: match[1].trim().toLowerCase(), url: match[2] }));
+const definitions = (text) =>
+  [...withoutCode(text).matchAll(/^ {0,3}\[([^\]\n]+)\]:\s*(\S+)/gm)]
+    .filter((match) => !match[1].startsWith("^"))
+    .map((match) => ({ label: match[1].trim().toLowerCase(), url: match[2] }));
+// Footnotes (`[^1]: text`) look like link definitions, but their text is prose
+// and is translated. Only their labels have to survive.
+const footnotes = (text) => [...withoutCode(text).matchAll(/^ {0,3}\[(\^[^\]\n]+)\]:/gm)].map((match) => match[1]);
 
 const referenceUses = (text) =>
   [...withoutCode(text).replace(/`[^`\n]*`/g, "").matchAll(/\[[^\]\n]+\]\[([^\]\n]*)\]/g)].map((match) => match[1].trim().toLowerCase()).filter(Boolean);
@@ -174,6 +180,9 @@ export function checkMarkdown(english, translated) {
   const targetUrls = new Set(targetDefs.map((def) => def.url));
   const lostUrls = enDefs.filter((def) => !targetUrls.has(def.url));
   if (lostUrls.length > 0) problems.push(`link definition(s) lost or changed: ${lostUrls.slice(0, 3).map((def) => `[${def.label}]: ${def.url}`).join(", ")}`);
+  const targetNotes = new Set(footnotes(translated));
+  const lostNotes = footnotes(english).filter((label) => !targetNotes.has(label));
+  if (lostNotes.length > 0) problems.push(`footnote(s) lost: ${lostNotes.slice(0, 5).map((label) => `[${label}]`).join(", ")}`);
   const defined = new Set(targetDefs.map((def) => def.label));
   // Only checked when the English's own references all resolve. Some real files
   // have a dangling reference, and the translation is not expected to fix it.
