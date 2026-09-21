@@ -74,7 +74,7 @@ jobs:
           echo "issue=$ISSUE" >> "$GITHUB_OUTPUT"
 
       - name: Check out the translator
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: translator
           persist-credentials: false
@@ -83,7 +83,7 @@ jobs:
       # history: scripts/no-deletions.mjs diffs the commit against origin/main,
       # and the push rebases onto it.
       - name: Check out exercism/i18n
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: exercism/i18n
           ref: main
@@ -92,13 +92,13 @@ jobs:
           persist-credentials: false
 
       # The version comes from the i18n repo's package.json `packageManager`.
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
           package_json_file: i18n/package.json
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 24
 
       # The i18n repo's one dependency, `yaml`, which its website English
       # builder loads. This repo has none.
@@ -118,7 +118,7 @@ jobs:
       # A failure comment on the issue points here.
       - name: Upload the run
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: run-issue-${{ steps.payload.outputs.issue }}-${{ github.run_id }}
           path: translator/state/runs/
