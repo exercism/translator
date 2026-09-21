@@ -9,8 +9,10 @@ these rules win.
 
 - **Code.** Anything inside fenced code blocks (` ``` ` or `~~~`) or inline backticks is code
   and is reproduced byte for byte. This includes variable names, function names, keywords,
-  CLI commands, file paths, output, and **comments and strings inside the code**: nothing
-  inside a code block is ever translated. The one kind of fence that is not code is an
+  CLI commands, file paths, output, and **comments and strings inside the code, even when
+  they are English sentences**: nothing inside a code block is ever translated. A code
+  block in the output must be identical to the code block in the input, or the file is
+  rejected. The one kind of fence that is not code is an
   Exercism admonition, whose info string starts `exercism/` (`~~~~exercism/note`,
   `exercism/caution`, `exercism/advanced`): its fence lines are reproduced exactly and the
   prose inside it is translated.

@@ -80,6 +80,8 @@ const FILE_INSTRUCTION = (name, locale) =>
   `Where a <previous-version> block is given, the English was edited: that block holds the ` +
   `older English and the translation of it that is live today. Keep its wording wherever the ` +
   `English did not change, and translate afresh only what did.\n\n` +
+  `Every fenced code block is copied byte for byte, comments and strings included; the file ` +
+  `is rejected if any code block differs from the English.\n\n` +
   `Output the complete translated text and nothing else: no JSON, no wrapper, no code fence ` +
   `around the whole answer, no frontmatter the English does not have.`;
 
