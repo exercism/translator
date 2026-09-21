@@ -219,6 +219,14 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, sha, loca
       };
       const bytes = blobs.get(file.id);
       const english = bytes.toString("utf8");
+      // An empty English file needs an empty translation, which i18n accepts
+      // under git's empty blob id.
+      if (bytes.length === 0) {
+        fs.mkdirSync(path.dirname(target), { recursive: true });
+        if (!fs.existsSync(target)) fs.writeFileSync(target, "");
+        counts.copied += 1;
+        return;
+      }
       if (english.trim() === "") {
         counts.skipped += 1;
         return;
