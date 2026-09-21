@@ -25,7 +25,9 @@ import { Failure, config } from "./config.mjs";
 
 const MAX_HTTP_ATTEMPTS = 5;
 const BASE_BACKOFF_MS = 4000;
-const REQUEST_TIMEOUT_S = 120;
+// DeepSeek closes a request that has not started inference after 10 minutes,
+// sending blank keep-alive lines while it waits, so the timeout matches that.
+const REQUEST_TIMEOUT_S = 600;
 
 // Cloudflare fronts this host and has been seen returning 403 to non-browser
 // clients, so requests go through curl with a browser-like user agent.

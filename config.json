@@ -10,7 +10,8 @@
     "  iHiD's decision (2026-09-18). Allowed efforts are low, high and max.",
     "  `concurrency` is how many calls run at once within one (locale, type) group,",
     "  after the group's first call has gone out on its own to warm the provider's",
-    "  prefix cache.",
+    "  prefix cache. DeepSeek allows 2500 concurrent requests per account for",
+    "  deepseek-flash, so 1000 sends every item of a track at once after the warm-up.",
     "  `attempts` is calls per item: a failed call or a rejected answer is retried,",
     "  then the item is left absent and reported.",
     "  `catalog_batch_units` is how many catalog units go into one JSON batch.",
@@ -43,7 +44,7 @@
     "model": "deepseek-flash",
     "endpoint": "https://api.deepseek.com/chat/completions",
     "reasoning_effort": "low",
-    "concurrency": 12,
+    "concurrency": 1000,
     "attempts": 2,
     "catalog_batch_units": 40,
     "max_text_tokens": 150000
