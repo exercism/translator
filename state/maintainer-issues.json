@@ -8,6 +8,34 @@
       "opened": "2026-09-22",
       "workflows": "direct",
       "workflows_pr": "https://github.com/exercism/problem-specifications/pull/2687"
+    },
+    {
+      "repo": "exercism/05ab1e",
+      "number": 85,
+      "url": "https://github.com/exercism/05ab1e/issues/85",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/8th",
+      "number": 254,
+      "url": "https://github.com/exercism/8th/issues/254",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/abap",
+      "number": 375,
+      "url": "https://github.com/exercism/abap/issues/375",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/arm32-assembly",
+      "number": 29,
+      "url": "https://github.com/exercism/arm32-assembly/issues/29",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
     }
   ],
   "workflow_installs": {
