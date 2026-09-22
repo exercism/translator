@@ -16,14 +16,14 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
-import { ROOT } from "./lib/config.mjs";
+import { ROOT, config } from "./lib/config.mjs";
 import { i18n } from "./lib/i18n.mjs";
 import { checkMarkdown, codeSpans, fencedBlocks, wordCount } from "./lib/checks.mjs";
 import { repairCode } from "./lib/repair.mjs";
 import { fileTail, fixedPrefix } from "./lib/prompt.mjs";
 import { unfence } from "./lib/deepseek.mjs";
 import { parseIssue } from "./lib/issues.mjs";
-import { OUTCOMES, commitMessage, issueNumber, issueOutcome, itemsWritten, perLocaleCounts, untranslatedWords } from "./lib/issue-pass.mjs";
+import { OUTCOMES, attentionLabel, commitMessage, issueNumber, issueOutcome, itemsWritten, perLocaleCounts, transientFailure, untranslatedWords } from "./lib/issue-pass.mjs";
 
 let passed = 0;
 async function test(name, body) {
@@ -250,6 +250,53 @@ await test("the issue is closed only when the work is finished, and every other 
   for (const outcome of Object.values(OUTCOMES)) assert.match(outcome.headline, /\.$/);
 });
 
+await test("needs-attention: added when a person must act, removed when the work finishes, left alone otherwise", () => {
+  for (const reason of ["pushed", "nothing-to-do"]) assert.equal(attentionLabel(reason), "remove", reason);
+  for (const reason of ["closed", "no-production-locales"]) assert.equal(attentionLabel(reason), null, reason);
+  for (const reason of ["over-cap", "validate-errors", "deletions"]) assert.equal(attentionLabel(reason), "add", reason);
+  // A refusal or an error is a person's job, unless GitHub could not be reached.
+  for (const reason of ["invalid", "error", "something new"]) {
+    assert.equal(attentionLabel(reason), "add", reason);
+    assert.equal(attentionLabel(reason, { transient: true }), null, reason);
+  }
+  // A push race retries on its own; a refused credential does not.
+  assert.equal(attentionLabel("push-failed", { error: "! [rejected] HEAD -> main (fetch first)" }), null);
+  assert.equal(attentionLabel("push-failed", { error: "remote: Permission to exercism/i18n.git denied to iHiD." }), "add");
+  assert.equal(attentionLabel("push-failed", { error: "The requested URL returned error: 403" }), "add");
+  assert.equal(attentionLabel("push-failed", { error: "! [remote rejected] HEAD -> main (protected branch hook declined)" }), "add");
+});
+
+await test("needs-attention on failed items: only when one of them would fail the same way again", () => {
+  const outage = { reason: "curl failed: (28) Operation timed out" };
+  const busy = { reason: "HTTP 503 from DeepSeek: overloaded" };
+  const rejected = { reason: "rejected by the checker: fenced blocks: English has 1, translation has 0" };
+  assert.equal(attentionLabel("failures", { failures: [outage, busy] }), null);
+  assert.equal(attentionLabel("failures", { failures: [outage, rejected] }), "add");
+  for (const reason of ["curl failed: x", "HTTP 429 from DeepSeek: slow down", "HTTP 502 from DeepSeek: x", "unparseable response from DeepSeek: <html>", "no choice in the response: {}", "another run wrote this file first"]) {
+    assert.ok(transientFailure(reason), reason);
+  }
+  for (const reason of [rejected.reason, "HTTP 400 from DeepSeek: context too long", "too large for one call (~200000 tokens of English, the limit is 150000); chunking is not built, so this file needs iHiD", "the response hit the output limit, so the output is truncated", "the answer did not hold this unit, or held it in the wrong shape", "the answer was not valid JSON", 'only Markdown is translatable today, not ".txt"', undefined]) {
+    assert.ok(!transientFailure(reason), String(reason));
+  }
+});
+
+await test("the retry sweep skips issues labelled needs-attention, and anything updated in the last two hours", () => {
+  const workflow = fs.readFileSync(path.join(ROOT, ".github", "workflows", "retry-stale-issues.yml"), "utf8");
+  const select = /^\s+SELECT: '(.*)'$/m.exec(workflow)?.[1];
+  const skip = /^\s+SKIP_LABEL: (\S+)$/m.exec(workflow)?.[1];
+  assert.ok(select, "no SELECT filter in the workflow");
+  assert.equal(skip, config().github.attention_label);
+  const issues = [
+    { number: 1, updatedAt: "2026-09-22T01:00:00Z", labels: [{ name: "translation" }] },
+    { number: 2, updatedAt: "2026-09-22T01:00:00Z", labels: [{ name: "translation" }, { name: "needs-attention" }] },
+    { number: 3, updatedAt: "2026-09-22T09:00:00Z", labels: [{ name: "translation" }] },
+    { number: 4, updatedAt: "2026-09-22T02:00:00Z", labels: [] }
+  ];
+  const result = spawnSync("jq", ["-r", "--arg", "cutoff", "2026-09-22T08:00:00Z", "--arg", "skip", skip, select], { input: JSON.stringify(issues), encoding: "utf8" });
+  assert.equal(result.status, 0, result.stderr);
+  assert.deepEqual(result.stdout.trim().split("\n"), ["1", "4"]);
+});
+
 await test("the commit message names the source PR and what was written", () => {
   const parsed = parseIssue(issue());
   assert.equal(commitMessage(parsed, 3), "Translate exercism/ruby#1809: 3 item(s)\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>\n");
@@ -445,6 +492,20 @@ await test("an edited catalog key is STALE: retranslated with the live wording g
   assert.deepEqual([row.held, row.written, row.revised], [2, 1, 1]);
   const validate = sh("node", [path.join(lib.dir, "scripts", "validate.mjs"), "hu", "--type=website-backend", `--source-repo=${website}`], { env: ENV });
   assert.match(validate.out, /done 3, stale 0, unstamped 0, missing 0/);
+});
+
+await test("a catalog unit the checker rejects is left ABSENT and reported with its English and the rejected answer", () => {
+  repo("website", { "config/locales/en.yml": 'en:\n  nav:\n    tracks: "Tracks"\n    greeting: "Hello %{name}"\n    farewell: "Bye %{name}"\n  slots:\n    one: "1 slot"\n    other: "%{count} slots"\n' });
+  const result = translate(["website", "hu", `--repo=${website}`, "--type=website-backend"], { FAKE_ENGINE_BREAK: "placeholder" });
+  assert.equal(result.status, 1, result.out);
+  const failure = summaryOf(result.out).failures.find((one) => one.unit === "nav.farewell");
+  assert.ok(failure, result.out);
+  assert.match(failure.reason, /^rejected by the checker/);
+  assert.deepEqual(failure.english, { "nav.farewell": "Bye %{name}" });
+  assert.ok(failure.errors.length > 0);
+  assert.deepEqual(JSON.parse(fs.readFileSync(failure.rejected, "utf8")), { "nav.farewell": "HU Bye " });
+  const backend = JSON.parse(fs.readFileSync(path.join(I18N_ROOT, "locales/hu/website/backend.json"), "utf8"));
+  assert.equal(backend.nav.farewell, undefined);
 });
 
 await test("check-routes passes", () => {

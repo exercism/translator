@@ -8,9 +8,14 @@
 #
 # An issue is only picked up if its updatedAt is more than two hours old. A run
 # that does not close its issue posts a comment, which moves updatedAt, so an
-# issue that has just failed is not retried straight away. An issue that cannot
-# be worked (above the word cap, or an item that fails every time) stays open
-# and says why in its comments, which the orchestrator session watches for.
+# issue that has just failed is not retried straight away.
+#
+# An issue labelled `needs-attention` (config.json `github.attention_label`) is
+# skipped. run-issue.mjs adds that label when a person has to act first: items
+# the checker rejects every time, checker errors, the word cap, deletions. A
+# retry would fail the same way and, for rejected items, pay DeepSeek again.
+# The orchestrator session fixes those (/fix-i18n-issue), dispatches the issue
+# itself, and the run that finishes it removes the label.
 #
 # Dispatching again is safe: run-issue.mjs only translates what a locale does
 # not already have, so a finished issue finds nothing to do and is closed.
@@ -41,6 +46,9 @@ jobs:
           REPO: ${{ github.repository }}
           I18N_TOKEN: ${{ secrets.EXERCISM_I18N_PUSH_PAT }}
           DISPATCH_TOKEN: ${{ secrets.EXERCISM_TRANSLATOR_DISPATCH_PAT }}
+          SKIP_LABEL: needs-attention
+          # scripts/test.mjs runs this filter against sample issues.
+          SELECT: '.[] | select(.updatedAt < $cutoff) | select(all(.labels[]; .name != $skip)) | .number'
         run: |
           set -euo pipefail
 
@@ -51,12 +59,13 @@ jobs:
 
           CUTOFF=$(date -u -d '2 hours ago' +%Y-%m-%dT%H:%M:%SZ)
 
-          # Only number and updatedAt are fetched. An issue's title and body are
-          # written by whoever opened the source PR, and are never read here.
+          # Only number, updatedAt and labels are fetched. An issue's title and
+          # body are written by whoever opened the source PR, and are never read
+          # here.
           NUMBERS=$(GH_TOKEN="$I18N_TOKEN" gh issue list --repo exercism/i18n \
             --state open --label translation --author iHiD --limit 100 \
-            --json number,updatedAt \
-            --jq ".[] | select(.updatedAt < \"$CUTOFF\") | .number")
+            --json number,updatedAt,labels \
+            | jq -r --arg cutoff "$CUTOFF" --arg skip "$SKIP_LABEL" "$SELECT")
 
           if [ -z "$NUMBERS" ]; then
             echo "No translation issue in exercism/i18n has been waiting since $CUTOFF."

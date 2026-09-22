@@ -42,10 +42,17 @@
 // that nobody has approved. In that case nothing is posted on the issue and the
 // script exits 0.
 //
-// Any failure leaves the issue open and exits non-zero. Open issues are what the
-// queue retries, and closing one would re-run a check that fails again.
-// .github/workflows/retry-stale-issues.yml dispatches it again later, so a
-// temporary outage recovers on its own.
+// Any failure leaves the issue open and exits non-zero, because closing it
+// would re-run a check that fails again. An outcome another run can clear (an
+// outage, a push race) is left for .github/workflows/retry-stale-issues.yml to
+// dispatch again later. An outcome a person has to deal with (items the checker
+// rejected on every attempt, checker errors, the word cap, deletions, an invalid
+// issue, an unexpected error) gets the `needs-attention` label, which the sweep
+// skips and the orchestrator session watches; see attentionLabel() in
+// scripts/lib/issue-pass.mjs. A run that pushes or finds nothing to do removes
+// the label again. Every run that comments also writes
+// state/runs/issue-<n>.outcome.json, which /fix-i18n-issue reads from the
+// artifact.
 //
 // ## Git
 //
@@ -62,7 +69,7 @@ import { spawnSync } from "node:child_process";
 import { Failure, ROOT, config, parseArgs } from "./lib/config.mjs";
 import { i18n } from "./lib/i18n.mjs";
 import { SOURCES } from "./lib/routes.mjs";
-import { commitMessage, issueNumber, issueOutcome, issueScope, issueStillOpen, issueUrl, itemsWritten, perLocaleCounts, readIssue, translateForIssue, untranslatedWords } from "./lib/issue-pass.mjs";
+import { attentionLabel, commitMessage, issueNumber, issueOutcome, issueScope, issueStillOpen, issueUrl, itemsWritten, perLocaleCounts, readIssue, translateForIssue, untranslatedWords } from "./lib/issue-pass.mjs";
 
 const { positional } = parseArgs(process.argv.slice(2));
 const number = issueNumber(positional[0]);
@@ -94,13 +101,49 @@ function comment(body) {
   return posted.ok;
 }
 
-/** Say what happened, close the issue when the work is finished, and stop. */
-function finish(reason, detail) {
+// What the run knows so far, for the outcome file that finish() writes.
+const context = { issue: null, failures: [] };
+
+/**
+ * Add or remove the `needs-attention` label. A failure here is printed and
+ * does not change the outcome: the comment still says what happened.
+ */
+function label(action) {
+  if (!action) return;
+  const name = config().github.attention_label;
+  const edited = gh(["issue", "edit", String(number), "--repo", config().github.i18n_repo, action === "add" ? "--add-label" : "--remove-label", name]);
+  if (!edited.ok && action === "add") console.error(`error: could not label issue ${number} ${name}: ${edited.error}`);
+}
+
+/**
+ * Written beside the run's other files and uploaded with them, so the
+ * orchestrator's /fix-i18n-issue reads the failures from the artifact and never
+ * from the issue. Paths are made relative to state/runs/, which is the root of
+ * the artifact.
+ */
+function writeOutcome(reason, labelAction, url) {
+  const runs = path.join(ROOT, "state", "runs");
+  const { issue } = context;
+  const failures = context.failures.map(({ repo, targetPath, rejected, ...rest }) => ({ ...rest, ...(rejected ? { rejected: path.relative(runs, rejected) } : {}) }));
+  const outcome = { number, reason, label: labelAction, run: url, repo: issue?.repo ?? null, pr: issue?.pr ?? null, sha: issue?.sha ?? null, source: issue?.source ?? null, name: issue?.name ?? null, failures };
+  fs.mkdirSync(runs, { recursive: true });
+  fs.writeFileSync(path.join(runs, `issue-${number}.outcome.json`), `${JSON.stringify(outcome, null, 2)}\n`);
+}
+
+/** Say what happened, label or close the issue, and stop. */
+function finish(reason, detail, facts = {}) {
   const outcome = issueOutcome(reason);
   const url = runUrl();
-  const body = [`**${outcome.headline}**`, "", detail, ...(outcome.exit === 0 ? [] : ["", url ? `Run: ${url} (the run's \`state/runs/\` is attached to it as an artifact).` : "No Actions run to point at."])].join("\n");
+  const labelAction = attentionLabel(reason, { failures: context.failures, ...facts });
+  const footer = [];
+  if (outcome.exit !== 0) footer.push("", url ? `Run: ${url}. Its \`state/runs/\` is attached to it as an artifact.` : "No Actions run to point at.");
+  if (labelAction === "add") footer.push("", `Labelled \`${config().github.attention_label}\`: this needs a person, so the retry sweep leaves it alone and the translation team deals with it.`);
+  else if (outcome.exit !== 0) footer.push("", "This should clear on its own: the retry sweep runs the issue again later.");
+  const body = [`**${outcome.headline}**`, "", detail, ...footer].join("\n");
 
+  if (!outcome.quiet) writeOutcome(reason, labelAction, url);
   if (outcome.close) {
+    label(labelAction);
     const closed = gh(["issue", "close", String(number), "--repo", config().github.i18n_repo, "--comment", body]);
     if (!closed.ok) {
       console.error(`error: could not close issue ${number}: ${closed.error}`);
@@ -108,8 +151,9 @@ function finish(reason, detail) {
     }
   } else if (!outcome.quiet) {
     comment(body);
+    label(labelAction);
   }
-  console.log(`${reason}: ${outcome.headline}`);
+  console.log(`${reason}: ${outcome.headline}${labelAction ? ` (label: ${labelAction})` : ""}`);
   console.log(detail);
   process.exit(outcome.exit);
 }
@@ -163,7 +207,8 @@ function pushToMain() {
 async function main() {
   const issue = readIssue(number);
   if (issue.closed) finish("closed", `${issueUrl(number)} was closed before this run started.`);
-  if (!issue.ok) finish("invalid", `${issueUrl(number)}: ${issue.reason}. Nothing was read from the issue beyond the repo, the PR number and the sha.`);
+  if (!issue.ok) finish("invalid", `${issueUrl(number)}: ${issue.reason}. Nothing was read from the issue beyond the repo, the PR number and the sha.`, { transient: Boolean(issue.transient) });
+  context.issue = issue;
 
   const locales = lib.constants.PRODUCTION_LOCALES;
   console.log(`issue ${number}: ${issue.repo}#${issue.pr} at ${issue.sha}`);
@@ -193,9 +238,14 @@ async function main() {
   const costLine = typeof cost === "number" ? `Cost: $${cost.toFixed(4)}.` : "Cost: not reported.";
 
   const failures = real.summary?.failures ?? [];
+  context.failures = failures;
   if (failures.length > 0) {
-    const listed = failures.slice(0, 20).map((one) => `- \`${one.locale} ${one.type} ${one.source}\`: ${one.reason}`).join("\n");
-    finish("failures", `${countsBlock}\n\n${failures.length} item(s) were left absent and are listed below. Each was already retried, so the fix is another run of this issue, not a hand translation.\n\n${listed}`);
+    const listed = failures.slice(0, 20).map((one) => `- \`${one.locale} ${one.type} ${one.source}\`${one.target ? ` -> \`${one.target}\`` : ""}: ${one.reason}`).join("\n");
+    const more = failures.length > 20 ? `\n\n...and ${failures.length - 20} more, in \`issue-${number}.outcome.json\` in the run's artifact.` : "";
+    const note = attentionLabel("failures", { failures }) === "add"
+      ? "Each was retried and failed every time, so the translation team fixes them by hand. The last rejected answer for each file and the checker's errors are in the run's artifact (linked below), under `rejected/` and in `issue-" + number + ".outcome.json`. Once the fixed files are on `main`, the issue is run again for anything still missing, and closes."
+      : "Each failed because DeepSeek could not be reached, so another run of this issue should translate them.";
+    finish("failures", `${countsBlock}\n\n${failures.length} item(s) were left absent and are listed below. Nothing was pushed. ${note}\n\n${listed}${more}`);
   }
 
   // Runs the i18n repo's CI checker per locale against the English this run
@@ -235,13 +285,16 @@ async function main() {
   if (deletions.status !== 0) finish("deletions", `\`\`\`\n${scrub(`${deletions.stdout}\n${deletions.stderr}`).trim().slice(0, 3000)}\n\`\`\``);
 
   const pushed = pushToMain();
-  if (!pushed.ok) finish("push-failed", `The commit is made in the runner's checkout and lost with it, so run this issue again.\n\nLast error: \`${pushed.error.slice(0, 500)}\``);
+  if (!pushed.ok) finish("push-failed", `The commit is made in the runner's checkout and lost with it, so run this issue again.\n\nLast error: \`${pushed.error.slice(0, 500)}\``, { error: pushed.error });
 
   const sha = git(["rev-parse", "HEAD"]).out.trim();
   finish("pushed", `${countsBlock}\n\nNo failures. ${costLine}\n\n\`${sha}\` on \`main\`, translating ${issue.repo}#${issue.pr} at \`${issue.sha}\`.`);
 }
 
+// A Failure marked `transient` (GitHub could not be reached, or the PR moved
+// under the run) is left for the retry sweep. Anything else, a bug included,
+// would fail the same way again, so it is labelled for a person.
 main().catch((error) => {
   const detail = error instanceof Failure ? error.message : String(error.stack ?? error.message ?? error);
-  finish("error", `\`\`\`\n${scrub(detail).slice(0, 3000)}\n\`\`\``);
+  finish("error", `\`\`\`\n${scrub(detail).slice(0, 3000)}\n\`\`\``, { transient: error instanceof Failure && error.transient === true });
 });

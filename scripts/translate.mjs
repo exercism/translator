@@ -74,7 +74,9 @@
 // what is needed to fix it by hand: the source checkout and commit (`repo`,
 // `sha`), the English (`englishPath`, `englishId`), where the translation goes
 // (`targetPath`), every checker error (`errors`), and the last rejected answer,
-// saved under state/runs/<run>/rejected/ (`rejected`).
+// saved under state/runs/<run>/rejected/ (`rejected`). A catalog unit's failure
+// carries the unit id (`unit`), its English keys (`english`), and, when the
+// checker rejected it, the errors and the rejected keys as JSON.
 //
 // ## Git
 //
@@ -460,7 +462,7 @@ async function translateCatalog({ lib, run, locale, flags, spec }) {
       const subEnglish = Object.fromEntries(unit.keys.map((key) => [key, english.catalog[key]]));
       const errors = checks.checkCatalog(subEnglish, candidate, { kind, locale, requireComplete: true }).issues.filter((one) => one.level === checks.ERROR);
       if (errors.length > 0) {
-        rejected.push({ item, reason: `rejected by the checker: ${errors.map((one) => one.message).join("; ")}` });
+        rejected.push({ item, reason: `rejected by the checker: ${errors.map((one) => one.message).join("; ")}`, answer: candidate, errors: errors.map((one) => one.message) });
         continue;
       }
       Object.assign(flatTarget, candidate);
@@ -493,9 +495,18 @@ async function translateCatalog({ lib, run, locale, flags, spec }) {
     }
   }
   if (twins.length > 0) write();
-  for (const { item, reason } of failed) {
+  // As for a whole file, a hand fix starts from the unit's English and the last
+  // answer the checker rejected, saved under rejected/.
+  for (const { item, reason, answer, errors } of failed) {
     counts.failed += 1;
-    run.failures.push({ locale, type, source: `${spec.label}:${item.unit.id}`, target: path.relative(lib.dir, file), reason });
+    const detail = { english: Object.fromEntries(item.unit.keys.map((key) => [key, english.catalog[key]])) };
+    if (answer) {
+      const saved = path.join(run.dir, "rejected", locale, type.replace(/[^A-Za-z0-9.-]/g, "_"), `${encodeURIComponent(item.unit.id)}.json`);
+      fs.mkdirSync(path.dirname(saved), { recursive: true });
+      fs.writeFileSync(saved, `${JSON.stringify(answer, null, 2)}\n`);
+      Object.assign(detail, { errors, rejected: saved });
+    }
+    run.failures.push({ locale, type, source: `${spec.label}:${item.unit.id}`, target: path.relative(lib.dir, file), reason, unit: item.unit.id, ...detail });
   }
 
   if (rewritten.length === 0) return;

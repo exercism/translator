@@ -41,8 +41,8 @@
 #   DEEPSEEK_API_KEY           the translation engine. Read from the
 #                              environment, never written to a file or printed.
 #   EXERCISM_I18N_PUSH_PAT     Contents read/write and Issues read/write on
-#                              exercism/i18n, for the push, the comment and the
-#                              close.
+#                              exercism/i18n, for the push, the comment, the
+#                              `needs-attention` label and the close.
 
 name: Translate issue
 
@@ -115,8 +115,10 @@ jobs:
           GH_TOKEN: ${{ secrets.EXERCISM_I18N_PUSH_PAT }}
         run: node scripts/run-issue.mjs ${{ steps.payload.outputs.issue }}
 
-      # Uploads the run's summaries, per-locale checker logs and the comment it
-      # posted. A failure comment on the issue links to this.
+      # Uploads the run's summaries, per-locale checker logs, the comment it
+      # posted, issue-<n>.outcome.json and the rejected answers under
+      # <run>/rejected/. A failure comment on the issue links to this, and
+      # /fix-i18n-issue downloads it.
       - name: Upload the run
         if: always()
         uses: actions/upload-artifact@v7

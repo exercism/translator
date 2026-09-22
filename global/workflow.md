@@ -253,6 +253,12 @@ checker rejects, `scripts/translate.mjs` retries it and then leaves it absent an
 It is never handed to an agent to translate by hand "to get the batch finished": that produces
 text no one can tell apart from the engine's, written under none of the same checks.
 
+The one exception is a queue issue the automated run labelled `needs-attention`, because the
+checker rejected an item on every attempt and another run would pay for the same rejection.
+`/fix-i18n-issue` gives each rejected file to one Opus subagent, which starts from the
+rejected answer and the checker's errors, and the file only counts once the same checker
+passes it.
+
 ## Route checking
 
 **Run `node scripts/check-routes.mjs` whenever the `i18n` registry, a how-to or a command
@@ -428,6 +434,10 @@ skill are none of them:
   runner with no agent in it: there is no orchestrator on a GitHub runner to hand the
   commit to, and an uncommitted translation on an ephemeral runner is a translation paid
   for and thrown away.
+
+`/fix-i18n-issue` is run by the orchestrator session itself, never from a
+subagent, and its commit, push and dispatch steps are the orchestrator's own. The subagents it
+dispatches write files and never run git.
 
 No script runs git in a sibling SOURCE checkout: those are shared with live sessions, and
 English is read from them as objects at a ref, never by checking anything out.

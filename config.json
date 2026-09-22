@@ -29,7 +29,9 @@
     "github: the issue queue. `issue_author` owns the PAT that the source repos'",
     "workflows open issues with, so it is the only author a queue issue may have.",
     "`singletons`, plus every repo in `org` with the `track_topic` topic, is the",
-    "allowlist of repos an issue may name.",
+    "allowlist of repos an issue may name. `attention_label` marks an issue a",
+    "person has to fix before it can finish; the retry sweep skips it (its name is",
+    "also written in .github/workflows/retry-stale-issues.yml).",
     "",
     "issue_word_cap: an issue with more untranslated English than this many words",
     "(per locale) waits for iHiD instead of running on its own.",
@@ -56,6 +58,7 @@
     "translator_repo": "exercism/translator",
     "issue_author": "iHiD",
     "issue_label": "translation",
+    "attention_label": "needs-attention",
     "track_topic": "exercism-track",
     "singletons": ["website", "docs", "blog", "website-copy", "problem-specifications"]
   },

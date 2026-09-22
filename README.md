@@ -41,12 +41,21 @@ A PR that changes English is translated without anyone stepping in:
    source PR's completeness check (`rerun-source-check.yml` in `exercism/i18n`), which now
    passes.
 
-If anything goes wrong, the issue stays open. The run comments on it saying what happened and
-links the Actions run, whose `state/runs/` artifact holds the summaries and checker logs.
-`retry-stale-issues.yml` runs every six hours and re-dispatches any issue that has been
-waiting more than two hours, so a GitHub or DeepSeek outage recovers without help. Running an
-issue again is safe: the script only translates what is missing, so an issue whose work is
-done finds nothing to do and closes.
+If anything goes wrong, nothing is pushed and the issue stays open. The run comments on it
+saying what happened and links the Actions run, whose `state/runs/` artifact holds the
+summaries, the checker logs, the last rejected answer for each failed file (under
+`rejected/`) and `issue-<n>.outcome.json`. `retry-stale-issues.yml` runs every six hours and
+re-dispatches any issue that has been waiting more than two hours, so a GitHub or DeepSeek
+outage recovers without help. Running an issue again is safe: the script only translates what
+is missing, so an issue whose work is done finds nothing to do and closes.
+
+A failure that another run would repeat gets the `needs-attention` label instead, and the
+sweep skips it: items the checker rejected on every attempt, checker errors, the word cap,
+deletions, an invalid issue, an unexpected error, or a push refused for permissions. The
+orchestrator session watches for the label (`scripts/needs-attention-monitor`), and
+`/fix-i18n-issue` has an Opus subagent fix each rejected file by hand from the artifact. The
+orchestrator commits the fixes to `main` in `exercism/i18n` and dispatches the issue again,
+and that run translates whatever is left, closes the issue and removes the label.
 
 Closed issues are never worked. The source repo's queue closes an issue as "not planned" when
 `ready-to-translate` is removed from the PR. A dispatch that is pending or running at that
@@ -65,7 +74,7 @@ either repo.
 | Secret | Where | Scope |
 | --- | --- | --- |
 | `EXERCISM_TRANSLATOR_DISPATCH_PAT` | repository secret on `exercism/i18n` and on `exercism/translator` | fine-grained PAT, Contents read/write on `exercism/translator` only, which is what `POST /repos/{owner}/{repo}/dispatches` needs |
-| `EXERCISM_I18N_PUSH_PAT` | repository secret on `exercism/translator` | fine-grained PAT, Contents read/write and Issues read/write on `exercism/i18n` only, for the push, the comment and the close |
+| `EXERCISM_I18N_PUSH_PAT` | repository secret on `exercism/translator` | fine-grained PAT, Contents read/write and Issues read/write on `exercism/i18n` only, for the push, the comment, the `needs-attention` label and the close |
 | `DEEPSEEK_API_KEY` | repository secret on `exercism/translator` | the translation engine |
 
 Both repos need the dispatch PAT. `exercism/i18n` uses it to dispatch, and so does this repo's

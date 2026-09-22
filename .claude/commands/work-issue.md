@@ -40,10 +40,10 @@ by name, for one issue, in his own words.
 
 | Exit | The script said | Do |
 |---|---|---|
-| 0 | a `SUMMARY` block | Report it. The files are written in `../i18n`, uncommitted. The orchestrator commits and pushes them to `main` there, and **only then** closes the issue (`gh issue close $number --repo exercism/i18n`), because closing is what re-runs the source PR's check. |
+| 0 | a `SUMMARY` block | Report it. The files are written in `../i18n`, uncommitted. The orchestrator commits and pushes them to `main` there, and **only then** closes the issue (`gh issue close $number --repo exercism/i18n`), because closing is what re-runs the source PR's check. For an issue labelled `needs-attention`, dispatch it again instead of closing it (step 6 of `/fix-i18n-issue`), so the run that closes it also removes the label. |
 | 0 | `NOTHING TO DO` | Report the line. If it says every locale already holds the text, the issue can be closed. If it says `productionTargets` is empty, leave the issue open. |
 | 3 | `WAITING` | The change is above the word cap. Tell Jeremy the issue number and the word count the script printed. Do nothing else with this issue until he answers. |
-| 1 | `error:` or a `SUMMARY` with failures | Report exactly what it printed. A failed item is absent and was already retried: running this command again later is the fix. Never translate it by hand, and never close the issue. |
+| 1 | `error:` or a `SUMMARY` with failures | Report exactly what it printed. A failed item is absent and was already retried. If DeepSeek was unreachable, running this command again later is the fix. An item the checker rejected goes through `/fix-i18n-issue` (its `--summary=` form, in step 2). Never translate it by hand yourself, and never close the issue. |
 
 ## Report
 

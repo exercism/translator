@@ -13,6 +13,9 @@
 # reads is here; nothing in it is a record anybody needs in history.
 state/runs/
 
+# Artifacts and English that scripts/issue-failures.mjs fetches for a hand fix.
+state/fix/
+
 # Monitor locks and the rolling log stay local; the queues themselves are committed.
 state/*.lock
 state/*.log

@@ -66,13 +66,13 @@ export function issueStillOpen(number) {
  */
 export async function issueScope(lib, issue) {
   const checkout = spawnSync("node", [path.join(ROOT, "scripts", "source-checkout.mjs"), issue.name, `--pr=${issue.pr}`], { encoding: "utf8" });
-  if (checkout.status !== 0) throw new Failure(`could not fetch ${issue.repo}#${issue.pr}: ${checkout.stderr.trim().split("\n").pop()}`);
+  if (checkout.status !== 0) throw Object.assign(new Failure(`could not fetch ${issue.repo}#${issue.pr}: ${checkout.stderr.trim().split("\n").pop()}`), { transient: true });
 
   const repo = path.join(ROOT, ".source", issue.name);
   try {
     lib.git.git(["cat-file", "-e", `${issue.sha}^{commit}`], repo);
   } catch {
-    throw new Failure(`${issue.sha} is not in the fetched PR (force-pushed since? the issue is rewritten on every push, so poll again)`);
+    throw Object.assign(new Failure(`${issue.sha} is not in the fetched PR (force-pushed since? the issue is rewritten on every push, so poll again)`), { transient: true });
   }
 
   const { paths, units } = await scopeOf(lib, { source: issue.source, repo, sha: issue.sha });
@@ -160,4 +160,51 @@ export const OUTCOMES = {
 
 export function issueOutcome(reason) {
   return OUTCOMES[reason] ?? OUTCOMES.error;
+}
+
+/**
+ * A failed item whose cause was the connection to DeepSeek, or a race with
+ * another run, so another run can succeed without anyone doing anything. Every
+ * other failure (an answer the checker rejected on every attempt, a file too
+ * large to send, a truncated answer, a 4xx) comes back the same way each time,
+ * and paying for it again changes nothing. Pure.
+ */
+export function transientFailure(reason) {
+  return /^(curl failed|HTTP (429|5\d\d) from DeepSeek|unparseable response from DeepSeek|no choice in the response|another run wrote this file first)/.test(String(reason ?? ""));
+}
+
+/**
+ * What happens to the `needs-attention` label (config.json
+ * `github.attention_label`) when a run ends: "add", "remove", or null to leave
+ * it as it is. Pure.
+ *
+ * The label marks an issue a person has to deal with before it can finish.
+ * .github/workflows/retry-stale-issues.yml skips it, so a failure that recurs
+ * is not paid for every six hours, and the orchestrator session watches for it
+ * (scripts/needs-attention-monitor, /fix-i18n-issue). An outcome that another
+ * run can clear on its own stays unlabelled and is retried.
+ *
+ * @param facts  `failures` from the translate summary, `transient` for an
+ *               invalid or error ending caused by GitHub being unreachable, and
+ *               `error` for the last push error
+ */
+export function attentionLabel(reason, { failures = [], transient = false, error = "" } = {}) {
+  switch (reason) {
+    case "pushed":
+    case "nothing-to-do":
+      return "remove";
+    case "over-cap":
+    case "validate-errors":
+    case "deletions":
+      return "add";
+    case "failures":
+      return failures.some((one) => !transientFailure(one.reason)) ? "add" : null;
+    case "push-failed":
+      return /\b(401|403)\b|permission|denied|authentication|could not read username|protected branch/i.test(error) ? "add" : null;
+    case "closed":
+    case "no-production-locales":
+      return null;
+    default:
+      return transient ? null : "add";
+  }
 }

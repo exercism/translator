@@ -8,7 +8,8 @@
 // FAKE_ENGINE_BREAK=code makes it alter a code block and translate inline code,
 // which the checker rejects and the code repair puts right;
 // FAKE_ENGINE_BREAK=drop makes it leave out every code block, which cannot be
-// repaired; FAKE_ENGINE_BREAK=english makes it hand the English back unchanged.
+// repaired; FAKE_ENGINE_BREAK=english makes it hand the English back unchanged;
+// FAKE_ENGINE_BREAK=placeholder makes it drop `%{...}` from catalog strings.
 
 const between = (text, open, close) => {
   const start = text.lastIndexOf(open);
@@ -16,7 +17,10 @@ const between = (text, open, close) => {
   return text.slice(from, text.lastIndexOf(close) - 1);
 };
 
-const mark = (value) => value.replace(/^(\s*)([\s\S]*?)(\s*)$/, (_, lead, body, trail) => `${lead}HU ${body}${trail}`);
+const mark = (value) => {
+  const marked = value.replace(/^(\s*)([\s\S]*?)(\s*)$/, (_, lead, body, trail) => `${lead}HU ${body}${trail}`);
+  return process.env.FAKE_ENGINE_BREAK === "placeholder" ? marked.replace(/%\{[^}]*\}/g, "") : marked;
+};
 
 export default async function call({ prompt, json }) {
   const usage = { input: 100, cacheHit: 60, cacheMiss: 40, thinking: 0, output: 50, cost: 0 };

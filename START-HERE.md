@@ -51,8 +51,9 @@ its summary. They are split by where the English comes from:
 
 `/translation-status <locale>` reports what one language still needs by running every
 source's free dry run, without translating anything. `/work-issue <n>` works one issue from
-the queue of English changes. `/fix-translation` applies one reviewer's correction to one
-file. `CLAUDE.md` lists every command.
+the queue of English changes, and `/fix-i18n-issue <n>` hand-fixes the files a queue issue
+labelled `needs-attention` was left without. `/fix-translation` applies one reviewer's
+correction to one file. `CLAUDE.md` lists every command.
 
 ## Three stores for three kinds of English
 

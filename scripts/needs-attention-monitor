@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+#
+# needs-attention-monitor: print one line for each open translation issue in
+# exercism/i18n that carries the `needs-attention` label, the first time it is
+# seen, so a session watching this script's output is woken.
+#
+# scripts/run-issue.mjs adds the label when a run ends in something a person
+# has to deal with (see attentionLabel() in scripts/lib/issue-pass.mjs), and the
+# retry sweep leaves such an issue alone. /fix-i18n-issue is what the
+# orchestrator does about each line.
+#
+# WHO RUNS IT: the orchestrator session iHiD is talking to, under a persistent
+# Monitor, after checking one is not already running:
+#
+#   pgrep -f "needs-attention-monitor" || ./scripts/needs-attention-monitor
+#
+# Only one may run. See "Checking posts" in orchestrator.md.
+#
+# Like scripts/github-issue-monitor, it asks GitHub for issue numbers and
+# nothing else: only issues authored by iHiD with the `translation` label, and
+# never a title, body or comment. It keeps no state file. Each run reports every
+# labelled issue once, so a new session hears about all of them; an issue whose
+# label is removed and later added again is reported again.
+#
+# Usage:
+#   ./scripts/needs-attention-monitor          # poll every 5 minutes, until stopped
+#   ./scripts/needs-attention-monitor --once   # one poll: print every labelled issue
+#
+# Output, one line per issue:
+#   needs-attention #<n> https://github.com/exercism/i18n/issues/<n>
+#
+# Requires: gh (authenticated, read access to exercism/i18n) and jq.
+
+set -euo pipefail
+
+command -v gh >/dev/null || { echo "error: gh is required" >&2; exit 1; }
+command -v jq >/dev/null || { echo "error: jq is required" >&2; exit 1; }
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+REPO="$(jq -r .github.i18n_repo "$ROOT/config.json")"
+LABEL="$(jq -r .github.issue_label "$ROOT/config.json")"
+ATTENTION="$(jq -r .github.attention_label "$ROOT/config.json")"
+AUTHOR="$(jq -r .github.issue_author "$ROOT/config.json")"
+INTERVAL=300
+
+reported=" "
+
+poll() {
+  local numbers
+  numbers="$(gh issue list --repo "$REPO" --state open --author "$AUTHOR" --label "$LABEL" --label "$ATTENTION" \
+    --limit 200 --json number --jq '.[].number')" || { echo "note: gh issue list failed this poll, will retry" >&2; return 0; }
+
+  local still=" "
+  for number in $numbers; do
+    [[ "$number" =~ ^[1-9][0-9]{0,8}$ ]] || continue
+    still="$still$number "
+    case "$reported" in
+      *" $number "*) ;;
+      *) echo "$ATTENTION #$number https://github.com/$REPO/issues/$number" ;;
+    esac
+  done
+  reported="$still"
+}
+
+if [ "${1:-}" = "--once" ]; then
+  poll
+  exit 0
+fi
+
+echo "polling $REPO every ${INTERVAL}s for open '$LABEL' issues by $AUTHOR labelled '$ATTENTION'" >&2
+while :; do
+  poll
+  sleep "$INTERVAL"
+done
