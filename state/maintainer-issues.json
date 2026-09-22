@@ -76,7 +76,13 @@
       "number": 211,
       "url": "https://github.com/exercism/blog/issues/211",
       "opened": "2026-09-22",
-      "workflows": "direct"
+      "workflows": "direct",
+      "updates": [
+        {
+          "date": "2026-09-22",
+          "about": "old-prs-need-a-trigger"
+        }
+      ]
     },
     {
       "repo": "exercism/bqn",
@@ -216,7 +222,13 @@
       "number": 595,
       "url": "https://github.com/exercism/docs/issues/595",
       "opened": "2026-09-22",
-      "workflows": "direct"
+      "workflows": "direct",
+      "updates": [
+        {
+          "date": "2026-09-22",
+          "about": "old-prs-need-a-trigger"
+        }
+      ]
     },
     {
       "repo": "exercism/dyalog-apl",
@@ -553,7 +565,13 @@
       "url": "https://github.com/exercism/problem-specifications/issues/2686",
       "opened": "2026-09-22",
       "workflows": "direct",
-      "workflows_pr": "https://github.com/exercism/problem-specifications/pull/2687"
+      "workflows_pr": "https://github.com/exercism/problem-specifications/pull/2687",
+      "updates": [
+        {
+          "date": "2026-09-22",
+          "about": "old-prs-need-a-trigger"
+        }
+      ]
     },
     {
       "repo": "exercism/prolog",
@@ -833,14 +851,26 @@
       "number": 9542,
       "url": "https://github.com/exercism/website/issues/9542",
       "opened": "2026-09-22",
-      "workflows": "direct"
+      "workflows": "direct",
+      "updates": [
+        {
+          "date": "2026-09-22",
+          "about": "old-prs-need-a-trigger"
+        }
+      ]
     },
     {
       "repo": "exercism/website-copy",
       "number": 2417,
       "url": "https://github.com/exercism/website-copy/issues/2417",
       "opened": "2026-09-22",
-      "workflows": "direct"
+      "workflows": "direct",
+      "updates": [
+        {
+          "date": "2026-09-22",
+          "about": "old-prs-need-a-trigger"
+        }
+      ]
     },
     {
       "repo": "exercism/wren",
@@ -878,5 +908,12 @@
     "exercism/docs": "https://github.com/exercism/docs/pull/594",
     "exercism/blog": "https://github.com/exercism/blog/pull/210",
     "tracks (org-wide-files)": "https://github.com/exercism/org-wide-files/pull/408"
-  }
+  },
+  "pending_updates": [
+    {
+      "about": "old-prs-need-a-trigger",
+      "for": "track repos",
+      "when": "after exercism/org-wide-files#408 merges and completeness becomes a required check on tracks"
+    }
+  ]
 }
