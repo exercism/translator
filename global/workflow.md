@@ -1,8 +1,9 @@
 # Governing a translation pass
 
 This file owns everything **around** a translation pass: how new terms are agreed, how
-glossaries are written and attributed, what may overwrite a translated file, what happens
-after a glossary changes, how a language's forum bookkeeping is recorded, and who runs git.
+glossaries are written and attributed, how to find the translated file a reviewer means,
+what may overwrite it, what happens after a glossary changes, how a language's forum
+bookkeeping is recorded, and who runs git.
 
 **The pass itself lives in two files.** `global/translating.md` is the craft: the numbered
 steps, the mandatory self-review, and how an edited English text is revised rather than
@@ -183,13 +184,106 @@ else, and is this the right file for it?"
 If you find duplication that already exists, remove it: keep the canonical copy in the file
 that owns it and replace the other with a reference.
 
+## Finding the file a reviewer means
+
+Reviewers name what they saw: an exercise, a concept, a track's docs page, a page of the
+docs site, a blog post, an analyzer comment, or a piece of the website itself. A translated
+whole file sits at `locales/<locale>/content/<ab>/<cd>/<rest>.<ext>` in `../i18n`, under the
+git blob id of its English, so its path says nothing about what it translates. Never search
+`locales/` for the reviewer's phrase, and never work out a blob id by hashing English
+yourself. `i18n`'s translation index does the lookup. Its `CLAUDE.md` section "The
+translation index" and `scripts/lib/translation-index.mjs` describe it.
+
+### A whole file
+
+1. Work out the source repo and the English path in it. The main shapes:
+
+   | The reviewer saw | Repo | English path |
+   |---|---|---|
+   | an exercise's instructions, introduction or hints | the track (`ruby`) | `exercises/{practice,concept}/<slug>/.docs/<file>.md`, including `instructions.append.md` and `introduction.append.md` |
+   | a concept | the track | `concepts/<slug>/{about,introduction}.md` |
+   | a track's docs page | the track | `docs/<name>.md`, or `exercises/shared/.docs/<name>.md` |
+   | a problem description | `problem-specifications` | `exercises/<slug>/{description,instructions,introduction}.md` |
+   | a page of the docs site | `docs` | `<section>/<...>.md` (`using`, `programming`, `community`, `mentoring`, `building`) |
+   | a blog post or story | `blog` | `posts/<slug>.md`, `stories/<slug>.md` |
+   | an analyzer comment | `website-copy` | `analyzer-comments/<track>/<...>.md` |
+
+   A track's practice exercise usually carries the same instructions as
+   `problem-specifications`, with the same blob id, so both indexes point at the same file.
+
+2. Read `../i18n/index/json/<locale>/<repo>.json`. Its `paths` object lists every
+   translatable English path in that repo. Each path maps to the blob ids of the English
+   this locale holds a translation for, newest first, at most six, so the first id names the
+   latest translation. Its `names` object gives each exercise, concept or page its English
+   and localised name, which helps when a reviewer uses the translated name. An empty list means the path
+   has no translation yet, so there is nothing to fix. A repo or path missing from the index
+   (an inactive track is not indexed, for example) means the same; stop and report it.
+
+3. Build the file's path from the id: `../i18n/locales/<locale>/content/` then the id's first
+   two characters, `/`, the next two, `/`, the remaining thirty-six, and the English path's
+   own extension (`.md`, or `.json`). This prints every file one path has, latest first:
+
+   ```bash
+   node -e 'const fs = require("fs"), path = require("path");
+   const [locale, repo, file] = process.argv.slice(1);
+   const index = JSON.parse(fs.readFileSync(`../i18n/index/json/${locale}/${repo}.json`, "utf8"));
+   for (const id of index.paths[file] ?? []) console.log(`../i18n/locales/${locale}/content/${id.slice(0, 2)}/${id.slice(2, 4)}/${id.slice(4)}${path.extname(file)}`);' \
+     hu ruby exercises/practice/two-fer/.docs/instructions.md
+   ```
+
+   `index/markdown/<locale>/<repo>.md` shows the same links for reading on GitHub. It is
+   generated from the JSON, so read the JSON and never edit either by hand.
+
+4. Confirm the reported text is in that file before changing anything. Reviewers read the
+   live website, which serves the translation of the English the student is looking at. That
+   is usually the latest. A student working on an older solution can see an older version of
+   an exercise, and with it an older translation. If the reported text is not in the latest
+   file, check the older ids in the same list, in order, and fix the file that holds it. Then
+   look for the same passage in the latest file and fix it there too if it reads the same,
+   because new students see the latest. If the text is in none of them, stop and report
+   what you found.
+
+### A name, a blurb or a website string
+
+The index covers whole files only.
+
+- Exercise, concept and track names, blurbs, docs page titles and blog post titles are units
+  in `../i18n/locales/<locale>/metadata/<repo>.json`, under keys such as
+  `exercise:two-fer:name` and `exercise:two-fer:blurb`. `content-types/metadata.md` lists
+  where each comes from.
+- The website's own UI strings are keys in
+  `../i18n/locales/<locale>/website/backend.json` or `frontend.json`. Find the key from the
+  English in the website checkout (`config/locales/**/*.yml` for the backend,
+  `app/javascript/i18n/en/*.ts` for the frontend). A frontend key contains a `:`.
+
+`node scripts/locate.mjs <source> [<track>] <locale> --key=<unit id>` prints the catalog a
+key lives in, and whether the locale has it.
+
+### Checking a hand edit
+
+A hand edit is checked before it is reported done, and it must come back clean.
+
+- A catalog key: `node scripts/locate.mjs <source> [<track>] <locale> --key=<unit id> --check`.
+- A whole file: `node scripts/locate.mjs <source> [<track>] <locale> <english path> --check`
+  (for example `track ruby hu exercises/practice/two-fer/.docs/instructions.md`). It checks
+  the translation of the English at the source checkout's `origin/main`, so first make sure
+  the `blob id:` it prints is the id of the file you edited. For any other id (an older
+  translation, or English that changed after the last pass), run
+  `node scripts/validate.mjs <locale> --type=content --content-repos=<source checkout>` in
+  `../i18n` and read every line that names your file's `content/<ab>/<cd>/<rest>` path. Pass
+  the sibling checkout (`../ruby`) or this repo's `.source/<name>`. It finds English by blob
+  id anywhere in that checkout's history.
+
+A check never writes a stamp: a catalog unit's English did not change, so neither does its
+stamp, and a content file has none.
+
 ## A forum fix overwrites the file
 
 There is no review site and no formal review process. Reviewers read the **live website**
 and post ad-hoc corrections on the forum. A correction to one page is applied to the
 translated file itself, by `/fix-translation` (or by `/action-forum-post`, which follows the
-same steps), using `scripts/locate.mjs` to get from "track, exercise, file, locale" to the
-file, because a blob-keyed path says nothing about what it translates.
+same steps), after finding the file as described in "Finding the file a reviewer means"
+above.
 
 **That overwrites a blob-keyed file, and it is allowed.** The `i18n` repo's rule is that
 nothing under `locales/` is ever **deleted**. It is not that a file is immutable. A blob id
@@ -210,9 +304,7 @@ Three things follow:
   file is the wrong tool: the glossary changes first, by the governance commands, or the next
   text that uses the term is translated the old way.
 
-A hand edit is checked before it is reported done (`scripts/locate.mjs ... --check`). It never
-touches a stamp: a catalog unit's English did not change, so neither does its stamp, and a
-content file has none.
+A hand edit is checked before it is reported done ("Checking a hand edit" above).
 
 ## After a glossary change
 
@@ -230,8 +322,8 @@ orchestrator, from two options:
 - **A targeted re-run.** The pages that use the old term are found and corrected. Right when
   the old rendering is wrong, or so visible that two wordings side by side would look broken
   (a product term such as "track" or "mentor"). A clean literal swap is an opus hand-edit
-  across the affected files, each one adjusted for agreement and case and checked with
-  `scripts/locate.mjs --check`, never a blind regex. Where a page needs more than a swap it
+  across the affected files, each one adjusted for agreement and case and checked as in
+  "Checking a hand edit" above, never a blind regex. Where a page needs more than a swap it
   is retranslated and the file overwritten: move the old file out of the repo, run the normal
   command (which now finds it absent), compare the two, and commit. Git sees a modification,
   never a deletion. TODO(iHiD): there is deliberately no script for that last step until it

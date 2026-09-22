@@ -53,7 +53,8 @@ its summary. They are split by where the English comes from:
 source's free dry run, without translating anything. `/work-issue <n>` works one issue from
 the queue of English changes, and `/fix-i18n-issue <n>` hand-fixes the files a queue issue
 labelled `needs-attention` was left without. `/fix-translation` applies one reviewer's
-correction to one file. `CLAUDE.md` lists every command.
+correction to one file, found through the translation index (next section). `CLAUDE.md`
+lists every command.
 
 ## Three stores for three kinds of English
 
@@ -73,6 +74,15 @@ Two things follow from this:
   them again.
 - `i18n` refuses to remove anything under `locales/`, but it allows updates: a forum fix
   overwrites a blob-keyed file in place. See `CLAUDE.md`.
+
+A blob-keyed path says nothing about what a file translates, so `i18n` keeps a translation
+index. `index/json/<locale>/<repo>.json` maps each translatable English path in a source repo
+to the blob ids the locale holds translations for, newest first, and
+`index/markdown/<locale>/<repo>.md` is generated from it for reading on GitHub.
+`scripts/translate.mjs` updates it after every pass. When a reviewer reports a problem with a
+page, look its English path up there to find the file to fix, as "Finding the file a reviewer
+means" in `global/workflow.md` describes. Names, blurbs and the website's UI strings are keys
+in the catalogs, so the index does not list them.
 
 ## How guidance is split
 

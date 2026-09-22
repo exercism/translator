@@ -44,7 +44,8 @@ Four things about it shape how a pass works:
   `i18n`'s translation index (`index/json/<locale>/<repo>.json`, the blob ids held per source
   path, newest first, at most six) and regenerates its Markdown, using `i18n`'s
   `scripts/lib/translation-index.mjs`. Commit `index/` with `locales/`: `i18n`'s CI fails if
-  a page does not match its JSON.
+  a page does not match its JSON. The index is also how a forum fix finds the file a
+  reviewer means: see "Finding the file a reviewer means" in `global/workflow.md`.
 
 Guidance never goes into `i18n` and translated output never goes into this repo, so there is
 only ever one copy of each glossary.
@@ -79,7 +80,7 @@ They are split by where the English comes from:
 /translate-website-copy            <locale>          # exercism/website-copy: analyzer comments (not the UI strings)
 /work-issue                        <issue-number>    # one issue from the exercism/i18n queue
 /fix-i18n-issue                    <issue-number>    # hand-fix a queue issue labelled needs-attention, then run it again
-/fix-translation   <source> [<track>] <locale> <item> [<file>]   # apply a reviewer's correction to one file or key
+/fix-translation   <locale> <repo> <english-path> | --key=<id>   # apply a reviewer's correction to one file or key
 /translation-status                <locale>          # read-only: what one language still needs
 /action-forum-post           <topic-id-or-url> [lang]   # forum feedback into glossary/guide changes and file fixes
 /update-guide-and-glossary   <topic-id-or-url> [lang]   # update guide/glossary from a forum thread
@@ -162,12 +163,13 @@ each issue with `/fix-i18n-issue`, which reads the failures from the run's artif
 
 ## No review site
 
-Reviewers read the live website and post corrections on the forum. There is no formal review
-process, no staging, no deploy step and no per-item approval state. The pinned glossary post
-on the forum links to the glossary file on GitHub and does not contain the table, so a
-glossary change is finished once it has been committed, pushed, and announced as a reply on
-that language's pinned topic. See "A glossary change (commit, push, reply)" in
-`global/workflow.md`. Every post we make on the forum is in English.
+Reviewers read the live website and post corrections on the forum. A correction is applied to
+the translated file found through `i18n`'s translation index ("Finding the file a reviewer
+means" in `global/workflow.md`). There is no formal review process, no staging, no deploy
+step and no per-item approval state. The pinned glossary post on the forum links to the
+glossary file on GitHub and does not contain the table, so a glossary change is finished once
+it has been committed, pushed, and announced as a reply on that language's pinned topic.
+See "A glossary change (commit, push, reply)" in `global/workflow.md`. Every post we make on the forum is in English.
 
 ## Where each kind of guidance lives
 
@@ -183,8 +185,8 @@ Each piece of guidance lives in one file and is not repeated in another.
   prompt order, checking, stamps, copying identical English, the dry run. Never sent to the
   model.
 - `global/workflow.md` (how a pass is governed): agreeing terms, glossary writes, the
-  decision log, forum fixes, what happens after a glossary change, `tracking.json`, the
-  forum, git, and the rules for editing the files in this list.
+  decision log, finding and fixing the file a reviewer means, what happens after a glossary
+  change, `tracking.json`, the forum, git, and the rules for editing the files in this list.
 - `global/terms.md`: a language-agnostic list of English terms worth checking when building
   a glossary, including Exercism's product vocabulary. It contains no translations and no
   requirements.

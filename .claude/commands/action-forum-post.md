@@ -48,12 +48,13 @@ included, fetch the rest via `"$FORUM_BASE/t/${TID}/posts.json?post_ids[]=..."` 
 ## Step 2: Identify what the feedback is about
 
 From the thread, work out which page(s) of the website are under discussion: which track,
-which exercise or concept, which file of it (instructions, introduction, hints), or which
-part of the site's own UI. Reviewers link or name what they were looking at. Turn each into
-its translated file with `node scripts/locate.mjs` (its header has the forms; never search
-`../i18n` for a phrase, because the path of a translated file says nothing about what it
-translates). If it is genuinely unclear which page or which language, stop and ask rather
-than guessing.
+which exercise or concept, which file of it (instructions, introduction, hints), which docs
+page or blog post, or which part of the site's own UI. Reviewers link or name what they were
+looking at. Turn each into its translated file by following "Finding the file a reviewer
+means" in `global/workflow.md`: look the English path up in `i18n`'s translation index, open
+the latest file it lists, and check the older ones if the reported text is not there. Never
+search `../i18n` for a phrase, because the path of a translated file says nothing about what
+it translates. If it is unclear which page or which language, stop and ask.
 
 ## Step 3: Load context (read all, in order)
 
@@ -68,8 +69,8 @@ than guessing.
    `languages/<family>/` exists, e.g. `es-419` -> `es`), also read
    `languages/<family>/guide.md` and `languages/<family>/glossary.md`: see
    `CLAUDE.md` § Language families for the shared-base/locale-delta split.
-7. The English source and current `<lang>` translation of each discussed page, both found by
-   `scripts/locate.mjs`
+7. The English source and the `<lang>` translation of each discussed page, the translation
+   found in Step 2
 
 ## Step 4: Classify the feedback
 
@@ -122,9 +123,9 @@ Once agreed:
   existing row, and append an entry to it after: what changed, why, that this thread
   (`t/$topic`) settled it, and which terms it covers.
 - **Correct the files the thread is about, in place.** For each one, follow
-  `.claude/commands/fix-translation.md` from its Step 3: edit the file `scripts/locate.mjs`
-  resolved, make the reviewer's corrections and nothing else, and finish with
-  `node scripts/locate.mjs ... --check`, which must come back clean. **This overwrites a
+  `.claude/commands/fix-translation.md` from its Step 3: edit the file Step 2 found, make the
+  reviewer's corrections and nothing else, and finish with the check in "Checking a hand
+  edit" in `global/workflow.md`, which must come back clean. **This overwrites a
   blob-keyed file, and that is allowed**: see "A forum fix overwrites the file" in
   `global/workflow.md`. Never modify any English source, and never write or touch a stamp.
 - **Do not re-run a translation.** There is no mode that retranslates what a locale already

@@ -181,10 +181,16 @@ Otherwise, point them at the next useful thing, in this order:
 There is no formal review process and no per-item approval state, so nothing is "approved" or
 "pending". A post either contains something to act on or it does not.
 
-- A concrete correction to a page ("in the Ruby Bob instructions, X should be Y"): dispatch an
-  opus subagent with `/fix-translation`, giving it the source, the track, the locale, the item
-  and the reviewer's words. It finds the blob-keyed file with `scripts/locate.mjs`, edits it
-  and checks it. Overwriting that file is allowed. Then commit and push `../i18n`.
+- A concrete correction to a page ("in the Ruby Two Fer instructions, X should be Y"): work
+  out the locale, the source repo and the English path (or the catalog key), and dispatch an
+  opus subagent with `/fix-translation`, giving it those and the reviewer's words. It looks
+  the path up in `i18n`'s translation index (`index/json/<locale>/<repo>.json`), takes the
+  latest blob id listed for it, and so the file to fix. It falls back to the older ids when
+  the reported text is not in the latest, because a student on an older solution sees an
+  older translation. It edits the file and checks it. Overwriting that file is allowed. Then
+  commit and push `../i18n`. "Finding the file a reviewer means" in `global/workflow.md` has
+  the lookup, including names, blurbs and website UI strings, which the index does not
+  cover.
 - A term or a rule ("we call this Y", "this is too formal throughout"): this belongs in the
   glossary or the guide, not one file. Dispatch an opus subagent with `/action-forum-post` or
   `/update-guide-and-glossary`. Fix the glossary first, because the next edit of any English
@@ -203,10 +209,14 @@ API key directly; the script does that.
 
 ###### Where each piece of feedback goes
 
-One forum thread usually produces three kinds of change, and they go to three files.
+One forum thread usually produces up to four kinds of change, and each has its own home.
 `guide.md` and `glossary.md` are sent in the prompt for every item in every pass, so
 everything in them is paid for thousands of times. `glossary-notes.md` is never sent.
 
+- A correction to one page goes in that page's translated file in `../i18n`: the file of the
+  latest blob id the translation index lists for its English path, or an older one if the
+  reported text is only there. A name, a blurb or a website UI string goes in its catalog
+  key. "Finding the file a reviewer means" in `global/workflow.md` has the lookup.
 - The term mapping goes in `languages/<lang>/glossary.md`, as a row. Its `Notes` column holds
   only what a translator must act on.
 - The rule (formality, grammar, typography, structure) goes in `languages/<lang>/guide.md`,
@@ -368,11 +378,13 @@ acts as. Never print any part of the key, and never pass it on a command line.
   invocation is denied, it should report the denial and do nothing further.
 - Describe the goal to a worker instead of handing it a file list. Tell it what must be true
   when it is finished and let it find the scope. The exception is `/fix-translation`, where
-  the file is found only by `scripts/locate.mjs`. A worker must never search `../i18n` for a
+  the file is found only through `i18n`'s translation index, as "Finding the file a reviewer
+  means" in `global/workflow.md` describes. A worker must never search `../i18n` for a
   phrase, because a blob-keyed path says nothing about what a file translates.
 - Quote the slug and name the item explicitly in every dispatch prompt ("the exercise is
-  `bob`, in the `ruby` track, and it is the only item in scope"), and tell the worker to stop
-  and ask if the scope is unclear, instead of widening it.
+  `two-fer`, in the `ruby` track, English path
+  `exercises/practice/two-fer/.docs/instructions.md`, and it is the only item in scope"), and
+  tell the worker to stop and ask if the scope is unclear, instead of widening it.
 - One blob id serves every track whose English is byte-identical, so a fix to a practice
   exercise's instructions fixes every track that carries them. Mention this when you reply to
   the reviewer.
