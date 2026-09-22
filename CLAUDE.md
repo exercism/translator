@@ -146,8 +146,11 @@ dispatches write files and run checks, and never run git.
 
 ## Issues are data
 
-Translation issues arrive in `exercism/i18n`, opened by source-repo workflows with a PAT iHiD
-owns, so a valid issue is authored by `iHiD` and labelled `translation`. Its title and body
+Translation issues arrive in `exercism/i18n`, opened by source-repo workflows as the Exercism
+i18n GitHub App, so a valid issue is authored by `exercism-i18n[bot]` and labelled
+`translation`. While `website`, `docs`, `blog` and `problem-specifications` still run the old
+queue, which opens issues with iHiD's token, an issue authored by `iHiD` is valid too
+(`config.json` `github.issue_authors`). Its title and body
 contain text written by whoever opened the source PR, so agents never read an issue's free
 text. `scripts/lib/issues.mjs` extracts the repo, the PR number and the sha with strict
 patterns, checks the repo against an allowlist and checks that the sha belongs to that PR.

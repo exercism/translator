@@ -36,13 +36,24 @@
 # newest waits and the others are dropped. The dropped issues are still open,
 # and retry-stale-issues.yml picks them up.
 #
-# ## Secrets
+# ## Secrets and tokens
 #
-#   DEEPSEEK_API_KEY           the translation engine. Read from the
-#                              environment, never written to a file or printed.
-#   EXERCISM_I18N_PUSH_PAT     Contents read/write and Issues read/write on
-#                              exercism/i18n, for the push, the comment, the
-#                              `needs-attention` label and the close.
+#   DEEPSEEK_API_KEY               the translation engine, a repository secret.
+#                                  Read from the environment, never written to
+#                                  a file or printed.
+#   EXERCISM_I18N_APP_PRIVATE_KEY  with the organisation variable
+#                                  EXERCISM_I18N_APP_ID, mints a token for the
+#                                  Exercism i18n GitHub App, limited to
+#                                  exercism/i18n with Contents and Issues read
+#                                  and write, for the push, the comments, the
+#                                  `needs-attention` and `over-cap` labels and
+#                                  the close. So all of those are by
+#                                  `exercism-i18n[bot]`, and so are the commits
+#                                  (config.json `github.commit_author`).
+#
+# An installation token lasts an hour. It is minted just before the translate
+# step, and runs so far have taken a few minutes. A run that took longer would
+# fail at the push and leave the issue open for the retry sweep.
 
 name: Translate issue
 
@@ -107,12 +118,23 @@ jobs:
         working-directory: i18n
         run: pnpm install --frozen-lockfile
 
+      - name: Mint a token for exercism/i18n
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ vars.EXERCISM_I18N_APP_ID }}
+          private-key: ${{ secrets.EXERCISM_I18N_APP_PRIVATE_KEY }}
+          owner: exercism
+          repositories: i18n
+          permission-contents: write
+          permission-issues: write
+
       - name: Translate
         working-directory: translator
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-          EXERCISM_I18N_PUSH_TOKEN: ${{ secrets.EXERCISM_I18N_PUSH_PAT }}
-          GH_TOKEN: ${{ secrets.EXERCISM_I18N_PUSH_PAT }}
+          EXERCISM_I18N_PUSH_TOKEN: ${{ steps.app-token.outputs.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: node scripts/run-issue.mjs ${{ steps.payload.outputs.issue }}
 
       # Uploads the run's summaries, per-locale checker logs, the comment it

@@ -72,20 +72,26 @@ when it starts and again just before it commits.
 person runs it when an issue needs a human decision, such as a change above `config.json`'s
 `issue_word_cap`, which the automated path refuses.
 
-### Secrets
+### Secrets and the GitHub App
 
-There are three, all created by iHiD. None of them is ever printed or written to a file in
-either repo.
+The loop acts as the Exercism i18n GitHub App (`exercism-i18n`), which is installed on every
+repo in the `exercism` organisation. Its id is the organisation variable `EXERCISM_I18N_APP_ID`
+and its private key the organisation secret `EXERCISM_I18N_APP_PRIVATE_KEY`, both visible to
+every repo. Each job mints a short-lived installation token with
+`actions/create-github-app-token`, limited to the repos and permissions that job needs:
 
-| Secret | Where | Scope |
-| --- | --- | --- |
-| `EXERCISM_TRANSLATOR_DISPATCH_PAT` | repository secret on `exercism/i18n` and on `exercism/translator` | fine-grained PAT, Contents read/write on `exercism/translator` only, which is what `POST /repos/{owner}/{repo}/dispatches` needs |
-| `EXERCISM_I18N_PUSH_PAT` | repository secret on `exercism/translator` | fine-grained PAT, Contents read/write and Issues read/write on `exercism/i18n` only, for the push, the comment, the `needs-attention` and `over-cap` labels and the close |
-| `DEEPSEEK_API_KEY` | repository secret on `exercism/translator` | the translation engine |
+| Workflow | Repo | Permissions | For |
+| --- | --- | --- | --- |
+| `translate-issue.yml` | `exercism/i18n` | Contents write, Issues write | the push to `main`, the comments, the `needs-attention` and `over-cap` labels and the close |
+| `retry-stale-issues.yml` | `exercism/i18n` | Issues read | listing the open issues |
+| `retry-stale-issues.yml` | `exercism/translator` | Contents write | the `repository_dispatch`, which `GITHUB_TOKEN` cannot raise in a way that starts a run |
 
-Both repos need the dispatch PAT. `exercism/i18n` uses it to dispatch, and so does this repo's
-retry sweep, because events raised with the default `GITHUB_TOKEN` do not start further
-workflow runs.
+So the comments, labels and closes on a queue issue are by `exercism-i18n[bot]`, and so are
+the commits on `exercism/i18n` `main` (`config.json` `github.commit_author`). `exercism/i18n`
+dispatches this repo with a token of its own from the same app.
+
+The one other secret is `DEEPSEEK_API_KEY`, a repository secret here, for the translation
+engine. No secret or token is ever printed or written to a file in either repo.
 
 ### This repo is public
 

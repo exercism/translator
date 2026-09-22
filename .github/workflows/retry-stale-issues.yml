@@ -20,13 +20,21 @@
 # Dispatching again is safe: run-issue.mjs only translates what a locale does
 # not already have, so a finished issue finds nothing to do and is closed.
 #
+# Only issues opened by one of config.json's `issue_authors` are dispatched:
+# the Exercism i18n app, and iHiD while some source repos still run the old
+# queue. The retry sweep lists them in AUTHORS below, and scripts/test.mjs
+# checks that list against config.json.
+#
 # ## Tokens
 #
-#   EXERCISM_I18N_PUSH_PAT           lists the open issues in exercism/i18n
-#   EXERCISM_TRANSLATOR_DISPATCH_PAT Contents read/write on this repo, to
-#                                    dispatch. The default GITHUB_TOKEN would not
-#                                    work, because events it raises do not start
-#                                    further workflow runs.
+# Two tokens for the Exercism i18n GitHub App, minted with
+# actions/create-github-app-token from the organisation variable
+# EXERCISM_I18N_APP_ID and the organisation secret EXERCISM_I18N_APP_PRIVATE_KEY:
+#
+#   i18n-token      Issues read on exercism/i18n, to list the open issues.
+#   dispatch-token  Contents write on this repo, to dispatch. The default
+#                   GITHUB_TOKEN would not work, because events it raises do
+#                   not start further workflow runs.
 
 name: Retry stale issues
 
@@ -41,31 +49,48 @@ jobs:
   sweep:
     runs-on: ubuntu-latest
     steps:
+      - name: Mint a token to list exercism/i18n issues
+        id: i18n-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ vars.EXERCISM_I18N_APP_ID }}
+          private-key: ${{ secrets.EXERCISM_I18N_APP_PRIVATE_KEY }}
+          owner: exercism
+          repositories: i18n
+          permission-issues: read
+
+      - name: Mint a token to dispatch to this repo
+        id: dispatch-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ vars.EXERCISM_I18N_APP_ID }}
+          private-key: ${{ secrets.EXERCISM_I18N_APP_PRIVATE_KEY }}
+          owner: exercism
+          repositories: translator
+          permission-contents: write
+
       - name: List and re-dispatch
         env:
           REPO: ${{ github.repository }}
-          I18N_TOKEN: ${{ secrets.EXERCISM_I18N_PUSH_PAT }}
-          DISPATCH_TOKEN: ${{ secrets.EXERCISM_TRANSLATOR_DISPATCH_PAT }}
+          I18N_TOKEN: ${{ steps.i18n-token.outputs.token }}
+          DISPATCH_TOKEN: ${{ steps.dispatch-token.outputs.token }}
           SKIP_LABEL: needs-attention
+          # config.json `github.issue_authors`, as `gh` prints them.
+          AUTHORS: '["app/exercism-i18n", "iHiD"]'
           # scripts/test.mjs runs this filter against sample issues.
-          SELECT: '.[] | select(.updatedAt < $cutoff) | select(all(.labels[]; .name != $skip)) | .number'
+          SELECT: '.[] | select(.author.login as $login | $authors | index($login)) | select(.updatedAt < $cutoff) | select(all(.labels[]; .name != $skip)) | .number'
         run: |
           set -euo pipefail
 
-          if [ -z "${I18N_TOKEN:-}" ] || [ -z "${DISPATCH_TOKEN:-}" ]; then
-            echo "The queue's tokens are not configured; nothing was swept. See this workflow's header."
-            exit 0
-          fi
-
           CUTOFF=$(date -u -d '2 hours ago' +%Y-%m-%dT%H:%M:%SZ)
 
-          # Only number, updatedAt and labels are fetched. An issue's title and
-          # body are written by whoever opened the source PR, and are never read
-          # here.
+          # Only number, author, updatedAt and labels are fetched. An issue's
+          # title and body are written by whoever opened the source PR, and are
+          # never read here.
           NUMBERS=$(GH_TOKEN="$I18N_TOKEN" gh issue list --repo exercism/i18n \
-            --state open --label translation --author iHiD --limit 100 \
-            --json number,updatedAt,labels \
-            | jq -r --arg cutoff "$CUTOFF" --arg skip "$SKIP_LABEL" "$SELECT")
+            --state open --label translation --limit 100 \
+            --json number,author,updatedAt,labels \
+            | jq -r --argjson authors "$AUTHORS" --arg cutoff "$CUTOFF" --arg skip "$SKIP_LABEL" "$SELECT")
 
           if [ -z "$NUMBERS" ]; then
             echo "No translation issue in exercism/i18n has been waiting since $CUTOFF."

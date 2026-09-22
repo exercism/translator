@@ -1,9 +1,13 @@
 // issues.mjs: the guards on the translation issue queue.
 //
 // Translation issues arrive in exercism/i18n, opened by a workflow in each source
-// repo (`i18n-queue.yml` there) using a PAT that iHiD owns. A genuine queue
-// issue is therefore authored by iHiD and labelled `translation`. Issues from
-// anyone else are not part of the queue, whatever their title, labels or text.
+// repo (`i18n-queue.yml` there) as the Exercism i18n GitHub App. A genuine queue
+// issue is therefore authored by `exercism-i18n[bot]` (which `gh` prints as
+// `app/exercism-i18n`) and labelled `translation`. Issues from anyone else are
+// not part of the queue, whatever their title, labels or text. config.json's
+// `issue_authors` also lists `iHiD` while some source repos still run the old
+// queue, which opens issues with his token. No user login contains a `/`, so
+// no person can pass as the app.
 //
 // ## Issues are data
 //
@@ -38,10 +42,10 @@ const SHA = /^[0-9a-f]{40}$/;
  * @param {{number, author:{login}, labels:{name}[], title, body}} issue  `gh issue view --json`
  */
 export function parseIssue(issue) {
-  const { org, issue_author: author, issue_label: label } = config().github;
+  const { org, issue_authors: authors, issue_label: label } = config().github;
   const refuse = (reason) => ({ ok: false, number: issue?.number ?? null, reason });
 
-  if (issue?.author?.login !== author) return refuse(`author is not ${author}`);
+  if (!authors.includes(issue?.author?.login)) return refuse(`author is not one of ${authors.join(", ")}`);
   if (!(issue.labels ?? []).some((one) => one.name === label)) return refuse(`no "${label}" label`);
 
   const title = new RegExp(`^Translate (${org}/[A-Za-z0-9][A-Za-z0-9._-]{0,99})#([1-9][0-9]{0,8}):`).exec(String(issue.title ?? ""));

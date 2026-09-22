@@ -171,8 +171,10 @@ const lib = await i18n();
 
 const I18N = path.resolve(lib.dir);
 
-// The commits are iHiD's, as the issues opened by his PAT are.
-const IDENT = ["-c", "user.name=iHiD", "-c", "user.email=jez.walker@gmail.com"];
+// The commits are the Exercism i18n app's bot user's, as the push is made with
+// the app's token.
+const { name: AUTHOR_NAME, email: AUTHOR_EMAIL } = config().github.commit_author;
+const IDENT = ["-c", `user.name=${AUTHOR_NAME}`, "-c", `user.email=${AUTHOR_EMAIL}`];
 
 /**
  * git, in the i18n checkout and nowhere else.
