@@ -36,6 +36,811 @@
       "url": "https://github.com/exercism/arm32-assembly/issues/29",
       "opened": "2026-09-22",
       "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/arm64-assembly",
+      "number": 239,
+      "url": "https://github.com/exercism/arm64-assembly/issues/239",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/arturo",
+      "number": 255,
+      "url": "https://github.com/exercism/arturo/issues/255",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/awk",
+      "number": 449,
+      "url": "https://github.com/exercism/awk/issues/449",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/ballerina",
+      "number": 324,
+      "url": "https://github.com/exercism/ballerina/issues/324",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/bash",
+      "number": 894,
+      "url": "https://github.com/exercism/bash/issues/894",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/batch",
+      "number": 85,
+      "url": "https://github.com/exercism/batch/issues/85",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/bqn",
+      "number": 24,
+      "url": "https://github.com/exercism/bqn/issues/24",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/c",
+      "number": 1490,
+      "url": "https://github.com/exercism/c/issues/1490",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/c3lang",
+      "number": 29,
+      "url": "https://github.com/exercism/c3lang/issues/29",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/cairo",
+      "number": 409,
+      "url": "https://github.com/exercism/cairo/issues/409",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/ceylon",
+      "number": 194,
+      "url": "https://github.com/exercism/ceylon/issues/194",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/cfml",
+      "number": 325,
+      "url": "https://github.com/exercism/cfml/issues/325",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/chapel",
+      "number": 95,
+      "url": "https://github.com/exercism/chapel/issues/95",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/clojure",
+      "number": 892,
+      "url": "https://github.com/exercism/clojure/issues/892",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/cobol",
+      "number": 179,
+      "url": "https://github.com/exercism/cobol/issues/179",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/coffeescript",
+      "number": 422,
+      "url": "https://github.com/exercism/coffeescript/issues/422",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/common-lisp",
+      "number": 920,
+      "url": "https://github.com/exercism/common-lisp/issues/920",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/coq",
+      "number": 124,
+      "url": "https://github.com/exercism/coq/issues/124",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/cpp",
+      "number": 1038,
+      "url": "https://github.com/exercism/cpp/issues/1038",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/crystal",
+      "number": 783,
+      "url": "https://github.com/exercism/crystal/issues/783",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/csharp",
+      "number": 2489,
+      "url": "https://github.com/exercism/csharp/issues/2489",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/d",
+      "number": 378,
+      "url": "https://github.com/exercism/d/issues/378",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/dart",
+      "number": 662,
+      "url": "https://github.com/exercism/dart/issues/662",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/dataweave",
+      "number": 25,
+      "url": "https://github.com/exercism/dataweave/issues/25",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/delphi",
+      "number": 540,
+      "url": "https://github.com/exercism/delphi/issues/540",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/dyalog-apl",
+      "number": 13,
+      "url": "https://github.com/exercism/dyalog-apl/issues/13",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/elixir",
+      "number": 1652,
+      "url": "https://github.com/exercism/elixir/issues/1652",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/elm",
+      "number": 793,
+      "url": "https://github.com/exercism/elm/issues/793",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/emacs-lisp",
+      "number": 540,
+      "url": "https://github.com/exercism/emacs-lisp/issues/540",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/erlang",
+      "number": 625,
+      "url": "https://github.com/exercism/erlang/issues/625",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/euphoria",
+      "number": 151,
+      "url": "https://github.com/exercism/euphoria/issues/151",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/factor",
+      "number": 301,
+      "url": "https://github.com/exercism/factor/issues/301",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/forth",
+      "number": 68,
+      "url": "https://github.com/exercism/forth/issues/68",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/fortran",
+      "number": 334,
+      "url": "https://github.com/exercism/fortran/issues/334",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/free-pascal",
+      "number": 131,
+      "url": "https://github.com/exercism/free-pascal/issues/131",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/fsharp",
+      "number": 1394,
+      "url": "https://github.com/exercism/fsharp/issues/1394",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/func",
+      "number": 23,
+      "url": "https://github.com/exercism/func/issues/23",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/futhark",
+      "number": 138,
+      "url": "https://github.com/exercism/futhark/issues/138",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/gdscript",
+      "number": 117,
+      "url": "https://github.com/exercism/gdscript/issues/117",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/gleam",
+      "number": 596,
+      "url": "https://github.com/exercism/gleam/issues/596",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/gnucobol",
+      "number": 29,
+      "url": "https://github.com/exercism/gnucobol/issues/29",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/go",
+      "number": 3170,
+      "url": "https://github.com/exercism/go/issues/3170",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/groovy",
+      "number": 520,
+      "url": "https://github.com/exercism/groovy/issues/520",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/harbour",
+      "number": 57,
+      "url": "https://github.com/exercism/harbour/issues/57",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/haskell",
+      "number": 1312,
+      "url": "https://github.com/exercism/haskell/issues/1312",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/haxe",
+      "number": 332,
+      "url": "https://github.com/exercism/haxe/issues/332",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/idris",
+      "number": 260,
+      "url": "https://github.com/exercism/idris/issues/260",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/io",
+      "number": 63,
+      "url": "https://github.com/exercism/io/issues/63",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/j",
+      "number": 183,
+      "url": "https://github.com/exercism/j/issues/183",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/jai",
+      "number": 55,
+      "url": "https://github.com/exercism/jai/issues/55",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/java",
+      "number": 3164,
+      "url": "https://github.com/exercism/java/issues/3164",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/javascript",
+      "number": 2865,
+      "url": "https://github.com/exercism/javascript/issues/2865",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/jq",
+      "number": 391,
+      "url": "https://github.com/exercism/jq/issues/391",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/julia",
+      "number": 1144,
+      "url": "https://github.com/exercism/julia/issues/1144",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/kotlin",
+      "number": 751,
+      "url": "https://github.com/exercism/kotlin/issues/751",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/lean",
+      "number": 211,
+      "url": "https://github.com/exercism/lean/issues/211",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/lfe",
+      "number": 322,
+      "url": "https://github.com/exercism/lfe/issues/322",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/lua",
+      "number": 675,
+      "url": "https://github.com/exercism/lua/issues/675",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/mips",
+      "number": 353,
+      "url": "https://github.com/exercism/mips/issues/353",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/moonscript",
+      "number": 189,
+      "url": "https://github.com/exercism/moonscript/issues/189",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/nim",
+      "number": 651,
+      "url": "https://github.com/exercism/nim/issues/651",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/nushell",
+      "number": 25,
+      "url": "https://github.com/exercism/nushell/issues/25",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/objective-c",
+      "number": 343,
+      "url": "https://github.com/exercism/objective-c/issues/343",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/ocaml",
+      "number": 590,
+      "url": "https://github.com/exercism/ocaml/issues/590",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/odin",
+      "number": 206,
+      "url": "https://github.com/exercism/odin/issues/206",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/perl5",
+      "number": 758,
+      "url": "https://github.com/exercism/perl5/issues/758",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/pharo-smalltalk",
+      "number": 683,
+      "url": "https://github.com/exercism/pharo-smalltalk/issues/683",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/phix",
+      "number": 22,
+      "url": "https://github.com/exercism/phix/issues/22",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/php",
+      "number": 1054,
+      "url": "https://github.com/exercism/php/issues/1054",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/plsql",
+      "number": 167,
+      "url": "https://github.com/exercism/plsql/issues/167",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/pony",
+      "number": 163,
+      "url": "https://github.com/exercism/pony/issues/163",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/powershell",
+      "number": 443,
+      "url": "https://github.com/exercism/powershell/issues/443",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/prolog",
+      "number": 490,
+      "url": "https://github.com/exercism/prolog/issues/490",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/purescript",
+      "number": 342,
+      "url": "https://github.com/exercism/purescript/issues/342",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/pyret",
+      "number": 297,
+      "url": "https://github.com/exercism/pyret/issues/297",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/python",
+      "number": 4292,
+      "url": "https://github.com/exercism/python/issues/4292",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/qsharp",
+      "number": 29,
+      "url": "https://github.com/exercism/qsharp/issues/29",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/r",
+      "number": 549,
+      "url": "https://github.com/exercism/r/issues/549",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/racket",
+      "number": 476,
+      "url": "https://github.com/exercism/racket/issues/476",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/raku",
+      "number": 814,
+      "url": "https://github.com/exercism/raku/issues/814",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/reasonml",
+      "number": 485,
+      "url": "https://github.com/exercism/reasonml/issues/485",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/red",
+      "number": 211,
+      "url": "https://github.com/exercism/red/issues/211",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/rescript",
+      "number": 63,
+      "url": "https://github.com/exercism/rescript/issues/63",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/rexx",
+      "number": 158,
+      "url": "https://github.com/exercism/rexx/issues/158",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/risc-v",
+      "number": 4,
+      "url": "https://github.com/exercism/risc-v/issues/4",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/roc",
+      "number": 231,
+      "url": "https://github.com/exercism/roc/issues/231",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/ruby",
+      "number": 1856,
+      "url": "https://github.com/exercism/ruby/issues/1856",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/rust",
+      "number": 2172,
+      "url": "https://github.com/exercism/rust/issues/2172",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/sather",
+      "number": 24,
+      "url": "https://github.com/exercism/sather/issues/24",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/scala",
+      "number": 889,
+      "url": "https://github.com/exercism/scala/issues/889",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/scheme",
+      "number": 342,
+      "url": "https://github.com/exercism/scheme/issues/342",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/sed",
+      "number": 27,
+      "url": "https://github.com/exercism/sed/issues/27",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/seed7",
+      "number": 29,
+      "url": "https://github.com/exercism/seed7/issues/29",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/shen",
+      "number": 87,
+      "url": "https://github.com/exercism/shen/issues/87",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/sml",
+      "number": 389,
+      "url": "https://github.com/exercism/sml/issues/389",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/snobol4",
+      "number": 45,
+      "url": "https://github.com/exercism/snobol4/issues/45",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/solidity",
+      "number": 113,
+      "url": "https://github.com/exercism/solidity/issues/113",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/sqlite",
+      "number": 263,
+      "url": "https://github.com/exercism/sqlite/issues/263",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/squirrel",
+      "number": 10,
+      "url": "https://github.com/exercism/squirrel/issues/10",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/swift",
+      "number": 914,
+      "url": "https://github.com/exercism/swift/issues/914",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/system-verilog",
+      "number": 74,
+      "url": "https://github.com/exercism/system-verilog/issues/74",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/tact",
+      "number": 19,
+      "url": "https://github.com/exercism/tact/issues/19",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/tasm",
+      "number": 28,
+      "url": "https://github.com/exercism/tasm/issues/28",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/tcl",
+      "number": 476,
+      "url": "https://github.com/exercism/tcl/issues/476",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/typescript",
+      "number": 1658,
+      "url": "https://github.com/exercism/typescript/issues/1658",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/uiua",
+      "number": 177,
+      "url": "https://github.com/exercism/uiua/issues/177",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/unison",
+      "number": 172,
+      "url": "https://github.com/exercism/unison/issues/172",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/vbnet",
+      "number": 585,
+      "url": "https://github.com/exercism/vbnet/issues/585",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/vimscript",
+      "number": 391,
+      "url": "https://github.com/exercism/vimscript/issues/391",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/vlang",
+      "number": 304,
+      "url": "https://github.com/exercism/vlang/issues/304",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/wasm",
+      "number": 227,
+      "url": "https://github.com/exercism/wasm/issues/227",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/wren",
+      "number": 304,
+      "url": "https://github.com/exercism/wren/issues/304",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/x86-64-assembly",
+      "number": 502,
+      "url": "https://github.com/exercism/x86-64-assembly/issues/502",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/yamlscript",
+      "number": 58,
+      "url": "https://github.com/exercism/yamlscript/issues/58",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/zig",
+      "number": 587,
+      "url": "https://github.com/exercism/zig/issues/587",
+      "opened": "2026-09-22",
+      "workflows": "org-wide-files"
     }
   ],
   "workflow_installs": {
