@@ -202,7 +202,7 @@ Each piece of guidance lives in one file and is not repeated in another.
   content shared by every locale in that family.
 - `config.json`: the only config file: the DeepSeek model, the `i18n` checkout, the issue
   queue's guards and word cap, the forum. `.env` (gitignored) holds the keys.
-- `orchestrator.md`: how the orchestrator session runs: the three monitors, the two queues,
+- `orchestrator.md`: how the orchestrator session runs: the two monitors, the forum queue,
   forum conduct.
 
 There are no per-item reviewer notes. A correction is applied to the translated file itself,

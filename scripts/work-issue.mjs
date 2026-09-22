@@ -7,8 +7,7 @@
 //                               [--locales=<a,b>] [--approved-over-cap]
 //
 //   --inspect            apply the guards and print one line of JSON, without
-//                        fetching or translating. scripts/github-issue-monitor
-//                        calls this.
+//                        fetching or translating.
 //   --dry-run            everything up to the API call: scope, words, the cap verdict
 //   --locales=           use these instead of the i18n repo's productionTargets.
 //                        Only iHiD decides this.
