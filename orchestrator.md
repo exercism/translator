@@ -292,10 +292,9 @@ person has to deal with labels the issue `needs-attention` instead, and the swee
   by name, for that issue. `/fix-i18n-issue` then runs
   `node scripts/work-issue.mjs <n> --approved-over-cap` here, you commit and push in
   `../i18n`, and the issue is dispatched again, which closes it and removes both labels.
-- The source PR hears about each step without you. `exercism/i18n` replies on it when the
-  issue opens, when it closes, and when it gets `needs-attention` (with `over-cap`, the reply
-  says the translation is waiting for approval). Its `scripts/pr-reply.mjs` holds the
-  wording. Never post on a source PR yourself.
+- The i18n issue is the log of every step. The source PR gets one reply, "This PR has been
+  translated 🚀", which `exercism/i18n` posts after a successful translation re-runs the PR's
+  check. Never post on a source PR yourself.
 - `/work-issue` is the manual path, for that case and for anything Jeremy asks you to run by
   hand. It translates and stops. You then commit and push, and only then close the issue,
   because closing re-runs the source PR's check, and closing before the push would re-run a

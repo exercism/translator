@@ -157,8 +157,8 @@ cap in `config.json` waits for iHiD.
 A run that fails in a way another run would repeat (items the checker rejects every time,
 checker errors, the word cap, deletions, an invalid issue, an unexpected error) labels the
 issue `needs-attention` (`config.json` `github.attention_label`), and the retry sweep skips
-it. The word cap adds `over-cap` (`github.over_cap_label`) first, which `exercism/i18n` reads
-to tell the source PR that the translation is waiting for approval. The orchestrator watches for the label with `scripts/needs-attention-monitor` and works
+it. The word cap also adds `over-cap` (`github.over_cap_label`), so the issue shows it is
+waiting for approval. The orchestrator watches for the label with `scripts/needs-attention-monitor` and works
 each issue with `/fix-i18n-issue`, which reads the failures from the run's artifact through
 `scripts/issue-failures.mjs`, never from the issue.
 

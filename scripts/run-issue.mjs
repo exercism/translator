@@ -221,6 +221,11 @@ async function main() {
   console.log(`issue ${number}: ${issue.repo}#${issue.pr} at ${issue.sha}`);
   if (locales.length === 0) finish("no-production-locales", "The issue stays open: it is picked up again when a locale goes into production.");
 
+  // The issue is the log of the run: this comment marks its start, and finish()
+  // posts how it ended.
+  const started = gh(["issue", "comment", String(number), "--repo", config().github.i18n_repo, "--body", "Starting translation now."]);
+  if (!started.ok) console.error(`error: could not comment on issue ${number}: ${started.error}`);
+
   const scope = await issueScope(lib, issue);
   const translate = (extra) => translateForIssue({ issue, locales, repo: scope.repo, scopeFile: scope.scopeFile, extra });
 

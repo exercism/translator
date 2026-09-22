@@ -57,8 +57,7 @@ is missing, so an issue whose work is done finds nothing to do and closes.
 A failure that another run would repeat gets the `needs-attention` label instead, and the
 sweep skips it: items the checker rejected on every attempt, checker errors, the word cap,
 deletions, an invalid issue, an unexpected error, or a push refused for permissions. The word
-cap also gets the `over-cap` label, added first, so the reply on the source PR says the
-translation is waiting for approval. The
+cap also gets the `over-cap` label, so the issue shows it is waiting for approval. The
 orchestrator session watches for the label (`scripts/needs-attention-monitor`), and
 `/fix-i18n-issue` has an Opus subagent fix each rejected file by hand from the artifact. The
 orchestrator commits the fixes to `main` in `exercism/i18n` and dispatches the issue again,
