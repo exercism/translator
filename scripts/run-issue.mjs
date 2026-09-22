@@ -49,8 +49,10 @@
 // rejected on every attempt, checker errors, the word cap, deletions, an invalid
 // issue, an unexpected error) gets the `needs-attention` label, which the sweep
 // skips and the orchestrator session watches; see attentionLabel() in
-// scripts/lib/issue-pass.mjs. A run that pushes or finds nothing to do removes
-// the label again. Every run that comments also writes
+// scripts/lib/issue-pass.mjs. The word cap also gets the `over-cap` label,
+// added first, so exercism/i18n can tell the source PR the translation is
+// waiting for approval (overCapLabel()). A run that pushes or finds nothing to
+// do removes both labels again. Every run that comments also writes
 // state/runs/issue-<n>.outcome.json, which /fix-i18n-issue reads from the
 // artifact.
 //
@@ -69,7 +71,7 @@ import { spawnSync } from "node:child_process";
 import { Failure, ROOT, config, parseArgs } from "./lib/config.mjs";
 import { i18n } from "./lib/i18n.mjs";
 import { SOURCES } from "./lib/routes.mjs";
-import { attentionLabel, commitMessage, issueNumber, issueOutcome, issueScope, issueStillOpen, issueUrl, itemsWritten, perLocaleCounts, readIssue, translateForIssue, untranslatedWords } from "./lib/issue-pass.mjs";
+import { attentionLabel, commitMessage, overCapLabel, issueNumber, issueOutcome, issueScope, issueStillOpen, issueUrl, itemsWritten, perLocaleCounts, readIssue, translateForIssue, untranslatedWords } from "./lib/issue-pass.mjs";
 
 const { positional } = parseArgs(process.argv.slice(2));
 const number = issueNumber(positional[0]);
@@ -105,12 +107,11 @@ function comment(body) {
 const context = { issue: null, failures: [] };
 
 /**
- * Add or remove the `needs-attention` label. A failure here is printed and
- * does not change the outcome: the comment still says what happened.
+ * Add or remove one label. A failure here is printed and does not change the
+ * outcome: the comment still says what happened.
  */
-function label(action) {
+function label(name, action) {
   if (!action) return;
-  const name = config().github.attention_label;
   const edited = gh(["issue", "edit", String(number), "--repo", config().github.i18n_repo, action === "add" ? "--add-label" : "--remove-label", name]);
   if (!edited.ok && action === "add") console.error(`error: could not label issue ${number} ${name}: ${edited.error}`);
 }
@@ -135,6 +136,12 @@ function finish(reason, detail, facts = {}) {
   const outcome = issueOutcome(reason);
   const url = runUrl();
   const labelAction = attentionLabel(reason, { failures: context.failures, ...facts });
+  // `over-cap` changes before `needs-attention`, because i18n's
+  // rerun-source-check.yml reads it when `needs-attention` arrives.
+  const labels = () => {
+    label(config().github.over_cap_label, overCapLabel(reason));
+    label(config().github.attention_label, labelAction);
+  };
   const footer = [];
   if (outcome.exit !== 0) footer.push("", url ? `Run: ${url}. Its \`state/runs/\` is attached to it as an artifact.` : "No Actions run to point at.");
   if (labelAction === "add") footer.push("", `Labelled \`${config().github.attention_label}\`: this needs a person, so the retry sweep leaves it alone and the translation team deals with it.`);
@@ -143,7 +150,7 @@ function finish(reason, detail, facts = {}) {
 
   if (!outcome.quiet) writeOutcome(reason, labelAction, url);
   if (outcome.close) {
-    label(labelAction);
+    labels();
     const closed = gh(["issue", "close", String(number), "--repo", config().github.i18n_repo, "--comment", body]);
     if (!closed.ok) {
       console.error(`error: could not close issue ${number}: ${closed.error}`);
@@ -151,7 +158,7 @@ function finish(reason, detail, facts = {}) {
     }
   } else if (!outcome.quiet) {
     comment(body);
-    label(labelAction);
+    labels();
   }
   console.log(`${reason}: ${outcome.headline}${labelAction ? ` (label: ${labelAction})` : ""}`);
   console.log(detail);

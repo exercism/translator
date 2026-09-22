@@ -188,6 +188,32 @@ export function transientFailure(reason) {
  *               invalid or error ending caused by GitHub being unreachable, and
  *               `error` for the last push error
  */
+/**
+ * What happens to the `over-cap` label (config.json `github.over_cap_label`)
+ * when a run ends: "add", "remove", or null to leave it as it is. Pure.
+ *
+ * The label goes on with `needs-attention` when a change is above the word
+ * cap, and always before it: exercism/i18n's rerun-source-check.yml reads it
+ * when `needs-attention` arrives, to tell the source PR that the translation is
+ * waiting for approval. It comes off once a run gets past the cap or finds
+ * nothing to translate, so a later `needs-attention` is reported as a problem.
+ */
+export function overCapLabel(reason) {
+  switch (reason) {
+    case "over-cap":
+      return "add";
+    case "pushed":
+    case "nothing-to-do":
+    case "failures":
+    case "validate-errors":
+    case "deletions":
+    case "push-failed":
+      return "remove";
+    default:
+      return null;
+  }
+}
+
 export function attentionLabel(reason, { failures = [], transient = false, error = "" } = {}) {
   switch (reason) {
     case "pushed":

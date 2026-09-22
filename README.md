@@ -41,6 +41,11 @@ A PR that changes English is translated without anyone stepping in:
    source PR's completeness check (`rerun-source-check.yml` in `exercism/i18n`), which now
    passes.
 
+The source PR gets a reply when the issue opens, when it closes, and when it is labelled
+`needs-attention`, so a maintainer watching the PR can follow along. `exercism/i18n` posts all
+of them, because this repo's tokens cannot write to the source repos. See "The loop" in its
+`source-repo-workflows/README.md`.
+
 If anything goes wrong, nothing is pushed and the issue stays open. The run comments on it
 saying what happened and links the Actions run, whose `state/runs/` artifact holds the
 summaries, the checker logs, the last rejected answer for each failed file (under
@@ -51,7 +56,9 @@ is missing, so an issue whose work is done finds nothing to do and closes.
 
 A failure that another run would repeat gets the `needs-attention` label instead, and the
 sweep skips it: items the checker rejected on every attempt, checker errors, the word cap,
-deletions, an invalid issue, an unexpected error, or a push refused for permissions. The
+deletions, an invalid issue, an unexpected error, or a push refused for permissions. The word
+cap also gets the `over-cap` label, added first, so the reply on the source PR says the
+translation is waiting for approval. The
 orchestrator session watches for the label (`scripts/needs-attention-monitor`), and
 `/fix-i18n-issue` has an Opus subagent fix each rejected file by hand from the artifact. The
 orchestrator commits the fixes to `main` in `exercism/i18n` and dispatches the issue again,
@@ -74,7 +81,7 @@ either repo.
 | Secret | Where | Scope |
 | --- | --- | --- |
 | `EXERCISM_TRANSLATOR_DISPATCH_PAT` | repository secret on `exercism/i18n` and on `exercism/translator` | fine-grained PAT, Contents read/write on `exercism/translator` only, which is what `POST /repos/{owner}/{repo}/dispatches` needs |
-| `EXERCISM_I18N_PUSH_PAT` | repository secret on `exercism/translator` | fine-grained PAT, Contents read/write and Issues read/write on `exercism/i18n` only, for the push, the comment, the `needs-attention` label and the close |
+| `EXERCISM_I18N_PUSH_PAT` | repository secret on `exercism/translator` | fine-grained PAT, Contents read/write and Issues read/write on `exercism/i18n` only, for the push, the comment, the `needs-attention` and `over-cap` labels and the close |
 | `DEEPSEEK_API_KEY` | repository secret on `exercism/translator` | the translation engine |
 
 Both repos need the dispatch PAT. `exercism/i18n` uses it to dispatch, and so does this repo's

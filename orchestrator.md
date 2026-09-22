@@ -287,10 +287,15 @@ person has to deal with labels the issue `needs-attention` instead, and the swee
   each rejected file to an Opus subagent, has you commit and push the fixes, and dispatches
   the issue again so the rest translates, the issue closes and the label goes. Any other
   labelled outcome it takes to Jeremy.
-- Above the word cap, the run stops, comments and labels the issue. Tell Jeremy the number
-  and the word count. Only he can let one through, by name, for that issue. `/fix-i18n-issue`
-  then runs `node scripts/work-issue.mjs <n> --approved-over-cap` here, you commit and push in
-  `../i18n`, and the issue is dispatched again, which closes it and removes the label.
+- Above the word cap, the run stops, comments and labels the issue `over-cap` and then
+  `needs-attention`. Tell Jeremy the number and the word count. Only he can let one through,
+  by name, for that issue. `/fix-i18n-issue` then runs
+  `node scripts/work-issue.mjs <n> --approved-over-cap` here, you commit and push in
+  `../i18n`, and the issue is dispatched again, which closes it and removes both labels.
+- The source PR hears about each step without you. `exercism/i18n` replies on it when the
+  issue opens, when it closes, and when it gets `needs-attention` (with `over-cap`, the reply
+  says the translation is waiting for approval). Its `scripts/pr-reply.mjs` holds the
+  wording. Never post on a source PR yourself.
 - `/work-issue` is the manual path, for that case and for anything Jeremy asks you to run by
   hand. It translates and stops. You then commit and push, and only then close the issue,
   because closing re-runs the source PR's check, and closing before the push would re-run a

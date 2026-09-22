@@ -23,7 +23,7 @@ import { repairCode } from "./lib/repair.mjs";
 import { fileTail, fixedPrefix } from "./lib/prompt.mjs";
 import { unfence } from "./lib/deepseek.mjs";
 import { parseIssue } from "./lib/issues.mjs";
-import { OUTCOMES, attentionLabel, commitMessage, issueNumber, issueOutcome, itemsWritten, perLocaleCounts, transientFailure, untranslatedWords } from "./lib/issue-pass.mjs";
+import { OUTCOMES, attentionLabel, commitMessage, overCapLabel, issueNumber, issueOutcome, itemsWritten, perLocaleCounts, transientFailure, untranslatedWords } from "./lib/issue-pass.mjs";
 
 let passed = 0;
 async function test(name, body) {
@@ -264,6 +264,14 @@ await test("needs-attention: added when a person must act, removed when the work
   assert.equal(attentionLabel("push-failed", { error: "remote: Permission to exercism/i18n.git denied to iHiD." }), "add");
   assert.equal(attentionLabel("push-failed", { error: "The requested URL returned error: 403" }), "add");
   assert.equal(attentionLabel("push-failed", { error: "! [remote rejected] HEAD -> main (protected branch hook declined)" }), "add");
+});
+
+await test("over-cap goes on only above the word cap, and comes off once a run gets past it", () => {
+  assert.equal(overCapLabel("over-cap"), "add");
+  for (const reason of ["pushed", "nothing-to-do", "failures", "validate-errors", "deletions", "push-failed"]) assert.equal(overCapLabel(reason), "remove", reason);
+  for (const reason of ["closed", "no-production-locales", "invalid", "error"]) assert.equal(overCapLabel(reason), null, reason);
+  // It always travels with needs-attention.
+  assert.equal(attentionLabel("over-cap"), "add");
 });
 
 await test("needs-attention on failed items: only when one of them would fail the same way again", () => {
