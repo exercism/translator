@@ -1,0 +1,12 @@
+{
+  "$comment": "The \"Translating this repo: What you need to know as maintainers\" issue opened in each source repo, one entry per repo, so later updates can be posted as replies on the same issue. `workflows` is how the i18n-queue and i18n-completeness workflows reach that repo: org-wide-files for tracks, direct for everything else.",
+  "issues": [
+    {
+      "repo": "exercism/problem-specifications",
+      "number": 2686,
+      "url": "https://github.com/exercism/problem-specifications/issues/2686",
+      "opened": "2026-09-22",
+      "workflows": "direct"
+    }
+  ]
+}
