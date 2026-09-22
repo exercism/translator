@@ -9,5 +9,13 @@
       "workflows": "direct",
       "workflows_pr": "https://github.com/exercism/problem-specifications/pull/2687"
     }
-  ]
+  ],
+  "workflow_installs": {
+    "exercism/website": "https://github.com/exercism/website/pull/9541",
+    "exercism/website-copy": "https://github.com/exercism/website-copy/pull/2416",
+    "exercism/problem-specifications": "https://github.com/exercism/problem-specifications/pull/2687",
+    "exercism/docs": "https://github.com/exercism/docs/pull/594",
+    "exercism/blog": "https://github.com/exercism/blog/pull/210",
+    "tracks (org-wide-files)": "https://github.com/exercism/org-wide-files/pull/408"
+  }
 }
