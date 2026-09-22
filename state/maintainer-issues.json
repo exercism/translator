@@ -6,7 +6,8 @@
       "number": 2686,
       "url": "https://github.com/exercism/problem-specifications/issues/2686",
       "opened": "2026-09-22",
-      "workflows": "direct"
+      "workflows": "direct",
+      "workflows_pr": "https://github.com/exercism/problem-specifications/pull/2687"
     }
   ]
 }
