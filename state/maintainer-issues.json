@@ -2,14 +2,6 @@
   "$comment": "The \"Translating this repo: What you need to know as maintainers\" issue opened in each source repo, one entry per repo, so later updates can be posted as replies on the same issue. `workflows` is how the i18n-queue and i18n-completeness workflows reach that repo: org-wide-files for tracks, direct for everything else.",
   "issues": [
     {
-      "repo": "exercism/problem-specifications",
-      "number": 2686,
-      "url": "https://github.com/exercism/problem-specifications/issues/2686",
-      "opened": "2026-09-22",
-      "workflows": "direct",
-      "workflows_pr": "https://github.com/exercism/problem-specifications/pull/2687"
-    },
-    {
       "repo": "exercism/05ab1e",
       "number": 85,
       "url": "https://github.com/exercism/05ab1e/issues/85",
@@ -78,6 +70,13 @@
       "url": "https://github.com/exercism/batch/issues/85",
       "opened": "2026-09-22",
       "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/blog",
+      "number": 211,
+      "url": "https://github.com/exercism/blog/issues/211",
+      "opened": "2026-09-22",
+      "workflows": "direct"
     },
     {
       "repo": "exercism/bqn",
@@ -211,6 +210,13 @@
       "url": "https://github.com/exercism/delphi/issues/540",
       "opened": "2026-09-22",
       "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/docs",
+      "number": 595,
+      "url": "https://github.com/exercism/docs/issues/595",
+      "opened": "2026-09-22",
+      "workflows": "direct"
     },
     {
       "repo": "exercism/dyalog-apl",
@@ -542,6 +548,14 @@
       "workflows": "org-wide-files"
     },
     {
+      "repo": "exercism/problem-specifications",
+      "number": 2686,
+      "url": "https://github.com/exercism/problem-specifications/issues/2686",
+      "opened": "2026-09-22",
+      "workflows": "direct",
+      "workflows_pr": "https://github.com/exercism/problem-specifications/pull/2687"
+    },
+    {
       "repo": "exercism/prolog",
       "number": 490,
       "url": "https://github.com/exercism/prolog/issues/490",
@@ -813,6 +827,20 @@
       "url": "https://github.com/exercism/wasm/issues/227",
       "opened": "2026-09-22",
       "workflows": "org-wide-files"
+    },
+    {
+      "repo": "exercism/website",
+      "number": 9542,
+      "url": "https://github.com/exercism/website/issues/9542",
+      "opened": "2026-09-22",
+      "workflows": "direct"
+    },
+    {
+      "repo": "exercism/website-copy",
+      "number": 2417,
+      "url": "https://github.com/exercism/website-copy/issues/2417",
+      "opened": "2026-09-22",
+      "workflows": "direct"
     },
     {
       "repo": "exercism/wren",
