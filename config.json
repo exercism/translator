@@ -29,10 +29,8 @@
     "github: the issue queue. `issue_authors` are the only authors a queue issue",
     "may have, written as `gh` prints them. The source repos' workflows open issues",
     "as the Exercism i18n GitHub App, which `gh` prints as `app/exercism-i18n`.",
-    "`iHiD` is there only while website, docs, blog and problem-specifications still",
-    "run the old queue, which opens issues with his token; remove it once they call",
-    "exercism/i18n's reusable workflows. `commit_author` is who the automated",
-    "commits to exercism/i18n main are by: the app's bot user.",
+    "`commit_author` is the author of the automated commits to exercism/i18n main,",
+    "which is the app's bot user.",
     "`singletons`, plus every repo in `org` with the `track_topic` topic, is the",
     "allowlist of repos an issue may name. `attention_label` marks an issue a",
     "person has to fix before it can finish; the retry sweep skips it (its name is",
@@ -64,7 +62,7 @@
     "org": "exercism",
     "i18n_repo": "exercism/i18n",
     "translator_repo": "exercism/translator",
-    "issue_authors": ["app/exercism-i18n", "iHiD"],
+    "issue_authors": ["app/exercism-i18n"],
     "commit_author": {
       "name": "exercism-i18n[bot]",
       "email": "332573814+exercism-i18n[bot]@users.noreply.github.com"

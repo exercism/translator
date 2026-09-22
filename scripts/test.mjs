@@ -220,9 +220,9 @@ await test("an issue yields repo, PR number and sha, and nothing else", () => {
   assert.deepEqual(parseIssue(issue()), { ok: true, number: 7, repo: "exercism/ruby", pr: 1809, sha: "a".repeat(40) });
 });
 
-await test("an issue opened by the app is accepted, and so is one opened by iHiD while the old queue runs", () => {
-  assert.deepEqual(config().github.issue_authors, ["app/exercism-i18n", "iHiD"]);
-  assert.equal(parseIssue(issue({ author: { login: "iHiD", is_bot: false } })).ok, true);
+await test("only an issue opened by the app is accepted", () => {
+  assert.deepEqual(config().github.issue_authors, ["app/exercism-i18n"]);
+  assert.match(parseIssue(issue({ author: { login: "iHiD", is_bot: false } })).reason, /author/);
 });
 
 await test("the automated commits are by the app's bot user", () => {
@@ -333,7 +333,7 @@ await test("the retry sweep skips issues labelled needs-attention, anything upda
   ];
   const result = spawnSync("jq", ["-r", "--argjson", "authors", authors, "--arg", "cutoff", "2026-09-22T08:00:00Z", "--arg", "skip", skip, select], { input: JSON.stringify(issues), encoding: "utf8" });
   assert.equal(result.status, 0, result.stderr);
-  assert.deepEqual(result.stdout.trim().split("\n"), ["1", "4", "5"]);
+  assert.deepEqual(result.stdout.trim().split("\n"), ["1", "4"]);
 });
 
 await test("the commit message names the source PR and what was written", () => {

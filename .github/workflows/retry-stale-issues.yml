@@ -20,10 +20,9 @@
 # Dispatching again is safe: run-issue.mjs only translates what a locale does
 # not already have, so a finished issue finds nothing to do and is closed.
 #
-# Only issues opened by one of config.json's `issue_authors` are dispatched:
-# the Exercism i18n app, and iHiD while some source repos still run the old
-# queue. The retry sweep lists them in AUTHORS below, and scripts/test.mjs
-# checks that list against config.json.
+# Only issues opened by one of config.json's `issue_authors` (the Exercism
+# i18n app) are dispatched. The sweep lists them in AUTHORS below, and
+# scripts/test.mjs checks that list against config.json.
 #
 # ## Tokens
 #
@@ -76,7 +75,7 @@ jobs:
           DISPATCH_TOKEN: ${{ steps.dispatch-token.outputs.token }}
           SKIP_LABEL: needs-attention
           # config.json `github.issue_authors`, as `gh` prints them.
-          AUTHORS: '["app/exercism-i18n", "iHiD"]'
+          AUTHORS: '["app/exercism-i18n"]'
           # scripts/test.mjs runs this filter against sample issues.
           SELECT: '.[] | select(.author.login as $login | $authors | index($login)) | select(.updatedAt < $cutoff) | select(all(.labels[]; .name != $skip)) | .number'
         run: |

@@ -5,9 +5,8 @@
 // issue is therefore authored by `exercism-i18n[bot]` (which `gh` prints as
 // `app/exercism-i18n`) and labelled `translation`. Issues from anyone else are
 // not part of the queue, whatever their title, labels or text. config.json's
-// `issue_authors` also lists `iHiD` while some source repos still run the old
-// queue, which opens issues with his token. No user login contains a `/`, so
-// no person can pass as the app.
+// `issue_authors` holds the author. No user login contains a `/`, so no person
+// can pass as the app.
 //
 // ## Issues are data
 //
