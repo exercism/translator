@@ -246,25 +246,35 @@ The rules for writing a family file are in `global/workflow.md`.
 
 ## Launch plan
 
-Hungarian goes first, across all content, as one full pass. That pass also serves as the
-tuning loop that Jiki's staged rollout provided, so there is no language-stage machinery.
+Hungarian went live on exercism.org on 2026-09-23, in website #9553. It was translated
+across all content as one full pass, and that pass also served as the tuning loop that Jiki's
+staged rollout provided, so there is no language-stage machinery.
 Every language folder was copied from Jiki and then stripped of everything Jiki-specific,
 keeping every decision about the language itself. Hungarian's Exercism product terms are
 proposed and waiting for a native speaker. Every other language's `PROPOSED, NOT YET AGREED`
 block stays empty until that language is bootstrapped for Exercism.
 
-Taking a locale live takes three changes in three repos, in this order:
+Taking a locale live takes two changes in two repos, in this order:
 
 1. `exercism/i18n` `locales.json`: the locale joins `targets` when its content starts landing,
    and `productionTargets` once every source is translated, which turns on the checker and
-   the completeness gate for it.
-2. `exercism/website` `config/application.rb` `available_locales` (plus a name in
-   `Locale::Name::NAMES`), deployed.
-3. `exercism/terraform` `terraform/cloudflare/workers/locale-redirect.js` `SERVED_LOCALES`,
-   applied. This Cloudflare Worker redirects a first-time visitor to their language. It goes
-   last so that it never sends anyone to a locale prefix the site does not serve.
+   the completeness gate for it. A locale must be in `productionTargets` before the website
+   serves it.
+2. `exercism/website` `config/i18n.json`: add the locale to `served`, then deploy. That single
+   line turns on Rails routing and the Cloudflare Worker together, because
+   `config/application.rb` reads it through `LocaleConfig::SERVED` and
+   `cloudflare/locale-redirect/worker.js` imports the same file and ships with the same
+   deploy. The two therefore cannot disagree about which locales exist.
 
-Nothing in this repo makes any of the three changes; a pass only fills `locales/<locale>/`.
+`exercism/terraform` is not involved. It owns the Worker's routes, not its code, and those are
+already applied for every locale.
+
+Display names and flags need no change either. `Locale::Name::NAMES` and
+`Locale::Languages::FLAGS` (both in `app/commands/locale/`) already list every locale, and the
+signed-out switcher offers the ones outside `served` as coming soon, so adding a locale to
+`served` moves it from that list to live.
+
+Nothing in this repo makes either change; a pass only fills `locales/<locale>/`.
 
 ## Open questions
 

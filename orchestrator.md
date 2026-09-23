@@ -234,8 +234,9 @@ Both paths end with a push to `../i18n`'s `main`.
 
 ### 1. A full pass, because Jeremy asked for one
 
-The plan is Hungarian first, across all content, as one full pass, which also serves as the
-tuning loop. There are no language stages and no phased rollout. The cheapest order is:
+Hungarian is done and live in production since 2026-09-23. It was translated across all
+content as one full pass, which also served as the tuning loop. There are no language stages
+and no phased rollout. For the next language, the cheapest order is the one Hungarian used:
 
 ```
 /translate-problem-specifications hu      # first: one translation here serves every track
