@@ -1,5 +1,24 @@
 # Hungarian (hu) glossary notes
 
+## 2026-09-23: „Exercism” takes its case suffix after a hyphen (no glossary row)
+
+**Decided by dem4ron (native speaker), on forum topic 85372
+(https://forum.exercism.org/t/85372/1).** The donation banner and the donation modal's body
+text rendered the accusative of „Exercism” as _Exercisst_, a malformed word that drops the
+end of the name. dem4ron gave the correct form as **„Exercism-öt”**: the name stays whole and
+the suffix follows a hyphen.
+
+- The guide's bullet on the name „Exercism” said suffixes attach directly („az Exercismen”,
+  „az Exercismnek”, „az Exercismmel”). That was an agent's draft with no human decision
+  behind it. It now says to attach a case suffix with a hyphen, with „az Exercism-öt” as
+  the example.
+- Four website keys were corrected (`components/modals/BegModal.tsx:` `begModal.shareExercism`,
+  `begModal.fewerThan1Percent`, `begModal.previousDonorContent.hateToAskAgain`,
+  `begModal.nonDonorContent.mostPeopleCantAfford`).
+- The decision covers the accusative, which is what dem4ron corrected. Existing strings with
+  other forms attached directly (_Exercismet_, _Exercismen_, _Exercismnek_ and others) were
+  left as they are, pending a native speaker's view on whether they should change too.
+
 ## 2026-09-17: Adapted for Exercism (agent; nothing here is a native speaker's decision)
 
 This glossary was forked from Jiki's Hungarian glossary when Exercism's translator repo was
