@@ -5,7 +5,10 @@ Anything else that describes the steps is wrong and should be corrected against 
 
 Hungarian was the first language through it, and went live on 2026-09-23.
 
-The short version: translate everything, push it to `../i18n`, open the website pull request.
+The short version: translate everything, open a pull request in `../i18n`, open the website
+pull request, and open one in this repo for any guide or glossary change the launch made.
+Every change goes through a pull request in all three repos, and nothing is committed straight
+to `main`.
 Glossary agreement and native-speaker review happen afterwards, not before.
 
 The translations land on `../i18n` `main` through pull requests you open and merge yourself.

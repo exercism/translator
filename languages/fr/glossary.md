@@ -147,65 +147,67 @@ Example: _pour appeler une fonction, écris son identifiant, suivi de parenthès
 
 ## Exercism product vocabulary: PROPOSED, NOT YET AGREED
 
-**Nobody who speaks French has agreed any row in this section, and no rendering has been
-proposed.** These are the nouns Exercism's own product vocabulary is built from, and they are
-the rows we most need a native speaker to fill in, because each one appears on hundreds of
-pages. The target column is deliberately empty: an agent's invented rendering sitting in a
-glossary reads as an agreed one, and these terms are too visible for that. Fill them in on the
-pinned glossary thread, and a row moves into an agreed section once a native speaker has
-settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
-on Exercism.
+**Nobody who speaks French has agreed any row in this section.** They are an agent's
+proposals, written on 2026-09-23 so that a first pass is at least consistent. If you are a
+native speaker reading this: these are the rows we most need you to check, because each one
+appears on hundreds of pages. Tell us on the pinned glossary thread which are wrong. A row
+moves up into an agreed section only on a native speaker's say-so, recorded in
+`glossary-notes.md`, which also holds the basis for each proposal.
 
 | English | Proposed French | Use (fr/en) | Notes |
-|---------|------------------|------------------|-------|
-| track |  |  |  |
-| to join (a track) |  |  |  |
-| exercise |  |  |  |
-| concept exercise / learning exercise |  |  |  |
-| practice exercise |  |  |  |
-| learning mode / practice mode |  |  |  |
-| locked / unlocked / available / in progress / completed |  |  |  |
-| to unlock |  |  |  |
-| solution |  |  |  |
-| to submit |  |  |  |
-| to publish (a solution) / published |  |  |  |
-| community solutions |  |  |  |
-| to star / stars |  |  |  |
-| mentor / mentoring |  |  |  |
-| student (the person being mentored) |  |  |  |
-| mentoring request |  |  |  |
-| mentoring session / discussion |  |  |  |
-| code review |  |  |  |
-| mentoring queue |  |  |  |
-| testimonial (left for a mentor) |  |  |  |
-| supermentor |  |  |  |
-| automated feedback |  |  |  |
-| analyzer |  |  |  |
-| representer |  |  |  |
-| representation |  |  |  |
-| test runner |  |  |  |
-| tests passed / tests failed |  |  |  |
-| online editor / the editor |  |  |  |
-| the Exercism CLI |  |  |  |
-| reputation |  |  |  |
-| badge |  |  |  |
-| trophy |  |  |  |
-| journey (the user's history page) |  |  |  |
-| contributor / contributing |  |  |  |
-| maintainer |  |  |  |
-| Insiders |  |  |  |
-| donation / to donate / donor |  |  |  |
-| perks |  |  |  |
-| partner |  |  |  |
-| flair (marker beside a username) |  |  |  |
-| Dig Deeper (tab) |  |  |  |
-| approach (to an exercise) |  |  |  |
-| article (on an exercise) |  |  |  |
-| deep dive (video) |  |  |  |
-| cohort |  |  |  |
-| community |  |  |  |
-| notification |  |  |  |
-| favorites |  |  |  |
-| difficulty: easy / medium / hard |  |  |  |
-| handle (username) |  |  |  |
-| automation (feedback on representations) |  |  |  |
+|---------|-----------------|-------------|-------|
+| track | parcours | fr | Masculine. _le parcours Ruby_, _rejoindre un parcours_, _mainteneur du parcours_, _dans tous les parcours_. |
+| to join (a track) | rejoindre | fr | Button: _Rejoindre_. |
+| exercise | exercice | fr | Masculine. |
+| concept | concept | fr | One teachable idea in a syllabus. |
+| concept exercise / learning exercise | exercice d'apprentissage | fr | One rendering for both English names. Pairs with _exercice d'entraînement_. |
+| practice exercise | exercice d'entraînement | fr | |
+| syllabus | programme | fr | |
+| learning mode / practice mode | mode apprentissage / mode entraînement | fr | Read side by side on a toggle. |
+| locked / unlocked / available / in progress / completed | verrouillé / déverrouillé / disponible / en cours / terminé | fr | Exercise states, as labels. Agree with the noun: _verrouillée_ for a feminine one. |
+| to unlock | déverrouiller | fr | |
+| solution | solution | fr | Feminine. |
+| iteration (a submitted version of a solution) | itération | fr | Same word as one pass of a loop. _Itération 3_. |
+| to submit | soumettre | fr | Noun: _soumission_. |
+| to publish (a solution) / published | publier / publiée | fr | Distinct from _soumettre_. |
+| community solutions | solutions de la communauté | fr | |
+| to star / stars | mettre une étoile / étoiles | fr | |
+| mentor / mentoring | mentor / mentorat | fr | Verb: _mentorer_. Never _professeur_ or _formateur_: a mentor is a peer. |
+| student (the person being mentored) | apprenant | fr | Not _élève_ or _étudiant_, which imply school or university. Feminine _apprenante_ where the English names a specific person. |
+| mentoring request | demande de mentorat | fr | |
+| mentoring session / discussion | discussion de mentorat | fr | One rendering for both English words. |
+| code review | revue de code | fr | |
+| mentoring queue | file d'attente de mentorat | fr | |
+| testimonial (left for a mentor) | témoignage | fr | |
+| supermentor | supermentor | fr | A coined word. |
+| automated feedback | retour automatisé | fr | |
+| analyzer | analyseur | fr | _l'analyseur Ruby_. |
+| representer | representer | en | A coined word with no everyday equivalent. Never inflect it. |
+| representation | représentation | fr | |
+| test runner | exécuteur de tests | fr | |
+| tests passed / tests failed | tests réussis / tests échoués | fr | As a sentence: _Tous les tests sont réussis._ |
+| online editor / the editor | éditeur en ligne / l'éditeur | fr | |
+| the Exercism CLI | l'Exercism CLI | en | The product's name. The elision avoids choosing a gender. |
+| reputation | réputation | fr | Points, not a judgement of character. |
+| badge | badge | fr | Established loanword. |
+| trophy | trophée | fr | Distinct from _badge_. |
+| journey (the user's history page) | ton voyage | fr | As a page title: _Ton voyage_. Not _parcours_, which is a track. |
+| contributor / contributing | contributeur / contribution | fr | |
+| maintainer | mainteneur | fr | |
+| Insiders | Insiders | en | A proper name, capitalised, never translated. _le programme Insiders_. |
+| donation / to donate / donor | don / faire un don / donateur | fr | Exercism is a not-for-profit. |
+| perks | avantages | fr | |
+| partner | partenaire | fr | |
+| flair (marker beside a username) | pastille | fr | Not _badge_, which is an achievement. |
+| Dig Deeper (tab) | Creuse plus loin | fr | A UI label, so it is translated. |
+| approach (to an exercise) | approche | fr | |
+| article (on an exercise) | article | fr | |
+| deep dive (video) | analyse approfondie | fr | |
+| challenge (community event) | défi | fr | Hashtags (`#48in24`) are never translated. |
+| cohort | cohorte | fr | |
+| community | communauté | fr | |
+| notification | notification | fr | |
+| favorites | favoris | fr | |
+| difficulty: easy / medium / hard | difficulté : facile / moyen / difficile | fr | |
+| handle (username) | nom d'utilisateur | fr | |
+| automation (feedback on representations) | automatisation | fr | |

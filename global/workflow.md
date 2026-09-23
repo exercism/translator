@@ -534,25 +534,34 @@ dispatches write files and never run git.
 No script runs git in a sibling SOURCE checkout: those are shared with live sessions, and
 English is read from them as objects at a ref, never by checking anything out.
 
-### Translated output lands in `i18n` as a direct commit to `main`
+### Every change lands through a pull request
+
+Every change to `main` in every repo goes through a pull request. That covers this repo,
+`../i18n` and `exercism/website`, and a language launch opens one in each of the three.
+Nothing is committed straight to `main`.
 
 Translations are written into `../i18n` by `scripts/translate.mjs` (and hand edits by
-`/fix-translation`), and the orchestrator commits them straight to `main` there, the same as
-this repo: no branch, no PR. English does not live there at all, so an English fix is a
-commit in a source repo and never an `i18n` one. The orchestrator:
+`/fix-translation`). English does not live there at all, so an English fix is a commit in a
+source repo and never an `i18n` one. The orchestrator works in a worktree, never in the
+shared `../i18n` checkout:
 
 ```bash
-cd ../i18n
-git checkout main && git pull
+git -C ../i18n worktree add -b <branch> ../i18n-<branch> origin/main
+# run the passes with EXERCISM_I18N_REPO=../i18n-<branch>
 node scripts/validate.mjs <locale> --content-repos=<the checkouts that were translated>
                                  # the same gate CI runs; reads only. Read the ERRORs, not
                                  # just the exit code: it gates on productionTargets alone
 node scripts/build-index.mjs all --check   # the translation index matches its JSON
 git add locales/<locale> index && git commit   # translate.mjs updates index/ with each pass
-node scripts/no-deletions.mjs    # nothing removed under locales/
-git push
+node scripts/no-deletions.mjs --base=origin/main --head=HEAD   # nothing removed under locales/
+git push -u origin <branch> && gh pr create
 ```
 
-Pushing to `main` is what publishes (`publish.yml` there). Never `git add -A` in `../i18n`
-while a run is still writing there. A locale's first content arrives in the same commit that
-adds the locale to `locales.json` `targets`.
+A push to `main` is what publishes (`publish.yml` there), so merging the pull request
+publishes. Never `git add -A` in `../i18n` while a run is still writing there. A locale's
+first content arrives in the same pull request that adds the locale to `locales.json`
+`targets`.
+
+The orchestrator merges `i18n` pull requests once their checks are green. iHiD merges the
+`exercism/website` pull request that serves a locale, because merging it puts the language in
+front of users.
