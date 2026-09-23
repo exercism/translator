@@ -1,5 +1,33 @@
 # Hungarian (hu) glossary notes
 
+## 2026-09-23: Every case suffix on „Exercism” follows a hyphen, with ö-harmony (no glossary row)
+
+**Decided by dem4ron (native speaker), on forum topic 85372
+(https://forum.exercism.org/t/85372/3, post 193250).** This extends the accusative-only entry
+below, from earlier today, to every case suffix. dem4ron's reason: A magyar helyesírás
+szabályai puts a hyphen before a suffix when a word keeps its foreign spelling and its
+written ending does not match how it is pronounced (Chicago-ban, New York-i). „Exercism” is
+pronounced roughly „ekszörszizöm”, so its ending does not match the spelling, and the
+dominant final vowel is „ö”. dem4ron gave „Exercism-öt” and „Exercism-ön”.
+
+- The other forms were derived by an agent with the same harmony (a front rounded final
+  vowel), and dem4ron did not list them: _Exercism-höz_ (the three-way -hoz/-hez/-höz
+  suffix takes -höz, as the three-way accusative and superessive take -öt and -ön),
+  _Exercism-mel_ (-vel assimilated to the final m), _Exercism-nek_, _Exercism-nél_,
+  _Exercism-ben_, _Exercism-be_, _Exercism-ből_, _Exercism-re_, _Exercism-ről_,
+  _Exercism-től_ and _Exercism-ért_. _Exercism-höz_ replaces the earlier _Exercismhez_, and
+  _Exercism-ön_ replaces _Exercismen_.
+- The guide's bullet on the name „Exercism” now states the rule for every case suffix.
+- Every existing directly suffixed form in `i18n`'s `locales/hu/` was rewritten by a script
+  (744 occurrences in 263 files: the two website catalogs, 85 metadata catalogs and 176
+  content files). Code spans, code blocks, URLs, link targets and placeholders were left
+  alone, and none of them held such a form. Two lowercase forms in a CLI walkthrough
+  („az exercismhez”, „az exercismben”, meaning the `exercism` program) became
+  _exercism-höz_ and _exercism-ben_.
+- The derivational adjective _Exercismes_ (two blog interview files) was left as it is,
+  since the decision covers case suffixes and the vowel of -os/-es/-ös after this name is
+  not settled.
+
 ## 2026-09-23: „Exercism” takes its case suffix after a hyphen (no glossary row)
 
 **Decided by dem4ron (native speaker), on forum topic 85372

@@ -148,10 +148,13 @@ sentence is mis-paced; move the real focus in front of the verb.
     egy csukó zárójelet (`()`).”
 - **Rhetorical asides** ("So what do these conditions look like?") → keep them as natural
   Hungarian rhetorical questions: „Na de hogy néznek ki ezek a feltételek?”
-- **The name „Exercism”:** it takes „az” („az Exercism”). Attach a case suffix to it with a
-  hyphen and keep the name whole: the accusative is „az Exercism-öt” („Az Exercism-öt
-  használók…”). Product names that stay English (Insiders, representer) follow the suffix
-  rules under Grammar.
+- **The name „Exercism”:** it takes „az” („az Exercism”). Keep the name whole and attach
+  every case suffix after a hyphen. Choose the suffix vowel as if the name ended in „ö”
+  (it is pronounced „ekszörszizöm”): „az Exercism-öt”, „az Exercism-ön”, „az
+  Exercism-höz”, „az Exercism-mel”, and the front forms of the rest („az Exercism-nek”,
+  „az Exercism-ben”, „az Exercism-ről”). Never write „Exercismet”, „Exercismen” or any
+  other form without the hyphen. Product names that stay English (Insiders, representer)
+  follow the suffix rules under Grammar.
 - **Calques to avoid:** "worked hard" is not „Keményen dolgoztunk”; use „Sokat dolgoztunk”
   or „Rengeteg munkát fektettünk bele”.
 - **Headlines:** „Elindult az új szerkesztő” or „Bemutatkozik az új szerkesztő”, not the

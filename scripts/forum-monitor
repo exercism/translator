@@ -185,6 +185,14 @@ CATEGORIES="$(printf '%s' "$site" | jq -c --arg s "$PARENT_SLUG" '
   (.categories // []) as $all
   | ([$all[] | select(.slug == $s and (.parent_category_id == null)) | .id] | first) as $parent
   | if $parent == null then [] else [$parent] + [$all[] | select(.parent_category_id == $parent) | .id] end' 2>/dev/null || echo '[]')"
+# An unreadable site.json (an outage, a DNS failure) leaves CATEGORIES empty. Polling on
+# would drop every post and still advance the watermark, so the poll stops here and the
+# next one covers the same posts. `set -e` does not help: the loop calls poll_once in a
+# `|| true` context, which switches it off.
+if [ -z "$CATEGORIES" ]; then
+  echo "note: could not read $FORUM_BASE/site.json; skipping this poll so no post is lost" >&2
+  return 1
+fi
 if [ "$CATEGORIES" = "[]" ]; then
   echo "note: no '$PARENT_SLUG' category on $FORUM_BASE (or site.json unreadable): nothing is kept this poll" >&2
 fi
@@ -274,7 +282,7 @@ NEW_LINES="$(jq -s -c \
       url:          ($base + "/t/" + ((.topic_id // 0)|tostring) + "/" + ((.post_number // 1)|tostring)),
       excerpt:      ((.excerpt // .cooked // "") | gsub("<[^>]*>"; "") | gsub("\\s+"; " ") | .[0:400]),
       seen_at:      $at
-    }' "$PAGES")"
+    }' "$PAGES")" || return 1
 
 COUNT=0
 if [ -n "$NEW_LINES" ]; then
