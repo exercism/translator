@@ -23,7 +23,7 @@
 # label is removed and later added again is reported again.
 #
 # Usage:
-#   ./scripts/needs-attention-monitor          # poll every 5 minutes, until stopped
+#   ./scripts/needs-attention-monitor          # poll every 30 seconds, until stopped
 #   ./scripts/needs-attention-monitor --once   # one poll: print every labelled issue
 #
 # Output, one line per issue:
@@ -41,7 +41,7 @@ REPO="$(jq -r .github.i18n_repo "$ROOT/config.json")"
 LABEL="$(jq -r .github.issue_label "$ROOT/config.json")"
 ATTENTION="$(jq -r .github.attention_label "$ROOT/config.json")"
 AUTHORS="$(jq -c .github.issue_authors "$ROOT/config.json")"
-INTERVAL=300
+INTERVAL=30
 
 reported=" "
 

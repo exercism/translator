@@ -76,7 +76,7 @@ Keep both running for the whole session.
   categories to `state/forum-todo.jsonl`, with its watermark in `state/forum-seen.json`.
   forum.exercism.org is Exercism's whole community forum, so posts outside the parent i18n
   category and its language subcategories are dropped.
-- `scripts/needs-attention-monitor` polls `exercism/i18n` every five minutes for open
+- `scripts/needs-attention-monitor` polls `exercism/i18n` every 30 seconds for open
   translation issues labelled `needs-attention`, and prints
   `needs-attention #<n> <url>` the first time it sees each one. It keeps no state file, so a
   new session hears about every labelled issue once. Start it under a persistent `Monitor`

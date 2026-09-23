@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./scripts/heart-post)",
+      "Bash(./scripts/heart-post *)",
+      "Bash(./scripts/forum-monitor)",
+      "Bash(./scripts/forum-monitor *)",
+      "Bash(./scripts/needs-attention-monitor)",
+      "Bash(./scripts/needs-attention-monitor *)",
+      "Bash(./scripts/oldest-unhearted)",
+      "Bash(./scripts/oldest-unhearted *)",
+      "Bash(./scripts/oldest-not-done)",
+      "Bash(./scripts/oldest-not-done *)",
+      "Bash(./scripts/fetch-forum-topics)",
+      "Bash(./scripts/fetch-forum-topics *)",
+      "Bash(./scripts/reply-to-thread *)",
+      "Bash(./scripts/post-glossary-reply *)"
+    ]
+  }
+}
