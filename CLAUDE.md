@@ -38,8 +38,8 @@ Four things about it shape how a pass works:
   pass. Nothing in this repo writes a stamp, and stamps are never written by hand.
 - English is not stored in `i18n`. It is read from a source checkout as git objects at a
   ref, never from a working tree.
-- Translation work reaches `i18n` as a direct commit to `main`. A pass writes files and
-  stops, and the orchestrator commits.
+- Translation work reaches `i18n` through a pull request into `main`, opened and merged by
+  the orchestrator once its checks are green. A pass writes files and stops; it never runs git.
 - After each pass over a source repo, `scripts/translate.mjs` updates that repo's entry in
   `i18n`'s translation index (`index/json/<locale>/<repo>.json`, the blob ids held per source
   path, newest first, at most six) and regenerates its Markdown, using `i18n`'s

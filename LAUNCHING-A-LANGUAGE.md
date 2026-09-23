@@ -8,9 +8,9 @@ Hungarian was the first language through it, and went live on 2026-09-23.
 The short version: translate everything, push it to `../i18n`, open the website pull request.
 Glossary agreement and native-speaker review happen afterwards, not before.
 
-The process ends with two things outstanding for iHiD: a push to `../i18n` `main`, which
-publishes the translations, and a pull request on `exercism/website`, which he merges when he
-wants the locale live. Nothing else in the chain is manual.
+The translations land on `../i18n` `main` through pull requests you open and merge yourself.
+The one thing left for iHiD is the pull request on `exercism/website`, which he merges when he
+wants the locale live.
 
 ## 1. Do not re-research the language
 
@@ -64,12 +64,17 @@ retries failures and reports what is still absent. Re-running a command picks th
 
 Run `/translation-status <locale>` to see what remains.
 
-## 4. Commit and push `../i18n`
+## 4. Land the translations in `../i18n` through a pull request
 
 `../i18n` is shared with live sessions, so never run a state-changing git command in that
 checkout. Add a worktree and do all git there.
 
-Before pushing, from the worktree:
+Work on a branch named for the locale, such as `add-greek`, and open a pull request against
+`main`. Do not leave it open waiting for iHiD: merge it yourself once the catalog is complete
+and its checks are green. A pull request rather than a direct push, because pushing `main`
+publishes, and because the repo's own CI is what proves the content is sound before it does.
+
+Before opening it, from the worktree:
 
 ```
 node scripts/validate.mjs <locale> --content-repos=<the checkouts that were translated>
@@ -78,7 +83,8 @@ node scripts/no-deletions.mjs --base=origin/main --head=HEAD
 ```
 
 Commit `locales/` and `index/` together, because CI fails if the index does not match the
-content. Pushing `main` publishes.
+content. A long pass can land in several pull requests as it goes rather than one at the end,
+which keeps each one reviewable and each merge small.
 
 ## 5. Turn on the gate
 
