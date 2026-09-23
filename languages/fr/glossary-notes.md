@@ -1,5 +1,25 @@
 # French (fr) glossary notes
 
+## 2026-09-23: Exercism product vocabulary proposed (agent; nothing in this entry is a native speaker's decision)
+
+iHiD asked for French to be translated in one full pass, so the empty "Exercism product
+vocabulary" block of the glossary was filled with proposals, following Hungarian's example. The
+proposals rest on the agent's knowledge of established French e-learning and software
+vocabulary. No external source was checked for this entry and no native speaker has confirmed
+any row. Every row stays under `PROPOSED, NOT YET AGREED` until a native speaker settles it on
+the forum.
+
+Choices worth a native speaker's attention:
+
+- _parcours_ for track, which forces _ton voyage_ for the journey page. _Cursus_ is the
+  alternative for track, and would free _parcours_ for the journey.
+- _apprenant_ for student, chosen because _élève_ and _étudiant_ imply school or university.
+- _mentor_ and _mentorat_ kept as loanwords in the everyday sense, with _mentorer_ as the verb.
+- _mainteneur_ for maintainer and _analyseur_ for analyzer, both standard in French
+  open-source writing.
+- _exécuteur de tests_ for test runner. _Lanceur de tests_ is the alternative.
+- _representer_ kept in English, as in Hungarian, because it is a coined word.
+
 ## 2026-09-20: Adapted for Exercism (agent; nothing in this entry is a native speaker's decision)
 
 This glossary was forked from Jiki's French glossary when Exercism's translator repo was
