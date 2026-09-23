@@ -1,5 +1,21 @@
 # Hungarian (hu) glossary notes
 
+## 2026-09-23: The adjective from „Exercism” is „Exercism-ös” (no glossary row)
+
+**Decided by dem4ron (native speaker), on forum topic 85372
+(https://forum.exercism.org/t/85372/5), in post 5.** We asked whether the derivational
+adjective should be „Exercism-es” or „Exercism-ös”. dem4ron answered: „Yes, that's right.
+Let's use “Exercism-ös””. The adjective takes a hyphen and ö-harmony, like the case
+suffixes in the entry below.
+
+- The same „Yes, that's right” confirms the lowercase CLI program name in running text,
+  hyphenated like the brand name („az exercism-höz”, „az exercism-ben”), and the derived
+  case-suffix forms listed in post 4 (see the entry below).
+- The guide's bullet on the name „Exercism” now names the adjective „Exercism-ös”.
+- The two occurrences of _Exercismes_ in `i18n`'s `locales/hu/` (the two blog interview
+  files the entry below left alone) now read _Exercism-ös_. No other hu file held an
+  adjective form of the name.
+
 ## 2026-09-23: Every case suffix on „Exercism” follows a hyphen, with ö-harmony (no glossary row)
 
 **Decided by dem4ron (native speaker), on forum topic 85372
