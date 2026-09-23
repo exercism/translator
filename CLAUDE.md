@@ -250,11 +250,17 @@ Hungarian went live on exercism.org on 2026-09-23, in website #9553. It was tran
 across all content as one full pass, and that pass also served as the tuning loop that Jiki's
 staged rollout provided, so there is no language-stage machinery.
 Every language folder was copied from Jiki and then stripped of everything Jiki-specific,
-keeping every decision about the language itself. Hungarian's Exercism product terms are
-proposed and waiting for a native speaker. Every other language's `PROPOSED, NOT YET AGREED`
-block stays empty until that language is bootstrapped for Exercism.
+keeping every decision about the language itself, so each one already holds a guide, a glossary
+of a couple of hundred agreed rows and a decision log. That research is done and is not
+repeated. The one gap is the `PROPOSED, NOT YET AGREED` block of Exercism's own product nouns,
+and a language is no longer held back until those are agreed: we translate, and native speakers
+correct the terms afterwards on the forum.
 
-Taking a locale live takes two changes in two repos, in this order:
+**How to get a new language live: `LAUNCHING-A-LANGUAGE.md`.** That file is the one
+authoritative list of the steps, from which passes to run in which order through to the pull
+request that serves the locale. Anything else describing the process is wrong and should be
+corrected against it. In short, taking a locale live takes two changes in two repos, in this
+order:
 
 1. `exercism/i18n` `locales.json`: the locale joins `targets` when its content starts landing,
    and `productionTargets` once every source is translated, which turns on the checker and
