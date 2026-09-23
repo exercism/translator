@@ -231,7 +231,7 @@ or reword a row that a native speaker decided.
 
 ## Where translation work comes from
 
-Both paths end with a pull request into `../i18n`'s `main`.
+Both paths end with a pull request into `../i18n`'s `main`, which you merge once it is green.
 
 ### 1. A full pass, because Jeremy asked for one
 
