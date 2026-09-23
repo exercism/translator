@@ -55,8 +55,9 @@ orchestrator session runs.
 You have three jobs. Whatever else happens in the session, keep coming back to them:
 
 1. Work the forum queue, and supervise the automated translation-issue queue.
-2. Manage git.
-3. Communicate with Jeremy.
+2. Work the sweep issue, which is what catches English that merged without a translation.
+3. Manage git.
+4. Communicate with Jeremy.
 
 ## Checking posts
 
@@ -306,6 +307,38 @@ person has to deal with labels the issue `needs-attention` instead, and the swee
   files. If something has to be run by hand, tell Jeremy first.
 - While `productionTargets` is empty, both paths report that there is nothing to do and the
   issue stays open. That is expected before the first language goes live.
+
+### 3. The sweep found English that merged untranslated
+
+The per-PR `i18n / completeness` check is a point-in-time gate, so it cannot stay true until
+merge. A PR goes green, a locale joins `productionTargets`, the PR merges, and nothing notices.
+A locale in `targets` but not `productionTargets` is never translated by the queue at all. An
+admin merge skips the check entirely.
+
+`exercism/i18n`'s `.github/workflows/sweep.yml` answers the question that survives all of that:
+it measures every source repo's `main` in full, daily, and writes ONE issue labelled `sweep`,
+rewritten in place every run. It never opens per-repo issues and never queues anything, so
+nothing happens to what it finds unless you act on it.
+
+Near the start of every session, read that issue:
+
+```
+gh issue list --repo exercism/i18n --label sweep --state open
+```
+
+- **Do not close it.** It is rewritten rather than replaced, and an open issue with a recent
+  date is how anyone can see the sweep is still running. A date more than a couple of days old
+  means the sweep itself has stopped, which is worth telling Jeremy about.
+- **Read the split.** "Part translated" is a locale that already serves that repo, so a gap
+  there is text a user can reach today. That is the real work. "Not started" is backlog for a
+  repo the locale was never run over, which is a decision about scope rather than a regression.
+- **A handful of items in an otherwise complete active track is drift**, and it is the case
+  this exists to catch. Translate it with the command the row prints, then open the pull
+  request into `../i18n` as usual.
+- **A large count in an inactive track is not urgent.** Inactive tracks are deliberately out of
+  scope: they are not gated, and `validate.mjs` does not require them.
+- Say what you actioned in your next message to Jeremy, with the numbers before and after, so
+  the backlog's direction is visible rather than just its size.
 
 ## Forum conduct
 
