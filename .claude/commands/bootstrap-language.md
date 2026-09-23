@@ -1,5 +1,5 @@
 ---
-description: Research a new language and draft its guide + glossary. Researches and discusses before writing anything.
+description: Set a language up for translation. Reuses an existing folder if there is one, and only researches a language that has none.
 argument-hint: <lang>
 arguments: lang
 allowed-tools: Read, Write, Edit, Glob, Bash, WebSearch, WebFetch
@@ -11,11 +11,26 @@ effort: high
 worktree operation, in any repo. Write your files, leave them uncommitted, and list them in
 your report. See "Git belongs to the orchestrator" in `global/workflow.md`.
 
-Bootstrap a brand-new language: research how the language is really written, agree the
-decisions only the project owner can make, then draft `languages/<lang>/guide.md` and
-`languages/<lang>/glossary.md` using Hungarian as the structural basis.
+Set a language up for translation.
 
-**Hard rule: research and discuss BEFORE writing.** This command runs in phases. You do
+**First, look at `languages/<lang>/`, because most languages already have one.** The folders
+were carried over from Jiki and stripped of everything Jiki-specific, keeping every decision
+about the language itself, so a folder typically holds a guide, a glossary of a couple of
+hundred agreed rows, and a decision log explaining each choice. That work stands. Do not
+research a language that already has it, do not redraft its guide, and do not treat an empty
+`PROPOSED, NOT YET AGREED` block as meaning the language is unset-up: that block is Exercism's
+own product nouns, and nothing else in the file depends on it.
+
+For a language that already has a folder, this command has one job: open the forum discussion
+for the Exercism product nouns and record what native speakers decide. Translating does not
+wait for that, and `LAUNCHING-A-LANGUAGE.md` is the authoritative list of what does.
+
+For a genuinely new language, with no folder at all, research how the language is really
+written, agree the decisions only the project owner can make, then draft
+`languages/<lang>/guide.md` and `languages/<lang>/glossary.md` using Hungarian as the
+structural basis.
+
+**Hard rule for that case: research and discuss BEFORE writing.** It runs in phases. You do
 the research, then you STOP and discuss findings and open questions with the owner. You
 write no files until the owner has answered. Do not shortcut to drafting.
 
