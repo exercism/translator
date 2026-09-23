@@ -23,7 +23,7 @@ import { repairCode } from "./lib/repair.mjs";
 import { fileTail, fixedPrefix } from "./lib/prompt.mjs";
 import { unfence } from "./lib/deepseek.mjs";
 import { parseIssue } from "./lib/issues.mjs";
-import { OUTCOMES, attentionLabel, commitMessage, overCapLabel, issueNumber, issueOutcome, itemsWritten, perLocaleCounts, transientFailure, untranslatedWords } from "./lib/issue-pass.mjs";
+import { OUTCOMES, attentionLabel, commitMessage, overCapLabel, issueNumber, issueOutcome, itemsWritten, pendingWrites, perLocaleCounts, transientFailure, untranslatedWords } from "./lib/issue-pass.mjs";
 
 let passed = 0;
 async function test(name, body) {
@@ -352,6 +352,22 @@ await test("a summary is read for words, per-locale counts and the item total", 
   assert.deepEqual(perLocaleCounts(summary), { hu: { written: 5, copied: 1, failed: 1 } });
   assert.equal(itemsWritten(summary), 6);
   assert.equal(untranslatedWords({}), 0);
+});
+
+await test("a dry run with copies to make and no words to translate is not nothing to do", () => {
+  // What exercism/bash#891 hit: the two changed metadata units were byte for
+  // byte the English another catalog already held, so they were copies, costing
+  // no words. Stopping there left the locale without them.
+  const copiesOnly = { estimates: {}, counts: { hu: { "metadata/bash": { written: 0, copied: 2, failed: 0 } } } };
+  assert.equal(untranslatedWords(copiesOnly), 0);
+  assert.equal(pendingWrites(copiesOnly), 2);
+
+  const both = { estimates: { hu: { "track-docs": { items: 3, words: 400 } } }, counts: { hu: { "metadata/bash": { copied: 2 } } } };
+  assert.equal(pendingWrites(both), 5);
+
+  // Nothing to translate and nothing to copy really is nothing to do.
+  assert.equal(pendingWrites({ estimates: {}, counts: { hu: { "metadata/bash": { written: 0, copied: 0, failed: 0 } } } }), 0);
+  assert.equal(pendingWrites({}), 0);
 });
 
 // ----------------------------------------------------------------- fixture ---

@@ -71,7 +71,7 @@ import { spawnSync } from "node:child_process";
 import { Failure, ROOT, config, parseArgs } from "./lib/config.mjs";
 import { i18n } from "./lib/i18n.mjs";
 import { SOURCES } from "./lib/routes.mjs";
-import { attentionLabel, commitMessage, overCapLabel, issueNumber, issueOutcome, issueScope, issueStillOpen, issueUrl, itemsWritten, perLocaleCounts, readIssue, translateForIssue, untranslatedWords } from "./lib/issue-pass.mjs";
+import { attentionLabel, commitMessage, overCapLabel, issueNumber, issueOutcome, issueScope, issueStillOpen, issueUrl, itemsWritten, pendingWrites, perLocaleCounts, readIssue, translateForIssue, untranslatedWords } from "./lib/issue-pass.mjs";
 
 const { positional } = parseArgs(process.argv.slice(2));
 const number = issueNumber(positional[0]);
@@ -234,10 +234,14 @@ async function main() {
   const dry = translate(["--dry-run"]);
   if (!dry.summary) throw new Failure(`the dry run failed:\n${dry.stdout}`);
   const words = untranslatedWords(dry.summary);
+  const pending = pendingWrites(dry.summary);
   const cap = config().issue_word_cap;
-  console.log(`scope: ${scope.paths.length} changed file(s), ${scope.units.length} changed catalog unit(s); ${words} untranslated word(s) per locale at most; cap ${cap}; locales ${locales.join(", ")}`);
+  console.log(`scope: ${scope.paths.length} changed file(s), ${scope.units.length} changed catalog unit(s); ${pending} item(s) to write; ${words} untranslated word(s) per locale at most; cap ${cap}; locales ${locales.join(", ")}`);
 
-  if (words === 0) finish("nothing-to-do", `${locales.join(", ")} already hold every item this PR changed.`);
+  // The cap is about model work, so it is asked of words. Whether there is
+  // anything to do is asked of writes, because a copy of identical English is a
+  // write that costs no words.
+  if (words === 0 && pending === 0) finish("nothing-to-do", `${locales.join(", ")} already hold every item this PR changed.`);
   if (words > cap) finish("over-cap", `${words} untranslated word(s) per locale, against a cap of ${cap}. Run \`node scripts/work-issue.mjs ${number} --approved-over-cap\` to let it through.`);
 
   const real = translate([]);

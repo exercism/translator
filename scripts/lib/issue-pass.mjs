@@ -110,6 +110,22 @@ export function untranslatedWords(summary) {
   return Math.max(0, ...Object.values(summary?.estimates ?? {}).map((types) => Object.values(types).reduce((sum, row) => sum + row.words, 0)));
 }
 
+/**
+ * Items a dry run says the real pass would still write, across every locale.
+ *
+ * A unit whose English another catalog already holds is copied rather than sent
+ * to the model, so it has no estimate and costs nothing. It is still a write,
+ * and a run that stops because it has no words to translate leaves that copy
+ * unmade: the locale keeps the gap the copy was going to fill. So "is there
+ * nothing to do" is asked of writes, and the cap is asked of words.
+ */
+export function pendingWrites(summary) {
+  const rows = (map) => Object.values(map ?? {}).flatMap((types) => Object.values(types));
+  const units = rows(summary?.estimates).reduce((sum, row) => sum + (row.items ?? 0), 0);
+  const copies = rows(summary?.counts).reduce((sum, row) => sum + (row.copied ?? 0), 0);
+  return units + copies;
+}
+
 /** Items a run wrote or copied, per locale. Pure. */
 export function perLocaleCounts(summary) {
   const counts = {};
