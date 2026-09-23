@@ -220,10 +220,16 @@ if [ -z "$LAST" ]; then
   return 0
 fi
 
-# Walk backwards until the page we are holding reaches down past the watermark.
-# `before=<id>` asks for the page of posts immediately older than <id>, so the
-# oldest id on the page we just read is the cursor for the next one. Pages
-# accumulate as one JSON array per line, slurped back together below.
+# Walk backwards until the cursor reaches the watermark. `before=<id>` returns the
+# window of 50 post rows with id <= <id> (inclusive), and Discourse drops the ones the
+# caller cannot see (private messages, whispers, small actions) AFTER taking the
+# window, so a page can come back with fewer than 50 posts, one post, or none.
+# Using the oldest visible id as the next cursor therefore stalls forever when a page
+# holds only the cursor's own post, and treating an empty page as the start of the
+# forum drops everything older. Instead the cursor always moves down by a whole window:
+# ids are contiguous, so 50 below the cursor is the first row the last window did not
+# cover, and the overlap that gaps in the ids can cause is removed by unique_by below.
+# Pages accumulate as one JSON array per line, slurped back together below.
 : >"$PAGES"
 
 # A poll that needs more than this has almost certainly hit something other than
@@ -232,26 +238,31 @@ fi
 # rather than grinding on; the watermark is untouched, so nothing is lost.
 MAX_PAGES=200
 pages=0
+cursor="$NEWEST"
 
 while :; do
-  printf '%s' "$body" | jq -c '[.latest_posts[]?]' >>"$PAGES"
+  printf '%s' "$body" | jq -c '[.latest_posts[]?]' >>"$PAGES" || die "could not write $PAGES (disk full?)"
   pages=$((pages + 1))
 
   OLDEST="$(printf '%s' "$body" | jq -r '[.latest_posts[]?.id] | min // empty')"
-  # An empty page means we have reached the start of the forum, and an oldest id
-  # at or below the watermark means we have covered everything new.
-  if [ -z "$OLDEST" ] || [ "$OLDEST" -le "$LAST" ]; then
+  next=$((cursor - 50))
+  if [ -n "$OLDEST" ] && [ $((OLDEST - 1)) -lt "$next" ]; then
+    next=$((OLDEST - 1))
+  fi
+  cursor="$next"
+  # Everything at or below the watermark has been recorded already.
+  if [ "$cursor" -le "$LAST" ]; then
     break
   fi
 
   if [ "$pages" -ge "$MAX_PAGES" ]; then
-    die "polling $FORUM_BASE: still $((OLDEST - LAST)) or so posts short of the watermark ($LAST) after $pages pages. Watermark left at $LAST; check state/forum-seen.json is sane before re-running."
+    die "polling $FORUM_BASE: still $((cursor - LAST)) or so posts short of the watermark ($LAST) after $pages pages. Watermark left at $LAST; check state/forum-seen.json is sane before re-running."
   fi
 
   # Be a good citizen: this only ever loops when catching up, and a burst of
   # back-to-back pages is exactly what trips the rate limiter.
   sleep 1
-  body="$(fetch_page "$FORUM_BASE/posts.json?before=$OLDEST")" || return 1
+  body="$(fetch_page "$FORUM_BASE/posts.json?before=$cursor")" || return 1
 done
 
 if [ "$pages" -gt 1 ]; then
