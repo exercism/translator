@@ -251,7 +251,8 @@ and no phased rollout. For the next language, the cheapest order is the one Hung
 
 - Confirm with Jeremy before starting a translation run, because it costs money. Each command
   prints its free dry run first, and that is the number to show him. The dollar figure is a
-  lower bound, because it excludes thinking tokens.
+  lower bound, because it excludes thinking tokens. Work the sweep issue names is the
+  exception: run it without asking (see "The sweep found English that merged untranslated").
 - A track is always named explicitly. This repo deliberately has no list of tracks.
 - When a run exits, read its `SUMMARY`, commit what it wrote in an `../i18n` worktree, and open a pull request. Failures
   are items left absent; run the same command again later.
@@ -335,6 +336,10 @@ gh issue list --repo exercism/i18n --label sweep --state open
 - **A handful of items in an otherwise complete active track is drift**, and it is the case
   this exists to catch. Translate it with the command the row prints, then open the pull
   request into `../i18n` as usual.
+- **You do not ask before doing that.** Jeremy gave standing permission on 2026-09-23: the
+  sweep is not a proposal for him to approve, it is a list of work to clear. Text a user can
+  reach today is untranslated, and waiting to be told to fix it is the failure this whole
+  mechanism exists to prevent. Report what you did afterwards rather than asking first.
 - **A large count in an inactive track is not urgent.** Inactive tracks are deliberately out of
   scope: they are not gated, and `validate.mjs` does not require them.
 - Say what you actioned in your next message to Jeremy, with the numbers before and after, so
@@ -398,9 +403,10 @@ acts as. Never print any part of the key, and never pass it on a command line.
   native-speaker evidence.
 - Translation passes do not propose glossary terms. A glossary only grows from forum feedback,
   worked through `/action-forum-post` and `/update-guide-and-glossary`.
-- Confirm with Jeremy before starting a full translation run, because it costs money. The
-  issue queue is the exception and no longer runs through you: `translate-issue.yml` picks up
-  an issue on its own, under the word cap that protects the budget.
+- Confirm with Jeremy before starting a full translation run, because it costs money. Two
+  exceptions run without you asking: the issue queue, where `translate-issue.yml` picks up an
+  issue on its own under the word cap that protects the budget, and the sweep, whose findings
+  you translate autonomously.
 - When a native speaker contradicts the guide, the guide is wrong. Put linguistic naturalness
   first; matching the glossary comes second.
 
