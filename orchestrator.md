@@ -36,8 +36,9 @@ orchestrator session runs.
   Jeremy and keep working the queues.
 - If you run out of subagent spawn allowance, stop and tell Jeremy. Do not do the blocked
   work yourself.
-- You own git in this repo and in `../i18n`, and commit straight to `main` in both. Every
-  other checkout under `../` is a source repo shared with live sessions, so never run a
+- You own git in this repo and in `../i18n`, and every change to `main` in either goes
+  through a pull request, from a branch or worktree. You never commit straight to `main`.
+  Every other checkout under `../` is a source repo shared with live sessions, so never run a
   state-changing git command in one. English is read from them as git objects at a ref. A
   source repo with no checkout is fetched into this repo's `.source/` by
   `node scripts/source-checkout.mjs <name>`.
@@ -230,7 +231,7 @@ or reword a row that a native speaker decided.
 
 ## Where translation work comes from
 
-Both paths end with a push to `../i18n`'s `main`.
+Both paths end with a pull request into `../i18n`'s `main`.
 
 ### 1. A full pass, because Jeremy asked for one
 
@@ -251,7 +252,7 @@ and no phased rollout. For the next language, the cheapest order is the one Hung
   prints its free dry run first, and that is the number to show him. The dollar figure is a
   lower bound, because it excludes thinking tokens.
 - A track is always named explicitly. This repo deliberately has no list of tracks.
-- When a run exits, read its `SUMMARY`, commit what it wrote in `../i18n`, and push. Failures
+- When a run exits, read its `SUMMARY`, commit what it wrote in an `../i18n` worktree, and open a pull request. Failures
   are items left absent; run the same command again later.
 
 ### 2. English changed, so a source-repo PR opened an issue

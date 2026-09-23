@@ -13,8 +13,8 @@ The repos sit side by side under `exercism/` (`../i18n`, `../website`, `../ruby`
 `../problem-specifications`, `../docs`, `../blog`). A source repo with no sibling checkout is
 fetched into this repo's gitignored `.source/` by `node scripts/source-checkout.mjs <name>`.
 
-Work reaches `i18n` as a direct commit to `main`. A pass writes files and stops, and the
-orchestrator commits. See "Git belongs to the orchestrator" in `global/workflow.md`.
+Work reaches `i18n` through a pull request into `main`. A pass writes files and stops, and the
+orchestrator commits and opens the pull request. See "Git belongs to the orchestrator" in `global/workflow.md`.
 
 ## How a translation pass works
 
