@@ -50,7 +50,7 @@
 
 import { Failure, config, die, parseArgs } from "./lib/config.mjs";
 import { i18n } from "./lib/i18n.mjs";
-import { issueNumber, issueScope, issueUrl, readIssue, translateForIssue, untranslatedWords } from "./lib/issue-pass.mjs";
+import { issueNumber, issueScope, issueUrl, pendingWrites, readIssue, translateForIssue, untranslatedWords } from "./lib/issue-pass.mjs";
 
 const { flags, positional } = parseArgs(process.argv.slice(2));
 const number = issueNumber(positional[0]);
@@ -88,10 +88,13 @@ const translate = (extra) => translateForIssue({ issue, locales, repo: scope.rep
 const dry = translate(["--dry-run"]);
 if (!dry.summary) die(`the dry run failed:\n${dry.stdout}`);
 const words = untranslatedWords(dry.summary);
+const pending = pendingWrites(dry.summary);
 const cap = config().issue_word_cap;
-console.log(`scope: ${scope.paths.length} changed file(s), ${scope.units.length} changed catalog unit(s); ${words} untranslated word(s) per locale at most; cap ${cap}; locales ${locales.join(", ")}`);
+console.log(`scope: ${scope.paths.length} changed file(s), ${scope.units.length} changed catalog unit(s); ${pending} item(s) to write; ${words} untranslated word(s) per locale at most; cap ${cap}; locales ${locales.join(", ")}`);
 
-if (words === 0) {
+// A copy of identical English is a write that costs no words, so whether there
+// is anything to do is asked of writes and the cap is asked of words.
+if (words === 0 && pending === 0) {
   console.log("NOTHING TO DO: every locale in scope already holds all of it. Close the issue.");
   process.exit(0);
 }
