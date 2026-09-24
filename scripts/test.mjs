@@ -23,7 +23,7 @@ import { repairCode } from "./lib/repair.mjs";
 import { fileTail, fixedPrefix } from "./lib/prompt.mjs";
 import { unfence } from "./lib/deepseek.mjs";
 import { parseIssue } from "./lib/issues.mjs";
-import { OUTCOMES, attentionLabel, commitMessage, overCapLabel, issueNumber, issueOutcome, itemsWritten, pendingWrites, perLocaleCounts, transientFailure, untranslatedWords } from "./lib/issue-pass.mjs";
+import { OUTCOMES, attentionLabel, commitMessage, overCapLabel, issueNumber, issueOutcome, itemsWritten, pendingWrites, perLocaleCounts, transientFailure, untranslatedWords, validateArgs } from "./lib/issue-pass.mjs";
 
 let passed = 0;
 async function test(name, body) {
@@ -561,6 +561,21 @@ await test("a catalog unit the checker rejects is left ABSENT and reported with 
   assert.deepEqual(JSON.parse(fs.readFileSync(failure.rejected, "utf8")), { "nav.farewell": "HU Bye " });
   const backend = JSON.parse(fs.readFileSync(path.join(I18N_ROOT, "locales/hu/website/backend.json"), "utf8"));
   assert.equal(backend.nav.farewell, undefined);
+});
+
+await test("an issue from a track validates its metadata at the PR's commit and the website catalogs against a website checkout", () => {
+  const sha = sh("git", ["rev-parse", "HEAD"], { cwd: ruby }).out.trim();
+  const args = validateArgs({ issue: { source: "track", sha }, repo: ruby, website });
+  assert.deepEqual(args, [`--content-repos=${ruby}:track@${sha}`, `--source-repo=${website}`]);
+  const result = sh("node", [path.join(lib.dir, "scripts", "validate.mjs"), "hu", ...args], { env: ENV });
+  assert.equal(result.status, 0, result.out);
+  assert.ok(result.out.includes(`English: ${website} @`), result.out);
+  assert.match(result.out, /^\S+\s+hu\s+website-backend\s/m);
+  assert.match(result.out, /^\S+\s+hu\s+metadata\/ruby\s/m);
+  assert.doesNotMatch(result.out, /^unv\s+hu\s+metadata\/ruby\s/m);
+
+  // A website issue reads the website at the PR's own commit, so it needs no second checkout.
+  assert.deepEqual(validateArgs({ issue: { source: "website", sha }, repo: website, website: null }), [`--source-repo=${website}`, `--source-ref=${sha}`]);
 });
 
 await test("check-routes passes", () => {
