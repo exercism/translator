@@ -43,16 +43,24 @@
 #
 # Files it touches (all gitignored, all under state/):
 #   state/forum-todo.jsonl   append-only, one JSON object per newly-seen post
-#   state/forum-seen.json    watermark: the highest post id we have recorded
+#   state/forum-seen.json    watermark: the highest post id we have recorded.
+#                            Its mtime is refreshed on every successful poll
 #   state/forum-monitor.lock lock directory, held for the duration of a run
 #   state/forum-monitor.pages.<pid>  scratch for one poll's pages, removed on exit
 #
 # The TODO file is only ever appended to, so there is no read-modify-write to
-# lose. The watermark is rewritten every run, so it is written to a temp file
-# and mv'd into place: a half-written watermark would either re-report old posts
-# or, worse, skip new ones. For the same reason a poll that cannot finish its
-# backwards walk (rate limit, timeout) leaves the watermark alone and exits
-# non-zero: re-reporting a post next run is recoverable, skipping one is not.
+# lose. The watermark is rewritten on every poll that sees posts, so it is
+# written to a temp file and mv'd into place: a half-written watermark would
+# either re-report old posts or, worse, skip new ones. For the same reason a poll
+# that cannot finish its backwards walk (rate limit, timeout) leaves the
+# watermark alone and exits non-zero: re-reporting a post next run is
+# recoverable, skipping one is not.
+#
+# The watermark's mtime is the poller's heartbeat. Every successful poll
+# refreshes it: a poll that sees posts rewrites the file (even when nothing is
+# newer than the watermark), and a poll whose response holds no posts at all
+# touches it without changing its contents. A failed poll leaves the file
+# alone, so an old mtime means the poller has stopped or keeps failing.
 #
 # The first ever run has no watermark. It records the current newest post id and
 # appends nothing, because dumping the forum's entire recent history into the
@@ -207,6 +215,11 @@ body="$(fetch_page "$FORUM_BASE/posts.json")" || return 1
 
 NEWEST="$(printf '%s' "$body" | jq -r '[.latest_posts[]?.id] | max // empty')"
 if [ -z "$NEWEST" ]; then
+  # A quiet forum is still a successful poll, so the watermark's mtime is
+  # refreshed without changing its contents. See header.
+  if [ -f "$SEEN" ]; then
+    touch "$SEEN"
+  fi
   echo "note: no posts in the response; nothing to do" >&2
   return 0
 fi

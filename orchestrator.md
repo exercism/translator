@@ -76,7 +76,9 @@ Keep both running for the whole session.
 
 - `scripts/forum-monitor` polls the forum every 30s and appends newly seen posts in the i18n
   categories to `state/forum-todo.jsonl`, with its watermark in `state/forum-seen.json`.
-  forum.exercism.org is Exercism's whole community forum, so posts outside the parent i18n
+  Every successful poll refreshes that file's modification time, including a poll that finds
+  nothing new, and a failed poll leaves it alone. An old modification time therefore means
+  the poller has stopped or keeps failing. forum.exercism.org is Exercism's whole community forum, so posts outside the parent i18n
   category and its language subcategories are dropped.
 - `scripts/needs-attention-monitor` polls `exercism/i18n` every 30 seconds for open
   translation issues labelled `needs-attention`, and prints
