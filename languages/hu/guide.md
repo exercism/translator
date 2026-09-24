@@ -38,6 +38,10 @@ structure, and style.
   A Latin loanword's harmony class follows how it is pronounced in Hungarian, not how it
   is spelled: _Boolean_ is **back**-harmony, so „Boolean-ok”, „Boolean-okat”, never
   „Boolean-ök” or „Boolean-öket”.
+- **Keep every inline code span, even a type name that has a Hungarian noun.** When the
+  English puts a type in a code span ("an `Array`"), the code span stays in the sentence and
+  the Hungarian noun goes around it: „`Array` típusú tömbbé alakíthatod”, never plain
+  „tömbbé alakíthatod”. Dropping the code span makes the file fail the check.
 - **Interpolated values take no suffix and no fixed article.** A UI string or an analyzer
   comment is given a value you cannot see (`%{track_title}`, `{{handle}}`, `%{name}`), and
   both the article and the suffix vowel depend on that word.
