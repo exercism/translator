@@ -52,7 +52,7 @@ import { spawnSync } from "node:child_process";
 import { ROOT, die, parseArgs } from "./lib/config.mjs";
 import { i18n } from "./lib/i18n.mjs";
 import { SOURCES } from "./lib/routes.mjs";
-import { checkMarkdown } from "./lib/checks.mjs";
+import { checkMarkdown, englishWarnings } from "./lib/checks.mjs";
 
 const { flags, positional } = parseArgs(process.argv.slice(2));
 const sourceId = positional[0];
@@ -132,6 +132,7 @@ if (flags.check) {
   const found = lib.checks.checkContentFile({ id: entry.id, extension: entry.extension, bytes }, english);
   const errors = found.filter((one) => one.level === lib.checks.ERROR).map((one) => one.message).concat(checkMarkdown(english.toString("utf8"), bytes.toString("utf8")));
   for (const warning of found.filter((one) => one.level === lib.checks.WARN)) console.log(`check:       WARN ${warning.message}`);
+  for (const message of englishWarnings(english.toString("utf8"))) console.log(`check:       WARN ${message}`);
   console.log(errors.length === 0 ? "check:       clean" : `check:       ${errors.length} problem(s):\n${errors.map((error) => `  ERROR ${error}`).join("\n")}`);
   process.exit(errors.length === 0 ? 0 : 1);
 }
