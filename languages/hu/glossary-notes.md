@@ -1,5 +1,18 @@
 # Hungarian (hu) glossary notes
 
+## 2026-09-24: A type name in a code span keeps the code span, with „tömb” around it (no glossary row)
+
+**Added by an agent after repeated checker rejections in exercism/i18n#25, not decided by a
+native speaker.** The automated translation of two Swift concept pages
+(`concepts/ranges/about.md` and `concepts/ranges/introduction.md`) turned "an `Array`" into
+plain „tömb” and dropped the inline code span, and `i18n`'s checker rejected both files. The
+same pattern will recur on other tracks wherever a type name has an ordinary Hungarian noun.
+A native speaker may correct the wording of the example.
+
+- The guide's Grammar section now says that an inline code span stays in the sentence, with
+  the Hungarian noun placed around it („`Array` típusú tömb”).
+- The hand-fixed `concepts/ranges/introduction.md` reads „`Array` típusú tömbbé”.
+
 ## 2026-09-24: A counted group of people is „és még 3-an”, confirmed second-hand (no glossary row)
 
 **Reported by BNAndras (native status not known), on forum topic 85570
