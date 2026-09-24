@@ -30,7 +30,10 @@
 //   translate  scripts/translate.mjs, for every locale in the i18n repo's
 //              productionTargets, pinned to the PR's sha and that scope
 //   check      the i18n repo's validate.mjs for each locale, then its
-//              no-deletions.mjs over the commit
+//              no-deletions.mjs over the commit. validate.mjs also checks
+//              the website catalogs, so a PR in any other repo first gets
+//              exercism/website main from the i18n repo's source-checkout.mjs
+//              when no website checkout is found
 //   push       commit locales/ and index/ (the translation index the pass
 //              updated) in ../i18n and push to main, rebasing and retrying a
 //              non-fast-forward, then close the issue with the counts
@@ -60,18 +63,18 @@
 //
 // This script is the exception to "git belongs to the orchestrator" (see
 // CLAUDE.md), because it is the automated path and no session is watching it.
-// It runs git in two places only: the i18n checkout, and this repo's gitignored
-// .source/ (through scripts/source-checkout.mjs). The push credential arrives as
-// an environment variable, is not written to any file this repo keeps, and is
-// removed from everything printed.
+// It runs git in two places only: the i18n checkout (including its gitignored
+// .source/website, through that repo's scripts/source-checkout.mjs), and this
+// repo's gitignored .source/ (through scripts/source-checkout.mjs). The push
+// credential arrives as an environment variable, is not written to any file
+// this repo keeps, and is removed from everything printed.
 
 import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { Failure, ROOT, config, parseArgs } from "./lib/config.mjs";
 import { i18n } from "./lib/i18n.mjs";
-import { SOURCES } from "./lib/routes.mjs";
-import { attentionLabel, commitMessage, overCapLabel, issueNumber, issueOutcome, issueScope, issueStillOpen, issueUrl, itemsWritten, pendingWrites, perLocaleCounts, readIssue, translateForIssue, untranslatedWords } from "./lib/issue-pass.mjs";
+import { attentionLabel, commitMessage, overCapLabel, issueNumber, issueOutcome, issueScope, issueStillOpen, issueUrl, itemsWritten, pendingWrites, perLocaleCounts, readIssue, translateForIssue, untranslatedWords, validateArgs } from "./lib/issue-pass.mjs";
 
 const { positional } = parseArgs(process.argv.slice(2));
 const number = issueNumber(positional[0]);
@@ -211,6 +214,27 @@ function pushToMain() {
   return { ok: false, error: last };
 }
 
+/**
+ * The website checkout validate.mjs reads the two UI catalogs' English from,
+ * when the issue's own source is another repo.
+ *
+ * validate.mjs checks the website catalogs of every locale it is given, so it
+ * needs the website's English even for a track PR. A runner starts with none,
+ * so this fetches exercism/website main with the i18n repo's own
+ * scripts/source-checkout.mjs, the same fetch its validate.yml makes: one
+ * commit, trees only, plus the blobs of the two English directories, into
+ * ../i18n/.source/website. A checkout the i18n repo already finds (a sibling
+ * ../website locally) is used as it is, and nothing is fetched. validate.mjs
+ * then reads it at its default ref, website main, as the i18n repo's CI does.
+ */
+function websiteEnglish() {
+  const found = lib.sourceRepos.resolveRepo("website", undefined, { optional: true });
+  if (found) return found;
+  const fetched = spawnSync("node", [path.join(lib.dir, "scripts", "source-checkout.mjs"), "--source=website"], { cwd: I18N, encoding: "utf8" });
+  if (fetched.status !== 0) throw Object.assign(new Failure(`could not fetch exercism/website for its English: ${fetched.stderr.trim().split("\n").pop()}`), { transient: true });
+  return lib.sourceRepos.checkoutDir("website");
+}
+
 // ------------------------------------------------------------------ main ----
 
 async function main() {
@@ -270,11 +294,10 @@ async function main() {
   // translated. scripts/translate.mjs has already checked what it wrote and
   // stamped; this checks the whole locale, because what is pushed to main has to
   // pass there too.
-  const kind = SOURCES[issue.source].kind;
+  const sourceArgs = validateArgs({ issue, repo: scope.repo, website: issue.source === "website" ? null : websiteEnglish() });
   const errors = [];
   for (const locale of locales) {
-    const args = [path.join(lib.dir, "scripts", "validate.mjs"), locale];
-    args.push(...(issue.source === "website" ? [`--source-repo=${scope.repo}`, `--source-ref=${issue.sha}`] : [`--content-repos=${scope.repo}:${kind}@${issue.sha}`]));
+    const args = [path.join(lib.dir, "scripts", "validate.mjs"), locale, ...sourceArgs];
     const result = spawnSync("node", args, { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
     fs.writeFileSync(path.join(ROOT, "state", "runs", `issue-${number}.${locale}.validate.log`), `${result.stdout}\n${result.stderr}`);
     for (const line of (result.stdout.match(/^\s+ERROR .*$/gm) ?? [])) errors.push(`${locale}: ${line.trim()}`);

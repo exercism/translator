@@ -101,6 +101,17 @@ export function translateForIssue({ issue, locales, repo, scopeFile, extra = [] 
 }
 
 /**
+ * The arguments that point the i18n repo's validate.mjs at the English an issue
+ * translated. validate.mjs always checks the website catalogs too, so an issue
+ * from any other repo also names `website`, a website checkout that validate.mjs
+ * reads at its default ref.
+ */
+export function validateArgs({ issue, repo, website }) {
+  if (issue.source === "website") return [`--source-repo=${repo}`, `--source-ref=${issue.sha}`];
+  return [`--content-repos=${repo}:${SOURCES[issue.source].kind}@${issue.sha}`, `--source-repo=${website}`];
+}
+
+/**
  * The most words any single locale still has to translate, from a dry run.
  *
  * The cap is on untranslated text per locale: a PR whose text a locale already

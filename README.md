@@ -32,7 +32,9 @@ A PR that changes English is translated without anyone stepping in:
    verifies the issue (author, label, an allowlisted repo, a sha that belongs to that PR),
    works out from git what the PR changed, translates it for every locale in `i18n`'s
    `locales.json` `productionTargets`, and checks the result with `validate.mjs` and
-   `no-deletions.mjs`.
+   `no-deletions.mjs`. `validate.mjs` also checks the website catalogs, so for a PR in any
+   other repo the run first fetches the English of `exercism/website` `main`, as `i18n`'s own
+   CI does.
 4. It commits `locales/` and the translation index the pass updated (`index/`) in the `i18n`
    checkout and pushes to `main`, rebasing and retrying if the push
    is rejected as non-fast-forward. The website pulls that repo, so the push is what
