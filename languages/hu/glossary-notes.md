@@ -1,5 +1,17 @@
 # Hungarian (hu) glossary notes
 
+## 2026-09-24: A counted group of people is „és még 3-an”, confirmed second-hand (no glossary row)
+
+**Reported by BNAndras (native status not known), on forum topic 85570
+(https://forum.exercism.org/t/85570/4), in post 4.** BNAndras relayed that a native
+Hungarian-English translator, who is not named, agreed that „és még 3-an” is correct,
+because „még” marks the three people as a group separate from the named ones, and that
+„és 3-an” was too loose. The confirmation is second-hand: it comes from BNAndras, not from
+the translator directly.
+
+- This confirms the form the guide's Grammar section already gives for "and 3 others"
+  (see the entry below), so the guide is unchanged.
+
 ## 2026-09-24: Verb agreement in the "New on Exercism" feed, lists and counted groups (no glossary row)
 
 **Reported by BNAndras (native status not known), on forum topic 85570
