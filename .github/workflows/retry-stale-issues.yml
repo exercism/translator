@@ -1,14 +1,29 @@
-# Re-dispatches translation issues that the automated queue has left open.
+# Re-dispatches a translation issue that the automated queue has left open.
 #
 # translate-issue.yml runs once per dispatch, and a dispatch can be lost to a
-# GitHub or DeepSeek outage, a cancelled run, or a failure that deliberately
-# left the issue open. exercism/i18n only dispatches when an issue is opened or
-# updated, so without this sweep nothing would pick it up again. It runs every
-# six hours and dispatches the same event again for each waiting issue.
+# GitHub or DeepSeek outage, to a run cancelled by the `i18n-main` concurrency
+# group, or to a failure that deliberately left the issue open. exercism/i18n
+# only dispatches when an issue is opened or updated, so without this sweep
+# nothing would pick it up again.
 #
-# An issue is only picked up if its updatedAt is more than two hours old. A run
-# that does not close its issue posts a comment, which moves updatedAt, so an
-# issue that has just failed is not retried straight away.
+# Each run of translate-issue.yml already dispatches the next waiting issue as
+# it finishes, so in normal working this sweep finds nothing to do. It is the
+# backstop for the one case that cannot drain itself: a run that died before it
+# started its own issue, which therefore dispatched nothing.
+#
+# ## What it picks, and why only one
+#
+# scripts/queue-next.mjs lists the open issues and scripts/lib/queue.mjs chooses
+# between them. An issue that has never started is taken whatever its age,
+# because run-issue.mjs comments on an issue before it does anything else, so an
+# open issue without that comment was never picked up. An issue that started and
+# stopped waits two hours, which leaves a run in progress, and a run that has
+# just failed and commented, alone.
+#
+# It dispatches ONE issue, and translate-issue.yml drains the rest behind it.
+# Dispatching a list in a loop is part of the bug this exists to recover from:
+# on 2026-09-24 the 11:54 sweep dispatched exercism/i18n #23, #31 and #32 within
+# four seconds, and the third dispatch cancelled #23's own pending run.
 #
 # An issue labelled `needs-attention` (config.json `github.attention_label`) is
 # skipped. run-issue.mjs adds that label when a person has to act first: items
@@ -20,9 +35,19 @@
 # Dispatching again is safe: run-issue.mjs only translates what a locale does
 # not already have, so a finished issue finds nothing to do and is closed.
 #
-# Only issues opened by one of config.json's `issue_authors` (the Exercism
-# i18n app) are dispatched. The sweep lists them in AUTHORS below, and
-# scripts/test.mjs checks that list against config.json.
+# Only issues opened by one of config.json's `issue_authors` (the Exercism i18n
+# app) are dispatched. queue-next.mjs reads that list from config.json, so this
+# file keeps no copy of it.
+#
+# ## The hour
+#
+# It runs hourly rather than every six hours. The six-hour cron was written when
+# this sweep was the only recovery path, and a dropped dispatch then cost up to
+# eight hours, because GitHub delays a scheduled run: `0 */6` was firing at
+# 00:51, 06:33, 12:29 and 18:24. The drain step in translate-issue.yml is what
+# makes recovery prompt now, and this is the safety net under it, for which an
+# hour is short enough. The minute is off the hour because GitHub delays a
+# schedule longest at the top of one.
 #
 # ## Tokens
 #
@@ -30,7 +55,8 @@
 # actions/create-github-app-token from the organisation variable
 # EXERCISM_I18N_APP_ID and the organisation secret EXERCISM_I18N_APP_PRIVATE_KEY:
 #
-#   i18n-token      Issues read on exercism/i18n, to list the open issues.
+#   i18n-token      Issues read and write on exercism/i18n, to list the open
+#                   issues and to say on one that its dispatch was dropped.
 #   dispatch-token  Contents write on this repo, to dispatch. The default
 #                   GITHUB_TOKEN would not work, because events it raises do
 #                   not start further workflow runs.
@@ -39,7 +65,7 @@ name: Retry stale issues
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions: {}
@@ -48,7 +74,16 @@ jobs:
   sweep:
     runs-on: ubuntu-latest
     steps:
-      - name: Mint a token to list exercism/i18n issues
+      - name: Check out the translator
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Mint a token to read and comment on exercism/i18n issues
         id: i18n-token
         uses: actions/create-github-app-token@v3
         with:
@@ -56,7 +91,7 @@ jobs:
           private-key: ${{ secrets.EXERCISM_I18N_APP_PRIVATE_KEY }}
           owner: exercism
           repositories: i18n
-          permission-issues: read
+          permission-issues: write
 
       - name: Mint a token to dispatch to this repo
         id: dispatch-token
@@ -68,37 +103,11 @@ jobs:
           repositories: translator
           permission-contents: write
 
-      - name: List and re-dispatch
+      # The grace window leaves alone a run that has been dispatched but has not
+      # yet commented. Every run so far has commented within a minute of
+      # starting, and the longest has taken four.
+      - name: Dispatch the next waiting issue
         env:
-          REPO: ${{ github.repository }}
           I18N_TOKEN: ${{ steps.i18n-token.outputs.token }}
           DISPATCH_TOKEN: ${{ steps.dispatch-token.outputs.token }}
-          SKIP_LABEL: needs-attention
-          # config.json `github.issue_authors`, as `gh` prints them.
-          AUTHORS: '["app/exercism-i18n"]'
-          # scripts/test.mjs runs this filter against sample issues.
-          SELECT: '.[] | select(.author.login as $login | $authors | index($login)) | select(.updatedAt < $cutoff) | select(all(.labels[]; .name != $skip)) | .number'
-        run: |
-          set -euo pipefail
-
-          CUTOFF=$(date -u -d '2 hours ago' +%Y-%m-%dT%H:%M:%SZ)
-
-          # Only number, author, updatedAt and labels are fetched. An issue's
-          # title and body are written by whoever opened the source PR, and are
-          # never read here.
-          NUMBERS=$(GH_TOKEN="$I18N_TOKEN" gh issue list --repo exercism/i18n \
-            --state open --label translation --limit 100 \
-            --json number,author,updatedAt,labels \
-            | jq -r --argjson authors "$AUTHORS" --arg cutoff "$CUTOFF" --arg skip "$SKIP_LABEL" "$SELECT")
-
-          if [ -z "$NUMBERS" ]; then
-            echo "No translation issue in exercism/i18n has been waiting since $CUTOFF."
-            exit 0
-          fi
-
-          for number in $NUMBERS; do
-            [[ "$number" =~ ^[1-9][0-9]{0,8}$ ]] || continue
-            jq -n --argjson issue "$number" '{event_type: "translate-issue", client_payload: {issue: $issue}}' \
-              | GH_TOKEN="$DISPATCH_TOKEN" gh api -X POST "repos/$REPO/dispatches" --input -
-            echo "Re-dispatched #${number}."
-          done
+        run: node scripts/queue-next.mjs --stale-minutes=120 --grace-minutes=10
