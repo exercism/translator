@@ -50,6 +50,15 @@ structure, and style.
   - Counts: after a numeral the noun stays singular („{{count}} iteráció”, never
     „{{count}} iterációk”), so a plural group's forms usually differ only where English
     spelled the number out.
+  - A subject placeholder that can hold one name or a list of names (`%{maker_handles}`):
+    keep the verb in the third person singular („%{maker_handles} közzétett egy új
+    feladatot”). The singular is right for one name and acceptable for names joined by
+    „és”, and the string has no way to vary by number.
+- **Lists and groups of people:** put no comma before „és” (drop the English serial comma):
+  „juhlig, iHiD és dem4ron”. Write a counted group of people ("3 others") with the
+  -an/-en suffix, hyphenated after a digit, choosing the vowel from the spoken numeral:
+  „2-en”, „3-an”, „5-en”, „6-an”, „10-en”, „20-an”. "and 3 others" is „és még 3-an”, and
+  such a group takes a plural verb („és még 3-an közzétettek”).
 
 ## Information structure and emphasis
 

@@ -1,5 +1,27 @@
 # Hungarian (hu) glossary notes
 
+## 2026-09-24: Verb agreement in the "New on Exercism" feed, lists and counted groups (no glossary row)
+
+**Reported by BNAndras (native status not known), on forum topic 85570
+(https://forum.exercism.org/t/85570, post 193645).** BNAndras reported that the feed's
+"published a new Exercise/Concept" lines read „We közzétett” when no author is listed and
+„juhlig, iHiD, and 3 others közzétett” when more than three are, and gave the forms
+„közzétettünk” (first person plural, no „We”), „közzétettek” (third person plural), „és”
+for "and", and „3-an” for "3 others". An agent verified the forms and agreed with them,
+with three refinements: a Hungarian list takes no comma before „és”, „és még 3-an” reads
+more naturally than „és 3-an”, and names joined by „és” may take a singular verb, so the
+singular is acceptable for two or three listed names.
+
+- The website builds `%{maker_handles}` in Ruby (`SiteUpdates::NewExerciseUpdate` and
+  `NewConceptUpdate#maker_handles`) with the English "We" and ", and N others" hardcoded,
+  and the keys `site_updates.new_exercise.1` and `site_updates.new_concept.1` have no count,
+  so no Hungarian value can fix the two reported cases. The values keep the singular
+  „közzétett”, which is right for one name and acceptable for two or three. The website
+  change that would fix it was reported to iHiD.
+- The guide's Grammar section now says to keep a singular verb after a name-list
+  placeholder, to drop the serial comma before „és”, and how to write a counted group of
+  people („és még 3-an”, with a plural verb).
+
 ## 2026-09-23: The adjective from „Exercism” is „Exercism-ös” (no glossary row)
 
 **Decided by dem4ron (native speaker), on forum topic 85372
