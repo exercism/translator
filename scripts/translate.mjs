@@ -93,7 +93,7 @@ import { i18n } from "./lib/i18n.mjs";
 import { ROUTES, GAPS, SOURCES } from "./lib/routes.mjs";
 import { SYSTEM, approxTokens, catalogTail, fileTail, fixedPrefix } from "./lib/prompt.mjs";
 import { USD_PER_CACHE_HIT, USD_PER_CACHE_MISS, USD_PER_OUTPUT, addUsage, call, unfence } from "./lib/deepseek.mjs";
-import { checkMarkdown, wordCount } from "./lib/checks.mjs";
+import { checkMarkdown, englishWarnings, wordCount } from "./lib/checks.mjs";
 import { repairCode } from "./lib/repair.mjs";
 
 const log = (message) => console.error(message);
@@ -243,6 +243,12 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, sha, loca
       // config.json.
       if (approxTokens(english) > config().engine.max_text_tokens) {
         return fail(`too large for one call (~${approxTokens(english)} tokens of English, the limit is ${config().engine.max_text_tokens}); chunking is not built, so this file needs iHiD`);
+      }
+
+      // The English is the same for every locale, so it is reported once. A
+      // warning is about the source repo, and nothing here can act on it.
+      for (const message of englishWarnings(english)) {
+        if (!run.englishWarnings.some((one) => one.source === file.path && one.message === message)) run.englishWarnings.push({ source: file.path, message });
       }
 
       const previous = hasStore ? previousVersion(lib, { repo, ref, file, locale }) : null;
@@ -638,6 +644,7 @@ async function main() {
     counts: {},
     estimates: {},
     failures: [],
+    englishWarnings: [],
     written: [],
     indexed: [],
     checker: [],
@@ -686,7 +693,7 @@ async function main() {
   }
 
   const repaired = Object.values(run.counts).flatMap((types) => Object.values(types)).reduce((sum, row) => sum + row.repaired, 0);
-  const summary = { source: `exercism/${name}`, ref, sha, dryRun, model: config().engine.model, repaired, counts: run.counts, failures: run.failures, written: run.written.length, indexed: run.indexed.length, checker: run.checker };
+  const summary = { source: `exercism/${name}`, ref, sha, dryRun, model: config().engine.model, repaired, counts: run.counts, failures: run.failures, englishWarnings: run.englishWarnings, written: run.written.length, indexed: run.indexed.length, checker: run.checker };
   if (dryRun) summary.estimates = withCosts(run.estimates);
   else summary.usage = run.usage;
   fs.writeFileSync(path.join(run.dir, "summary.json"), `${JSON.stringify({ ...summary, writtenPaths: run.written, indexPaths: run.indexed }, null, 2)}\n`);
@@ -748,6 +755,10 @@ function report(summary, file) {
   }
   if (summary.indexed) lines.push(`  index: ${summary.indexed} file(s) updated under index/`);
   for (const one of summary.checker) lines.push(`  checker ${one.locale} ${one.type}: exit ${one.exit}${"stamped" in one ? `, stamped ${one.stamped}` : ""}${one.fails ? `, ${one.fails} ERROR line(s)` : ""} (${one.log})`);
+  if (summary.englishWarnings?.length > 0) {
+    lines.push(`  English worth a look: ${summary.englishWarnings.length}  (nothing here can fix it; it lives in the source repo)`);
+    for (const warning of summary.englishWarnings.slice(0, 20)) lines.push(`    ${warning.source}: ${warning.message}`);
+  }
   lines.push(`  failures: ${summary.failures.length}`);
   for (const failure of summary.failures.slice(0, 200)) lines.push(`    ${failure.locale} ${failure.type} ${failure.source}${failure.target ? ` -> ${failure.target}` : ""}: ${failure.reason}`);
   if (summary.failures.length > 200) lines.push(`    ... and ${summary.failures.length - 200} more, in ${file}`);

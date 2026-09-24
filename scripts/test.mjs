@@ -18,7 +18,7 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { ROOT, config } from "./lib/config.mjs";
 import { i18n } from "./lib/i18n.mjs";
-import { checkMarkdown, codeSpans, fencedBlocks, wordCount } from "./lib/checks.mjs";
+import { checkMarkdown, codeSpans, englishWarnings, fencedBlocks, wordCount } from "./lib/checks.mjs";
 import { repairCode } from "./lib/repair.mjs";
 import { fileTail, fixedPrefix } from "./lib/prompt.mjs";
 import { unfence } from "./lib/deepseek.mjs";
@@ -177,6 +177,47 @@ await test("an inline code span may run over a line break, and reflowing it chan
   assert.deepEqual(checkMarkdown(english, "A `[ <test> [ <yes> ] if ]` alak lefedi az `even?` / `odd?` eseteket.\n"), []);
   assert.deepEqual(codeSpans("`a`\n\nb`").map((span) => span.content), ["a"]);
   assert.deepEqual(codeSpans("`a``").length, 0);
+});
+
+await test("a backslash-escaped backtick is not a delimiter, so prose about backticks is prose", () => {
+  // go/concepts/regular-expressions/about.md, verbatim. cmark 0.23.10 reads one
+  // span here, `\\`, and the sentence around it is prose.
+  const english = "When using backticks (\\`) to make strings, backslashes (`\\`)  don't have any special meaning and don't mark the beginning of special characters like tabs `\\t` or newlines `\\n`:\n";
+  assert.deepEqual(codeSpans(english).map((span) => span.content), ["\\", "\\t", "\\n"]);
+  const hu = "Backtickekkel (\\`) készített sztringeknél a visszaperjelnek (`\\`)  nincs külön jelentése, és nem vezet be olyan speciális karaktereket, mint a tabulátor (`\\t`) vagy a soremelés (`\\n`):\n";
+  assert.deepEqual(checkMarkdown(english, hu), []);
+  // Nothing is paired with English prose, so nothing is copied back over it.
+  assert.equal(repairCode(english, hu).text, hu);
+
+  // website-copy/tracks/julia/exercises/secret-handshake/mentoring.md, where a
+  // span's own delimiters sit between two escaped backticks.
+  const julia = "Using \\``reverse!`\\` is faster than \\``reverse`\\`.\n";
+  assert.deepEqual(codeSpans(julia).map((span) => span.content), ["reverse!", "reverse"]);
+});
+
+await test("a backslash inside a code span is literal, and the backtick after it still closes the span", () => {
+  assert.deepEqual(codeSpans("A span `a\\` here.\n").map((span) => span.content), ["a\\"]);
+  assert.deepEqual(codeSpans("Doubled `` \\[\\` `` too.\n").map((span) => span.content), [" \\[\\` "]);
+  // An escaped backtick sits directly before a real one, which a lookbehind
+  // would mistake for the middle of a run.
+  assert.deepEqual(codeSpans("\\``'a':'z'`\\`\n").map((span) => span.content), ["'a':'z'"]);
+  // An escaped backslash is not an escape, so the backtick after it opens.
+  assert.deepEqual(codeSpans("Two \\\\`x` here.\n").map((span) => span.content), ["x"]);
+});
+
+await test("English prose caught inside backticks is warned about, and real code spans are not", () => {
+  // elm/concepts/arrays/about.md, where a stray backtick after `Array` runs the
+  // sentence into the next span.
+  const elm = "Any function that appears to modify an `Array`` (such as adding an element), will actually return a new `Array`.\nPerformance is usually not an issue though, as the implementation of `Array` prevents copies.\n";
+  assert.equal(englishWarnings(elm).length, 2);
+  assert.match(englishWarnings(elm)[1], /reads as prose inside backticks/);
+
+  // Output, error text and pseudocode are what an author meant to write.
+  assert.deepEqual(englishWarnings("It prints `incompatible types: possible lossy conversion from long to int` and stops.\n"), []);
+  assert.deepEqual(englishWarnings("Write `for index, item in enumerate(<list>)` to loop.\n"), []);
+  assert.deepEqual(englishWarnings("Use `map` with `filter`.\n"), []);
+  // Four words and two of them functional, but the boundaries are the author's.
+  assert.deepEqual(englishWarnings("The shape is `if A then B end` here.\n"), []);
 });
 
 await test("a backtick line with a closing run is inline code, not a fence", () => {

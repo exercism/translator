@@ -112,15 +112,60 @@ export function withoutCode(text) {
  * its paragraph, but not over a blank line or into a list item, heading,
  * quote or table row. `content` has each line break as a space, as the page
  * renders it, so reflowing a span's line does not change it.
+ *
+ * A backslash-escaped backtick is a literal backtick and opens nothing, so this
+ * walks the text left to right and steps over each escape. One pass of a
+ * pattern cannot do that. Prose that mentions backticks (`` When using
+ * backticks (\`) ... ``) otherwise reads as a span covering the sentence
+ * between two of them, and the checker then demands that the translation
+ * reproduce that sentence in English. The walk stops honouring escapes inside a
+ * span, where CommonMark gives a backslash no meaning, so `` `a\` `` is a span
+ * whose content ends in a backslash.
  */
 export function codeSpans(text) {
-  const pattern = /(?<!`)(`+)(?!`)((?:(?!\r?\n[ \t]*(?:\r?\n|[-*+][ \t]|\d{1,9}[.)][ \t]|#{1,6}[ \t]|>|\|))[\s\S])*?[^`\r\n])\1(?!`)/g;
-  return [...withoutCode(text).matchAll(pattern)].map((match) => ({
-    start: match.index,
-    end: match.index + match[0].length,
-    raw: text.slice(match.index, match.index + match[0].length),
-    content: match[2].replace(/[ \t]*\r?\n[ \t]*/g, " ")
-  }));
+  // Sticky, so it asks only whether a span opens at the position the walk has
+  // reached. It needs no lookbehind for a backtick, because the walk only ever
+  // stops at the start of a whole run. It must not have one either: a run may
+  // sit directly after an escaped backtick (``\``x`\```), and a lookbehind
+  // cannot tell that one from a delimiter.
+  const pattern = /(`+)(?!`)((?:(?!\r?\n[ \t]*(?:\r?\n|[-*+][ \t]|\d{1,9}[.)][ \t]|#{1,6}[ \t]|>|\|))[\s\S])*?[^`\r\n])\1(?!`)/y;
+  // Only a backslash or a backtick can start anything, so the walk jumps from
+  // one to the next and skips the text in between.
+  const interesting = /[\\`]/g;
+  const source = withoutCode(text);
+  const spans = [];
+  let at = 0;
+  while (at < source.length) {
+    interesting.lastIndex = at;
+    const found = interesting.exec(source);
+    if (found === null) break;
+    at = found.index;
+    // The escaped character cannot be a delimiter, whatever it is, so two
+    // characters are always safe to step over.
+    if (source[at] === "\\") {
+      at += 2;
+      continue;
+    }
+    let run = 1;
+    while (source[at + run] === "`") run += 1;
+    pattern.lastIndex = at;
+    const match = pattern.exec(source);
+    // A run that opens nothing is literal text, so the walk resumes after it
+    // and a later backtick may still open a span.
+    if (match === null) {
+      at += run;
+      continue;
+    }
+    const end = match.index + match[0].length;
+    spans.push({
+      start: match.index,
+      end,
+      raw: text.slice(match.index, end),
+      content: match[2].replace(/[ \t]*\r?\n[ \t]*/g, " ")
+    });
+    at = end;
+  }
+  return spans;
 }
 
 const taskNumbers = (text) => [...withoutCode(text).matchAll(/^##\s+(\d+)\./gm)].map((match) => match[1]);
@@ -139,6 +184,39 @@ const referenceUses = (text) =>
   [...withoutCode(text).replace(/`[^`\n]*`/g, "").matchAll(/\[[^\]\n]+\]\[([^\]\n]*)\]/g)].map((match) => match[1].trim().toLowerCase()).filter(Boolean);
 
 export const wordCount = (text) => (withoutCode(text).match(/\p{L}[\p{L}\p{N}'’-]*/gu) ?? []).length;
+
+// Words that carry no meaning on their own. A handful of them together makes a
+// piece of text an English sentence, and not a name, a signature or a line of
+// output.
+const FUNCTION_WORDS = new Set([
+  "a", "about", "after", "all", "also", "an", "and", "any", "are", "as", "at", "be", "been", "before", "between", "but", "by", "can", "do", "does", "each", "for", "from", "had", "has", "have", "how", "if", "in", "into", "is", "it", "its", "just", "more", "most", "no", "not", "of", "on", "only", "or", "other", "out", "over", "should", "so", "some", "such", "than", "that", "the", "their", "then", "there", "these", "they", "this", "those", "to", "up", "was", "we", "were", "what", "when", "where", "which", "who", "why", "will", "with", "would", "you", "your"
+]);
+
+/**
+ * Warnings about the English itself, as strings. Empty means none.
+ *
+ * A span of code in English that reads as a sentence is usually a pair of
+ * backticks that has swallowed the prose between them, from an apostrophe
+ * (``the type of `a' is `String` ``) or from two spans of the same name on one
+ * line. The page shows the sentence in a code font, and a pass then has to
+ * reproduce it in English, because code is copied byte for byte. Fixing it
+ * means editing the source repo, which a pass cannot do, so this is a warning
+ * for a person to act on and never a reason to reject a translation.
+ *
+ * @param {string} english
+ */
+export function englishWarnings(english) {
+  const clean = (word) => word.replace(/[.,;:!?]+$/, "");
+  return codeSpans(english)
+    .filter((span) => {
+      // A span that neither opens nor closes on whitespace has boundaries an
+      // author chose. One that does has swallowed the space around a word.
+      if (!/^\s|\s$/.test(span.content)) return false;
+      const words = span.content.trim().split(/\s+/).map(clean).filter((word) => /^[A-Za-z][A-Za-z'’]*$/.test(word));
+      return words.length >= 4 && words.filter((word) => FUNCTION_WORDS.has(word.toLowerCase())).length >= 2;
+    })
+    .map((span) => `the English reads as prose inside backticks, so the page shows it as code: \`${span.content}\``);
+}
 
 /**
  * Problems with one translated Markdown file, as strings. Empty means none.
