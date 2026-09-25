@@ -34,7 +34,10 @@
 #
 # GitHub keeps only one pending run per group, so in a burst of dispatches the
 # newest waits and the others are dropped. The dropped issues are still open,
-# and retry-stale-issues.yml picks them up.
+# and this run's last step hands the group on to one of them as it lets go of
+# it: see "Drain the queue" below and scripts/lib/queue.mjs.
+# retry-stale-issues.yml is the backstop for the case where that step is never
+# reached.
 #
 # ## Secrets and tokens
 #
@@ -149,3 +152,58 @@ jobs:
           path: translator/state/runs/
           if-no-files-found: ignore
           retention-days: 30
+
+      # ## Drain the queue
+      #
+      # This run holds the `i18n-main` group, so the issues whose dispatches
+      # GitHub dropped are waiting on it and on nothing else. Dispatching one
+      # here means it starts as this run ends, instead of waiting up to an hour
+      # for the sweep. scripts/lib/queue.mjs chooses which, and dispatches one,
+      # because dispatching several would drop all but the last of them again.
+      #
+      # Only a run that got as far as commenting "Starting translation now." on
+      # its own issue drains. run-issue.mjs writes the marker file at that
+      # point, so reaching it proves this workflow works. Without that guard, a
+      # workflow that died before starting anything would dispatch the next
+      # issue, whose run would die the same way and dispatch another, around the
+      # queue for ever.
+      #
+      # A failure to drain is not a failure of the translation this run already
+      # pushed, so the step is `continue-on-error` and the sweep picks the queue
+      # up instead.
+      - name: Did this run start its issue
+        id: started
+        if: always()
+        working-directory: translator
+        env:
+          ISSUE: ${{ steps.payload.outputs.issue }}
+        run: |
+          set -euo pipefail
+          if [ -f "state/runs/issue-${ISSUE}.started" ]; then
+            echo "drain=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "drain=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::This run never started issue ${ISSUE}, so the queue is left to the sweep."
+          fi
+
+      - name: Mint a token to dispatch to this repo
+        id: dispatch-token
+        if: always() && steps.started.outputs.drain == 'true'
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ vars.EXERCISM_I18N_APP_ID }}
+          private-key: ${{ secrets.EXERCISM_I18N_APP_PRIVATE_KEY }}
+          owner: exercism
+          repositories: translator
+          permission-contents: write
+
+      - name: Drain the queue
+        if: always() && steps.started.outputs.drain == 'true'
+        continue-on-error: true
+        working-directory: translator
+        env:
+          # Minted for the translate step, and reused here to list the issues
+          # and to say on one that its dispatch was dropped.
+          I18N_TOKEN: ${{ steps.app-token.outputs.token }}
+          DISPATCH_TOKEN: ${{ steps.dispatch-token.outputs.token }}
+        run: node scripts/queue-next.mjs --exclude=${{ steps.payload.outputs.issue }} --grace-minutes=0

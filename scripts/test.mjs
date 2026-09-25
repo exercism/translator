@@ -23,6 +23,7 @@ import { repairCode } from "./lib/repair.mjs";
 import { fileTail, fixedPrefix } from "./lib/prompt.mjs";
 import { unfence } from "./lib/deepseek.mjs";
 import { parseIssue } from "./lib/issues.mjs";
+import { STARTED, hasStarted, nextWaiting, waiting } from "./lib/queue.mjs";
 import { OUTCOMES, attentionLabel, commitMessage, overCapLabel, issueNumber, issueOutcome, itemsWritten, pendingWrites, perLocaleCounts, transientFailure, untranslatedWords, validateArgs } from "./lib/issue-pass.mjs";
 
 let passed = 0;
@@ -355,27 +356,92 @@ await test("needs-attention on failed items: only when one of them would fail th
   }
 });
 
-await test("the retry sweep skips issues labelled needs-attention, anything updated in the last two hours, and other authors", () => {
-  const workflow = fs.readFileSync(path.join(ROOT, ".github", "workflows", "retry-stale-issues.yml"), "utf8");
-  const select = /^\s+SELECT: '(.*)'$/m.exec(workflow)?.[1];
-  const skip = /^\s+SKIP_LABEL: (\S+)$/m.exec(workflow)?.[1];
-  const authors = /^\s+AUTHORS: '(.*)'$/m.exec(workflow)?.[1];
-  assert.ok(select, "no SELECT filter in the workflow");
-  assert.equal(skip, config().github.attention_label);
-  assert.deepEqual(JSON.parse(authors), config().github.issue_authors);
-  const app = { login: "app/exercism-i18n", is_bot: true };
-  const issues = [
-    { number: 1, author: app, updatedAt: "2026-09-22T01:00:00Z", labels: [{ name: "translation" }] },
-    { number: 2, author: app, updatedAt: "2026-09-22T01:00:00Z", labels: [{ name: "translation" }, { name: "needs-attention" }] },
-    { number: 3, author: app, updatedAt: "2026-09-22T09:00:00Z", labels: [{ name: "translation" }] },
-    { number: 4, author: app, updatedAt: "2026-09-22T02:00:00Z", labels: [] },
-    { number: 5, author: { login: "iHiD", is_bot: false }, updatedAt: "2026-09-22T02:00:00Z", labels: [{ name: "translation" }] },
-    { number: 6, author: { login: "mallory", is_bot: false }, updatedAt: "2026-09-22T02:00:00Z", labels: [{ name: "translation" }] }
+// ------------------------------------------------------------ queue-next ---
+
+const APP = { login: "app/exercism-i18n", is_bot: true };
+// `gh` prints an app as `app/<name>` as an issue's author and as plain `<name>`
+// as a comment's.
+const startComment = (body = STARTED) => ({ author: { login: "exercism-i18n" }, body });
+const NOW = new Date("2026-09-24T12:00:00Z");
+const OPTIONS = { now: NOW, staleMinutes: 120, graceMinutes: 0, authors: config().github.issue_authors, skipLabel: config().github.attention_label };
+// `n` minutes before NOW.
+const ago = (n) => new Date(NOW.getTime() - n * 60000).toISOString();
+const queueIssue = (over) => ({ author: APP, labels: [{ name: "translation" }], comments: [], createdAt: ago(600), updatedAt: ago(600), ...over });
+
+await test("an issue that never started is picked up however young it is, which is what a dropped dispatch looks like", () => {
+  // exercism/i18n #43 and #44 on 2026-09-24: opened at 11:49, their dispatches
+  // cancelled by the concurrency group seconds later, and five minutes old when
+  // the sweep next ran. The old two-hour window could not see them.
+  const dropped = [
+    queueIssue({ number: 43, createdAt: ago(5), updatedAt: ago(5) }),
+    queueIssue({ number: 44, createdAt: ago(5), updatedAt: ago(5) })
   ];
-  const result = spawnSync("jq", ["-r", "--argjson", "authors", authors, "--arg", "cutoff", "2026-09-22T08:00:00Z", "--arg", "skip", skip, select], { input: JSON.stringify(issues), encoding: "utf8" });
-  assert.equal(result.status, 0, result.stderr);
-  assert.deepEqual(result.stdout.trim().split("\n"), ["1", "4"]);
+  assert.deepEqual(waiting(dropped, OPTIONS).map((one) => [one.number, one.reason]), [[43, "never-started"], [44, "never-started"]]);
+  // A grace window holds off on a run that has been dispatched and has not yet
+  // commented, and lets the same issues through once it has passed.
+  assert.equal(nextWaiting(dropped, { ...OPTIONS, graceMinutes: 10 }), null);
+  assert.equal(nextWaiting(dropped, { ...OPTIONS, graceMinutes: 4 }).number, 43);
 });
+
+await test("an issue that has started is left to run, and picked up again only once it has been quiet for the stale window", () => {
+  const working = queueIssue({ number: 50, updatedAt: ago(3), comments: [startComment()] });
+  assert.deepEqual(waiting([working], OPTIONS), []);
+  assert.deepEqual(waiting([working], { ...OPTIONS, staleMinutes: 2 }).map((one) => one.reason), ["stale"]);
+  // The two-hour window, as the sweep runs it.
+  assert.equal(nextWaiting([queueIssue({ number: 50, updatedAt: ago(119), comments: [startComment()] })], OPTIONS), null);
+  assert.equal(nextWaiting([queueIssue({ number: 50, updatedAt: ago(121), comments: [startComment()] })], OPTIONS).number, 50);
+});
+
+await test("a dropped dispatch is dispatched before a stale one, and the longest wait before a shorter one", () => {
+  const issues = [
+    queueIssue({ number: 60, updatedAt: ago(300), comments: [startComment()] }),
+    queueIssue({ number: 61, updatedAt: ago(9) }),
+    queueIssue({ number: 62, updatedAt: ago(20) }),
+    queueIssue({ number: 63, updatedAt: ago(900), comments: [startComment()] })
+  ];
+  assert.deepEqual(waiting(issues, OPTIONS).map((one) => one.number), [62, 61, 63, 60]);
+  assert.equal(nextWaiting(issues, OPTIONS).number, 62);
+});
+
+await test("the issue a run is on is never dispatched by that run", () => {
+  const issues = [queueIssue({ number: 70 }), queueIssue({ number: 71 })];
+  assert.equal(nextWaiting(issues, { ...OPTIONS, exclude: 70 }).number, 71);
+  assert.equal(nextWaiting([issues[0]], { ...OPTIONS, exclude: 70 }), null);
+});
+
+await test("needs-attention, another author and an unreadable timestamp are all left alone", () => {
+  assert.equal(nextWaiting([queueIssue({ number: 80, labels: [{ name: "translation" }, { name: "needs-attention" }] })], OPTIONS), null);
+  for (const author of [{ login: "iHiD" }, { login: "mallory" }, { login: "exercism-i18n" }, undefined]) {
+    assert.equal(nextWaiting([queueIssue({ number: 81, author })], OPTIONS), null, String(author?.login));
+  }
+  assert.equal(nextWaiting([queueIssue({ number: 82, updatedAt: "some time ago" })], OPTIONS), null);
+});
+
+await test("only the queue app's own start comment counts, so a stranger cannot hide an issue from the sweep", () => {
+  const authors = config().github.issue_authors;
+  assert.ok(hasStarted({ comments: [startComment()] }, authors));
+  assert.ok(!hasStarted({ comments: [{ author: { login: "mallory" }, body: STARTED }] }, authors));
+  assert.ok(!hasStarted({ comments: [startComment("The PR's head moved with no change to English.")] }, authors));
+  // run-issue.mjs writes exactly this, and the workflows read it back.
+  assert.match(fs.readFileSync(path.join(ROOT, "scripts", "run-issue.mjs"), "utf8"), /"--body", STARTED\]/);
+});
+
+await test("the sweep and every finishing run dispatch one issue each, through queue-next.mjs", () => {
+  const sweep = fs.readFileSync(path.join(ROOT, ".github", "workflows", "retry-stale-issues.yml"), "utf8");
+  const run = fs.readFileSync(path.join(ROOT, ".github", "workflows", "translate-issue.yml"), "utf8");
+  // Neither may loop over a list of issues: a second dispatch cancels the first
+  // one's pending run, which is the drop this whole path exists to recover from.
+  for (const [name, text] of [["retry-stale-issues.yml", sweep], ["translate-issue.yml", run]]) {
+    assert.match(text, /node scripts\/queue-next\.mjs/, `${name} does not call queue-next.mjs`);
+    assert.ok(!/for number in/.test(text), `${name} dispatches in a loop`);
+  }
+  // The run only hands the queue on once its own issue has started.
+  assert.match(run, /state\/runs\/issue-\$\{ISSUE\}\.started/);
+  assert.match(run, /--exclude=\$\{\{ steps\.payload\.outputs\.issue \}\}/);
+  // Hourly, so a drop the drain step missed waits an hour and not eight.
+  assert.match(sweep, /cron: "\d+ \* \* \* \*"/);
+});
+
 
 await test("the commit message names the source PR and what was written", () => {
   const parsed = parseIssue(issue());

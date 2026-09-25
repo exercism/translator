@@ -74,6 +74,7 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { Failure, ROOT, config, parseArgs } from "./lib/config.mjs";
 import { i18n } from "./lib/i18n.mjs";
+import { STARTED } from "./lib/queue.mjs";
 import { attentionLabel, commitMessage, overCapLabel, issueNumber, issueOutcome, issueScope, issueStillOpen, issueUrl, itemsWritten, pendingWrites, perLocaleCounts, readIssue, translateForIssue, untranslatedWords, validateArgs } from "./lib/issue-pass.mjs";
 
 const { positional } = parseArgs(process.argv.slice(2));
@@ -248,9 +249,16 @@ async function main() {
   if (locales.length === 0) finish("no-production-locales", "The issue stays open: it is picked up again when a locale goes into production.");
 
   // The issue is the log of the run: this comment marks its start, and finish()
-  // posts how it ended.
-  const started = gh(["issue", "comment", String(number), "--repo", config().github.i18n_repo, "--body", "Starting translation now."]);
+  // posts how it ended. scripts/lib/queue.mjs reads it back, because an open
+  // issue without it is one whose dispatch was dropped before it ran.
+  const started = gh(["issue", "comment", String(number), "--repo", config().github.i18n_repo, "--body", STARTED]);
   if (!started.ok) console.error(`error: could not comment on issue ${number}: ${started.error}`);
+
+  // The workflow drains the queue behind this run only if this file is there.
+  // Reaching this line proves the workflow itself works, so a run can never
+  // hand a workflow that dies before it starts round the queue for ever.
+  fs.mkdirSync(path.join(ROOT, "state", "runs"), { recursive: true });
+  fs.writeFileSync(path.join(ROOT, "state", "runs", `issue-${number}.started`), "");
 
   const scope = await issueScope(lib, issue);
   const translate = (extra) => translateForIssue({ issue, locales, repo: scope.repo, scopeFile: scope.scopeFile, extra });

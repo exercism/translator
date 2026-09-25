@@ -51,10 +51,22 @@ of them, because this repo's tokens cannot write to the source repos. See "The l
 If anything goes wrong, nothing is pushed and the issue stays open. The run comments on it
 saying what happened and links the Actions run, whose `state/runs/` artifact holds the
 summaries, the checker logs, the last rejected answer for each failed file (under
-`rejected/`) and `issue-<n>.outcome.json`. `retry-stale-issues.yml` runs every six hours and
-re-dispatches any issue that has been waiting more than two hours, so a GitHub or DeepSeek
-outage recovers without help. Running an issue again is safe: the script only translates what
-is missing, so an issue whose work is done finds nothing to do and closes.
+`rejected/`) and `issue-<n>.outcome.json`. Running an issue again is safe: the script only
+translates what is missing, so an issue whose work is done finds nothing to do and closes.
+
+Two things dispatch an issue again. Every run's last step dispatches the next issue that is
+waiting, as it lets go of the `i18n-main` concurrency group, so a queue of issues drains at the
+speed of the runs. `retry-stale-issues.yml` runs hourly and is the backstop under that, for a
+run that died before it reached its drain step. Both pick one issue, through
+`scripts/queue-next.mjs`, and `scripts/lib/queue.mjs` chooses it: an issue with no "Starting
+translation now." comment was never picked up, whatever its age, and an issue that started and
+stopped is taken once it has been quiet for two hours.
+
+That first rule is what recovers a dropped dispatch. Every run pushes to `exercism/i18n`
+`main`, so `translate-issue.yml` serialises them in one concurrency group, and GitHub keeps
+only one pending run per group: label four PRs `ready-to-translate` within a minute and the
+dispatches in the middle are cancelled before they start. The issue then says so itself, in a
+comment from whichever run or sweep picked it back up.
 
 A failure that another run would repeat gets the `needs-attention` label instead, and the
 sweep skips it: items the checker rejected on every attempt, checker errors, the word cap,
@@ -85,7 +97,8 @@ every repo. Each job mints a short-lived installation token with
 | Workflow | Repo | Permissions | For |
 | --- | --- | --- | --- |
 | `translate-issue.yml` | `exercism/i18n` | Contents write, Issues write | the push to `main`, the comments, the `needs-attention` and `over-cap` labels and the close |
-| `retry-stale-issues.yml` | `exercism/i18n` | Issues read | listing the open issues |
+| `translate-issue.yml` | `exercism/translator` | Contents write | the `repository_dispatch` that hands the queue to the next issue |
+| `retry-stale-issues.yml` | `exercism/i18n` | Issues write | listing the open issues, and saying on one that its dispatch was dropped |
 | `retry-stale-issues.yml` | `exercism/translator` | Contents write | the `repository_dispatch`, which `GITHUB_TOKEN` cannot raise in a way that starts a run |
 
 So the comments, labels and closes on a queue issue are by `exercism-i18n[bot]`, and so are
