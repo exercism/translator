@@ -63,6 +63,9 @@ structure, and style.
   -an/-en suffix, hyphenated after a digit, choosing the vowel from the spoken numeral:
   „2-en”, „3-an”, „5-en”, „6-an”, „10-en”, „20-an”. "and 3 others" is „és még 3-an”, and
   such a group takes a plural verb („és még 3-an közzétettek”).
+- **"Has been saved" messages:** write the completed-state participle with the „el-” prefix,
+  „A profilod elmentve”. Avoid the „-va/-ve lett” passive („A profilod mentve lett”): it
+  reads awkwardly, and bare „mentve” can sound like "rescued".
 
 ## Information structure and emphasis
 
