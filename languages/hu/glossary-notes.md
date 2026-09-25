@@ -1,5 +1,20 @@
 # Hungarian (hu) glossary notes
 
+## 2026-09-26: A "has been saved" message uses „elmentve” (no glossary row)
+
+**Reported by BNAndras (native status not known), on forum topic 86131
+(https://forum.exercism.org/t/86131, post 195229).** BNAndras reported that the profile
+settings success message „A profilod mentve lett” uses an awkward passive that sounds as if
+the profile had been rescued from danger, and recommended „A profilod elmentve”, a
+participle whose „el-” prefix marks the saving as completed. An agent agreed. The guide
+bullet generalises this one correction to every "has been saved" message; that
+generalisation is an agent's reading, not a rule a native speaker has confirmed.
+
+- The guide's Grammar section now asks for „elmentve” in "has been saved" messages.
+- `components/settings/ProfileForm.tsx:profileForm.yourProfileHasBeenSaved` in
+  `website/frontend.json` now reads „A profilod elmentve”. No other Hungarian string used
+  „mentve lett”.
+
 ## 2026-09-24: A type name in a code span keeps the code span, with „tömb” around it (no glossary row)
 
 **Added by an agent after repeated checker rejections in exercism/i18n#25, not decided by a
