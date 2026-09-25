@@ -1,5 +1,23 @@
 # Hungarian (hu) glossary notes
 
+## 2026-09-26: A "was deleted" message uses „törlődött” (no glossary row)
+
+**Reported by BNAndras (native status not known), on forum topic 86131
+(https://forum.exercism.org/t/86131, post 195262).** Asked whether „Ez az iteráció törölve
+lett” should change in the same way as „A profilod mentve lett”, BNAndras answered „Az
+iteráció törlődött”. The guide bullet generalises this one answer to every "was deleted" or
+"has been deleted" message. That generalisation is an agent's reading, and no native speaker
+has confirmed it as a rule.
+
+- The guide's Grammar section now asks for „törlődött” in "was deleted" messages and names
+  the „törölve lett” passive as one to avoid.
+- `session-batch-3:components.mentoring.session.iterationView.iterationDeleted` and
+  `components/mentoring/session/mobile-code-panel/MobileIterationView.tsx:mobileIterationView.thisIterationHasBeenDeleted`
+  in `website/frontend.json` now read „Az iteráció törlődött”. Both translate the same
+  English, "This iteration has been deleted".
+- Two other keys with the same English read „Ezt az iterációt törölték”, an active
+  third-person plural, and were left unchanged.
+
 ## 2026-09-26: A "has been saved" message uses „elmentve” (no glossary row)
 
 **Reported by BNAndras (native status not known), on forum topic 86131
