@@ -199,10 +199,11 @@ There is no formal review process and no per-item approval state, so nothing is 
   glossary or the guide, not one file. Dispatch an opus subagent with `/action-forum-post` or
   `/update-guide-and-glossary`. Fix the glossary first, because the next edit of any English
   file is translated from the glossary and would undo a fix that exists only in one file.
-- After a glossary change, Jeremy decides case by case whether existing pages are corrected:
-  forward-only, or a targeted re-run. There is no `all` mode. Give him what the command
-  reported about how widely the old term is used. See "After a glossary change" in
-  `global/workflow.md`.
+- After a glossary or guide term change is merged, dispatch Opus subagents to hand-fix every
+  existing translation of the old form, without asking Jeremy first, then report the counts
+  to him. A term whose row records a native speaker's decision still under discussion on the
+  forum waits until that discussion settles. There is no `all` mode. "After a glossary
+  change" in `global/workflow.md` has the method.
 - A bug in the website itself: tell Jeremy. Do not reply that it "can't
   be fixed here".
 - Plain praise with nothing to act on: heart it.
@@ -451,5 +452,5 @@ glossary ends with a block headed "Exercism product vocabulary: PROPOSED, NOT YE
 fifty-odd product terms (track, mentor, iteration, reputation, ...) that an agent proposed and
 no native speaker has reviewed. The full Hungarian pass uses them, so they appear on most
 pages. Getting a native speaker to read that block is worth more than any other single review.
-Changing one of those rows after the pass leads to the "targeted re-run or forward-only"
-decision in `global/workflow.md`.
+When one of those rows changes after the pass, the existing pages are hand-fixed as described
+in "After a glossary change" in `global/workflow.md`.

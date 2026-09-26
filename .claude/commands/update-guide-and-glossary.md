@@ -133,8 +133,9 @@ and skip this step.
 Report: which glossary rows were written, which guide edits were made, which unconfirmed rows
 were corrected (with their old values), any unresolved disagreements left open, and which
 sibling locales are affected. Also say, where you can tell, how widely an old term is used in
-what is already translated: whether existing pages are then corrected is decided case by case,
-per "After a glossary change" in `global/workflow.md`, and never by this command.
+what is already translated. After the change is merged, the orchestrator hand-fixes those
+pages as described in "After a glossary change" in `global/workflow.md`. This command does not
+start that work.
 
 The reply is required whenever a glossary changed, per "A glossary change (commit, push,
 reply)" in `global/workflow.md`, which says what the body covers. It is written in English,

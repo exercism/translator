@@ -129,10 +129,10 @@ Once agreed:
   blob-keyed file, and that is allowed**: see "A forum fix overwrites the file" in
   `global/workflow.md`. Never modify any English source, and never write or touch a stamp.
 - **Do not re-run a translation.** There is no mode that retranslates what a locale already
-  holds. Whether an agreed term change is also applied to the pages that already use the old
-  term is a separate, case-by-case decision ("After a glossary change" in
-  `global/workflow.md`): put what you found in the report (how widely the old term is used,
-  if you can tell) and leave the decision to the orchestrator and iHiD.
+  holds. After this change is merged, the orchestrator hand-fixes the pages that already use
+  the old term, as described in "After a glossary change" in `global/workflow.md`. This
+  command does not start that work. Put in the report how widely the old term is used, if you
+  can tell, so the orchestrator can split the work.
 - The pinned glossary post links to the glossary file on GitHub, so an agreed change is
   visible to the community only once the orchestrator has **committed and pushed this repo**.
   Say so in the report. If anything was written to a family file, every sibling locale's

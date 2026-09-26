@@ -313,24 +313,39 @@ pass will revisit what is already translated**. There is no `all` mode to reach 
 design: re-translating a locale wholesale costs real money and churns wording that native
 speakers have read and corrected.
 
-So what happens to existing translations is **decided case by case**, by iHiD with the
-orchestrator, from two options:
+**Every glossary or guide term change is followed by a hand fix of the existing
+translations.** Once the change is merged, the orchestrator dispatches Opus subagents to
+correct every translated example of the old form in `../i18n`. Nobody asks iHiD first, and
+no change is left forward-only. A whole-language re-run (`all` mode) still does not exist.
 
-- **Forward-only.** The new term applies to everything translated from now on. Existing pages
-  keep the old wording until their English is next edited or a reviewer flags them. Right for
-  a nuance, a rare term, or a preference.
-- **A targeted re-run.** The pages that use the old term are found and corrected. Right when
-  the old rendering is wrong, or so visible that two wordings side by side would look broken
-  (a product term such as "track" or "mentor"). A clean literal swap is an opus hand-edit
-  across the affected files, each one adjusted for agreement and case and checked as in
-  "Checking a hand edit" above, never a blind regex. Where a page needs more than a swap it
-  is retranslated and the file overwritten: move the old file out of the repo, run the normal
-  command (which now finds it absent), compare the two, and commit. Git sees a modification,
-  never a deletion. TODO(iHiD): there is deliberately no script for that last step until it
-  has been needed once.
+The one exception is a term whose glossary row records another native speaker's decision
+that is still under discussion on the forum. Its existing translations stay unchanged until
+that discussion settles, and the hand fix follows then.
 
-The command that changed the glossary reports how widely the old term is used, where it can
-tell. It never starts either option itself.
+The orchestrator works through these steps:
+
+1. **Count the old form.** Grep the locale's blob-keyed files (`locales/<locale>/content/`)
+   and its catalogs (`locales/<locale>/website/*.json` and `locales/<locale>/metadata/*.json`)
+   in `../i18n` for the old form, allowing for its inflected and compound forms. To see which
+   English a content file translates, look its blob id up in the translation index
+   (`index/json/<locale>/<repo>.json`), as in "Finding the file a reviewer means" above. The
+   command that changed the glossary reports the counts it could find, which gives a starting
+   point.
+2. **Split the work by term.** Give each Opus subagent one term, or one group of terms, and a
+   list of files that no other subagent touches, so no two subagents ever edit the same file.
+3. **Each subagent edits in place.** It uses targeted string replacements, never a whole-file
+   rewrite, and adjusts each occurrence for agreement and case by reading the sentence around
+   it. It keeps code, code spans, placeholders, keys and links byte for byte. Where a sentence
+   needs more than the swap to read naturally, it rewrites that sentence and nothing else.
+   It then runs, in `../i18n`, `node scripts/validate.mjs <locale> --content-repos=../website`
+   and `node scripts/no-deletions.mjs`, and both must come back clean for its files ("Checking
+   a hand edit" above has the per-file checks). It runs no git.
+4. **Land the change.** The orchestrator commits the `../i18n` changes on a branch, opens a
+   pull request into `main`, merges it once its checks are green, and reports to iHiD how many
+   occurrences were found and fixed, per term.
+
+Every edit overwrites a blob-keyed file, which is allowed ("A forum fix overwrites the file"
+above). Git sees a modification and never a deletion.
 
 ## Judgment work stays with the orchestrating model
 
