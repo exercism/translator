@@ -54,12 +54,12 @@ only ever one copy of each glossary.
 
 `i18n` rejects any commit that removes a file or a key under `locales/`. That rule covers
 removal only. A blob-keyed file may be overwritten, by a forum fix (`/fix-translation`) or
-by a targeted re-run after a glossary change: the blob id fixes which English a file
-translates, and the wording can still change. `scripts/translate.mjs` itself never
-overwrites, so a pass cannot undo a native speaker's correction. After a glossary change,
-iHiD decides case by case whether existing translations are left as they are (forward-only)
-or corrected (a targeted re-run). There is no `all` mode. See "A forum fix overwrites the
-file" and "After a glossary change" in `global/workflow.md`.
+by a hand fix after a glossary change: the blob id fixes which English a file translates,
+and the wording can still change. `scripts/translate.mjs` itself never overwrites, so a pass
+cannot undo a native speaker's correction. After a glossary or guide term change, the
+orchestrator dispatches Opus subagents to hand-fix every existing translation of the old
+form, unless the term is still under discussion on the forum. There is no `all` mode. See
+"A forum fix overwrites the file" and "After a glossary change" in `global/workflow.md`.
 
 ## Translation commands
 
