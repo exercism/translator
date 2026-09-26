@@ -65,6 +65,7 @@ These are terms where the Greek is used in prose, so the "Use (el/en)" column is
 |---------|-------|-------------|-------|
 | course | μάθημα | el | The whole course (e.g. "σε αυτό το μάθημα"). Not `σειρά μαθημάτων`. See `lesson` below for the collision this avoids. |
 | lesson | ενότητα | el | One lesson inside the course. Not `μάθημα`, which is `course` above. |
+| progress bar | **μπάρα προόδου** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-09-26). Use it for a bar on the website or on screen that shows progress (plural `μπάρες προόδου`). Never `γραμμή προόδου` or `ράβδος προόδου`. A bar in a chart or a drawing is `ράβδος` (see `bar` below). |
 
 ### Tooling & engineering
 
