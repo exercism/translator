@@ -1,10 +1,11 @@
 {
   "category_slug": "i18n-pt-pt",
-  "category_id": null,
+  "category_id": 968,
   "glossary": {
-    "topic_id": null,
-    "post_id": null,
+    "topic_id": 86559,
+    "post_id": 195744,
     "ever_updated": false,
-    "announced_through": null
+    "announced_through": null,
+    "status": ""
   }
 }

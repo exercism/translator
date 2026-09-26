@@ -1,10 +1,11 @@
 {
   "category_slug": "i18n-it",
-  "category_id": null,
+  "category_id": 965,
   "glossary": {
-    "topic_id": null,
-    "post_id": null,
+    "topic_id": 86550,
+    "post_id": 195729,
     "ever_updated": false,
-    "announced_through": null
+    "announced_through": null,
+    "status": ""
   }
 }
