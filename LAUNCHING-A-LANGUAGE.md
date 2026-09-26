@@ -55,6 +55,20 @@ in step 5.
 /translate-website-copy <locale>
 ```
 
+For a new language, run every track with one command once problem-specifications has
+finished:
+
+```
+node scripts/translate-tracks.mjs <locale>
+```
+
+It runs `translate.mjs track <track> <locale>` for every track checkout in `.source/`, six
+at a time. A slot starts the next track as soon as its last one finishes, so the slow tracks
+do not hold the rest up. It prints a line per track and lists the tracks that need another
+run. Running it again picks those up. A lock file stops a second run for the same locale
+while one is going. The whole run takes longer than a shell call's time limit, so start it
+in the background and wait for it to finish.
+
 Start with a dry run, which costs nothing and prints item counts and token estimates:
 
 ```
