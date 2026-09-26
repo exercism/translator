@@ -23,15 +23,15 @@ These are terms where the Greek is used in prose, so the "Use (el/en)" column is
 | array | πίνακας | el | **Never confuse with `board / whiteboard` in the metaphors table below**, which is always `ασπροπίνακας`, never bare `πίνακας`. |
 | list | λίστα | el | Used where the source itself distinguishes "list" from "array". |
 | index | θέση | el | Not `δείκτης`, which is reserved for "pointer", a different concept in Greek CS. |
-| variable | **μεταβλητή** (feminine) | el | Unconfirmed draft (agent, 2026-07-31). Central teaching concept; subject of the "box" metaphor. |
-| equal sign | **σύμβολο ίσον** | el | Unconfirmed draft (agent, 2026-07-31). Prose gloss for the `=` token when introduced conceptually. |
-| value (general sense) | **τιμή** / plural **τιμές** | el | Unconfirmed draft (agent, 2026-07-31). Distinct from `return value` → `τιμή επιστροφής` above: this row is the general, non-return sense. |
+| variable | **μεταβλητή** (feminine) | el | Confirmed by a native speaker (VaiaPatta1985, 2026-09-26). Central teaching concept; subject of the "box" metaphor. |
+| equal sign | **σύμβολο ίσον** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-09-26). Prose gloss for the `=` token when introduced conceptually. Write the full phrase: bare `ίσον` is the colloquial, spoken form. |
+| value (general sense) | **τιμή** / plural **τιμές** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-09-26). Distinct from `return value` → `τιμή επιστροφής` above: this row is the general, non-return sense. |
 
 ### Functions & control flow
 
 | English | Greek | Use (el/en) | Notes |
 |---------|-------|-------------|-------|
-| if statement | εντολή `if` | el | Keep `if` in backticks (real keyword) + `εντολή`, matching `for` βρόχος below. Not the school-curriculum term `δομή επιλογής`. |
+| if statement | εντολή `if` | el | Keep `if` in backticks (real keyword) after `εντολή`, matching βρόχος `for` below. Not the school-curriculum term `δομή επιλογής`. |
 | statement (executable) | εντολή | el | The imperative sense: a line of code that does something and gets executed. It is the ordinary word for a single thing someone is told to do as well. |
 | statement (logical claim) | πρόταση | el | The proposition sense: a claim that is true or false. Pick by meaning, not by the English word. |
 | function | συνάρτηση | el | The *keyword* `function` in code stays English; the concept in prose is `συνάρτηση`. |
@@ -48,12 +48,13 @@ These are terms where the Greek is used in prose, so the "Use (el/en)" column is
 | interpreter | διερμηνευτής | el | The program that runs the code. Never the heavier `διερμηνευτικό πρόγραμμα`. |
 | (programming) language | γλώσσα προγραμματισμού | el | Shorten to bare `γλώσσα` once context is established, including in the "a language a computer understands" framing. Never the English "language". |
 | code block | μπλοκ κώδικα | el | |
+| code (source code, what the learner writes) | **κώδικας** (masculine) | el | Confirmed by a native speaker (VaiaPatta1985, 2026-09-26). Always translated in prose, never left as English "code": `ο κώδικάς σου`, `γράψε κώδικα`, `γραμμές κώδικα`. Keep distinct from `κωδικός`, which is a password (`κωδικός πρόσβασης`) or an identifying code (a country, error, status or exit code). |
 | exception | εξαίρεση | el | Keep distinct from `σφάλμα` (error), the general term. |
 | to throw / raise an error | **πετάει ένα σφάλμα** | el | Not `δίνει ένα σφάλμα` ("gives an error"), which is unidiomatic. `αναφέρει ένα σφάλμα` ("reports") is an acceptable alternative where the source itself says "reports". **Never `κάνει ένα σφάλμα`**, which is what a *person* does when they make a mistake, not what software does. |
 | iteration | επανάληψη | el | Same word covers "loop" as a general concept; context disambiguates. |
 | loop | βρόχος | el | The general "repetition" concept is `επανάληψη`; keep `βρόχος` for the loop construct itself. |
-| for loop | `for` βρόχος | el | Keep `for` in backticks (real keyword) + `βρόχος`. |
-| while loop | `while` βρόχος | el | As above. |
+| for loop | **βρόχος `for`** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-09-26). The Greek noun comes first and the keyword follows it in backticks, inflecting only `βρόχος`: ο βρόχος `for`, τον βρόχο `for`, του βρόχου `for`, οι βρόχοι `for`. Never "`for` βρόχος". |
+| while loop | **βρόχος `while`** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-09-26). Same word order as `for loop` above: ο βρόχος `while`, οι βρόχοι `while`. Never "`while` βρόχος". |
 | nested loop(s) | εμφωλευμένος βρόχος / εμφωλευμένοι βρόχοι | el | The CS-standard word, as used in Greek programming courses and textbooks. **Never `φωλιασμένος/-η/-ο`**, which is the colloquial, spatial "nested" (a bird's nest, a place tucked into a landscape) and is wrong for this sense. Applies to anything nested in code, not just loops: `εμφωλευμένη εντολή if`, `εμφωλευμένος κώδικας`. |
 | Nested Loop (concept / heading) | Εμφωλευμένη Επανάληψη | el | The title-case form for the concept and its headings, built on `επανάληψη` (the repetition concept) rather than `βρόχος`. |
 | class | κλάση | el | Not the older, more generic `τάξη`. |
@@ -75,7 +76,7 @@ These are terms where the Greek is used in prose, so the "Use (el/en)" column is
 
 | English | Greek | Use (el/en) | Notes |
 |---------|-------|-------------|-------|
-| vs (versus, between two choices) | **εναντίον** | el | Unconfirmed draft (agent, 2026-07-31). |
+| vs (versus, between two choices) | **έναντι** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-09-26). Use `έναντι` when two options are compared or chosen between ("Ruby έναντι Python", "πίνακες έναντι λιστών"). Use `εναντίον` only when one side plays or fights against the other (a match, a game, a contest). `έναντι` does not inflect. |
 | meridiem (the `am`/`pm` indicator) | **ένδειξη μεσημβρίας** | el | Confirmed by a native speaker (astyanax, 2026-08-03). Never left as bare English `meridiem` in prose. Inflect the head noun and keep `μεσημβρίας` fixed in the genitive: `τη σωστή ένδειξη μεσημβρίας`, never `τη σωστή μεσημβρία`. The code identifier `meridiem` (in `displayTime(hour, minutes, meridiem)`) and the catalog key of the same name stay English. |
 | infiltration | **παρείσφρηση** | el | Confirmed by a native speaker (astyanax, 2026-08-07). Never `διείσδυση`, which carries an unwanted sexual innuendo. Feminine noun, same gender pattern as `διείσδυση` (`η παρείσφρηση`). |
 | record (a data record) | **καταγραφή** | el | Not `αρχείο`, which reads as "a file". Feminine noun (`μία καταγραφή`). |
@@ -84,10 +85,10 @@ These are terms where the Greek is used in prose, so the "Use (el/en)" column is
 
 | English | Greek | Use (el/en) | Notes |
 |---------|-------|-------------|-------|
-| hue | **απόχρωση** | el | Unconfirmed draft (agent, 2026-07-31). Color-model term; recurs across the "draw" exercise family. |
-| saturation | **κορεσμός** | el | Unconfirmed draft (agent, 2026-07-31). |
-| lightness | **φωτεινότητα** | el | Unconfirmed draft (agent, 2026-07-31). |
-| bar (vertical drawing unit, e.g. a rainbow bar) | **ράβδος** | el | Unconfirmed draft (agent, 2026-07-31). Chosen over `γραμμή` specifically to avoid collision with the `line()` shape, which is already glossaried as `γραμμή`. |
+| hue | **απόχρωση** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-09-26). Color-model term; recurs across the "draw" exercise family. |
+| saturation | **κορεσμός** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-09-26). |
+| lightness | **φωτεινότητα** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-09-26). |
+| bar (vertical drawing unit, e.g. a rainbow bar) | **ράβδος** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-09-26). This row covers a bar in a chart or a drawing (a bar graph's bar). Other kinds of bar are not covered by it, and may take `στήλη` or `μπάρα`. Chosen over `γραμμή` specifically to avoid collision with the `line()` shape, which is already glossaried as `γραμμή`. |
 | hardcode (verb) / hardcoded value | **καρφωτή τιμή** / plural **καρφωτές τιμές** | el | Confirmed by a native speaker (astyanax, 2026-08-04). Never the loanword `hardcode`/`hard-code`, and never `σκληροκωδικοποιημένος`. Verb sense renders as "βάζω καρφωτή τιμή". |
 
 ## Keep in English
@@ -104,7 +105,7 @@ it is the ordinary word here.
 | deploy (verb) | explain as "ανάπτυξη σε παραγωγικό περιβάλλον" | The verb inflects around the English word ("κάνω deploy"). Low confidence; revisit with native-speaker feedback. |
 | JavaScript, Python, React | (no gloss) | Product/language names. |
 | Debug, Test | (no gloss) | As keywords/technical tokens. |
-| Code, Bug, Frontend, Backend | (no gloss) | **Bug is the one exception:** at its first mention across the Greek curriculum (the `while` loops concept page) it is written `bugs (λογικά σφάλματα)`, so a beginner meets the meaning once. Every other mention, on that page and every other, is bare English. |
+| Code, Bug, Frontend, Backend | (no gloss) | `Code` here covers only a literal interface label or a name written in Latin script. In prose, code is `κώδικας` (see `code` under "Loops, state & program flow"). **Bug is the one exception:** at its first mention across the Greek curriculum (the `while` loops concept page) it is written `bugs (λογικά σφάλματα)`, so a beginner meets the meaning once. Every other mention, on that page and every other, is bare English. |
 | Variable and function names | (no gloss) | Never translated. |
 | CLI commands (`npm install`, `git commit`) | (no gloss) | The commands themselves are never translated. |
 | Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |

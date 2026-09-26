@@ -1,5 +1,58 @@
 # Greek (el) glossary notes
 
+## 2026-09-26: VaiaPatta1985 reviews the draft rows: loop word order, "έναντι", "κώδικας", and seven confirmations
+
+**Decided by:** VaiaPatta1985, on the pinned glossary thread ("[Greek Review] Glossary",
+`t/86499`, post 195988). VaiaPatta1985 describes themselves as a native Greek speaker with
+programming experience. Nobody has verified that beyond their own word.
+**Status:** native-speaker-confirmed, except `record`, which stays open (see below).
+**Terms affected:** `variable`, `equal sign`, `value (general sense)`, `hue`, `saturation`,
+`lightness`, `bar` (confirmed, rendering unchanged); `for loop`, `while loop`, `vs`
+(corrected); `code (source code)` (added); `if statement` (Notes only, to match the new loop
+order); `Code, Bug, Frontend, Backend` (Notes only, the `Code` part); `record` (unchanged,
+open question).
+**Files affected:** none. Existing translations were not touched: whether they are brought
+into line is iHiD's decision.
+
+**Confirmed.** VaiaPatta1985 confirmed seven agent drafts from 2026-07-31 as correct:
+`μεταβλητή`, `σύμβολο ίσον`, `τιμή`, `απόχρωση`, `κορεσμός`, `φωτεινότητα` and `ράβδος`.
+On the equal sign they added that people say bare `ίσον` in conversation, and that the full
+phrase is the right one for the website. On `ράβδος` they said it is right for a bar in a bar
+graph, and that other senses of "bar" may be `στήλη` or `μπάρα` (a straight borrowing of the
+English word). The row's Notes now say the row covers the chart and drawing sense only.
+
+**Corrected: the keyword follows `βρόχος`.** The drafts put the keyword first (`for`
+βρόχος, `while` βρόχος), copying English word order. VaiaPatta1985 said Greek puts the noun
+first: βρόχος `for`, βρόχος `while`. The `if statement` row already had that order (εντολή
+`if`) but its note pointed at the old loop rows as the pattern, so the note now points at
+the new ones.
+
+**Corrected: "versus" is `έναντι` when two options are compared.** The draft was
+`εναντίον`. VaiaPatta1985 drew the line between the two words: a fight between two sides is
+`εναντίον` ("Superman εναντίον Spiderman"), while choosing between two options is `έναντι`
+("Ruby έναντι Python"). They added "if I have correctly understood which context you mean".
+Almost every "versus" on Exercism compares two options (headings such as "Arrays vs Lists"),
+so the row now gives `έναντι` and keeps `εναντίον` for the contest sense.
+
+**Added: `code` is `κώδικας`.** VaiaPatta1985 read the "Keep in English" row `Code, Bug,
+Frontend, Backend` as keeping the word "code" in English, and said they did not see why it
+should: "code" as in coding is `κώδικας`, and "code" as in a password is `κωδικός`. The row
+came over from the Jiki template as a list of Latin-script tokens and interface labels, and
+no decision in this log covers its `Code` part (the 2026-08-02 entry below covers only
+`Bug`). Greek translations already write `κώδικας` in prose and keep `κωδικός` for passwords
+and identifying codes, so the new row states what was already practised. The `Code` part of
+the old row is now scoped to a literal label or name in Latin script. The `Bug` decision is
+unchanged.
+
+**Left open: `record`.** VaiaPatta1985 said a data record is `εγγραφή` rather than
+`καταγραφή`. The `καταγραφή` row is astyanax's decision (2026-08-10 below), so it stays as it
+is until the two reviewers have discussed it. The two may be talking about different senses.
+Astyanax's example was "a record of whether we're traveling left or right", which is keeping
+a note of something. Most of the Exercism content that says "record" means the data
+structure (Elm, F# and Gleam records, a database record, an AWK input record), which is the
+sense VaiaPatta1985 names. `εγγραφή` is also the word the website already uses for signing
+up (`Η εγγραφή σου ολοκληρώθηκε`), which the discussion should take into account.
+
 ## 2026-09-20: Adapted for Exercism (agent; nothing here is a native speaker's decision)
 
 This glossary was forked from Jiki's Greek glossary when Exercism's translator repo was
