@@ -1,5 +1,30 @@
 # Greek (el) glossary notes
 
+## 2026-09-26: "progress bar" is `μπάρα προόδου`, and `record` is still open
+
+**Decided by:** VaiaPatta1985, on the pinned glossary thread ("[Greek Review] Glossary",
+`t/86499`, post 196054). VaiaPatta1985 describes themselves as a native Greek speaker. Nobody
+has verified that beyond their own word.
+**Status:** native-speaker-confirmed (`progress bar`); open (`record`).
+**Terms affected:** `progress bar` (added); `record` (unchanged, still open).
+**Files affected:** one Pharo Smalltalk doc (`docs/LINUX.md`), where `γραμμές προόδου` became
+`μπάρες προόδου`.
+
+**Added: `progress bar` is `μπάρα προόδου`.** Asked what to call the bar on the website that
+shows progress, VaiaPatta1985 said that people usually call this sort of bar `μπάρα
+προόδου`. This fits their earlier answer on `bar`, where they said senses of "bar" outside a
+chart may be `μπάρα`. The `ράβδος` row keeps the chart and drawing sense. The Greek content
+held two renderings of "loading progress bars" in the Pharo Smalltalk docs:
+`docs/INSTALLATION.md` already had `μπάρες προόδου`, and `docs/LINUX.md` had `γραμμές
+προόδου`, which was corrected. The PHP text "progress indicator" (`δείκτης προόδου`) is a
+different English term and was left alone.
+
+**Still open: `record`.** In the same post VaiaPatta1985 agreed that `εγγραφή` fits a record
+in a database or a data structure, and that `καταγραφή` fits taking notes. That supports the
+reading in the entry below: the two reviewers may mean different senses. The `καταγραφή` row
+is astyanax's decision (2026-08-10), and astyanax has been asked on the thread and has not
+answered yet. The row and the existing translations stay as they are until astyanax replies.
+
 ## 2026-09-26: VaiaPatta1985 reviews the draft rows: loop word order, "έναντι", "κώδικας", and seven confirmations
 
 **Decided by:** VaiaPatta1985, on the pinned glossary thread ("[Greek Review] Glossary",
