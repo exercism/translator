@@ -1,10 +1,11 @@
 {
   "category_slug": "i18n-zh-tw",
-  "category_id": null,
+  "category_id": 1025,
   "glossary": {
-    "topic_id": null,
-    "post_id": null,
+    "topic_id": 87159,
+    "post_id": 197153,
     "ever_updated": false,
-    "announced_through": null
+    "announced_through": null,
+    "status": ""
   }
 }
