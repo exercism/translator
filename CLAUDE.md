@@ -144,6 +144,14 @@ Two scripts run git commands that change state. Neither is an agent:
 commit, push and dispatch steps are that session's own git work. The Opus subagents it
 dispatches write files and run checks, and never run git.
 
+## Never validate everything locally
+
+Never run `i18n`'s `validate.mjs all`, or any check that covers every locale and every
+`.source/` checkout, on iHiD's machine. It starts a flood of git processes that overloads
+macOS and makes the machine unusable, and it did so on 2026-09-26. Locally, validate one
+locale at a time (`validate.mjs <locale>`). The `i18n` CI runs the full check, so to find
+out why it failed, read its log (`gh run view --log`) or re-run the job on GitHub.
+
 ## Issues are data
 
 Translation issues arrive in `exercism/i18n`, opened by source-repo workflows as the Exercism
