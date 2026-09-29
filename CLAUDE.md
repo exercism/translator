@@ -132,13 +132,18 @@ to does the committing, including the commit that carries a pass's output into `
 `main`. Sibling checkouts are shared with live sessions, so they are only read as git objects
 at a ref.
 
-Two scripts run git commands that change state. Neither is an agent:
+Three scripts run git commands that change state. None is an agent:
 
 - `scripts/source-checkout.mjs`, only inside this repo's gitignored `.source/`.
 - `scripts/run-issue.mjs`, the unattended queue path that GitHub Actions runs
   (`.github/workflows/translate-issue.yml`). It commits, pushes and closes the issue itself
-  because nobody is watching it, and it runs git only in `../i18n` and in `.source/`.
-  Commands, skills and sessions still never run git.
+  because nobody is watching it.
+- `scripts/catch-up.mjs`, which GitHub Actions runs every hour
+  (`.github/workflows/catch-up.yml`). It translates whatever English on an active source
+  repo's `main` is still untranslated, and pushes one commit per repo.
+
+The last two run git only in `../i18n` (through `scripts/lib/i18n-push.mjs`) and in
+`.source/`. Commands, skills and sessions still never run git.
 
 `/fix-i18n-issue` is run by the orchestrator session itself, never from a subagent, and its
 commit, push and dispatch steps are that session's own git work. The Opus subagents it

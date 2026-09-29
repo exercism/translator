@@ -1,0 +1,166 @@
+# Translates everything still untranslated on every active source repo's main,
+# every hour, unattended.
+#
+# The per-PR queue (translate-issue.yml) translates English as it is written.
+# This is the catch-all behind it. English can reach a source repo's main
+# without a translation: a PR is admin-merged, a locale joins productionTargets
+# after a PR's check ran, or a queue run fails. The job runs
+# scripts/catch-up.mjs, which asks the i18n repo's sweep.mjs what is missing,
+# translates it with scripts/translate.mjs, checks it with the i18n repo's
+# checker, and pushes one commit per source repo to exercism/i18n main. Its
+# header comment has the details.
+#
+# exercism/i18n's daily sweep issue keeps reporting what is still outstanding.
+# After this job, that is only what this job could not translate: a repo over
+# the word cap, which waits for iHiD, or one that failed.
+#
+# ## What is trusted
+#
+# Nothing from outside this repo is read except the list of track repos, which
+# GitHub's search returns, and the source repos' English, which is what every
+# translation run reads. There is no payload and no issue.
+#
+# ## Concurrency
+#
+# One run at a time, and a run in progress is never cancelled, because a
+# cancelled run wastes paid translations and can leave a commit made but not
+# pushed. A run that takes longer than an hour means the next one waits, and
+# GitHub keeps only one waiting, so nothing piles up.
+#
+# This does not share translate-issue.yml's `i18n-main` group. Sharing it would
+# let an hourly run replace a waiting queue dispatch, or a burst of queue
+# dispatches drop this one. Both push the same way instead: rebase onto main and
+# retry. A push that still fails is reset and tried again next hour.
+#
+# ## When it goes red
+#
+# The run fails when any repo failed: items the checker rejected, checker
+# errors, a push that did not land, or a repo the sweep could not read. What did
+# translate has been pushed already. The job summary lists every repo and what
+# happened, and the run's state/runs/ is uploaded as an artifact. A repo over
+# the word cap does not make it red, because waiting for iHiD is expected.
+#
+# ## Secrets and tokens
+#
+#   DEEPSEEK_API_KEY               the translation engine, a repository secret.
+#   EXERCISM_I18N_APP_PRIVATE_KEY  with EXERCISM_I18N_APP_ID, mints a token for
+#                                  the Exercism i18n GitHub App, limited to
+#                                  exercism/i18n with Contents write, for the
+#                                  push. So the commits are by
+#                                  `exercism-i18n[bot]`.
+#
+# An installation token lasts an hour. It is minted after the sweep, just
+# before translating, and a run whose translating took longer than that would
+# fail at the push and be retried the next hour.
+
+name: Catch up
+
+on:
+  schedule:
+    - cron: "37 * * * *"
+  workflow_dispatch:
+    inputs:
+      repos:
+        description: "Catch up only these repos (comma separated owner/name), instead of every one"
+        required: false
+      dry-run:
+        description: "Report what would be translated, and translate nothing"
+        type: boolean
+        default: false
+
+concurrency:
+  group: catch-up
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  catch-up:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Check out the translator
+        uses: actions/checkout@v7
+        with:
+          path: translator
+          persist-credentials: false
+
+      # Checked out as a sibling ../i18n, which is what config.json's
+      # `i18n_repo` expects. Full history, because the push rebases onto main.
+      - name: Check out exercism/i18n
+        uses: actions/checkout@v7
+        with:
+          repository: exercism/i18n
+          ref: main
+          path: i18n
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@v6
+        with:
+          package_json_file: i18n/package.json
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Install the i18n repo's dependency
+        working-directory: i18n
+        run: pnpm install --frozen-lockfile
+
+      # The same search the i18n repo's sweep.yml makes. There is no list of
+      # tracks anywhere on purpose, so they are found by topic, and archived
+      # repos are left out.
+      - name: Find the track repos
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh search repos --owner exercism --topic exercism-track --archived=false --limit 1000 --json name > tracks.json
+          COUNT=$(jq length tracks.json)
+          echo "Found ${COUNT} track repo(s)."
+          # A search that suddenly returns almost nothing would quietly shrink
+          # the catch-up to the five singleton repos.
+          [ "$COUNT" -ge 50 ] || { echo "::error::Only ${COUNT} track repos found. That is too few to be right, so this run is stopped."; exit 1; }
+
+      # scripts/catch-up.mjs can run the sweep itself, but here it is a step of
+      # its own so that the push token below, which lasts an hour, is not spent
+      # on it. A repo the sweep could not read is listed in its output, and
+      # scripts/catch-up.mjs reports it, so the step never fails the run here.
+      - name: Find what is untranslated
+        working-directory: i18n
+        env:
+          REPOS: ${{ inputs.repos }}
+        run: |
+          set -uo pipefail
+          node scripts/sweep.mjs --tracks=../tracks.json --out=../sweep ${REPOS:+--repos="$REPOS"} || true
+
+      - name: Mint a token for exercism/i18n
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ vars.EXERCISM_I18N_APP_ID }}
+          private-key: ${{ secrets.EXERCISM_I18N_APP_PRIVATE_KEY }}
+          owner: exercism
+          repositories: i18n
+          permission-contents: write
+
+      - name: Catch up
+        working-directory: translator
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          EXERCISM_I18N_PUSH_TOKEN: ${{ steps.app-token.outputs.token }}
+          DRY_RUN: ${{ inputs.dry-run }}
+        run: |
+          set -euo pipefail
+          node scripts/catch-up.mjs --sweep=../sweep $([ "$DRY_RUN" = "true" ] && echo --dry-run)
+
+      - name: Upload the run
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: catch-up-${{ github.run_id }}
+          path: translator/state/runs/
+          if-no-files-found: ignore
+          retention-days: 14

@@ -55,7 +55,7 @@ orchestrator session runs.
 You have three jobs. Whatever else happens in the session, keep coming back to them:
 
 1. Work the forum queue, and supervise the automated translation-issue queue.
-2. Work the sweep issue, which is what catches English that merged without a translation.
+2. Watch the catch-up, which translates English that merged without a translation.
 3. Manage git.
 4. Communicate with Jeremy.
 
@@ -254,8 +254,7 @@ and no phased rollout. For the next language, the cheapest order is the one Hung
 
 - Confirm with Jeremy before starting a translation run, because it costs money. Each command
   prints its free dry run first, and that is the number to show him. The dollar figure is a
-  lower bound, because it excludes thinking tokens. Work the sweep issue names is the
-  exception: run it without asking (see "The sweep found English that merged untranslated").
+  lower bound, because it excludes thinking tokens.
 - A track is always named explicitly. This repo deliberately has no list of tracks.
 - When a run exits, read its `SUMMARY`, commit what it wrote in an `../i18n` worktree, and open a pull request. Failures
   are items left absent; run the same command again later.
@@ -316,41 +315,31 @@ missed. A run that ends in something a person has to deal with labels the issue
 - While `productionTargets` is empty, both paths report that there is nothing to do and the
   issue stays open. That is expected before the first language goes live.
 
-### 3. The sweep found English that merged untranslated
+### 3. English merged untranslated, and the hourly catch-up translates it
 
 The per-PR `i18n / completeness` check is a point-in-time gate, so it cannot stay true until
 merge. A PR goes green, a locale joins `productionTargets`, the PR merges, and nothing notices.
-A locale in `targets` but not `productionTargets` is never translated by the queue at all. An
-admin merge skips the check entirely.
+An admin merge skips the check entirely, and a queue run can fail.
 
-`exercism/i18n`'s `.github/workflows/sweep.yml` answers the question that survives all of that:
-it measures every source repo's `main` in full, daily, and writes ONE issue labelled `sweep`,
-rewritten in place every run. It never opens per-repo issues and never queues anything, so
-nothing happens to what it finds unless you act on it.
+`.github/workflows/catch-up.yml` in this repo closes that gap without anyone watching. Every
+hour it asks `exercism/i18n`'s `scripts/sweep.mjs` what is missing on every active source
+repo's `main`, translates it with `scripts/translate.mjs`, checks it, and pushes one commit per
+repo to `../i18n` `main`. `scripts/catch-up.mjs` has the details. Nothing waits for a session.
 
-Near the start of every session, read that issue:
+What it leaves is for you:
 
-```
-gh issue list --repo exercism/i18n --label sweep --state open
-```
+- **A repo over the word cap** is skipped every hour and waits for Jeremy. The run's job
+  summary names it. Ask him before running it by hand, because it costs money.
+- **A red run** means a repo failed: items the checker rejected every time, checker errors, or
+  a push that did not land. What did translate was pushed. The job summary and the uploaded
+  `state/runs/` say which repo and why. Fix the cause (usually a hand fix to a rejected file,
+  as with `/fix-i18n-issue`), and the next hourly run translates the rest.
 
-- **Do not close it.** It is rewritten rather than replaced, and an open issue with a recent
-  date is how anyone can see the sweep is still running. A date more than a couple of days old
-  means the sweep itself has stopped, which is worth telling Jeremy about.
-- **Read the split.** "Part translated" is a locale that already serves that repo, so a gap
-  there is text a user can reach today. That is the real work. "Not started" is backlog for a
-  repo the locale was never run over, which is a decision about scope rather than a regression.
-- **A handful of items in an otherwise complete active track is drift**, and it is the case
-  this exists to catch. Translate it with the command the row prints, then open the pull
-  request into `../i18n` as usual.
-- **You do not ask before doing that.** Jeremy gave standing permission on 2026-09-23: the
-  sweep is not a proposal for him to approve, it is a list of work to clear. Text a user can
-  reach today is untranslated, and waiting to be told to fix it is the failure this whole
-  mechanism exists to prevent. Report what you did afterwards rather than asking first.
-- **A large count in an inactive track is not urgent.** Inactive tracks are deliberately out of
-  scope: they are not gated, and `validate.mjs` does not require them.
-- Say what you actioned in your next message to Jeremy, with the numbers before and after, so
-  the backlog's direction is visible rather than just its size.
+`exercism/i18n`'s daily `sweep.yml` still writes one issue labelled `sweep`, rewritten in place.
+After the catch-up, it lists only what the catch-up could not translate, so a gap that sits
+there for more than a day is one of the two cases above. Do not close it: an open issue with a
+recent date is how anyone can see the sweep is still running. Inactive tracks are out of scope
+for both: they are not gated, and nobody can reach their pages.
 
 ## Forum conduct
 
@@ -411,9 +400,8 @@ acts as. Never print any part of the key, and never pass it on a command line.
 - Translation passes do not propose glossary terms. A glossary only grows from forum feedback,
   worked through `/action-forum-post` and `/update-guide-and-glossary`.
 - Confirm with Jeremy before starting a full translation run, because it costs money. Two
-  exceptions run without you asking: the issue queue, where `translate-issue.yml` picks up an
-  issue on its own under the word cap that protects the budget, and the sweep, whose findings
-  you translate autonomously.
+  exceptions run without you asking, both under the word cap that protects the budget: the
+  issue queue (`translate-issue.yml`) and the hourly catch-up (`catch-up.yml`).
 - When a native speaker contradicts the guide, the guide is wrong. Put linguistic naturalness
   first; matching the glossary comes second.
 
