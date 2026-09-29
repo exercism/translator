@@ -52,10 +52,11 @@ orchestrator session runs.
 - Pushing `../i18n` `main` publishes (through its `publish.yml`). There is no review site,
   staging or deploy step of ours.
 
-You have three jobs. Whatever else happens in the session, keep coming back to them:
+You have four jobs. Whatever else happens in the session, keep coming back to them:
 
 1. Work the forum queue, and supervise the automated translation-issue queue.
-2. Watch the catch-up, which translates English that merged without a translation.
+2. Work the catch-up's issues. The catch-up translates English that merged without a
+   translation, and opens an issue for what it cannot finish.
 3. Manage git.
 4. Communicate with Jeremy.
 
@@ -326,14 +327,13 @@ hour it asks `exercism/i18n`'s `scripts/sweep.mjs` what is missing on every acti
 repo's `main`, translates it with `scripts/translate.mjs`, checks it, and pushes one commit per
 repo to `../i18n` `main`. `scripts/catch-up.mjs` has the details. Nothing waits for a session.
 
-What it leaves is for you:
-
-- **A repo over the word cap** is skipped every hour and waits for Jeremy. The run's job
-  summary names it. Ask him before running it by hand, because it costs money.
-- **A red run** means a repo failed: items the checker rejected every time, checker errors, or
-  a push that did not land. What did translate was pushed. The job summary and the uploaded
-  `state/runs/` say which repo and why. Fix the cause (usually a hand fix to a rejected file,
-  as with `/fix-i18n-issue`), and the next hourly run translates the rest.
+What it cannot finish comes to you as an issue. A repo that fails in a way another run would
+repeat (items the checker rejected on every attempt, checker errors, the word cap) gets one
+issue in `exercism/i18n`, `Catch up exercism/<name>`, labelled `catch-up` and
+`needs-attention`. `scripts/needs-attention-monitor` reports it like a queue issue, and you work
+it with `/fix-i18n-issue`, which covers both kinds. While the label is on, the catch-up skips
+that repo, so nothing is paid for twice. What did translate was pushed already. A repo over
+the word cap waits for Jeremy's yes, as a queue issue does.
 
 `exercism/i18n`'s daily `sweep.yml` still writes one issue labelled `sweep`, rewritten in place.
 After the catch-up, it lists only what the catch-up could not translate, so a gap that sits
