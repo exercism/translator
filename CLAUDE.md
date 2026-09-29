@@ -176,6 +176,12 @@ waiting for approval. The orchestrator watches for the label with `scripts/needs
 each issue with `/fix-i18n-issue`, which reads the failures from the run's artifact through
 `scripts/issue-failures.mjs`, never from the issue.
 
+The hourly catch-up (`scripts/catch-up.mjs`) opens a second kind of issue, one per source repo
+whose `main` it could not finish, titled `Catch up exercism/<name>` and labelled `catch-up`
+(`github.catch_up_label`) and `needs-attention`, never `translation`. The same monitor and the
+same command handle it. `scripts/lib/issues.mjs` takes only the repo and the run id from it,
+with the same author and label guards.
+
 ## No review site
 
 Reviewers read the live website and post corrections on the forum. A correction is applied to

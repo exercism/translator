@@ -11,8 +11,8 @@
 # header comment has the details.
 #
 # exercism/i18n's daily sweep issue keeps reporting what is still outstanding.
-# After this job, that is only what this job could not translate: a repo over
-# the word cap, which waits for iHiD, or one that failed.
+# After this job, that is only what this job could not translate, and each such
+# repo has an issue of its own (below).
 #
 # ## What is trusted
 #
@@ -32,22 +32,29 @@
 # dispatches drop this one. Both push the same way instead: rebase onto main and
 # retry. A push that still fails is reset and tried again next hour.
 #
-# ## When it goes red
+# ## When a repo needs a person
 #
-# The run fails when any repo failed: items the checker rejected, checker
-# errors, a push that did not land, or a repo the sweep could not read. What did
-# translate has been pushed already. The job summary lists every repo and what
-# happened, and the run's state/runs/ is uploaded as an artifact. A repo over
-# the word cap does not make it red, because waiting for iHiD is expected.
+# A repo that fails in a way another run would repeat (items the checker
+# rejected on every attempt, checker errors, the word cap) gets one issue in
+# exercism/i18n, `Catch up exercism/<name>`, labelled `catch-up` and
+# `needs-attention`. The orchestrator's needs-attention-monitor reports it and
+# /fix-i18n-issue fixes it. While it is labelled, the repo is skipped, so
+# nothing is paid for twice. What did translate has been pushed already. The
+# job summary lists every repo and what happened, and the run's state/runs/ is
+# uploaded as an artifact, which the issue points at.
+#
+# The run itself goes red only when the sweep could not read every repo or an
+# issue could not be written.
 #
 # ## Secrets and tokens
 #
 #   DEEPSEEK_API_KEY               the translation engine, a repository secret.
 #   EXERCISM_I18N_APP_PRIVATE_KEY  with EXERCISM_I18N_APP_ID, mints a token for
 #                                  the Exercism i18n GitHub App, limited to
-#                                  exercism/i18n with Contents write, for the
-#                                  push. So the commits are by
-#                                  `exercism-i18n[bot]`.
+#                                  exercism/i18n with Contents and Issues
+#                                  write, for the push and the catch-up
+#                                  issues. So the commits and the issues are
+#                                  by `exercism-i18n[bot]`.
 #
 # An installation token lasts an hour. It is minted after the sweep, just
 # before translating, and a run whose translating took longer than that would
@@ -145,12 +152,14 @@ jobs:
           owner: exercism
           repositories: i18n
           permission-contents: write
+          permission-issues: write
 
       - name: Catch up
         working-directory: translator
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           EXERCISM_I18N_PUSH_TOKEN: ${{ steps.app-token.outputs.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
           DRY_RUN: ${{ inputs.dry-run }}
         run: |
           set -euo pipefail

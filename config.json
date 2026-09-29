@@ -38,6 +38,9 @@
     "added before it when a change is above the word cap, so exercism/i18n's",
     "rerun-source-check.yml can tell the source PR the translation is waiting for",
     "approval (its name is also written there).",
+    "`catch_up_label` marks the issue scripts/catch-up.mjs opens for a source repo",
+    "whose `main` it could not finish. It carries `attention_label` too, and never",
+    "`issue_label`, so the queue's workflows leave it alone.",
     "",
     "issue_word_cap: an issue with more untranslated English than this many words",
     "(per locale) waits for iHiD instead of running on its own.",
@@ -70,6 +73,7 @@
     "issue_label": "translation",
     "attention_label": "needs-attention",
     "over_cap_label": "over-cap",
+    "catch_up_label": "catch-up",
     "track_topic": "exercism-track",
     "singletons": ["website", "docs", "blog", "website-copy", "problem-specifications"]
   },

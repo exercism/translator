@@ -29,6 +29,23 @@
 // or a repo in the org with the track topic), and the sha must be a commit in
 // that PR. The changed English is not read from the issue:
 // scripts/work-issue.mjs works it out from the source repo itself.
+//
+// ## Catch-up issues
+//
+// scripts/catch-up.mjs opens its own kind of issue, one per source repo whose
+// `main` it could not finish, labelled `catch-up` (config.json
+// `catch_up_label`) and never `translation`, so the queue's workflows ignore
+// it. Its title and body are written by that script alone, but anyone can open
+// an issue with any title, so it gets the same guards: the author, the label,
+// and two values matched by strict patterns:
+//
+//   repo   `exercism/<name>`, from the title `Catch up exercism/<name>` and the
+//          body's Repo row, which must agree
+//   run    the Actions run id of the catch-up run that opened or last labelled
+//          it, from the body's Run row, which is where its artifact is
+//
+// The repo is then checked against the allowlist. There is no PR and no sha to
+// check: the sha is in the run's own outcome file.
 
 import { spawnSync } from "node:child_process";
 import { config } from "./config.mjs";
@@ -71,8 +88,48 @@ export function fetchIssue(number) {
   const result = gh(["issue", "view", String(number), "--repo", repo, "--json", "number,author,labels,title,body,state"]);
   if (!result.ok) return { ok: false, transient: true, number, reason: `gh could not read issue ${number}: ${result.error}` };
   const issue = JSON.parse(result.out);
-  const parsed = parseIssue(issue);
+  const parsed = isCatchUpIssue(issue) ? parseCatchUpIssue(issue) : parseIssue(issue);
   return parsed.ok ? { ...parsed, state: issue.state } : parsed;
+}
+
+/** Whether an issue is labelled as a catch-up issue. Says nothing about whether it is genuine. Pure. */
+export function isCatchUpIssue(issue) {
+  return (issue?.labels ?? []).some((one) => one.name === config().github.catch_up_label);
+}
+
+/** The title scripts/catch-up.mjs gives the issue for one repo. Pure. */
+export function catchUpTitle(repo) {
+  return `Catch up ${repo}`;
+}
+
+/** The repo in a catch-up issue's title, or null. Pure. */
+export function catchUpRepo(title) {
+  const { org } = config().github;
+  return new RegExp(`^Catch up (${org}/[A-Za-z0-9][A-Za-z0-9._-]{0,99})$`).exec(String(title ?? ""))?.[1] ?? null;
+}
+
+/**
+ * The two values of a catch-up issue, or the reason it is not one. Pure.
+ *
+ * @param {{number, author:{login}, labels:{name}[], title, body}} issue  `gh issue view --json`
+ */
+export function parseCatchUpIssue(issue) {
+  const { issue_authors: authors, catch_up_label: label } = config().github;
+  const refuse = (reason) => ({ ok: false, number: issue?.number ?? null, reason });
+
+  if (!authors.includes(issue?.author?.login)) return refuse(`author is not one of ${authors.join(", ")}`);
+  if (!(issue.labels ?? []).some((one) => one.name === label)) return refuse(`no "${label}" label`);
+
+  const repo = catchUpRepo(issue.title);
+  if (!repo) return refuse("title is not `Catch up <org>/<repo>`");
+
+  const body = String(issue.body ?? "");
+  const repoRow = /^\| Repo \| ([^|\s]+) \|\s*$/m.exec(body);
+  const runRow = /^\| Run \| ([1-9][0-9]{0,14}) \|\s*$/m.exec(body);
+  if (!repoRow || repoRow[1] !== repo) return refuse("title and body disagree about the repo");
+  if (!runRow) return refuse("no run id in the body's `Run` row");
+
+  return { ok: true, catchUp: true, number: issue.number, repo, runId: runRow[1] };
 }
 
 /** The allowlist and the sha-belongs-to-PR check. Network, read-only. */
@@ -89,9 +146,12 @@ export function verifyIssue(parsed) {
     kind = "track";
   }
 
+  const source = kind === "track" ? "track" : kind;
+  if (parsed.catchUp) return { ...parsed, name, source };
+
   const commits = gh(["api", "--paginate", `repos/${parsed.repo}/pulls/${parsed.pr}/commits`, "--jq", ".[].sha"]);
   if (!commits.ok) return { ...refuse(`could not list the commits of ${parsed.repo}#${parsed.pr}: ${commits.error}`), transient: true };
   if (!commits.out.split("\n").includes(parsed.sha)) return refuse(`${parsed.sha.slice(0, 10)} is not a commit of ${parsed.repo}#${parsed.pr}`);
 
-  return { ...parsed, name, source: kind === "track" ? "track" : kind };
+  return { ...parsed, name, source };
 }

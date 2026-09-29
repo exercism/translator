@@ -14,6 +14,11 @@
 //   --summary= a local scripts/translate.mjs summary instead of an artifact,
 //              for items that failed in a run of scripts/work-issue.mjs here
 //
+// A catch-up issue (scripts/catch-up.mjs, labelled `catch-up`) is read the same
+// way: its artifact is the `catch-up-<run id>` of the run its body names, its
+// outcome is catch-up.<name>.outcome.json in there, and the English is the
+// repo's main at the sha that outcome records.
+//
 // /fix-i18n-issue runs this. It prints the outcome, and for each failed item a
 // block with the locale, the how-to, the English (written out to a file under
 // state/fix/), the last rejected answer, the checker's errors, the file to
@@ -53,8 +58,22 @@ function run(command, args, options = {}) {
   return { ok: result.status === 0, out: result.stdout ?? "", error: (result.stderr ?? "").trim().split("\n").slice(-1)[0] };
 }
 
+const fetched = fetchIssue(number);
+const issue = fetched.ok ? verifyIssue(fetched) : fetched;
+if (!issue.ok) die(`issue ${number}: ${issue.reason}`);
+const kind = SOURCES[issue.source].kind;
+
+// The files a run writes for this issue, named for the kind of issue.
+const FILES = issue.catchUp
+  ? { outcome: `catch-up.${issue.name}.outcome.json`, comment: `catch-up.${issue.name}.issue.md`, logs: `catch-up.${issue.name}.` }
+  : { outcome: `issue-${number}.outcome.json`, comment: `issue-${number}.comment.md`, logs: "" };
+
 /** The newest artifact this issue's runs uploaded, or the one from `--run`. */
 function findArtifact() {
+  if (issue.catchUp) {
+    const runId = flags.run !== undefined ? String(flags.run) : issue.runId;
+    return { name: `catch-up-${runId}`, runId };
+  }
   const prefix = `run-issue-${number}-`;
   const found = [];
   for (let page = 1; page <= 20 && found.length === 0; page++) {
@@ -76,7 +95,7 @@ function findArtifact() {
 
 function download({ name, runId }) {
   const dir = path.join(FIX, runId);
-  if (!fs.existsSync(path.join(dir, `issue-${number}.outcome.json`)) && !fs.existsSync(path.join(dir, `issue-${number}.comment.md`))) {
+  if (!fs.existsSync(path.join(dir, FILES.outcome)) && !fs.existsSync(path.join(dir, FILES.comment))) {
     fs.mkdirSync(dir, { recursive: true });
     const got = run("gh", ["run", "download", runId, "--repo", translatorRepo, "--name", name, "--dir", dir]);
     if (!got.ok) die(`could not download ${name}: ${got.error}`);
@@ -110,7 +129,7 @@ if (typeof flags.summary === "string") {
   artifactDir = download(artifact);
   base = artifactDir;
   runUrl = `https://github.com/${translatorRepo}/actions/runs/${artifact.runId}`;
-  const outcomeFile = path.join(artifactDir, `issue-${number}.outcome.json`);
+  const outcomeFile = path.join(artifactDir, FILES.outcome);
   if (fs.existsSync(outcomeFile)) {
     outcome = JSON.parse(fs.readFileSync(outcomeFile, "utf8"));
   } else {
@@ -120,33 +139,35 @@ if (typeof flags.summary === "string") {
   }
 }
 
-const fetched = fetchIssue(number);
-const issue = fetched.ok ? verifyIssue(fetched) : fetched;
-if (!issue.ok) die(`issue ${number}: ${issue.reason}`);
-const kind = SOURCES[issue.source].kind;
+
+// A catch-up issue's English is the repo's main at the sha its run recorded.
+const sha = issue.catchUp ? outcome.sha : issue.sha;
+if (!sha) die(`issue ${number}: the run's outcome records no sha, so there is no English to read`);
+const where = issue.catchUp ? `${issue.repo} main` : `${issue.repo}#${issue.pr}`;
 
 const lib = await i18n();
-const checkout = run("node", [path.join(ROOT, "scripts", "source-checkout.mjs"), issue.name, `--pr=${issue.pr}`], { stdio: ["ignore", "ignore", "pipe"] });
-if (!checkout.ok) die(`could not fetch ${issue.repo}#${issue.pr} into .source/: ${checkout.error}`);
+const checkout = run("node", [path.join(ROOT, "scripts", "source-checkout.mjs"), issue.name, ...(issue.catchUp ? [] : [`--pr=${issue.pr}`])], { stdio: ["ignore", "ignore", "pipe"] });
+if (!checkout.ok) die(`could not fetch ${where} into .source/: ${checkout.error}`);
 const repo = path.join(ROOT, ".source", issue.name);
 
 const lines = [];
 lines.push(`issue:      #${number}  https://github.com/${config().github.i18n_repo}/issues/${number}`);
-lines.push(`source:     ${issue.repo}#${issue.pr} at ${issue.sha}`);
+lines.push(`source:     ${where} at ${sha}`);
+lines.push(`kind:       ${issue.catchUp ? "catch-up" : "queue"}`);
 lines.push(`state:      ${fetched.state}`);
 lines.push(`outcome:    ${outcome.reason}${outcome.label ? `  (label: ${outcome.label})` : ""}`);
 if (runUrl) lines.push(`run:        ${runUrl}`);
 if (artifactDir) {
   lines.push(`artifact:   ${path.relative(ROOT, artifactDir)}`);
-  const comment = path.join(artifactDir, `issue-${number}.comment.md`);
+  const comment = path.join(artifactDir, FILES.comment);
   if (fs.existsSync(comment)) lines.push(`comment:    ${path.relative(ROOT, comment)}  (the run's own copy of what it posted)`);
-  const logs = fs.readdirSync(artifactDir).filter((file) => file.endsWith(".validate.log"));
+  const logs = fs.readdirSync(artifactDir).filter((file) => file.startsWith(FILES.logs) && file.endsWith(".validate.log"));
   for (const log of logs) lines.push(`log:        ${path.relative(ROOT, path.join(artifactDir, log))}`);
 }
 
 const failures = outcome.failures ?? [];
 const locales = [...new Set(failures.map((one) => one.locale))].sort();
-const validateArgs = issue.source === "website" ? [`--source-repo=${repo}`, `--source-ref=${issue.sha}`] : [`--content-repos=${repo}:${kind}@${issue.sha}`];
+const validateArgs = issue.source === "website" ? [`--source-repo=${repo}`, `--source-ref=${sha}`] : [`--content-repos=${repo}:${kind}@${sha}`];
 lines.push(`failures:   ${failures.length}`);
 for (const locale of locales) lines.push(`validate:   (in ${lib.dir}) node scripts/validate.mjs ${locale} ${validateArgs.join(" ")}`);
 
@@ -189,7 +210,7 @@ failures.forEach((failure, index) => {
     lines.push(`  english:   ${path.relative(ROOT, english)}${failure.english ? "" : "  (EMPTY: this run predates recording a unit's English)"}`);
     lines.push(`  rejected:  ${rejected ?? "none saved (the answer was missing, not rejected)"}`);
     lines.push(`  write to:  ${path.join(lib.dir, failure.target)}, key ${failure.unit}`);
-    lines.push(`  check:     node scripts/locate.mjs ${locateArgs.join(" ")} ${failure.locale} --key=${failure.unit} --ref=${issue.sha} --check`);
+    lines.push(`  check:     node scripts/locate.mjs ${locateArgs.join(" ")} ${failure.locale} --key=${failure.unit} --ref=${sha} --check`);
     lines.push(`  stamp:     (in ${lib.dir}) node scripts/validate.mjs ${failure.locale} --stamp --stamp-units=@${units} ${catalogType} ${validateArgs.join(" ")}`);
     return;
   }
@@ -202,7 +223,7 @@ failures.forEach((failure, index) => {
     lines.push(`  english:   ${path.relative(ROOT, english)}  (${issue.repo}:${failure.englishPath}, blob ${failure.englishId})`);
     lines.push(`  rejected:  ${rejected ?? "none saved"}`);
     lines.push(`  write to:  ${path.join(lib.dir, failure.target)}`);
-    lines.push(`  check:     node scripts/locate.mjs ${locateArgs.join(" ")} ${failure.locale} ${failure.englishPath} --ref=${issue.sha} --check`);
+    lines.push(`  check:     node scripts/locate.mjs ${locateArgs.join(" ")} ${failure.locale} ${failure.englishPath} --ref=${sha} --check`);
   } else {
     lines.push(`  note:      not a file a hand translation can fill (${failure.target ? failure.target : "no target"}); tell iHiD`);
   }
