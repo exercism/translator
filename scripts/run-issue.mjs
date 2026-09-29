@@ -75,6 +75,7 @@ import { spawnSync } from "node:child_process";
 import { Failure, ROOT, config, parseArgs } from "./lib/config.mjs";
 import { i18n } from "./lib/i18n.mjs";
 import { STARTED } from "./lib/queue.mjs";
+import { i18nGit, runUrl, scrub, websiteEnglish } from "./lib/i18n-push.mjs";
 import { attentionLabel, commitMessage, overCapLabel, issueNumber, issueOutcome, issueScope, issueStillOpen, issueUrl, itemsWritten, pendingWrites, perLocaleCounts, readIssue, translateForIssue, untranslatedWords, validateArgs } from "./lib/issue-pass.mjs";
 
 const { positional } = parseArgs(process.argv.slice(2));
@@ -82,15 +83,6 @@ const number = issueNumber(positional[0]);
 if (number === null) {
   console.error("error: usage: run-issue.mjs <issue-number>");
   process.exit(1);
-}
-
-const PUSH_TOKEN = process.env.EXERCISM_I18N_PUSH_TOKEN || "";
-const scrub = (text) => (PUSH_TOKEN ? String(text ?? "").split(PUSH_TOKEN).join("***") : String(text ?? ""));
-
-/** The Actions run this is, for a failure comment to point at. */
-function runUrl() {
-  const { GITHUB_SERVER_URL: server, GITHUB_REPOSITORY: repo, GITHUB_RUN_ID: id } = process.env;
-  return server && repo && id ? `${server}/${repo}/actions/runs/${id}` : null;
 }
 
 function gh(args) {
@@ -170,71 +162,7 @@ function finish(reason, detail, facts = {}) {
 }
 
 const lib = await i18n();
-
-// ------------------------------------------------------------------- git ----
-
-const I18N = path.resolve(lib.dir);
-
-// The commits are the Exercism i18n app's bot user's, as the push is made with
-// the app's token.
-const { name: AUTHOR_NAME, email: AUTHOR_EMAIL } = config().github.commit_author;
-const IDENT = ["-c", `user.name=${AUTHOR_NAME}`, "-c", `user.email=${AUTHOR_EMAIL}`];
-
-/**
- * git, in the i18n checkout and nowhere else.
- *
- * Other checkouts are not this script's to change: source repos are read as
- * objects at a ref, and .source/ is managed by scripts/source-checkout.mjs.
- */
-function git(args, { allowFail = false } = {}) {
-  const result = spawnSync("git", args, { cwd: I18N, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
-  if (result.status !== 0 && !allowFail) throw new Failure(`git ${args.find((arg) => !arg.startsWith("-") && !arg.includes("="))} failed in ${I18N}: ${scrub(result.stderr).trim().split("\n").slice(-1)[0]}`);
-  return { ok: result.status === 0, out: scrub(result.stdout), error: scrub(result.stderr).trim() };
-}
-
-function pushUrl() {
-  if (!PUSH_TOKEN) throw new Failure("EXERCISM_I18N_PUSH_TOKEN is not set, so nothing can be pushed");
-  return `https://x-access-token:${PUSH_TOKEN}@github.com/${config().github.i18n_repo}.git`;
-}
-
-/** Rebase onto main and push, retrying a non-fast-forward. */
-function pushToMain() {
-  const remote = pushUrl();
-  let last = "";
-  for (let attempt = 1; attempt <= 3; attempt += 1) {
-    const pulled = git([...IDENT, "pull", "--rebase", remote, "main"], { allowFail: true });
-    if (!pulled.ok) {
-      last = pulled.error;
-      git(["rebase", "--abort"], { allowFail: true });
-      continue;
-    }
-    const pushed = git(["push", remote, "HEAD:main"], { allowFail: true });
-    if (pushed.ok) return { ok: true, attempts: attempt };
-    last = pushed.error;
-  }
-  return { ok: false, error: last };
-}
-
-/**
- * The website checkout validate.mjs reads the two UI catalogs' English from,
- * when the issue's own source is another repo.
- *
- * validate.mjs checks the website catalogs of every locale it is given, so it
- * needs the website's English even for a track PR. A runner starts with none,
- * so this fetches exercism/website main with the i18n repo's own
- * scripts/source-checkout.mjs, the same fetch its validate.yml makes: one
- * commit, trees only, plus the blobs of the two English directories, into
- * ../i18n/.source/website. A checkout the i18n repo already finds (a sibling
- * ../website locally) is used as it is, and nothing is fetched. validate.mjs
- * then reads it at its default ref, website main, as the i18n repo's CI does.
- */
-function websiteEnglish() {
-  const found = lib.sourceRepos.resolveRepo("website", undefined, { optional: true });
-  if (found) return found;
-  const fetched = spawnSync("node", [path.join(lib.dir, "scripts", "source-checkout.mjs"), "--source=website"], { cwd: I18N, encoding: "utf8" });
-  if (fetched.status !== 0) throw Object.assign(new Failure(`could not fetch exercism/website for its English: ${fetched.stderr.trim().split("\n").pop()}`), { transient: true });
-  return lib.sourceRepos.checkoutDir("website");
-}
+const { dir: I18N, git, pushToMain, stageTranslations, commit } = i18nGit(lib);
 
 // ------------------------------------------------------------------ main ----
 
@@ -302,7 +230,7 @@ async function main() {
   // translated. scripts/translate.mjs has already checked what it wrote and
   // stamped; this checks the whole locale, because what is pushed to main has to
   // pass there too.
-  const sourceArgs = validateArgs({ issue, repo: scope.repo, website: issue.source === "website" ? null : websiteEnglish() });
+  const sourceArgs = validateArgs({ issue, repo: scope.repo, website: issue.source === "website" ? null : websiteEnglish(lib) });
   const errors = [];
   for (const locale of locales) {
     const args = [path.join(lib.dir, "scripts", "validate.mjs"), locale, ...sourceArgs];
@@ -322,12 +250,11 @@ async function main() {
   // The translation index is updated by the pass and lands in the same commit.
   const index = spawnSync("node", [path.join(lib.dir, "scripts", "build-index.mjs"), "all", "--check"], { encoding: "utf8", env: process.env });
   if (index.status !== 0) finish("validate-errors", `${countsBlock}\n\n\`build-index.mjs --check\` failed:\n\n\`\`\`\n${index.stdout.trim().slice(0, 3000)}\n\`\`\``);
-  git(["add", "--", "locales", ...(fs.existsSync(path.join(I18N, "index")) ? ["index"] : [])]);
-  if (git(["diff", "--cached", "--quiet"], { allowFail: true }).ok) finish("nothing-to-do", `${locales.join(", ")} already held every item this PR changed; nothing was left to commit.`);
+  if (!stageTranslations()) finish("nothing-to-do", `${locales.join(", ")} already held every item this PR changed; nothing was left to commit.`);
 
   const message = path.join(ROOT, "state", "runs", `issue-${number}.commit.txt`);
   fs.writeFileSync(message, commitMessage(issue, written));
-  git([...IDENT, "commit", "--file", message]);
+  commit(message);
 
   const deletions = spawnSync("node", [path.join(lib.dir, "scripts", "no-deletions.mjs"), "--base=origin/main", "--head=HEAD"], { cwd: I18N, encoding: "utf8" });
   console.log(deletions.stdout);
