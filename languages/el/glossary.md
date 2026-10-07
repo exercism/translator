@@ -66,6 +66,42 @@ These are terms where the Greek is used in prose, so the "Use (el/en)" column is
 | course | μάθημα | el | The whole course (e.g. "σε αυτό το μάθημα"). Not `σειρά μαθημάτων`. See `lesson` below for the collision this avoids. |
 | lesson | ενότητα | el | One lesson inside the course. Not `μάθημα`, which is `course` above. |
 | progress bar | **μπάρα προόδου** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-09-26). Use it for a bar on the website or on screen that shows progress (plural `μπάρες προόδου`). Never `γραμμή προόδου` or `ράβδος προόδου`. A bar in a chart or a drawing is `ράβδος` (see `bar` below). |
+| syllabus | **διδακτική ύλη** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). Bare `ύλη` is acceptable where space is short, e.g. breadcrumbs. |
+| to join (a track) | **εγγράφομαι** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). Same verb as signing up for an account; that overlap is acceptable. |
+| exercise | **άσκηση** (feminine) | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| practice exercise | **άσκηση εξάσκησης** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| learning mode / practice mode | **λειτουργία εκμάθησης** / **λειτουργία εξάσκησης** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| locked / unlocked / available / in progress / completed (exercise state) | **κλειδωμένη** / **ξεκλείδωτη** / **διαθέσιμη** / **σε εξέλιξη** / **ολοκληρωμένη** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). Feminine, agreeing with `άσκηση`. |
+| to unlock | **ξεκλειδώνω** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| solution | **λύση** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| to submit | **υποβάλλω** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| to publish (a solution) / published | **δημοσιεύω** / **δημοσιευμένη** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). Feminine, agreeing with `λύση`. |
+| community solutions | **λύσεις κοινότητας** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| to star / stars | **βάζω αστεράκι** / **αστεράκι** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). There is no single verb; use the phrase. |
+| student (the person being mentored) | **μαθητής** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| code review | **επισκόπηση κώδικα** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| testimonial (left for a mentor) | **μαρτυρία** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| analyzer | **αναλυτής** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| representation | **αναπαράσταση** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). Exercism's sense is data (a solution's representation), not the "person who represents" sense; see `representer`, still open. |
+| test runner | **εκτελεστής τεστ** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). Makes `τεστ` the word for a test; pairs with the row below. |
+| tests passed / tests failed | **τα τεστ πέρασαν** / **τα τεστ κόπηκαν** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| online editor / the editor | **επεξεργαστής online** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| the Exercism CLI | **το CLI του Exercism** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). Keep distinct from the concept row `CLI (the concept)` → `γραμμή εντολών` above. |
+| reputation | **φήμη** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| badge | **μετάλλιο** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). Avoids `σήμα`, which programming content uses for "signal". Keep distinct from `trophy`. |
+| trophy | **τρόπαιο** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). Keep distinct from `badge`. |
+| maintainer | **συντηρητής** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| donation / to donate / donor | **δωρεά** / **δωρίζω** / **δωρητής** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). `κάνω δωρεά` is acceptable for "donate". |
+| perks | **προνόμια** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| approach (to an exercise) | **προσέγγιση** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| article (on an exercise) | **άρθρο** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| deep dive (video) | **εμβάθυνση** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| challenge (community event) | **πρόκληση** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| community | **κοινότητα** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| notification | **ειδοποίηση** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| handle (username) | **όνομα χρήστη** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| automation (feedback on representations) | **αυτοματοποίηση** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| difficulty: easy / medium / hard | **δυσκολία: εύκολη / μέση / δύσκολη** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). The "medium" rendering is still being checked against the live site's `μέτρια`; see `glossary-notes.md`. |
 
 ### Tooling & engineering
 
@@ -135,58 +171,25 @@ pinned glossary thread, and a row moves into an agreed section once a native spe
 settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
 on Exercism.
 
+Still open, awaiting another round with VaiaPatta1985 (and astyanax where noted); see
+`glossary-notes.md` for why each one is held back.
+
 | English | Proposed Greek | Use (el/en) | Notes |
 |---------|------------------|------------------|-------|
 | track |  |  |  |
-| to join (a track) |  |  |  |
-| exercise |  |  |  |
 | concept exercise / learning exercise |  |  |  |
-| practice exercise |  |  |  |
-| syllabus |  |  |  |
-| learning mode / practice mode |  |  |  |
-| locked / unlocked / available / in progress / completed |  |  |  |
-| to unlock |  |  |  |
-| solution |  |  |  |
-| to submit |  |  |  |
-| to publish (a solution) / published |  |  |  |
-| community solutions |  |  |  |
-| to star / stars |  |  |  |
 | mentor / mentoring |  |  |  |
-| student (the person being mentored) |  |  |  |
 | mentoring request |  |  |  |
 | mentoring session / discussion |  |  |  |
-| code review |  |  |  |
 | mentoring queue |  |  |  |
-| testimonial (left for a mentor) |  |  |  |
 | supermentor |  |  |  |
 | automated feedback |  |  |  |
-| analyzer |  |  |  |
 | representer |  |  |  |
-| representation |  |  |  |
-| test runner |  |  |  |
-| tests passed / tests failed |  |  |  |
-| online editor / the editor |  |  |  |
-| the Exercism CLI |  |  |  |
-| reputation |  |  |  |
-| badge |  |  |  |
-| trophy |  |  |  |
 | journey (the user's history page) |  |  |  |
 | contributor / contributing |  |  |  |
-| maintainer |  |  |  |
 | Insiders |  |  |  |
-| donation / to donate / donor |  |  |  |
-| perks |  |  |  |
 | partner |  |  |  |
 | flair (marker beside a username) |  |  |  |
 | Dig Deeper (tab) |  |  |  |
-| approach (to an exercise) |  |  |  |
-| article (on an exercise) |  |  |  |
-| deep dive (video) |  |  |  |
-| challenge (community event) |  |  |  |
 | cohort |  |  |  |
-| community |  |  |  |
-| notification |  |  |  |
 | favorites |  |  |  |
-| difficulty: easy / medium / hard |  |  |  |
-| handle (username) |  |  |  |
-| automation (feedback on representations) |  |  |  |

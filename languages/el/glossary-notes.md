@@ -1,5 +1,70 @@
 # Greek (el) glossary notes
 
+## 2026-10-07: 36 product-vocabulary rows settled, 17 still open
+
+**Decided by:** VaiaPatta1985, on the pinned glossary thread ("[Greek Review] Glossary",
+`t/86499`, post 7). VaiaPatta1985 describes themselves as a native Greek speaker with
+programming experience. Nobody has verified that beyond their own word.
+**Status:** native-speaker-confirmed, except the rows left in `PROPOSED, NOT YET AGREED`.
+**Terms affected:** `syllabus`, `to join (a track)`, `exercise`, `practice exercise`,
+`learning mode / practice mode`, the exercise states (`locked`/`unlocked`/`available`/`in
+progress`/`completed`), `to unlock`, `solution`, `to submit`, `to publish (a solution) /
+published`, `community solutions`, `to star / stars`, `student`, `code review`,
+`testimonial`, `analyzer`, `representation`, `test runner`, `tests passed / tests failed`,
+`online editor / the editor`, `the Exercism CLI`, `reputation`, `badge`, `trophy`,
+`maintainer`, `donation / to donate / donor`, `perks`, `approach`, `article`, `deep dive`,
+`challenge`, `community`, `notification`, `handle`, `automation`, `difficulty: easy / medium
+/ hard` (added, moved out of `PROPOSED, NOT YET AGREED`).
+**Files affected:** none yet. Several of these differ from the live site's current wording
+(`badge` was `σήμα`; `to star` was `βάζω αστέρι`; `tests` mixed `τεστ`/`δοκιμές`; `syllabus`
+was bare `ύλη`; `difficulty: medium` was `μέτρια`), so a hand-fix pass follows this entry to
+bring existing pages into line, the same as any glossary change (see "After a glossary
+change" in `global/workflow.md`).
+
+VaiaPatta1985 posted renderings for every term still open in the product-vocabulary table, 45
+in total. 36 had no conflict with an existing row or a human decision, and are written in
+above. 9 are held back:
+
+- **`track` → `μάθημα`.** Collides with the existing `course` → `μάθημα` row (an unconfirmed
+  agent draft from 2026-07-30). She called it "the same word as the translation of lesson",
+  but our `lesson` row is `ενότητα`, so she may not have seen it. The live site uses
+  `διαδρομή` roughly 1,370 times, by far the largest hand-fix in this batch if it changes.
+  Asked her (and astyanax) whether `μάθημα` still reads well in "track maintainer" and
+  "across all tracks", and whether `διαδρομή` would be acceptable instead.
+- **`mentor` / `mentoring` → `σύμβουλος` / `συμβουλευτική`.** The live site uses `μέντορας` /
+  `καθοδήγηση` (roughly 420 occurrences). Her own `supermentor` → `υπερμέντορας` is built on
+  `μέντορας`, which is internally inconsistent with her main proposal. Asked whether
+  `μέντορας` / `καθοδήγηση` would work instead, to match `supermentor`.
+- **`representer` → `αντιπρόσωπος`.** `global/terms.md` flags "representer" as a coined word
+  and a candidate for keeping in English; the live site keeps it English. Asked whether to
+  keep it that way.
+- **`Insiders` → `μυημένοι`.** This is the supporters' programme's proper name ("Exercism
+  Insiders"), used in English roughly 400 times on the live site. Asked whether the name
+  stays English, translating only when describing the members.
+- **`automated feedback` → `αυτοματοποιημένη κριτική`.** Plain "feedback" is `ανατροφοδότηση`
+  elsewhere on the site. Asked whether `αυτοματοποιημένη ανατροφοδότηση` would read better,
+  for consistency.
+- **`contributor` / `contributing` → `συμβάλλων` / `συμβολή`.** The live site uses
+  `συνεισφέρων` / `συνεισφορά`, the usual open-source phrasing. Asked her to compare the two.
+- **`concept exercise` / `learning exercise`.** She gave two different renderings;
+  `global/terms.md` asks for one rendering to cover both unless there's a reason not to.
+  Asked whether `άσκηση εκμάθησης` (her `learning exercise` answer) can serve both.
+- **`favorites` → `αγαπημένες` (feminine).** That fits qualifying `λύσεις`, but the live site
+  uses the neuter `Τα Αγαπημένα` as a standalone page/nav label. Asked her to confirm both:
+  feminine when qualifying a noun, neuter as the bare label.
+- **`journey`, `partner`, `flair`, `cohort`, `Dig Deeper`, `mentoring request/session/queue`.**
+  Left in the proposed table pending the same round of questions (`journey`: she was unsure
+  between `ταξίδι`/`διαδρομή`/`πορεία`, and `διαδρομή` may already be taken by `track` above;
+  `partner`/`flair`/`cohort`: she asked for context, since the English term alone was
+  ambiguous; `Dig Deeper`: low risk, singular `Εμβάθυνε` following the existing εσύ rule, just
+  wants her confirmation; the three `mentoring *` compounds depend on how the `mentor`
+  question above is settled).
+
+She also wrote: "If astyanax or any other Greek person disagrees with some of the above
+translations, they're probably right and you should go with their version." Recorded here so
+a future astyanax reply that conflicts with one of the 36 settled rows above is read as a
+second native speaker's view to reconcile, not a contradiction to dismiss.
+
 ## 2026-09-26: "progress bar" is `μπάρα προόδου`, and `record` is still open
 
 **Decided by:** VaiaPatta1985, on the pinned glossary thread ("[Greek Review] Glossary",
