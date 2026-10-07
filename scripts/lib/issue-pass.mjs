@@ -61,8 +61,9 @@ export function issueStillOpen(number) {
 /**
  * Fetch the PR into .source/ and work out what it changed, from git.
  *
- * Returns the checkout, the scope, and the file the scope was written to, which
- * is what scripts/translate.mjs is pinned with.
+ * Returns the checkout, the commit to translate at (the PR's merge ref when
+ * there is one, see scripts/lib/issue-scope.mjs), the scope, and the file the
+ * scope was written to, which is what scripts/translate.mjs is pinned with.
  */
 export async function issueScope(lib, issue) {
   const checkout = spawnSync("node", [path.join(ROOT, "scripts", "source-checkout.mjs"), issue.name, `--pr=${issue.pr}`], { encoding: "utf8" });
@@ -75,23 +76,23 @@ export async function issueScope(lib, issue) {
     throw Object.assign(new Failure(`${issue.sha} is not in the fetched PR (force-pushed since? the issue is rewritten on every push, so poll again)`), { transient: true });
   }
 
-  const { paths, units } = await scopeOf(lib, { source: issue.source, repo, sha: issue.sha });
+  const { ref, paths, units } = await scopeOf(lib, { source: issue.source, repo, sha: issue.sha, pr: issue.pr });
   const runDir = path.join(ROOT, "state", "runs");
   fs.mkdirSync(runDir, { recursive: true });
   const scopeFile = path.join(runDir, `issue-${issue.number}.scope.json`);
   fs.writeFileSync(scopeFile, JSON.stringify({ paths, units }));
-  return { repo, paths, units, scopeFile };
+  return { repo, ref, paths, units, scopeFile };
 }
 
 /** One scripts/translate.mjs run over this issue's scope, and its summary. */
-export function translateForIssue({ issue, locales, repo, scopeFile, extra = [] }) {
+export function translateForIssue({ issue, locales, repo, ref = issue.sha, scopeFile, extra = [] }) {
   const args = [
     path.join(ROOT, "scripts", "translate.mjs"),
     issue.source,
     ...(SOURCES[issue.source].named ? [issue.name] : []),
     locales.join(","),
     `--repo=${repo}`,
-    `--ref=${issue.sha}`,
+    `--ref=${ref}`,
     `--scope=${scopeFile}`,
     ...extra
   ];
@@ -106,9 +107,9 @@ export function translateForIssue({ issue, locales, repo, scopeFile, extra = [] 
  * from any other repo also names `website`, a website checkout that validate.mjs
  * reads at its default ref.
  */
-export function validateArgs({ issue, repo, website }) {
-  if (issue.source === "website") return [`--source-repo=${repo}`, `--source-ref=${issue.sha}`];
-  return [`--content-repos=${repo}:${SOURCES[issue.source].kind}@${issue.sha}`, `--source-repo=${website}`];
+export function validateArgs({ issue, repo, ref = issue.sha, website }) {
+  if (issue.source === "website") return [`--source-repo=${repo}`, `--source-ref=${ref}`];
+  return [`--content-repos=${repo}:${SOURCES[issue.source].kind}@${ref}`, `--source-repo=${website}`];
 }
 
 /**
