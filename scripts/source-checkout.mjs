@@ -8,7 +8,7 @@
 // Examples:
 //   node scripts/source-checkout.mjs website-copy      # exercism/website-copy, default branch
 //   node scripts/source-checkout.mjs python            # a track
-//   node scripts/source-checkout.mjs ruby --pr=1809    # also fetch that PR's head
+//   node scripts/source-checkout.mjs ruby --pr=1809    # also fetch that PR's head and merge ref
 //
 // English is never stored in this repo. It is read from a checkout of the repo
 // where it is written, as git objects and never as a working tree, the same way
@@ -67,7 +67,14 @@ if (!fs.existsSync(dir)) {
 if (!blobless && read(["config", "--get", "remote.origin.partialclonefilter"], dir) !== "") git(["config", "--unset", "remote.origin.partialclonefilter"], dir);
 const filter = blobless ? [] : ["--no-filter"];
 git(["fetch", "--no-tags", "--prune", ...filter, "origin"], dir);
-if (flags.pr !== undefined) git(["fetch", "--no-tags", ...filter, "origin", `+refs/pull/${flags.pr}/head:refs/remotes/origin/pr/${flags.pr}`], dir);
+if (flags.pr !== undefined) {
+  git(["fetch", "--no-tags", ...filter, "origin", `+refs/pull/${flags.pr}/head:refs/remotes/origin/pr/${flags.pr}`], dir);
+  // The merge ref is what main would hold after the merge, and it is what the
+  // i18n repo's completeness check reads. GitHub has none while the PR
+  // conflicts, so a failed fetch drops any stale copy and carries on.
+  const merge = spawnSync("git", ["fetch", "--no-tags", ...filter, "origin", `+refs/pull/${flags.pr}/merge:refs/remotes/origin/pr/${flags.pr}-merge`], { cwd: dir, encoding: "utf8" });
+  if (merge.status !== 0) spawnSync("git", ["update-ref", "-d", `refs/remotes/origin/pr/${flags.pr}-merge`], { cwd: dir });
+}
 
 // A full clone must hold every object of the history English is read from.
 // An ordinary fetch does not bring back blobs for commits the clone already

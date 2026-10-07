@@ -100,7 +100,7 @@ function comment(body) {
 }
 
 // What the run knows so far, for the outcome file that finish() writes.
-const context = { issue: null, failures: [] };
+const context = { issue: null, ref: null, failures: [] };
 
 /**
  * Add or remove one label. A failure here is printed and does not change the
@@ -122,7 +122,7 @@ function writeOutcome(reason, labelAction, url) {
   const runs = path.join(ROOT, "state", "runs");
   const { issue } = context;
   const failures = context.failures.map(({ repo, targetPath, rejected, ...rest }) => ({ ...rest, ...(rejected ? { rejected: path.relative(runs, rejected) } : {}) }));
-  const outcome = { number, reason, label: labelAction, run: url, repo: issue?.repo ?? null, pr: issue?.pr ?? null, sha: issue?.sha ?? null, source: issue?.source ?? null, name: issue?.name ?? null, failures };
+  const outcome = { number, reason, label: labelAction, run: url, repo: issue?.repo ?? null, pr: issue?.pr ?? null, sha: issue?.sha ?? null, ref: context.ref, source: issue?.source ?? null, name: issue?.name ?? null, failures };
   fs.mkdirSync(runs, { recursive: true });
   fs.writeFileSync(path.join(runs, `issue-${number}.outcome.json`), `${JSON.stringify(outcome, null, 2)}\n`);
 }
@@ -189,7 +189,8 @@ async function main() {
   fs.writeFileSync(path.join(ROOT, "state", "runs", `issue-${number}.started`), "");
 
   const scope = await issueScope(lib, issue);
-  const translate = (extra) => translateForIssue({ issue, locales, repo: scope.repo, scopeFile: scope.scopeFile, extra });
+  context.ref = scope.ref;
+  const translate = (extra) => translateForIssue({ issue, locales, repo: scope.repo, ref: scope.ref, scopeFile: scope.scopeFile, extra });
 
   const dry = translate(["--dry-run"]);
   if (!dry.summary) throw new Failure(`the dry run failed:\n${dry.stdout}`);
@@ -230,7 +231,7 @@ async function main() {
   // translated. scripts/translate.mjs has already checked what it wrote and
   // stamped; this checks the whole locale, because what is pushed to main has to
   // pass there too.
-  const sourceArgs = validateArgs({ issue, repo: scope.repo, website: issue.source === "website" ? null : websiteEnglish(lib) });
+  const sourceArgs = validateArgs({ issue, repo: scope.repo, ref: scope.ref, website: issue.source === "website" ? null : websiteEnglish(lib) });
   const errors = [];
   for (const locale of locales) {
     const args = [path.join(lib.dir, "scripts", "validate.mjs"), locale, ...sourceArgs];
@@ -264,7 +265,7 @@ async function main() {
   if (!pushed.ok) finish("push-failed", `The commit is made in the runner's checkout and lost with it, so run this issue again.\n\nLast error: \`${pushed.error.slice(0, 500)}\``, { error: pushed.error });
 
   const sha = git(["rev-parse", "HEAD"]).out.trim();
-  finish("pushed", `${countsBlock}\n\nNo failures. ${costLine}\n\n\`${sha}\` on \`main\`, translating ${issue.repo}#${issue.pr} at \`${issue.sha}\`.`);
+  finish("pushed", `${countsBlock}\n\nNo failures. ${costLine}\n\n\`${sha}\` on \`main\`, translating ${issue.repo}#${issue.pr} at \`${issue.sha}\`${scope.ref === issue.sha ? "" : `, merged into main as \`${scope.ref}\``}.`);
 }
 
 // A Failure marked `transient` (GitHub could not be reached, or the PR moved

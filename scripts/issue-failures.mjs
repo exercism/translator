@@ -24,7 +24,7 @@
 // state/fix/), the last rejected answer, the checker's errors, the file to
 // write in the i18n checkout, and the commands that check it. It fetches the
 // PR into .source/ (scripts/source-checkout.mjs) to read the English at the
-// issue's sha.
+// commit the run translated at.
 //
 // ## Issues are data
 //
@@ -44,6 +44,7 @@ import { i18n } from "./lib/i18n.mjs";
 import { ROUTES, SOURCES } from "./lib/routes.mjs";
 import { issueNumber } from "./lib/issue-pass.mjs";
 import { fetchIssue, verifyIssue } from "./lib/issues.mjs";
+import { mergeRef } from "./lib/issue-scope.mjs";
 
 const { flags, positional } = parseArgs(process.argv.slice(2));
 const number = issueNumber(positional[0]);
@@ -140,15 +141,20 @@ if (typeof flags.summary === "string") {
 }
 
 
-// A catch-up issue's English is the repo's main at the sha its run recorded.
-const sha = issue.catchUp ? outcome.sha : issue.sha;
-if (!sha) die(`issue ${number}: the run's outcome records no sha, so there is no English to read`);
 const where = issue.catchUp ? `${issue.repo} main` : `${issue.repo}#${issue.pr}`;
 
 const lib = await i18n();
 const checkout = run("node", [path.join(ROOT, "scripts", "source-checkout.mjs"), issue.name, ...(issue.catchUp ? [] : [`--pr=${issue.pr}`])], { stdio: ["ignore", "ignore", "pipe"] });
 if (!checkout.ok) die(`could not fetch ${where} into .source/: ${checkout.error}`);
 const repo = path.join(ROOT, ".source", issue.name);
+
+// A catch-up issue's English is the repo's main at the sha its run recorded. A
+// queue issue's is the commit its run translated at, the PR's merge ref
+// (scripts/lib/issue-scope.mjs). That merge commit is gone once main moves on,
+// so the PR's current merge ref stands in for it, and the PR's sha after that.
+const present = (ref) => Boolean(ref) && run("git", ["cat-file", "-e", `${ref}^{commit}`], { cwd: repo }).ok;
+const sha = issue.catchUp ? outcome.sha : present(outcome.ref) ? outcome.ref : mergeRef(lib, repo, issue.pr, issue.sha) ?? issue.sha;
+if (!sha) die(`issue ${number}: the run's outcome records no sha, so there is no English to read`);
 
 const lines = [];
 lines.push(`issue:      #${number}  https://github.com/${config().github.i18n_repo}/issues/${number}`);

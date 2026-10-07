@@ -28,14 +28,16 @@
 // ## Working out the changed English
 //
 // The issue's table of changed files is ignored. This script fetches the PR
-// into .source/, takes the merge base of the PR's sha and the default branch,
-// and derives the scope from git:
+// into .source/ with its merge ref, and derives the scope from git, comparing
+// the merge ref with its first parent the way the completeness check does
+// (scripts/lib/issue-scope.mjs):
 //
-//   paths   files that differ between the merge base and the sha
+//   paths   files that differ between the two
 //   units   catalog units (website, or this repo's metadata) whose English
 //           differs between the two, by building the English at both commits
 //
-// and passes exactly that scope to scripts/translate.mjs, pinned to the sha. An
+// and passes exactly that scope to scripts/translate.mjs, pinned to the merge
+// ref. A PR with no merge ref falls back to the sha and its merge base. An
 // issue therefore cannot widen a run beyond what its PR changed, and a locale's
 // backlog is not translated by accident.
 //
@@ -81,7 +83,7 @@ if (locales.length === 0) {
 const scope = await issueScope(lib, issue).catch((error) => {
   die(error instanceof Failure ? error.message : String(error.stack ?? error));
 });
-const translate = (extra) => translateForIssue({ issue, locales, repo: scope.repo, scopeFile: scope.scopeFile, extra });
+const translate = (extra) => translateForIssue({ issue, locales, repo: scope.repo, ref: scope.ref, scopeFile: scope.scopeFile, extra });
 
 // The cap applies to what is still untranslated, per locale. A PR whose text a
 // locale already has (identical English from another track) costs nothing.
@@ -90,6 +92,7 @@ if (!dry.summary) die(`the dry run failed:\n${dry.stdout}`);
 const words = untranslatedWords(dry.summary);
 const pending = pendingWrites(dry.summary);
 const cap = config().issue_word_cap;
+console.log(`at ${scope.ref}${scope.ref === issue.sha ? " (the PR's sha)" : " (the PR's merge ref)"}`);
 console.log(`scope: ${scope.paths.length} changed file(s), ${scope.units.length} changed catalog unit(s); ${pending} item(s) to write; ${words} untranslated word(s) per locale at most; cap ${cap}; locales ${locales.join(", ")}`);
 
 // A copy of identical English is a write that costs no words, so whether there
