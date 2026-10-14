@@ -101,7 +101,23 @@ These are terms where the Greek is used in prose, so the "Use (el/en)" column is
 | notification | **ειδοποίηση** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
 | handle (username) | **όνομα χρήστη** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
 | automation (feedback on representations) | **αυτοματοποίηση** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
-| difficulty: easy / medium / hard | **δυσκολία: εύκολη / μέση / δύσκολη** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). The "medium" rendering is still being checked against the live site's `μέτρια`; see `glossary-notes.md`. |
+| difficulty: easy / medium / hard | **δυσκολία: εύκολη / μέση / δύσκολη** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-07). |
+| track | **διαδρομή** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-14): "means 'route', so use it if you would use 'route'." Matches the live site throughout. |
+| concept exercise | **άσκηση για έννοιες** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-14), kept distinct from `learning exercise` below: "they are different things, aren't they?" |
+| learning exercise | **άσκηση εκμάθησης** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-14). Kept distinct from `concept exercise` above; also the second half of the `learning mode / practice mode` row. |
+| mentor / mentoring | **μέντορας** / **καθοδήγηση** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-14): "keep μέντορας/καθοδήγηση." Matches the live site and `supermentor` below. |
+| mentoring request | **αίτημα καθοδήγησης** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-14), consistent with `mentor / mentoring` above. Matches the live site throughout. |
+| mentoring session / discussion | **συνεδρία καθοδήγησης** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-14), consistent with `mentor / mentoring` above. Matches the live site. |
+| mentoring queue | **ουρά καθοδήγησης** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-14), consistent with `mentor / mentoring` above. Matches the live site. |
+| supermentor | **σούπερ μέντορας** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-14), consistent with `mentor / mentoring` above. Matches the live site; not the earlier draft `υπερμέντορας`. |
+| automated feedback | **αυτοματοποιημένη ανατροφοδότηση** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-14): `ανατροφοδότηση` reads oddly for a casual "can you give me feedback?", but is right for this engineering sense. Matches the live site throughout. |
+| contributor / contributing | **συνεισφέρων** / **συνεισφορά** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-14): "keep συνεισφέρων/συνεισφορά." Matches the live site; not the earlier draft `συμβάλλων`/`συμβολή`. |
+| Insiders | (kept in English, the programme's name) | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-14): the name stays English, with **μυημένοι** used only to describe members. They noted it is "a bit tongue-in-cheek" in Greek (it names people who have learned a group's secrets, not just its members), but judged it carries the same vibe as "insider". |
+| partner | **συνεργάτης** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-14). Matches the live site. A sponsoring organisation shown on the Perks page. |
+| cohort | **ομάδα** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-14): "unfortunately I can't think of anything more appropriate than the generic 'group'." A group of people taking a time-boxed course together. |
+| flair | **εικονίδιο** | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-14), who offered this or `σήμα` ("unless you want to keep the latter for badge"); `σήμα` stays free for other senses since `badge` is `μετάλλιο`. The small icon beside a username showing Insider, staff or maintainer status. |
+| Dig Deeper (tab) | **Εμβάθυνε** | el | Singular imperative, following the guide's εσύ rule. |
+| favorites | **αγαπημένες** (qualifying a noun) / **Αγαπημένα** (standalone page or nav label) | el | Confirmed by a native speaker (VaiaPatta1985, 2026-10-14). Matches the live site's standalone label ("Τα Αγαπημένα σου"). |
 
 ### Tooling & engineering
 
@@ -148,6 +164,7 @@ it is the ordinary word here.
 | Programming keywords (`function`, `if`, `for`, ...) | (none) | Always English, including inside prose. Translate only the surrounding explanation. |
 | `let` (the JavaScript keyword) | _έστω_ | Confirmed by a native speaker (astyanax, 2026-07-31). The one exception to the row above: gloss it **once**, where the keyword is first introduced, as `` `let` (έστω) ``, borrowing the standard Greek mathematical "let" ("έστω x = 10"). Every later mention is bare `let`. |
 | backtick / backticks | _βαρεία_ / plural _βαρείες_ | Confirmed by a native speaker (astyanax, 2026-08-13). The English word stays in prose (`backticks`), with the Greek term in brackets at its first mention on a page: `backticks (βαρείες)`, matching the `if`/`for` pattern of keeping the real token beside its Greek word. **Never `ανάποδα τικ`**, which is not Greek: `βαρεία` is the proper name of the mark, a `τόνος` / `διακριτικό σημείο`. Feminine noun (`η βαρεία`, `οι βαρείες`). |
+| representer | (no gloss) | Confirmed by a native speaker (VaiaPatta1985, 2026-10-14): `αντιπρόσωπος` means someone who represents (a delegate), "not a thing", and they could not think of a better Greek term. The coined English name for the tool that normalises a solution stays as-is. Matches the live site. |
 
 ## Brackets
 
@@ -171,25 +188,8 @@ pinned glossary thread, and a row moves into an agreed section once a native spe
 settled it, recorded in `glossary-notes.md`. `global/terms.md` describes what each term means
 on Exercism.
 
-Still open, awaiting another round with VaiaPatta1985 (and astyanax where noted); see
-`glossary-notes.md` for why each one is held back.
+Still open:
 
 | English | Proposed Greek | Use (el/en) | Notes |
 |---------|------------------|------------------|-------|
-| track |  |  |  |
-| concept exercise / learning exercise |  |  |  |
-| mentor / mentoring |  |  |  |
-| mentoring request |  |  |  |
-| mentoring session / discussion |  |  |  |
-| mentoring queue |  |  |  |
-| supermentor |  |  |  |
-| automated feedback |  |  |  |
-| representer |  |  |  |
-| journey (the user's history page) |  |  |  |
-| contributor / contributing |  |  |  |
-| Insiders |  |  |  |
-| partner |  |  |  |
-| flair (marker beside a username) |  |  |  |
-| Dig Deeper (tab) |  |  |  |
-| cohort |  |  |  |
-| favorites |  |  |  |
+| journey (the user's history page) |  |  | VaiaPatta1985 was unsure between `ταξίδι`, `διαδρομή` and `πορεία` (2026-10-07); not asked again since `διαδρομή` is now taken by `track`. The live site uses `ταξίδι`. |

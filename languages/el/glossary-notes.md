@@ -1,5 +1,65 @@
 # Greek (el) glossary notes
 
+## 2026-10-14: The 9 remaining open questions settled; all match the live site
+
+**Decided by:** VaiaPatta1985, on the pinned glossary thread ("[Greek Review] Glossary",
+`t/86499`, post 9), answering the 9 open questions from the 2026-10-07 entry below in order.
+**Status:** native-speaker-confirmed.
+**Terms affected:** `track`, `concept exercise`, `learning exercise`, `mentor / mentoring`,
+`mentoring request`, `mentoring session / discussion`, `mentoring queue`, `supermentor`,
+`automated feedback`, `contributor / contributing`, `Insiders`, `partner`, `cohort`, `flair`,
+`Dig Deeper`, `favorites` (added, moved out of `PROPOSED, NOT YET AGREED`); `representer`
+(added to "Keep in English").
+**Files affected:** none. Checked every one of these against the live site before writing the
+row, and every single one already matched; no hand-fix follows this entry, unlike the
+2026-10-07 batch.
+
+- **track → `διαδρομή`.** "'διαδρομή' means 'route', so use it if you would use 'route'."
+  Not her own original `μάθημα` proposal; matches the live site, which uses it roughly 1,370
+  times. This also frees `μάθημα` to keep meaning `course` without a collision.
+- **mentor / mentoring → `μέντορας` / `καθοδήγηση`.** "Keep μέντορας/καθοδήγηση." Not her
+  original `σύμβουλος`/`συμβουλευτική` proposal. This also settles the three compounds that
+  depended on it: `mentoring request` → `αίτημα καθοδήγησης`, `mentoring session / discussion`
+  → `συνεδρία καθοδήγησης`, `mentoring queue` → `ουρά καθοδήγησης`, all already the live
+  site's wording.
+- **supermentor → `σούπερ μέντορας`.** Not asked again directly, but it follows from the
+  `mentor` decision above and already matches the live site; her original `υπερμέντορας`
+  proposal (built on `μέντορας` too, just not the live compound) is not used.
+- **concept exercise / learning exercise stay two different rows.** "Sure, but they are
+  different things, aren't they?" Confirms the 2026-10-07 entry's held-back concern: one
+  rendering cannot serve both. `concept exercise` is `άσκηση για έννοιες`, `learning exercise`
+  is `άσκηση εκμάθησης`, exactly her original two answers.
+- **representer stays English.** "'αντιπρόσωπος' is someone who represents, so, not a
+  thing…" She could not think of a better Greek term either. Added to "Keep in English".
+- **Insiders stays English, as the programme's name.** "Sure. Note that 'μυημένοι' is a bit
+  tongue-in-cheek because normally it describes not just members of a group, but people who
+  have learned the secrets of a group. But I think the term 'insider' gives off the same
+  vibe." `μυημένοι` is used only when describing members, never as the programme's own name.
+- **automated feedback → `αυτοματοποιημένη ανατροφοδότηση`.** "'ανατροφοδότηση' is the
+  literal translation, but frankly I've only seen it used in the context of engineering. In
+  situations where one would say 'can you give me some feedback on this?' ... we'd ask for an
+  'opinion' (γνώμη)." Since this term names an engineering feature (automated code-review
+  feedback), the literal, engineering-register word is the right one here; it also already
+  matches the live site throughout.
+- **contributor / contributing → `συνεισφέρων` / `συνεισφορά`.** "Keep συνεισφέρων/
+  συνεισφορά." Not her original `συμβάλλων`/`συμβολή` proposal; matches the live site, the
+  usual open-source phrasing.
+- **partner → `συνεργάτης`, cohort → `ομάδα`.** Both confirmed as originally proposed, and
+  both already match the live site. On cohort: "unfortunately I can't think of anything more
+  appropriate than the generic 'ομάδα' ('group')."
+- **flair → `εικονίδιο`.** She offered this or `σήμα`, "unless you want to keep the latter
+  for badge" (which this glossary now does: see the 2026-10-07 entry). Chose `εικονίδιο` so
+  `σήμα` stays free for its other senses.
+- **Dig Deeper → `Εμβάθυνε`.** Not a question, a statement in the previous round she did not
+  object to; written in as proposed, following the guide's existing εσύ rule.
+- **favorites → `αγαπημένες`** (qualifying a noun, e.g. "λύσεις") **/ `Αγαπημένα`** (the
+  standalone page or nav label). "Yes." Matches the live site's label ("Τα Αγαπημένα σου").
+
+**Left open:** `journey` (the user's history page). Not re-asked this round, since her
+earlier uncertainty was partly about a collision with `track`, now settled as `διαδρομή`
+rather than `διαδρομή`/`journey` both wanting it. She had offered `ταξίδι`, `διαδρομή` or
+`πορεία` (2026-09-26 batch); the live site already uses `ταξίδι`.
+
 ## 2026-10-07: 36 product-vocabulary rows settled, 17 still open
 
 **Decided by:** VaiaPatta1985, on the pinned glossary thread ("[Greek Review] Glossary",
