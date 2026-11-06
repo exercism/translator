@@ -38,6 +38,9 @@
     "added before it when a change is above the word cap, so exercism/i18n's",
     "rerun-source-check.yml can tell the source PR the translation is waiting for",
     "approval (its name is also written there).",
+    "`inactive_label` is added when an issue is closed untranslated because its",
+    "track is inactive, so that workflow replies on the source PR accordingly (its",
+    "name is also written there).",
     "`catch_up_label` marks the issue scripts/catch-up.mjs opens for a source repo",
     "whose `main` it could not finish. It carries `attention_label` too, and never",
     "`issue_label`, so the queue's workflows leave it alone.",
@@ -73,6 +76,7 @@
     "issue_label": "translation",
     "attention_label": "needs-attention",
     "over_cap_label": "over-cap",
+    "inactive_label": "inactive-track",
     "catch_up_label": "catch-up",
     "track_topic": "exercism-track",
     "singletons": ["website", "docs", "blog", "website-copy", "problem-specifications"]

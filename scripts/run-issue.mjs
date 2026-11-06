@@ -137,6 +137,9 @@ function finish(reason, detail, facts = {}) {
   const labels = () => {
     label(config().github.over_cap_label, overCapLabel(reason));
     label(config().github.attention_label, labelAction);
+    // i18n's rerun-source-check.yml reads this label to tell the source PR that
+    // it was not translated because the track is inactive.
+    if (reason === "inactive-track") label(config().github.inactive_label, "add");
   };
   const footer = [];
   if (outcome.exit !== 0) footer.push("", url ? `Run: ${url}. Its \`state/runs/\` is attached to it as an artifact.` : "No Actions run to point at.");
