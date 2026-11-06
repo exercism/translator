@@ -83,6 +83,10 @@ if (locales.length === 0) {
 const scope = await issueScope(lib, issue).catch((error) => {
   die(error instanceof Failure ? error.message : String(error.stack ?? error));
 });
+if (scope.inactive) {
+  console.log(`NOTHING TO DO: ${issue.repo} is an inactive track ("active": false in its config.json at ${scope.ref}), so it is not translated. Close the issue.`);
+  process.exit(0);
+}
 const translate = (extra) => translateForIssue({ issue, locales, repo: scope.repo, ref: scope.ref, scopeFile: scope.scopeFile, extra });
 
 // The cap applies to what is still untranslated, per locale. A PR whose text a

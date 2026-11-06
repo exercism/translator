@@ -25,6 +25,12 @@
 // changes.
 //
 // `ref` is the commit to translate at.
+//
+// A track whose config.json says `"active": false` at `ref` gets an empty scope
+// and `inactive: true`. The website does not show an inactive track, and the
+// i18n repo's completeness check does not hold its PRs, so there is nothing to
+// translate. Translating one anyway would also start a metadata catalog that a
+// production locale is then required to finish (exercism/i18n#381).
 
 import { SOURCES } from "./routes.mjs";
 
@@ -47,6 +53,9 @@ export async function scopeOf(lib, { source, repo, sha, pr = null }) {
   const base = merge ? git(["rev-parse", `${merge}^1`]) : git(["merge-base", lib.sourceRepos.defaultRef(repo), sha]);
 
   const kindId = SOURCES[source].kind;
+  if (kindId === "track" && !lib.sourceRepos.isActiveTrack(lib.git.lsTree(repo, ref), lib.git.refReader(repo, ref).readMany)) {
+    return { base, ref, paths: [], units: [], inactive: true };
+  }
   const sparse = lib.sourceRepos.REPO_KINDS[kindId].sparse ?? [];
   const idsAt = (ref) => new Map(lib.git.lsTree(repo, ref, sparse).map((entry) => [entry.path, entry.id]));
   const [before, after] = [idsAt(base), idsAt(ref)];
@@ -68,5 +77,5 @@ export async function scopeOf(lib, { source, repo, sha, pr = null }) {
       if (unit.keys.some((key) => catalog[key] !== old[key])) units.push(unit.id);
     }
   }
-  return { base, ref, paths, units };
+  return { base, ref, paths, units, inactive: false };
 }

@@ -190,6 +190,7 @@ async function main() {
 
   const scope = await issueScope(lib, issue);
   context.ref = scope.ref;
+  if (scope.inactive) finish("inactive-track", `${issue.repo}'s config.json says \`"active": false\` at ${scope.ref}. The website does not show an inactive track and the completeness check does not hold its PRs, so nothing was translated.`);
   const translate = (extra) => translateForIssue({ issue, locales, repo: scope.repo, ref: scope.ref, scopeFile: scope.scopeFile, extra });
 
   const dry = translate(["--dry-run"]);
