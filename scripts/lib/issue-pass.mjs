@@ -76,12 +76,12 @@ export async function issueScope(lib, issue) {
     throw Object.assign(new Failure(`${issue.sha} is not in the fetched PR (force-pushed since? the issue is rewritten on every push, so poll again)`), { transient: true });
   }
 
-  const { ref, paths, units } = await scopeOf(lib, { source: issue.source, repo, sha: issue.sha, pr: issue.pr });
+  const { ref, paths, units, inactive } = await scopeOf(lib, { source: issue.source, repo, sha: issue.sha, pr: issue.pr });
   const runDir = path.join(ROOT, "state", "runs");
   fs.mkdirSync(runDir, { recursive: true });
   const scopeFile = path.join(runDir, `issue-${issue.number}.scope.json`);
   fs.writeFileSync(scopeFile, JSON.stringify({ paths, units }));
-  return { repo, ref, paths, units, scopeFile };
+  return { repo, ref, paths, units, inactive, scopeFile };
 }
 
 /** One scripts/translate.mjs run over this issue's scope, and its summary. */
@@ -176,6 +176,7 @@ export const OUTCOMES = {
   pushed: { close: true, exit: 0, headline: "Translated and pushed to `main`." },
   closed: { close: false, exit: 0, quiet: true, headline: "The issue is closed, so nothing was translated or pushed." },
   "nothing-to-do": { close: true, exit: 0, headline: "Nothing to do: every locale in scope already holds this text." },
+  "inactive-track": { close: true, exit: 0, headline: "Nothing to do: this track is inactive, so it is not translated." },
   "no-production-locales": { close: false, exit: 0, headline: "Nothing to do: `locales.json` `productionTargets` is empty, so no locale is held to this change." },
   invalid: { close: false, exit: 1, headline: "This is not a valid queue issue, so nothing was translated." },
   "over-cap": { close: false, exit: 1, headline: "Above the word cap: this one waits for iHiD." },
@@ -232,6 +233,7 @@ export function overCapLabel(reason) {
       return "add";
     case "pushed":
     case "nothing-to-do":
+    case "inactive-track":
     case "failures":
     case "validate-errors":
     case "deletions":
@@ -246,6 +248,7 @@ export function attentionLabel(reason, { failures = [], transient = false, error
   switch (reason) {
     case "pushed":
     case "nothing-to-do":
+    case "inactive-track":
       return "remove";
     case "over-cap":
     case "validate-errors":

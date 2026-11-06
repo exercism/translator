@@ -24,6 +24,7 @@ import { fileTail, fixedPrefix } from "./lib/prompt.mjs";
 import { unfence } from "./lib/deepseek.mjs";
 import { catchUpRepo, catchUpTitle, isCatchUpIssue, parseCatchUpIssue, parseIssue } from "./lib/issues.mjs";
 import { STARTED, hasStarted, nextWaiting, waiting } from "./lib/queue.mjs";
+import { scopeOf } from "./lib/issue-scope.mjs";
 import { OUTCOMES, attentionLabel, commitMessage, overCapLabel, issueNumber, issueOutcome, itemsWritten, pendingWrites, perLocaleCounts, transientFailure, untranslatedWords, validateArgs } from "./lib/issue-pass.mjs";
 
 let passed = 0;
@@ -325,7 +326,7 @@ await test("only a plainly written positive integer is an issue number", () => {
 });
 
 await test("the issue is closed only when the work is finished, and every other ending leaves it open", () => {
-  for (const reason of ["pushed", "nothing-to-do"]) assert.deepEqual([issueOutcome(reason).close, issueOutcome(reason).exit], [true, 0]);
+  for (const reason of ["pushed", "nothing-to-do", "inactive-track"]) assert.deepEqual([issueOutcome(reason).close, issueOutcome(reason).exit], [true, 0]);
   // A closed issue was withdrawn on purpose: nothing to do, and nothing said on it.
   assert.deepEqual([issueOutcome("closed").close, issueOutcome("closed").exit, issueOutcome("closed").quiet], [false, 0, true]);
   // An empty productionTargets is nothing to do and nothing wrong: the issue waits.
@@ -339,7 +340,7 @@ await test("the issue is closed only when the work is finished, and every other 
 });
 
 await test("needs-attention: added when a person must act, removed when the work finishes, left alone otherwise", () => {
-  for (const reason of ["pushed", "nothing-to-do"]) assert.equal(attentionLabel(reason), "remove", reason);
+  for (const reason of ["pushed", "nothing-to-do", "inactive-track"]) assert.equal(attentionLabel(reason), "remove", reason);
   for (const reason of ["closed", "no-production-locales"]) assert.equal(attentionLabel(reason), null, reason);
   for (const reason of ["over-cap", "validate-errors", "deletions"]) assert.equal(attentionLabel(reason), "add", reason);
   // A refusal or an error is a person's job, unless GitHub could not be reached.
@@ -356,7 +357,7 @@ await test("needs-attention: added when a person must act, removed when the work
 
 await test("over-cap goes on only above the word cap, and comes off once a run gets past it", () => {
   assert.equal(overCapLabel("over-cap"), "add");
-  for (const reason of ["pushed", "nothing-to-do", "failures", "validate-errors", "deletions", "push-failed"]) assert.equal(overCapLabel(reason), "remove", reason);
+  for (const reason of ["pushed", "nothing-to-do", "inactive-track", "failures", "validate-errors", "deletions", "push-failed"]) assert.equal(overCapLabel(reason), "remove", reason);
   for (const reason of ["closed", "no-production-locales", "invalid", "error"]) assert.equal(overCapLabel(reason), null, reason);
   // It always travels with needs-attention.
   assert.equal(attentionLabel("over-cap"), "add");
@@ -552,6 +553,26 @@ const lib = await i18n();
 const bobId = lib.git.blobId(BOB);
 const held = (id) => path.join(I18N_ROOT, "locales", "hu", "content", lib.contentTypes.contentRelativePath(id, ".md"));
 const summaryOf = (out) => JSON.parse(fs.readFileSync(path.join(ROOT, /full summary: (\S+)/.exec(out)[1]), "utf8"));
+
+// exercism/i18n#381: an issue on inactive sather translated 5 identical names,
+// which started a Hungarian catalog that validate then required in full.
+await test("an issue on an inactive track has an empty scope, and an active track's does not", async () => {
+  const dozing = repo("dozing", {
+    "config.json": JSON.stringify({ language: "Dozing", active: false, exercises: { concept: [], practice: [{ slug: "bob", name: "Bob", uuid: "1" }] }, concepts: [] }),
+    "exercises/practice/bob/.docs/instructions.md": BOB
+  });
+  const base = sh("git", ["rev-parse", "HEAD"], { cwd: dozing }).out.trim();
+  repo("dozing", { "exercises/practice/bob/.docs/instructions.md": `${BOB}\nOne more line.\n` });
+  const sha = sh("git", ["rev-parse", "HEAD"], { cwd: dozing }).out.trim();
+  sh("git", ["update-ref", "refs/remotes/origin/main", base], { cwd: dozing });
+  const asleep = await scopeOf(lib, { source: "track", repo: dozing, sha });
+  assert.deepEqual([asleep.inactive, asleep.paths, asleep.units], [true, [], []]);
+
+  repo("dozing", { "config.json": JSON.stringify({ language: "Dozing", active: true, exercises: { concept: [], practice: [{ slug: "bob", name: "Bob", uuid: "1" }] }, concepts: [] }) });
+  const awake = await scopeOf(lib, { source: "track", repo: dozing, sha: sh("git", ["rev-parse", "HEAD"], { cwd: dozing }).out.trim() });
+  assert.equal(awake.inactive, false);
+  assert.ok(awake.paths.includes("exercises/practice/bob/.docs/instructions.md"), awake.paths.join(", "));
+});
 
 await test("the fake engine is refused outside a test fixture", () => {
   const result = sh("node", [path.join(ROOT, "scripts", "translate.mjs"), "problem-specifications", "hu", `--repo=${specs}`], { env: { TRANSLATOR_TEST_ENGINE: ENV.TRANSLATOR_TEST_ENGINE, EXERCISM_I18N_ROOT: "" } });
