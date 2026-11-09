@@ -572,6 +572,18 @@ await test("an issue on an inactive track has an empty scope, and an active trac
   const awake = await scopeOf(lib, { source: "track", repo: dozing, sha: sh("git", ["rev-parse", "HEAD"], { cwd: dozing }).out.trim() });
   assert.equal(awake.inactive, false);
   assert.ok(awake.paths.includes("exercises/practice/bob/.docs/instructions.md"), awake.paths.join(", "));
+  // This PR also makes the track active, so the whole track is in scope: Bob's
+  // name has not changed, and is in scope all the same.
+  assert.ok(awake.units.some((id) => /bob/.test(id)), awake.units.join(", "));
+});
+
+await test("a later PR on an active track has only its own changes in scope", async () => {
+  const dozing = path.join(SRC, "dozing");
+  const base = sh("git", ["rev-parse", "HEAD"], { cwd: dozing }).out.trim();
+  sh("git", ["update-ref", "refs/remotes/origin/main", base], { cwd: dozing });
+  repo("dozing", { "exercises/practice/bob/.docs/instructions.md": `${BOB}\nAnother line.\n` });
+  const later = await scopeOf(lib, { source: "track", repo: dozing, sha: sh("git", ["rev-parse", "HEAD"], { cwd: dozing }).out.trim() });
+  assert.deepEqual([later.paths, later.units], [["exercises/practice/bob/.docs/instructions.md"], []]);
 });
 
 await test("the fake engine is refused outside a test fixture", () => {
