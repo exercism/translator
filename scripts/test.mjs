@@ -638,13 +638,71 @@ await test("edited English is a new blob id, translated with the previous versio
   const result = translate(["track", "ruby", "hu", `--repo=${ruby}`]);
   assert.equal(result.status, 0, result.out);
   const row = summaryOf(result.out).counts.hu["track-docs"];
-  assert.deepEqual([row.written, row.revised], [1, 1]);
+  assert.deepEqual([row.written, row.revised, row.paragraphs, row.lines, row.fellBack], [1, 1, 1, 0, 0]);
   const after = fs.readdirSync(path.join(I18N_ROOT, "locales/hu/content"), { recursive: true }).filter((file) => String(file).endsWith(".md")).length;
   assert.equal(after, before + 1);
   const ids = JSON.parse(fs.readFileSync(path.join(I18N_ROOT, "index/json/hu/ruby.json"), "utf8")).paths["docs/TESTS.md"];
   assert.deepEqual(ids, [lib.git.blobId("# Tests\n\nRun the tests like this:\n\n```bash\nruby bob_test.rb\n```\n"), lib.git.blobId("# Tests\n\nRun the tests:\n\n```bash\nruby bob_test.rb\n```\n")]);
   const check = sh("node", [path.join(lib.dir, "scripts", "build-index.mjs"), "all", "--check"], { env: ENV });
   assert.equal(check.status, 0, check.out);
+});
+
+await test("a refused paragraph revision falls back to line edits", () => {
+  const tests = "# Tests\n\nRun the tests with this:\n\n```bash\nruby bob_test.rb\n```\n";
+  repo("ruby", { "docs/TESTS.md": tests });
+  const result = translate(["track", "ruby", "hu", `--repo=${ruby}`], { FAKE_ENGINE_PARAGRAPHS: "refuse" });
+  assert.equal(result.status, 0, result.out);
+  const row = summaryOf(result.out).counts.hu["track-docs"];
+  assert.deepEqual([row.written, row.paragraphs, row.lines, row.fellBack], [1, 0, 1, 0]);
+  assert.equal(fs.readFileSync(held(lib.git.blobId(tests)), "utf8"), "# Tests HU\n\nRun the tests with this: HU\n\n```bash\nruby bob_test.rb\n```\n");
+});
+
+await test("a file whose only change is to code is revised without a call, and a dry run counts it as a copy with no words", () => {
+  const tests = "# Tests\n\nRun the tests with this:\n\n```bash\nruby bob_test.rb --verbose\n```\n";
+  repo("ruby", { "docs/TESTS.md": tests });
+  const dry = translate(["track", "ruby", "hu", `--repo=${ruby}`, "--dry-run"]);
+  const counted = summaryOf(dry.out);
+  assert.deepEqual([counted.counts.hu["track-docs"].copied, counted.estimates?.hu?.["track-docs"]?.words ?? 0], [1, 0]);
+  const result = translate(["track", "ruby", "hu", `--repo=${ruby}`], { FAKE_ENGINE_PARAGRAPHS: "refuse" });
+  assert.equal(result.status, 0, result.out);
+  assert.equal(summaryOf(result.out).counts.hu["track-docs"].paragraphs, 1);
+  assert.equal(fs.readFileSync(held(lib.git.blobId(tests)), "utf8"), "# Tests HU\n\nRun the tests with this: HU\n\n```bash\nruby bob_test.rb --verbose\n```\n");
+});
+
+await test("when paragraphs and line edits are both refused, the whole file is translated instead", () => {
+  const tests = "# Tests\n\nRun the tests with this command:\n\n```bash\nruby bob_test.rb --verbose\n```\n";
+  repo("ruby", { "docs/TESTS.md": tests });
+  const result = translate(["track", "ruby", "hu", `--repo=${ruby}`], { FAKE_ENGINE_PARAGRAPHS: "refuse", FAKE_ENGINE_PATCH: "misplaced" });
+  assert.equal(result.status, 0, result.out);
+  const row = summaryOf(result.out).counts.hu["track-docs"];
+  assert.deepEqual([row.written, row.paragraphs, row.lines, row.fellBack], [1, 0, 0, 1]);
+  assert.equal(fs.readFileSync(held(lib.git.blobId(tests)), "utf8"), "# Tests HU\n\nRun the tests with this command: HU\n\n```bash\nruby bob_test.rb --verbose\n```\n");
+});
+
+await test("line edits keep every line they do not name, find a misnumbered line by its text, and refuse an ambiguous one", async () => {
+  const { applyEdits, parseEdits } = await import("./lib/patch.mjs");
+  const current = "# Cím\n\nElső sor.  \nMásodik sor.\n\nVége.\n";
+  const kept = applyEdits(current, [{ line: 3, old: "Első sor.", new: ["Első sor, javítva."] }, { after: 4, new: ["", "Új bekezdés."] }]);
+  assert.equal(kept.text, "# Cím\n\nElső sor, javítva.\nMásodik sor.\n\nÚj bekezdés.\n\nVége.\n");
+  const moved = applyEdits(current, [{ line: 1, old: "Vége.", new: [] }]);
+  assert.deepEqual([moved.text, moved.relocated], ["# Cím\n\nElső sor.  \nMásodik sor.\n\n", 1]);
+  assert.match(applyEdits(current, [{ line: 1, old: "", new: ["x"] }]).error, /2 lines elsewhere/);
+  assert.match(applyEdits(current, [{ line: 6, old: "Vége.", new: [] }, { line: 6, old: "Vége.", new: ["x"] }]).error, /two edits/);
+  assert.deepEqual(parseEdits('```json\n{"edits": []}\n```').edits, []);
+  assert.match(parseEdits('{"edits": [{"line": 1, "new": ["a"]}]}').error, /neither/);
+});
+
+await test("paragraphs: an exercism/ admonition is prose, code is copied, and a split line is a change", async () => {
+  const { applyParagraphs, plan } = await import("./lib/paragraphs.mjs");
+  const previousEnglish = "Intro.\n\n~~~~exercism/advanced\nInside, first. - Second.\n\n```r\nx <- 1;\n```\n~~~~\n\nEnd.\n";
+  const english = "Intro.\n\n~~~~exercism/advanced\nInside, first.\n- Second.\n\n```r\nx <- 1\n```\n~~~~\n\nEnd.\n";
+  const translation = "Bevezetés.\n\n~~~~exercism/advanced\nBent, első. - Második.\n\n```r\nx <- 1;\n```\n~~~~\n\nVége.\n";
+  const planned = plan({ previousEnglish, english, translation });
+  assert.deepEqual(planned.send.map((one) => one.translation), ["~~~~exercism/advanced\nBent, első. - Második."]);
+  assert.deepEqual(planned.copies.map((one) => one.text), ["```r\nx <- 1\n```"]);
+  const text = applyParagraphs(translation, planned.ranges, [...planned.copies, { index: planned.send[0].index, text: "~~~~exercism/advanced\nBent, első.\n- Második." }]);
+  assert.equal(text, "Bevezetés.\n\n~~~~exercism/advanced\nBent, első.\n- Második.\n\n```r\nx <- 1\n```\n~~~~\n\nVége.\n");
+  assert.equal(plan({ previousEnglish, english: "Intro.\n\nNew.\n\n" + english.slice(8), translation }), null);
 });
 
 await test("an answer that alters code is repaired from the English, checked again, written and counted", () => {
