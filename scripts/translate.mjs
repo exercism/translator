@@ -95,6 +95,7 @@ import { SYSTEM, approxTokens, catalogTail, fileTail, fixedPrefix } from "./lib/
 import { USD_PER_CACHE_HIT, USD_PER_CACHE_MISS, USD_PER_OUTPUT, addUsage, call, unfence } from "./lib/deepseek.mjs";
 import { checkMarkdown, englishWarnings, wordCount } from "./lib/checks.mjs";
 import { repairCode } from "./lib/repair.mjs";
+import { carryOver } from "./lib/carry-over.mjs";
 
 const log = (message) => console.error(message);
 
@@ -238,6 +239,26 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, sha, loca
         return;
       }
 
+      const check = (text) => {
+        const found = lib.checks.checkContentFile({ id: file.id, extension: file.extension, bytes: Buffer.from(text, "utf8") }, bytes);
+        return found.filter((one) => one.level === lib.checks.ERROR).map((one) => one.message).concat(checkMarkdown(english, text));
+      };
+
+      const previous = hasStore ? previousVersion(lib, { repo, ref, file, locale }) : null;
+
+      // An edit that only touches lines the previous translation kept verbatim
+      // (new rows in a table of slugs) is applied to that translation directly.
+      // See scripts/lib/carry-over.mjs.
+      const carried = previous && carryOver({ oldEnglish: previous.english, newEnglish: english, oldTranslation: previous.translation });
+      if (carried && check(carried).length === 0) {
+        counts.copied += 1;
+        if (run.dryRun) return;
+        fs.mkdirSync(path.dirname(target), { recursive: true });
+        fs.writeFileSync(target, carried, { flag: "wx" });
+        run.written.push(path.relative(lib.dir, target));
+        return;
+      }
+
       // A whole file comes back in one answer, so a file too large for that is
       // not sent: a truncated answer would be paid for and then rejected. See
       // config.json.
@@ -251,16 +272,10 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, sha, loca
         if (!run.englishWarnings.some((one) => one.source === file.path && one.message === message)) run.englishWarnings.push({ source: file.path, message });
       }
 
-      const previous = hasStore ? previousVersion(lib, { repo, ref, file, locale }) : null;
       if (previous) counts.revised += 1;
       const prompt = prefix + fileTail({ sourcePath: file.path, english, previous });
       run.estimate(locale, type, { prefix, tail: prompt.slice(prefix.length), english });
       if (run.dryRun) return;
-
-      const check = (text) => {
-        const found = lib.checks.checkContentFile({ id: file.id, extension: file.extension, bytes: Buffer.from(text, "utf8") }, bytes);
-        return found.filter((one) => one.level === lib.checks.ERROR).map((one) => one.message).concat(checkMarkdown(english, text));
-      };
 
       let reason = "";
       let rejected = null;
