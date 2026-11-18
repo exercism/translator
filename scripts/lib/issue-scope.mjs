@@ -31,6 +31,11 @@
 // i18n repo's completeness check does not hold its PRs, so there is nothing to
 // translate. Translating one anyway would also start a metadata catalog that a
 // production locale is then required to finish (exercism/i18n#381).
+//
+// A PR that makes a track active (inactive at the base, active at `ref`) gets
+// everything at `ref` in scope, because merging it puts the whole track on the
+// website and the completeness check requires all of it. That is far above the
+// word cap, so the issue waits for iHiD.
 
 import { SOURCES } from "./routes.mjs";
 
@@ -56,9 +61,13 @@ export async function scopeOf(lib, { source, repo, sha, pr = null }) {
   if (kindId === "track" && !lib.sourceRepos.isActiveTrack(lib.git.lsTree(repo, ref), lib.git.refReader(repo, ref).readMany)) {
     return { base, ref, paths: [], units: [], inactive: true };
   }
+  // A PR that makes a track active puts the whole track on the website, and the
+  // i18n repo's completeness check then requires all of it. So everything at
+  // `ref` is in scope, as if the base held nothing.
+  const activates = kindId === "track" && !lib.sourceRepos.isActiveTrack(lib.git.lsTree(repo, base), lib.git.refReader(repo, base).readMany);
   const sparse = lib.sourceRepos.REPO_KINDS[kindId].sparse ?? [];
   const idsAt = (ref) => new Map(lib.git.lsTree(repo, ref, sparse).map((entry) => [entry.path, entry.id]));
-  const [before, after] = [idsAt(base), idsAt(ref)];
+  const [before, after] = [activates ? new Map() : idsAt(base), idsAt(ref)];
   const paths = [...after].filter(([file, id]) => before.get(file) !== id).map(([file]) => file);
 
   const englishAt = async (ref) => {
@@ -69,7 +78,7 @@ export async function scopeOf(lib, { source, repo, sha, pr = null }) {
     if (!lib.metadata.METADATA_REPO_KINDS.includes(kindId)) return {};
     return { metadata: lib.metadata.buildMetadataEnglish(kindId, lib.git.lsTree(repo, ref), lib.git.refReader(repo, ref).readMany).catalog };
   };
-  const [englishBefore, englishAfter] = [await englishAt(base), await englishAt(ref)];
+  const [englishBefore, englishAfter] = [activates ? {} : await englishAt(base), await englishAt(ref)];
   const units = [];
   for (const [kind, catalog] of Object.entries(englishAfter)) {
     const old = englishBefore[kind] ?? {};

@@ -18,6 +18,12 @@
 //      edited and the old translation exists
 //   8. the English text, last
 //
+// An edited file whose translation the locale holds is usually revised instead
+// (global/pass-mechanics.md, "Revising an edited file"). Its prompt shares steps
+// 1 to 6, with its own fixed instruction, and its tail holds only what changed:
+// the changed paragraphs (paragraphTail), or the diff with the numbered English
+// and translation (patchTail).
+//
 // The system message is invariant too and names no language. scripts/translate.mjs
 // sorts its work by locale and then by type, so consecutive calls share
 // everything down to the end of step 6.
@@ -35,6 +41,7 @@
 
 import path from "node:path";
 import { ROOT, die, familyOf, languageName, readIfPresent } from "./config.mjs";
+import { numbered } from "./patch.mjs";
 
 function load(relative) {
   const text = readIfPresent(path.join(ROOT, relative));
@@ -84,6 +91,65 @@ const FILE_INSTRUCTION = (name, locale) =>
   `Output the complete translated text and nothing else: no JSON, no wrapper, no code fence ` +
   `around the whole answer, no frontmatter the English does not have.`;
 
+// An edited file whose previous English the locale has translated is revised
+// by line edits (scripts/lib/patch.mjs). The answer names only the lines that
+// change, so everything else in the live translation is kept byte for byte.
+const PATCH_INSTRUCTION = (name, locale) =>
+  `The English text of one file was edited. At the end of this message are the git diff of ` +
+  `that edit (<english-diff>), the new English with line numbers (<english-text>), and the ` +
+  `${name} (${locale}) translation that is live today, also with line numbers ` +
+  `(<current-translation>). That translation was written for the English before the edit.\n\n` +
+  `Revise the current translation so that it translates the new English, following every ` +
+  `governance file above. You are revising, not recreating (global/translating.md, "When a ` +
+  `previous version is given"): change only the lines the English edit touches. Every other ` +
+  `line is live, may have been corrected by a native speaker, and must be left alone, even ` +
+  `where you would have worded it differently.\n\n` +
+  `- A change to a fenced code block, or to an inline code span, is copied into the ` +
+  `translation byte for byte, whitespace included.\n` +
+  `- A change to whitespace that changes how Markdown renders (two trailing spaces that make a ` +
+  `line break, indentation, blank lines between blocks) is carried into the translation.\n` +
+  `- A change to whitespace that does not render (a single trailing space, a double space ` +
+  `inside a prose sentence) needs no edit.\n` +
+  `- A change to the English wording is translated, and the matching line or lines of the ` +
+  `translation are rewritten. The translation's lines need not match the English line for ` +
+  `line: find where it says what the edited English says.\n` +
+  `- If the edit needs no change to the translation at all, return no edits.\n\n` +
+  `Answer with one JSON object and nothing else:\n` +
+  `{"edits": [ ... ]}\n` +
+  `where each edit is one of:\n` +
+  `- {"line": N, "old": "<line N of the current translation, copied>", "new": ["<line>", ...]} ` +
+  `replaces line N with the lines in "new". An empty "new" deletes line N.\n` +
+  `- {"after": N, "new": ["<line>", ...]} inserts the lines after line N (0 inserts before ` +
+  `line 1).\n` +
+  `Line numbers refer to <current-translation> as given, before any edit. Each line in "new" is ` +
+  `one line without its number prefix and without a newline; an empty string is a blank line. ` +
+  `Name each line of the translation at most once. Do not return lines that stay the same.`;
+
+// An edited file whose paragraphs line up with its translation is revised one
+// paragraph at a time (scripts/lib/paragraphs.mjs). Only the changed paragraphs
+// are sent, and only their new translations come back.
+const PARAGRAPH_INSTRUCTION = (name, locale) =>
+  `The English text of one file was edited. At the end of this message is each paragraph whose ` +
+  `English changed: its English before the edit (<old-english>), its English now ` +
+  `(<new-english>), and its ${name} (${locale}) translation that is live today ` +
+  `(<current-translation>), which was written for the English before the edit.\n\n` +
+  `Revise each translation so that it translates the new English, following every governance ` +
+  `file above. You are revising, not recreating (global/translating.md, "When a previous ` +
+  `version is given"): change only what the English edit touches, and keep every other word of ` +
+  `the current translation, even where you would have worded it differently. It is live and ` +
+  `may have been corrected by a native speaker.\n\n` +
+  `- If the current translation already says what the new English says (the edit fixed an ` +
+  `English typo the translation never had, or changed only whitespace that does not render), ` +
+  `answer null for that paragraph.\n` +
+  `- Keep the translation's own line breaks inside the paragraph, except where the edit ` +
+  `changes the English's lines: where the new English splits a line into two lines or list ` +
+  `items, or joins two into one, do the same in the translation. Never add a blank line: a ` +
+  `paragraph stays one paragraph.\n` +
+  `- Inline code spans, link targets, HTML and Markdown markers are copied from the new English ` +
+  `byte for byte.\n\n` +
+  `Answer with one JSON object and nothing else, keyed by each paragraph's id:\n` +
+  `{"paragraphs": {"<id>": "<the whole revised paragraph>" or null, ...}}`;
+
 const CATALOG_INSTRUCTION = (name, locale, { cardinal, ordinal }) =>
   `The JSON object at the end of this message is a batch of strings from one catalog, keyed ` +
   `by unit id. Translate every value into ${name} (${locale}), following every governance file ` +
@@ -110,7 +176,7 @@ const CATALOG_INSTRUCTION = (name, locale, { cardinal, ordinal }) =>
 export function fixedPrefix({ locale, howto, shape, plural = null }) {
   const { name, parts } = localePrefix(locale);
   parts.push(asFile(load(`content-types/${howto}.md`)));
-  parts.push(`<instruction>\n${shape === "catalog" ? CATALOG_INSTRUCTION(name, locale, plural) : FILE_INSTRUCTION(name, locale)}\n</instruction>`);
+  parts.push(`<instruction>\n${shape === "catalog" ? CATALOG_INSTRUCTION(name, locale, plural) : shape === "patch" ? PATCH_INSTRUCTION(name, locale) : shape === "paragraphs" ? PARAGRAPH_INSTRUCTION(name, locale) : FILE_INSTRUCTION(name, locale)}\n</instruction>`);
   return `${parts.join("\n\n")}\n\n`;
 }
 
@@ -125,6 +191,25 @@ export function fileTail({ sourcePath, english, previous = null }) {
   }
   parts.push(`<english-text path="${sourcePath}">\n${english.trimEnd()}\n</english-text>`);
   return `${parts.join("\n\n")}\n`;
+}
+
+/** Steps 7 and 8 for a line-edit revision of a file (scripts/lib/patch.mjs). */
+export function patchTail({ sourcePath, diff, english, translation }) {
+  return (
+    `<english-diff path="${sourcePath}">\n${diff.trimEnd()}\n</english-diff>\n\n` +
+    `<english-text path="${sourcePath}">\n${numbered(english)}\n</english-text>\n\n` +
+    `<current-translation>\n${numbered(translation)}\n</current-translation>\n`
+  );
+}
+
+/** Steps 7 and 8 for a paragraph revision of a file (scripts/lib/paragraphs.mjs). */
+export function paragraphTail({ sourcePath, send }) {
+  const items = send.map(
+    (one) =>
+      `<paragraph id="${one.index + 1}">\n<old-english>\n${one.oldEnglish}\n</old-english>\n` +
+      `<new-english>\n${one.english}\n</new-english>\n<current-translation>\n${one.translation}\n</current-translation>\n</paragraph>`
+  );
+  return `<changed-paragraphs path="${sourcePath}">\n${items.join("\n...\n")}\n</changed-paragraphs>\n`;
 }
 
 /** Steps 7 and 8 for one catalog batch. */

@@ -103,6 +103,44 @@ material goes after it.
   through the `i18n` repo and never from a table here. The script spells the keys
   (`slots.filled.few`, `slotsFilled_few`); the model never does.
 
+- **For an edited file whose previous English the locale holds: only what changed, as JSON.**
+  See "Revising an edited file" below.
+
+## Revising an edited file
+
+When English is edited, the locale usually holds a translation of the previous version (found
+by walking the path's history, as for the previous-version block). That translation is live,
+and a native speaker may have corrected any line of it, so the pass changes only what the edit
+touched. It tries three ways in turn, and moves to the next only when one is refused or its
+result fails a check after every attempt:
+
+1. **Paragraphs** (`scripts/lib/paragraphs.mjs`). A paragraph is a run of non-blank lines or
+   one fenced code block. An `exercism/` admonition is prose, so its fence lines are ordinary
+   lines. When the previous English, the new English and the translation have the same
+   number of paragraphs, the Nth paragraph of each says the same thing. A code block that
+   changed is copied from the new English. A prose paragraph whose lines changed only in
+   whitespace within a line is kept. A line break is a change, because splitting a line can
+   start a list item. Every other changed paragraph is sent as its old English, its new
+   English and its current translation, and the model answers with the revised paragraph, or
+   null where the translation already says the right thing. Everything else is kept byte for
+   byte. A file whose only changes are to code needs no call.
+2. **Line edits** (`scripts/lib/patch.mjs`), when the paragraphs do not line up. The model is
+   sent the git diff of the English, and the new English and the current translation with
+   line numbers, and answers with only the lines that change. Each replaced line carries its
+   current text, and an edit whose text is on no line, or on more than one, when it is not on
+   the line named, is refused.
+3. **The whole file**, with the previous version beside it, as for any other translation. The
+   summary counts these under `fellBack`.
+
+The result of the first two goes through the same checks and code repair as a whole file. The
+summary counts files written each way (`paragraphs`, `lines`), and each run keeps what it
+applied under `state/runs/<run>/patches/<locale>/`, so a person can read what changed.
+
+The dry run, and so the issue word cap, counts only the words of the English paragraphs that
+will be sent, or for a file revised by line edits, the words on the diff's added prose lines
+(not code, and not lines that changed only in whitespace). A file revised with no call counts
+as a copy.
+
 ## Checking
 
 Every answer is checked **before** it is written, by the `i18n` repo's own functions,
@@ -180,10 +218,9 @@ script first tries to apply the English edit to that translation line by line
 (`scripts/lib/carry-over.mjs`). It succeeds only when the old translation has as many lines
 as the old English, every removed line was kept verbatim, and every added line is blank, a
 table separator row, or a table row that contains a URL, an HTML tag or inline code and is
-shaped like at least three rows that were all kept
-verbatim. Otherwise the file goes to the model as usual. A carried-over file must still pass
-the checker, is counted as `copied`, and costs no words, so it never holds an issue above the
-word cap.
+shaped like at least three rows that were all kept verbatim. Otherwise the file is revised
+as described in "Revising an edited file". A carried-over file must still pass the checker,
+is counted as `copied`, and costs no words, so it never holds an issue above the word cap.
 
 ## A catalog is merged into, never replaced
 
@@ -196,7 +233,8 @@ is never an error in `i18n`; absence always is.
 
 `--dry-run` does everything up to the call: resolves the source, lists the work, reads the
 English, assembles every prompt, and reports per type how many items are held and how many
-are to translate, the words, the prefix size, and an input and output token estimate with a
+are to translate, the words (for an edited file, only what will be sent: see "Revising an
+edited file"), the prefix size, and an input and output token estimate with a
 dollar floor. It calls nothing, writes nothing under `i18n`, and needs no API key. The figure
 is a **floor**: it prices the shared prefix as one miss then hits, guesses output at one and a
 half times the text, and **excludes thinking tokens**, which are billed as output and cannot

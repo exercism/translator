@@ -110,8 +110,12 @@ except calling and writing, and reports items and token estimates per type.
   reaches it.
 - The prompt is assembled in a fixed order so that DeepSeek's prefix cache keeps hitting:
   rules, voice, how to translate, the language's guide, the whole glossary (never filtered),
-  the content type's how-to, then the text. When the English was edited, the previous
-  version's translation goes after that fixed prefix so that approved wording carries over.
+  the content type's how-to, then the text.
+- When English is edited and the locale holds a translation of the previous version, only
+  what changed is sent: the changed paragraphs, or failing that, line edits to the current
+  translation. Every other line is kept byte for byte, and the word cap counts only what is
+  sent. The whole file is translated only if both are refused. See "Revising an edited file"
+  in `global/pass-mechanics.md`.
 - The orchestrator session starts long runs as background shell commands. Subagents never
   start them.
 

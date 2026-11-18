@@ -91,7 +91,9 @@ import { spawnSync } from "node:child_process";
 import { Failure, ROOT, config, die, envKey, parseArgs } from "./lib/config.mjs";
 import { i18n } from "./lib/i18n.mjs";
 import { ROUTES, GAPS, SOURCES } from "./lib/routes.mjs";
-import { SYSTEM, approxTokens, catalogTail, fileTail, fixedPrefix } from "./lib/prompt.mjs";
+import { SYSTEM, approxTokens, catalogTail, fileTail, fixedPrefix, paragraphTail, patchTail } from "./lib/prompt.mjs";
+import { applyParagraphs, parseParagraphs, plan as paragraphPlan } from "./lib/paragraphs.mjs";
+import { applyEdits, parseEdits } from "./lib/patch.mjs";
 import { USD_PER_CACHE_HIT, USD_PER_CACHE_MISS, USD_PER_OUTPUT, addUsage, call, unfence } from "./lib/deepseek.mjs";
 import { checkMarkdown, englishWarnings, wordCount } from "./lib/checks.mjs";
 import { repairCode } from "./lib/repair.mjs";
@@ -144,9 +146,63 @@ function previousVersion(lib, { repo, ref, file, locale }) {
     const held = lib.contentTypes.contentPath(locale, id, file.extension);
     if (!fs.existsSync(held)) continue;
     const english = lib.git.readBlobs(repo, [id]).get(id);
-    if (english) return { english: english.toString("utf8"), translation: fs.readFileSync(held, "utf8") };
+    if (english) return { id, english: english.toString("utf8"), translation: fs.readFileSync(held, "utf8") };
   }
   return null;
+}
+
+/**
+ * The git diff from the previous English to the new, as the model is sent it.
+ * Both sides are blobs, so git labels them with their ids; the path is put back.
+ */
+function englishDiff(lib, { repo, file, previous }) {
+  const diff = lib.git.git(["diff", "--no-color", "--no-ext-diff", previous.id, file.id], repo);
+  return diff.split(previous.id).join(file.path).split(file.id).join(file.path);
+}
+
+/**
+ * The lines of a diff that need translating, and the lines they replace.
+ *
+ * The model is sent the whole diff, but the dry run and the issue word cap count
+ * only an added line that is prose and really changed. A line inside a fenced
+ * code block of the new English is copied, never translated. A line that
+ * matches a removed line of its hunk once whitespace is ignored changed only in
+ * whitespace. Neither is counted.
+ */
+function diffSides(diff, english) {
+  const code = new Set();
+  let fenced = null;
+  english.split("\n").forEach((line, index) => {
+    const fence = /^\s*(`{3,}|~{3,})/.exec(line);
+    if (fenced === null && fence) fenced = fence[1][0];
+    else if (fenced !== null && fence && fence[1][0] === fenced) code.add(index + 1), (fenced = null);
+    if (fenced !== null) code.add(index + 1);
+  });
+  const squash = (line) => line.replace(/\s+/g, "");
+  const added = [];
+  const removed = [];
+  let next = 0;
+  let hunk = [];
+  const flush = () => {
+    const gone = new Set(hunk.filter((one) => one.sign === "-").map((one) => squash(one.text)));
+    for (const one of hunk) {
+      if (one.sign === "-") removed.push(one.text);
+      else if (!code.has(one.line) && !gone.has(squash(one.text))) added.push(one.text);
+    }
+    hunk = [];
+  };
+  for (const line of diff.split("\n")) {
+    const header = /^@@ -\d+(?:,\d+)? \+(\d+)(?:,\d+)? @@/.exec(line);
+    if (header) {
+      flush();
+      next = Number(header[1]);
+    } else if (line.startsWith("+++") || line.startsWith("---")) continue;
+    else if (line.startsWith("+")) hunk.push({ sign: "+", text: line.slice(1), line: next++ });
+    else if (line.startsWith("-")) hunk.push({ sign: "-", text: line.slice(1) });
+    else if (line.startsWith(" ")) next += 1;
+  }
+  flush();
+  return { added: added.join("\n"), removed: removed.join("\n") };
 }
 
 // ------------------------------------------------------------------ pool ----
@@ -213,6 +269,8 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, sha, loca
     const work = groups.get(type).sort((a, b) => (a.path < b.path ? -1 : 1)).slice(0, limit);
     const counts = run.count(locale, type);
     const prefix = fixedPrefix({ locale, howto: ROUTES[type].howto, shape: "file" });
+    const patchPrefix = fixedPrefix({ locale, howto: ROUTES[type].howto, shape: "patch" });
+    const paragraphPrefix = fixedPrefix({ locale, howto: ROUTES[type].howto, shape: "paragraphs" });
     const blobs = lib.git.readBlobs(repo, work.map((file) => file.id));
     const unread = work.find((file) => !blobs.get(file.id));
     if (unread) throw new Error(`the English blob of ${name}:${unread.path} (${unread.id}) is not in ${repo}`);
@@ -273,6 +331,66 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, sha, loca
       }
 
       if (previous) counts.revised += 1;
+
+      // Edited English whose previous version this locale holds is revised by
+      // line edits (scripts/lib/patch.mjs). Only if that fails is the whole
+      // file translated, with the previous version beside it.
+      // Edited English whose previous version this locale holds is revised,
+      // not retranslated: first paragraph by paragraph (scripts/lib/paragraphs.mjs),
+      // then, if the paragraphs do not line up or the answer is refused, by line
+      // edits (scripts/lib/patch.mjs). Only if both fail is the whole file
+      // translated, with the previous version beside it. See "Revising an edited
+      // file" in global/pass-mechanics.md.
+      const keep = (how, record, text, repaired = false) => {
+        const kept = path.join(run.dir, "patches", locale, `${file.path}.${how}.json`);
+        fs.mkdirSync(path.dirname(kept), { recursive: true });
+        fs.writeFileSync(kept, `${JSON.stringify({ englishPath: file.path, from: previous.id, to: file.id, how, ...record }, null, 2)}\n`);
+        if (text === undefined) return false;
+        fs.mkdirSync(path.dirname(target), { recursive: true });
+        try {
+          // `wx` so that this never overwrites a file, even if two runs race.
+          fs.writeFileSync(target, text, { flag: "wx" });
+        } catch (error) {
+          if (error.code !== "EEXIST") throw error;
+          fail("another run wrote this file first");
+          return true;
+        }
+        counts.written += 1;
+        counts[how] += 1;
+        if (repaired) counts.repaired += 1;
+        run.written.push(path.relative(lib.dir, target));
+        return true;
+      };
+
+      if (previous) {
+        const planned = paragraphPlan({ previousEnglish: previous.english, english, translation: previous.translation });
+        if (planned) {
+          const tail = paragraphTail({ sourcePath: file.path, send: planned.send });
+          if (run.dryRun) {
+            // Only the paragraphs sent cost words. A file whose only changes are
+            // to code is a write with no call, which the dry run counts as a copy.
+            if (planned.send.length > 0) run.estimate(locale, type, { prefix: paragraphPrefix, tail, english: planned.send.map((one) => one.english).join("\n"), echoed: planned.send.map((one) => one.translation).join("\n") });
+            else counts.copied += 1;
+            return;
+          }
+          const result = await reviseParagraphs({ run, prompt: paragraphPrefix + tail, planned, english, translation: previous.translation, check });
+          if (keep("paragraphs", result.record, result.text, result.repaired)) return;
+          log(`${locale} ${file.path}: paragraph revision refused (${result.reason}); trying line edits`);
+        }
+
+        const diff = englishDiff(lib, { repo, file, previous });
+        const tail = patchTail({ sourcePath: file.path, diff, english, translation: previous.translation });
+        if (run.dryRun) {
+          const sides = diffSides(diff, english);
+          run.estimate(locale, type, { prefix: patchPrefix, tail, english: sides.added, echoed: sides.removed });
+          return;
+        }
+        const patched = await revise({ run, prompt: patchPrefix + tail, english, translation: previous.translation, check });
+        if (keep("lines", patched.record, patched.text, patched.repaired)) return;
+        counts.fellBack += 1;
+        log(`${locale} ${file.path}: line edits refused (${patched.reason}); translating the whole file`);
+      }
+
       const prompt = prefix + fileTail({ sourcePath: file.path, english, previous });
       run.estimate(locale, type, { prefix, tail: prompt.slice(prefix.length), english });
       if (run.dryRun) return;
@@ -327,6 +445,119 @@ async function translateContent({ lib, run, sourceId, name, repo, ref, sha, loca
       fail(reason, { errors: rejected.errors, repaired: rejected.repaired, rejected: saved });
     });
   }));
+}
+
+/** One file revised paragraph by paragraph, or the reason it could not be. */
+async function reviseParagraphs({ run, prompt, planned, english, translation, check }) {
+  const attempts = [];
+  const ids = planned.send.map((one) => String(one.index + 1));
+  let reason = "";
+  for (let attempt = 1; attempt <= (ids.length === 0 ? 1 : config().engine.attempts); attempt++) {
+    let map = {};
+    if (ids.length > 0) {
+      let text;
+      try {
+        const answer = await run.call({ apiKey: run.apiKey, system: SYSTEM, prompt, json: true });
+        addUsage(run.usage, answer.usage);
+        text = answer.text;
+      } catch (error) {
+        if (error.usage) addUsage(run.usage, error.usage);
+        if (!(error instanceof Failure)) throw error;
+        reason = error.message;
+        attempts.push({ reason });
+        continue;
+      }
+      const parsed = parseParagraphs(text, ids);
+      if (parsed.error) {
+        reason = parsed.error;
+        attempts.push({ reason, answer: text.slice(0, 4000) });
+        continue;
+      }
+      map = parsed.map;
+    }
+    const replacements = [...planned.copies, ...planned.send.filter((one) => map[String(one.index + 1)] !== null).map((one) => ({ index: one.index, text: map[String(one.index + 1)] }))];
+    let result = applyParagraphs(translation, planned.ranges, replacements);
+    if (english.endsWith("\n") && !result.endsWith("\n")) result += "\n";
+    if (!english.endsWith("\n")) result = result.replace(/\r?\n$/, "");
+    let errors = check(result);
+    let repaired = false;
+    if (errors.length > 0) {
+      const repair = repairCode(english, result);
+      if (repair.blocks + repair.spans > 0) {
+        result = repair.text;
+        errors = check(result);
+        repaired = true;
+      }
+    }
+    if (errors.length > 0) {
+      reason = `rejected by the checker: ${errors.join("; ")}`;
+      attempts.push({ reason, paragraphs: map });
+      continue;
+    }
+    attempts.push({ sent: ids.length, copied: planned.copies.length, paragraphs: map, repaired });
+    return { text: result, repaired, record: { outcome: "patched", attempts } };
+  }
+  return { reason, record: { outcome: "fell back", attempts } };
+}
+
+/**
+ * One file revised by line edits, or the reason it could not be.
+ *
+ * Returns `{ text, repaired, record }` when the edited translation passes every
+ * check, and `{ reason, record }` otherwise. `record` is what the run keeps
+ * under state/runs/<run>/patches/ for a person to read: the edits of every
+ * attempt and why any was refused.
+ */
+async function revise({ run, prompt, english, translation, check }) {
+  const attempts = [];
+  let reason = "";
+  for (let attempt = 1; attempt <= config().engine.attempts; attempt++) {
+    let text;
+    try {
+      const answer = await run.call({ apiKey: run.apiKey, system: SYSTEM, prompt, json: true });
+      addUsage(run.usage, answer.usage);
+      text = answer.text;
+    } catch (error) {
+      if (error.usage) addUsage(run.usage, error.usage);
+      if (!(error instanceof Failure)) throw error;
+      reason = error.message;
+      attempts.push({ reason });
+      continue;
+    }
+    const parsed = parseEdits(text);
+    if (parsed.error) {
+      reason = parsed.error;
+      attempts.push({ reason, answer: text.slice(0, 4000) });
+      continue;
+    }
+    const applied = applyEdits(translation, parsed.edits);
+    if (applied.error) {
+      reason = applied.error;
+      attempts.push({ reason, edits: parsed.edits });
+      continue;
+    }
+    let result = applied.text;
+    if (english.endsWith("\n") && !result.endsWith("\n")) result += english.includes("\r\n") ? "\r\n" : "\n";
+    if (!english.endsWith("\n")) result = result.replace(/\r?\n$/, "");
+    let errors = check(result);
+    let repaired = false;
+    if (errors.length > 0) {
+      const repair = repairCode(english, result);
+      if (repair.blocks + repair.spans > 0) {
+        result = repair.text;
+        errors = check(result);
+        repaired = true;
+      }
+    }
+    if (errors.length > 0) {
+      reason = `rejected by the checker${repaired ? " after code repair" : ""}: ${errors.join("; ")}`;
+      attempts.push({ reason, edits: parsed.edits });
+      continue;
+    }
+    attempts.push({ edits: parsed.edits, relocated: applied.relocated, repaired });
+    return { text: result, repaired, record: { outcome: "patched", attempts } };
+  }
+  return { reason, record: { outcome: "fell back", attempts } };
 }
 
 // --------------------------------------------------------------- catalogs ---
@@ -665,7 +896,7 @@ async function main() {
     checker: [],
     usage: {},
     count(locale, type) {
-      return ((this.counts[locale] ??= {})[type] ??= { total: 0, held: 0, copied: 0, written: 0, repaired: 0, revised: 0, skipped: 0, failed: 0 });
+      return ((this.counts[locale] ??= {})[type] ??= { total: 0, held: 0, copied: 0, written: 0, repaired: 0, revised: 0, paragraphs: 0, lines: 0, fellBack: 0, skipped: 0, failed: 0 });
     },
     estimate(locale, type, { prefix, tail, english, units = 1, echoed = "" }) {
       const row = ((this.estimates[locale] ??= {})[type] ??= { calls: 0, items: 0, words: 0, prefixTokens: approxTokens(SYSTEM + prefix), tailTokens: 0, textTokens: 0 });
@@ -754,6 +985,9 @@ function report(summary, file) {
           (c.repaired ? `  (${c.repaired} written after code repair)` : "") +
           (c.skipped ? `  empty in English ${c.skipped}` : "") +
           (c.revised ? `  (${c.revised} with a previous version)` : "") +
+          (c.paragraphs ? `  (${c.paragraphs} by paragraphs)` : "") +
+          (c.lines ? `  (${c.lines} by line edits)` : "") +
+          (c.fellBack ? `  (${c.fellBack} fell back to the whole file)` : "") +
           (!summary.dryRun && todo > 0 ? `  not attempted ${todo}` : "")
       );
       if (estimate) {
