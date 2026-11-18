@@ -5,8 +5,13 @@
 // (scripts/lib/issues.mjs). The scope of a run is derived here from the source
 // repo itself, given only the verified sha and PR number:
 //
-//   paths   files whose blob id differs between the base and the ref (below).
-//           Comparing blob ids means a rename or a mode change needs no work.
+//   paths   the content files the i18n repo's completeness check requires for
+//           this change, from its own `requiredContent`: every translatable file
+//           at the ref whose blob id the base did not already require. So a
+//           rename needs no work, an edit to a doc the website never shows
+//           (docs/CONTRIBUTING.md) needs none, and a doc that docs/config.json
+//           starts listing, or an exercise that leaves `wip`, is in scope even
+//           if its file is unchanged.
 //   units   catalog units (the website's two catalogs, or this repo's metadata
 //           catalog) whose English differs between the two, found by building
 //           the English at both commits with the i18n repo's own builders.
@@ -58,17 +63,19 @@ export async function scopeOf(lib, { source, repo, sha, pr = null }) {
   const base = merge ? git(["rev-parse", `${merge}^1`]) : git(["merge-base", lib.sourceRepos.defaultRef(repo), sha]);
 
   const kindId = SOURCES[source].kind;
-  if (kindId === "track" && !lib.sourceRepos.isActiveTrack(lib.git.lsTree(repo, ref), lib.git.refReader(repo, ref).readMany)) {
+  // The whole tree, as the completeness check reads it: a track's config.json
+  // (which exercises are `wip`) is outside the kind's sparse prefixes.
+  const [headEntries, read] = [lib.git.lsTree(repo, ref), lib.git.refReader(repo, ref).readMany];
+  if (kindId === "track" && !lib.sourceRepos.isActiveTrack(headEntries, read)) {
     return { base, ref, paths: [], units: [], inactive: true };
   }
+  const [baseEntries, baseRead] = [lib.git.lsTree(repo, base), lib.git.refReader(repo, base).readMany];
   // A PR that makes a track active puts the whole track on the website, and the
   // i18n repo's completeness check then requires all of it. So everything at
   // `ref` is in scope, as if the base held nothing.
-  const activates = kindId === "track" && !lib.sourceRepos.isActiveTrack(lib.git.lsTree(repo, base), lib.git.refReader(repo, base).readMany);
-  const sparse = lib.sourceRepos.REPO_KINDS[kindId].sparse ?? [];
-  const idsAt = (ref) => new Map(lib.git.lsTree(repo, ref, sparse).map((entry) => [entry.path, entry.id]));
-  const [before, after] = [activates ? new Map() : idsAt(base), idsAt(ref)];
-  const paths = [...after].filter(([file, id]) => before.get(file) !== id).map(([file]) => file);
+  const activates = kindId === "track" && !lib.sourceRepos.isActiveTrack(baseEntries, baseRead);
+  const required = lib.completeness.requiredContent(kindId, headEntries, activates ? null : baseEntries, { read, baseRead: activates ? null : baseRead });
+  const paths = required.map((file) => file.path);
 
   const englishAt = async (ref) => {
     if (source === "website") {

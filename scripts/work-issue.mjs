@@ -32,7 +32,9 @@
 // the merge ref with its first parent the way the completeness check does
 // (scripts/lib/issue-scope.mjs):
 //
-//   paths   files that differ between the two
+//   paths   the content files the completeness check requires for the change,
+//           which includes a doc newly listed in docs/config.json and an
+//           exercise that leaves `wip`, and leaves out unserved docs
 //   units   catalog units (website, or this repo's metadata) whose English
 //           differs between the two, by building the English at both commits
 //
@@ -97,7 +99,7 @@ const words = untranslatedWords(dry.summary);
 const pending = pendingWrites(dry.summary);
 const cap = config().issue_word_cap;
 console.log(`at ${scope.ref}${scope.ref === issue.sha ? " (the PR's sha)" : " (the PR's merge ref)"}`);
-console.log(`scope: ${scope.paths.length} changed file(s), ${scope.units.length} changed catalog unit(s); ${pending} item(s) to write; ${words} untranslated word(s) per locale at most; cap ${cap}; locales ${locales.join(", ")}`);
+console.log(`scope: ${scope.paths.length} required file(s), ${scope.units.length} changed catalog unit(s); ${pending} item(s) to write; ${words} untranslated word(s) per locale at most; cap ${cap}; locales ${locales.join(", ")}`);
 
 // A copy of identical English is a write that costs no words, so whether there
 // is anything to do is asked of writes and the cap is asked of words.
