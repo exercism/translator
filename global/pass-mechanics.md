@@ -209,6 +209,19 @@ to the model. The same sentence therefore reads the same in every track, and
 `problem-specifications` is translated before any track so that the copies exist to be found.
 Whole files need none of this: identical English is already one blob id.
 
+## Edits to verbatim lines are carried over
+
+Some pages are mostly lines that every translation keeps word for word. `docs`'
+`building/tracks/icons.md` is a table of several hundred exercise slugs and `<img>` tags,
+and each new exercise adds one row. When a file's previous version has a translation, the
+script first tries to apply the English edit to that translation line by line
+(`scripts/lib/carry-over.mjs`). It succeeds only when the old translation has as many lines
+as the old English, every removed line was kept verbatim, and every added line is blank, a
+table separator row, or a table row that contains a URL, an HTML tag or inline code and is
+shaped like at least three rows that were all kept verbatim. Otherwise the file is revised
+as described in "Revising an edited file". A carried-over file must still pass the checker,
+is counted as `copied`, and costs no words, so it never holds an issue above the word cap.
+
 ## A catalog is merged into, never replaced
 
 A catalog written to `i18n` holds every key the existing file held, plus the new and updated

@@ -20,6 +20,7 @@ import { ROOT, config } from "./lib/config.mjs";
 import { i18n } from "./lib/i18n.mjs";
 import { checkMarkdown, codeSpans, englishWarnings, fencedBlocks, wordCount } from "./lib/checks.mjs";
 import { repairCode } from "./lib/repair.mjs";
+import { carryOver } from "./lib/carry-over.mjs";
 import { fileTail, fixedPrefix } from "./lib/prompt.mjs";
 import { unfence } from "./lib/deepseek.mjs";
 import { catchUpRepo, catchUpTitle, isCatchUpIssue, parseCatchUpIssue, parseIssue } from "./lib/issues.mjs";
@@ -230,6 +231,36 @@ await test("a backtick line with a closing run is inline code, not a fence", () 
 await test("unfence strips a fence around the whole answer and nothing else", () => {
   assert.equal(unfence("```markdown\n# Cím\n\nSzöveg\n```"), "# Cím\n\nSzöveg\n");
   assert.equal(unfence("```ruby\nx\n```\n\nSzöveg\n\n```ruby\ny\n```"), "```ruby\nx\n```\n\nSzöveg\n\n```ruby\ny\n```\n");
+});
+
+// -------------------------------------------------------------- carry-over ---
+
+const ICON = (slug) => `| ${slug.padEnd(12)} | <img alt="${slug}" src="https://example.org/${slug}.svg"> |`;
+const ICONS_EN = (slugs, dashes = 10) => ["# Icons", "", "Every exercise has one.", "", "| Name         | Icon |", `| ------------ | ${"-".repeat(dashes)} |`, ...slugs.map(ICON), ""].join("\n");
+const ICONS_HU = (slugs, dashes = 10) => ["# Ikonok", "", "Minden feladatnak van egy.", "", "| Név          | Ikon |", `| ------------ | ${"-".repeat(dashes)} |`, ...slugs.map(ICON), ""].join("\n");
+
+await test("carry-over: new rows in a verbatim table are added to the old translation, and other lines keep their translation", () => {
+  const old = ["acronym", "anagram", "bob", "leap"];
+  const result = carryOver({ oldEnglish: ICONS_EN(old), newEnglish: ICONS_EN(["acronym", "anagram", "beer-song", "bob", "leap", "zipper"], 12), oldTranslation: ICONS_HU(old) });
+  assert.equal(result, ICONS_HU(["acronym", "anagram", "beer-song", "bob", "leap", "zipper"], 12));
+});
+
+await test("carry-over: removing a verbatim row carries over, and any change to prose goes to the model", () => {
+  const old = ["acronym", "anagram", "bob", "leap"];
+  assert.equal(carryOver({ oldEnglish: ICONS_EN(old), newEnglish: ICONS_EN(["acronym", "bob", "leap"]), oldTranslation: ICONS_HU(old) }), ICONS_HU(["acronym", "bob", "leap"]));
+  assert.equal(carryOver({ oldEnglish: ICONS_EN(old), newEnglish: ICONS_EN(old).replace("has one.", "has one icon."), oldTranslation: ICONS_HU(old) }), null);
+  assert.equal(carryOver({ oldEnglish: ICONS_EN(old), newEnglish: ICONS_EN(old).replace("Every exercise has one.\n", "Every exercise has one.\nAnd a new line.\n"), oldTranslation: ICONS_HU(old) }), null);
+});
+
+await test("carry-over: a row is only added when at least three rows of its shape were all kept verbatim", () => {
+  const en = "| Term | Meaning |\n| ---- | ------- |\n| a | one |\n| b | two |\n| c | three |\n";
+  const hu = "| Kifejezés | Jelentés |\n| ---- | ------- |\n| a | egy |\n| b | kettő |\n| c | három |\n";
+  assert.equal(carryOver({ oldEnglish: en, newEnglish: en + "| d | four |\n", oldTranslation: hu }), null);
+  const words = "| Name |\n| ---- |\n| Ruby |\n| Rust |\n| Go |\n";
+  assert.equal(carryOver({ oldEnglish: words, newEnglish: words + "| Hello |\n", oldTranslation: words.replace("Name", "Név") }), null);
+  const few = ["acronym", "bob"];
+  assert.equal(carryOver({ oldEnglish: ICONS_EN(few), newEnglish: ICONS_EN([...few, "leap"]), oldTranslation: ICONS_HU(few) }), null);
+  assert.equal(carryOver({ oldEnglish: ICONS_EN(few), newEnglish: ICONS_EN(few), oldTranslation: ICONS_HU(few) + "\nextra" }), null);
 });
 
 // ------------------------------------------------------------------ prompt ---
