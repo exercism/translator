@@ -201,7 +201,7 @@ async function main() {
   const words = untranslatedWords(dry.summary);
   const pending = pendingWrites(dry.summary);
   const cap = config().issue_word_cap;
-  console.log(`scope: ${scope.paths.length} changed file(s), ${scope.units.length} changed catalog unit(s); ${pending} item(s) to write; ${words} untranslated word(s) per locale at most; cap ${cap}; locales ${locales.join(", ")}`);
+  console.log(`scope: ${scope.paths.length} required file(s), ${scope.units.length} changed catalog unit(s); ${pending} item(s) to write; ${words} untranslated word(s) per locale at most; cap ${cap}; locales ${locales.join(", ")}`);
 
   // The cap is about model work, so it is asked of words. Whether there is
   // anything to do is asked of writes, because a copy of identical English is a

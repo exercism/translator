@@ -18,7 +18,7 @@
 //   --ref=<ref>          the ref to read English at (default: origin/main, else HEAD)
 //   --scope=<file>       JSON `{ "paths": [...], "units": [...] }`: only those repo-relative
 //                        paths and those catalog unit ids are in scope. Written by
-//                        scripts/work-issue.mjs from a PR's own diff, never by hand.
+//                        scripts/lib/issue-scope.mjs from what the PR requires, never by hand.
 //   --list-types         print the type ids this script can run, one per line, and exit
 //
 // Examples:
@@ -231,9 +231,10 @@ async function pool(items, size, worker) {
 
 async function translateContent({ lib, run, sourceId, name, repo, ref, sha, locale, flags }) {
   const kindId = SOURCES[sourceId].kind;
-  const kind = lib.sourceRepos.REPO_KINDS[kindId];
-  const entries = lib.git.lsTree(repo, ref, kind.sparse ?? []);
-  let files = lib.completeness.translatableFiles(kindId, entries);
+  // The whole tree, so the reader can see a track's config.json and
+  // docs/config.json, which leave out `wip` exercises and the docs the website
+  // never shows.
+  let files = lib.completeness.translatableFiles(kindId, lib.git.lsTree(repo, ref), lib.git.refReader(repo, ref).readMany);
 
   if (typeof flags.type === "string") files = files.filter((file) => file.type === flags.type);
   if (run.scope) files = files.filter((file) => run.scope.paths.includes(file.path));
@@ -811,11 +812,12 @@ async function catalogSpecs({ lib, sourceId, name, repo, ref, sha, locale, flags
 function updateIndex({ lib, run, sourceId, name, repo, ref, locale }) {
   const kindId = SOURCES[sourceId].kind;
   const entries = lib.git.lsTree(repo, ref);
-  const files = lib.completeness.translatableFiles(kindId, entries);
+  const read = lib.git.refReader(repo, ref).readMany;
+  const files = lib.completeness.translatableFiles(kindId, entries, read);
   const catalogFile = lib.metadata.metadataPath(locale, name);
   const catalog = fs.existsSync(catalogFile) ? JSON.parse(fs.readFileSync(catalogFile, "utf8")) : {};
   const index = lib.translationIndex;
-  const names = index.displayNames(kindId, entries, lib.git.refReader(repo, ref).readMany, locale, catalog);
+  const names = index.displayNames(kindId, entries, read, locale, catalog);
   const current = index.syncIndex(index.readIndex(locale, name, kindId), files, index.heldIn(locale), names);
   for (const file of index.saveRepoIndex(current)) run.indexed.push(path.relative(lib.dir, file));
 }

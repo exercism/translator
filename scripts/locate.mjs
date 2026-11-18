@@ -98,7 +98,7 @@ if (typeof flags.key === "string") {
 }
 
 // ------------------------------------------------------------ a whole file --
-const entries = lib.completeness.translatableFiles(kindId, lib.git.lsTree(repo, ref, lib.sourceRepos.REPO_KINDS[kindId].sparse ?? []));
+const entries = lib.completeness.translatableFiles(kindId, lib.git.lsTree(repo, ref), lib.git.refReader(repo, ref).readMany);
 let matches;
 if (item.includes("/")) {
   matches = entries.filter((entry) => entry.path === item);

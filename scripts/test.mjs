@@ -617,6 +617,45 @@ await test("a later PR on an active track has only its own changes in scope", as
   assert.deepEqual([later.paths, later.units], [["exercises/practice/bob/.docs/instructions.md"], []]);
 });
 
+// exercism/i18n#459: the check requires only the docs the website serves, and
+// the scope must match it, or a PR stays red waiting for a translation that the
+// issue never makes.
+await test("an issue's scope is what the completeness check requires, not the files the PR changed", async () => {
+  const track = (extra = {}) => JSON.stringify({ language: "Served", active: true, exercises: { concept: [], practice: [{ slug: "bob", name: "Bob", uuid: "1" }, { slug: "leap", name: "Leap", uuid: "2", status: "wip" }] }, concepts: [], ...extra });
+  const docsConfig = (...paths) => JSON.stringify({ docs: paths.map((file, i) => ({ uuid: `d${i}`, slug: `s${i}`, path: file, title: `T${i}`, blurb: "" })) });
+  const dir = repo("served", {
+    "config.json": track(),
+    "exercises/practice/bob/.docs/instructions.md": BOB,
+    "exercises/practice/leap/.docs/instructions.md": "# Instructions\n\nIs it a leap year?\n",
+    "docs/config.json": docsConfig("docs/TESTS.md"),
+    "docs/ABOUT.md": "# About\n\nServed is a language.\n",
+    "docs/TESTS.md": "# Tests\n\nRun them.\n",
+    "docs/INSTALLATION.md": "# Installation\n\nInstall it.\n",
+    "docs/CONTRIBUTING.md": "# Contributing\n\nSend a PR.\n"
+  });
+  const head = () => sh("git", ["rev-parse", "HEAD"], { cwd: dir }).out.trim();
+  // One PR on top of main: main is where HEAD is now, and the PR is `files`.
+  const pr = async (files) => {
+    sh("git", ["update-ref", "refs/remotes/origin/main", head()], { cwd: dir });
+    repo("served", files);
+    return scopeOf(lib, { source: "track", repo: dir, sha: head() });
+  };
+
+  assert.deepEqual((await pr({ "docs/config.json": docsConfig("docs/TESTS.md", "docs/INSTALLATION.md") })).paths, ["docs/INSTALLATION.md"], "a doc newly listed in docs/config.json is in scope though its file is unchanged");
+  assert.deepEqual((await pr({ "docs/CONTRIBUTING.md": "# Contributing\n\nSend a pull request.\n" })).paths, [], "the website never shows CONTRIBUTING.md");
+  assert.deepEqual((await pr({ "config.json": track({ exercises: { concept: [], practice: [{ slug: "bob", name: "Bob", uuid: "1" }, { slug: "leap", name: "Leap", uuid: "2" }] } }) })).paths, ["exercises/practice/leap/.docs/instructions.md"], "an exercise leaving wip is in scope though its files are unchanged");
+
+  await pr({ "config.json": track({ active: false }) });
+  const activated = await pr({ "config.json": track() });
+  assert.deepEqual(activated.paths.sort(), ["docs/ABOUT.md", "docs/INSTALLATION.md", "docs/TESTS.md", "exercises/practice/bob/.docs/instructions.md"], "activating the track puts everything served in scope");
+
+  // A full pass reads the same two configs: no CONTRIBUTING.md, no wip leap.
+  const dry = translate(["track", "served", "hu", `--repo=${dir}`, "--dry-run"]);
+  assert.equal(dry.status, 0, dry.out);
+  const counts = summaryOf(dry.out).counts.hu;
+  assert.deepEqual([counts["track-docs"].total, counts["exercise-instructions"].total], [3, 1], JSON.stringify(counts));
+});
+
 await test("the fake engine is refused outside a test fixture", () => {
   const result = sh("node", [path.join(ROOT, "scripts", "translate.mjs"), "problem-specifications", "hu", `--repo=${specs}`], { env: { TRANSLATOR_TEST_ENGINE: ENV.TRANSLATOR_TEST_ENGINE, EXERCISM_I18N_ROOT: "" } });
   assert.notEqual(result.status, 0);
