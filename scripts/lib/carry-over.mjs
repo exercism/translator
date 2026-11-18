@@ -17,9 +17,10 @@
 // - A line whose only change is whitespace keeps the translation's line, or
 //   takes the new English line if the translation had kept it verbatim.
 // - A line added to the English must be blank, a table's separator row
-//   (`| --- | :-: |`), or a table row with the same
-//   shape as at least three rows of the previous English, every one of which the
-//   translation kept verbatim. A table whose rows were translated never matches.
+//   (`| --- | :-: |`), or a table row that contains a URL, an HTML tag or
+//   inline code and has the same shape as at least three rows of the previous
+//   English, every one of which the translation kept verbatim. A table whose
+//   rows were translated never matches, and neither does a row of plain words.
 //
 // The result still goes through the checker before it is written.
 
@@ -35,6 +36,7 @@ const collapse = (line) => line.replace(/\s+/g, " ").trim();
 const shape = (line) => collapse(line.replace(/[A-Za-z0-9_-]+/g, "w"));
 
 const isTableRow = (line) => /^\s*\|.*\|\s*$/.test(line);
+const hasMarkup = (line) => /https?:\/\/|<[A-Za-z][^>]*>|`[^`]+`/.test(line);
 const isSeparatorRow = (line) => isTableRow(line) && /^[\s|:-]+$/.test(line) && line.includes("-");
 
 /**
@@ -62,7 +64,7 @@ export function carryOver({ oldEnglish, newEnglish, oldTranslation }) {
   }
   const safeToAdd = (line) => {
     if (line.trim() === "" || isSeparatorRow(line)) return true;
-    if (!isTableRow(line)) return false;
+    if (!isTableRow(line) || !hasMarkup(line)) return false;
     const seen = safeShapes.get(shape(line));
     return Boolean(seen) && seen.translated === 0 && seen.verbatim >= MIN_VERBATIM_ROWS;
   };

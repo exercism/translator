@@ -179,7 +179,8 @@ and each new exercise adds one row. When a file's previous version has a transla
 script first tries to apply the English edit to that translation line by line
 (`scripts/lib/carry-over.mjs`). It succeeds only when the old translation has as many lines
 as the old English, every removed line was kept verbatim, and every added line is blank, a
-table separator row, or a table row shaped like at least three rows that were all kept
+table separator row, or a table row that contains a URL, an HTML tag or inline code and is
+shaped like at least three rows that were all kept
 verbatim. Otherwise the file goes to the model as usual. A carried-over file must still pass
 the checker, is counted as `copied`, and costs no words, so it never holds an issue above the
 word cap.

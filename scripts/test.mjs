@@ -256,6 +256,8 @@ await test("carry-over: a row is only added when at least three rows of its shap
   const en = "| Term | Meaning |\n| ---- | ------- |\n| a | one |\n| b | two |\n| c | three |\n";
   const hu = "| Kifejezés | Jelentés |\n| ---- | ------- |\n| a | egy |\n| b | kettő |\n| c | három |\n";
   assert.equal(carryOver({ oldEnglish: en, newEnglish: en + "| d | four |\n", oldTranslation: hu }), null);
+  const words = "| Name |\n| ---- |\n| Ruby |\n| Rust |\n| Go |\n";
+  assert.equal(carryOver({ oldEnglish: words, newEnglish: words + "| Hello |\n", oldTranslation: words.replace("Name", "Név") }), null);
   const few = ["acronym", "bob"];
   assert.equal(carryOver({ oldEnglish: ICONS_EN(few), newEnglish: ICONS_EN([...few, "leap"]), oldTranslation: ICONS_HU(few) }), null);
   assert.equal(carryOver({ oldEnglish: ICONS_EN(few), newEnglish: ICONS_EN(few), oldTranslation: ICONS_HU(few) + "\nextra" }), null);
